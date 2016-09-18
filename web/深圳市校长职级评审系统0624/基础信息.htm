@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>深圳市校长职级评审系统</title>
+<link rel="stylesheet" type="text/css" href="css/zoonet.css" />
+<link rel="stylesheet" type="text/css" href="css/selectordie.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="css/layerModel.css" />
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/selectordie.min.js"></script>
+<script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+<script type="text/jscript" src="js/jquery.layerModel.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('select').selectOrDie({
+		placeholder: '请选择'
+	});
+});
+</script>
+<script>
+$(function(){
+	$('#change').click(function(){
+		$('.change-channel').layerModel({
+			'head' : false,
+			isClose : false
+		});
+	});
+	
+	$('#close').click(function(){
+		$('.change-channel').close();
+	});
+});
+</script>
+</head>
+<body>
+<!-- Header Start -->
+<div class="header">
+	<div class="auto">
+		<h1>深圳市校长职级评审系统</h1>
+		<p>当前用户：李伟民<span><a href="#" target="_blank" title="">修改密码</a></span><span><a href="#" target="_self" title="">退出</a></span></p>
+	</div>
+</div>
+<!-- Header End -->
+<!-- Main Start -->
+<div class="main">
+	<!-- 进度 s -->
+	<div class="grogress"><div class="line" style="width:46px;"><!-- 970/21 --></div></div>
+	<!-- 进度 e -->
+	<!-- 标题 s -->
+	<div class="com-title">
+		<div class="txt fl">
+			<h2><i>1</i>基础信息</h2>
+		</div>
+		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
+		<div class="clear-both"></div>
+	</div>
+	<!-- 标题 e -->
+	<!-- 基础信息填写 s -->
+	<div class="base-info">
+		<div class="photo">
+			<p><img src="images/u184.jpg" alt="" title="" /></p>
+			<p><a href="javascript:void(0);" target="_self" title="">上传照片</a></p>
+		</div>
+		<ul class="clear-fix">
+			<li>
+				<div class="border_1 w_1 fl">
+					<span>姓名：</span>
+					<input type="text" name="" value="" placeholder="请输入姓名" />
+				</div>
+				<div class="border_1 w_2 fr" style="z-index:99;">
+					<span>性别：</span>
+					<select name="">
+						<option>男</option>
+						<option>女</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:98;">
+					<span>学校类型：</span>
+					<select name="">
+						<option>小学</option>
+						<option>初中</option>
+						<option>高中</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_4 fl" style="z-index:97;">
+					<span>出生年月：</span>
+					<input type="text" name="" value="" placeholder="年-月-日" id="date-01" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_5 fl" style="z-index:96;">
+					<span>参加工作时间：</span>
+					<input type="text" name="" value="" placeholder="年-月-日" id="date-02" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_6 fl" style="z-index:95;">
+					<span>身份证号码：</span>
+					<input type="text" name="" value="" placeholder="请输入18位身份证号码" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_7 fl" style="z-index:94;">
+					<span>参加教育工作时间：</span>
+					<input type="text" name="" value="" placeholder="年-月-日" id="date-03" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:93;">
+					<span>政治面貌：</span>
+					<select name="">
+						<option>党员</option>
+						<option>预备党员</option>
+						<option>共青团员</option>
+						<option>群众</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_8 fl" style="z-index:92;">
+					<span>教龄：</span>
+					<input type="number" name="" value="" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_9 fl" style="z-index:91;">
+					<span>籍贯：</span>
+					<input type="text" name="" value="" placeholder="请输入省份地区" />
+				</div>
+				<div class="border_1 w_9 fr" style="z-index:90;">
+					<span>户籍：</span>
+					<select name="">
+						<option>深户</option>
+						<option>非深户</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_8 fl" style="z-index:89;">
+					<span>学段：</span>
+					<input type="text" name="" value="" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_10 fl" style="z-index:88;">
+					<span>邮箱：</span>
+					<input type="text" name="" value="" placeholder="邮箱" />
+				</div>
+				<div class="border_1 w_11 fr" style="z-index:87;">
+					<span>民族：</span>
+					<input type="text" name="" value="" placeholder="民族" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:86;">
+					<span>现任职务：</span>
+					<select name="">
+						<option>正校长</option>
+						<option>副校长</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:85;">
+					<span>所在学校：</span>
+					<input type="text" name="" value="" placeholder="请输入学校全称" />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_7 fl" style="z-index:84;">
+					<span>现任专业技术职务：</span>
+					<input type="text" name="" value="" placeholder="请输入现任专业技术职务" />
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- 基础信息填写 e -->
+	<div class="next-step" style="text-align:center;"><a href="javascript:void(0);" target="_self" title="">下一步</a></div>
+</div>
+<!-- Main End -->
+<!-- Footer Start -->
+<div class="footer">
+	<p>深圳市教育局版权所有&nbsp;|&nbsp;亮信科技技术支持：0755-33018116 （工作日9：00-12：00 14：00-18：00）</p>
+	<p>Copyright&nbsp;&copy;&nbsp;2016.&nbsp;&nbsp;All Rights Reserved.</p>
+</div>
+<!-- Footer End -->
+<!-- 切换步骤 s -->
+<div class="change-channel">
+	<a href="javascript:void(0);" target="_self" title="" class="close" id="close">x</a>
+	<ul class="clear-fix">
+		<li><i>1</i><a href="#" target="_self" title="">基础信息</a><span class="tx">已填写</span></li>
+		<li><i>2</i><a href="#" target="_self" title="">任职年限</a><span class="tx">已填写</span></li>
+		<li><i>3</i><a href="#" target="_self" title="">论文发表</a><span class="tx">已填写</span></li>
+		<li><i>4</i><a href="#" target="_self" title="">专著出版</a><span>未填写</span></li>
+		<li><i>5</i><a href="#" target="_self" title="">课题情况</a><span>未填写</span></li>
+		<li><i>6</i><a href="#" target="_self" title="">进修学习</a><span class="bh">被驳回</span></li>
+		<li><i>7</i><a href="#" target="_self" title="">学历情况</a><span>未填写</span></li>
+		<li><i>8</i><a href="#" target="_self" title="">职称情况</a><span>未填写</span></li>
+		<li><i>9</i><a href="#" target="_self" title="">办学思想</a><span class="tx">已填写</span></li>
+		<li><i>10</i><a href="#" target="_self" title="">学校管理</a><span>未填写</span></li>
+		<li><i>11</i><a href="#" target="_self" title="">教育教学</a><span class="bh">被驳回</span></li>
+		<li><i>12</i><a href="#" target="_self" title="">外部环境</a><span>未填写</span></li>
+		<li><i>13</i><a href="#" target="_self" title="">学生发展</a><span>未填写</span></li>
+		<li><i>14</i><a href="#" target="_self" title="">教师发展</a><span class="bh">被驳回</span></li>
+		<li><i>15</i><a href="#" target="_self" title="">学校发展</a><span>未填写</span></li>
+		<li><i>16</i><a href="#" target="_self" title="">管理难度</a><span class="bh">被驳回</span></li>
+		<li><i>17</i><a href="#" target="_self" title="">获奖情况</a><span class="bh">被驳回</span></li>
+		<li><i>18</i><a href="#" target="_self" title="">学校特色及改革</a><span>未填写</span></li>
+		<li><i>19</i><a href="#" target="_self" title="">社会责任</a><span>未填写</span></li>
+		<li><i>20</i><a href="#" target="_self" title="">责任事故</a><span>未填写</span></li>
+		<li><i>21</i><a href="#" target="_self" title="">处分</a><span class="tx">已填写</span></li>
+	</ul>
+</div>
+<!-- 切换步骤 e -->
+<script type="text/javascript">
+	$('#date-01,#date-02,#date-03').datetimepicker({
+		lang:"ch",
+      	format:"Y-m-d",
+      	timepicker:false,
+      	yearStart:1900,
+      	yearEnd:2050,
+      	todayButton:false
+	});
+</script>
+</body>
+</html>

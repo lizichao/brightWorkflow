@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>var SubjectBookWin;
+	   function openSubjectBookWin(_rec){
+	        SubjectBookWin=Ext.getCmp('SubjectBookWin');
+			if(!SubjectBookWin){
+				SubjectBookWin=new Ext.Window({
+					title:'学科教材信息',
+			        layout:'fit',
+					id    :'SubjectBookWin',
+			        width:750,
+			        height:405,
+			        closeAction:'hide',
+			        plain: true,
+			        modal: true,
+			        items:SubjectBookFrom
+			    });
+			}
+			SubjectBookWin.show();
+            SubjectBookFrom.getForm().reset();
+			SubjectBookFrom.record=_rec;
+			SubjectBookFrom.getForm().loadRecord(_rec);
+	   }
+		function openFolderWindow(_subjectbookid,_subjname,_gradecode,_publishercode,_subjectid){
+			var jsurl="/yuexue/learn/bookfolder.js";
+			var jsobjnm="jsp.yuexue.learn.bookfolder";
+			var __mfunc=function(){
+				var crtobj='var _mainPanel=new '+jsobjnm+'();';
+				if (window.execScript) {
+				   window.execScript(crtobj);
+				} else {
+				   window.eval(crtobj);
+				}
+				//创建window
+				var win=new Ext.Window({
+					title:"教材目录管理",
+					layout:'fit',
+					width:800,
+					height:500,
+					closable:true,
+					closeAction:'close',
+					maximizable:true,
+					plain: true,
+					modal: true,
+					items:_mainPanel.MainPanel
+				});
+				win.show();
+				//加载数据
+				//MainPanel.itrec=itrec;
+			_mainPanel.__jrafonload({subjectbookid:[_subjectbookid],subjname:[_subjname],gradecode:[_gradecode],publishercode:[_publishercode],subjectid:[_subjectid]});
+			JrafUTIL.putCmp(jsobjnm,_mainPanel);
+			}.createDelegate(this);
+			JrafUTIL.scriptLoader(Jraf_ContextPath+jsurl,true,__mfunc);
+		};</Functions>
+    <onLoad>StoreSubject.load();</onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="RecSubjectBook">[  {
+    xtype : "Field",
+    name : "subject_book_id",
+    fieldLabel : "主键",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "学科ID",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "grade_code",
+    fieldLabel : "年级",
+    allowBlank : true,
+    type : "int"
+},  {
+    xtype : "Field",
+    name : "publisher_code",
+    fieldLabel : "出版社",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "book_name",
+    fieldLabel : "教材名称",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "book_version",
+    fieldLabel : "教材版本",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "有效",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "create_by",
+    fieldLabel : "建立人",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "create_date",
+    fieldLabel : "建立时间",
+    allowBlank : true,
+    type : "date",
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "modify_by",
+    fieldLabel : "修改人",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "modify_date",
+    fieldLabel : "修改时间",
+    allowBlank : true,
+    type : "date",
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "subjcode",
+    fieldLabel : "学科代码",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "subjname",
+    fieldLabel : "学科名称",
+    allowBlank : true,
+    type : "string"
+}]</Record>
+      <Record classname="RecSubject">[  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "subjectid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjcode",
+    fieldLabel : "subjcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjname",
+    fieldLabel : "subjname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "shortnm",
+    fieldLabel : "shortnm",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="StoreSubjectBook">{
+  xtype : "Store",
+  classname : "StoreSubjectBook",
+  type : "JrafXmlStore",
+  recordType : RecSubjectBook,
+  idProperty : "subject_book_id",
+  api : { read:{sysName : "yuexue",oprID : "Knowledge",actions : "querySubjectBook"},
+  	 create:{sysName:"yuexue",oprID:"Knowledge",actions:"addSubjectBook"},
+     update:{sysName:"yuexue",oprID:"Knowledge",actions:"updateSubjectBook"},
+     destroy:{sysName:"yuexue",oprID:"Knowledge",actions:"deleteSubjectBook"}
+  },
+  autoLoad : false,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true,
+  listeners : {
+     write : function(store,action,result,res,rs){	    
+	    if (res.success){
+            if ("create"==action || "update"==action){
+			   var _subjectBookId="";
+			   if ("create"==action){
+			      _subjectBookId = res.records[0].get('subject_book_id'); 
+			   }
+			   else{
+			      _subjectBookId = Ext.getCmp('GridSubjectBook').getSelectionModel().getSelected().get('subject_book_id'); 
+			   }
+			   var up = Ext.getCmp('uploadPanel');
+			   if (up.progressInfo.filesTotal>0){
+			      var _form= Ext.getCmp('SubjectBookFrom');
+			      var ps = Ext.apply({'sysName':'yuexue','oprID':'Knowledge','actions':'addBookAttachment','subject_book_id':_subjectBookId},JrafUTIL.crForm(_form)||{});
+				  up.startUpload(this,null,ps);
+			   }
+			   else{
+			      SubjectBookWin.hide(); 
+			   }
+			}
+		}
+	 }
+  }
+}</Store>
+      <Store classname="StoreSubject">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "StoreSubject",
+  recordType : RecSubject,
+  idProperty : "subjectid",
+  api : {read:{sysName : "yuexue",oprID : "Knowledge",actions : "getActiveSubject"}
+  },
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false,
+  baseParams : {PageSize:"0"},
+  autoLoad : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+    <Panel classname="SubjectBookFrom" xtype="form">{
+  xtype : "form",
+  classname : "SubjectBookFrom",
+  frame : true,
+  labelAlign : "right",
+  fileUpload : true,
+  items : [    {
+      layout : "column",
+      bodyBorder : false,
+      items : [        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "subjname",
+			  id : "comboSubjname",
+              fieldLabel : "学科名称",
+              allowBlank : false,
+              editable : false,
+              xtype : "combo",
+              width : 150,
+              store : StoreSubject,
+              emptyText : "请选择",
+              triggerAction : "all",
+              displayField : "subjname",
+              valueField : "subjectid",
+              hiddenName : "subjectid",
+              mode : "local"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              hiddenName : "grade_code",
+              fieldLabel : "年级",
+              width : 150,
+              allowBlank : false,
+              xtype : "paracombo",
+              baseParams : {paramname:'c_grade'}
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "book_name",
+              fieldLabel : "书本名称",
+              allowBlank : true,
+              width : 150,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              hiddenName : "book_version",
+              fieldLabel : "类型",
+              width : 150,
+              allowBlank : false,
+              xtype : "paracombo",
+              baseParams : {paramname:'c_book_type'}
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              hiddenName : "publisher_code",
+              fieldLabel : "出版社",
+              width : 150,
+              allowBlank : false,
+              xtype : "paracombo",
+              baseParams : {paramname:'c_publisher'}
+          }]
+      }, {
+          layout : "form",
+          columnWidth : 1.0,
+          border : false,
+          labelAlign : "right",
+          items : [{
+				xtype:"uploadpanel",
+				border : false,						
+				width : 630,
+				id    : "uploadPanel",
+				itemId : "uploadPanel",
+				height : 235,
+				fieldLabel: "请选择附件",
+				fileSize : 1024*550,//限制文件大小
+				uploadUrl :"p.ajaxutf",
+				filePostName : "book_attachment", //后台接收参数
+				fileTypes : "*.pdf",//可上传文件类型
+				file_upload_limit : "0",
+				fileTypesDescription:"所有文件",
+				upBtn:false,
+				stopBtn:false,
+				successFn:function(a){
+					Ext.Msg.alert('附件上传','上传成功!');
+					SubjectBookWin.hide();
+				}
+		     }]
+		  }
+	  ]
+  }],
+  buttonAlign : "center",
+  labelWidth : 80,
+  buttons : [{text : '保存',handler : function() {
+           var _forma = Ext.getCmp("SubjectBookFrom");
+		   if (_forma.getForm().isValid()){
+		       _forma.getForm().updateRecord(_forma.record);
+			   _forma.record.set('subjname',Ext.getCmp('comboSubjname').getRawValue());
+			   _forma.record.set('modify_date',new Date());
+               var _grid=Ext.getCmp('GridSubjectBook');
+			   _grid.getStore().save();
+		   }
+       }},
+	   {text : '关闭',handler : function() {
+	         SubjectBookWin.hide();
+	   }}
+   ],
+  id : "SubjectBookFrom"
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        items : [          {
+            layout : "column",
+            bodyBorder : false,
+            items : [              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.33,
+                items : [                  {
+                    name : "qry_subject_name",
+                    fieldLabel : "学科",
+                    allowBlank : true,
+                    width : 150,
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.33,
+                items : [                  {
+                    hiddenName : "qry_grade_code",
+                    fieldLabel : "年级",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "paracombo",
+                    baseParams : {paramname:'c_grade',defaultValArr:[['','- - - 全部- - - ']]}
+                }]
+            },              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.33,
+                items : [                  {
+                    hiddenName : "qry_publisher_code",
+                    fieldLabel : "出版社",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "paracombo",
+                    baseParams : {paramname:'c_publisher',defaultValArr:[['','- - - 全部- - - ']]}
+                }]
+            }],
+            anchor : "100%"
+        }],
+        buttonAlign : "center",
+        id : "qryFormSubjectBook",
+        frame : true,
+        buttons : [        {
+          text : "查询",
+          handler : function(){
+		      var qStore=Ext.getCmp('GridSubjectBook').getStore();
+			  qStore.setFormParam(Ext.getCmp('qryFormSubjectBook'));
+			  qStore.setPageInfo(JrafSession.get('PageSize'),'1');
+			  qStore.load();
+		   }
+      }]
+    },      {
+        xtype : "grid",
+        id : "GridSubjectBook",
+        region : "center",
+        autoWidth : true,
+        frame : true,
+        title : "查询结果",
+        viewConfig : {forceFit :false},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        store : StoreSubjectBook,
+        stripeRows : true,
+        tbar : [
+		   {text:'新增',iconCls:'add',ref: '../addBtn',handler:function(){
+		       var _grid=Ext.getCmp('GridSubjectBook');
+			   var recordType=_grid.getStore().recordType;
+			   var rec=new recordType();
+			   _grid.getStore().insert(0,rec); 
+			   openSubjectBookWin(rec);
+		   }},{xtype: 'tbseparator'},
+		   {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+				var _grid=Ext.getCmp('GridSubjectBook');
+				var ckrs=_grid.getSelectionModel().getSelections();
+				if (ckrs.length&gt;0){
+					Ext.Msg.confirm('除选数据','确认要删除选中数据?',function(btn){
+					if(btn == 'yes'){
+							for(var i=0;i&lt;ckrs.length;i++){
+							   _grid.getStore().remove(ckrs[i]);
+							}
+							_grid.getStore().save();
+						}
+					});
+				}		       
+		   }},
+		   {xtype: 'tbseparator'},{xtype: 'tbfill'},{xtype: 'tbseparator'},
+		   {text:'教材目录管理',iconCls:'folder-page',ref: '../folderBtn',disabled: true,handler:function(){
+		       var _rec=Ext.getCmp('GridSubjectBook').getSelectionModel().getSelected();
+			   if (_rec){
+			       openFolderWindow(_rec.get('subject_book_id'),_rec.get('subjname'),_rec.get('grade_code'),_rec.get('publisher_code'),_rec.get('subjectid'));				   
+			   }
+		   }},{xtype: 'tbseparator'}
+		],
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:StoreSubjectBook,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),		
+			{width:100,sortable:true,header:'学科名称',dataIndex:'subjname'},
+		    {width:60,sortable:true,header:'年级',dataIndex:'grade_code',renderer:Ext.util.Format.paramRenderer('c_grade','未定义')},
+			{width:100,sortable:true,header:'出版社',dataIndex:'publisher_code',renderer:Ext.util.Format.paramRenderer('c_publisher','未定义')},
+			{width:120,sortable:true,header:'书本名称',dataIndex:'book_name'},
+			{width:60,sortable:true,header:'类型',dataIndex:'book_version',renderer:Ext.util.Format.paramRenderer('c_book_type','未定义')},
+			{width:80,sortable:true,header:'建立人',dataIndex:'create_by'},			{width:150,sortable:true,header:'建立时间',dataIndex:'create_date',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+			{width:80,sortable:true,header:'修改人',dataIndex:'modify_by'},
+			{width:150,sortable:true,header:'修改时间',dataIndex:'modify_date',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')}
+	     ]),
+        sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){
+		     var _grid=this.grid;
+			 if(sm.getCount()){
+			    _grid.removeBtn.enable();
+				_grid.folderBtn.enable();
+			 }
+			 else{
+			    _grid.removeBtn.disable();
+				_grid.folderBtn.disable();
+			 }
+		 }}}),
+        listeners : {
+			rowdblclick : function(g,rowIndex,e){
+				var rec=g.getSelectionModel().getSelected();
+				openSubjectBookWin(rec);
+			}
+		  }
+    }]
+}]</MainPanel>
+</view>
+

@@ -1,0 +1,77 @@
+{
+properties : [{
+    name : "autoDestroy",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to destroy the store when the component the store is bound to is destroyed (defaults to false)"
+  },{
+    name : "autoLoad",
+    type : "mixed",
+    desc : "<b>Boolean/Object</b> If data is not specified, and if autoLoad is true or an Object, this store's load method is automatically called after creation. If the value of autoLoad is an Object, this Object will be passed to the store's load method"
+  },{
+    name : "autoSave",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true causing the store to automatically save records to the server when a record is modified"
+  },{
+    name : "baseParams",
+    type : "object",
+    desc : "<b>Object</b> An object containing properties which are to be sent as parameters for every HTTP request."
+  },{
+    name : "batch",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true (unless restful:true)"
+  },{
+    name : "data",
+    type : "array",
+    desc : "<b>Array</b> An inline data object readable by the reader. Typically this option, or the url option will be specified"
+  },{
+    name : "defaultParamNames",
+    type : "object",
+    desc : "<b>Object</b> Provides the default values for the paramNames property"
+  },{
+    name : "paramNames",
+    type : "object",
+    desc : "<b>Object</b> An object containing properties which specify the names of the paging and sorting parameters passed to remote servers when loading blocks of data"
+  },{
+    name : "proxy",
+    type : "mixed",
+    desc : "<b>Object</b> The DataProxy object which provides access to a data object"
+  },{
+    name : "pruneModifiedRecords",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to clear all modified record information each time the store is loaded or when a record is removed (defaults to false)"
+  },{
+    name : "reader",
+    type : "mixed",
+    desc : "<b>DataReader</b> An Ext.data.DataReader (e.g. {@link Ext.data.XmlReader}) to be used to read data when executing \"load\" actions. This is optional as there is built-in support for processing JSON."
+  },{
+    name : "remoteSort",
+    type : "boolean",
+    desc : "<b>Boolean</b> true if sorting is to be handled by requesting the Proxy to provide a refreshed version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false)"
+  },{
+    name : "restful",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to false. Set to true to have the Store and the set Proxy operate in a RESTful manner"
+  },{
+    name : "sortInfo",
+    type : "object",
+    desc : "<b>Object</b> A config object to specify the sort order in the request of a Store's load operation"
+  },{
+    name : "storeId",
+    desc : "<b>String</b> If passed, the id to use to register with the StoreMgr"
+  },{
+    name : "xtype",
+    editable : true,
+    desc : "<b>String</b> xtype of object",
+    values : ["arraystore","groupingstore","Store","jsonstore","xmlstore"]
+  },{
+    name : "xxtype",
+    desc : "<b>String</b>"
+  },{
+    name : "url",
+    desc : "<b>String</b> If a proxy is not specified the url will be used to implicitly configure a HttpProxy if an url is specified"
+  },{
+    name : "writer",
+    type : "mixed",
+    desc : "<b>Ext.data.DataWriter</b> The Writer object which processes a record object for being written to the server-side database"
+  }]
+}

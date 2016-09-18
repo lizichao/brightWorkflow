@@ -1,0 +1,272 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<title><!--fileName--></title>
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta name="viewport" content="width = 920, user-scalable = no" />
+<style type="text/css">
+<!--
+.flipbook-viewport .flipbook{
+	width:900px;
+	height:<!--bookheight-->px;
+	left:-450px;
+	z-index:90;
+	top:-300px;
+}
+
+.flipbook-viewport .page{
+	width:450px;
+	height:<!--bookheight-->px;
+	background-color:white;
+	z-index:90;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+-->
+</style>
+<link href="/js/jquery/plugin/Leedialog/dialog.css" rel="stylesheet" type="text/css"/>
+<script src="/js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="/js/jquery/common.js" type="text/javascript"></script>
+<script src="/js/jquery/plugin/turnjs4/modernizr.2.5.3.min.js" type="text/javascript" ></script>
+<script src="/js/CuPlayer/swfobject.js" type="text/javascript" ></script>
+<script src="/js/jquery/plugin/Leedialog/dialog.js" type="text/javascript"></script>
+<script src="/js/jquery/jsrender.min.js" type="text/javascript"></script>
+<script src="/platform/public/session.jsp" type="text/javascript" ></script>
+</head>
+<body height="<!--bodyheight-->px" style="background-image:url(/images/yuexue/wood.jpg)" onunload="closeReadBook(event);">
+<input type="hidden" id="upload_userid" name="upload_userid" value="<!--upload_userid-->">	
+    <div class="talk_msg" style="float:left;margin-left:5px;margin-top:5px;height:31px;">
+	   <img class="teacherTalk" src="/images/yuexue/book/teacher.png" onclick="" width="31" height="31" style="float:left;padding-left:5px;display:none;" onclick="openCommentWindow('teacher');"/>	   
+	   <div class="teacherTalk" style="float:left;padding-left:5px;padding-top:5px;color:#FFFFFF;font-family:'黑体';display:none;" onclick="openCommentWindow('teacher');">向老师提问</div>
+	   <img class="groupTalk" src="/images/yuexue/book/group.png" onclick="" width="31" height="31" style="float:left;padding-left:5px;display:none;" onclick="openCommentWindow('group');"/>
+	   <div class="groupTalk" style="float:left;padding-left:5px;padding-top:5px;color:#FFFFFF;font-family:'黑体';display:none;" onclick="openCommentWindow('group');">参与小组讨论</div>
+	   <img class="attachTalk" src="/images/yuexue/book/student.png" onclick="" width="32" height="31" style="float:left;padding-left:5px;display:none;" onclick="openCommentWindow('class');"/>
+	   <div class="attachTalk" style="float:left;padding-left:5px;padding-top:5px;color:#FFFFFF;font-family:'黑体';display:none;" onclick="openCommentWindow('class');">与同学探讨</div>
+	</div>
+	<div style="margin-left:800px;margin-top:5px;height:31px">	   
+	   <img class="teacher_content" src="/images/yuexue/book/talk.png" width="31" height="31" style="float:left;padding-left:5px;;display:none" onclick="showBookCommentWindow();"/>
+	   <div class="teacher_content" style="float:left;padding-left:5px;padding-top:5px;color:#FFFFFF;font-family:'黑体';;display:none" onclick="showBookCommentWindow();">老师批注</div>
+       <img class="edit_book" src="/images/edit01.jpg" width="31" height="31" style="float:left;padding-left:5px;;display:none" onclick="editBook();"/>
+	   <div class="edit_book" style="float:left;padding-left:5px;padding-top:5px;color:#FFFFFF;font-family:'黑体';;display:none" onclick="editBook();">增加章节</div>
+       <img class="edit_comment" src="/images/edit02.jpg" width="31" height="31" style="float:left;padding-left:5px;;display:none" onclick="editComment();"/>
+	   <div class="edit_comment" style="float:left;padding-left:5px;padding-top:5px;color:#FFFFFF;font-family:'黑体';;display:none" onclick="editComment();">增加批注</div>
+	</div>
+	<div class="flipbook-viewport">
+		<div class="container">
+			<div class="flipbook">
+				<!--bookcotent-->			
+			</div>
+		</div>
+	</div>
+</body>
+</HTML>	
+<script id="BookCommentRec" type="text/x-jsrender">
+{{for Data}}
+<div class="book_comment">
+   <div>{{:create_by}}:</div>
+   {{if comment!==""}}
+   <div>{{:comment}}</div>
+   {{/if}}	
+   {{for Papers}}
+     <div class="book_comment_paper" onclick="openPaperWindow('{{:paper_id}}','{{:my_examination_id}}')"><a href="#"><span>[{{:resource_type_desc}}]<span><span>{{:paper_name}}<span></a></div>
+   {{/for}}
+   <div style="width:100%;border=0;">
+	  {{for Attachments}}
+	   <div style="width:45;border:0;float:left;word-wrap:break-word;word-break:break-all;padding:10px" align="center">			      
+			  {{if access_path===""}}
+				   <a href="{{:file_path}}" target="_blank"><img src="/images/file/{{:file_type}}_m.png" /><br><div  
+					 style="width:60px;word-wrap:break-word;word-break:break-all;">{{:file_name}}</div></a>
+			  {{else}}
+				   {{if file_type==="jpg" || file_type==="png" || file_type==="gif" || file_type==="bmp"}}
+					   <a href="{{:file_path}}" target="_blank"><img src="{{:access_path}}"/></a>
+				   {{else}}                 
+					   <a href="{{:access_path}}" target="_blank"><img src="/images/file/{{:file_type}}_m.png" /></a>							      
+					   <div style="width:60px;word-wrap:break-word;word-break:break-all;float:clear;"><a href="{{:access_path}}" target="_blank">{{:file_name}}</a>
+					   </div>
+				   {{/if}}
+			  {{/if}}				  
+	  </div>
+	  {{/for}}
+    </div>
+</div>
+{{/for}}
+</script>
+<script type="text/javascript">
+var _readPageNum=1;
+var _attachmentid="";
+var _subjectid="";
+var _subjectbookid="";
+var _teacherid="";
+var _groupid="";
+var _classid="";
+function GetQueryString(name) {  
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");  
+    var r = window.location.search.substr(1).match(reg);  
+    if (r != null) return unescape(r[2]); return "";  
+}
+function loadApp() {	
+	_attachmentid = GetQueryString("attachmentid");
+	_subjectid = GetQueryString("subjectid");
+	_subjectbookid = GetQueryString("subjectbookid");
+	_teacherid = GetQueryString("teacherid");
+	_groupid = GetQueryString("groupid");
+	_classid = GetQueryString("classid");
+	_opType = GetQueryString("optype");
+	if (_groupid!=""){
+	    $(".groupTalk").show();
+	}
+	if (_teacherid!=""){
+	    $(".teacherTalk").show();
+	}
+    else{
+		if (_opType!="preview"){
+		   if (JrafSession.get("usertype")=="2"){
+		      $(".edit_comment").show();
+		   }		   
+		   if (JrafSession.get("userid")==$("#upload_userid").val()){
+		      $(".edit_book").show(); 
+		   }
+		}
+	}
+	if (_classid!=""){
+	    $(".attachTalk").show();
+	}
+	if (_attachmentid==""){
+	   _attachmentid="402882e548436f390148437015c20009";
+	}
+	if (JrafSession.get("usertype")=="1"){
+		var bReq = new BcRequest("yuexue","Book","getBookAnnotate");
+		bReq.setExtraPs({"qry_attachment_id":_attachmentid});
+		bReq.setSuccFn(function(data,status){
+			$.each(data.Data,function(i,item){
+				$("#book_page_"+item.get("attach_page_num")).append("<img src='"+item.get("file_path")+"' width='100%' height='100%'>");
+			});	
+            loadFlipBook();
+		});
+		bReq.postData();
+	}
+	else{
+	    loadFlipBook();
+	}
+}
+yepnope({	
+   test : Modernizr.csstransforms,	
+   yep: ['/js/jquery/plugin/turnjs4/turn.js'],	
+   nope: ['/js/jquery/plugin/turnjs4/turn.html4.min.js'],	
+   both: ['/js/jquery/plugin/turnjs4/basic.css'],	
+   complete: loadApp
+});
+function loadFlipBook(){
+	$(".flipbook").turn({					
+		width:900,					
+		height:600,		
+		display:"single",		
+		elevation: 50,					
+		gradients: true,					
+		autoCenter: true,		
+		when:{		   
+		   turning: function(event, page, pageObject) {		      		      
+			  if (_readPageNum != page){			     
+				  $(".teacher_content").hide();			  
+			  }		      
+			  _readPageNum = page;			  
+			  logReadPageNum("false");			  
+			  if (_teacherid!=""){			     
+				 setTimeout(function(){getBookComment(_attachmentid,_subjectid,page)},5000);			  
+			  }		   
+		   }		
+		}	
+	});	
+	var bcReq = new BcRequest("yuexue","Book","getMyBookRead");	
+	bcReq.setExtraPs({"attachment_id":_attachmentid});	
+	bcReq.setSuccFn(function(data,status){	    
+	   if (data.Data.length>0){		   
+		  _readPageNum = data.Data[0].read_page;  		   
+		  $(".flipbook").turn("page",_readPageNum);		
+	   }	
+	});    
+	bcReq.postData();   
+}
+var _closeFalg="N";
+function closeReadBook(evt){
+   if (_closeFalg=="N"){
+      _closeFalg = "Y";
+      logReadPageNum("true");
+   }
+}
+function onbeforeunload_handler(){
+   if (_closeFalg=="N"){
+      _closeFalg = "Y";
+      logReadPageNum("true");
+   }
+}
+window.onbeforeunload = onbeforeunload_handler;
+function logReadPageNum(isLeaveBook){
+   var bcReq = new BcRequest("yuexue","Book","saveBookRead");
+   bcReq.setExtraPs({"attachment_id":_attachmentid,"read_page":_readPageNum,"leave_book":isLeaveBook});
+   bcReq.setSuccFn(function(data,status){       
+   });
+   bcReq.postData();
+}
+function editBook(){
+    var iTop = (window.screen.availHeight-500)/2;
+    var iWidth = (window.screen.availWidth-800)/2;
+	var urlPath="/yuexue/teacher/upload_book.jsp?attachmentid="+_attachmentid+"&M="+Math.random();
+	window.open(urlPath,'添加章节','height=500px,width=800px,top='+iTop+',left='+iWidth+',toolbar=no,menubar=yes,scrollbars=yes,resizable=no,location=no,status=no');        
+}
+function editComment(){    
+    var iTop = (window.screen.availHeight-500)/2;
+    var iWidth = (window.screen.availWidth-800)/2;
+	var urlPath="/yuexue/teacher/edit_book_comment.jsp?attachmentid="+_attachmentid+"&page_num="+_readPageNum+"&subjectbookid="+_subjectbookid+"&M="+Math.random();
+	window.open(urlPath,'教师批注','height=500px,width=800px,top='+iTop+',left='+iWidth+',toolbar=no,menubar=yes,scrollbars=yes,resizable=no,location=no,status=no');	
+}
+var _bookCommentContent = "";
+function getBookComment(pAttachmentid,pSubjectId,pPageNum){
+    if (_readPageNum == pPageNum){
+       var bcReq = new BcRequest("yuexue","Book","getBookComment");
+       bcReq.setExtraPs({"attachment_id":pAttachmentid,"subject_id":pSubjectId,"page_num":pPageNum});
+       bcReq.setSuccFn(function(data,status){
+	      if (data.Data.length>0){
+		     $(".teacher_content").show();
+             _bookCommentContent = $("#BookCommentRec").render(data);
+			 showBookCommentWindow();
+		  }
+		  else{
+		     $(".teacher_content").hide();
+		  }
+       });
+       bcReq.postData();
+	} 
+}
+function showBookCommentWindow(){
+   dialog("教师留言","text:"+_bookCommentContent,"500","500","form"); 
+}
+function openCommentWindow(openType){
+   if (openType=="class"){
+       dialog("同学交流","iframe:/yuexue/teacher/comment_main.jsp?classid="+_classid+"&attachment_id="+_attachmentid,"500","500","form");
+   }
+   else if (openType=="teacher"){
+       dialog("向老师提问","iframe:/yuexue/teacher/comment_main.jsp?receive_id="+_teacherid,"500","500","form");
+   }
+   else if (openType=="group"){
+       dialog("小组讨论","iframe:/yuexue/teacher/comment_main.jsp?group_id="+_groupid+"&attachment_id="+_attachmentid,"500","500","form");
+   }
+   return false;
+}
+function openPaperWindow(pPapaerID,pMyExamID){
+    var iTop = (window.screen.availHeight-680)/2;
+    var iWidth = (window.screen.availWidth-1024)/2;
+	var urlPath="";
+	if (pMyExamID!=""){
+       urlPath = "/yuexue/student/paper_preview.jsp?paperid="+pPapaerID+"&myexamid="+pMyExamID+"&M="+Math.random();
+	}
+	else{
+	   urlPath = "/yuexue/teacher/paper_preview.jsp?paperid="+pPapaerID+"&M="+Math.random();
+	}
+	window.open(urlPath,'试卷预览','height=680px,width=1024px,top='+iTop+',left='+iWidth+',toolbar=no,menubar=yes,scrollbars=yes,resizable=no,location=no,status=no');     
+}
+</script>

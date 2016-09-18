@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gb2312"?>
+<baseElement>
+	<!--设置变量 varidx 从2开始,(0:FileUtil.getHomePath,1:FileUtil.getWebPath)-->
+	<ext>
+		<root>{1}platform</root>
+	</ext>
+	<cas>
+		<attributes>userid|usercode|usernm|pagesize|menutype|deptid|deptcode|deptname|</attributes>
+	</cas>
+	<!--外部系统域名-->
+	<serverDomain>
+	  <nwwh>
+	   <url>http://wo.szbrightcom.cn/</url>
+	   <token>55</token>
+	   <status>0</status><!--1表示开启；0表示关闭-->
+	  </nwwh>
+	</serverDomain>
+</baseElement>

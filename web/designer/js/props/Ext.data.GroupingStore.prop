@@ -1,0 +1,14 @@
+{
+properties : [{
+    name : "groupField",
+    desc : "<b>String</b> The field name by which to sort the store's data (defaults to '')."
+  },{
+    name : "groupOnSort",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to sort the data on the grouping field when a grouping operation occurs, false to sort based on the existing sort info (defaults to false)."
+  },{
+    name : "remoteGroup",
+    type : "boolean",
+    desc : "<b>Boolean</b> True if the grouping should apply on the server side, false if it is local only (defaults to false). "
+  }]
+}

@@ -1,0 +1,7 @@
+{
+listeners : [{
+    name : "arrowclick",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  }]
+}

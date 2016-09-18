@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+    var param = {cur_userid:""};
+	function showRewardWin(rec){
+		var win=MainPanel['rewardWin'];
+		if(!win){
+			win=new Ext.Window({
+				title:'奖励信息',
+		        layout:'fit',
+		        width:600,
+		        height:320,
+		        closeAction:'hide',
+		        plain: true,
+		        modal: true,
+		        items:rewardForm
+		    });
+		    MainPanel['rewardWin']=win;
+		    __caches__.push(win);
+		}
+		win.show();
+		rewardForm.getForm().reset();
+		rewardForm.getForm().getEl().dom.reset();
+		rewardForm.record=rec;
+		rewardForm.getForm().loadRecord(rec);
+	};
+</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+    <Record classname="studentAttrRecord">[  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "userid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "usercode",
+    fieldLabel : "登录名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "姓名",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "nickname",
+    fieldLabel : "昵称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "portrait",
+    fieldLabel : "头像",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "description",
+    fieldLabel : "描述",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "idnumber",
+    fieldLabel : "身份证号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classid",
+    fieldLabel : "班级编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classnm",
+    fieldLabel : "班级名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gradecode",
+    fieldLabel : "年级",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "studentno",
+    fieldLabel : "学号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "firstyear",
+    fieldLabel : "入学年份",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "finishyear",
+    fieldLabel : "毕业年份",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "email",
+    fieldLabel : "邮箱",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "phone",
+    fieldLabel : "固话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mobile",
+    fieldLabel : "移动电话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gender",
+    fieldLabel : "性别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "modifydt",
+    fieldLabel : "最后修改时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "birthday",
+    fieldLabel : "出生日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "state",
+    fieldLabel : "状态",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "studinfoid",
+    fieldLabel : "主键",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oldname",
+    fieldLabel : "曾用名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "xmpy",
+    fieldLabel : "姓名拼音",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stuid",
+    fieldLabel : "学籍号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "origin",
+    fieldLabel : "籍贯",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ctid",
+    fieldLabel : "证件类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "health",
+    fieldLabel : "健康情况",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "cid",
+    fieldLabel : "国籍",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "psid",
+    fieldLabel : "政治面貌",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nid",
+    fieldLabel : "民族",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oid",
+    fieldLabel : "港澳台侨外",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "hkxz",
+    fieldLabel : "户口性质",
+    type : "string",
+    allowBlank : true
+},    {
+    xtype : "Field",
+    name : "areacode",
+    fieldLabel : "出生地行政区代码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "csd",
+    fieldLabel : "出生地",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "bid",
+    fieldLabel : "血型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "studyway",
+    fieldLabel : "就读方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mailaddress",
+    fieldLabel : "通信地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "houseaddress",
+    fieldLabel : "家庭地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "telephone",
+    fieldLabel : "联系电话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "postcode",
+    fieldLabel : "邮政编码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "singleflag",
+    fieldLabel : "是否独生子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "preflag",
+    fieldLabel : "是否受过学前教育",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stayflag",
+    fieldLabel : "是否留守儿童",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "helpflag",
+    fieldLabel : "是否享受一补",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "orphanflag",
+    fieldLabel : "是否孤儿",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "martyr",
+    fieldLabel : "是否烈士或优抚子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "goway",
+    fieldLabel : "上下学方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "carflag",
+    fieldLabel : "是否需要乘坐校车",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "effectdate",
+    fieldLabel : "身份证有效期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "rollid",
+    fieldLabel : "学籍辅号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "attendant",
+    fieldLabel : "随班就读",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "farmer",
+    fieldLabel : "是否进城务工人员随迁子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "houseaid",
+    fieldLabel : "户口所在地行政区",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "did",
+    fieldLabel : "残疾类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "cwid",
+    fieldLabel : "入学方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "hard",
+    fieldLabel : "困难程度",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "addressnow",
+    fieldLabel : "现住地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "helpneed",
+    fieldLabel : "是否需要申请资助",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "dtance",
+    fieldLabel : "上下学距离",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "specialty",
+    fieldLabel : "特长",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "homepage",
+    fieldLabel : "主页地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "buydegree",
+    fieldLabel : "是否政府购买学位",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "soldierflag",
+    fieldLabel : "是否军人子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "kindergarten",
+    fieldLabel : "幼儿园毕业学校",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pschool",
+    fieldLabel : "小学毕业学校",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "juniormiddle",
+    fieldLabel : "初中毕业学校",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "updatetime",
+    fieldLabel : "修改日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "createtime",
+    fieldLabel : "创建日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "是否有效",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    <Record classname="nodeRecord">[  {
+    xtype : "Field",
+    name : "sid",
+    fieldLabel : "sid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pid",
+    fieldLabel : "pid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptid",
+    fieldLabel : "deptid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "scode",
+    fieldLabel : "scode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gcode",
+    fieldLabel : "gcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sname",
+    fieldLabel : "sname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stype",
+    fieldLabel : "stype",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "isleaf",
+    fieldLabel : "isleaf",
+    type : "string",
+    allowBlank : true
+}]</Record>
+<Record classname="rewardRecord">[  {
+    xtype : "Field",
+    name : "reward_id",
+    fieldLabel : "主键编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "用户编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "rewad_name",
+    fieldLabel : "奖励名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_type",
+    fieldLabel : "奖励类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_level",
+    fieldLabel : "奖励级别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_grade",
+    fieldLabel : "奖励等级",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_cause",
+    fieldLabel : "奖励原因",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_dept",
+    fieldLabel : "颁奖单位",
+    type : "string",
+    allowBlank : true
+}, {
+    xtype : "Field",
+    name : "reward_money",
+    fieldLabel : "奖励金额",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_number",
+    fieldLabel : "奖励文号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_year",
+    fieldLabel : "学年度",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_category",
+    fieldLabel : "奖励类别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_method",
+    fieldLabel : "奖励方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "create_date",
+    fieldLabel : "创建日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "modify_date",
+    fieldLabel : "修改日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "是否有效",
+    type : "string",
+    allowBlank : true
+}]</Record>
+<Record classname="rewardRecord">[  {
+    xtype : "Field",
+    name : "reward_id",
+    fieldLabel : "主键编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "用户编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "rewad_name",
+    fieldLabel : "奖励名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_type",
+    fieldLabel : "奖励类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_level",
+    fieldLabel : "奖励级别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_grade",
+    fieldLabel : "奖励等级",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_cause",
+    fieldLabel : "奖励原因",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_money",
+    fieldLabel : "奖励金额",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_number",
+    fieldLabel : "奖励文号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_year",
+    fieldLabel : "学年度",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_category",
+    fieldLabel : "奖励类别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "reward_method",
+    fieldLabel : "奖励方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "create_date",
+    fieldLabel : "创建日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "modify_date",
+    fieldLabel : "修改日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "是否有效",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="rewardStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "rewardStore",
+  recordType : rewardRecord,
+  idProperty : "reward_id",
+  api : {
+	read:{sysName:"yuexue",oprID:"student",actions:"getRewardList"},
+	destroy:{sysName:"yuexue",oprID:"student",actions:"delRewardInfo"},
+	create:{sysName:"yuexue",oprID:"student",actions:"addRewardInfo"},
+	update:{sysName:"yuexue",oprID:"student",actions:"uptRewardInfo"}
+	},
+  autoLoad : false,
+  autoSave : false,
+  baseParams : {paramname:'qry_userid'},
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+  <Store classname="studentAttrStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "studentAttrStore",
+  recordType : studentAttrRecord,
+  idProperty : "pk",
+  api : {
+	  read:{sysName : "yuexue",oprID : "student",actions : "query"}
+	},
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+   <Panel classname="rewardForm" xtype="form">{
+    xxtype: "Jpanel",
+    xtype: "form",
+    frame: true,
+    labelAlign: "right",
+    classname: "rewardForm",
+    items: [{
+        layout: "column",
+        bodyBorder: false,
+        items: [{
+            layout: "form",
+            bodyBorder: false,
+            columnWidth: 0.99,
+            items: [{
+                layout: "column",
+                bodyBorder: false,
+                items: [{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "rewad_name",
+                        fieldLabel: "名称",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "textfield"
+                    },{
+				        name : "userid",
+				        xtype: "textfield",
+				        allowBlank : true,
+				        xtype : "hidden"
+						},{
+				        name : "reward_id",
+				        xtype: "textfield",
+				        allowBlank : true,
+				        xtype : "hidden"
+						}]
+               	　　},{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_category",
+                        fieldLabel: "类别",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "reward_category",
+                        baseParams: {
+                            paramname: 'rewardCategory'
+                        }
+                    }]
+                }, {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_level",
+                        fieldLabel: "级别",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "reward_level",
+                        baseParams: {
+                            paramname: 'rewardLevel'
+                        }
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_grade",
+                        fieldLabel: "等级",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "reward_grade",
+                        baseParams: {
+                            paramname: 'rewardGrade'
+                        }
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+				      name : "reward_money",
+				      fieldLabel : "金额",
+				      width: 160,
+				      allowBlank : true,
+				      xtype : "numberfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_number",
+                        fieldLabel: "文号",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_year",
+                        fieldLabel: "学年",
+                        allowBlank: false,
+                        xtype : "paracombo",
+                        width: 160,
+                        baseParams : {
+                            paramname: 'global_year'
+                        }
+                    }]
+                }, {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_dept",
+                        fieldLabel: "颁奖单位",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_type",
+                        fieldLabel: "类型",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "reward_type",
+                        baseParams: {
+                            paramname: 'rewardType'
+                        }
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+				      name : "reward_method",
+				      fieldLabel : "方式",
+				      width: 160,
+				      allowBlank : false,
+				      xtype: "paracombo",
+                      hiddenName: "reward_method",
+                      baseParams: {
+                          paramname: 'rewardMethod'
+                      }
+                    }]
+                },
+                
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 1,
+                    labelAlign: "right",
+                    items: [{
+                        name: "reward_cause",
+                        fieldLabel: "原因",
+                        allowBlank: true,
+                        width: 400,
+                    	height: 80,
+                        xtype: "textarea"
+                    }]
+                }]
+            }]
+        }]
+    }],
+    buttonAlign: "center",
+    buttons: [{
+        text: '保存',
+        handler: function() {
+			var rewardForm=this.ownerCt.ownerCt;
+			var rec=rewardForm.record;
+			rewardForm.getForm().updateRecord(rec);
+			rewardForm.record.set('userid',param.cur_userid);
+		    if(rewardForm.getForm().isValid()) {
+		      	rewardStore.save();
+		      	win.hide();
+	        }
+        }
+    },
+    {
+        text: '关闭',
+        handler: function() {
+        
+            this.ownerCt.ownerCt.ownerCt.hide();
+        }
+    }],
+    autoScroll: true,
+    labelWidth: 80
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    frame : true,
+    items : [      {
+        xtype : "form",
+        title : "查询面板",
+        region : "north",
+        autoHeight : true,
+        frame : true,
+        labelAlign : "right",
+        items : [  {
+            layout : "column",
+            bodyBorder : false,
+            anchor : "100%",
+            items : [              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_username",
+                    fieldLabel : "姓名",
+                    allowBlank : true,
+                    width : 150,
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_idnumber",
+                    fieldLabel : "身份证号",
+                    allowBlank : true,
+                    width : 150,
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [  {
+						xtype : "treecombo",
+			            fieldLabel : "所在班级",
+						emptyText : "请选择班级",
+			            name : "classname",
+			            hiddenName : "classname",
+			            valueField : "sid",
+			            displayField : "sname",
+			            triggerAction : "all",
+		              	width : 150,
+			            lazyRender : true,
+			            editable : false,
+			            forceSelection : true,
+			            rootVisible : false,
+			            root : new Ext.tree.AsyncTreeNode({id:'-1',text:'Tree Root',draggable : false}),
+			            nparams : {nid:'sid',pid:'pid',ntext:'{sname}',loadAll:false,expanded:true,sm:'all',isLeaf:'isleaf'},
+			            action: {sysName:'yuexue',oprID:'grade',actions:'gradecls'},
+			            baseParams : {stype:'$NODEVALUE$',scode:'$NODEVALUE$'},
+			            recordType:nodeRecord,
+			            listeners: {
+		                select: function(scope,node) {
+		                	if(node.attributes.record.data.stype=='2'){
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue('');
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue(node.attributes.record.data.scode);
+		                	} else {
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue(node.id);
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue('');       		
+		                	}
+		                },
+		                change: function(scope,node) {
+		                  if(!node){
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue('');
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue('');			                  
+		                  }
+		                }
+		            }
+                },{
+			        name : "qry_classid",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        xtype : "hidden"
+					},{
+			        name : "qry_gradecode",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        xtype : "hidden"
+					}]
+            }]
+        }],
+        buttonAlign : "center",
+        buttons : [{
+			  text : '查询', handler : function() {
+				studentAttrStore.setFormParam(this.ownerCt.ownerCt);
+				studentAttrStore.setPageInfo(JrafSession.get('PageSize'),'1');
+				studentAttrStore.load();
+			}
+		}]
+    },{
+    	xtype : "grid",
+        region : "center",
+        frame : true,
+        title : "学生信息",
+        viewConfig : {forceFit:true,cellTpl:JrafUTIL.selCellTpl()},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        itemId : "student-grid",
+        store : studentAttrStore,
+        tbar : [],
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:studentAttrStore,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+			{width:80,sortable:true,header:'姓名',dataIndex:'username'},
+			{width:40,sortable:true,header:'性别',dataIndex:'gender',renderer:Ext.util.Format.paramRenderer('gender')},
+			{width:130,sortable:true,header:'身份证号',dataIndex:'idnumber'},
+			{width:80,sortable:true,header:'所在班级',dataIndex:'classnm'},
+			{width:120,sortable:true,header:'邮箱',dataIndex:'email'},
+			{width:80,sortable:true,header:'移动电话',dataIndex:'mobile'}]),
+        sm : new Ext.grid.CheckboxSelectionModel({
+        listeners:{
+        	selectionchange:function(sm){
+        		var rewardGrid=JrafUTIL.findCmp(MainPanel,'reward-grid');
+        		if(sm.getCount()){
+        			rewardGrid.addBtn.enable();
+        		}else{
+        			rewardGrid.addBtn.disable();
+        		}
+        	},
+	        rowselect: function(sm, row, rec) {
+	        	var rewardGrid=JrafUTIL.findCmp(MainPanel,'reward-grid');
+	        	rewardGrid.getStore().setBaseParam('qry_userid',rec.get('studinfoid'));
+	        	param.cur_userid = rec.get('studinfoid');
+			   	rewardGrid.getStore().load();
+            }}}),
+		anchor : "100% 35%"
+    },       {
+        	title : "奖励信息",
+	        xtype : "grid",
+	        frame : true,
+	        itemId : "reward-grid",
+	        viewConfig : {forceFit:false},
+	        columnLines : true,
+	        autoHeight : false,
+	        height : 320,
+	        store : rewardStore,
+	        tbar : [{text:'新增',iconCls:'add',ref: '../addBtn',disabled: true,handler:function(){var _grid=this.ownerCt.ownerCt;var recordType=_grid.getStore().recordType;var nr=new recordType();_grid.getStore().add(nr);_grid.getSelectionModel().selectLastRow();var rec=_grid.getSelectionModel().getSelected();showRewardWin(rec);}},
+	        {xtype: 'tbseparator'},
+	        {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+				 Ext.Msg.confirm('系统提示','是否确认删除选中记录行?',function(btn){
+		  			 var _grid=JrafUTIL.findCmp(MainPanel,'reward-grid');
+		  			 var ckrs=_grid.getSelectionModel().getSelections();
+		  			 var param={valid:"N"};
+					 for(var i=0;i&lt;ckrs.length;i++){
+					    var rewardids = ckrs[i].get('reward_id');
+					 	param['reward_id']=!param['reward_id'] ? rewardids:[].concat(param['reward_id']).concat(rewardids);
+					 }
+					 var jr=new JrafRequest('yuexue','student','uptRewardInfo');
+				 		jr.setExtraPs(param);
+						jr.setSuccFn(function(data,status){
+					    
+					    });
+						jr.postData();
+					})}
+				}],
+	        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:rewardStore,displayInfo: true}),
+	        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+			{width:120,sortable:true,header:'学年度',dataIndex:'reward_year',renderer:Ext.util.Format.paramRenderer('global_year')},
+			{width:120,sortable:true,header:'奖励名称',dataIndex:'rewad_name'},
+			{width:80,sortable:true,header:'奖励文号',dataIndex:'reward_number'},
+			{width:80,sortable:true,header:'奖励类型',dataIndex:'reward_type',renderer:Ext.util.Format.paramRenderer('rewardType')},
+			{width:80,sortable:true,header:'奖励等级',dataIndex:'reward_grade',renderer:Ext.util.Format.paramRenderer('rewardGrade')},
+			{width:80,sortable:true,header:'奖励方式',dataIndex:'reward_method',renderer:Ext.util.Format.paramRenderer('rewardMethod')},
+			{width:300,sortable:true,header:'奖励原因',dataIndex:'reward_cause'}]),
+			region : "south",
+			sm : new Ext.grid.CheckboxSelectionModel({
+	        listeners:{
+	        	selectionchange:function(sm){
+	        		var rewardGrid=JrafUTIL.findCmp(MainPanel,'reward-grid');
+	        		if(sm.getCount()){
+	        			rewardGrid.removeBtn.enable();
+	        		}else{
+	        			rewardGrid.removeBtn.disable();
+	        		}
+	        	}
+	        }}),
+			listeners : {
+		    	rowdblclick:function(g,rowIndex){
+					var rec=g.getSelectionModel().getSelected();
+					showRewardWin(rec);
+				}
+	    	},
+	     anchor : "100% 46%"
+    }],
+    layout : "anchor"
+}]</MainPanel>
+</view>
+

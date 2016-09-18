@@ -1,0 +1,36 @@
+{
+properties : [{
+    name : "allowBlank",
+    type : "boolean",
+    desc : "<b>Boolean</b> Used for validating a record, defaults to true"
+  },{
+    name : "convert",
+    type : "function",
+    desc : "<b>Function</b> A function which converts the value provided by the Reader into an object that will be stored in the Record"
+  },{
+    name : "dateFormat",
+    desc : "<b>String</b> A format string for the Date.parseDate function, or \"timestamp\" if the value provided by the Reader is a UNIX timestamp, or \"time\" if the value provided by the Reader is a javascript millisecond timestamp"
+  },{
+    name : "defaultValue",
+    type : "mixed",
+    desc : "<b>Mixed</b> The default value used when a Record is being created by a Reader when the item referenced by the mapping does not exist in the data object"
+  },{
+    name : "mapping",
+    desc : "<b>String/Number</b> (Optional) A path expression for use by the Ext.data.DataReader implementation that is creating the Record to extract the Field value from the data object"
+  },{
+    name : "name",
+    desc : "<b>String</b>"
+  },{
+    name : "sortDir",
+    desc : "<b>String</b>",
+    values : ["ASC","DESC"]
+  },{
+    name : "sortType",
+    type : "function",
+    desc : "<b>Function</b> A function which converts a Field's value to a comparable value in order to ensure correct sort ordering"
+  },{
+    name : "type",
+    desc : "<b>String</b>",
+    values : ["auto","string","int","float","boolean","date"]
+  }]
+}

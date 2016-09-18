@@ -1,0 +1,23 @@
+{
+listeners : [{
+    name : "add",
+    type : "function",
+    defaults : 'function(scope,component,index){}'
+  },{
+    name : "afterlayout",
+    type : "function",
+    defaults : 'function(scope,layout){}'
+  },{
+    name : "beforeadd",
+    type : "function",
+    defaults : 'function(scope,component,index){}'
+  },{
+    name : "beforeremove",
+    type : "function",
+    defaults : 'function(scope,component){}'
+  },{
+    name : "remove",
+    type : "function",
+    defaults : 'function(scope,component){}'
+  }]
+}

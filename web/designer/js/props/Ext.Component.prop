@@ -1,0 +1,119 @@
+{
+properties : [{
+    name : "allowDomMove",
+    type : "boolean",
+    desc : "<b>Boolean</b> Whether the component can move the Dom node when rendering (defaults to true)."
+  },{
+    name : "anchor",
+    desc : "<b>String</b> Anchor size (width) in %"
+  },{
+    name : "applyTo",
+    type : "mixed",
+    desc : "<b>Mixed</b> The id of the node, a DOM node or an existing Element corresponding to an existing element present in the DOM to render this component to. Using this config, a call to render() is not required."
+  },{
+    name : "autoEl",
+    type : "mixed",
+    desc : "<b>Mixed</b> A tag name or DomHelper spec used to create the Element which will encapsulate this Component."
+  },{
+    name : "autoShow",
+    type : "boolean",
+    desc : "<b>Boolean</b> True if the component should check for hidden classes (e.g. 'x-hidden' or 'x-hide-display') and remove them on render (defaults to false)."
+  },{
+    name : "classname",
+    desc : "<b>String</b> ¿‡√˚"
+  },{
+    name : "clearCls",
+    desc : "<b>String</b> The CSS class used to to apply to the special clearing div rendered directly after each form field wrapper to provide field clearing"
+  },{
+    name : "colspan",
+    type : "number",
+    desc : "<b>Number</b> use in table layout"
+  },{
+    name : "cls",
+    desc : "<b>String</b> A CSS class string to apply to element."
+  },{
+    name : "ctCls",
+    desc : "<b>String</b> An optional extra CSS class that will be added to this component's container (defaults to ''). This can be useful for adding customized styles to the container or any of its children using standard CSS rules."
+  },{
+    name : "disabled",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to start disabled (defaults to false)"
+  },{
+    name : "disabledClass",
+    desc : "<b>String</b> CSS class added to the component when it is disabled (defaults to 'x-item-disabled')."
+  },{
+    name : "fieldLabel",
+    desc : "<b>String</b> Label of the field"
+  },{
+    name : "hidden",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to start hidden (defaults to false)"
+  },{
+    name : "hideLabel",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide label, defaults to false"
+  },{
+    name : "hideMode",
+    desc : "<b>String</b> Style used for hide mode",
+    values : ["visibility","display","offsets"]
+  },{
+    name : "hideParent",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide and show the component's container when hide/show is called on the component, false to hide and show the component itself (defaults to false). For example, this can be used as a shortcut for a hide button on a window by setting hide:true on the button when adding it to its parent container."
+  },{
+    name : "id",
+    desc : "<b>String</b> The unique id of this component (defaults to an auto-assigned id)."
+  },{
+    name : "itemCls",
+    desc : "<b>String</b> The CSS class to apply to the containing element (defaults to \"x-color-palette\")"
+  },{
+    name : "itemId",
+    desc : "<b>String</b> An itemId can be used as an alternative way to get a reference to a component when no object reference is available"
+  },{
+    name : "labelSeparator",
+    desc : "<b>String</b> The standard separator to display after the text of each form label (defaults to a colon ':'). To turn off separators completely specify empty string ''."
+  },{
+    name : "labelStyle",
+    desc : "<b>String</b> A CSS style specification string to add to each field label in this layout (defaults to '')."
+  },{
+    name : "overCls",
+    desc : "<b>String</b> An optional extra CSS class that will be added to this component's Element when the mouse moves over the Element, and removed when the mouse moves out. (defaults to '')."
+  },{
+    name : "plugins",
+    type : "object/array",
+    desc : "<b>Object/Array</b> An object or array of objects that will provide custom functionality for this component. The only requirement for a valid plugin is that it contain an init method that accepts a reference of type Ext.Component. When a component is created, if any plugins are available, the component will call the init method on each plugin, passing a reference to itself. Each plugin can then call methods or respond to events on the component as needed to provide its functionality."
+  },{
+    name : "ptype",
+    desc : "<b>String</b> This config option is used only when lazy instantiation is being used, and a Plugin is being specified not as a fully instantiated Component, but as a Component config object."
+  },{
+    name : "ref",
+    desc : "<b>String</b> A path specification, relative to the Component's ownerCt specifying into which ancestor Container to place a named reference to this Component."
+  },{
+    name : "renderTo",
+    type : "mixed",
+    desc : "<b>Mixed</b> The id of the node, a DOM node or an existing Element to render this component into. Using this config, a call to render() is not required."
+  },{
+    name : "rowspan",
+    type : "number",
+    desc : "<b>Number</b> use in table layout"
+  },{
+    name : "stateEvents",
+    type : "object/array",
+    desc : "<b>Object/Array</b> An array of events that, when fired, should trigger this component to save its state (defaults to none). stateEvents may be any type of event supported by this component, including browser or custom events."
+  },{
+    name : "stateId",
+    desc : "<b>String</b> The unique id for this component to use for state management purposes ."
+  },{
+    name : "stateful",
+    type : "boolean",
+    desc : "<b>Boolean</b> A flag which causes the Component to attempt to restore the state of internal properties from a saved state on startup"
+  },{
+    name : "style",
+    desc : "<b>String</b> A custom style specification to be applied to this component's Element. Should be a valid argument to {@link Ext.Element#applyStyles}."
+  },{
+    name : "xtype",
+    editable : true,
+    desc : "<b>String</b> xtype of object",
+    values : Ext.ComponentMgr.allTypes()
+  }]
+}

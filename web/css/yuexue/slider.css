@@ -1,0 +1,121 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body { 
+    font: 11px Helvetica, Arial, sans-serif;
+}
+
+#wrapper {
+    width: 950px;
+    margin: 25px auto;
+}
+
+#intro {
+    padding-bottom: 10px;
+}
+
+#slider {
+    width: 950px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scroll {
+	overflow: hidden;
+	width: 950px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.scrollContainer {
+	position: relative;
+}
+
+.scrollContainer div.panel {
+    padding: 10px;
+    width: 274px;
+    height: 470px;
+}
+
+.inside {
+	padding: 10px;
+}
+
+.inside img {
+	display: block;
+	margin: 0 0 10px 0;
+	width: 250px;
+	cursor: pointer;
+}
+
+.inside .num {
+	display: block;
+	text-align:center;
+	margin: 16px 0;
+}
+
+.inside .num .logo{
+	width: 114px; height: 36px;margin:0 auto;Z-index:9999;
+}
+
+.inside .num .currLogo{
+	width: 159px; height: 51px;margin:0 auto;Z-index:9999;
+}
+
+.inside .numDiv .numPic{
+	width: 36px; 
+	height: 36px;
+	margin:0 auto;
+	Z-index: 10000;
+	top:-68px;
+	right:-60px;
+	position: relative;
+}
+
+.inside .numDiv .currNumPic{
+	width: 40px; 
+	height: 40px;
+	margin:0 auto;
+	Z-index: 10000;
+	top: -85px;
+	right: -72px;
+	position: relative;
+}
+
+.inside h2 {
+	font-weight: normal;
+	color: #111;
+	font-size: 16px;
+	text-align:center;
+	margin: 0 0 8px 0;
+}
+
+a {
+	color: #999;
+	text-decoration: none;
+	border-bottom: 1px dotted #ccc;
+}
+
+a:hover {
+	border-bottom: 1px solid #999;
+}
+
+.scrollButtons {
+    position: absolute;
+    top: 127px;
+    cursor: pointer;
+}
+
+.scrollButtons.left {
+    left: -45px;
+}
+
+.scrollButtons.right {
+    right: -45px;
+}
+
+.hide {
+    display: none;
+}

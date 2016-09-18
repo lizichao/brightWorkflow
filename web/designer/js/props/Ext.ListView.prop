@@ -1,0 +1,40 @@
+{
+properties : [{
+    name : "columnResize",
+    type : "object",
+    desc : "<b>Boolean/Object</b> Specify true or specify a configuration object for Ext.ListView.ColumnResizer to enable the columns to be resizable (defaults to true)"
+  },{
+    name : "columnSort",
+    type : "object",
+    desc : "<b>Boolean/Object</b> Specify true or specify a configuration object for Ext.ListView.Sorter to enable the columns to be sortable (defaults to true)"
+  },{
+    name : "columns",
+    type : "array",
+    desc : "<b>Array</b> An array of column configuration objects"
+  },{
+    name : "hideHeaders",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to hide the header row (defaults to false so the header row will be shown)"
+  },{
+    name : "internalTpl",
+    type : "template",
+    desc : "<b>String/Array</b> The template to be used for the header row. See tpl for more details"
+  },{
+    name : "itemSelector",
+    desc : "<b>String</b> Defaults to 'dl' to work with the preconfigured tpl"
+  },{
+    name : "overClass",
+    desc : "<b>String</b> The CSS class applied when over a row (defaults to 'x-list-over')"
+  },{
+    name : "reserveScrollOffset",
+    type : "boolean",
+    desc : "<b>Boolean</b> By default will defer accounting for the configured scrollOffset for 10 milliseconds"
+  },{
+    name : "scrollOffset",
+    type : "number",
+    desc : "<b>Number</b> The amount of space to reserve for the scrollbar (defaults to undefined)"
+  },{
+    name : "selectedClass",
+    desc : "<b>String</b> The CSS class applied to a selected row (defaults to 'x-list-selected')"
+  }]
+}

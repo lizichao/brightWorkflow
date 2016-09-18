@@ -1,0 +1,59 @@
+{
+properties : [{
+    name : "autoCreate",
+    type : "mixed",
+    desc : "<b>String/Object</b> A DomHelper element spec, or true for a default element spec (defaults to {tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})"
+  },{
+    name : "fieldClass",
+    desc : "<b>String</b> The default CSS class for the checkbox (defaults to \"x-form-field\")"
+  },{
+    name : "focusClass",
+    desc : "<b>String</b> The CSS class to use when the checkbox receives focus (defaults to undefined)"
+  },{
+    name : "inputType",
+    desc : "<b>String</b> The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\")."
+  },{
+    name : "invalidClass",
+    desc : "<b>String</b> The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")"
+  },{
+    name : "invalidText",
+    desc : "<b>String</b> The error text to display when the time in the field is invalid (defaults to '{value} is not a valid time - it must be in the format {format}')."
+  },{
+    name : "msgFx",
+    desc : "<b>String</b> <b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal')."
+  },{
+    name : "msgTarget",
+    desc : "<b>String</b> Message traget",
+    values : ["qtip","title","under","side"]
+  },{
+    name : "name",
+    desc : "<b>String</b> The field's HTML name attribute."
+  },{
+    name : "preventMark",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to disable marking the field invalid. Defaults to false."
+  },{
+    name : "readOnly",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute."
+  },{
+    name : "tabIndex",
+    type : "number",
+    desc : "<b>Number</b> Set a DOM tabIndex for this button (defaults to undefined)"
+  },{
+    name : "validateOnBlur",
+    type : "boolean",
+    desc : "<b>Boolean</b> Whether the field should validate when it loses focus (defaults to true)."
+  },{
+    name : "validationDelay",
+    type : "number",
+    desc : "<b>Number</b> The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)"
+  },{
+    name : "validationEvent",
+    desc : "<b>String/Boolean</b> The event that should initiate field validation. Set to false to disable automatic validation (defaults to \"keyup\")."
+  },{
+    name : "value",
+    type : "mixed",
+    desc : "<b>Mixed</b> The data value of the underlying field"
+  }]
+}

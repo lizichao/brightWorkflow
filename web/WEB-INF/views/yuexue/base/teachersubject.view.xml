@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>var TeacherSubjectWin;
+	   function openTeacherSubjectWin(_rec){
+	      TeacherSubjectWin=Ext.getCmp('TeacherSubjectWin');
+				if(!TeacherSubjectWin){
+				TeacherSubjectWin=new Ext.Window({
+						title:'教师任教信息信息',
+		        layout:'fit',
+						id:'TeacherSubjectWin',
+		        width:640,
+		        height:220,
+		        closeAction:'hide',
+		        plain: true,
+		        modal: true,
+		        items:TeacherSubjectFrom
+			  });
+			}
+			TeacherSubjectWin.show();
+      TeacherSubjectFrom.getForm().reset();
+			TeacherSubjectFrom.record=_rec;
+			TeacherSubjectFrom.getForm().loadRecord(_rec);
+			if(_rec.get('classid')){
+			  TeacherSubjectFrom.getForm().findField("classnm").setComboVal(_rec.get('classid'),_rec.get('classnm'));
+			  JrafUTIL.findCmp(TeacherSubjectFrom,'subjnameItemid').setRawValue(_rec.get('subjname'));
+				StoreSubject.baseParams['qry_gradecode'] = _rec.get('gradecode');
+				StoreSubject.load();
+      } else {
+        StoreSubject.removeAll();
+      }
+	   }
+	   </Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="teacherSubjectRecord">[  {
+    xtype : "Field",
+    name : "teasubjid",
+    fieldLabel : "teasubjid",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "deptid",
+    fieldLabel : "deptid",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "userid",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "学科",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "classid",
+    fieldLabel : "班级",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "is_classteacher",
+    fieldLabel : "是否班主任",
+    allowBlank : true,
+    type : "boolean"
+},  {
+    xtype : "Field",
+    name : "subjname",
+    fieldLabel : "学科名称",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "classnm",
+    fieldLabel : "班级名称",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "教师姓名",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "gradecode",
+    fieldLabel : "年级代码",
+    allowBlank : true,
+    type : "string"
+}]</Record>
+      <Record classname="RecSubject">[  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "subjectid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjcode",
+    fieldLabel : "subjcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjname",
+    fieldLabel : "subjname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "shortnm",
+    fieldLabel : "shortnm",
+    type : "string",
+    allowBlank : true
+}]</Record>
+<Record classname="userRecord">[  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "指定用户",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "usercode",
+    fieldLabel : "usercode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "username",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptcode",
+    fieldLabel : "deptcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptname",
+    fieldLabel : "deptname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mobile",
+    fieldLabel : "mobile",
+    type : "string",
+    allowBlank : true
+}]</Record>
+<Record classname="nodeRecord">[  {
+    xtype : "Field",
+    name : "sid",
+    fieldLabel : "sid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pid",
+    fieldLabel : "pid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptid",
+    fieldLabel : "deptid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "scode",
+    fieldLabel : "scode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gcode",
+    fieldLabel : "gcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sname",
+    fieldLabel : "sname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stype",
+    fieldLabel : "stype",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "isleaf",
+    fieldLabel : "isleaf",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="StoreTeacherSubject">{
+  xtype : "Store",
+  classname : "StoreTeacherSubject",
+  type : "JrafXmlStore",
+  recordType : teacherSubjectRecord,
+  idProperty : "teasubjid",
+  api : { read:{sysName : "yuexue",oprID : "TeacherSubject",actions : "queryTeacherSubject"},
+  	 create:{sysName:"yuexue",oprID:"TeacherSubject",actions:"addTeacherSubject"},
+     update:{sysName:"yuexue",oprID:"TeacherSubject",actions:"updateTeacherSubject"},
+     destroy:{sysName:"yuexue",oprID:"TeacherSubject",actions:"deleteTeacherSubject"}
+  },
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : true,
+  listeners : {
+	  write : function(store,action,result,res,rs){
+			if (res.success){
+		     //var _rec = res.records[0];
+		     TeacherSubjectWin.hide();
+		  }
+		}
+	}
+}</Store>
+      <Store classname="StoreBaseSubject">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "StoreBaseSubject",
+  recordType : RecSubject,
+  idProperty : "subjectid",
+  api : {read:{sysName : "yuexue",oprID : "Course",actions : "getSubjectByCourse"}
+  },
+  autoLoad : true,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false,
+  baseParams : {PageSize:"0"}
+}</Store>
+      <Store classname="StoreSubject">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "StoreSubject",
+  recordType : RecSubject,
+  idProperty : "subjectid",
+  api : {read:{sysName : "yuexue",oprID : "Course",actions : "getSubjectByCourse"}
+  },
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false,
+  baseParams : {PageSize:"0"},
+  autoLoad : false
+}</Store>
+			<Store classname="userStore">{
+  xtype : "Store",
+  classname : "userStore",
+  type : "JrafXmlStore",
+  recordType : userRecord,
+  idProperty : "userid",
+  api : {read:{sysName:"pcmc",oprID:"userrole",actions:"queryUser"}},
+  baseParams:{query:"",usertype:"2"},
+  autoLoad : false,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+    <Panel classname="TeacherSubjectFrom" xtype="form">{
+  xtype : "form",
+  classname : "TeacherSubjectFrom",
+  frame : true,
+  labelAlign : "right",
+  items : [    {
+      layout : "column",
+      bodyBorder : false,
+      items : [    {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 1,
+          labelAlign : "right",
+          items : [            {
+              name : "username",
+		          fieldLabel : "任课教师",
+		          emptyText : "请输入教师姓名/手机号码/账号",
+		          allowBlank : false,
+		          displayField:"username",
+		          valueField:"userid",
+		          xtype : "combo",
+		          store : userStore,
+		          width: 245,
+		          minChars:2,
+		          typeAhead: false,
+		          forceSelection : true,
+		          hideTrigger:true,
+		          tpl:'&lt;tpl for="."&gt;&lt;div class="x-combo-list-item"&gt;{usercode}-{username}-{mobile}&lt;/div&gt;&lt;/tpl&gt;',
+		      		loadingText: 'Searching...',
+		      		pageSize:15,
+		          hiddenName : "username",
+	            listeners: {
+	            	select : function(combo,record,index){
+	            	    TeacherSubjectFrom.getForm().findField("userid").setValue(record.get('userid'));
+							 	},
+                change: function(scope,node) {
+                  if(!node){
+                		TeacherSubjectFrom.getForm().findField("userid").setValue('');       
+                  }
+                }
+            }
+          },{
+			        name : "userid",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        hidden : true
+				  }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 1,
+          labelAlign : "right",
+          items : [         {
+	            xtype : "treecombo",
+	            fieldLabel : "所教班级",
+					    emptyText : "请选择班级",
+					    allowBlank : false,
+	            name : "classnm",
+	            hiddenName : "classnm",
+	            valueField : "sid",
+	            displayField : "sname",
+	            triggerAction : "all",
+              width : 150,
+	            lazyRender : true,
+	            editable : false,
+	            forceSelection : true,
+	            rootVisible : false,
+	            root : new Ext.tree.AsyncTreeNode({id:'-1',text:'Tree Root',draggable : false}),
+	            nparams : {nid:'sid',pid:'pid',ntext:'{sname}',loadAll:false,expanded:true,sm:'leaf',isLeaf:'isleaf'},
+	            action: {sysName:'yuexue',oprID:'grade',actions:'gradecls'},
+	            baseParams : {stype:'$NODEVALUE$',scode:'$NODEVALUE$'},
+	            recordType:nodeRecord,
+	            listeners: {
+                select: function(scope,node) {
+                  TeacherSubjectFrom.getForm().findField("classid").setValue(node.id);
+                  TeacherSubjectFrom.getForm().findField("gradecode").setValue(node.attributes.record.data.gcode);
+                  StoreSubject.baseParams['qry_gradecode'] = node.attributes.record.data.gcode;
+                  var subjnameObj = JrafUTIL.findCmp(TeacherSubjectFrom,'subjnameItemid');
+	                var _val = subjnameObj.getValue();subjnameObj.setValue('');
+	                StoreSubject.load({callback:function(recs,opts,success){
+							 		   StoreSubject.each(function(record){
+										   if(record.get('subjectid')==_val){
+										   	  subjnameObj.setValue(_val);
+										    	return false;
+										   }
+										 });
+				  		 		}});
+                },
+                change: function(scope,node) {
+                  if(!node){
+                		TeacherSubjectFrom.getForm().findField("classid").setValue('');
+                		JrafUTIL.findCmp(TeacherSubjectFrom,'subjnameItemid').setValue('');                 
+                  }
+                }
+            }
+        	},{
+			        name : "classid",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        xtype : "hidden"
+					},{
+			        name : "gradecode",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        xtype : "hidden"
+					}]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 1,
+          labelAlign : "right",
+          items : [            {
+					  name : "subjname",
+					  itemId:"subjnameItemid",
+					  fieldLabel : "学科名称",
+					  allowBlank : false,
+					  editable:false,
+					  xtype : "combo",
+					  width : 150,
+					  store : StoreSubject,
+					  //lazyRender:true,
+					  emptyText : "请选择学科",
+					  triggerAction : "all",
+					  displayField : "subjname",
+					  valueField : "subjectid",
+					  hiddenName : "subjectid",
+					  mode : "local"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 1,
+          labelAlign : "right",
+          items : [            {
+					  name: "is_classteacher",
+            fieldLabel: "担任班主任",
+            allowBlank: true,
+            xtype : "checkbox",
+            inputValue : true
+          }]
+      }]
+  }],
+  buttonAlign : "center",
+  labelWidth : 80,
+  buttons : [{text : '保存',handler : function() {
+       var _forma = this.ownerCt.ownerCt;
+		   if (_forma.getForm().isValid()){
+		       var _rec = _forma.record;
+		       _forma.getForm().updateRecord(_rec);
+		       _rec.set('classnm',TeacherSubjectFrom.getForm().findField("classnm").getRawValue());
+		       _rec.set('subjname',_forma.getForm().findField("subjectid").getRawValue());
+		       _rec.set('username',TeacherSubjectFrom.getForm().findField("username").getRawValue());
+           var _grid=Ext.getCmp('GridTeacherSubject');
+			     _grid.getStore().save();
+		   }
+    }},
+	  {text : '关闭',handler : function() {
+	         TeacherSubjectWin.hide();
+	   }}
+   ],
+  id : "TeacherSubjectFrom"
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        items : [          {
+            layout : "column",
+            bodyBorder : false,
+            items : [              {
+                layout : "form",
+                bodyBorder : false,
+    						labelAlign: "right",
+                labelWidth : 80,
+                columnWidth : 0.33,
+                items : [           {
+										name : "username",
+					          fieldLabel : "任课教师",
+					          emptyText : "请输入教师姓名/手机号码/账号",
+					          allowBlank : true,
+					          displayField:"username",
+					          valueField:"userid",
+					          xtype : "combo",
+					          store : userStore,
+					          width: 245,
+					          minChars:2,
+					          typeAhead: false,
+					          forceSelection : true,
+					          hideTrigger:true,
+					          tpl:'&lt;tpl for="."&gt;&lt;div class="x-combo-list-item"&gt;{usercode}-{username}-{mobile}&lt;/div&gt;&lt;/tpl&gt;',
+					      		loadingText: 'Searching...',
+					      		pageSize:15,
+					          hiddenName : "qry_userid"
+                }]
+            },              {
+                layout : "form",
+                bodyBorder : false,
+    						labelAlign: "right",
+                labelWidth : 80,
+                columnWidth : 0.33,
+                items : [             {
+				            xtype : "treecombo",
+				            fieldLabel : "所教班级",
+								    emptyText : "请选择班级",
+				            name : "classname",
+				            hiddenName : "classname",
+				            valueField : "sid",
+				            displayField : "sname",
+				            triggerAction : "all",
+			              width : 150,
+				            lazyRender : true,
+				            editable : false,
+				            forceSelection : true,
+				            rootVisible : false,
+				            root : new Ext.tree.AsyncTreeNode({id:'-1',text:'Tree Root',draggable : false}),
+				            nparams : {nid:'sid',pid:'pid',ntext:'{sname}',loadAll:false,expanded:true,sm:'all',isLeaf:'isleaf'},
+				            action: {sysName:'yuexue',oprID:'grade',actions:'gradecls'},
+				            baseParams : {stype:'$NODEVALUE$',scode:'$NODEVALUE$'},
+				            recordType:nodeRecord,
+				            listeners: {
+			                select: function(scope,node) {
+			                	if(node.attributes.record.data.stype=='2'){
+			                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue('');
+			                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue(node.attributes.record.data.scode);
+			                	} else {
+			                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue(node.id);
+			                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue('');       		
+			                	}
+			                },
+			                change: function(scope,node) {
+			                  if(!node){
+			                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue('');
+			                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue('');			                  
+			                  }
+			                }
+			            }
+			        	},{
+						        name : "qry_classid",
+						        xtype: "textfield",
+						        allowBlank : true,
+						        xtype : "hidden"
+								},{
+						        name : "qry_gradecode",
+						        xtype: "textfield",
+						        allowBlank : true,
+						        xtype : "hidden"
+								}]
+            },              {
+                layout : "form",
+                bodyBorder : false,
+    						labelAlign: "right",
+                labelWidth : 80,
+                columnWidth : 0.33,
+                items : [           {
+                    name : "qry_subjname",
+									  fieldLabel : "学科名称",
+									  allowBlank : true,
+									  editable : false,
+									  xtype : "combo",
+									  width : 150,
+									  store : StoreBaseSubject,
+									  emptyText : "请选择学科",
+									  triggerAction : "all",
+									  displayField : "subjname",
+									  valueField : "subjectid",
+									  hiddenName : "qry_subjectid",
+									  mode : "local"
+                }]
+            }],
+            anchor : "100%"
+        }],
+        buttonAlign : "center",
+        id : "qryFormTeacherSubject",
+        frame : true,
+        buttons : [        {
+          text : "查询",
+          handler : function(){
+		      var qStore=Ext.getCmp('GridTeacherSubject').getStore();
+						  qStore.setFormParam(Ext.getCmp('qryFormTeacherSubject'));
+						  qStore.setPageInfo(JrafSession.get('PageSize'),'1');
+						  qStore.load();
+		   }
+      }]
+    },      {
+        xtype : "grid",
+        id : "GridTeacherSubject",
+        region : "center",
+        autoWidth : true,
+        frame : true,
+        title : "查询结果",
+        viewConfig : {forceFit :false},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        store : StoreTeacherSubject,
+        stripeRows : true,
+        tbar : [
+		   {text:'新增',iconCls:'add',ref: '../addBtn',handler:function(){
+		       var _grid=Ext.getCmp('GridTeacherSubject');
+			   var recordType=_grid.getStore().recordType;
+			   var rec=new recordType();
+			   _grid.getStore().insert(0,rec); 
+			   openTeacherSubjectWin(rec);
+		   }},{xtype: 'tbseparator'},
+		   {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+				var _grid=Ext.getCmp('GridTeacherSubject');
+				var ckrs=_grid.getSelectionModel().getSelections();
+				if (ckrs.length&gt;0){
+					Ext.Msg.confirm('除选数据','确认要删除选中数据?',function(btn){
+					if(btn == 'yes'){
+							for(var i=0;i&lt;ckrs.length;i++){
+							   _grid.getStore().remove(ckrs[i]);
+							}
+							_grid.getStore().save();
+						}
+					});
+				}		       
+		   }}
+		],
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:StoreTeacherSubject,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+        {width:40,sortable:true,hidden:true,header:'teasubjid',dataIndex:'teasubjid'},
+				{width:40,sortable:true,hidden:true,header:'deptid',dataIndex:'deptid'},
+				{width:40,sortable:true,hidden:true,header:'userid',dataIndex:'userid'},
+				{width:100,sortable:true,header:'教师姓名',dataIndex:'username'},
+				//{width:40,sortable:true,header:'联系电话',dataIndex:'username'},
+				{width:80,sortable:true,header:'所教年级',dataIndex:'gradecode',renderer:Ext.util.Format.paramRenderer('c_grade','')},
+				{width:80,sortable:true,header:'所教班级',dataIndex:'classnm'},
+				{width:120,sortable:true,header:'所教学科',dataIndex:'subjname'},
+				{width:100,sortable:true,header:'是否担任班主任',dataIndex:'is_classteacher',renderer:Ext.util.Format.paramRenderer('global_boolean','')}
+	     ]),
+        sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){
+		     var _grid=this.grid;
+				 if(sm.getCount()){
+				    _grid.removeBtn.enable();
+				 }
+				 else{
+				    _grid.removeBtn.disable();
+				 }
+			 }}}),
+        listeners : {
+					rowdblclick : function(g,rowIndex,e){
+						var rec=g.getSelectionModel().getSelected();
+						openTeacherSubjectWin(rec);
+					}
+		  }
+    }]
+}]</MainPanel>
+</view>
+

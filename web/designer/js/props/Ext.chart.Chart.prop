@@ -1,0 +1,31 @@
+{
+properties : [{
+    name : "chartStyle",
+    type : "object",
+    desc : "<b>Object</b> Sets styles for this chart. Contains a number of default values. Modifying this property will override the base styles on the chart"
+  },{
+    name : "disableCaching",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to add a \"cache buster\" to the end of the chart url. Defaults to true for Opera and IE"
+  },{
+    name : "extraStyle",
+    type : "object",
+    desc : "<b>Object</b> Contains extra styles that will be added or overwritten to the default chartStyle. Defaults to null"
+  },{
+    name : "series",
+    type : "object",
+    desc : "<b>Object</b> Chart series"
+  },{
+    name : "store",
+    type : "mixed",
+    desc : "<b>Mixed</b> data store"
+  },{
+    name : "tipRenderer",
+    type : "function",
+    desc : "<b>Function</b> tipRenderer",
+    defaults : "function(chart,record,index,series){}"
+  },{
+    name : "url",
+    desc : "<b>String</b> The url to load the chart from. This defaults to Ext.chart.Chart.CHART_URL"
+  }]
+}

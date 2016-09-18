@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/pm-config.xml">
+  <Session />
+  <Operation id="pm" bean="cn.brightcom.system.pcmc.pm.PmInfoDealBean" desc="门户信息">
+    <Action name="getInfomList" desc="获取门户信息">
+      <Flow>
+        <Forward result="0" path="" />
+      </Flow>
+    </Action>
+    <Action name="getInfomSingle" desc="获取单条信息">
+      <Request multi="false">
+        <Field name="infoid" title="信息流水编号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="editInfo" desc="编辑信息保存">
+      <Request multi="false">
+        <Field name="infotype" title="信息类别" type="String" maxlen="2" notnull="true" />
+        <Field name="title" title="标题" type="String" maxlen="60" notnull="true" />
+        <Field name="content" title="内容" type="String" maxlen="5000" notnull="true" />
+        <Field name="createuser" title="发布人" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Response reuslt="-1">
+        <Hint />
+        <Error />
+      </Response>
+      <Flow>
+        <Forward result="0" path="" />
+      </Flow>
+    </Action>
+    <Action name="getMessageNum" desc="获取消息条数">
+      <Request multi="false">
+        <Field name="isread" title="是否已阅读" type="String" maxlen="1" notnull="true" />
+      </Request>
+      <Response reuslt="-1">
+        <Hint />
+        <Error />
+      </Response>
+      <Flow>
+        <Forward result="0" path="" />
+      </Flow>
+    </Action>
+    <Action name="getNewMessageList" desc="获取具体消息信息">
+      <Request multi="false">
+        <Field name="size" title="显示数量" type="long" maxlen="2" notnull="true" />
+        <Field name="pageno" title="页" type="long" maxlen="19" notnull="true" />
+        <Field name="isread" title="是否已阅读" type="String" maxlen="1" notnull="true" />
+      </Request>
+      <Response reuslt="-1">
+        <Hint />
+        <Error />
+      </Response>
+      <Flow>
+        <Forward result="0" path="" />
+      </Flow>
+    </Action>
+    <Action name="getBusinessList" desc="获取具体消息信息">
+      <Request multi="false">
+        <Field name="createuser" title="发送用户" type="long" maxlen="2" notnull="true" />
+        <Field name="userid" title="接受用户" type="long" maxlen="19" notnull="true" />
+        <Field name="sendtime" title="发送时间" type="String" maxlen="1" notnull="true" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="message" bean="cn.brightcom.system.pcmc.Message" desc="消息管理">
+    <Action name="getMessagesList" desc="获取发送信息列表" old="" accredit="" colacc="" rowacc="" log="" nologin="">
+      <Table name="pcmc_messages" />
+    </Action>
+    <Action name="addMessage" desc="增加消息" old="" accredit="" colacc="" rowacc="" log="true" nologin="">
+      <Request multi="false">
+        <Field name="title" title="标题" type="String" maxlen="255" pk="false" />
+        <Field name="message" title="消息内容" type="String" maxlen="4000" pk="false" />
+        <Field name="receivers" title="接收者编号组" type="String" maxlen="2000" pk="false" />
+        <Field name="receive_names" title="接收者名称组" type="String" maxlen="4000" pk="false" />
+        <Field name="sendtype" title="发送类型" type="String" maxlen="2" pk="false" />
+      </Request>
+    </Action>
+    <Action name="deleteMessage" desc="删除消息" old="" accredit="" colacc="" rowacc="" log="true" nologin="">
+      <Request multi="false">
+        <Field name="messages_id" title="消息编号" type="String" maxlen="40" pk="false" />
+      </Request>
+    </Action>
+    <Action name="getReceivesList" desc="获取接收信息列表" old="" accredit="" colacc="" rowacc="" log="" nologin="">
+      <Request multi="false">
+        <Field name="read_type" title="阅读类型" type="String" maxlen="2" pk="false" />
+      </Request>
+    </Action>
+    <Action name="updateReceives" desc="接收消息" old="" accredit="" colacc="" rowacc="" log="true" nologin="">
+      <Request multi="false">
+        <Field name="receiver_id" title="接收编号" type="String" maxlen="40" pk="false" />
+      </Request>
+    </Action>
+    <Action name="deleteReceives" desc="删除接收消息" old="" accredit="" colacc="" rowacc="" log="true" nologin="">
+      <Request multi="false">
+        <Field name="remsg_ids" title="接收编号" type="String" maxlen="40" pk="false" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="LogBean" bean="cn.com.bright.pcmc.LogBean" desc="日志管理">
+    <Action desc="日志查询" base="" old="" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" name="searchLog">
+      <Request>
+        <Field name="userid" title="用户流水号" type="String" pk="true" />
+        <Field name="begindate" title="开始日期" type="Timestamp" notnull="false" />
+        <Field name="enddate" title="结束日期" type="Timestamp" notnull="false" />
+        <Field name="__sysname" title="子系统编号" type="String" notnull="false" />
+        <Field name="__actions" title="业务操作" type="String" notnull="false" />
+        <Field name="mytablename" title="数据表名" type="String" notnull="false" />
+      </Request>
+    </Action>
+  </Operation>
+    <Operation id="desk" bean="cn.brightcom.system.pcmc.pm.DeskManager" desc="个人桌面管理">
+    <Action rowacc="" accredit="" old="" log="" oauth="" base="" desc="获得个人桌面分组列表" colacc="" nologin="" webservice="" name="getGroupDeskList" />
+    <Action rowacc="" accredit="" old="" log="" oauth="" base="" desc="删除个人桌面分组列表" colacc="" nologin="" webservice="" name="delDeskInfo" >
+	    <Request multi="false">
+	        <Field name="desktop_id" title="个人桌面编号" type="String" maxlen="40" notnull="true" />
+	     </Request>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="" base="" desc="获得个人桌面待设置菜单" colacc="" nologin="" webservice="" name="getSubSysMenu">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10304">查询用户菜单异常</Msg>
+      </Message>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="Update" desc="修改个人桌面设置" colacc="" log="true" webservice="" name="updateDesk">
+      <Table name="pcmc_user_desktop" />
+    </Action>
+    <Action base="Insert" old="" desc="增加个人桌面组" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="addDeskGroup">
+      <Table name="pcmc_user_desktop" />
+    </Action>
+  </Operation>
+</Config>
+

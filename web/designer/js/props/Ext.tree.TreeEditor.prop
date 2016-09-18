@@ -1,0 +1,25 @@
+{
+properties : [{
+    name : "alignment",
+    desc : "<b>String</b> The position to align to (see Ext.Element.alignTo for more details, defaults to \"l-l\")."
+  },{
+    name : "cls",
+    desc : "<b>String</b> CSS class to apply to the editor (defaults to \"x-small-editor x-tree-editor\")"
+  },{
+    name : "editDelay",
+    type : "number",
+    desc : "<b>Number</b> The number of milliseconds between clicks to register a double-click that will trigger editing on the current node (defaults to 350)."
+  },{
+    name : "hideEl",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide the bound element while the editor is displayed (defaults to false)"
+  },{
+    name : "maxWidth",
+    type : "number",
+    desc : "<b>Number</b> The maximum width in pixels of the editor field (defaults to 250). Note that if the maxWidth would exceed the containing tree element's size, it will be automatically limited for you to the container width, taking scroll and client offsets into account prior to each edit"
+  },{
+    name : "shim",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)"
+  }]
+}

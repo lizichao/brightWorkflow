@@ -1,0 +1,9 @@
+{
+properties : [{
+    name : "categoryField",
+    desc : "<b>String</b> categoryField"
+  },{
+    name : "dataField",
+    desc : "<b>String</b> dataField"
+  }]
+}

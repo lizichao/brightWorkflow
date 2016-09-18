@@ -1,0 +1,19 @@
+{
+listeners : [{
+    name : "autosize",
+    type : "function",
+    defaults : 'function(scope,width){}'
+  },{
+    name : "keydown",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "keypress",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "keyup",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  }]
+}

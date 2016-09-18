@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/headmaster-table.xml">
+  <Table name="headmaster_base_info" desc="校长基本信息表">
+    <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户id" type="String" maxlen="32" pk="false" />
+    <Field name="username" title="姓名" type="String" maxlen="32" pk="false" />
+    <Field name="usercode" type="String" maxlen="32" pk="false" />
+    <Field name="userpwd" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" title="所在学校" type="String" maxlen="40" pk="false" />
+    <Field name="idnumber" type="String" maxlen="40" pk="false" />
+    <Field name="email" type="String" maxlen="100" pk="false" />
+    <Field name="user_sex" type="String" maxlen="10" pk="false" />
+    <Field name="mobile" type="String" maxlen="32" pk="false" />
+    <Field name="phasestudy" type="String" maxlen="10" pk="false" />
+    <Field name="ispositive" type="String" maxlen="10" pk="false" />
+    <Field name="address" type="String" maxlen="100" pk="false" />
+    <Field name="phone_valid" type="String" maxlen="10" pk="false" />
+    
+    
+    <Field name="school_class" type="String" maxlen="32" pk="false" />
+    <Field name="presentOccupation" type="String" maxlen="32" pk="false" />
+    <Field name="present_major_occupation" type="String" maxlen="32" pk="false" />
+    <Field name="join_work_time" type="Timestamp" maxlen="32" pk="false" />
+    <Field name="join_educate_work_time" type="Timestamp" maxlen="32" pk="false" />
+    <Field name="politics_status" type="String" maxlen="32" pk="false" />
+    <Field name="teach_age" type="String" maxlen="10" pk="false" />
+    <Field name="native_place" type="String" maxlen="10" pk="false" />
+    <Field name="census_register" type="String" maxlen="32" pk="false" />
+    <Field name="nation" type="String" maxlen="32" pk="false" />
+    <Field name="person_img_attachId" type="String" maxlen="32" pk="false" />
+    
+    
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="有效性" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_professor_info" desc="专家基本信息表">
+    <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户id" type="String" maxlen="32" pk="false" />
+    <Field name="username" title="姓名" type="String" maxlen="32" pk="false" />
+    <Field name="user_sex" type="String" maxlen="10" pk="false" />
+    <Field name="usercode" type="String" title="用户账号" maxlen="32" pk="false" />
+    <Field name="userpwd" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" title="所在学校" type="String" maxlen="40" pk="false" />
+    <Field name="idnumber" type="String" maxlen="40" pk="false" />
+    <Field name="email" type="String" maxlen="100" pk="false" />
+    <Field name="mobile" type="String" maxlen="32" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="address" type="String" maxlen="100" pk="false" />
+  </Table>
+  <Table name="headmaster" desc="校长申请主表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="processInstanceId" title="流程实例id" type="String" maxlen="32" pk="false" />
+    <Field name="headerMasterId" title="校长用户id" type="String" maxlen="32" pk="false" />
+    <Field name="headerMasterName" title="校长用户姓名" type="String" maxlen="32" pk="false" />
+    <Field name="mobile" title="手机" type="String" maxlen="32" pk="false" />
+    <Field name="identitycard" title="身份证号码" type="String" maxlen="32" pk="false" />
+    <Field name="school_id" title="学校id" type="String" maxlen="32" pk="false" />
+    <Field name="school_name" title="学校名称" type="String" maxlen="32" pk="false" />
+    <Field name="apply_level" title="申请级别" type="String" maxlen="1" pk="false" />
+    <Field name="present_occupation" title="现任职务" type="String" maxlen="32" pk="false" />
+    <Field name="school_name_space" title="学校名称" type="String" maxlen="32" pk="false" />
+    <Field name="student_number" title="学生数量" type="String" maxlen="32" pk="false" />
+    <Field name="school_count" title="学生数量" type="String" maxlen="32" pk="false" />
+    <Field name="school_type" title="学校类型" type="String" maxlen="32" pk="false" />
+    <Field name="manage_difficulty_approve_result" title="管理难度审核结果" type="String" maxlen="1" pk="false" />
+    <Field name="manage_difficulty_attachment_id" title="管理难度附件id" type="String" maxlen="32" pk="false" />
+       <Field name="school_name_space_ago" title="近八年学校名称" type="String" maxlen="32" pk="false" />
+    <Field name="student_number_ago" title="近八年学生数量" type="String" maxlen="32" pk="false" />
+    <Field name="school_count_ago" title="近八年学生数量" type="String" maxlen="32" pk="false" />
+    <Field name="school_type_ago" title="近八年学校类型" type="String" maxlen="32" pk="false" />
+    <Field name="manage_difficulty_ago_approve_result" title="近八年管理难度审核结果" type="String" maxlen="1" pk="false" />
+    <Field name="manage_difficulty_ago_attachment_id" title="近八年管理难度附件id" type="String" maxlen="32" pk="false" />
+    <Field name="work_report" title="工作成效" type="String" maxlen="4000" pk="false" />
+    <Field name="work_report_approve_result" title="工作成效审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="base_info_approve_result" title="基础信息审核结果" type="String" maxlen="1" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="apply_status" title="申请状态" type="String" maxlen="1" pk="false" />
+    <Field name="apply_total_point" title="申请总分" type="String" maxlen="10" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    
+        <Field name="current_option_num" title="当前选项卡" type="String" maxlen="40" pk="false" />
+  </Table>
+  <Table name="headmaster_education" desc="学历情况表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="start_date" title="开始时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="end_date" title="结束时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="study_school" title="所在学校" type="String" maxlen="32" pk="false" />
+    <Field name="study_profession" title="担任职务" type="String" maxlen="32" pk="false" />
+    <Field name="education" title="学历" type="String" maxlen="32" pk="false" />
+    <Field name="degree" title="学位" type="String" maxlen="32" pk="false" />
+    <Field name="education_attachment_id" title="任职年限" type="String" maxlen="32" pk="false" />
+    <Field name="degree_attachment_id" title="证明材料附件id" type="String" maxlen="32" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_work_experience" desc="任职年限表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="start_date" title="开始时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="end_date" title="结束时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="work_school" title="所在学校" type="String" maxlen="32" pk="false" />
+    <Field name="work_profession" title="担任职务" type="String" maxlen="32" pk="false" />
+    <Field name="work_year" title="任职年限" type="String" maxlen="32" pk="false" />
+    <Field name="prove_attachment_id" title="证明材料附件id" type="String" maxlen="32" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_professional_title" desc="职称情况表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="professionaltitle_name" title="职称名称" type="String" maxlen="32" pk="false" />
+    <Field name="obtain_time" title="获得时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="obtain_school" title="获得学校" type="String" maxlen="32" pk="false" />
+    <Field name="professionalAttachId" title="证明材料附件id" type="String" maxlen="32" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_paper" desc="论文发表情况">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="title" title="标题" type="String" maxlen="32" pk="false" />
+    <Field name="publish_time" title="发表时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="magazine_meet_name" title="杂志学术会名称" type="String" maxlen="32" pk="false" />
+    <Field name="paper_meet_name" title="论文会议名称" type="String" maxlen="32" pk="false" />
+    <Field name="paper_number" title="刊号" type="String" maxlen="32" pk="false" />
+    <Field name="organizers" title="主办单位" type="String" maxlen="32" pk="false" />
+    <Field name="organizers_level" title="主办单位级别" type="String" maxlen="32" pk="false" />
+    <Field name="personal_part" title="个人承担部分" type="String" maxlen="32" pk="false" />
+    <Field name="paper_attachment_id" title="扫描件附件id" type="String" maxlen="32" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_work_publish" desc="著作发表情况">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="book_name" title="书名" type="String" maxlen="32" pk="false" />
+    <Field name="complete_way" title="完成方式" type="String" maxlen="32" pk="false" />
+    <Field name="publish_time" title="出版时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="complete_chapter" title="本人承担部分" type="String" maxlen="32" pk="false" />
+    <Field name="complete_word" title="本人完成字数" type="String" maxlen="32" pk="false" />
+    <Field name="author_order" title="作者排序" type="String" maxlen="32" pk="false" />
+    <Field name="cover_attachment_id" title="封面附件id" type="String" maxlen="32" pk="false" />
+    <Field name="contents_attachment_id" title="章节目录页附件id" type="String" maxlen="32" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_subject" desc="课题发表情况">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="subject_name" title="课题名称" type="String" maxlen="32" pk="false" />
+    <Field name="subject_company" title="课题立项单位" type="String" maxlen="32" pk="false" />
+    <Field name="subject_level" title="课题级别" type="String" maxlen="32" pk="false" />
+    <Field name="subject_responsibility" title="课题职责" type="String" maxlen="32" pk="false" />
+    <Field name="is_finish_subject" title="是否结题" type="String" maxlen="1" pk="false" />
+    <Field name="finish_result" title="获奖情况" type="String" maxlen="32" pk="false" />
+    <Field name="finish_time" title="结题时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_personal_award" desc="个人获奖情况表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="awards_name" title="奖项名称" type="String" maxlen="32" pk="false" />
+    <Field name="awards_company" title="表彰单位" type="String" maxlen="32" pk="false" />
+    <Field name="awards_level" title="获奖级别" type="String" maxlen="32" pk="false" />
+    <Field name="awards_type" title="奖项类别" type="String" maxlen="4" pk="false" />
+    <Field name="awards_time" title="表彰时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="awards_attachment_id" title="获奖证书附件id" type="String" maxlen="32" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_school_award" desc="学校获奖情况表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businessKey" title="业务key" type="String" maxlen="32" pk="false" />
+    <Field name="awards_name" title="奖项名称" type="String" maxlen="32" pk="false" />
+    <Field name="awards_company" title="表彰单位" type="String" maxlen="32" pk="false" />
+    <Field name="work_school" title="任职学校" type="String" maxlen="32" pk="false" />
+    <Field name="awards_level" title="获奖级别" type="String" maxlen="32" pk="false" />
+    <Field name="awards_time" title="表彰时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="awards_attachment_id" title="获奖证书附件id" type="String" maxlen="1" pk="false" />
+    <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_professor_grade" desc="专家评分表">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businesskey" type="String" maxlen="32" pk="false" />
+    <Field name="apply_headmaster" type="String" maxlen="32" pk="false" />
+    <Field name="professor" type="String" maxlen="32" pk="false" />
+    <Field name="report_grade" type="long" maxlen="10" pk="false" />
+    <Field name="sumGrade" type="String" maxlen="32" pk="false" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="255" pk="false" gen="session.userid" />
+    <Field name="modify_date" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table name="headmaster_personnel_leader_grade" desc="人事干部评分表">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="businesskey" type="String" maxlen="32" pk="false" />
+    <Field name="baseinfo_grade" type="long" maxlen="10" pk="false" />
+    <Field name="work_experience_grade" type="long" maxlen="10" pk="false" />
+    <Field name="education_grade" type="long" maxlen="10" pk="false" />
+    <Field name="professional_title_grade" type="long" maxlen="10" pk="false" />
+    <Field name="management_difficulty_grade" type="long" maxlen="10" pk="false" />
+    <Field name="management_difficulty_grade_ago" type="long" maxlen="10" pk="false" />
+    <Field name="paper_grade" type="long" maxlen="10" pk="false" />
+    <Field name="work_publish_grade" type="long" maxlen="10" pk="false" />
+    <Field name="subject_grade" type="long" maxlen="10" pk="false" />
+    <Field name="personal_award_grade" type="long" maxlen="10" pk="false" />
+    <Field name="school_award_grade" type="long" maxlen="10" pk="false" />
+    <Field name="personnel_leader" type="String" maxlen="32" pk="false" />
+    <Field name="apply_headmaster" type="String" maxlen="32" pk="false" />
+    <Field name="sumGrade" type="String" maxlen="32" pk="false" />
+    <Field name="grade_type" type="String" maxlen="10" pk="false" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="modify_date" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table name="headmaster_group" desc="群组表">
+    <Field name="group_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="group_pid" type="String" maxlen="32" pk="false" />
+    <Field name="group_name" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" type="String" maxlen="32" pk="false" gen="session.deptid" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="modify_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="valid" title="有效性：0代表无效；1代表有效" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_user_group" desc="群组关系表">
+    <Field name="user_group_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="group_id" type="String" maxlen="32" pk="false" />
+    <Field name="user_id" type="String" maxlen="32" pk="false" />
+    <Field name="user_type" type="String" maxlen="4" pk="false" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="modify_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="valid" title="有效性：0代表无效；1代表有效" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_leader_info" desc="领导信息表">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" type="String" maxlen="32" pk="false" />
+    <Field name="usercode" type="String" maxlen="32" pk="false" />
+    <Field name="user_sex" type="String" maxlen="10" pk="false" />
+    <Field name="username" type="String" maxlen="32" pk="false" />
+    <Field name="userpwd" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" type="String" maxlen="32" pk="false" />
+    <Field name="idnumber" type="String" maxlen="32" pk="false" />
+    <Field name="mobile" type="String" maxlen="32" pk="false" />
+    <Field name="email" type="String" maxlen="100" pk="false" />
+    <Field name="address" type="String" maxlen="100" pk="false" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" />
+    <Field name="modify_date" type="Timestamp" pk="false" />
+    <Field name="valid" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_personalleader_info" desc="人事干部信息表">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" type="String" maxlen="32" pk="false" />
+    <Field name="username" type="String" maxlen="32" pk="false" />
+    <Field name="user_sex" type="String" maxlen="10" pk="false" />
+    <Field name="usercode" type="String" maxlen="32" pk="false" />
+    <Field name="userpwd" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" type="String" maxlen="32" pk="false" />
+    <Field name="idnumber" type="String" maxlen="32" pk="false" />
+    <Field name="email" type="String" maxlen="100" pk="false" />
+    <Field name="address" type="String" maxlen="100" pk="false" />
+    <Field name="mobile" type="String" maxlen="32" pk="false" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" />
+    <Field name="modify_date" type="Timestamp" pk="false" />
+    <Field name="valid" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_arealeader_info" desc="区级干部信息表">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" type="String" maxlen="32" pk="false" />
+    <Field name="username" type="String" maxlen="32" pk="false" />
+    <Field name="user_sex" type="String" maxlen="10" pk="false" />
+    <Field name="usercode" type="String" maxlen="32" pk="false" />
+    <Field name="userpwd" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" type="String" maxlen="32" pk="false" />
+    <Field name="idnumber" type="String" maxlen="32" pk="false" />
+    <Field name="email" type="String" maxlen="100" pk="false" />
+    <Field name="address" type="String" maxlen="100" pk="false" />
+    <Field name="mobile" type="String" maxlen="32" pk="false" />
+    <Field name="create_by" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" />
+    <Field name="modify_date" type="Timestamp" pk="false" />
+    <Field name="valid" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_news" desc="新闻表">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="news_title" type="String" maxlen="80" pk="false" />
+    <Field name="news_content" type="String" maxlen="10000" pk="false" />
+    <Field name="valid" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="headmaster_accident" desc="减分责任事故">
+    <Field name="id" type="String" maxlen="32" notnull="false" pk="false" gen="uuid" />
+    <Field name="implement_time" title="时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="accident_name" title="责任事故名称" type="String" maxlen="32" pk="false" />
+    <Field name="description" title="违纪等描述" type="String" maxlen="32" pk="false" />
+    <Field name="process_result" title="处理结果" type="String" maxlen="32" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+        <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_punishment" desc="减分处分">
+    <Field name="id" type="String" maxlen="32" notnull="false" pk="false" gen="uuid" />
+    <Field name="implement_time" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="description" title="处分事件描述" type="String" maxlen="32" pk="false" />
+    <Field name="people" title="受处分人" type="String" maxlen="32" pk="false" />
+    <Field name="department" title="处分部门" type="String" maxlen="32" pk="false" />
+    <Field name="process_result" title="处分结果" type="String" maxlen="32" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+    
+        <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_school_reform" desc="加分学校特色和改革">
+    <Field name="id" type="String" maxlen="32" notnull="false" pk="false" gen="uuid" />
+    <Field name="implement_time" title="改革时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="project_name" title="项目名称" type="String" maxlen="32" pk="false" />
+    <Field name="project_level" title="项目级别" type="String" maxlen="4" pk="false" />
+    <Field name="charge_department" title="项目主管部门" type="String" maxlen="32" pk="false" />
+    <Field name="performance" title="项目完成情况" type="String" maxlen="32" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+      <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_social_duty" desc="加分社会责任">
+    <Field name="id" type="String" maxlen="32" notnull="false" pk="false" gen="uuid" />
+    <Field name="implement_time" title="时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="superior_task" title="上级部门安排的社会责任工作" type="String" maxlen="32" pk="false" />
+    <Field name="arrange_department" title="工作安排部门" type="String" maxlen="32" pk="false" />
+    <Field name="complete_state" title="完成情况" type="String" maxlen="255" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+      <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_studytrain" desc="专业发展进修学习">
+    <Field name="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="start_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="end_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="content" title="学习进修内容" type="String" maxlen="255" pk="false" />
+    <Field name="class_hour" title="学时" type="long" maxlen="10" pk="false" />
+    <Field name="study_place" title="学习地点" type="String" maxlen="32" pk="false" />
+    <Field name="organizers" title="主办单位" type="String" maxlen="32" pk="false" />
+    <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+      <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_work_history" desc="工作经历，不是指标体系里面">
+    <Field name="id" type="String" maxlen="32" notnull="false" pk="false" gen="uuid" />
+    <Field name="start_date" type="Timestamp" pk="false" />
+    <Field name="end_date" type="Timestamp" pk="false" />
+    <Field name="prove_people" title="证明人" type="String" maxlen="32" pk="false" />
+      <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+      <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="headmaster_grade_evaluate" desc="">
+    <Field name="id" type="String" maxlen="255" notnull="false" pk="false" gen="uuid" />
+    <Field name="compulsory_education" title="义务教育" type="String" maxlen="32" pk="false" />
+    <Field name="high_school" title="高中" type="String" maxlen="32" pk="false" />
+    <Field name="secondary_school" title="中职" type="String" maxlen="32" pk="false" />
+          <Field name="approve_result" title="审批结果" type="String" maxlen="1" pk="false" />
+      <Field name="isvalid" title="有效性" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+</Database>
+

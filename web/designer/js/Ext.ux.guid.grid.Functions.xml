@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scripts>
+	<total></total>
+    <row>
+        <id>buildHttpUrl</id>
+        <name>buildHttpUrl</name>
+        <script>buildHttpUrl('sysName','oprID','actions')</script>
+    </row>
+    <row>
+        <id>JrafRequest</id>
+        <name>JrafRequest</name>
+        <script>
+var jr=new JrafRequest('sysName','oprID','actions',{recordType:record,idProperty:'id'});
+jr.setForm('form');
+jr.setExtraPs({});
+jr.setSuccFn(function(result,_resp,reader){
+	
+});
+jr.postData();
+		</script>
+    </row>
+    <row>
+        <id>JrafXmlReader</id>
+        <name>JrafXmlReader</name>
+        <script>new JrafXmlReader(meta,recordType,'id')</script>
+    </row>
+    <row>
+        <id>JrafXmlStore</id>
+        <name>JrafXmlStore api</name>
+        <script>read:{method:'POST',sysName:'',oprID:'',actions:''},
+create:{method:'POST',sysName:'',oprID:'',actions:''},
+update:{method:'POST',sysName:'',oprID:'',actions:''},
+destroy:{method:'POST',sysName:'',oprID:'',actions:''}
+</script>
+    </row>
+    <row>
+        <id>baseParams</id>
+        <name>baseParams</name>
+        <script>paramname : 'boolean'</script>
+    </row>
+    <row>
+        <id>paratreecombox</id>
+        <name>tree nparams</name>
+        <script>nid:'deptid',pid:'pdeptid',ntext:'[{deptcode}][{pdeptid}]{deptname}',loadAll:false,codelen:'4,2,3,3',isLeaf:'childnum',expanded:true,chk:true,sm:'folder|leaf|all',chkfld:'',chkval:''</script>
+    </row>
+    <row>
+        <id>ArrayStore</id>
+        <name>ArrayStore</name>
+        <script>new Ext.data.ArrayStore({id: 0,fields: ['v','t'], data: [[0, '0'],[1,'1']]})</script>
+    </row>
+    <row>
+        <id>Table.layoutConfig</id>
+        <name>Table.layoutConfig</name>
+        <script>{tableAttrs: { style: { width: '100%' } },columns:3}</script>
+    </row>
+</Scripts>

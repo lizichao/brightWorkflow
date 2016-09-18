@@ -1,0 +1,99 @@
+/* 
+ * Autocompleter v0.1.2.1 - 2014-05-23 
+ * Simple, easy, customisable and with cache support. 
+ * http://github.com/ArtemFitiskin/jquery-autocompleter 
+ * 
+ * Copyright 2014 Artem Fitiskin; MIT Licensed 
+ */ 
+.autofield {
+    position: relative;
+}
+
+.autofield input {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: inherit;  	
+    font-size:  inherit;
+    padding:  0.5em;
+    border: 1px solid #ccc;
+}
+
+.autofield input:focus {
+    outline: 0;
+}
+
+.autocompleter {
+    width: 100%;
+    background: #EFFFD7;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    z-index: 100;
+}
+
+.autocompleter,
+.autocompleter-hint {    
+    position: absolute;
+}
+
+.autocompleter-list {
+    box-shadow: inset 0px 0px 6px rgba(0,0,0,0.1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.autocompleter-item-selected {
+    background: #ffffff;
+}
+
+.autocompleter-item {
+    padding: 6px 12px;
+    cursor: pointer;
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 16px;
+	overflow: hidden;
+	color: #787878;
+}
+
+.autocompleter-item:hover {
+    background: #dbed8a;
+}
+
+.autocompleter-item strong {    
+    text-shadow: 0 1px 0 #ffffff;
+}
+
+.autocompleter-item span {
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 14px;
+	color: #787878;
+}
+
+.autocompleter-hint {
+    color: #ccc;
+    text-align: left;
+    top: -34px;
+    font-weight: 400;
+    left: 0;
+    width: 100%;
+    padding: 12px 12px 12px 13px;
+    font-size: 12px;
+    display: none;
+}
+
+.autocompleter-hint span {
+    color: transparent;
+}
+
+.autocompleter-hint-show {
+    display: block;
+}
+
+.autocompleter-closed {
+    display: none;
+}

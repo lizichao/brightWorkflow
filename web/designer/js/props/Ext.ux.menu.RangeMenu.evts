@@ -1,0 +1,7 @@
+{
+listeners : [{
+    name : "update",
+    type : "function",
+    defaults : 'function(scope){}'
+  }]
+}

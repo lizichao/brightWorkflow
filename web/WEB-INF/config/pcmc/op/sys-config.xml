@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config>
+    <Operation id="sys" bean="cn.brightcom.system.pcmc.sys.SystemCfgBean" desc="系统配置">
+		<Action name="getSysList" desc="取子系统列表">
+			<Request multi="false">
+			</Request>
+		</Action>
+		<Action name="getOprList" desc="取系统操作列表">
+			<Request multi="false">
+				<Field name="pid" title="sid" type="String" maxlen="200" notnull="true"></Field>
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="stype" title="节点类型" type="String" maxlen="2" notnull="false"></Field>
+				<Field name="__qtype" title="查询类型" type="String" maxlen="2" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10001">取Operation定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="getTblList" desc="取信息集列表">
+			<Request multi="false">
+				<Field name="pid" title="sid" type="String" maxlen="200" notnull="true"></Field>
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="stype" title="节点类型" type="String" maxlen="2" notnull="false"></Field>
+				<Field name="__qtype" title="查询类型" type="String" maxlen="2" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10002">取Table定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="createOprFile" desc="创建Operation文件">
+			<Request multi="false">
+				<Field name="pid" title="pid" type="String" maxlen="200" notnull="true"></Field>
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="fname" title="文件名" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10003">新增Operation定义文件异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="createTblFile" desc="创建DB文件">
+			<Request multi="false">
+				<Field name="pid" title="pid" type="String" maxlen="200" notnull="true"></Field>
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="fname" title="文件名" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10004">新增Table定义文件异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="getOprDetail" desc="取Operation明细">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="__oprID" title="oprID" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10005">取Operation定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="delOpr" desc="删除Operation">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="__oprID" title="oprID" type="String" maxlen="50" notnull="true"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10008">删除Operation定义成功</Msg>
+		      	<Msg code="10009">删除Operation定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="uptOpr" desc="更新Operation">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="oldOprID" title="oldOprID" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="pid" title="pid" type="String" maxlen="200" notnull="true"></Field>
+				<Field name="__oprID" title="oprID" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="bean" title="bean" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="jndi" title="jndi" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="desc" title="desc" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10010">更新Operation定义成功</Msg>
+		      	<Msg code="10011">更新Operation定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="getActDetail" desc="取Action明细">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="__oprID" title="oprID" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="__actions" title="actions" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10006">取Action定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="delAct" desc="删除Action">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="__oprID" title="oprID" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="__actions" title="actions" type="String" maxlen="50" notnull="true"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10012">删除Action定义成功</Msg>
+		      	<Msg code="10013">删除Action定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="uptAct" desc="更新Action">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="__oprID" title="oprID" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="__actions" title="actions" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="actname" title="actname" type="String" maxlen="100" notnull="true"></Field>
+				<Field name="base" title="base" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="old" title="old" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="desc" title="desc" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="accredit" title="交易授权" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="colacc" title="列级授权" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="rowacc" title="行级授权" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="log" title="log" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="nologin" title="nologin" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="webservice" title="webservice" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="oauth" title="oauth" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="basesql" title="basesql" type="String" maxlen="2000" notnull="false"></Field>
+				<Field name="orderby" title="orderby" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="groupby" title="groupby" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="tblname" title="tblname" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="name" title="name" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="title" title="title" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="type" title="type" type="String" maxlen="20" notnull="false"></Field>
+				<Field name="maxlen" title="maxlen" type="long" maxlen="10" notnull="false"></Field>
+				<Field name="minlen" title="minlen" type="long" maxlen="10" notnull="false"></Field>
+				<Field name="notnull" title="notnull" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="pk" title="pk" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="gen" title="gen" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="refname" title="refname" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="op" title="op" type="String" maxlen="4" notnull="false"></Field>
+				<Field name="reqclass" title="reqclass" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="defaultval" title="defaultval" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="msgcode" title="msgcode" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="msgdesc" title="msgdesc" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="flowresult" title="flowresult" type="String" maxlen="10" notnull="false"></Field>
+				<Field name="flowtype" title="flowtype" type="String" maxlen="2" notnull="false"></Field>
+				<Field name="flowpath" title="flowpath" type="String" maxlen="200" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10014">更新Action定义成功</Msg>
+		      	<Msg code="10015">更新Action定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="getTblDetail" desc="取Table明细">
+			<Request multi="false">
+				<Field name="__sysName" title="子系统" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="__tblName" title="表名" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10007">取Table定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="uptTbl" desc="更新Table">
+			<Request multi="false">
+				<Field name="__sysname" title="子系统" type="String" maxlen="50" notnull="true"></Field>
+				<Field name="__table_name" title="tblname" type="String" maxlen="100" notnull="true"></Field>
+				<Field name="__table_desc" title="tbldesc" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="fname" title="文件名" type="String" maxlen="50" notnull="false"></Field>
+				<Field name="name" title="name" type="String" maxlen="100" notnull="true"></Field>
+				<Field name="title" title="title" type="String" maxlen="100" notnull="false"></Field>
+				<Field name="type" title="type" type="String" maxlen="20" notnull="true"></Field>
+				<Field name="maxlen" title="maxlen" type="long" maxlen="10" notnull="false"></Field>
+				<Field name="minlen" title="minlen" type="long" maxlen="10" notnull="false"></Field>
+				<Field name="notnull" title="notnull" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="pk" title="pk" type="String" maxlen="5" notnull="false"></Field>
+				<Field name="gen" title="gen" type="String" maxlen="50" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10016">更新Table定义成功</Msg>
+		      	<Msg code="10017">更新Table定义异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="loadFields" desc="Load Fields">
+		    <Request multi="false">
+		    	<Field name="sys" title="sysName" type="String" maxlen="100" notnull="true"></Field>
+		    	<Field name="opr" title="oprID" type="String" maxlen="100" notnull="true"></Field>
+		    	<Field name="act" title="actions" type="String" maxlen="100" notnull="true"></Field>
+		    	<Field name="type" title="reqtype" type="String" maxlen="100" notnull="true"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10020">Load fields error</Msg>
+		    </Message>
+		</Action>
+    </Operation>
+</Config>

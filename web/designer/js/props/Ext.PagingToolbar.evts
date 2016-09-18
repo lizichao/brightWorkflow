@@ -1,0 +1,13 @@
+{
+listeners : [{
+    name : "beforechange",
+    type : "function",
+    defaults : 'function(scope,params){}',
+    desc : "beforechange : ( Ext.PagingToolbar this, Object params)"
+  },{
+    name : "change",
+    type : "function",
+    defaults : 'function(scope,pageData){}',
+    desc : "change : ( Ext.PagingToolbar this, Object pageData)"
+  }]
+}

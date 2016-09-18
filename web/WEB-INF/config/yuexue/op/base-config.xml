@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/base-config.xml">
+  <Operation id="user" bean="cn.com.bright.yuexue.base.UserManage" desc="用户管理">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增机构管理员" rowacc="" log="" oauth="" name="add">
+      <Request>
+        <Field name="deptid" title="机构id" type="String" maxlen="32" notnull="true" />
+        <Field name="usercode" title="用户名" type="String" maxlen="30" notnull="true" />
+        <Field name="username" title="名称" type="String" maxlen="100" notnull="true" />
+      </Request>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="删除用户" colacc="" log="" webservice="" name="del">
+      <Request>
+        <Field name="userid" title="userid" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="当前用户信息" rowacc="" log="" oauth="true" name="detail" />
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="重置密码" rowacc="" log="" oauth="" name="reset">
+      <Request>
+        <Field name="userid" title="userid" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="修改密码" rowacc="" log="" oauth="true" name="chgpwd">
+      <Request>
+        <Field name="oldpwd" title="旧密码" type="String" />
+        <Field name="newpwd" title="新密码" type="String" maxlen="20" notnull="true" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="修改手机号" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="chgmobile" />
+    <Action base="" old="" desc="修改邮箱" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="chgmail" />
+    <Action base="" old="" desc="校验唯一性" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="chkValid">
+      <Request>
+        <Field name="chkFld" title="校验类型" type="long" maxlen="1" notnull="true" />
+        <Field name="chkVal" title="校验值" type="String" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="修改个人信息" rowacc="" log="" oauth="true" name="uptinfo">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="100" notnull="true" />
+        <Field name="nickname" title="昵称" type="String" maxlen="100" notnull="false" />
+        <Field name="portrait" title="头像" type="file" maxlen="200" notnull="false" />
+        <Field name="description" title="描述" type="String" maxlen="400" notnull="false" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="移动电话" type="String" maxlen="20" notnull="false" />
+        <Field name="phone" title="联系电话" type="String" maxlen="20" notnull="false" />
+        <Field name="emailbind" title="邮箱绑定" type="long" maxlen="1" notnull="false" />
+        <Field name="mobilebind" title="手机绑定" type="long" maxlen="1" notnull="false" />
+        <Field name="gender" title="性别" type="String" maxlen="1" notnull="false" />
+        <Field name="pubname" title="公开姓名" type="long" maxlen="1" notnull="false" />
+        <Field name="pubmail" title="公开邮箱" type="long" maxlen="1" notnull="false" />
+        <Field name="pubphone" title="公开电话" type="long" maxlen="1" notnull="false" />
+      </Request>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="List" desc="查询机构管理员" accredit="" log="" webservice="" name="deptmgr">
+      <Query basesql="select a.userid,a.usercode,a.username,a.state from pcmc_user a,pcmc_user_dept b where a.userid=b.userid and a.usertype='9'">
+        <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="true" refname="b.deptid" op="=" />
+      </Query>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="修改机构管理员" colacc="" log="" webservice="" name="upt">
+      <Request>
+        <Field name="userid" title="userid" type="String" maxlen="32" notnull="true" />
+        <Field name="usercode" title="用户名" type="String" maxlen="30" notnull="true" />
+        <Field name="username" title="名称" type="String" maxlen="100" notnull="true" />
+        <Field name="state" title="状态" type="String" maxlen="2" notnull="true" />
+      </Request>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="取管理角色" colacc="" log="" webservice="" name="getMRoleList" />
+    <Action base="" old="" desc="取用户详细信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getUserDetail">
+      <Request>
+        <Field name="userid" title="用户ID" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="取用户统计详情" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getUserGrowthDetail">
+      <Request>
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_stat_type" title="统计类型" type="String" maxlen="10" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="获取资源统计详情" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getResourceGrowthDetail">
+      <Request>
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_stat_type" title="统计类型" type="String" maxlen="10" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="取用户统计详情" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getUserGrowthDetailRecode">
+      <Request>
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_stat_type" title="统计类型" type="String" maxlen="10" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="取教师资源统计" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getTeacherResourceDetail">
+      <Request>
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_username" title="用户名称" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="取教师资源类型统计" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getTeacherResourceStyleRecode">
+      <Request>
+        <Field name="qry_userid" title="教师ID" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_username" title="用户名称" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="学习习惯分析" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="studyHabitDetail">
+      <Request>
+        <Field name="qry_grade" title="年级" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_username" title="用户名称" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="学习时间段分析" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="studyHabitDetailRecord">
+      <Request>
+        <Field name="qry_grade" title="年级" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_username" title="用户名称" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+        <Field name="qry_userid" title="用户id" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="取教师资源学科统计" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getTeacherResourceSubjectRecode">
+      <Request>
+        <Field name="qry_userid" title="教师ID" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_username" title="教师姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="获取资源统计详情" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getResourceGrowthDetailRecode">
+      <Request>
+        <Field name="qry_deptcode" title="机构code" type="String" maxlen="40" notnull="false" />
+        <Field name="qry_stat_type" title="统计类型" type="String" maxlen="10" notnull="false" />
+        <Field name="qry_years" title="年份" type="String" maxlen="10" notnull="false" />
+        <Field name="qry_userid" title="获取用户id" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation bean="cn.com.bright.yuexue.base.CourseManage" id="Course" desc="课程管理">
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="增加课程" colacc="" log="true" webservice="" name="addCourse">
+      <Request>
+        <Field name="gradecode" title="年级" type="String" maxlen="3" pk="false" />
+        <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+        <Field name="coursenm" title="课程名" type="String" maxlen="200" notnull="true" pk="false" />
+        <Field name="courseiconFile" title="图标" type="file" maxlen="200" pk="false" />
+        <Field name="state" title="state" type="String" maxlen="2" pk="false" />
+        <Field name="subject_book_id" title="教材编号" type="String" maxlen="32" pk="false" />
+        <Field name="orderidx" title="显示顺序" type="long" maxlen="5" pk="false" />
+      </Request>
+      <Table name="base_course" />
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="Update" desc="删除课程" colacc="" log="true" webservice="" name="deleteCourse">
+      <Request>
+        <Field name="courseid" title="courseid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+        <Field name="state" title="state" type="String" maxlen="2" pk="false" defaultval="0" />
+      </Request>
+      <Table name="base_course" />
+    </Action>
+    <Action base="" old="" desc="修改课程" accredit="" colacc="" rowacc="" log="true" nologin="" webservice="" oauth="" name="updateCourse">
+      <Request>
+        <Field name="courseid" title="courseid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+        <Field name="gradecode" title="年级" type="String" maxlen="3" pk="false" />
+        <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+        <Field name="coursenm" title="课程名" type="String" maxlen="200" pk="false" />
+        <Field name="courseiconFile" title="图标" type="file" maxlen="200" pk="false" />
+        <Field name="subject_book_id" title="教材编号" type="String" maxlen="32" pk="false" />
+        <Field name="orderidx" title="显示顺序" type="long" maxlen="5" pk="false" />
+      </Request>
+      <Table name="base_course" />
+    </Action>
+    <Action log="" colacc="" old="" rowacc="" oauth="" base="List" desc="查询课程" accredit="" nologin="" webservice="" name="queryCourse">
+      <Query basesql="select t1.*,t2.subjname,t3.publisher_code,t3.book_name,t3.book_version from base_course t1,base_subject t2,base_subject_book t3 where t1.subjectid = t2.subjectid and t1.subject_book_id = t3.subject_book_id and t1.state &gt; '0'" orderby="t1.gradecode+0,t1.orderidx">
+        <Field name="qry_subjectid" title="学科" type="String" refname="t2.subjectid" op="=" />
+        <Field name="qry_grade_code" title="年级代码" type="String" refname="t1.gradecode" op="=" />
+        <Field name="qry_publisher_code" title="出版社" type="String" refname="t3.publisher_code" op="=" />
+        <Field name="qry_deptid" title="机构编号" type="String" gen="session.deptid" refname="t1.deptid" op="=" />
+      </Query>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="" base="List" desc="根据课程信息获取学科信息" colacc="" nologin="" webservice="" name="getSubjectByCourse">
+      <Query basesql="select distinct t1.subjectid,t2.subjname from base_course t1,base_subject t2 where t1.subjectid = t2.subjectid and t1.state &gt; '0'" orderby="t1.orderidx">
+        <Field name="qry_gradecode" title="年级代码" type="String" refname="t1.gradecode" op="=" />
+        <Field name="qry_deptid" title="机构代码" type="String" gen="session.deptid" refname="t1.deptid" op="=" />
+      </Query>
+    </Action>
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="根据学生编号获取学科列表" rowacc="" nologin="" oauth="true" name="getCourseByUserid">
+      <Query basesql="select t1.coursenm,t1.courseid,t1.courseicon,t1.subjectid,t6.icon as subjecticon,t2.classnm,(select count(*) from learn_my_examination tt1,learn_examination_paper tt2 where tt1.paper_id = tt2.paper_id and tt1.userid = t4.userid and tt2.subject_id = t1.subjectid  and tt2.resource_type like '40%'  and tt1.status&lt;'50' and tt1.valid = 'Y' and tt2.valid = 'Y') as init_count from base_course t1,base_class t2,base_studentinfo t3,pcmc_user t4,pcmc_user_dept t5,base_subject t6 where t1.gradecode = t2.gradecode and t2.classid = t3.classid and t3.userid = t4.userid and t4.userid = t5.userid and t1.deptid = t5.deptid and t1.state &gt; '0' and t1.subjectid=t6.subjectid" orderby="t1.orderidx">
+        <Field name="qry_userid" title="用户编号" type="String" maxlen="32" notnull="false" gen="session.userid" refname="t4.userid" op="=" />
+      </Query>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="true" base="" desc="根据学生编号获取学科列表" colacc="" nologin="" webservice="" name="getCourseByUseridMOOC">
+      <Request>
+        <Field name="qry_resource_type" title="类型" type="String" maxlen="10" notnull="true" />
+        <Field name="qry_status" title="状态" type="String" maxlen="10" />
+      </Request>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="true" base="" desc="获取学科列表" colacc="" nologin="true" webservice="" name="getCourseWocr">
+      <Request>
+        <Field name="qry_resource_type" title="类型" type="String" maxlen="10" notnull="true" />
+        <Field name="qry_status" title="状态" type="String" maxlen="10" />
+        <Field name="qry_deptid" title="学校id" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="true" base="" desc="获取所有学科列表" colacc="" nologin="true" webservice="" name="getAllCourseWocr">
+      <Request>
+        <Field name="qry_deptid" title="学校id" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action log="" colacc="" old="" rowacc="" oauth="true" base="List" desc="获取所有的学科列表" accredit="" nologin="true" webservice="" name="getAllCourse">
+      <Query basesql="select t1.subjectid,t1.subjname as coursenm,t1.icon,(select count(*)from learn_examination_paper tt1 where tt1.subject_id = t1.subjectid and tt1.valid = 'Y' and tt1.folder_id &lt;&gt; '' and tt1.resource_type like '20%') as init_count from base_subject t1">
+        <Field name="qry_subjectid" title="学科" type="String" refname="t1.subjectid" op="=" />
+      </Query>
+    </Action>
+    <Action log="" colacc="" old="" rowacc="" oauth="true" base="List" desc="获取所有的学校列表" accredit="" nologin="true" webservice="" name="getSchoolList">
+      <Query basesql="SELECT t1.*, t2.deptname,t2.deptcode FROM busi_contract_school t1, pcmc_dept t2 WHERE t1.deptid = t2.deptid AND t1.valid = 'Y' AND t2.state = '1'">
+        <Field name="qry_deptid" title="机构id" type="String" refname="t1.deptid" op="=" />
+      </Query>
+    </Action>
+  </Operation>
+  <Operation desc="教师任教课程管理" id="TeacherSubject" bean="cn.com.bright.yuexue.base.TeacherSubjectManage">
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="" desc="新增教师任教课程" accredit="" log="true" webservice="" name="addTeacherSubject">
+      <Request>
+        <Field name="teasubjid" title="teasubjid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+        <Field name="deptid" title="deptid" type="String" maxlen="32" pk="false" gen="session.deptid" />
+        <Field name="userid" title="userid" type="String" maxlen="32" pk="false" />
+        <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+        <Field name="classid" title="班级" type="String" maxlen="32" pk="false" />
+        <Field name="state" title="状态" type="String" maxlen="2" pk="false" defaultval="1" />
+        <Field name="is_classteacher" title="是否班主任" type="long" maxlen="3" pk="false" />
+      </Request>
+    </Action>
+    <Action colacc="" rowacc="" base="" accredit="" webservice="" old="" desc="修改教师任教课程" log="true" nologin="" oauth="" name="updateTeacherSubject">
+      <Request>
+        <Field name="teasubjid" title="teasubjid" type="String" maxlen="32" notnull="true" pk="true" />
+        <Field name="userid" title="教师编号" type="String" maxlen="32" notnull="true" pk="false" />
+        <Field name="subjectid" title="学科" type="String" maxlen="32" notnull="false" pk="false" />
+        <Field name="classid" title="班级" type="String" maxlen="32" notnull="false" pk="false" />
+        <Field name="is_classteacher" title="是否班主任" type="long" maxlen="3" notnull="false" pk="false" />
+      </Request>
+    </Action>
+    <Action base="Update" old="" desc="删除教师任教课程" accredit="" colacc="" rowacc="" log="true" nologin="" webservice="" oauth="" name="deleteTeacherSubject">
+      <Request>
+        <Field name="teasubjid" title="teasubjid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+        <Field name="state" title="状态" type="String" maxlen="2" pk="false" defaultval="0" />
+      </Request>
+      <Table name="base_teacher_subject" />
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="" base="List" desc="查询教师任教课程" colacc="" nologin="" webservice="" name="queryTeacherSubject">
+      <Query basesql="select t1.*,t2.subjname,t3.classnm,t3.gradecode,t4.username from base_teacher_subject t1,base_subject t2,base_class t3,pcmc_user t4 where t1.subjectid = t2.subjectid and t1.classid = t3.classid and t1.userid = t4.userid and t1.state &gt; '0'">
+        <Field name="qry_subjectid" title="课程编号" type="String" refname="t1.subjectid" op="=" />
+        <Field name="qry_userid" title="教师编号" type="String" refname="t4.userid" op="=" />
+        <Field name="qry_classid" title="班级编号" type="String" refname="t3.classid" op="=" />
+        <Field name="qry_deptid" title="机构代码" type="String" gen="session.deptid" refname="t1.deptid" op="=" />
+        <Field name="qry_gradecode" title="年级代码" type="String" refname="t3.gradecode" op="=" />
+      </Query>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="true" base="" desc="设置课代表" colacc="" log="" webservice="" name="setSubjectAssistant">
+      <Request>
+        <Field name="classid" title="班级ID" type="String" maxlen="40" notnull="true" />
+        <Field name="subjectid" title="学科ID" type="String" maxlen="40" notnull="true" />
+        <Field name="assistant_id" title="课代表用户ID" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="teacher" bean="cn.com.bright.yuexue.base.TeacherManage" desc="教师管理">
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="新增教师" colacc="" log="" webservice="" name="add">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="100" notnull="true" />
+        <Field name="usercode" title="登录帐号" type="String" maxlen="100" notnull="true" />
+        <Field name="userpwd" title="登录密码" type="String" maxlen="100" notnull="false" />
+        <Field name="idnumber" title="身份证号" type="String" maxlen="18" notnull="true" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="移动电话" type="String" maxlen="20" notnull="false" />
+        <Field name="gender" title="性别" type="String" maxlen="10" notnull="true" />
+        <Field name="portraitFile" title="肖像" type="file" maxlen="200" pk="false" />
+        <Field name="description" title="描述" type="String" maxlen="400" notnull="false" />
+        <Field name="phone" title="固话" type="String" maxlen="20" notnull="false" />
+        <Field name="birthday" title="出生日期" type="Timestamp" notnull="false" />
+        <Field name="deptid" title="机构编号" type="String" maxlen="32" notnull="true" gen="session.deptid" />
+        <Field name="ctid" title="证件类型" type="String" maxlen="10" pk="false" />
+        <Field name="houseaddress" title="家庭地址" type="String" maxlen="225" pk="false" />
+        <Field name="oid" title="港澳台侨" type="String" maxlen="10" pk="false" />
+        <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+        <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+        <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+        <Field name="edu" title="最高学历" type="String" maxlen="10" pk="false" />
+        <Field name="preflag" title="是否学前教育专业" type="String" maxlen="10" pk="false" />
+        <Field name="sfyjszgz" title="是否有教师资格证" type="String" maxlen="10" pk="false" />
+        <Field name="fzjg" title="发证机关" type="String" maxlen="100" pk="false" />
+        <Field name="jszgzzl" title="教师资格证种类" type="String" maxlen="10" pk="false" />
+        <Field name="jszgzhm" title="教师资格证号码" type="String" maxlen="20" pk="false" />
+        <Field name="rzlb" title="任职类别" type="String" maxlen="10" pk="false" />
+        <Field name="xzzw" title="行政职务" type="String" maxlen="10" pk="false" />
+        <Field name="begin_year" title="来校(园)日期(年月)" type="String" maxlen="10" pk="false" />
+        <Field name="sbtid" title="参加社保类型" type="String" maxlen="10" pk="false" />
+        <Field name="ylbx" title="有无医疗保险" type="String" maxlen="10" pk="false" />
+        <Field name="sndkhqk" title="上年度考核情况" type="String" maxlen="10" pk="false" />
+        <Field name="bzqk" title="编制情况" type="String" maxlen="10" pk="false" />
+        <Field name="jbgz" title="基本工资(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="jxgz" title="绩效工资(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="jtbz" title="其他津贴补助(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="pjsr" title="上年平均月收入(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="ywylbx" title="有无养老保险" type="String" maxlen="10" pk="false" />
+        <Field name="zfgjj" title="有无住房公积金" type="String" maxlen="10" pk="false" />
+        <Field name="sybx" title="有无失业保险" type="String" maxlen="10" pk="false" />
+        <Field name="gsbx" title="有无工伤保险" type="String" maxlen="10" pk="false" />
+        <Field name="ywsybx" title="有无生育保险" type="String" maxlen="10" pk="false" />
+        <Field name="edu_dept" title="获得最高学历机构" type="String" maxlen="255" pk="false" />
+        <Field name="zgxw" title="最高学位" type="String" maxlen="10" pk="false" />
+        <Field name="xw_dept" title="获得最高学位机构" type="String" maxlen="255" pk="false" />
+        <Field name="job_year" title="参加工作年份" type="String" maxlen="10" pk="false" />
+        <Field name="job_type" title="岗位类别" type="String" maxlen="10" pk="false" />
+        <Field name="job_grade" title="岗位等级" type="String" maxlen="10" pk="false" />
+        <Field name="htqk" title="签订合同情况" type="String" maxlen="32" pk="false" />
+        <Field name="pthdj" title="普通话等级" type="String" maxlen="10" pk="false" />
+        <Field name="cjqsrq" title="从教起始日期" type="Timestamp" pk="false" />
+        <Field name="rksd" title="主要任课学段" type="String" maxlen="10" pk="false" />
+        <Field name="rjkc" title="任教课程" type="String" maxlen="10" pk="false" />
+        <Field name="zyjszw" title="专业技术职务" type="String" maxlen="10" pk="false" />
+        <Field name="sfqrzsf" title="是否全日制师范类专业毕业" type="String" maxlen="10" pk="false" />
+        <Field name="pxqk" title="近三年专任教师接受培训情况" type="String" maxlen="10" pk="false" />
+        <Field name="mfshs" title="是否属于免费师范生" type="String" maxlen="10" pk="false" />
+        <Field name="jsgw" title="是否持有教师岗位" type="String" maxlen="10" pk="false" />
+        <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+        <Field name="updatedate" title="修改日期" type="Timestamp" pk="false" />
+        <Field name="createdate" title="添加日期" type="Timestamp" pk="false" />
+        <Field name="gzfl_key" title="五险一金代码" type="String" maxlen="255" pk="false" />
+        <Field name="gzfl_value" title="五险一金代码值" type="String" maxlen="255" pk="false" />
+        <Field name="rjkc_key" title="任教课程代码" type="String" maxlen="255" pk="false" />
+        <Field name="rjkc_value" title="任教课程代码值" type="String" maxlen="255" pk="false" />
+        <Field name="pxqk_key" title="培训情况代码" type="String" maxlen="255" pk="false" />
+        <Field name="pxqk_value" title="培训情况代码值" type="String" maxlen="255" pk="false" />
+        <Field name="cid" title="国籍" type="String" maxlen="40" pk="false" />
+        <Field name="firstyearmoth" title="从教起始年月" type="String" maxlen="20" pk="false" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="修改教师信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="upt">
+      <Request>
+        <Field name="userid" title="用户编号" type="String" maxlen="100" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="100" notnull="true" />
+        <Field name="usercode" title="登录帐号" type="String" maxlen="100" notnull="true" />
+        <Field name="userpwd" title="登录密码" type="String" maxlen="100" notnull="false" />
+        <Field name="idnumber" title="身份证号" type="String" maxlen="18" notnull="true" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="移动电话" type="String" maxlen="20" notnull="false" />
+        <Field name="gender" title="性别" type="String" maxlen="1" notnull="true" />
+        <Field name="portraitFile" title="肖像" type="file" maxlen="200" pk="false" />
+        <Field name="description" title="描述" type="String" maxlen="400" notnull="false" />
+        <Field name="phone" title="固话" type="String" maxlen="20" notnull="false" />
+        <Field name="birthday" title="出生日期" type="Timestamp" notnull="false" />
+        <Field name="deptid" title="机构编号" type="String" maxlen="32" notnull="true" gen="session.deptid" />
+        <Field name="teacher_id" title="主键" type="String" maxlen="32" notnull="true" />
+        <Field name="ctid" title="证键类型" type="String" maxlen="10" pk="false" />
+        <Field name="houseaddress" title="家庭地址" type="String" maxlen="225" pk="false" />
+        <Field name="oid" title="港澳台侨" type="String" maxlen="10" pk="false" />
+        <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+        <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+        <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+        <Field name="edu" title="最高学历" type="String" maxlen="10" pk="false" />
+        <Field name="preflag" title="是否学前教育专业" type="String" maxlen="10" pk="false" />
+        <Field name="sfyjszgz" title="是否有教师资格证" type="String" maxlen="10" pk="false" />
+        <Field name="fzjg" title="发证机关" type="String" maxlen="100" pk="false" />
+        <Field name="jszgzzl" title="教师资格证种类" type="String" maxlen="10" pk="false" />
+        <Field name="jszgzhm" title="教师资格证号码" type="String" maxlen="20" pk="false" />
+        <Field name="rzlb" title="任职类别" type="String" maxlen="10" pk="false" />
+        <Field name="xzzw" title="行政职务" type="String" maxlen="10" pk="false" />
+        <Field name="begin_year" title="来校(园)日期(年月)" type="String" maxlen="10" pk="false" />
+        <Field name="sbtid" title="参加社保类型" type="String" maxlen="10" pk="false" />
+        <Field name="ylbx" title="有无医疗保险" type="String" maxlen="10" pk="false" />
+        <Field name="sndkhqk" title="上年度考核情况" type="String" maxlen="10" pk="false" />
+        <Field name="bzqk" title="编制情况" type="String" maxlen="10" pk="false" />
+        <Field name="jbgz" title="基本工资(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="jxgz" title="绩效工资(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="jtbz" title="其他津贴补助(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="pjsr" title="上年平均月收入(元/月)" type="double" maxlen="22" pk="false" />
+        <Field name="ywylbx" title="有无养老保险" type="String" maxlen="10" pk="false" />
+        <Field name="zfgjj" title="有无住房公积金" type="String" maxlen="10" pk="false" />
+        <Field name="sybx" title="有无失业保险" type="String" maxlen="10" pk="false" />
+        <Field name="gsbx" title="有无工伤保险" type="String" maxlen="10" pk="false" />
+        <Field name="ywsybx" title="有无生育保险" type="String" maxlen="10" pk="false" />
+        <Field name="edu_dept" title="获得最高学历机构" type="String" maxlen="255" pk="false" />
+        <Field name="zgxw" title="最高学位" type="String" maxlen="10" pk="false" />
+        <Field name="xw_dept" title="获得最高学位机构" type="String" maxlen="255" pk="false" />
+        <Field name="job_year" title="参加工作年份" type="String" maxlen="10" pk="false" />
+        <Field name="job_type" title="岗位类别" type="String" maxlen="10" pk="false" />
+        <Field name="job_grade" title="岗位等级" type="String" maxlen="10" pk="false" />
+        <Field name="htqk" title="签订合同情况" type="String" maxlen="32" pk="false" />
+        <Field name="pthdj" title="普通话等级" type="String" maxlen="10" pk="false" />
+        <Field name="cjqsrq" title="从教起始日期" type="Timestamp" pk="false" />
+        <Field name="rksd" title="主要任课学段" type="String" maxlen="10" pk="false" />
+        <Field name="rjkc" title="任教课程" type="String" maxlen="10" pk="false" />
+        <Field name="zyjszw" title="专业技术职务" type="String" maxlen="10" pk="false" />
+        <Field name="sfqrzsf" title="是否全日制师范类专业毕业" type="String" maxlen="10" pk="false" />
+        <Field name="pxqk" title="近三年专任教师接受培训情况" type="String" maxlen="10" pk="false" />
+        <Field name="mfshs" title="是否属于免费师范生" type="String" maxlen="10" pk="false" />
+        <Field name="jsgw" title="是否持有教师岗位" type="String" maxlen="10" pk="false" />
+        <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+        <Field name="updatedate" title="修改日期" type="Timestamp" pk="false" />
+        <Field name="createdate" title="添加日期" type="Timestamp" pk="false" />
+        <Field name="gzfl_key" title="五险一金代码" type="String" maxlen="255" pk="false" />
+        <Field name="gzfl_value" title="五险一金代码值" type="String" maxlen="255" pk="false" />
+        <Field name="rjkc_key" title="任教课程代码" type="String" maxlen="255" pk="false" />
+        <Field name="rjkc_value" title="任教课程代码值" type="String" maxlen="255" pk="false" />
+        <Field name="pxqk_key" title="培训情况代码" type="String" maxlen="255" pk="false" />
+        <Field name="pxqk_value" title="培训情况代码值" type="String" maxlen="255" pk="false" />
+        <Field name="cid" title="国籍" type="String" maxlen="40" pk="false" />
+        <Field name="firstyearmoth" title="从教起始年月" type="String" maxlen="20" pk="false" />
+      </Request>
+    </Action>
+    <Action colacc="" rowacc="" base="List" accredit="" webservice="" old="" desc="查询教师" log="" nologin="" oauth="" name="query">
+      <Query basesql="SELECT a.usercode,a.username,a.nickname,a.portrait,a.idnumber,a.email,a.mobile,a.phone,a.gender,a.state,a.modifydt,a.description,c.birthday ,t.* FROM pcmc_user a,pcmc_user_dept b,pcmc_user_ext c ,base_teacher_info t WHERE a.usertype='2' AND a.userid = b.userid AND a.userid = c.userid AND a.userid = t.userid ">
+        <Field name="qry_username" title="姓名" type="String" refname="a.username" op="%%" />
+        <Field name="qry_idnumber" title="身份证号" type="String" refname="a.idnumber" op="*%" />
+        <Field name="qry_mobile" title="手机号" type="String" refname="a.mobile" op="*%" />
+        <Field name="curdeptid" title="deptid" type="String" gen="session.deptid" refname="b.deptid" op="=" />
+        <Field name="qry_teacherid" title="用户编号" type="String" maxlen="32" refname="t.teacher_id" op="=" />
+      </Query>
+    </Action>
+    <Action base="" old="" desc="导入教师" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="import" />
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="获取任教班级课程" rowacc="" nologin="" oauth="true" name="getTeachClass">
+      <Query basesql="select t1.classid,t2.classnm,t2.icon,t1.subjectid,t5.gradename,t5.gradecode,t4.subjname,t3.subject_book_id from base_teacher_subject t1,base_class t2,base_course t3,base_subject t4,base_grade t5 where t1.state&gt;'0' and t1.classid=t2.classid and t3.state&gt;'0' and t2.state&gt;'0' and t2.gradecode=t3.gradecode and t1.subjectid=t3.subjectid and t1.subjectid=t4.subjectid and t1.deptid=t2.deptid and  t1.deptid=t3.deptid and t1.deptid = t5.deptid and t2.gradecode=t5.gradecode" orderby="t5.gradecode,t2.classcode">
+        <Field name="qry_userid" title="教师ID" type="String" maxlen="32" gen="session.userid" refname="t1.userid" op="=" />
+        <Field name="qry_classid" title="班级ID" type="String" maxlen="40" refname="t1.classid" op="=" />
+      </Query>
+    </Action>
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="获取任教班级" rowacc="" nologin="" oauth="true" name="getTeachClassM">
+      <Query basesql="select distinct t1.classid,t2.classnm,t2.icon,t5.gradename,t5.gradecode from base_teacher_subject t1,base_class t2,base_grade t5 where t1.state&gt;'0' and t1.classid=t2.classid  and t2.state&gt;'0'  and t1.deptid=t2.deptid  and t1.deptid = t5.deptid and t2.gradecode=t5.gradecode" orderby="t2.classnm">
+        <Field name="qry_userid" title="教师ID" type="String" maxlen="32" gen="session.userid" refname="t1.userid" op="=" />
+        <Field name="qry_classid" title="班级ID" type="String" maxlen="40" refname="t1.classid" op="=" />
+      </Query>
+    </Action>
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="获取任教班级课程" rowacc="" nologin="" oauth="true" name="getTeachClassMOOC">
+      <Query basesql="select t1.classid,t2.classnm,t2.icon,t1.subjectid,t2.gradecode,t3.gradename,t4.coursenm as subjname,t4.subject_book_id,t5.folder_name,t5.folder_code  from base_teacher_subject t1,base_class t2,base_grade t3,base_course t4,base_book_folder t5 where t1.classid = t2.classid and t1.deptid = t3.deptid and t2.gradecode = t3.gradecode and t3.gradecode = t4.gradecode and t1.subjectid = t4.subjectid and t1.deptid = t4.deptid and t4.subject_book_id = t5.subject_book_id and t5.parent_folder_id = '-1' and t5.valid = 'Y' and t4.state &gt; '0' and t2.state &gt; '0' and t1.state &gt; '0'" orderby="t2.gradecode, t4.orderidx ,t5.folder_name">
+        <Field name="qry_userid" title="教师ID" type="String" maxlen="32" gen="session.userid" refname="t1.userid" op="=" />
+        <Field name="qry_classid" title="班级ID" type="String" maxlen="40" refname="t1.classid" op="=" />
+      </Query>
+    </Action>
+    <Action colacc="" rowacc="" base="List" accredit="" webservice="" old="" desc="获取任教年级学科" log="" nologin="" oauth="true" name="getTeachGrade">
+      <Query basesql="select t1.classid,t2.classnm,t2.icon,t1.subjectid,t5.gradename,t5.gradecode,t4.subjname,t3.subject_book_id,(select MIN(t1.folder_id) as folder_id from base_book_folder t1,base_subject_book t2 where t1.subject_book_id = t2.subject_book_id and t1.valid='Y' and t2.valid='Y' and t1.parent_folder_id='-1' and t1.subject_book_id=t3.subject_book_id ) as folderid from base_teacher_subject t1,base_class t2,base_course t3,base_subject t4,base_grade t5 where t1.state&gt;'0'and t1.classid=t2.classid and t3.state&gt;'0' and t2.state&gt;'0' and t2.gradecode=t3.gradecode  and t1.subjectid=t3.subjectid and t1.subjectid=t4.subjectid and t1.deptid=t2.deptid and t1.deptid=t3.deptid and t1.deptid = t5.deptid and t2.gradecode=t5.gradecode" orderby="t2.classnm" groupby="t5.gradename,t4.subjname">
+        <Field name="qry_userid" title="教师id" type="String" maxlen="32" gen="session.userid" refname="t1.userid" op="=" />
+        <Field name="qry_classid" title="班级id" type="String" maxlen="40" refname="t1.classid" op="=" />
+      </Query>
+    </Action>
+    <Action colacc="" rowacc="" base="" accredit="" webservice="" old="" desc="获取教师所教课程的班级下签到的学生" log="" nologin="" oauth="true" name="getPointTo">
+      <Request>
+        <Field name="classId" title="班级编号" type="String" maxlen="40" />
+        <Field name="classTime" title="上课时间点" type="String" maxlen="40" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation bean="cn.com.bright.yuexue.base.StudentManage" id="student" desc="学生管理">
+    <Action base="" old="" desc="新增学生" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="add">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="100" notnull="true" />
+        <Field name="usercode" title="登录帐号" type="String" maxlen="100" notnull="true" />
+        <Field name="userpwd" title="登录密码" type="String" maxlen="100" notnull="false" />
+        <Field name="idnumber" title="身份证号" type="String" maxlen="18" notnull="true" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="移动电话" type="String" maxlen="20" notnull="false" />
+        <Field name="gender" title="性别" type="String" maxlen="1" notnull="true" />
+        <Field name="classid" title="班级" type="String" maxlen="32" notnull="false" />
+        <Field name="studentno" title="学号" type="String" maxlen="20" notnull="false" />
+        <Field name="firstyear" title="入学年份" type="long" notnull="false" />
+        <Field name="finishyear" title="毕业年份" type="long" notnull="false" />
+        <Field name="portraitFile" title="肖像" type="file" maxlen="200" pk="false" />
+        <Field name="description" title="描述" type="String" maxlen="400" notnull="false" />
+        <Field name="phone" title="固话" type="String" maxlen="20" notnull="false" />
+        <Field name="birthday" title="出生日期" type="Timestamp" notnull="false" />
+        <Field name="deptid" title="学校id" type="String" notnull="false" gen="session.deptid" />
+        <Field name="studinfoid" title="主键" type="String" maxlen="32" gen="uuid" />
+        <Field name="oldname" title="曾用名" type="String" maxlen="32" pk="false" />
+        <Field name="xmpy" title="姓名拼音" type="String" maxlen="32" pk="false" />
+        <Field name="stuid" title="学籍号" type="String" maxlen="32" pk="false" />
+        <Field name="origin" title="籍贯" type="String" maxlen="20" pk="false" />
+        <Field name="ctid" title="证件类型" type="String" maxlen="10" pk="false" />
+        <Field name="health" title="健康情况" type="String" maxlen="10" pk="false" />
+        <Field name="cid" title="国籍" type="String" maxlen="10" pk="false" />
+        <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+        <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+        <Field name="oid" title="港澳台侨外" type="String" maxlen="10" pk="false" />
+        <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+        <Field name="stbirth" title="出生日期" type="Timestamp" pk="false" />
+        <Field name="areacode" title="出生地行政区代码" type="String" maxlen="40" pk="false" />
+        <Field name="csd" title="出生地" type="String" maxlen="200" pk="false" />
+        <Field name="bid" title="血型" type="String" maxlen="10" pk="false" />
+        <Field name="studyway" title="就读方式" type="String" maxlen="10" pk="false" />
+        <Field name="mailaddress" title="通信地址" type="String" maxlen="200" pk="false" />
+        <Field name="houseaddress" title="家庭地址" type="String" maxlen="200" pk="false" />
+        <Field name="telephone" title="联系电话" type="String" maxlen="20" pk="false" />
+        <Field name="postcode" title="邮政编码" type="String" maxlen="10" pk="false" />
+        <Field name="singleflag" title="是否独生子女" type="String" maxlen="10" pk="false" />
+        <Field name="preflag" title="是否受过学前教育" type="String" maxlen="10" pk="false" />
+        <Field name="stayflag" title="是否留守儿童" type="String" maxlen="10" pk="false" />
+        <Field name="helpflag" title="是否享受一补" type="String" maxlen="10" pk="false" />
+        <Field name="orphanflag" title="是否孤儿" type="String" maxlen="10" pk="false" />
+        <Field name="martyr" title="是否烈士或优抚子女" type="String" maxlen="10" pk="false" />
+        <Field name="goway" title="上下学方式" type="String" maxlen="10" pk="false" />
+        <Field name="carflag" title="是否需要乘坐校车" type="String" maxlen="10" pk="false" />
+        <Field name="effectdate" title="身份证有效期" type="Timestamp" pk="false" />
+        <Field name="rollid" title="学籍辅号" type="String" maxlen="32" pk="false" />
+        <Field name="attendant" title="随班就读" type="String" maxlen="10" pk="false" />
+        <Field name="farmer" title="是否进城务工人员随迁子女" type="String" maxlen="10" pk="false" />
+        <Field name="houseaid" title="户口所在地行政区" type="String" maxlen="40" pk="false" />
+        <Field name="did" title="残疾类型" type="String" maxlen="10" pk="false" />
+        <Field name="cwid" title="入学方式" type="String" maxlen="10" pk="false" />
+        <Field name="hard" title="困难程度" type="String" maxlen="10" pk="false" />
+        <Field name="addressnow" title="现住地址" type="String" maxlen="200" pk="false" />
+        <Field name="helpneed" title="是否需要申请资助" type="String" maxlen="10" pk="false" />
+        <Field name="dtance" title="上下学距离" type="double" maxlen="22" pk="false" />
+        <Field name="specialty" title="特长" type="String" maxlen="200" pk="false" />
+        <Field name="homepage" title="主页地址" type="String" maxlen="200" pk="false" />
+        <Field name="buydegree" title="是否政府购买学位" type="String" maxlen="10" pk="false" />
+        <Field name="soldierflag" title="是否军人子女" type="String" maxlen="10" pk="false" />
+        <Field name="kindergarten" title="幼儿园毕业学校" type="String" maxlen="200" pk="false" />
+        <Field name="pschool" title="小学毕业学校" type="String" maxlen="200" pk="false" />
+        <Field name="juniormiddle" title="初中毕业学校" type="String" maxlen="200" pk="false" />
+        <Field name="updatetime" title="修改日期" type="Timestamp" pk="false" />
+        <Field name="createtime" title="创建日期" type="Timestamp" pk="false" gen="datetime" />
+        <Field name="valid" title="是否有效" type="String" maxlen="2" pk="false" />
+        <Field name="userid" type="String" maxlen="32" pk="false" />
+        <Field name="source" title="学生来源" type="String" maxlen="10" pk="false" />
+        <Field name="stu_status" title="学生状态" type="String" maxlen="10" pk="false" />
+        <Field name="first_yearmoth" title="入学年月" type="String" maxlen="10" pk="false" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="修改学生信息" rowacc="" log="" oauth="" name="upt">
+      <Request>
+        <Field name="userid" type="String" maxlen="32" pk="false" />
+        <Field name="username" title="姓名" type="String" maxlen="100" notnull="true" />
+        <Field name="usercode" title="登录帐号" type="String" maxlen="100" notnull="true" />
+        <Field name="userpwd" title="登录密码" type="String" maxlen="100" notnull="false" />
+        <Field name="idnumber" title="身份证号" type="String" maxlen="18" notnull="true" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="移动电话" type="String" maxlen="20" notnull="false" />
+        <Field name="gender" title="性别" type="String" maxlen="1" notnull="true" />
+        <Field name="classid" title="班级" type="String" maxlen="32" notnull="false" />
+        <Field name="studentno" title="学号" type="String" maxlen="20" notnull="false" />
+        <Field name="firstyear" title="入学年份" type="long" notnull="false" />
+        <Field name="finishyear" title="毕业年份" type="long" notnull="false" />
+        <Field name="portraitFile" title="肖像" type="file" maxlen="200" pk="false" />
+        <Field name="description" title="描述" type="String" maxlen="400" notnull="false" />
+        <Field name="phone" title="固话" type="String" maxlen="20" notnull="false" />
+        <Field name="birthday" title="出生日期" type="Timestamp" notnull="false" />
+        <Field name="deptid" title="机构编号" type="String" maxlen="32" notnull="true" gen="session.deptid" />
+        <Field name="studinfoid" title="主键" type="String" maxlen="32" />
+        <Field name="oldname" title="曾用名" type="String" maxlen="32" pk="false" />
+        <Field name="xmpy" title="姓名拼音" type="String" maxlen="32" pk="false" />
+        <Field name="stuid" title="学籍号" type="String" maxlen="32" pk="false" />
+        <Field name="origin" title="籍贯" type="String" maxlen="20" pk="false" />
+        <Field name="ctid" title="证件类型" type="String" maxlen="10" pk="false" />
+        <Field name="health" title="健康情况" type="String" maxlen="10" pk="false" />
+        <Field name="cid" title="国籍" type="String" maxlen="10" pk="false" />
+        <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+        <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+        <Field name="oid" title="港澳台侨外" type="String" maxlen="10" pk="false" />
+        <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+        <Field name="stbirth" title="出生日期" type="Timestamp" pk="false" />
+        <Field name="areacode" title="出生地行政区代码" type="String" maxlen="40" pk="false" />
+        <Field name="csd" title="出生地" type="String" maxlen="200" pk="false" />
+        <Field name="bid" title="血型" type="String" maxlen="10" pk="false" />
+        <Field name="studyway" title="就读方式" type="String" maxlen="10" pk="false" />
+        <Field name="mailaddress" title="通信地址" type="String" maxlen="200" pk="false" />
+        <Field name="houseaddress" title="家庭地址" type="String" maxlen="200" pk="false" />
+        <Field name="telephone" title="联系电话" type="String" maxlen="20" pk="false" />
+        <Field name="postcode" title="邮政编码" type="String" maxlen="10" pk="false" />
+        <Field name="singleflag" title="是否独生子女" type="String" maxlen="10" pk="false" />
+        <Field name="preflag" title="是否受过学前教育" type="String" maxlen="10" pk="false" />
+        <Field name="stayflag" title="是否留守儿童" type="String" maxlen="10" pk="false" />
+        <Field name="helpflag" title="是否享受一补" type="String" maxlen="10" pk="false" />
+        <Field name="orphanflag" title="是否孤儿" type="String" maxlen="10" pk="false" />
+        <Field name="martyr" title="是否烈士或优抚子女" type="String" maxlen="10" pk="false" />
+        <Field name="goway" title="上下学方式" type="String" maxlen="10" pk="false" />
+        <Field name="carflag" title="是否需要乘坐校车" type="String" maxlen="10" pk="false" />
+        <Field name="effectdate" title="身份证有效期" type="Timestamp" pk="false" />
+        <Field name="rollid" title="学籍辅号" type="String" maxlen="32" pk="false" />
+        <Field name="attendant" title="随班就读" type="String" maxlen="10" pk="false" />
+        <Field name="farmer" title="是否进城务工人员随迁子女" type="String" maxlen="10" pk="false" />
+        <Field name="houseaid" title="户口所在地行政区" type="String" maxlen="40" pk="false" />
+        <Field name="did" title="残疾类型" type="String" maxlen="10" pk="false" />
+        <Field name="cwid" title="入学方式" type="String" maxlen="10" pk="false" />
+        <Field name="hard" title="困难程度" type="String" maxlen="10" pk="false" />
+        <Field name="addressnow" title="现住地址" type="String" maxlen="200" pk="false" />
+        <Field name="helpneed" title="是否需要申请资助" type="String" maxlen="10" pk="false" />
+        <Field name="dtance" title="上下学距离" type="double" maxlen="22" pk="false" />
+        <Field name="specialty" title="特长" type="String" maxlen="200" pk="false" />
+        <Field name="homepage" title="主页地址" type="String" maxlen="200" pk="false" />
+        <Field name="buydegree" title="是否政府购买学位" type="String" maxlen="10" pk="false" />
+        <Field name="soldierflag" title="是否军人子女" type="String" maxlen="10" pk="false" />
+        <Field name="kindergarten" title="幼儿园毕业学校" type="String" maxlen="200" pk="false" />
+        <Field name="pschool" title="小学毕业学校" type="String" maxlen="200" pk="false" />
+        <Field name="juniormiddle" title="初中毕业学校" type="String" maxlen="200" pk="false" />
+        <Field name="updatetime" title="修改日期" type="Timestamp" pk="false" gen="datetime" />
+        <Field name="createtime" title="创建日期" type="Timestamp" pk="false" />
+        <Field name="valid" title="是否有效" type="String" maxlen="2" pk="false" />
+        <Field name="source" title="学生来源" type="String" maxlen="10" pk="false" />
+        <Field name="stu_status" title="学生状态" type="String" maxlen="10" pk="false" />
+        <Field name="first_yearmoth" title="入学年月" type="String" maxlen="10" pk="false" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="查询学生信息" rowacc="" nologin="" oauth="" name="query">
+      <Query basesql="SELECT a.usercode,a.username,a.nickname,a.portrait,a.idnumber,a.email,a.mobile,a.phone,a.gender,a.modifydt,a.description,e.birthday,c.*,d.classnm,d.gradecode,(select count(*)from pcmc_uslogin_log t where t.userid = a.userid and t.state = '1') as logincount,f.lastlogin FROM pcmc_user a left join pcmc_user_login f on a.userid = f.userid,pcmc_user_dept b,base_studentinfo c,base_class d,pcmc_user_ext e WHERE a.usertype='1' AND a.userid = b.userid AND a.userid = c.userid AND c.classid = d.classid AND a.userid = e.userid and c.valid='Y'" orderby="f.lastlogin desc">
+        <Field name="qry_username" title="学生姓名" type="String" maxlen="40" refname="a.username" op="%%" />
+        <Field name="qry_idnumber" title="身份证号码" type="String" maxlen="20" refname="a.idnumber" op="*%" />
+        <Field name="qry_studentno" title="学号" type="String" maxlen="20" refname="c.studentno" op="*%" />
+        <Field name="qry_classid" title="班级编号" type="String" maxlen="32" refname="d.classid" op="=" />
+        <Field name="qry_gradecode" title="年级代码" type="String" maxlen="3" refname="d.gradecode" op="=" />
+        <Field name="qry_deptid" title="学校代码" type="String" maxlen="32" gen="session.deptid" refname="b.deptid" op="=" />
+        <Field name="qry_studentid" title="用户编号" type="String" maxlen="32" refname="s.studinfoid" op="=" />
+      </Query>
+    </Action>
+    <Action base="" old="" desc="导入学生信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="import" />
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="List" desc="获得学生信息" colacc="" log="" webservice="" name="getStudentInfoList">
+      <Table name="base_studentinfo" />
+    </Action>
+    <Action accredit="" nologin="" base="List" colacc="" webservice="" old="" desc="获得奖励信息列表" rowacc="" log="" oauth="" name="getRewardList">
+      <Query basesql="select * from base_reward t where t.valid='Y'" orderby="t.reward_year desc">
+        <Field name="qry_userid" title="用户编号" type="String" refname="t.userid" op="=" />
+      </Query>
+    </Action>
+    <Action base="Insert" old="" desc="添加奖励信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="addRewardInfo">
+      <Table name="base_reward" />
+    </Action>
+    <Action base="Update" old="" desc="修改奖励信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="uptRewardInfo">
+      <Table name="base_reward" />
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="List" desc="获得惩罚信息列表" colacc="" log="" webservice="" name="getPunishList">
+      <Query basesql="select * from base_punish t where t.valid='Y'" orderby="t.punish_date desc">
+        <Field name="qry_userid" title="用户编号" type="String" refname="t.userid" op="=" />
+      </Query>
+    </Action>
+    <Action base="Insert" old="" desc="添加惩罚信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="addPunishInfo">
+      <Table name="base_punish" />
+    </Action>
+    <Action base="Update" old="" desc="修改惩罚信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="uptPunishInfo">
+      <Table name="base_punish" />
+    </Action>
+    <Action base="Delete" old="" desc="删除奖励信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="delRewardInfo">
+      <Table name="base_reward" />
+    </Action>
+    <Action base="Delete" old="" desc="删除惩罚信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="delPunishInfo">
+      <Table name="base_punish" />
+    </Action>
+    <Action accredit="" nologin="" base="List" colacc="" webservice="" old="" desc="获得学生教育轨迹列表" rowacc="" log="" oauth="" name="getEducateList">
+      <Query basesql="select * from base_edu t where t.valid='Y'">
+        <Field name="qry_userid" title="用户编号" type="String" maxlen="40" refname="t.userid" op="=" />
+      </Query>
+      <Table name="base_edu" />
+    </Action>
+    <Action base="Update" old="" desc="修改学生教育轨迹信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="uptEducateInfo">
+      <Table name="base_edu" />
+    </Action>
+    <Action base="Insert" old="" desc="添加学生轨迹信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="addEducateInfo">
+      <Table name="base_edu" />
+    </Action>
+    <Action accredit="" nologin="" base="List" colacc="" webservice="" old="" desc="取我的学科" rowacc="" log="" oauth="true" name="getMySubject">
+      <Query basesql="select t1.deptid,t2.classid,t4.subjectid,t4.subjname,t4.icon,t3.gradecode from base_course t1,base_studentinfo t2,base_class t3,base_subject t4 where t1.deptid=t2.deptid and t2.classid=t3.classid and t1.gradecode=t3.gradecode and t1.subjectid=t4.subjectid and t1.state&gt;'0' and t2.state&gt;'0' and t3.state&gt;'0' and t4.state&gt;'0'" orderby="t4.subjcode">
+        <Field name="qry_userid" title="用户ID" type="String" maxlen="40" gen="session.userid" refname="t2.userid" />
+      </Query>
+    </Action>
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="取我的群组" rowacc="" nologin="" oauth="true" name="getMyGroup">
+      <Query basesql="select t2.subjectid,t4.subjname,(select sd.member_id from learn_group_member sd where sd.valid='Y' and sd.userid=t3.userid and sd.group_id=t1.group_id) as member_id,t1.* from learn_group t1,base_teacher_subject t2,pcmc_user t3,base_subject t4 where t1.valid='Y' and t2.state&gt;'0' and t1.userid=t2.userid and t1.classid=t2.classid and t2.subjectid=t4.subjectid" orderby="t2.subjectid,t1.group_id">
+        <Field name="qry_subjectid" title="学科ID" type="String" maxlen="40" refname="t2.subjectid" op="=" />
+        <Field name="qry_classid" title="班级ID" type="String" maxlen="40" refname="t1.classid" op="=" />
+        <Field name="qry_userid" title="用户ID" type="String" maxlen="40" gen="session.userid" refname="t3.userid" op="=" />
+      </Query>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="true" base="List" desc="任课教师取班级小组" colacc="" nologin="" webservice="" name="getClassGroup">
+      <Query basesql="select t2.subjectid,t4.subjname,t1.* from learn_group t1,base_teacher_subject t2,base_subject t4 where t1.valid='Y' and t2.state&gt;'0' and t1.userid=t2.userid and t1.classid=t2.classid and t2.subjectid=t4.subjectid" orderby="t2.subjectid,t1.group_id">
+        <Field name="qry_classid" title="班级ID" type="String" maxlen="40" notnull="true" refname="t1.classid" op="=" />
+        <Field name="qry_teacherid" title="任课教师ID" type="String" maxlen="40" notnull="false" gen="session.userid" refname="t1.userid" op="=" />
+      </Query>
+    </Action>
+    <Action log="" colacc="" old="" rowacc="" oauth="true" base="List" desc="取学生自己的信息" accredit="" nologin="" webservice="" name="getSingleInfo">
+      <Query basesql="select t2.userid,t2.usercode,t2.username,t4.deptid,t4.deptname,t1.classid,t1.classnm,t1.gradecode,t5.studentno,t2.mobile from base_class t1,pcmc_user t2,pcmc_user_dept t3,pcmc_dept t4,base_studentinfo t5 where t1.state&gt;'0' and t3.state&gt;'0' and t2.state&gt;'0' and t4.state&lt;&gt;'9' and t5.state&gt;'0' and   t2.userid=t3.userid and t3.deptid=t4.deptid and t2.userid=t5.userid and t5.classid=t1.classid">
+        <Field name="qry_userid" title="用户ID" type="String" maxlen="40" notnull="false" gen="session.userid" refname="t2.userid" op="=" />
+      </Query>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="" desc="修改学生密码" accredit="" log="" webservice="" name="uptStudentPwd">
+      <Request>
+        <Field name="userid" title="学生ID" type="String" maxlen="40" gen="session.userid" />
+        <Field name="userpwd" title="登录密码" type="String" maxlen="100" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="grade" bean="cn.com.bright.yuexue.base.GradeManage" desc="年级管理">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="学校年级班级树" rowacc="" log="" oauth="" name="gradecls">
+      <Request>
+        <Field name="deptid" title="学校id" type="String" notnull="false" gen="session.deptid" />
+        <Field name="pid" title="上级id" type="String" notnull="true" />
+        <Field name="stype" title="数据类型" type="String" maxlen="1" notnull="false" />
+        <Field name="scode" title="代码" type="String" />
+      </Request>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="List" desc="查询年级" accredit="" log="" webservice="" name="list">
+      <Query basesql="select * from base_grade" orderby="gradecode">
+        <Field name="deptid" title="学校id" type="String" gen="session.deptid" />
+        <Field name="enabledType" title="启用标志" type="long" refname="enabled" op="=" />
+      </Query>
+      <Table name="base_grade" />
+    </Action>
+    <Action accredit="" nologin="" base="Update" colacc="" webservice="" old="" desc="修改年级信息" rowacc="" log="" oauth="" name="upt">
+      <Request>
+        <Field name="gradeid" title="gradeid" type="String" maxlen="32" notnull="true" pk="true" />
+        <Field name="classnum" title="班级数" type="long" notnull="true" />
+        <Field name="finished" title="是否毕业年级" type="long" notnull="true" />
+        <Field name="enabled" title="是否启用" type="long" notnull="true" />
+      </Request>
+      <Table name="base_grade" />
+    </Action>
+  </Operation>
+  <Operation id="gclass" bean="cn.com.bright.yuexue.base.ClassManage" desc="班级管理">
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="List" desc="按年级查询非毕业班级" accredit="" log="" webservice="" name="query">
+      <Query basesql="select * from base_class where state&lt;&gt;'3'" orderby="classcode">
+        <Field name="deptid" title="学校id" type="String" gen="session.deptid" />
+        <Field name="gradecode" title="年级" type="long" />
+      </Query>
+      <Table name="base_class" />
+    </Action>
+    <Action colacc="" rowacc="" base="Update" accredit="" webservice="" old="" desc="修改班级信息" log="" nologin="" oauth="" name="upt">
+      <Request>
+        <Field name="classid" title="classid" type="String" maxlen="32" notnull="true" pk="true" />
+        <Field name="classnm" title="名称" type="String" maxlen="100" notnull="true" pk="false" />
+        <Field name="firstyear" title="入学年" type="long" maxlen="5" notnull="true" pk="false" />
+        <Field name="state" title="状态" type="String" maxlen="2" pk="false" />
+      </Request>
+      <Table name="base_class" />
+    </Action>
+    <Action base="" old="" desc="批量生成班级" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="init">
+      <Request>
+        <Field name="gradecode" title="年级" type="long" maxlen="3" notnull="true" />
+        <Field name="deptid" title="deptid" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="org" bean="cn.com.bright.yuexue.base.OrgManage" desc="组织架构" />
+  <Operation id="dept" bean="cn.com.bright.yuexue.base.DeptManage" desc="机构基础数据管理">
+    <Action base="" old="" desc="初始化基础数据" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="init">
+      <Request>
+        <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="初始化机构" rowacc="" log="" oauth="" name="initDept">
+      <Request>
+        <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="doc" bean="cn.com.bright.yuexue.report.ImportFile" desc="文档管理">
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="上传xls数据文件" colacc="" log="" webservice="" name="importDocFile">
+      <Request>
+        <Field name="classids" title="所在班级" type="String" maxlen="40" />
+        <Field name="doc_flag" title="文件标识" type="String" maxlen="40" notnull="true" />
+        <Field name="doc_file" title="URL" type="file" maxlen="200" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="查看文件状态" rowacc="" nologin="" oauth="" name="getListDoc">
+      <Query basesql="select t.* from base_doc t" orderby="t.upload_date desc">
+        <Field name="qry_docType" title="文件类型" type="String" maxlen="10" refname="t.doc_type" op="=" />
+        <Field name="qry_docStatus" title="文件状态" type="String" maxlen="10" refname="t.doc_status" op="=" />
+        <Field name="qry_deptid" title="部门编号" type="String" maxlen="40" refname="t.deptid" op="=" />
+        <Field name="qry_docFlag" title="文件标识" type="String" maxlen="40" refname="t.doc_flag" op="=" />
+        <Field name="curr_deptid" title="当前学校ID" type="String" maxlen="40" gen="session.deptid" refname="t.deptid" op="=" />
+      </Query>
+      <Table name="base_doc" />
+    </Action>
+  </Operation>
+  <Operation id="friend" bean="cn.com.bright.yuexue.base.FriendManage" desc="好友管理">
+    <Action base="" old="" desc="发送好友请求" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="sendReqFriend">
+      <Request>
+        <Field name="friendids" title="好友ID" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="同意好友申请" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="agreeFriendReq">
+      <Request>
+        <Field name="userids" title="用户ID" type="String" maxlen="40" />
+        <Field name="msgstatus" title="消息状态" type="String" maxlen="10" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="拒绝好友申请" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="refuseFriendReq">
+      <Request>
+        <Field name="userids" title="用户ID" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="删除好友" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="delFriend">
+      <Request>
+        <Field name="userids" title="用户ID" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="List" desc="查询好友消息" accredit="" log="" webservice="" name="qryMsgList">
+      <Query basesql="select * from base_message where 1=1 " orderby="message_time">
+        <Field name="curUserId" title="当前登录用户" type="String" refname="touser_id" op="=" />
+        <Field name="msgStatus" title="消息状态" type="String" refname="message_status" op="=" />
+        <Field name="msgType" title="消息类型" type="String" refname="message_type" op="=" />
+      </Query>
+      <Table name="base_message" />
+    </Action>
+  </Operation>
+  <Operation id="family" bean="cn.com.bright.yuexue.base.FamilyManager" desc="家庭情况管理">
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="List" desc="获得家庭经济情况列表" colacc="" log="" webservice="" name="getFamilyEconomyList">
+      <Query basesql="select * from base_family_economy t where t.valid='Y'">
+        <Field name="qry_userid" type="String" title="用户编号" refname="t.userid" op="=" />
+      </Query>
+      <Table name="base_family_economy" />
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="List" desc="获得家庭成员列表信息" colacc="" log="" webservice="" name="getFamilyList">
+      <Query basesql="select * from base_familyinfo t where t.valid='Y'">
+        <Field name="qry_userid" title="用户编号" type="String" maxlen="40" refname="t.userid" op="=" />
+      </Query>
+      <Table name="base_familyinfo" />
+    </Action>
+    <Action base="Insert" old="" desc="添加家庭经济情况" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="insertFamilyEconomy">
+      <Table name="base_family_economy" />
+    </Action>
+    <Action base="Insert" old="" desc="添加家庭成员信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="insertFamilyUser">
+      <Table name="base_familyinfo" />
+    </Action>
+    <Action base="Update" old="" desc="修改个人家庭经济情况" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="uptFamilyEconomy">
+      <Table name="base_family_economy" />
+    </Action>
+    <Action base="Update" old="" desc="修改家庭成员信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="uptFamilyUser">
+      <Table name="base_familyinfo" />
+    </Action>
+  </Operation>
+  <Operation bean="cn.com.bright.yuexue.base.Register" id="Register" desc="用户注册管理">
+    <Action accredit="" log="" base="List" colacc="" webservice="" old="" desc="取下级单位" rowacc="" nologin="true" oauth="" name="getChildrenDept">
+      <Query basesql="select a.deptid as option_id,a.deptname as option_name from pcmc_dept a where pdeptid&lt;&gt;deptid and state&lt;&gt;'9' and state&lt;&gt;'0'" orderby="deptcode">
+        <Field name="pdeptid" title="上级单位ID" type="String" maxlen="40" notnull="true" refname="pdeptid" op="=" />
+      </Query>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加学生" rowacc="" nologin="true" oauth="" name="addStudent">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="true" />
+        <Field name="gradecode" title="年级" type="String" maxlen="2" notnull="true" />
+        <Field name="classcode" title="班级" type="String" maxlen="2" notnull="true" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="true" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="studentno" title="学号" type="String" maxlen="10" notnull="false" />
+        <Field name="addressnow" title="住址" type="String" maxlen="100" notnull="false" />
+        <Field name="stuid" title="学籍号" type="String" maxlen="32" notnull="false" />
+        <Field name="areacode" title="住址区域" type="String" maxlen="10" notnull="false" />
+        <Field name="father_name" title="父亲姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="father_mobile" title="父亲手机号码" type="String" maxlen="20" notnull="false" />
+        <Field name="mother_name" title="母亲姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="mother_mobile" title="母亲手机号码" type="String" maxlen="20" notnull="false" />
+        <Field name="phone_valid" title="手机验证码" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action colacc="" rowacc="" base="" accredit="" webservice="" old="" desc="增加教师" log="" nologin="true" oauth="" name="addTeacher">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="true" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="true" />
+        <Field name="gradecode" title="年级" type="String" maxlen="2" notnull="true" />
+        <Field name="classcode" title="班级" type="String" maxlen="2" notnull="true" />
+        <Field name="subjectid" title="学科" type="String" maxlen="2" notnull="true" />
+      </Request>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="true" oauth="" base="List" desc="取学校年级" colacc="" log="" webservice="" name="getSchoolGrade">
+      <Query basesql="select t1.gradecode as option_id,t1.gradename as option_name from base_grade t1 where t1.enabled='1'" orderby="t1.gradecode">
+        <Field name="deptid" title="单位ID" type="String" maxlen="40" notnull="true" refname="t1.deptid" op="=" />
+      </Query>
+    </Action>
+    <Action base="List" old="" desc="取年级班级" accredit="" colacc="" rowacc="" log="" nologin="true" webservice="" oauth="" name="getGradeClass">
+      <Query basesql="select t1.classcode as option_id,t1.classnm as option_name from base_class t1 where t1.state='1' " orderby="t1.classcode">
+        <Field name="deptid" title="单位ID" type="String" maxlen="40" notnull="true" refname="t1.deptid" op="=" />
+        <Field name="gradecode" title="年级代码" type="String" maxlen="40" notnull="true" refname="t1.gradecode" op="=" />
+      </Query>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="true" oauth="" base="List" desc="取年级开始课程" colacc="" log="" webservice="" name="getGradeSubject">
+      <Query basesql="select t1.subjectid as option_id,t1.coursenm as option_name from base_course t1,base_subject t2 where t1.subjectid=t2.subjectid" orderby="t2.subjcode">
+        <Field name="deptid" title="单位ID" type="String" maxlen="40" notnull="true" refname="t1.deptid" op="=" />
+        <Field name="gradecode" title="年级" type="String" maxlen="10" notnull="true" refname="t1.gradecode" op="=" />
+      </Query>
+    </Action>
+    <Action desc="根据用户账号查询用户" base="" old="" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="queryUserByUsercode">
+      <Request>
+        <Field name="usercode" title="用户账号" type="String" maxlen="20" notnull="false" />
+        <Field name="deptcodeAlias" title="部门别名" type="String" maxlen="20" notnull="false" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加学生（无机构信息）" rowacc="" nologin="true" oauth="" name="addStudentNoDeptInfo">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="账号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="true" />
+        <Field name="email" title="邮箱" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="true" oauth="" base="" desc="获取手机验证码" colacc="" log="" webservice="" name="getPhoneValid">
+      <Request>
+        <Field name="mobile" title="手机号" type="String" maxlen="20" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="发送短信找回密码" accredit="" colacc="" rowacc="" log="" nologin="true" webservice="" oauth="" name="findPwdByNote">
+      <Request>
+        <Field name="usercode" title="用户账号" type="String" maxlen="20" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="true" base="List" colacc="" webservice="" old="" desc="查询是否已绑定微信" rowacc="" log="" oauth="" name="getWeixinUserid">
+      <Query basesql="select * from base_winxin_user t1 where  t1.valid='Y'" orderby="t1.createtime desc">
+        <Field name="qry_weixincode" title="微信code" type="String" maxlen="40" refname="t1.winxincode" op="=" />
+      </Query>
+    </Action>
+    <Action accredit="" nologin="true" base="" colacc="" webservice="" old="" desc="根据手机号码查询用户信息" rowacc="" log="" oauth="" name="getMobileUserid">
+      <Request>
+        <Field name="qry_mobile" title="用户手机号码" type="String" maxlen="15" />
+        <Field name="qry_phone" title="联系电话" type="String" maxlen="15" />
+        <Field name="qry_usertype" title="用户类型" type="String" maxlen="1" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="绑定微信" rowacc="" nologin="true" oauth="" name="addBindWeixin">
+      <Request>
+        <Field name="winxincode" title="微信号" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="true" />
+        <Field name="usertype" title="类型" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="绑定微信" rowacc="" nologin="true" oauth="" name="delBindWeixin">
+      <Request>
+        <Field name="winxinid" title="winxinid" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="score" bean="cn.com.bright.zkb_51a.ScoreQuery" desc="成绩查询">
+    <Action accredit="" nologin="true" base="" colacc="" webservice="" old="" desc="成绩查询" rowacc="" log="" oauth="" name="query">
+      <Request>
+        <Field name="id" title="准考证号" type="String" maxlen="120" notnull="true" />
+        <Field name="un" title="姓名" type="String" maxlen="120" notnull="true" />
+        <Field name="captchaCode" title="验证码" type="String" maxlen="4" minlen="3" notnull="true" />
+      </Request>
+      <Response multi="false" result="-1">
+        <Field name="Hint" />
+        <Field name="Error" />
+      </Response>
+      <Flow>
+        <Forward result="0" ftype="0" path="/zhong_c.jsp" />
+        <Forward result="1" ftype="0" path="/zhong_c.jsp" />
+        <Forward result="-1" ftype="0" path="/zhong_c.jsp" />
+        <Forward result="-2" ftype="0" path="/zhong_c.jsp" />
+      </Flow>
+    </Action>
+  </Operation>
+</Config>
+

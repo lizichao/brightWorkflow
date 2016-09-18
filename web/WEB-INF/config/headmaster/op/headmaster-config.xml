@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/headmaster-config.xml">
+  <Operation id="masterReviewAction" bean="cn.com.bright.masterReview.MasterReviewAction" desc="校长职级评审Action">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="发起职级评审流程" rowacc="" log="" oauth="" name="startMasterReviewProcess">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="false" />
+        <Field name="headerMasterId" title="校长id" type="String" maxlen="60" notnull="true" />
+        <Field name="headerMasterName" title="校长名字" type="String" maxlen="30" notnull="true" />
+        <Field name="mobile" title="手机" type="String" maxlen="30" notnull="false" />
+        <Field name="identitycard" title="身份证号码" type="String" maxlen="32" />
+        <Field name="school_id" title="学校id" type="String" maxlen="32" />
+        <Field name="school_name" title="学校名称" type="String" maxlen="32"/>
+        <Field name="apply_level" title="申请级别" type="String" maxlen="1"/>
+        <Field name="present_occupation" title="现任职务" type="String" maxlen="32" notnull="false" />
+        <Field name="isSaveDraft" title="是否保存" type="String" maxlen="4" notnull="false" />
+         <Field name="address" title="地址" type="String" maxlen="4" notnull="false" />
+             <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+         <Field name="usersex" title="性别" type="String" maxlen="4" notnull="false" />
+         
+        <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
+	   <!--  <Field name="presentOccupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
+	    <Field name="present_major_occupation" title="现任专业技术职务" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
+	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
+	      <Field name="option_tab_type" title="更新类型" type="String" maxlen="60"  notnull="false" />
+        <Field name="option_tab_values" title="业务id" type="String"  notnull="false" />
+	    
+        
+         <Field name="school_name_space" title="学校名称" type="String" maxlen="60"/>
+        <Field name="schoolType" title="学校类型" type="String" maxlen="60"/>
+        <Field name="schoolCount" title="校区数量" type="String" maxlen="60"/>
+        <Field name="studentNumber" title="学生人数" type="String" maxlen="60"/>
+        <Field name="manage_difficulty_attachment_id" title="管理难度附件id" type="String" maxlen="32" notnull="false" />
+          
+        <Field name="school_name_space_ago" title="近八年学校名称" type="String" maxlen="60"/>
+        <Field name="schoolTypeAgo" title="学校类型近八年" type="String" maxlen="60"/>
+        <Field name="schoolCountAgo" title="校区数量近八年" type="String" maxlen="60"/>
+        <Field name="studentNumberAgo" title="学生人数近八年" type="String" maxlen="60"/>
+         <Field name="manage_difficulty_ago_attachment_id" title="近八年管理难度附件id" type="String" maxlen="32" notnull="false" />
+           
+         <Field name="work_report" title="工作成效" type="String" maxlen="600"/>
+      </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询业务主键" rowacc="" log="" oauth="" name="getMasterReviewBusinessKey">
+    </Action>
+    
+      
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="审批重填任务" rowacc="" log="" oauth="" name="completeRefillTask">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="false" />
+        <Field name="headerMasterId" title="校长id" type="String" maxlen="60" notnull="true" />
+        <Field name="headerMasterName" title="校长名字" type="String" maxlen="30" notnull="true" />
+        <Field name="mobile" title="手机" type="String" maxlen="30" notnull="false" />
+        <Field name="identitycard" title="身份证号码" type="String" maxlen="32" />
+        <Field name="school_id" title="学校id" type="String" maxlen="32" />
+        <Field name="school_name" title="学校名称" type="String" maxlen="32"/>
+        <Field name="apply_level" title="申请级别" type="String" maxlen="1"/>
+        <Field name="present_occupation" title="现任职务" type="String" maxlen="32" notnull="false" />
+        <Field name="work_report" title="工作成效" type="String" maxlen="600"/>
+            <Field name="address" title="地址" type="String" maxlen="4" notnull="false" />
+             <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+         <Field name="user_sex" title="性别" type="String" maxlen="4" notnull="false" />
+        
+           <Field name="school_name_space" title="学校名称" type="String" maxlen="60"/>
+        <Field name="schoolType" title="学校类型" type="String" maxlen="60"/>
+        <Field name="schoolCount" title="校区数量" type="String" maxlen="60"/>
+        <Field name="studentNumber" title="学生人数" type="String" maxlen="60"/>
+         <Field name="manage_difficulty_attachment_id" title="管理难度附件id" type="String" maxlen="32" notnull="false" />
+          
+          <Field name="school_name_space_ago" title="近八年学校名称" type="String" maxlen="60"/>
+        <Field name="schoolTypeAgo" title="学校类型近八年" type="String" maxlen="60"/>
+        <Field name="schoolCountAgo" title="校区数量近八年" type="String" maxlen="60"/>
+        <Field name="studentNumberAgo" title="学生人数近八年" type="String" maxlen="60"/>
+       <Field name="manage_difficulty_ago_attachment_id" title="近八年管理难度附件id" type="String" maxlen="32" notnull="false" />
+       
+        <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
+	   <!--  <Field name="presentOccupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
+	    <Field name="present_major_occupation" title="现任专业技术职务" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
+	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
+	      <Field name="option_tab_type" title="更新类型" type="String" maxlen="60"  notnull="false" />
+        <Field name="option_tab_values" title="业务id" type="String"  notnull="false" />
+       </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="审批区级任务" rowacc="" log="" oauth="" name="completeAreaCadresTask">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="60" notnull="false" />
+        <Field name="refuseType" title="驳回条目类型" type="String" maxlen="32" notnull="false" />
+        <Field name="refuseTypeId" title="驳回条目id " type="String" maxlen="32" notnull="false" />
+       </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="审批人事干部任务" rowacc="" log="" oauth="" name="completePersonnelLeaderTask">
+         <Request>
+	        <Field name="id" title="id" type="String" maxlen="32" notnull="false" />
+	        <Field name="headerMasterId" title="校长id " type="String" maxlen="32" notnull="true" />
+	        <Field name="baseinfo_grade" title="基础得分 " type="String" maxlen="32" notnull="false" />
+	        <Field name="work_experience_grade" title="任职年限得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="education_grade" title="学历情况得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="professional_title_grade" title="职称情况得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="management_difficulty_grade" title="管理难度得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="management_difficulty_grade_ago" title="管理难度得分(近八年) " type="String" maxlen="32" notnull="false" />
+	        <Field name="paper_grade" title="论文得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="work_publish_grade" title="著作出版得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="subject_grade" title="课题得分" type="String" maxlen="32" notnull="false" />
+	        <Field name="personal_award_grade" title="个人获奖得分 " type="String" maxlen="32" notnull="false" />
+	        <Field name="school_award_grade" title="学校获奖得分" type="String" maxlen="32" notnull="false" />
+	        
+	         <Field name="studyTrain_grade" title="学习进修得分" type="String" maxlen="32" notnull="false" />
+	         <Field name="schoolReform_grade" title="学校改革得分" type="String" maxlen="32" notnull="false" />
+	         <Field name="socialDuty_grade" title="社会责任得分" type="String" maxlen="32" notnull="false" />
+	         <Field name="accident_grade" title="责任事故得分" type="String" maxlen="32" notnull="false" />
+	         <Field name="punishment_grade" title="处分得分" type="String" maxlen="32" notnull="false" />
+	        
+	        <Field name="sumGrade" title="总得分" type="String" maxlen="32" notnull="false" />
+        </Request>
+    </Action>
+    
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="审批专家任务" rowacc="" log="" oauth="" name="completeProfessorApproveTask">
+       <Request>
+          <Field name="id" title="id" type="String" maxlen="32" notnull="false" />
+          <Field name="headerMasterId" title="校长id " type="String" maxlen="32" notnull="true" />
+          <Field name="report_grade" title="工作成效得分" type="String" maxlen="32" notnull="false" />
+          <Field name="sumGrade" title="总得分" type="String" maxlen="32" notnull="false" />
+        </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="审批一般任务" rowacc="" log="" oauth="" name="completeMasterReviewTask">
+        
+    </Action>
+    
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增任职年限" rowacc="" log="" oauth="" name="addWorkExperience">
+      <Request>
+        <Field name="startTime" title="开始时间" type="Timestamp" maxlen="32" notnull="true" />
+        <Field name="endTime" title="结束时间" type="Timestamp" maxlen="30" notnull="true" />
+        <Field name="businessKey" title="业务key " type="String" maxlen="60" notnull="true" />
+        <Field name="workSchool" title="所在学校" type="String" maxlen="100" notnull="true" />
+        <Field name="workProfession" title="担任职务" type="String" maxlen="100" notnull="true" />
+        <Field name="workYear" title="任职年限" type="String" maxlen="100" notnull="true" />
+        <Field name="proveAttachMentId" title="证明材料" type="String" maxlen="100" notnull="false" />
+      </Request>
+    </Action>
+    
+        
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增学历情况" rowacc="" log="" oauth="" name="addEducation">
+      <Request>
+         <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="startTime" title="开始时间" type="Timestamp"  notnull="true" />
+        <Field name="endTime" title="结束时间" type="Timestamp"  notnull="true" />
+        <Field name="studySchool" title="就读院校" type="String" maxlen="32" notnull="true" />
+        <Field name="studyProfession" title="就读专业" type="String" maxlen="32" notnull="true" />
+         <Field name="degree" title="学位" type="String" maxlen="32" notnull="true" />
+        <Field name="education" title="学历" type="String" maxlen="32" notnull="true" />
+        <Field name="educationAttachmentId" title="学历附件id" type="String" maxlen="32" notnull="false" />
+        <Field name="degreeAttachmentId" title="学位附件id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增职称情况" rowacc="" log="" oauth="" name="addProfessionalTitle">
+      <Request>
+        <Field name="startTime" title="开始时间" type="Timestamp"  notnull="false" />
+        <Field name="endTime" title="结束时间" type="Timestamp"  notnull="false" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="obtainTime" title="获得时间" type="Timestamp" maxlen="32" notnull="true" />
+        <Field name="obtainSchool" title="获得学校" type="String" maxlen="32" notnull="true" />
+        <Field name="professionaltitle_name" title="职称名称" type="String" maxlen="32" notnull="true" />
+          <Field name="professionalAttachId" title="证明附件id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增论文情况" rowacc="" log="" oauth="" name="addPaper">
+      <Request>
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="title" title="题目" type="String" maxlen="32" notnull="true" />
+        <Field name="publish_time" title="发表时间 " type="Timestamp" notnull="true" />
+        <Field name="magazine_meet_name" title="杂志学术会名称" type="String" maxlen="32" notnull="true" />
+        <Field name="paper_meet_name" title="论文会议名称 " type="String" maxlen="32" notnull="true" />
+        <Field name="paper_number" title="刊号 " type="String" maxlen="32" notnull="true" />
+        <Field name="organizers" title="主办单位" type="String" maxlen="32" notnull="true" />
+        <Field name="organizers_level" title="主办单位级别" type="String" maxlen="32" notnull="true" />
+        <Field name="personal_part" title="个人承担部分" type="String" maxlen="32" notnull="true" />
+        <Field name="paper_attachment_id" title="扫描件附件id " type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增著作发表情况" rowacc="" log="" oauth="" name="addWorkPublish">
+      <Request>
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="book_name" title="书名" type="String" maxlen="32" notnull="true" />
+        <Field name="complete_way" title="完成方式 " type="String" maxlen="32" notnull="true" />
+        <Field name="publish_time" title="出版时间" type="Timestamp" notnull="true" />
+        <Field name="complete_chapter" title="本人承担部分" type="String" maxlen="32" notnull="true" />
+        <Field name="complete_word" title="本人完成字数 " type="String" maxlen="32" notnull="true" />
+        <Field name="author_order" title="作者排序" type="String" maxlen="32" notnull="true" />
+        <Field name="cover_attachment_id" title="封面附件id" type="String" maxlen="32" notnull="false" />
+        <Field name="contents_attachment_id" title="章节目录页附件id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增课题发表情况" rowacc="" log="" oauth="" name="addSubject">
+      <Request>
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="subject_name" title="课题名称" type="String" maxlen="32" notnull="true" />
+        <Field name="subject_company" title="课题立项单位 " type="String"  notnull="true" />
+        <Field name="subject_level" title="课题级别" type="String" maxlen="32" notnull="true" />
+        <Field name="subject_responsibility" title="课题职责" type="String" maxlen="32" notnull="true" />
+        <Field name="is_finish_subject" title="是否结题 " type="String" maxlen="32" notnull="true" />
+        <Field name="finish_result" title="获奖情况" type="String" maxlen="32" notnull="true" />
+        <Field name="finish_time" title="结题时间" type="Timestamp" notnull="true" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增个人获奖情况" rowacc="" log="" oauth="" name="addPersonalAward">
+      <Request>
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="awards_name" title="奖项名称" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_company" title="表彰单位 " type="String"  notnull="true" />
+        <Field name="awards_level" title="获奖级别" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_type" title="获奖类别" type="String" maxlen="4" notnull="true" />
+        <Field name="awards_time" title="表彰时间" type="Timestamp" notnull="true" />
+        <Field name="awards_attachment_id" title="获奖证书附件id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增学校获得荣誉" rowacc="" log="" oauth="" name="addSchoolAward">
+      <Request>
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="awards_name" title="奖项名称" type="String" maxlen="32" notnull="true" />
+        <Field name="work_school" title="任职学校 " type="String" notnull="true" />
+        <Field name="awards_company" title="表彰单位" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_level" title="获奖级别" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_time" title="表彰时间" type="Timestamp" notnull="true"/>
+        <Field name="awards_attachment_id" title="获奖证书附件id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除任职年限" rowacc="" log="" oauth="" name="deleteWorkExperience">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除学历情况" rowacc="" log="" oauth="" name="deleteEducation">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除职称" rowacc="" log="" oauth="" name="deleteProfessionalTitle">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除论文" rowacc="" log="" oauth="" name="deletePaper">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+  <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除著作发表" rowacc="" log="" oauth="" name="deleteWorkPublish">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+  <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除课题发表" rowacc="" log="" oauth="" name="deleteSubject">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除个人获奖情况" rowacc="" log="" oauth="" name="deletePersonalAward">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除学校获奖情况" rowacc="" log="" oauth="" name="deleteSchoolAward">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除等级评估" rowacc="" log="" oauth="" name="deleteGradeEvaluate">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+      
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除学校特色和改革" rowacc="" log="" oauth="" name="deleteSchoolReform">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除社会责任" rowacc="" log="" oauth="" name="deleteSocialDuty">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+      
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除责任事故" rowacc="" log="" oauth="" name="deleteAccident">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+      
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除减分处分" rowacc="" log="" oauth="" name="deletePunishment">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+      
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除工作经历" rowacc="" log="" oauth="" name="deleteWorkHistory">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
+   
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新任职年限" rowacc="" log="" oauth="" name="updateWorkExperience">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="startTime" title="开始时间" type="Timestamp" maxlen="32" notnull="true" />
+        <Field name="endTime" title="结束时间" type="Timestamp" maxlen="30" notnull="true" />
+        <Field name="businessKey" title="业务key " type="String" maxlen="60" notnull="true" />
+        <Field name="workSchool" title="所在学校" type="String" maxlen="100" notnull="true" />
+        <Field name="workProfession" title="担任职务" type="String" maxlen="100" notnull="true" />
+        <Field name="workYear" title="任职年限" type="String" maxlen="100" notnull="true" />
+        <Field name="proveAttachMentId" title="证明材料" type="String" maxlen="100" notnull="false" />
+        <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新学历情况" rowacc="" log="" oauth="" name="updateEducation">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="businessKey" title="业务key " type="String" maxlen="60" notnull="true" />
+        <Field name="startTime" title="开始时间" type="Timestamp"  notnull="true" />
+        <Field name="endTime" title="结束时间" type="Timestamp"  notnull="true" />
+        <Field name="studySchool" title="就读院校" type="String" maxlen="32" notnull="true" />
+        <Field name="studyProfession" title="就读专业" type="String" maxlen="32" notnull="true" />
+        <Field name="educationAttachmentId" title="学历附件id" type="String" maxlen="32" notnull="false" />
+        <Field name="degreeAttachmentId" title="学位附件id" type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+  <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新学历情况" rowacc="" log="" oauth="" name="updateEducation">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="startTime" title="开始时间" type="Timestamp"  notnull="true" />
+        <Field name="endTime" title="结束时间" type="Timestamp"  notnull="true" />
+        <Field name="studySchool" title="就读院校" type="String" maxlen="32" notnull="true" />
+        <Field name="studyProfession" title="就读专业" type="String" maxlen="32" notnull="true" />
+        <Field name="educationAttachmentId" title="学历附件id" type="String" maxlen="32" notnull="false" />
+        <Field name="degreeAttachmentId" title="学位附件id" type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新职称情况" rowacc="" log="" oauth="" name="updateProfessionalTitle">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="startTime" title="开始时间" type="Timestamp"  notnull="true" />
+        <Field name="endTime" title="结束时间" type="Timestamp"  notnull="true" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="30" notnull="true" />
+        <Field name="obtainTime" title="就读院校" type="Timestamp" maxlen="32" notnull="true" />
+        <Field name="obtainSchool" title="就读专业" type="String" maxlen="32" notnull="true" />
+        <Field name="professionalAttachId" title="证明附件id" type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新论文情况" rowacc="" log="" oauth="" name="updatePaper">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="title" title="题目" type="String" maxlen="32" notnull="true" />
+        <Field name="publish_time" title="发表时间 " type="Timestamp" notnull="true" />
+        <Field name="magazine_meet_name" title="杂志学术会名称" type="String" maxlen="32" notnull="true" />
+        <Field name="paper_meet_name" title="论文会议名称 " type="String" maxlen="32" notnull="true" />
+        <Field name="paper_number" title="刊号 " type="String" maxlen="32" notnull="true" />
+        <Field name="organizers" title="主办单位" type="String" maxlen="32" notnull="true" />
+        <Field name="organizers_level" title="主办单位级别" type="String" maxlen="32" notnull="true" />
+        <Field name="personal_part" title="个人承担部分" type="String" maxlen="32" notnull="true" />
+        <Field name="paper_attachment_id" title="扫描件附件id " type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+  <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新著作发表情况" rowacc="" log="" oauth="" name="updateWorkPublish">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="book_name" title="书名" type="String" maxlen="32" notnull="true" />
+        <Field name="complete_way" title="完成方式 " type="String" maxlen="32" notnull="true" />
+        <Field name="publish_time" title="出版时间" type="Timestamp" notnull="true" />
+        <Field name="complete_chapter" title="本人承担部分" type="String" maxlen="32" notnull="true" />
+        <Field name="complete_word" title="本人完成字数 " type="String" maxlen="32" notnull="true" />
+        <Field name="author_order" title="作者排序" type="String" maxlen="32" notnull="true" />
+        <Field name="cover_attachment_id" title="封面附件id" type="String" maxlen="32" notnull="false" />
+        <Field name="contents_attachment_id" title="章节目录页附件id" type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+  <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新课题情况" rowacc="" log="" oauth="" name="updateSubject">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="subject_name" title="课题名称" type="String" maxlen="32" notnull="true" />
+        <Field name="subject_company" title="课题立项单位 " type="String"  notnull="true" />
+        <Field name="subject_level" title="课题级别" type="String" maxlen="32" notnull="true" />
+        <Field name="subject_responsibility" title="课题职责" type="String" maxlen="32" notnull="true" />
+        <Field name="is_finish_subject" title="是否结题 " type="String" maxlen="32" notnull="true" />
+        <Field name="finish_result" title="获奖情况" type="String" maxlen="32" notnull="true" />
+        <Field name="finish_time" title="结题时间" type="Timestamp" notnull="true" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新个人获奖情况" rowacc="" log="" oauth="" name="updatePersonalAward">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="awards_name" title="奖项名称" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_company" title="表彰单位 " type="String"  notnull="true" />
+        <Field name="awards_level" title="获奖级别" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_time" title="表彰时间" type="Timestamp" notnull="true" />
+        <Field name="awards_attachment_id" title="获奖证书附件id" type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+           <Field name="awards_type" title="获奖类别" type="String" maxlen="4" notnull="true" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新学校获奖情况" rowacc="" log="" oauth="" name="updateSchoolAward">
+      <Request>
+         <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+        <Field name="businessKey" title="业务key" type="String" maxlen="60" notnull="true" />
+        <Field name="awards_name" title="奖项名称" type="String" maxlen="32" notnull="true" />
+        <Field name="work_school" title="任职学校 " type="String" notnull="true" />
+        <Field name="awards_company" title="表彰单位" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_level" title="获奖级别" type="String" maxlen="32" notnull="true" />
+        <Field name="awards_time" title="表彰时间" type="Timestamp" notnull="true"/>
+        <Field name="awards_attachment_id" title="获奖证书附件id" type="String" maxlen="32" notnull="false" />
+          <Field name="isRefill" title="是否驳回" type="String" maxlen="2" notnull="false" />
+      </Request>
+   </Action>
+   
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="保存申请数据" rowacc="" log="true" oauth="" name="saveMasterReviewData">
+      <Request>
+        <Field name="present_occupation" title="现任职务" type="String"  maxlen="60"/>
+        <Field name="apply_level" title="申请级别" type="String"  maxlen="60"/>
+        <Field name="schoolType" title="学校类型" type="String" maxlen="60"/>
+        <Field name="schoolCount" title="校区数量" type="String" maxlen="60"/>
+        <Field name="studentNumber" title="学生人数" type="String" maxlen="60"/>
+        <Field name="manage_difficulty_attachment_id" title="管理难度附件id" type="String" maxlen="32" notnull="false" />
+        
+        <Field name="schoolTypeAgo" title="学校类型近八年" type="String" maxlen="60"/>
+        <Field name="schoolCountAgo" title="校区数量近八年" type="String" maxlen="60"/>
+        <Field name="studentNumberAgo" title="学生人数近八年" type="String" maxlen="60"/>
+        <Field name="manage_difficulty_ago_attachment_id" title="近八年管理难度附件id" type="String" maxlen="32" notnull="false" />
+            
+        <Field name="work_report" title="工作成效" type="String" maxlen="60"/>
+        <Field name="id" title="主键id" type="String" maxlen="60"/>
+      </Request>
+    </Action>
+    
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查看申请" rowacc="" log="true" oauth="" name="viewMasterReview">
+      <Request>
+        <Field name="query_businessKey" title="业务id" type="String"  maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+       
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="驳回充填保存更新数据" rowacc="" log="true" oauth="" name="saveUpdateRefillData">
+      <Request>
+        <Field name="id" title="业务id" type="String" maxlen="60"  notnull="false" />
+        <Field name="option_tab_type" title="更新类型" type="String" maxlen="60"  notnull="false" />
+        <Field name="option_tab_values" title="业务id" type="String"  notnull="false" />
+        <Field name="businessKey" title="业务id" type="String"  notnull="false" />
+      </Request>
+    </Action>
+    
+      
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="设置当前选项卡序号" rowacc="" nologin="" oauth="" name="saveCurrentOptionNum">
+       <Request>
+          <Field name="businessKey" title="业务id" type="String" maxlen="40" notnull="false" />
+          <Field name="current_option_num" title="当前选项卡序号" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找当前选项卡序号" rowacc="" nologin="" oauth="" name="findCurrentOptionNum">
+       <Request>
+         <Field name="businessKey" title="校长名称" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+  </Operation>
+ <!-- 流程Action结束 -->
+  
+  <!-- 校长开始 -->
+  <Operation id="headMasterbase" bean="cn.com.bright.masterReview.headmaster.HeadMaster" desc="校长">
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加校长" rowacc="" nologin="true" oauth="" name="addMaster">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="true" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+        <Field name="phone_valid" title="手机验证码" type="String" maxlen="10" notnull="false" />
+        <Field name="phasestudy" title="学段" type="String" maxlen="10" notnull="false" />
+        <Field name="ispositive" title="正副校长" type="String" maxlen="10" notnull="false" />
+        
+       <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="present_occupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
+	    <Field name="present_major_occupation" title="现任专业技术职务" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
+	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加校长" rowacc="" nologin="true" oauth="" name="registerMaster">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="true" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+        <Field name="phone_valid" title="手机验证码" type="String" maxlen="10" notnull="false" />
+        <Field name="phasestudy" title="学段" type="String" maxlen="10" notnull="false" />
+        <Field name="ispositive" title="正副校长" type="String" maxlen="10" notnull="false" />
+        
+        <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="present_occupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
+	    <Field name="present_major_occupation" title="现任专业技术职务" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
+	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询校长" rowacc="" nologin="true" oauth="" name="findMaster">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="更新校长" rowacc="" nologin="true" oauth="" name="updateMaster">
+      <Request>
+        <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+        <Field name="userid" title="用户id" type="String" maxlen="40" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="true" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+        
+        <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="present_occupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
+	    <Field name="present_major_occupation" title="现任专业技术职务" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
+	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
+	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
+      </Request>
+    </Action>
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="删除校长" rowacc="" nologin="true" oauth="" name="deleteMaster">
+      <Request>
+         <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+      </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询校长申请状态" rowacc="" nologin="true" oauth="" name="findMasterApplyStatus">
+        <Request>
+           <Field name="headerMasterId" title="校长id" type="String" maxlen="40" notnull="true" />
+        </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询单个校长基本属性" rowacc="" nologin="" oauth="" name="findMasterBaseInfo">
+        <Request>
+           <Field name="userid" title="校长id" type="String" maxlen="40" notnull="true" />
+        </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询校长保存草稿任务id" rowacc="" nologin="" oauth="" name="findSaveDraftTaskId">
+        <Request>
+           <Field name="processInstanceId" title="流程实例id" type="String" maxlen="40" notnull="true" />
+        </Request>
+     </Action>
+  </Operation>
+  <!-- 校长结束 -->
+  
+   <!-- 专家开始-->
+  <Operation id="professorAction" bean="cn.com.bright.masterReview.professor.ProfessorAction" desc="专家Action">
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加专家" rowacc="" nologin="" oauth="" name="addProfessor">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询专家" rowacc="" nologin="" oauth="" name="findProfessor">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="更新专家" rowacc="" nologin="" oauth="" name="updateProfessor">
+      <Request>
+        <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+        <Field name="userid" title="用户id" type="String" maxlen="40" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="true" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+      </Request>
+    </Action>
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="删除专家" rowacc="" nologin="true" oauth="" name="deleteProfessor">
+      <Request>
+         <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+      </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找未审核数据" rowacc="" nologin="" oauth="" name="findNoApproveData">
+       <Request>
+         <Field name="username" title="校长名称" type="String" maxlen="40" notnull="false" />
+         <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+      </Request>
+     </Action>
+     
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找已审核数据" rowacc="" nologin="" oauth="" name="findApproveData">
+       <Request>
+         <Field name="username" title="校长名称" type="String" maxlen="40" notnull="false" />
+          <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+      </Request>
+    </Action>
+  
+  </Operation>
+   <!-- 专家结束 -->
+  
+   <!-- 领导开始 -->
+  <Operation id="leaderAction" bean="cn.com.bright.masterReview.leader.LeaderAction" desc="领导Action">
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加领导" rowacc="" nologin="" oauth="" name="addLeader">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询领导" rowacc="" nologin="" oauth="" name="findLeader">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="更新领导" rowacc="" nologin="" oauth="" name="updateLeader">
+      <Request>
+        <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+        <Field name="userid" title="用户id" type="String" maxlen="40" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="true" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+      </Request>
+    </Action>
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="删除领导" rowacc="" nologin="true" oauth="" name="deleteLeader">
+      <Request>
+         <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+      </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找审批结果" rowacc="" nologin="true" oauth="" name="findApproveResult">
+      <Request>
+         <Field name="identitycard" title="身份证" type="String" maxlen="40" notnull="false" />
+         <Field name="username" title="姓名" type="String" maxlen="40" notnull="false" />
+         <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+      </Request>
+     </Action>
+  </Operation>
+  <!-- 领导结束 -->
+  
+  <!-- 人事干部开始 -->
+ <Operation id="personalLeaderAction" bean="cn.com.bright.masterReview.personalleader.PersonalLeaderAction" desc="人事干部Action">
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加人事干部" rowacc="" nologin="" oauth="" name="addPersonalLeader">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询人事干部" rowacc="" nologin="" oauth="" name="findPersonalLeader">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="更新人事干部" rowacc="" nologin="" oauth="" name="updatePersonalLeader">
+      <Request>
+        <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+        <Field name="userid" title="用户id" type="String" maxlen="40" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="true" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+      </Request>
+    </Action>
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="删除人事干部" rowacc="" nologin="true" oauth="" name="deletePersonalLeader">
+      <Request>
+         <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+      </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找未审核数据" rowacc="" nologin="" oauth="" name="findNoApproveData">
+       <Request>
+         <Field name="username" title="校长名称" type="String" maxlen="40" notnull="false" />
+          <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+      </Request>
+     </Action>
+     
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找已审核数据" rowacc="" nologin="" oauth="" name="findApproveData">
+       <Request>
+         <Field name="username" title="校长名称" type="String" maxlen="40" notnull="false" />
+          <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+      </Request>
+     </Action>
+     
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询人事干部打分结果" rowacc="" nologin="" oauth="" name="findGradeResult">
+      <Request>
+        <Field name="apply_headmaster" title="校长id" type="String" maxlen="40" notnull="false" />
+        <Field name="processInstanceId" title="流程实例id" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+     
+  </Operation>
+   <!-- 人事干部结束 -->
+  
+  
+  <!-- 区级领导开始 -->
+ <Operation id="arealeaderAction" bean="cn.com.bright.masterReview.arealeader.ArealeaderAction" desc="区级领导Action">
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加区级领导" rowacc="" nologin="" oauth="" name="addArealeader">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询区级领导" rowacc="" nologin="" oauth="" name="findArealeader">
+      <Request>
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="false" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="更新区级领导" rowacc="" nologin="" oauth="" name="updateArealeader">
+      <Request>
+        <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+        <Field name="userid" title="用户id" type="String" maxlen="40" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
+        <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="true" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+        <Field name="address" title="住址" type="String" maxlen="100" notnull="false" />
+      </Request>
+    </Action>
+    
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="删除区级领导" rowacc="" nologin="true" oauth="" name="deleteArealeader">
+      <Request>
+         <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+      </Request>
+     </Action>
+     
+     <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找未审核数据" rowacc="" nologin="" oauth="" name="findNoApproveData">
+       <Request>
+         <Field name="username" title="校长名称" type="String" maxlen="40" notnull="false" />
+          <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+      </Request>
+     </Action>
+     
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查找已审核数据" rowacc="" nologin="" oauth="" name="findApproveData">
+       <Request>
+         <Field name="username" title="校长名称" type="String" maxlen="40" notnull="false" />
+          <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
+      </Request>
+     </Action>
+  </Operation>
+   <!-- 区级领导结束 -->
+   
+      
+    <!--新闻管理开始 -->
+ <Operation id="newsAction" bean="cn.com.bright.masterReview.news.NewsAction" desc="新闻管理Action">
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="增加新闻" rowacc="" nologin="" oauth="" name="addNews">
+      <Request>
+        <Field name="news_title" title="标题" type="String" maxlen="80" notnull="true" />
+        <Field name="news_content" title="内容" type="String" maxlen="10000" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询新闻" rowacc="" nologin="true" oauth="" name="findNews">
+      <Request>
+        <Field name="news_title" title="标题" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="更新新闻" rowacc="" nologin="" oauth="" name="updateNews">
+      <Request>
+        <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+        <Field name="news_title" title="标题" type="String" maxlen="80" notnull="false" />
+        <Field name="news_content" title="内容" type="String" maxlen="10000" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="删除新闻" rowacc="" nologin="" oauth="" name="deleteNews">
+      <Request>
+         <Field name="id" title="id" type="String" maxlen="40" notnull="true" />
+      </Request>
+     </Action>
+     
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询新闻" rowacc="" nologin="true" oauth="" name="findSingleNews">
+      <Request>
+        <Field name="id" title="主键" type="String" maxlen="40" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="查询首页新闻" rowacc="" nologin="true" oauth="" name="findIndexNews">
+    </Action>
+  </Operation>
+   
+   
+ <Operation id="groupAction" bean="cn.com.bright.masterReview.professor.GroupAction" desc="群组Action">
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="取教室列表" colacc="" log="" webservice="" name="getGroupList">
+      <Request>
+        <Field name="group_pid" title="目前群组流水号" type="String" maxlen="32" notnull="false" />
+        <Field name="fristDeptId" title="第一次查询机构号" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除群组信息" rowacc="" log="" oauth="" name="deleteGroup">
+      <Request>
+        <Field name="group_id" title="群组编号" type="String" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="00105">删除群组信息成功</Msg>
+        <Msg code="00106">删除群组信息失败</Msg>
+      </Message>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="增加群组信息" rowacc="" log="" oauth="" name="addGroup">
+      <Request>
+        <Field name="group_id" title="群组编号" type="String" maxlen="32" notnull="false" />
+        <Field name="group_name" title="群组编号" type="String" maxlen="32" notnull="false" />
+        <Field name="group_pid" title="父编号" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action name="updateGroup" base="Update" desc="更新群组信息">
+      <Table name="headmaster_group" />
+      <Message>
+        <Msg code="00105">修改群组信息成功</Msg>
+        <Msg code="00106">修改群组信息失败</Msg>
+      </Message>
+    </Action>
+    
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="取组下面专家列表" colacc="" log="" webservice="" name="findProfessors">
+      <Request>
+        <Field name="group_id" title="群组id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="" desc="取组下面校长列表" colacc="" log="" webservice="" name="findHeadMasters">
+      <Request>
+        <Field name="group_id" title="群组id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="增加校长集合" rowacc="" log="" oauth="" name="addHeadMasterList">
+      <Request>
+        <Field name="addHeadMasterIds" title="校长id集合" type="String" maxlen="200" />
+         <Field name="group_id" title="群组id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="增加专家集合" rowacc="" log="" oauth="" name="addProfessorList">
+      <Request>
+        <Field name="addProfessorIds" title="专家id集合" type="String" maxlen="200" />
+         <Field name="group_id" title="群组id" type="String" maxlen="32" notnull="false" />
+      </Request>
+    </Action>
+    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除群组内的专家" rowacc="" log="" oauth="" name="deleteGroupProfessor">
+      <Request>
+        <Field name="user_group_id" title="群组专家编号" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除群组内的校长" rowacc="" log="" oauth="" name="deleteGroupMaster">
+      <Request>
+        <Field name="user_group_id" title="群组校长编号" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+    
+  </Operation>
+</Config>
+

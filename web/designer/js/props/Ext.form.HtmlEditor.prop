@@ -1,0 +1,48 @@
+{
+properties : [{
+    name : "createLinkText",
+    desc : "<b>String</b> The default text for the create link prompt"
+  },{
+    name : "defaultLinkValue",
+    desc : "<b>String</b> The default value for the create link prompt (defaults to http://)"
+  },{
+    name : "defaultValue",
+    desc : "<b>String</b> A default value to be put into the editor to resolve focus issues"
+  },{
+    name : "enableAlignments",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the left, center, right alignment buttons (defaults to true)"
+  },{
+    name : "enableColors",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the fore/highlight color buttons (defaults to true)"
+  },{
+    name : "enableFont",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable font selection. Not available in Safari. (defaults to true)"
+  },{
+    name : "enableFontSize",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the increase/decrease font size buttons (defaults to true)"
+  },{
+    name : "enableFormat",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the bold, italic and underline buttons (defaults to true)"
+  },{
+    name : "enableLinks",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the create link button. Not available in Safari. (defaults to true)"
+  },{
+    name : "enableLists",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the bullet and numbered list buttons. Not available in Safari. (defaults to true)"
+  },{
+    name : "enableSourceEdit",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enable the switch to source edit button. Not available in Safari. (defaults to true)"
+  },{
+    name : "fontFamilies",
+    type : "array",
+    desc : "<b>Array</b> An array of available font families"
+  }]
+}

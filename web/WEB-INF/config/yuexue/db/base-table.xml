@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/base-table.xml">
+  <Table desc="群组" name="base_ctgroup">
+    <Field name="groupid" title="groupid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="creator" title="创建者" type="String" maxlen="32" pk="false" />
+    <Field name="groupname" title="群组名称" type="String" maxlen="100" notnull="true" pk="false" />
+    <Field name="createdt" title="创建时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="群组成员" name="base_contacts">
+    <Field name="contactid" title="contactid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="groupid" title="groupid" type="String" maxlen="32" pk="false" />
+    <Field name="creator" title="创建者" type="String" maxlen="32" pk="false" />
+    <Field name="memberid" title="成员" type="String" maxlen="32" pk="false" />
+    <Field name="remarknm" title="备注名" type="String" maxlen="100" pk="false" />
+  </Table>
+  <Table name="base_student_parent" desc="学生家长">
+    <Field name="studparentid" title="studparentid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="parentid" title="parentid" type="String" maxlen="32" notnull="false" />
+    <Field name="userid" title="userid" type="String" maxlen="32" notnull="false" />
+    <Field name="verified" title="verified" type="long" notnull="false" />
+  </Table>
+  <Table desc="学生基本信息表" name="base_studentinfo">
+    <Field name="studinfoid" title="studinfoid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="oldname" title="曾用名" type="String" maxlen="32" pk="false" />
+    <Field name="xmpy" title="姓名拼音" type="String" maxlen="32" pk="false" />
+    <Field name="stuid" title="学籍号" type="String" maxlen="32" pk="false" />
+    <Field name="origin" title="籍贯" type="String" maxlen="20" pk="false" />
+    <Field name="ctid" title="证件类型" type="String" maxlen="10" pk="false" />
+    <Field name="health" title="健康情况" type="String" maxlen="10" pk="false" />
+    <Field name="cid" title="国籍" type="String" maxlen="10" pk="false" />
+    <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+    <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+    <Field name="oid" title="港澳台侨外" type="String" maxlen="10" pk="false" />
+    <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+    <Field name="stbirth" title="出生日期" type="Timestamp" pk="false" />
+    <Field name="areacode" title="出生地行政区代码" type="String" maxlen="40" pk="false" />
+    <Field name="csd" title="出生地" type="String" maxlen="200" pk="false" />
+    <Field name="bid" title="血型" type="String" maxlen="10" pk="false" />
+    <Field name="studyway" title="就读方式" type="String" maxlen="10" pk="false" />
+    <Field name="mailaddress" title="通信地址" type="String" maxlen="200" pk="false" />
+    <Field name="houseaddress" title="家庭地址" type="String" maxlen="200" pk="false" />
+    <Field name="telephone" title="联系电话" type="String" maxlen="20" pk="false" />
+    <Field name="postcode" title="邮政编码" type="String" maxlen="10" pk="false" />
+    <Field name="singleflag" title="是否独生子女" type="String" maxlen="10" pk="false" />
+    <Field name="preflag" title="是否受过学前教育" type="String" maxlen="10" pk="false" />
+    <Field name="stayflag" title="是否留守儿童" type="String" maxlen="10" pk="false" />
+    <Field name="helpflag" title="是否享受一补" type="String" maxlen="10" pk="false" />
+    <Field name="orphanflag" title="是否孤儿" type="String" maxlen="10" pk="false" />
+    <Field name="martyr" title="是否烈士或优抚子女" type="String" maxlen="10" pk="false" />
+    <Field name="goway" title="上下学方式" type="String" maxlen="10" pk="false" />
+    <Field name="carflag" title="是否需要乘坐校车" type="String" maxlen="10" pk="false" />
+    <Field name="effectdate" title="身份证有效期" type="String" maxlen="20" pk="false" />
+    <Field name="rollid" title="学籍辅号" type="String" maxlen="32" pk="false" />
+    <Field name="attendant" title="随班就读" type="String" maxlen="10" pk="false" />
+    <Field name="farmer" title="是否进城务工人员随迁子女" type="String" maxlen="10" pk="false" />
+    <Field name="houseaid" title="户口所在地行政区" type="String" maxlen="40" pk="false" />
+    <Field name="did" title="残疾类型" type="String" maxlen="10" pk="false" />
+    <Field name="cwid" title="入学方式" type="String" maxlen="10" pk="false" />
+    <Field name="hard" title="困难程度" type="String" maxlen="10" pk="false" />
+    <Field name="addressnow" title="现住地址" type="String" maxlen="200" pk="false" />
+    <Field name="helpneed" title="是否需要申请资助" type="String" maxlen="10" pk="false" />
+    <Field name="dtance" title="上下学距离" type="double" maxlen="22" pk="false" />
+    <Field name="specialty" title="特长" type="String" maxlen="200" pk="false" />
+    <Field name="homepage" title="主页地址" type="String" maxlen="200" pk="false" />
+    <Field name="buydegree" title="是否政府购买学位" type="String" maxlen="10" pk="false" />
+    <Field name="soldierflag" title="是否军人子女" type="String" maxlen="10" pk="false" />
+    <Field name="kindergarten" title="幼儿园毕业学校" type="String" maxlen="200" pk="false" />
+    <Field name="pschool" title="小学毕业学校" type="String" maxlen="200" pk="false" />
+    <Field name="juniormiddle" title="初中毕业学校" type="String" maxlen="200" pk="false" />
+    <Field name="updatetime" title="修改日期" type="Timestamp" pk="false" />
+    <Field name="createtime" title="创建日期" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="2" pk="false" />
+    <Field name="userid" title="userid" type="String" maxlen="32" pk="false" />
+    <Field name="source" title="学生来源" type="String" maxlen="10" pk="false" />
+    <Field name="stu_status" title="学生状态" type="String" maxlen="10" pk="false" />
+    <Field name="first_yearmoth" title="入学年月" type="String" maxlen="10" pk="false" />
+    <Field name="deptid" title="所在学校" type="String" maxlen="32" pk="false" />
+    <Field name="classid" title="班级" type="String" maxlen="32" pk="false" />
+    <Field name="firstyear" title="入学年" type="long" maxlen="5" pk="false" />
+    <Field name="finishyear" title="毕业年" type="long" maxlen="5" pk="false" />
+    <Field name="transferdt" title="转学日期" type="Timestamp" pk="false" />
+    <Field name="state" title="状态" type="String" maxlen="10" pk="false" />
+    <Field name="pad_lock" title="pad锁定" type="String" maxlen="10" pk="false" />
+    <Field name="lock_time" title="锁定时间" type="Timestamp" pk="false" />
+    <Field name="stu_name" title="学生姓名" type="String" maxlen="40" pk="false" />
+    <Field name="stu_idnumber" title="证件号码" type="String" maxlen="20" pk="false" />
+    <Field name="stu_sex" title="性别" type="String" maxlen="10" pk="false" />
+    <Field name="stu_email" title="电子邮箱" type="String" maxlen="40" pk="false" />
+    <Field name="stu_mobile" title="移动电话" type="String" maxlen="20" pk="false" />
+    <Field name="studentno" title="学生学号" type="String" maxlen="40" pk="false" />
+  </Table>
+  <Table name="base_course" desc="课程">
+    <Field name="courseid" title="courseid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="deptid" title="deptid" type="String" maxlen="32" pk="false" gen="session.deptid" />
+    <Field name="gradecode" title="年级" type="String" maxlen="3" pk="false" />
+    <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="coursenm" title="课程名" type="String" maxlen="200" notnull="true" pk="false" />
+    <Field name="courseicon" title="图标" type="String" maxlen="200" pk="false" />
+    <Field name="state" title="课程状态，0表示删除；1表示学校用户创建；2表示基础数据" type="String" maxlen="2" pk="false" />
+    <Field name="subject_book_id" title="教材编号" type="String" maxlen="32" pk="false" />
+    <Field name="orderidx" title="显示顺序" type="long" maxlen="5" pk="false" />
+  </Table>
+  <Table desc="教师任教课程" name="base_teacher_subject">
+    <Field name="teasubjid" title="teasubjid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="deptid" title="deptid" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="userid" type="String" maxlen="32" pk="false" />
+    <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="classid" title="班级" type="String" maxlen="32" pk="false" />
+    <Field name="state" title="状态" type="String" maxlen="2" pk="false" />
+    <Field name="is_classteacher" title="是否班主任" type="long" maxlen="3" pk="false" />
+    <Field name="assistant_id" title="课代表ID" type="String" maxlen="40" pk="false" />
+  </Table>
+  <Table name="base_grade" desc="年级">
+    <Field name="gradeid" title="gradeid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="false" />
+    <Field name="gradecode" title="年级代码" type="long" notnull="true" />
+    <Field name="gradename" title="名称" type="String" maxlen="30" notnull="true" />
+    <Field name="shortname" title="简称" type="String" maxlen="10" notnull="false" />
+    <Field name="classnum" title="班级数" type="long" notnull="false" />
+    <Field name="finished" title="年级分类" type="long" notnull="true" />
+    <Field name="enabled" title="是否启用" type="long" notnull="true" />
+  </Table>
+  <Table name="base_stu_clschange" desc="学生班级调整记录">
+    <Field name="clschangeid" title="clschangeid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="userid" type="String" maxlen="32" notnull="false" />
+    <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="false" />
+    <Field name="fromclsid" title="当前班" type="String" maxlen="32" notnull="false" />
+    <Field name="toclsid" title="调整后班" type="String" maxlen="32" notnull="false" />
+    <Field name="changedt" title="调整日期" type="Timestamp" notnull="false" />
+  </Table>
+  <Table name="base_upgrade" desc="班级升级记录">
+    <Field name="upgradeid" title="upgradeid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="classid" title="classid" type="String" maxlen="32" notnull="false" />
+    <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="false" />
+    <Field name="fromgrade" title="当前年级" type="long" notnull="false" />
+    <Field name="fromclass" title="当前班" type="long" notnull="false" />
+    <Field name="tograde" title="升学年级" type="long" notnull="false" />
+    <Field name="toclass" title="升学班" type="long" notnull="false" />
+    <Field name="createdt" title="创建时间" type="Timestamp" notnull="false" />
+  </Table>
+  <Table desc="教材目录" name="base_book_folder">
+    <Field name="folder_id" title="folder_id" type="long" maxlen="10" notnull="true" pk="true" gen="table" />
+    <Field name="parent_folder_id" title="parent_folder_id" type="long" maxlen="10" pk="false" />
+    <Field name="subject_book_id" title="subject_book_id" type="String" maxlen="32" pk="false" />
+    <Field name="folder_code" title="父节点缩进编码" type="String" maxlen="300" pk="false" />
+    <Field name="folder_name" title="章节名称" type="String" maxlen="100" pk="false" />
+    <Field name="begin_page_num" title="章节起始页码" type="long" maxlen="10" pk="false" />
+    <Field name="end_page_num" title="章节结束页码" type="long" maxlen="10" pk="false" />
+    <Field name="display_order" title="显示顺序" type="long" maxlen="5" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="base_class" desc="班级">
+    <Field name="classid" title="classid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="deptid" title="deptid" type="String" maxlen="32" pk="false" />
+    <Field name="firstyear" title="入学年" type="long" maxlen="5" pk="false" />
+    <Field name="gradecode" title="年级" type="long" maxlen="3" pk="false" />
+    <Field name="classcode" title="班" type="long" maxlen="3" pk="false" />
+    <Field name="classnm" title="名称" type="String" maxlen="100" notnull="true" pk="false" />
+    <Field name="shortnm" title="简称" type="String" maxlen="20" pk="false" />
+    <Field name="icon" title="图标" type="String" maxlen="200" pk="false" />
+    <Field name="classteacher" title="班主任" type="String" maxlen="32" pk="false" />
+    <Field name="classsize" title="班级人数" type="long" maxlen="5" pk="false" />
+    <Field name="createdt" title="创建日期" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="state" title="状态" type="String" maxlen="2" pk="false" />
+  </Table>
+  <Table desc="目录知识点" name="base_folder_point">
+    <Field name="fp_id" title="fp_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="folder_id" title="folder_id" type="long" maxlen="10" pk="false" />
+    <Field name="k_point_id" title="k_point_id" type="String" maxlen="32" pk="false" />
+    <Field name="display_order" title="显示顺序" type="long" maxlen="5" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="base_knowledge_point" desc="学科知识点">
+    <Field name="k_point_id" title="k_point_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="grade_code" title="年级(平台代码)" type="String" maxlen="5" pk="false" />
+    <Field name="k_point_name" title="知识点" type="String" maxlen="100" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="base_subject" desc="学科">
+    <Field name="subjectid" title="subjectid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="subjcode" title="代码" type="String" maxlen="30" notnull="true" pk="false" />
+    <Field name="subjname" title="名称" type="String" maxlen="100" notnull="true" pk="false" />
+    <Field name="shortnm" title="简称" type="String" maxlen="20" pk="false" />
+    <Field name="icon" title="图标" type="String" maxlen="100" pk="false" />
+    <Field name="state" title="状态" type="String" maxlen="2" pk="false" />
+    <Field name="remark" title="备注" type="String" maxlen="200" pk="false" />
+  </Table>
+  <Table name="base_subject_book" desc="学科教材出版社">
+    <Field name="subject_book_id" title="subject_book_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="subjectid" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="grade_code" title="年级(平台代码)" type="String" maxlen="5" pk="false" />
+    <Field name="publisher_code" title="出版社(平台代码)" type="String" maxlen="32" pk="false" />
+    <Field name="book_name" title="教材名称" type="String" maxlen="60" pk="false" />
+    <Field name="book_version" title="教材版本" type="String" maxlen="20" pk="false" />
+    <Field name="valid" title="有效标记" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="书本附件表" name="base_book_attachment">
+    <Field name="book_attachment_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="subject_book_id" title="学科书本ID" type="String" maxlen="40" pk="false" />
+    <Field name="folder_id" title="书本目录ID" type="String" maxlen="40" pk="false" />
+    <Field name="book_type" title="书本类型" type="String" maxlen="40" pk="false" />
+    <Field name="attachment_id" title="附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="base_doc" desc="数据导入表">
+    <Field name="doc_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="doc_title" title="文件名" type="String" maxlen="200" pk="false" />
+    <Field name="doc_size" title="文件大小" type="String" maxlen="40" pk="false" />
+    <Field name="doc_type" title="文件类型" type="String" maxlen="40" pk="false" />
+    <Field name="upload_by" title="上传用户ID" type="String" maxlen="40" pk="false" />
+    <Field name="upload_date" title="上传时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="doc_status" title="处理状态" type="String" maxlen="20" pk="false" />
+    <Field name="doc_file_url" title="文件路径" type="String" maxlen="200" pk="false" />
+    <Field name="doc_remark" title="备注" type="String" maxlen="200" pk="false" />
+    <Field name="deptid" title="单位ID" type="String" maxlen="40" pk="false" />
+    <Field name="doc_flag" title="文件标记" type="String" maxlen="40" pk="false" />
+  </Table>
+  <Table name="base_message" desc="">
+    <Field name="message_id" title="消息编号(主键)" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="fromuser_id" title="发送消息用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="touser_id" title="接收消息用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="message" title="发送消息" type="String" maxlen="1000" pk="false" />
+    <Field name="message_type" title="消息类型" type="String" maxlen="10" pk="false" />
+    <Field name="message_status" title="消息状态" type="String" maxlen="10" pk="false" />
+    <Field name="message_time" title="发送消息时间" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table desc="" name="base_friend">
+    <Field name="id" title="主键编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="host_id" title="(发送者)用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="friend_id" title="好友编号" type="String" maxlen="32" pk="false" />
+    <Field name="friend_status" title="状态" type="String" maxlen="10" pk="false" />
+    <Field name="create_date" title="创建日期" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_date" title="修改日期" type="Timestamp" pk="false" />
+    <Field name="del_flag" title="删除标识" type="String" maxlen="10" pk="false" />
+  </Table>
+  <Table name="base_teacher_info" desc="">
+    <Field name="teacher_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="ctid" title="证键类型" type="String" maxlen="10" pk="false" />
+    <Field name="houseaddress" title="家庭地址" type="String" maxlen="225" pk="false" />
+    <Field name="oid" title="港澳台侨" type="String" maxlen="10" pk="false" />
+    <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+    <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+    <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+    <Field name="edu" title="最高学历" type="String" maxlen="10" pk="false" />
+    <Field name="preflag" title="是否学前教育专业" type="String" maxlen="10" pk="false" />
+    <Field name="sfyjszgz" title="是否有教师资格证" type="String" maxlen="10" pk="false" />
+    <Field name="fzjg" title="发证机关" type="String" maxlen="100" pk="false" />
+    <Field name="jszgzzl" title="教师资格证种类" type="String" maxlen="10" pk="false" />
+    <Field name="jszgzhm" title="教师资格证号码" type="String" maxlen="20" pk="false" />
+    <Field name="rzlb" title="任职类别" type="String" maxlen="10" pk="false" />
+    <Field name="xzzw" title="行政职务" type="String" maxlen="10" pk="false" />
+    <Field name="begin_year" title="来校(园)日期(年月)" type="String" maxlen="10" pk="false" />
+    <Field name="sbtid" title="参加社保类型" type="String" maxlen="10" pk="false" />
+    <Field name="ylbx" title="有无医疗保险" type="String" maxlen="10" pk="false" />
+    <Field name="sndkhqk" title="上年度考核情况" type="String" maxlen="10" pk="false" />
+    <Field name="bzqk" title="编制情况" type="String" maxlen="10" pk="false" />
+    <Field name="jbgz" title="基本工资(元/月)" type="double" maxlen="22" pk="false" />
+    <Field name="jxgz" title="绩效工资(元/月)" type="double" maxlen="22" pk="false" />
+    <Field name="jtbz" title="其他津贴补助(元/月)" type="double" maxlen="22" pk="false" />
+    <Field name="pjsr" title="上年平均月收入(元/月)" type="double" maxlen="22" pk="false" />
+    <Field name="ywylbx" title="有无养老保险" type="String" maxlen="10" pk="false" />
+    <Field name="zfgjj" title="有无住房公积金" type="String" maxlen="10" pk="false" />
+    <Field name="sybx" title="有无失业保险" type="String" maxlen="10" pk="false" />
+    <Field name="gsbx" title="有无工伤保险" type="String" maxlen="10" pk="false" />
+    <Field name="ywsybx" title="有无生育保险" type="String" maxlen="10" pk="false" />
+    <Field name="edu_dept" title="获得最高学历机构" type="String" maxlen="255" pk="false" />
+    <Field name="zgxw" title="最高学位" type="String" maxlen="10" pk="false" />
+    <Field name="xw_dept" title="获得最高学位机构" type="String" maxlen="255" pk="false" />
+    <Field name="job_year" title="参加工作年份" type="String" maxlen="10" pk="false" />
+    <Field name="job_type" title="岗位类别" type="String" maxlen="10" pk="false" />
+    <Field name="job_grade" title="岗位等级" type="String" maxlen="10" pk="false" />
+    <Field name="htqk" title="签订合同情况" type="String" maxlen="32" pk="false" />
+    <Field name="pthdj" title="普通话等级" type="String" maxlen="10" pk="false" />
+    <Field name="cjqsrq" title="从教起始日期" type="Timestamp" pk="false" />
+    <Field name="rksd" title="主要任课学段" type="String" maxlen="10" pk="false" />
+    <Field name="rjkc" title="任教课程" type="String" maxlen="10" pk="false" />
+    <Field name="zyjszw" title="专业技术职务" type="String" maxlen="10" pk="false" />
+    <Field name="sfqrzsf" title="是否全日制师范类专业毕业" type="String" maxlen="10" pk="false" />
+    <Field name="pxqk" title="近三年专任教师接受培训情况" type="String" maxlen="10" pk="false" />
+    <Field name="mfshs" title="是否属于免费师范生" type="String" maxlen="10" pk="false" />
+    <Field name="jsgw" title="是否持有教师岗位" type="String" maxlen="10" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+    <Field name="updatedate" title="修改日期" type="Timestamp" pk="false" />
+    <Field name="createdate" title="添加日期" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="gzfl_key" title="五险一金代码" type="String" maxlen="255" pk="false" />
+    <Field name="gzfl_value" title="五险一金代码值" type="String" maxlen="255" pk="false" />
+    <Field name="rjkc_key" title="任教课程代码" type="String" maxlen="255" pk="false" />
+    <Field name="rjkc_value" title="任教课程代码值" type="String" maxlen="255" pk="false" />
+    <Field name="pxqk_key" title="培训情况代码" type="String" maxlen="255" pk="false" />
+    <Field name="pxqk_value" title="培训情况代码值" type="String" maxlen="255" pk="false" />
+    <Field name="cid" title="国籍" type="String" maxlen="40" pk="false" />
+    <Field name="firstyearmoth" title="从教起始年月" type="String" maxlen="20" pk="false" />
+  </Table>
+  <Table desc="" name="base_studentinfo_attr">
+    <Field name="studinfoid" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="oldname" title="曾用名" type="String" maxlen="32" pk="false" />
+    <Field name="xmpy" title="姓名拼音" type="String" maxlen="32" pk="false" />
+    <Field name="stuid" title="学籍号" type="String" maxlen="32" pk="false" />
+    <Field name="origin" title="籍贯" type="String" maxlen="20" pk="false" />
+    <Field name="ctid" title="证件类型" type="String" maxlen="10" pk="false" />
+    <Field name="health" title="健康情况" type="String" maxlen="10" pk="false" />
+    <Field name="cid" title="国籍" type="String" maxlen="10" pk="false" />
+    <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+    <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+    <Field name="oid" title="港澳台侨外" type="String" maxlen="10" pk="false" />
+    <Field name="hkxz" title="户口性质" type="String" maxlen="10" pk="false" />
+    <Field name="stbirth" title="出生日期" type="Timestamp" pk="false" />
+    <Field name="areacode" title="出生地行政区代码" type="String" maxlen="40" pk="false" />
+    <Field name="csd" title="出生地" type="String" maxlen="200" pk="false" />
+    <Field name="bid" title="血型" type="String" maxlen="10" pk="false" />
+    <Field name="studyway" title="就读方式" type="String" maxlen="10" pk="false" />
+    <Field name="mailaddress" title="通信地址" type="String" maxlen="200" pk="false" />
+    <Field name="houseaddress" title="家庭地址" type="String" maxlen="200" pk="false" />
+    <Field name="telephone" title="联系电话" type="String" maxlen="20" pk="false" />
+    <Field name="postcode" title="邮政编码" type="String" maxlen="10" pk="false" />
+    <Field name="singleflag" title="是否独生子女" type="String" maxlen="10" pk="false" />
+    <Field name="preflag" title="是否受过学前教育" type="String" maxlen="10" pk="false" />
+    <Field name="stayflag" title="是否留守儿童" type="String" maxlen="10" pk="false" />
+    <Field name="helpflag" title="是否享受一补" type="String" maxlen="10" pk="false" />
+    <Field name="orphanflag" title="是否孤儿" type="String" maxlen="10" pk="false" />
+    <Field name="martyr" title="是否烈士或优抚子女" type="String" maxlen="10" pk="false" />
+    <Field name="goway" title="上下学方式" type="String" maxlen="10" pk="false" />
+    <Field name="carflag" title="是否需要乘坐校车" type="String" maxlen="10" pk="false" />
+    <Field name="effectdate" title="身份证有效期" type="Timestamp" pk="false" />
+    <Field name="rollid" title="学籍辅号" type="String" maxlen="32" pk="false" />
+    <Field name="attendant" title="随班就读" type="String" maxlen="10" pk="false" />
+    <Field name="farmer" title="是否进城务工人员随迁子女" type="String" maxlen="10" pk="false" />
+    <Field name="houseaid" title="户口所在地行政区" type="String" maxlen="40" pk="false" />
+    <Field name="did" title="残疾类型" type="String" maxlen="10" pk="false" />
+    <Field name="cwid" title="入学方式" type="String" maxlen="10" pk="false" />
+    <Field name="hard" title="困难程度" type="String" maxlen="10" pk="false" />
+    <Field name="addressnow" title="现住地址" type="String" maxlen="200" pk="false" />
+    <Field name="helpneed" title="是否需要申请资助" type="String" maxlen="10" pk="false" />
+    <Field name="dtance" title="上下学距离" type="double" maxlen="22" pk="false" />
+    <Field name="specialty" title="特长" type="String" maxlen="200" pk="false" />
+    <Field name="homepage" title="主页地址" type="String" maxlen="200" pk="false" />
+    <Field name="buydegree" title="是否政府购买学位" type="String" maxlen="10" pk="false" />
+    <Field name="soldierflag" title="是否军人子女" type="String" maxlen="10" pk="false" />
+    <Field name="kindergarten" title="幼儿园毕业学校" type="String" maxlen="200" pk="false" />
+    <Field name="pschool" title="小学毕业学校" type="String" maxlen="200" pk="false" />
+    <Field name="juniormiddle" title="初中毕业学校" type="String" maxlen="200" pk="false" />
+    <Field name="updatetime" title="修改日期" type="Timestamp" pk="false" />
+    <Field name="createtime" title="创建日期" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="valid" title="是否有效" type="String" maxlen="2" pk="false" />
+    <Field name="userid" type="String" maxlen="32" pk="false" />
+    <Field name="source" title="学生来源" type="String" maxlen="10" pk="false" />
+    <Field name="stu_status" title="学生状态" type="String" maxlen="10" pk="false" />
+    <Field name="first_yearmoth" title="入学年月" type="String" maxlen="10" pk="false" />
+  </Table>
+  <Table name="base_family_economy" desc="家庭经济情况">
+    <Field name="economy_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="jtrk" title="家庭人口" type="String" maxlen="3" pk="false" />
+    <Field name="syrk" title="赡养人口" type="String" maxlen="3" pk="false" />
+    <Field name="jtnsr" title="家庭年收入" type="double" maxlen="22" pk="false" />
+    <Field name="zysrly" title="家庭主要收入来源" type="String" maxlen="200" pk="false" />
+    <Field name="ldlrks" title="具备劳动力人口数" type="String" maxlen="3" pk="false" />
+    <Field name="sfdb" title="是否低保" type="String" maxlen="10" pk="false" />
+    <Field name="jxddbx" title="就学地低保线" type="double" maxlen="22" pk="false" />
+    <Field name="kncd" title="困难程度" type="String" maxlen="10" pk="false" />
+    <Field name="fmsfssldnl" title="是否父母丧失劳动力" type="String" maxlen="10" pk="false" />
+    <Field name="sfpkjt" title="是否农村绝对贫困家庭" type="String" maxlen="10" pk="false" />
+    <Field name="sftkjzfwjtzn" title="特困救助范围的家庭子女" type="String" maxlen="10" pk="false" />
+    <Field name="sfjls" title="是否军烈属" type="String" maxlen="10" pk="false" />
+    <Field name="sfjtwbh" title="是否五保户" type="String" maxlen="10" pk="false" />
+    <Field name="sfydbhz" title="是否有大病患者" type="String" maxlen="10" pk="false" />
+    <Field name="sfzszrzh" title="是否遭受自然灾害" type="String" maxlen="10" pk="false" />
+    <Field name="zfzhms" title="自然灾害具体情况描述" type="String" maxlen="1000" pk="false" />
+    <Field name="sfzstfyw" title="是否遭受突发意外" type="String" maxlen="10" pk="false" />
+    <Field name="tfsjms" title="突发意外事件具体描述" type="String" maxlen="1000" pk="false" />
+    <Field name="syrs" title="家庭成员失业人数" type="String" maxlen="3" pk="false" />
+    <Field name="qzje" title="欠债金额" type="double" maxlen="22" pk="false" />
+    <Field name="qzyy" title="欠债原因" type="String" maxlen="200" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+  </Table>
+  <Table name="base_familyinfo" desc="家庭成员">
+    <Field name="family_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="name" title="家庭成员或监护人姓名" type="String" maxlen="40" pk="false" />
+    <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+    <Field name="nuxes" title="关系" type="String" maxlen="10" pk="false" />
+    <Field name="relation" title="关系说明" type="String" maxlen="200" pk="false" />
+    <Field name="ctid" title="证件类型" type="String" maxlen="10" pk="false" />
+    <Field name="cno" title="证件号码" type="String" maxlen="20" pk="false" />
+    <Field name="unit" title="工作单位" type="String" maxlen="200" pk="false" />
+    <Field name="duty" title="工作职务" type="String" maxlen="200" pk="false" />
+    <Field name="address" title="地址" type="String" maxlen="200" pk="false" />
+    <Field name="houseaid" title="户口所在地行政区" type="String" maxlen="40" pk="false" />
+    <Field name="telephone" title="联系电话" type="String" maxlen="20" pk="false" />
+    <Field name="tutor" title="是否监护人" type="String" maxlen="10" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+  </Table>
+  <Table desc="奖励信息" name="base_reward">
+    <Field name="reward_id" title="主键编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="rewad_name" title="奖励名称" type="String" maxlen="40" pk="false" />
+    <Field name="reward_type" title="奖励类型" type="String" maxlen="2" pk="false" />
+    <Field name="reward_level" title="奖励级别" type="String" maxlen="2" pk="false" />
+    <Field name="reward_grade" title="奖励等级" type="String" maxlen="2" pk="false" />
+    <Field name="reward_cause" title="奖励原因" type="String" maxlen="200" pk="false" />
+    <Field name="reward_money" title="奖励金额" type="double" maxlen="22" pk="false" />
+    <Field name="reward_number" title="奖励文号" type="String" maxlen="32" pk="false" />
+    <Field name="reward_year" title="学年度" type="String" maxlen="20" pk="false" />
+    <Field name="reward_category" title="奖励类别" type="String" maxlen="2" pk="false" />
+    <Field name="reward_method" title="奖励方式" type="String" maxlen="2" pk="false" />
+    <Field name="create_date" title="创建日期" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_date" title="修改日期" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+    <Field name="reward_dept" title="颁奖单位" type="String" maxlen="200" pk="false" />
+  </Table>
+  <Table name="base_punish" desc="惩罚信息">
+    <Field name="punish_id" title="主键编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="punish_name" title="惩罚名称" type="String" maxlen="40" pk="false" />
+    <Field name="punish_number" title="惩罚文号" type="String" maxlen="32" pk="false" />
+    <Field name="punish_date" title="惩罚日期" type="Timestamp" pk="false" />
+    <Field name="punish_cause" title="惩罚原因" type="String" maxlen="200" pk="false" />
+    <Field name="cancel_date" title="撤销日期" type="Timestamp" pk="false" />
+    <Field name="cancel_number" title="撤销文号" type="String" maxlen="32" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="20" pk="false" />
+  </Table>
+  <Table name="base_edu" desc="教育经历">
+    <Field name="edu_id" title="主键编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" />
+    <Field name="dept_code" title="学习单位" type="String" maxlen="200" pk="false" />
+    <Field name="edu_content" title="学习内容" type="String" maxlen="200" pk="false" />
+    <Field name="post" title="职务" type="String" maxlen="10" pk="false" />
+    <Field name="reterence" title="证明人" type="String" maxlen="40" pk="false" />
+    <Field name="begin_date" title="启始日期" type="Timestamp" pk="false" />
+    <Field name="end_date" title="终止日期" type="Timestamp" pk="false" />
+    <Field name="edu_category" title="教育类别" type="String" maxlen="10" pk="false" />
+    <Field name="graduation" title="毕业情况" type="String" maxlen="10" pk="false" />
+    <Field name="degree" title="所获学位" type="String" maxlen="10" pk="false" />
+    <Field name="profession" title="所学专业" type="String" maxlen="10" pk="false" />
+    <Field name="edu_remark" title="备注" type="String" maxlen="200" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="2" pk="false" />
+  </Table>
+  <Table name="temp_base_teacher" desc="教师临时存储表">
+    <Field name="tempid" title="主键编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="xh" title="序号" type="String" maxlen="10" notnull="false" pk="false" />
+    <Field name="username" title="用户名" type="String" maxlen="10" pk="false" />
+    <Field name="gender" title="性别" type="String" maxlen="10" pk="false" />
+    <Field name="birthday" title="出生日期" type="Timestamp" pk="false" />
+    <Field name="nid" title="民族" type="String" maxlen="10" pk="false" />
+    <Field name="cid" title="国籍" type="String" maxlen="10" pk="false" />
+    <Field name="psid" title="政治面貌" type="String" maxlen="10" pk="false" />
+    <Field name="ctid" title="证键类型" type="String" maxlen="255" pk="false" />
+    <Field name="idnumber" title="身份证号" type="String" maxlen="40" pk="false" />
+    <Field name="edu" title="最高学历" type="String" maxlen="40" pk="false" />
+    <Field name="edu_dept" title="获得最高学历机构" type="String" maxlen="255" pk="false" />
+    <Field name="zgxw" title="最高学位" type="String" maxlen="40" pk="false" />
+    <Field name="xw_dept" title="获得最高学位机构" type="String" maxlen="255" pk="false" />
+    <Field name="job_year" title="参加工作年份" type="String" maxlen="40" pk="false" />
+    <Field name="job_type" title="岗位类别" type="String" maxlen="40" pk="false" />
+    <Field name="job_grade" title="岗位等级" type="String" maxlen="40" pk="false" />
+    <Field name="xzzw" title="行政职务" type="String" maxlen="40" pk="false" />
+    <Field name="bzqk" title="编制情况" type="String" maxlen="40" pk="false" />
+    <Field name="htqk" title="签订合同情况" type="String" maxlen="40" pk="false" />
+    <Field name="pjsr" title="上年平均月收入(元/月)" type="double" maxlen="22" pk="false" />
+    <Field name="gzfl_key" title="五险一金代码" type="String" maxlen="255" pk="false" />
+    <Field name="jszgzzl" title="教师资格证种类" type="String" maxlen="255" pk="false" />
+    <Field name="pthdj" title="普通话等级" type="String" maxlen="40" pk="false" />
+    <Field name="firstyearmoth" title="从教起始年月" type="String" maxlen="20" pk="false" />
+    <Field name="rksd" title="主要任课学段" type="String" maxlen="20" pk="false" />
+    <Field name="rjkc_key" title="任教课程代码" type="String" maxlen="255" pk="false" />
+    <Field name="zyjszw" title="专业技术职务" type="String" maxlen="20" pk="false" />
+    <Field name="sfqrzsf" title="是否全日制师范类专业毕业" type="String" maxlen="40" pk="false" />
+    <Field name="pxqk_key" title="培训情况代码" type="String" maxlen="255" pk="false" />
+    <Field name="mfshs" title="是否属于免费师范生" type="String" maxlen="40" pk="false" />
+    <Field name="jsgw" title="是否是特岗教师" type="String" maxlen="40" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="10" pk="false" />
+  </Table>
+  <Table name="zhongk_cj" desc="成绩查询（招考办）">
+    <Field name="id" type="String" maxlen="11" notnull="false" pk="false" />
+    <Field name="name" type="String" maxlen="20" pk="false" />
+    <Field name="yw" type="String" maxlen="20" pk="false" />
+    <Field name="sx" type="String" maxlen="20" pk="false" />
+    <Field name="yy" type="String" maxlen="20" pk="false" />
+    <Field name="kx" type="String" maxlen="20" pk="false" />
+    <Field name="ls" type="String" maxlen="20" pk="false" />
+    <Field name="ty" type="String" maxlen="20" pk="false" />
+    <Field name="zf" type="double" maxlen="12" pk="false" />
+    <Field name="bz" type="String" maxlen="255" pk="false" />
+  </Table>
+   <Table name="base_winxin_user" desc="微信用户绑定信息表">
+     <Field name="winxinid" title="主键编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="winxincode" type="String" maxlen="40" pk="false" />
+    <Field name="usertype" type="String" maxlen="2" pk="false" />
+    <Field name="usercode" type="String" maxlen="200" pk="false" />
+    <Field name="userpwd" type="String" maxlen="200" pk="false" />
+    <Field name="createtime" type="Timestamp" maxlen="20" pk="false" gen="datetime"/>
+    <Field name="valid" type="String" maxlen="20" pk="false" />
+  </Table>
+</Database>
+

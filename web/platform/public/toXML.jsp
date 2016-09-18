@@ -1,0 +1,1 @@
+<%@ page contentType="text/xml; charset=GBK" %><%@ page import="cn.brightcom.jraf.util.*"%><%@ page import="org.jdom.*"%><%=JDomUtil.toXML((Document) request.getAttribute("xmlDoc"))%>

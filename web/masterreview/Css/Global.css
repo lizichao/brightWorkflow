@@ -1,0 +1,153 @@
+@charset "utf-8";
+/**
+===============================================================
+	+ Index +
+===============================================================
+**/
+/* Top */
+.header{background:#F0810D;width:100%;}
+.header .auto{height:90px;}
+.header .logo{height:70px;margin-top:10px;width:150px;}
+.header ul{display:inline;margin-left:100px;margin-top:25px;}
+.header ul li{float:left;font-size:22px;height:40px;line-height:40px;padding:0 20px;}
+.header ul li a{color:#FFF;text-decoration:none;}
+.header ul li a:hover,.header ul li.hover a{color:#F8FE00;}
+
+/* Banner */
+.banner{height:496px;width:100%;}
+
+#animateBox{height:496px;width:100%;position:relative;z-index:9;} 
+#animateBox .playPic{height:496px;position:absolute;top:0;z-index:99;}
+#animateBox .playPic li{float:left;height:496px;text-align:center;overflow:hidden;}
+#animateBox .optionBtn{display:none;height:20px;text-align:center;width:100%;position:absolute;bottom:10px;left:0;z-index:100;}
+#animateBox .optionBtn span{background:#000;cursor:pointer;display:inline-block;height:20px;width:20px;margin-left:15px;}
+#animateBox .preBtn,#animateBox .nextBtn{cursor:pointer;height:496px;width:200px;position:absolute;top:0;z-index:999;}
+#animateBox .preBtn{background:url(../Images/preBtn.png) 0 50% no-repeat;left:0;}
+#animateBox .nextBtn{background:url(../Images/nextBtn.png) right 50% no-repeat;right:0;}
+
+.my-class{border-bottom:1px solid #E3E3E3;font-size:36px;height:130px;line-height:130px;text-align:center;width:100%;}
+
+/* 学校列表 */
+.school-list{margin-top:30px;width:1264px;}
+.school-list ul{width:100%;}
+.school-list ul li{display:inline;float:left;height:126px;margin-right:64px;margin-top:10px;overflow:hidden;width:252px;}
+.school-list ul li img{height:126px;width:252px;}
+
+/* Footer */
+.footer{background:#F0810D;margin-top:60px;width:100%;}
+.footer .auto{background:url(../Images/Logo.png) 0 35px no-repeat;height:140px;}
+.footer .copy{color:#FFF;font-size:16px;line-height:32px;margin-top:30px;width:520px;}
+
+/**
+===============================================================
+	+ 资源 +
+===============================================================
+**/
+.left{background:#FFF;border:1px solid #DCDCDC;margin-top:30px;width:224px;}
+.left dl{width:100%;}
+.left dl dt,.left dl dd{float:left;height:50px;line-height:50px;overflow:hidden;width:100%;}
+.left dl dt{background:#FFA340;color:#FFF;}
+.left dl dt a{color:#FFF;text-decoration:none;}
+
+.left dl dd{border-top:1px solid #DCDCDC;}
+
+.left dl a{display:block;height:50px;overflow:hidden;text-indent:10px;width:100%;}
+.left dl span{float:right;height:50px;margin-top:-50px;padding-right:10px;}
+
+.right{margin-top:30px;padding-bottom:10px;width:954px;}
+.right h3{height:30px;line-height:30px;}
+
+/* 学科列表 */
+.subject-item{background:#FFF;border:1px solid #EAEAEA;box-shadow:2px 2px 2px #DDD;-o-box-shadow:2px 2px 2px #DDD;-moz-box-shadow:2px 2px 2px #DDD;-webkit-box-shadow:2px 2px 2px #DDD;margin-top:15px;padding:1px;width:946px;position:relative;}
+.subject-item .pic,.subject-item .pic img{height:124px;width:224px;}
+.subject-item .txt{height:124px;width:710px;}
+.subject-item .txt h4{height:30px;line-height:30px;}
+.subject-item .txt p{color:#666;}
+.subject-item .enter{background:#FEB75B;border:1px solid #ED8105;color:#FFF;display:block;font-size:16px;height:36px;line-height:36px;text-align:center;text-decoration:none;width:100px;position:absolute;right:20px;bottom:10px;z-index:9;/**/border-radius:5px;-o-border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+
+.loading{color:#009900;font-size:14px;height:32px;line-height:32px;text-align:center;}
+
+/**
+===============================================================
+	+ 学校 +
+===============================================================
+**/
+.school-lists{margin-top:20px;width:1240px;}
+.school-lists ul{width:100%;}
+.school-lists ul li{display:inline;float:left;height:135px;margin-right:40px;margin-top:40px;overflow:hidden;width:270px;}
+.school-lists ul li img{height:135px;width:270px;}
+
+/**
+===============================================================
+	+ 名师 +
+===============================================================
+**/
+.teacher-list{margin:50px auto 0 auto;width:1200px;}
+.teacher-list ul{width:100%;}
+.teacher-list ul li{background:#F4F4F4;color:#777;float:left;height:260px;margin-top:10px;overflow:hidden;padding:10px;width:220px;}
+.teacher-list ul li a,.lesson-item .txt .more{color:#248DAC;}
+.teacher-list ul li img{height:120px;width:220px;}
+.teacher-list ul li h4{height:34px;line-height:34px;margin-top:5px;overflow:hidden;}
+.teacher-list ul li h4 b{color:#333;font-size:18px;font-weight:normal;padding-right:6px;}
+.teacher-list ul li p{overflow:hidden;}
+.teacher-list ul li p.video{background:url(../Images/Index_01.jpg) 0 -1px no-repeat;height:22px;margin-top:6px;text-indent:26px;}
+
+.teacher-info{background:#FFE5CA;margin:20px auto 0 auto;padding:20px 20px 20px 150px;width:1030px;position:relative;min-height:500px;}
+.teacher-info h4{height:34px;line-height:34px;}
+.teacher-info h4 b{font-size:18px;padding-right:20px;}
+.teacher-info .t-photo{height:102px;width:102px;position:absolute;top:30px;left:20px;z-index:9;}
+.teacher-info .info-content{background:#FFF;color:#666;margin-top:10px;padding:15px;width:1000px;min-height:480px;}
+.teacher-info .info-content h4{background:#E5E5E5;font-weight:bold;margin-top:20px;padding:0 10px;}
+
+.lesson-item{border:1px solid #E9E9E9;margin-top:15px;padding:10px 128px 10px 10px;width:860px;position:relative;}
+.lesson-item .pic,.lesson-item .pic img{height:120px;width:200px;}
+.lesson-item .txt{height:120px;width:640px;}
+.lesson-item .txt h3{color:#F0810D;height:30px;line-height:30px;}
+.lesson-item .txt h3 a{color:#009900;font-size:12px;padding-left:10px;}
+.lesson-item .txt em{color:#F0810D;}
+.lesson-item .txt p{margin-top:10px;}
+.lesson-item .price{height:80px;line-height:26px;text-align:center;width:100px;top:30px;right:10px;position:absolute;z-index:9;}
+.lesson-item .price h3{color:#CE122A;font-weight:bold;height:26px;}
+.lesson-item .price a{background:#248DAB;color:#FFF;display:inline-block;height:26px;margin-top:15px;padding:0 20px;}
+
+/* 分页 */
+.page-list{margin-top:30px;text-align:center;width:100%;}
+.page-list a,.page-list span{display:inline-block;height:26px;line-height:26px;margin-left:10px;padding:0 8px;}
+.page-list a{background:#E9E9E9;text-decoration:none;}
+.page-list a:hover,.page-list a.hover{background:#71C5E7;color:#FFF;}
+
+
+
+/**
+===============================================================
+	+ PUBLIC +
+===============================================================
+**/
+h3{font-size:16px;}
+h4{font-size:14px;}
+.auto{margin:0 auto;width:1200px;}
+.fl{float:left;}
+.fr{float:right;}
+.container{width:100%;}
+.bgf{background:#00FF66;}
+/**
+===============================================================
+	+ TRANSITION +
+===============================================================
+**/
+.transition{transition:all 0.4s;-o-transition:all 0.4s;-moz-transition:all 0.4s;-ms-transition:all 0.4s;-webkit-transition:all 0.4s;}
+/**
+===============================================================
+	+ OPACITY +
+===============================================================
+**/
+.opacity{filter:alpha(Opacity=70);opacity:0.7;-moz-opacity:0.7;-o-opacity:0.7;-webkit-opacity:0.7;}
+/**
+===============================================================
+	+ 清除浮动 +
+===============================================================
+**/
+.clear-fix:after{content:'.';clear:both;display:block;height:0;visibility:hidden;overflow:hidden;}
+.clear-fix{*zoom:1;}
+
+.clear-both{clear:both;display:block;height:0;visibility:hidden;overflow:hidden;}

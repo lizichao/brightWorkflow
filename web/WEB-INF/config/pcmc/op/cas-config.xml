@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/cas-config.xml">
+  <Operation id="cas" bean="cn.brightcom.cas.service.CasServiceManage" desc="服务管理">
+    <Action base="List" old="" desc="服务列表" accredit="" colacc="" rowacc="" log="" nologin="" name="listService">
+      <Table name="registeredserviceimpl" />
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" base="" desc="删除服务" colacc="" log="" name="delService">
+      <Request>
+        <Field name="id" title="主键" type="long" maxlen="19" notnull="true"/>
+      </Request>
+      <Message>
+      	<Msg code="10001">删除服务成功</Msg>
+      	<Msg code="10002">删除服务失败</Msg>
+      </Message>
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" base="" desc="服务明细" colacc="" log="" name="detService">
+      <Request>
+        <Field name="id" title="主键" type="long" maxlen="19" notnull="true"/>
+      </Request>
+      <Message>
+      	<Msg code="10007">查询服务明细失败</Msg>
+      </Message>
+    </Action>
+    <Action base="" old="" desc="新增服务" accredit="" colacc="" rowacc="" log="" nologin="" name="addService">
+      <Request>
+        <Field name="name" title="名称" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="serviceid" title="服务URL" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="description" title="描述" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="theme" title="主题名" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="enabled" title="启用" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="ssoenabled" title="参与SSO" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="allowedtoproxy" title="允许作为代理" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="anonymousaccess" title="匿名访问" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="evaluation_order" title="排序号" type="long" maxlen="10" notnull="false" pk="false" />
+        <Field name="ignoreattributes" title="忽略属性" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="a_name" title="属性" type="String" maxlen="255" notnull="false" pk="false" />
+      </Request>
+      <Message>
+      	<Msg code="10003">新增服务成功</Msg>
+      	<Msg code="10004">新增服务失败</Msg>
+      </Message>
+    </Action>
+    <Action base="" old="" desc="更新服务" accredit="" colacc="" rowacc="" log="" nologin="" name="uptService">
+      <Request>
+        <Field name="id" title="主键" type="long" maxlen="19" notnull="true" pk="true" />
+        <Field name="name" title="名称" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="serviceid" title="服务URL" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="description" title="描述" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="theme" title="主题名" type="String" maxlen="255" notnull="true" pk="false" />
+        <Field name="enabled" title="启用" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="ssoenabled" title="参与SSO" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="allowedtoproxy" title="允许作为代理" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="anonymousaccess" title="匿名访问" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="evaluation_order" title="排序号" type="long" maxlen="10" notnull="false" pk="false" />
+        <Field name="ignoreattributes" title="忽略属性" type="long" maxlen="1" notnull="false" pk="false" />
+        <Field name="a_name" title="属性" type="String" maxlen="255" notnull="false" pk="false" />
+      </Request>
+      <Message>
+      	<Msg code="10005">更新服务成功</Msg>
+      	<Msg code="10006">更新服务失败</Msg>
+      </Message>
+    </Action>
+    <Action desc="服务属性" name="attMapping">
+      <Request>
+      </Request>
+      <Message>
+      	<Msg code="10008">取有效属性列表异常</Msg>
+      </Message>
+    </Action>
+  </Operation>
+</Config>
+

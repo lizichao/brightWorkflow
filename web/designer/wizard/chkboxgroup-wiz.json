@@ -1,0 +1,207 @@
+{
+json : {
+   size : {width:640,height:480},
+   alignTo : [document,'c-c'],
+   title:"New CheckBoxGroup Wizard",
+   "scope.!callback" : Ext.emptyFn,
+   listeners : {
+     afterjsonload :  function(){
+     }
+   }
+ },
+xtype : "form",
+frame : true,
+ buttons : [{
+       text:'Ok',
+       handler:function() {
+       	 var _form=scope.items.first().form;
+       	 var values = _form.getValues();
+         var fldlbl=values.fldlabel;
+         scope.close();
+         var config = {xtype:'checkboxgroup',fieldLabel:fldlbl,items:[]};
+         Ext.each([1,2,3,4,5,6], function(i) {
+         	var bl=values['boxlbl_'+i],bn=values['name_'+i],bc=values['chk_'+i],bv=values['val_'+i];
+           if (bl&&bn&&bv) {
+           	var it={boxLabel:bl,name:bn,inputValue:bv,checked:bc};
+             config.items.push(it);
+           }
+         });
+         scope.callback.call(this,config);
+       }
+     },{
+       text:'Cancel',
+       handler:function() {scope.close();}
+ }],
+items : [{
+	  xtype:"textfield",
+	  fieldLabel:"fieldLabel",
+	  name:"fldlabel"
+	},{
+    layout : "table",
+    layoutConfig : {
+     columns:4
+   },
+    defaults : {
+     style:"margin:1px;",
+     border:true
+   },
+    xtype : "fieldset",
+    title : "CheckBox",
+    autoHeight : true,
+    items : [{
+        title : "checked",
+        style : "margin:1px;",
+        border : true
+      },{
+        title : "boxLabel",
+        style : "margin:1px;",
+        border : true
+      },{
+        title : "name",
+        style : "margin:1px;",
+        border : true
+      },{
+        title : "inputValue",
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "checkbox",
+        name : "chk_1",
+        style : "margin-left:25px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "boxlbl_1",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "name_1",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "val_1",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "checkbox",
+        name : "chk_2",
+        style : "margin-left:25px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "boxlbl_2",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "name_2",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "val_2",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "checkbox",
+        name : "chk_3",
+        style : "margin-left:25px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "boxlbl_3",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "name_3",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "val_3",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "checkbox",
+        name : "chk_4",
+        style : "margin-left:25px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "boxlbl_4",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "name_4",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "val_4",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "checkbox",
+        name : "chk_5",
+        style : "margin-left:25px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "boxlbl_5",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "name_5",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "val_5",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "checkbox",
+        name : "chk_6",
+        style : "margin-left:25px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "boxlbl_6",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "name_6",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      },{
+        xtype : "textfield",
+        name : "val_6",
+        width : 200,
+        style : "margin:1px;",
+        border : true
+      }]
+  }]
+}

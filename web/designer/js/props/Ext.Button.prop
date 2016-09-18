@@ -1,0 +1,106 @@
+{
+properties : [{
+    name : "allowDepress",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to not allow a pressed Button to be depressed (defaults to undefined)"
+  },{
+    name : "arrowAlign",
+    desc : "<b>String</b> (Optional) The side of the Button box to render the arrow if the button has an associated menu"
+  },{
+    name : "buttonSelector",
+    desc : "<b>String</b> (Optional) A DomQuery selector which is used to extract the active, clickable element from the DOM structure created"
+  },{
+    name : "clickEvent",
+    desc : "<b>String</b> The DOM event that will fire the handler of the button. This can be any valid event name (dblclick, contextmenu). Defaults to 'click'"
+  },{
+    name : "cls",
+    desc : "<b>String</b> A CSS class string to apply to the button's main element"
+  },{
+    name : "disabled",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to start disabled (defaults to false)"
+  },{
+    name : "enableToggle",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to enable pressed/not pressed toggling (defaults to false)"
+  },{
+    name : "handleMouseEvents",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)"
+  },{
+    name : "handler",
+    type : "function",
+    desc : "<b>Function</b> A function called when the button is clicked (can be used instead of click event)"
+  },{
+    name : "hidden",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to start hidden (defaults to false)"
+  },{
+    name : "icon",
+    desc : "<b>String</b> The path to an image to display in the button"
+  },{
+    name : "iconAlign",
+    desc : "<b>String</b> (Optional) The side of the Button box to render the icon"
+  },{
+    name : "iconCls",
+    desc : "<b>String</b> A css class which sets a background image to be used as the icon for this button"
+  },{
+    name : "menu",
+    type : "mixed",
+    desc : "<b>Mixed</b> Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined)."
+  },{
+    name : "menuAlign",
+    desc : "<b>String</b> The position to align the menu to (see {@link Ext.Element#alignTo} for more details, defaults to 'tl-bl?')."
+  },{
+    name : "minWidth",
+    type : "number",
+    desc : "<b>Number</b> The minimum width in pixels"
+  },{
+    name : "overflowText",
+    desc : "<b>String</b> If used in a Toolbar, the text to be used if this item is shown in the overflow menu"
+  },{
+    name : "pressed",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to start pressed (only if enableToggle = true)"
+  },{
+    name : "repeat",
+    type : "mixed",
+    desc : "<b>Boolean/Object</b> True to repeat fire the click event while the mouse is down. This can also be an {@link Ext.util.ClickRepeater} config object (defaults to false). @constructor Create a new button @param {Object} config The config object"
+  },{
+    name : "scale",
+    values : ["small","medium","large"],
+    desc : "<b>String</b>  The size of the Button"
+  },{
+    name : "scope",
+    type : "object",
+    desc : "<b>Object</b> The scope of the handler"
+  },{
+    name : "tabIndex",
+    type : "number",
+    desc : "<b>Number</b> Set a DOM tabIndex for this button (defaults to undefined)"
+  },{
+    name : "template",
+    type : "template",
+    desc : "<b>Ext.Template</b> (Optional) An {@link Ext.Template} with which to create the Button's main element. This Template must contain numeric substitution parameter 0 if it is to display the text property. Changing the template could require code modifications if required elements (e.g. a button) aren't present."
+  },{
+    name : "text",
+    desc : "<b>String</b> The text to display for this item (defaults to '')"
+  },{
+    name : "toggleGroup",
+    desc : "<b>String</b> The group this toggle button is a member of (only 1 per group can be pressed, only applies if enableToggle = true)"
+  },{
+    name : "toggleHandler",
+    type : "function",
+    desc : "<b>Function</b> Function called when a Button with enableToggle set to true is clicked"
+  },{
+    name : "tooltip",
+    type : "mixed",
+    desc : "<b>String/Object</b> The tooltip for the button - can be a string or QuickTips config object"
+  },{
+    name : "tooltipType",
+    desc : "<b>String</b> The type of tooltip to use. Either 'qtip' (default) for QuickTips or 'title' for title attribute"
+  },{
+    name : "type",
+    values : ["submit","reset","button"]
+  }]
+}

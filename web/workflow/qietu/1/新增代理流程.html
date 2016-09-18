@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>弹出</title>
+<meta name="keywords" content="关键字" />
+<meta name="description" content="描述" />
+<link href="css/style.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--模拟select-->
+<script type="text/javascript" src="js/divselect.js"></script>
+<script type="text/javascript"> 
+$(function(){ 
+$.divselect("#divselect","#inputselect"); 
+$.divselect("#divselect1","#inputselect1"); 
+}); 
+</script> 
+<!--模拟select-->
+</head>
+
+<body>
+
+<!--弹出-->
+
+<div class="hi-box hi-xzdllc">   
+<div class="hi-main">
+
+<div class="hi-hd">
+<h3><i class="ico-xzclr"></i>新增代理流程</h3> 
+<span class="hi-close"> </span>  
+</div>
+
+<div class="hi-form">
+<ul>
+<li><label class="form-label">开始时间：</label><div class="formControls"><input type="text" ></div>  </li>
+<li><label class="form-label">结束时间：</label><div class="formControls"><input type="text" ></div>  </li>
+<li><label class="form-label">代理人：</label>
+<div class="formControls hi-select" id="divselect"><cite> </cite> 
+<dl> 
+<dd><a href="javascript:;" selectid="1">代理人1</a></dd> 
+<dd><a href="javascript:;" selectid="2">代理人</a></dd>
+</dl> <input name="" type="hidden" value="" id="inputselect"/>  <i></i></div>  
+</li>
+<li><label class="form-label">代理流程：</label>
+<div class="formControls hi-select" id="divselect1"><cite> </cite> 
+<dl> 
+<dd><a href="javascript:;" selectid="1">代理流程一</a></dd> 
+<dd><a href="javascript:;" selectid="2">代理流程二</a></dd>
+</dl> <input name="" type="hidden" value="" id="inputselect1"/>  <i></i></div>    
+</li>
+</ul>
+</div>
+
+<div class="hi-page">
+<div class="hi-btn"><input name="" type="submit" value="增 加" class=" hi-radius3" /></div>  
+</div>
+
+
+</div>
+</div>
+
+<!--弹出-->
+
+<script type="text/javascript">
+$(".hi-table tr:odd").addClass("odd-row");
+</script>
+</body>
+</html>

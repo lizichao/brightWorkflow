@@ -1,0 +1,43 @@
+{
+listeners : [{
+    name : "beforeclick",
+    type : "function",
+    defaults : 'function(scope,index,node,e){}'
+  },{
+    name : "beforeselect",
+    type : "function",
+    defaults : 'function(scope,node,selections){}'
+  },{
+    name : "click",
+    type : "function",
+    defaults : 'function(scope,index,node,e){}'
+  },{
+    name : "containerclick",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "containercontextmenu",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "contextmenu",
+    type : "function",
+    defaults : 'function(scope,index,node,e){}'
+  },{
+    name : "dblclick",
+    type : "function",
+    defaults : 'function(scope,index,node,e){}'
+  },{
+    name : "mouseenter",
+    type : "function",
+    defaults : 'function(scope,index,node,e){}'
+  },{
+    name : "mouseleave",
+    type : "function",
+    defaults : 'function(scope,index,node,e){}'
+  },{
+    name : "selectionchange",
+    type : "function",
+    defaults : 'function(scope,node,selections){}'
+  }]
+}

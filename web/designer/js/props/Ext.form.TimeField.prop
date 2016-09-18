@@ -1,0 +1,30 @@
+{
+properties : [{
+    name : "altFormats",
+    desc : "<b>String</b> Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d')."
+  },{
+    name : "format",
+    desc : "<b>String</b> The default date format string which can be overriden for localization support. The format must be valid according to {@link Date#parseDate} (defaults to 'm/d/y')."
+  },{
+    name : "increment",
+    type : "number",
+    desc : "<b>Number</b> The number of minutes between each time value in the list (defaults to 15)."
+  },{
+    name : "invalidText",
+    desc : "<b>String</b> The error text to display when the time in the field is invalid (defaults to '{value} is not a valid time - it must be in the format {format}')."
+  },{
+    name : "maxText",
+    desc : "<b>String</b> The error text to display when the time is after maxValue"
+  },{
+    name : "maxValue",
+    type : "mixed",
+    desc : "<b>Date/String</b> The maximum allowed time"
+  },{
+    name : "minText",
+    desc : "<b>String</b> The error text to display when the date in the cell is before minValue"
+  },{
+    name : "minValue",
+    type : "mixed",
+    desc : "<b>Date/String</b> The minimum allowed time"
+  }]
+}

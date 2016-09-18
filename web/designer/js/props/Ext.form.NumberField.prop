@@ -1,0 +1,41 @@
+{
+properties : [{
+    name : "allowDecimals",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to disallow decimal values (defaults to true)"
+  },{
+    name : "allowNegative",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to prevent entering a negative sign (defaults to true)"
+  },{
+    name : "baseChars",
+    desc : "<b>String</b> The base set of characters to evaluate as valid numbers (defaults to '0123456789')"
+  },{
+    name : "decimalPrecision",
+    type : "number",
+    desc : "<b>Number</b> The maximum precision to display after the decimal separator (defaults to 2)"
+  },{
+    name : "decimalSeparator",
+    desc : "<b>String</b> Character(s) to allow as the decimal separator (defaults to '.')"
+  },{
+    name : "fieldClass",
+    desc : "<b>String</b> The default CSS class for the field (defaults to 'x-form-field x-form-num-field')"
+  },{
+    name : "maxText",
+    desc : "<b>String</b> Error text to display if the maximum value validation fails"
+  },{
+    name : "maxValue",
+    type : "number",
+    desc : "<b>Number</b> The maximum allowed value"
+  },{
+    name : "minText",
+    desc : "<b>String</b> Error text to display if the minimum value validation fails"
+  },{
+    name : "minValue",
+    type : "number",
+    desc : "<b>Number</b> The minimum allowed value"
+  },{
+    name : "nanText",
+    desc : "<b>String</b> Error text to display if the value is not a valid number"
+  }]
+}

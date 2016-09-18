@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dt,dd,form,fieldset,legend,input,textarea,select,i{margin:0;padding:0}
+body{background:#EBF9FD url(../Images/bodyBg.jpg) 0 0 repeat-x;color:#633F33;font-family:FZChild,"新宋体",Arial, Helvetica, sans-serif;font-size:20px;line-height:22px;}
+li{list-style-type:none;}
+img{border:0;vertical-align:middle;}
+i{font-style:normal;}
+
+/* HREF 样式 */
+a:link{color:#333;text-decoration:none;}
+a:visited{color:#333;text-decoration:none;}
+a:hover{color:#D92727;text-decoration:underline;}
+a:active{color:#333;text-decoration:none;}
+#top{background:url(Img_01.png) 0 0 no-repeat;height:56px;margin:0 auto;width:1206px;}
+#top img{float:right;margin-top:15px;margin-right:15px;}
+#content{background: url(Img_03.png) 0 0 repeat-y;margin:0 auto;min-height:560px;width:1106px;padding:0 50px;}
+#bottom{background:url(Img_02.png) 0 0 no-repeat;height:56px;margin:0 auto;width:1206px;}
+
+/* 活动主题 */
+.title{margin-top:20px;}
+.title span{display:block;height:38px;line-height:38px;}
+.title div{background:url(Img_05.png) 0 0 no-repeat;display:inline;height:30px;margin-left:10px;margin-top:5px;width:450px;}
+.title div input{border:0;font-size:18px;height:28px;line-height:28px;margin-top:1px;margin-right:6px;width:436px;}
+.select{display:inline;float:left;margin-left:5px;}
+.select li{display:inline;float:left;margin-left:10px;}
+
+.addContent{border-top:#613D31 2px dashed;margin-top:10px;width:100%;}
+.addContent p{padding:10px 0 0 0;}
+.addContent .txtArea{background:#FFF;border:0;height:210px;resize:none;width:1100px;font-family:'FZChild';font-size:21px;border-radius:10px;}
+
+.upLoad{height:40px;margin-top:20px;text-align:right;width:100%;}
+
+.com_openWindows{margin:0 0 0 0;width:100%;}
+.com_openWindows .close{background:url(Img_29.png) no-repeat -1px 0px;height:30px;width:100%;}
+.com_openWindows .content{background:url(Img_30.png) repeat-y;width:100%;height:540px;}
+.com_openWindows .bottom{background:url(Img_31.png) no-repeat -1px 0px;height:30px;text-align:right;width:100%;}
+.com_openWindows .bottom img{margin-top:24px;margin-right:45px;}
+.com_openWindowsContent{margin:0 auto;width:90%;}
+
+.kqlx{width:100%;}
+.kqlx dt,.kqlx dd{float:left;padding-top:18px;padding-bottom:18px;width:100%;}
+.kqlx dd{border-top:#80604B 2px dashed;}
+.kqlx dd p{width:100%;}
+.kqlx dd p.p_01 div{display:inline;height:30px;padding-left:0px;margin-top:5px;width:540px;}
+.kqlx dd p.p_02{margin-top:25px;text-align:right;}
+
+.jl{width:100%;}
+.jl li{float:left;height:36px;line-height:36px;margin-top:10px;overflow:hidden;padding:0 120px 0 0;width:460px;position:relative;}
+.jl li span{display:block;height:36px;overflow:hidden;text-align:center;width:180px;position:absolute;top:0;right:80px;}
+.jl li img{height:35px;width:74px;position:absolute;top:0;right:0;}
+
+/* 弹出信息 */
+.mask{background:#666666;height:100%;width:100%;position:fixed;top:0;left:0;z-index:9998;filter:alpha(Opacity=70);-moz-opacity:0.7;opacity:0.7;}
+.maskContainer{height:100%;width:100%;position:fixed;top:0;left:0;z-index:9999;}
+
+.yd_upLoad{background:url(Img_14.png) 50% 8px no-repeat;margin:50px auto 0 auto;height:485px;width:662px;}
+.yd_upLoad .yd_c{height:50px;text-align:right;width:100%;}
+.yd_upLoad .yd_content{margin:0 auto;height:420px;width:580px;}
+
+/* Public */
+.fzChild{font-family:FZChild;}
+.fl{float:left;}
+.fr{float:right;}
+.bgf{background:#00FF66;}
+
+.uploadBtn{background:url(Img_07.png)no-repeat;overflow:hidden;position:relative;width:94px;height:38px;}
+.uploadfile{width:94px;height:38px;position: absolute;opacity:0;filter:alpha(opacity=0);right:0;top:0;}
+
+input[type=checkbox],input[type=radio]{-webkit-appearance: none;appearance: none;margin:-4px 0 0 0;cursor:pointer;vertical-align:bottom;-webkit-box-sizing: border-box;position: relative;vertical-align:middle;}
+
+input[type=checkbox] {background:url(/images/Radio.png);width:22px;height:22px;background-repeat:no-repeat;}
+input[type=checkbox]:active {border-color: #c6c6c6;background:url(/images/Radio.png);}
+input[type=checkbox]:checked { background:none;}
+input[type=checkbox]:checked::after {content: url(/images/Radiok.png);display: block;position: absolute;width: 22px;height:22px;background-repeat:no-repeat;}
+input[type=checkbox]:focus {outline: none;background:url(/images/Radio.png);}
+
+input[type=radio] {background:url(/images/Radio.png) no-repeat;width:22px;height:22px;}
+input[type=radio]:active {background: url(/images/Radio.png)}
+input[type=radio]:checked {background:url(/images/Radiok.png) no-repeat;}
+input[type=radio]:checked::after {background:url(/images/Radio.png);}
+
+input[type=radio][yestype=yes] {background:url(../images/yes.png);width:50px;height:40px;}
+input[type=radio][yestype=yes]:active {background: url(../images/yes.png)}
+input[type=radio][yestype=yes]:checked {background:url(../images/yes_check.png);}
+input[type=radio][yestype=yes]:checked::after {background:url(../images/yes.png);}
+input[type=radio][yestype=no] {background:url(../images/no.png);width:50px;height:40px;}
+input[type=radio][yestype=no]:active {background: url(../images/no.png)}
+input[type=radio][yestype=no]:checked {background:url(../images/no_check.png);}
+input[type=radio][yestype=no]:checked::after {background:url(../images/no.png);}

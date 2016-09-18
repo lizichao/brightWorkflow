@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions></Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="SelectRecord">[  {
+    xtype : "Field",
+    name : "nid",
+    fieldLabel : "节点ID",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pid",
+    fieldLabel : "父节点ID",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ncode",
+    fieldLabel : "节点代码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nm",
+    fieldLabel : "节点名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nod",
+    fieldLabel : "节点类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "childnum",
+    fieldLabel : "子节点数",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores />
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    xtype : "treepanel",
+    height : 400,
+    animate : true,
+    itemId : "SelectUserOrDeptTree",
+    id  : "SelectUserOrDeptTree",
+    autoScroll : true,
+    containerScroll : true,
+    collapsible : false,
+	frame : true,
+    titleCollapse : false,
+    rootVisible : false,
+    root : new Ext.tree.AsyncTreeNode({id:JrafSession.get('deptid')}),
+    loader : new JrafXmlTreeLoader({nparams: {nid:'nid',pid:'pid',ntext:'{nm}',loadAll:false,isLeaf:'childnum',expanded:true,chk:true,chkfld:'selected_flag',chkval:'Y', sm:'folder|leaf|all',icon:'icon'},action: {sysName:'pcmc',oprID:'dept',actions:'getCurDeptUserList'},baseParams:{PageSize:'-1'}}),
+    buttons : [{
+	text : '确定',
+		handler : function() {
+		     var selectIdS = '';
+			 var selectNames = '';
+             var ckrs = Ext.getCmp('SelectUserOrDeptTree').getChecked();
+			 for(var i=0;i&lt;ckrs.length;i++){
+			     var node    = ckrs[i];
+			     var rec     = node.attributes.record;
+                 selectIdS   = selectIdS+rec.data['nod']+'-'+rec.data['nid']+';';
+                 selectNames = selectNames+rec.data['nm']+';';                 
+			 }
+
+			 var resultArray = new Array(2);
+			 resultArray[0]  = selectIdS ;
+			 resultArray[1]  = selectNames;
+
+			 window.returnValue=resultArray;
+			 window.close();
+		}
+    },{
+	text : '取消',
+		handler : function() {
+		    window.returnValue='';
+            window.close();
+		}
+    }]
+}]</MainPanel>
+</view>
+

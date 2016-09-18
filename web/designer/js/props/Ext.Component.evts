@@ -1,0 +1,63 @@
+{
+listeners : [{
+    name : "afterrender",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforedestroy",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforehide",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforerender",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforeshow",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforestaterestore",
+    type : "function",
+    defaults : 'function(scope,state){}'
+  },{
+    name : "beforestatesave",
+    type : "function",
+    defaults : 'function(scope,state){}'
+  },{
+    name : "destroy",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "disable",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "enable",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "hide",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "render",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "show",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "staterestore",
+    type : "function",
+    defaults : 'function(scope,state){}'
+  },{
+    name : "statesave",
+    type : "function",
+    defaults : 'function(scope,state){}'
+  }]
+}

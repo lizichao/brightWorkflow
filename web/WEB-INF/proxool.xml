@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxool-config>
+    <proxool>
+		<alias>brightcom.database</alias>
+			<!--  
+		<driver-url>jdbc:mysql://192.168.1.65:3307/headmasterdb</driver-url>
+		<driver-class>com.mysql.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="headmaster" />
+			<property name="password" value="headmaster1234" />
+			<property name="useUnicode" value="true"/>
+			<property name="characterEncoding" value="utf-8"/>
+			<property name="autoReconnect" value="true"/>
+		</driver-properties>-->
+	
+	 <!-- 
+		<driver-url>jdbc:mysql://localhost:3306/headmasterdb</driver-url>
+		<driver-class>com.mysql.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="headmaster" />
+			<property name="password" value="headmaster1234" />
+			<property name="useUnicode" value="true"/>
+			<property name="characterEncoding" value="utf-8"/>
+			<property name="autoReconnect" value="true"/>
+		</driver-properties>-->
+		
+			
+			<driver-url>jdbc:mysql://localhost:3306/workflowdb</driver-url>
+		<driver-class>com.mysql.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="root" />
+			<property name="password" value="root" />
+			<property name="useUnicode" value="true"/>
+			<property name="characterEncoding" value="utf-8"/>
+			<property name="autoReconnect" value="true"/>
+		</driver-properties>
+		
+		<!--  
+		<driver-url>jdbc:mysql://192.168.1.2:3306/moocdb</driver-url>
+		<driver-class>com.mysql.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="mooc" />
+			<property name="password" value="mooc1234" />
+			<property name="useUnicode" value="true"/>
+			<property name="characterEncoding" value="GBK"/>
+			<property name="autoReconnect" value="true"/>
+		</driver-properties>-->
+		<house-keeping-sleep-time>60000</house-keeping-sleep-time>
+		<maximum-new-connections>20</maximum-new-connections>
+		<prototype-count>5</prototype-count>
+		<maximum-connection-count>200</maximum-connection-count>
+		<minimum-connection-count>10</minimum-connection-count>
+		<test-before-use>true</test-before-use>
+		<maximum-active-time>300000</maximum-active-time>
+		<maximum-connection-lifetime>3600000</maximum-connection-lifetime>
+		<house-keeping-test-sql>select CURRENT_DATE</house-keeping-test-sql>
+    </proxool>
+</proxool-config>

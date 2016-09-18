@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/workflow-table.xml">
+  <Table name="workflow_process_edit" desc="流程定义属性扩展编辑表">
+    <Field name="processdefkey" title="流程定义key" type="String" maxlen="32" notnull="true" pk="false" />
+    <Field name="processformkey" title="流程详情查看整体页面路径" type="String" maxlen="200" pk="false" />
+    <Field name="create_people" title="创建者" type="String" maxlen="32" notnull="false" pk="false" />
+    <Field name="create_time" title="创建时间" type="Timestamp" pk="false" />
+    <Field name="update_people" title="更新人" type="String" maxlen="32" notnull="false" pk="false" />
+    <Field name="update_time" title="最后修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="workflow_delegate_task" desc="流程代理表">
+    <Field name="id" title="delegateid" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="starttime" title="代理开始时间" type="Timestamp" notnull="false" />
+    <Field name="endtime" title="代理结束时间" type="Timestamp" notnull="false" />
+    <Field name="original_user" title="源处理人" type="String" maxlen="32" notnull="false" />
+    <Field name="original_user_name" title="源处理人姓名" type="String" maxlen="32" notnull="false" />
+    <Field name="delegate_user" title="代理人" type="String" maxlen="32" notnull="false" />
+    <Field name="delegate_user_name" title="代理人名称" type="String" maxlen="2" notnull="false" />
+    <Field name="delegate_process_key" title="代理流程key" type="String" maxlen="2" notnull="false" />
+    <Field name="delegate_process_name" title="代理流程名称" type="String" maxlen="2" notnull="false" />
+  </Table>
+  <Table name="workflow_publish" desc="发文流程表">
+    <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" pk="true" />
+    <Field name="flddjh" title="登记号" type="String" notnull="false" />
+    <Field name="fldgwlx" title="公文类型" type="String" notnull="false" />
+    <Field name="fldffrq" title="封发日期" type="String" notnull="false" />
+    <Field name="fldtm" title="发文题名" type="String" maxlen="32" notnull="false" />
+    <Field name="fldzrz" title="发文机关" type="String" maxlen="32" notnull="false" />
+    <Field name="fldywh" title="发文号" type="String" maxlen="2" notnull="false" />
+    <Field name="fldqfr" title="签发人" type="String" maxlen="2" notnull="false" />
+    <Field name="fldywrq" title="签发日期" type="String" maxlen="2" notnull="false" />
+    <Field name="fldngr" title="拟稿人" type="String" maxlen="2" notnull="false" />
+    <Field name="fldngrq" title="拟稿日期" type="String" maxlen="2" notnull="false" />
+    <Field name="fldzsjg" title="主送机关" type="String" maxlen="2" notnull="false" />
+    <Field name="fldcsjg" title="抄送机关" type="String" maxlen="2" notnull="false" />
+    <Field name="fldstatus" title="办理状态" type="String" maxlen="2" notnull="false" />
+    <Field name="fldmj" title="密级" type="String" maxlen="2" notnull="false" />
+    <Field name="fldjjcd" title="紧急程度" type="String" maxlen="2" notnull="false" />
+    <Field name="fldwz" title="文种" type="String" maxlen="2" notnull="false" />
+    <Field name="fldfs" title="印发份数" type="String" maxlen="2" notnull="false" />
+    <Field name="fldbgqx" title="保管期限" type="String" maxlen="2" notnull="false" />
+    <Field name="fldzbbmid" title="拟稿部门" type="String" maxlen="2" notnull="false" />
+    <Field name="fldbody" title="拟稿单" type="String" maxlen="2" notnull="false" />
+    <Field name="fldgongwen" title="正式发文" type="String" maxlen="2" notnull="false" />
+    <Field name="fldzbbmmc" title="主办部门名称" type="String" maxlen="2" notnull="false" />
+    <Field name="fldattach" title="发文附件" type="String" maxlen="2" notnull="false" />
+    <Field name="fldprocname" title="流程名称" type="String" maxlen="2" notnull="false" />
+    <Field name="originalAttachmentId" title="发文申请原文id" type="String" maxlen="32" notnull="false" />
+  </Table>
+  <Table name="workflow_attachment" desc="流程附件表">
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="file_name" title="附件名称" type="String" maxlen="100" pk="false" />
+    <Field name="file_size" title="附件大小" type="long" maxlen="22" pk="false" />
+    <Field name="file_type" title="附件类型" type="String" maxlen="10" pk="false" />
+    <Field name="file_path" title="附件路径" type="String" maxlen="100" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="workflow_connect_attachment" desc="流程附件关联表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" notnull="true" />
+    <Field name="bussiness_key" title="业务key" type="String" maxlen="100" pk="false" />
+    <Field name="processKey" title="流程key" type="String" maxlen="32" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="workflow_node_department" desc="流程节点部门配置表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="processdefkey" title="流程key" type="String" maxlen="32" notnull="true" />
+    <Field name="taskdefkey" title="任务key" type="String" maxlen="80" notnull="true" pk="false" />
+    <Field name="taskdefname" title="任务名称" type="String" maxlen="32" notnull="true" pk="false" />
+      <Field name="node_type" title="任务类型" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" title="部门id" type="String" maxlen="1000" notnull="true" pk="false" />
+    <Field name="deptname" title="部门名称" type="String" maxlen="1000" pk="false" />
+    <Field name="create_people" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_time" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="update_people" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="update_time" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="workflow_node_role" desc="流程节点角色配置表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="processdefkey" title="流程key" type="String" maxlen="32" notnull="true" />
+    <Field name="taskdefkey" title="任务key" type="String" maxlen="80" notnull="true" pk="false" />
+    <Field name="taskdefname" title="任务名称" type="String" maxlen="32" notnull="true" pk="false" />
+      <Field name="node_type" title="任务类型" type="String" maxlen="32" pk="false" />
+    <Field name="roleid" title="角色id" type="String" maxlen="1000" notnull="true" pk="false" />
+    <Field name="rolename" title="角色名称" type="String" maxlen="1000" pk="false" />
+    <Field name="create_people" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_time" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="update_people" title="修改人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="update_time" title="修改时间" type="Timestamp" pk="false"  gen="datetime"/>
+  </Table>
+  <Table name="workflow_node_component" desc="流程节点功能组件配置表">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="processdefkey" title="流程key" type="String" maxlen="32" notnull="true" />
+    <Field name="taskdefkey" title="任务key" type="String" maxlen="80" notnull="true" pk="false" />
+    <Field name="taskdefname" title="任务名称" type="String" maxlen="80" notnull="true" pk="false" />
+    <Field name="node_type" title="节点类型" type="String" maxlen="80" notnull="true" pk="false" />
+   <!--   <Field name="component_id" title="功能组件id" type="String" maxlen="32" notnull="true" pk="false" />-->
+    <Field name="component_type" title="功能组件类型" type="String" maxlen="32" pk="false" />
+    <Field name="component_name" title="功能组件名称" type="String" maxlen="32" pk="false" />
+    <Field name="create_people" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_time" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="update_people" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="update_time" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="workflow_node_remind" desc="">
+    <Field name="id" title="id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="processdefkey" title="流程key" type="String" maxlen="32" pk="false" />
+    <Field name="taskdefkey" title="任务key" type="String" maxlen="32" pk="false" />
+    <Field name="taskdefname" title="任务名称" type="String" maxlen="32" pk="false" />
+    <Field name="node_type" title="任务类型" type="String" maxlen="32" pk="false" />
+    <Field name="multi_kind" title="会签类型" type="long" maxlen="10" pk="false" />
+    <Field name="multi_type" title="并行串行类型" type="String" maxlen="10" pk="false" />
+    <Field name="ismulti" title="是否是会签节点" type="long" maxlen="10" pk="false" />
+    <Field name="isremind" type="long" maxlen="10" pk="false" />
+    <Field name="duedate" title="超时天数" type="String" maxlen="10" pk="false" />
+    <Field name="remind_mode" title="提醒模式" type="String" maxlen="10" pk="false" />
+  </Table>
+</Database>
+

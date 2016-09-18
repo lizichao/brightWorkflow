@@ -1,0 +1,17 @@
+{
+properties : [{
+    name : "xAxis",
+    type : "object",
+    desc : "<b>Object</b> xAxis"
+  },{
+    name : "xField",
+    desc : "<b>String</b> xField"
+  },{
+    name : "yAxis",
+    type : "object",
+    desc : "<b>Object</b> yAxis"
+  },{
+    name : "yField",
+    desc : "<b>String</b> yField"
+  }]
+}

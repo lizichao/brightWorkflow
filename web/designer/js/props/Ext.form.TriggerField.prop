@@ -1,0 +1,25 @@
+{
+properties : [{
+    name : "autoCreate",
+    type : "mixed",
+    desc : "<b>String/Object</b> A DomHelper element spec, or true for a default element spec (defaults to {tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})"
+  },{
+    name : "editable",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to prevent the user from typing text directly into the field, just like a traditional select (defaults to true)"
+  },{
+    name : "hideTrigger",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide the trigger element and display only the base text field (defaults to false)"
+  },{
+    name : "triggerClass",
+    desc : "<b>String</b> An additional CSS class used to style the trigger button. The trigger will always get the class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger' which displays a downward arrow icon)."
+  },{
+    name : "triggerConfig",
+    type : "mixed",
+    desc : "<b>Mixed</b> A DomHelper config object specifying the structure of the trigger element for this Field"
+  },{
+    name : "wrapFocusClass",
+    desc : "<b>String</b> The class added to the to the wrap of the trigger element. Defaults to x-trigger-wrap-focus."
+  }]
+}

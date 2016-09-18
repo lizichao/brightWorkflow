@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>DateTimeField samples</title>
+	
+		<!-- Ext files -->
+		<link rel="stylesheet" type="text/css" href="/ext/resources/css/ext-all.css" />
+		<script type="text/javascript" src="/ext/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="/ext/ext-all.js"></script> 		
+		
+ 		<!-- Cls files -->
+		<link rel="stylesheet" type="text/css" href="/css/DateTimePicker.css" />
+		<script type="text/javascript" src="/ext/DateTimeField.js"></script>
+		
+		<script type="text/javascript">
+			Ext.QuickTips.init();
+			Ext.form.Field.prototype.msgTarget = 'side';
+			
+			Ext.onReady(function(){
+				var valid=true;
+				var enable=true;
+				var win = new Ext.Window({
+					renderTo: document.body,
+					title: "Cls.form.DateTimeField samples",
+					width: 500,
+					height: 400,
+					items: [{
+						xtype: 'form',
+						border: false,
+						bodyStyle: 'background-color:#DFE8F6; padding-top:10px',
+						labelAlign: 'right',
+						labelWidth: 200,
+						labelAlign:'top',
+						bodyStyle:'padding:15px;background-color:transparent',
+						defaults:{
+							width:250,
+							bodyStyle:'padding:15px'							
+						},
+						items: [{
+							xtype: 'datefield',
+							fieldLabel: 'Normal (Ext.form.DateField)',
+							name: 'name',
+							width:300,
+							value: '04/03/2009 11:23:45',
+							format: 'd/m/Y H:i:s'
+						}, {
+							xtype: 'datetimefield',
+							fieldLabel: 'Format "d/m/Y H:i:s"',
+							name: 'time1',
+							width:300,
+							value: '04/03/2009 11:23:45',
+							format: 'd/m/Y H:i:s'				
+						}, {
+							xtype: 'datetimefield',
+							fieldLabel: 'Format "d/m/Y h:i:s A"',
+							name: 'time2',
+							anchor : '95%,95%',
+							value: '04/03/2009 08:23:45 AM',
+							format: 'd/m/Y h:i:s A'				
+						},{
+							xtype: 'datetimefield',
+							fieldLabel: 'Format "d/m/Y H:i"',
+							name: 'time3',
+							value: '04/03/2009 11:23',
+							format: 'd/m/Y H:i'						
+						}, {
+							xtype: 'datetimefield',
+							fieldLabel: 'Format "d/m/Y H:i" + Min/Max',
+							name: 'time4',
+							value: '04/03/2009 11:23:45',
+							minValue: '02/03/2009 03:15:20',
+							maxValue: '20/03/2009 17:28:45',
+							format: 'd/m/Y H:i:s'						
+						}, {
+							xtype: 'datetimefield',
+							fieldLabel: 'Format "d/m/Y h:i:s A" + timeFields="h"',
+							name: 'time2',
+							value: '04/03/2009 08:23:45 AM',
+							format: 'd/m/Y h:i:s A',
+							timeFields:'h'			
+						}]
+					}]
+				});
+				win.show();
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

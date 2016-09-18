@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+<jraf-config name="workflow" desc="工作流管理">
+  <!--设置变量 varidx 从2开始,(0:FileUtil.getHomePath,1:FileUtil.getWebPath)-->
+  <CfgPath>/WEB-INF/config/workflow/</CfgPath>
+  <DataSource>
+    <ds name="brightcom.database" refname="brightcom.database" />
+  </DataSource>
+  <ParamCfg>{2}brightcom.xml</ParamCfg>
+  <MenuCfg>{2}menus.xml</MenuCfg>
+  <EventCfg>{2}events.xml</EventCfg>
+  <Session>
+    <Field name="deptcode" title="机构代码" type="String" maxlen="60" notnull="true" />
+  </Session>
+  <database>
+    <file name="workflowDB" desc="工作流管理" path="{2}db/workflow-table.xml" />
+   <!--   <file name="headmasterDB" desc="校长职级评审系统" path="{2}db/headmaster-table.xml" />-->
+  </database>
+  <operation>
+    <file name="workflowOpr" desc="工作流管理" path="{2}op/workflow-config.xml" />
+  <!--  <file name="headmasterOpr" desc="校长职级评审系统" path="{2}op/headmaster-config.xml" />-->
+  </operation>
+</jraf-config>
+

@@ -1,0 +1,7 @@
+{
+properties : [{
+    name : "interceptTitles",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to automatically use the element's DOM title value if available (defaults to false)"
+  }]
+}

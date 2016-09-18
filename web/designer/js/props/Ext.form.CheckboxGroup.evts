@@ -1,0 +1,7 @@
+{
+listeners : [{
+    name : "change",
+    type : "function",
+    defaults : 'function(scope,checked){}'
+  }]
+}

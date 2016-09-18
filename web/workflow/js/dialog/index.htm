@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>show dialog</title>
+    <link href="css/custom-theme/jquery-ui-1.9.0.custom.css" rel="stylesheet" type="text/css"></link>
+    <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-1.9.0.custom.js" type="text/javascript"></script>
+    <script src="js/dialog1.0.js" type="text/javascript"></script>
+</head>
+<body>
+<input type="button" id="test" value="show dialog" />
+<script>
+    $(function() {
+        $("#test").click(function() {
+            var url = "dialog.htm";
+            var dlgid = "dialog";
+            var options = {};
+            options.title = "test";
+            options.width = "500";
+            options.height = "300";
+            options.callback = function(data) {
+                //这是回调函数 ，data自行定义，在模态窗口关闭后对本页面进行操作 
+                alert(data);
+            };
+            $.Dialog.open(url, dlgid, options);
+        });    
+    })
+</script>
+</body>
+</html>

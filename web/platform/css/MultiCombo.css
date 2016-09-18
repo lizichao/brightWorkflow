@@ -1,0 +1,17 @@
+.ux-multicombo-icon {
+	width:16px;
+	height:16px;
+	float:left;
+	background-position: -1px -1px ! important;
+	background-repeat:no-repeat ! important;
+}
+.ux-multicombo-icon-checked {
+	background: transparent url(../icons/checked.gif);
+}
+.ux-multicombo-icon-unchecked {
+	background: transparent url(../icons/unchecked.gif);
+}
+.x-selectable, .x-selectable * {
+    -moz-user-select: text!important;
+    -khtml-user-select: text!important;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基础信息</title>
+	<link rel="stylesheet" href="css/huanyu.css">
+	<style>
+		.rightnav .current a {
+			color:#ff7200;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap-tab.js"></script>
+	<script type="text/javascript">
+	  $(function(){
+	    $('#myTab a').click(function (e) {
+	      e.preventDefault();
+	      $(this).tab('show');
+		  if( this.href.indexOf('#two') > -1 ){
+			$('.renzhi h4').each(function(i, k){
+				var t = this, $t = $(t);
+				$('.rightnav li:eq('+ i +')').attr('data-top', $t.offset().top);
+			})
+		  }
+	    })
+		
+		// 展开收起
+		$('.renzhi .tit2-trigger').click(function(){
+			var t = this, $t = $(t);
+			if( $t.html() == '展开' ){
+				$t.html('收起');
+				$t.parents('.tit2').next('.tab-pane-sub').show();
+			}else{
+				$t.html('展开');
+				$t.parents('.tit2').next('.tab-pane-sub').hide();
+			}
+		})
+		// 展开收起 end
+		
+		// 右侧导航
+		$(window).scroll(function(){
+			var top = $(window).scrollTop();
+			
+			$('.rightnav li').each(function(){
+				var t = this, $t = $(t);
+				if( top > $t.attr('data-top') - 200 ){
+					$t.addClass('current').siblings().removeClass('current');
+				}
+			})
+			
+		})
+		$('.rightnav li:not(.backtop)').click(function(){
+			var t = this, $t = $(t);
+			$t.addClass('current').siblings().removeClass('current');
+		})
+		// 右侧导航 end
+		
+	  });
+	</script>
+</head>
+
+<body class="grey">
+	<div class="top bbm">
+		<div class="container">
+			<div class="logo"><a href=""><img src="images/logo.jpg" alt=""></a></div>
+			<div class="dang">当前用户：admin <a href="">修改密码</a><a href="">退出</a></div>
+		</div>
+	</div>
+	
+	
+	<div class="container">
+		<div class="xiao_bg">
+			<ul class="nav nav-tabs" id="myTab">
+				<li class="active"><a href="#one">1、基础信息</a></li>
+				<li><a href="#two">2、任职年限</a></li>
+				<li><a href="#three">3、管理难度</a></li>
+				<li><a href="#four">4、专业能力</a></li>
+				<li><a href="#five">5、工作成效</a></li>
+			</ul>
+		   
+			<div class="tab-content">
+				<!-- 1、基础信息 -->
+				<div class="tab-pane active" id="one">
+					<ul class="iput">
+						<li><p>姓名：</p><input type="text" value="" placeholder="请输入您的姓名"></li>
+						<li><p>手机：</p><input type="text" value="" placeholder="请输入您的手机号码"></li>
+						<li><p>身份证号码：</p><input type="text" value="" placeholder="请输入18位身份证号码"></li>
+						<li><p>所在学校：</p><input type="text" value="" placeholder="请输入学校名称"></li>
+						<li><p>现任职务：</p><select name="" id=""><option value="">请选择</option></select></li>
+						<li><p>申请职级：</p><select name="" id=""><option value="">请选择</option></select></li>
+						<li class="btn"><input type="submit" value="提交"></li>
+					</ul>
+				</div>
+
+				<!-- 2、任职年限 -->
+				<div class="tab-pane " id="two">
+					<div class="renzhi">
+						<h4 id="01">学历情况</h4>
+						<div class="tit2">1、2016/01-2016-05&nbsp;&nbsp;清华大学<span><a href="javascript:;" class="tit2-trigger">收起</a><a href="">删除</a></span></div>
+						<div class="tab-pane-sub">
+							<ul>
+								<li><p>起止年月：</p>
+								   <input type="text" id="finishDate" name="finishDate" onclick="selectDeleteTime()" style="float:left"/>
+								   —
+								    <input type="text" id="finishDate" name="finishDate" onclick="selectDeleteTime()" style="float:left"/>
+								    <!--  
+									<select name="" id=""><option value="">2016</option></select>
+									<select name="" id=""><option value="">05</option></select>
+									<span>—</span> 
+									<select name="" id=""><option value="">2016</option></select>
+									<select name="" id=""><option value="">05</option></select>-->
+								</li>
+								<li><p>就读院校：</p><input type="text" value="" placeholder=""></li>
+								<li><p>就读专业：</p><input type="text" value="" placeholder=""></li>
+								<li><p>学历：</p><select name="" id=""><option value="">2016</option></select></li>
+								<li><p>学位：</p><select name="" id=""><option value="">2016</option></select></li>
+								<li class="btn"><input type="submit" value="保 存"></li>
+							</ul>
+						</div>
+						<a class="add" href="">+</a>
+						
+						<h4 class="mt30" id="02">任职年限</h4>
+						<div class="tit2">1、2016/01-2016-05&nbsp;&nbsp;清华大学<span><a href="javascript:;" class="tit2-trigger">收起</a><a href="">删除</a></span></div>
+						<div class="tab-pane-sub">
+							<ul>
+								<li><p>起止年月：</p>
+									<select name="" id=""><option value="">2016</option></select><select name="" id=""><option value="">05</option></select><span>—</span> 
+									<select name="" id=""><option value="">2016</option></select>
+									<select name="" id=""><option value="">05</option></select>
+								</li>
+								<li><p>所在学校：</p><input type="text" value="" placeholder=""></li>
+								<li><p>担任职务：</p><input type="text" value="" placeholder=""></li>
+								<li><p>任职年限：</p><select name="" id=""><option value="">2016</option></select></li>
+								<li><p>证明材料：</p><a class="file_link" href="#">选择文件上传<input class="file" type="file" value="" /></a></li>
+								<li class="btn"><input type="submit" value="保 存"></li>
+							</ul>
+						</div>
+						<a class="add" href="">+</a>
+						
+						<h4 class="mt30" id="03">职称情况</h4>
+						<div class="tit2">1、2016/01-2016-05&nbsp;&nbsp;清华大学<span><a href="javascript:;" class="tit2-trigger">收起</a><a href="">删除</a></span></div>
+						<div class="tab-pane-sub">
+							<ul><li class="btn"><input type="submit" value="保 存"></li></ul>
+						</div>
+						<a class="add" href="">+</a>
+						
+						<ul><li class="btn"><input type="submit" value="提 交"></li></ul>
+					</div>
+					<!-- 右导航 -->
+					<div class="rightnav">
+						<ul>
+							<li class="current"><img src="images/mid.png" alt=""> <a href="#01">学历情况</a></li>
+							<li><img src="images/mid.png" alt=""> <a href="#02">任职年限</a></li>
+							<li><img src="images/mid.png" alt=""> <a href="#03">职称情况</a></li>
+							<li class="backtop"><a href="#top"><img src="images/backTop.png" alt=""></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- 3、管理难度 -->
+				<div class="tab-pane" id="three">3、管理难度</div>
+
+				<!-- 4、专业能力 -->
+				<div class="tab-pane" id="four">4、专业能力</div>
+
+				<!-- 5、工作成效 -->
+				<div class="tab-pane" id="five">5、工作成效</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			深州市教育局版权所有 | 亮信科技技术支持：0755-33018116（工作日9:00-12:00  14:00-18:00） <br>
+			Copyright &copy; 2016 . All Rights Reserved.
+		</div>
+	</div>
+</body>
+</html>

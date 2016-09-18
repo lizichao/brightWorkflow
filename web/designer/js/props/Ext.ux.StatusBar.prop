@@ -1,0 +1,34 @@
+{
+properties : [{
+    name : "autoClear",
+    type : "number",
+    desc : "<b>Number</b> The number of milliseconds to wait after setting the status via setStatus before automatically clearing the status text and icon (defaults to 5000)"
+  },{
+    name : "busyIconCls",
+    desc : "<b>String</b> The default iconCls applied when calling showBusy (defaults to 'x-status-busy')"
+  },{
+    name : "busyText",
+    desc : "<b>String</b> The default text applied when calling showBusy (defaults to 'Loading...')"
+  },{
+    name : "cls",
+    desc : "<b>String</b> The base class applied to the containing element for this component on render (defaults to 'x-statusbar')"
+  },{
+    name : "defaultIconCls",
+    desc : "<b>String</b> The default iconCls value (see the iconCls docs for additional details about customizing the icon)"
+  },{
+    name : "defaultText",
+    desc : "<b>String</b> The default text value"
+  },{
+    name : "emptyText",
+    desc : "<b>String</b> The text string to use if no text has been set. Defaults to '&nbsp;')"
+  },{
+    name : "iconCls",
+    desc : "<b>String</b> A CSS class that will be initially set as the status bar icon and is expected to provide a background image (defaults to '')"
+  },{
+    name : "statusAlign",
+    desc : "<b>String</b> The alignment of the status element within the overall StatusBar layout. When the StatusBar is rendered, it creates an internal div containing the status text and icon"
+  },{
+    name : "text",
+    desc : "<b>String</b> A string that will be initially set as the status message. This string will be set as innerHTML (html tags are accepted) for the toolbar item. If not specified, the value set for defaultText will be used"
+  }]
+}

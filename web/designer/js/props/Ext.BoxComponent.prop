@@ -1,0 +1,48 @@
+{
+properties : [{
+    name : "autoHeight",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to use height:'auto', false to use fixed height (defaults to false)."
+  },{
+    name : "autoScroll",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to use overflow:'auto' on the components layout element and show scroll bars automatically when necessary, false to clip any overflowing content (defaults to false)."
+  },{
+    name : "autoWidth",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to use width:'auto', false to use fixed width (defaults to false)."
+  },{
+    name : "height",
+    desc : "<b>String</b> The height of this component in pixels (defaults to auto)."
+  },{
+    name : "margins",
+    type : "object",
+    desc : "<b>Object</b> An object containing margins to apply to the region in the format {left: (left margin), top: (top margin), right: (right margin), bottom: (bottom margin)}"
+  },{
+    name : "pageX",
+    type : "number",
+    desc : "<b>Number</b> The page level x coordinate for this component if contained within a positioning container"
+  },{
+    name : "pageY",
+    type : "number",
+    desc : "<b>Number</b> The page level y coordinate for this component if contained within a positioning container"
+  },{
+    name : "region",
+    desc : "<b>String</b> The region of a borderlayout",
+    values : ["center","west","north","south","east"]
+  },{
+    name : "tabTip",
+    desc : "<b>String</b> this config is only used when this BoxComponent is a child item of a TabPanel."
+  },{
+    name : "width",
+    desc : "<b>String</b> The width of this component in pixels (defaults to auto)."
+  },{
+    name : "x",
+    type : "number",
+    desc : "<b>Number</b> X position in pixels (for absolute layouts"
+  },{
+    name : "y",
+    type : "number",
+    desc : "<b>Number</b> Y position in pixels (for absolute layouts"
+  }]
+}

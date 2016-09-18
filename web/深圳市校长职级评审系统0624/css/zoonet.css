@@ -1,0 +1,242 @@
+@charset "utf-8";
+/**
+===============================================================
+	author : 中易互联
+	name   : CSS Document
+	date   : 2015-06-23
+	QQ     : 332966318
+===============================================================
+**/
+/**
+===============================================================
+	+ CSS RESET +
+===============================================================
+**/
+html{-webkit-text-size-adjust:none;}/*解决chrome浏览器下字体不能小于12px*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,img{margin:0;padding:0}
+body{background:#E7E8Eb;color:#333;font-family:"微软雅黑",Arial, Helvetica, sans-serif;font-size:14px;line-height:24px;}
+address,caption,cite,code,dfn,em,i,th,var,h1,h2,h3,h4,h5,h6{font-style:normal;font-weight:normal;}
+q:before,q:after{content:'';}
+a,fieldset,img{border:0;}
+div{overflow:hidden;}
+img{vertical-align:middle;}
+li{list-style-type:none;}
+input[type="submit"],input[type="reset"],input[type="button"],button{-webkit-appearance:none;}/*去掉苹果的默认UI来渲染按钮*/
+a{outline:none;text-decoration:none;}
+a:hover{text-decoration:underline;}
+/**
+===============================================================
+	+ A HREF 默认样式 +
+===============================================================
+**/
+a:link{color:#333;}
+a:visited{color:#333;}
+a:hover{color:#D92727;}
+a:active{color:#333;}
+/**
+===============================================================
+	+ 通用模块 +
+===============================================================
+**/
+/* Header */
+.header{background:#FFF;border-top:4px solid #44B549;border-bottom:1px solid #D9DADC;height:80px;}
+.header .auto{position:relative;}
+.header h1{background:url(../images/Logo.jpg) 0 8px no-repeat;height:80px;overflow:hidden;text-indent:-99em;}
+.header p{position:absolute;right:0;bottom:10px;z-index:9;}
+.header p span{padding-left:20px;}
+
+/* Main */
+.main{background:#FFF;border:1px solid #D9DADC;margin:25px auto;padding:14px 14px 60px 14px;width:970px;}
+
+input,select{display:inline-block;border:0;color:#666;height:30px;line-height:30px;font-size:14px;font-family:"微软雅黑";outline:none;}
+
+/* Footer */
+.footer{background:#B9B9B9;color:#FFF;font-size:12px;padding:15px 0;text-align:center;}
+
+/* 进度 */
+.grogress{background:#7CBAE5;height:15px;}
+.grogress .line{background:#60D295;height:15px;}
+
+/* 标题 */
+.com-title{background:#F3F3F3;margin-top:20px;padding:10px 30px;}
+.com-title .txt{padding-right:50px;width:730px;position:relative;z-index:2;}
+.com-title .txt h2{height:40px;line-height:40px;}
+.com-title .txt h2 i{padding-right:8px;}
+.com-title .txt p{color:#999;}
+.com-title .txt p.hide{height:24px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.com-title .txt a{color:#0066FF;display:block;height:24px;text-align:center;width:40px;position:absolute;right:0;bottom:0;z-index:9;}
+
+.com-title .select-step{width:110px;}
+.com-title .select-step a{background:#F90;color:#FFF;display:inline-block;height:40px;line-height:40px;text-align:center;text-decoration:none;width:110px;/**/-webkit-border-radius:5px;-moz-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;border-radius:5px;}
+
+/* 下一步 */
+.next-step{margin:60px auto 0 auto;width:440px;}
+.next-step a{background:#44B549;color:#FFF;display:inline-block;height:46px;line-height:46px;text-align:center;text-decoration:none;width:120px;/**/-webkit-border-radius:5px;-moz-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;border-radius:5px;}
+.next-step a:hover{background:#37953C;}
+
+/**
+===============================================================
+	+ 基础信息 +
+===============================================================
+**/
+.base-info{overflow:visible;position:relative;}
+
+.base-info .photo{height:;width:98px;position:absolute;top:28px;left:95px;z-index:9;}
+.base-info .photo img{height:110px;width:90px;}
+.base-info .photo a{background:#7CBAE5;color:#FFF;display:inline-block;height:26px;line-height:26px;margin-top:18px;text-align:center;text-decoration:none;width:90px;/**/-webkit-border-radius:3px;-moz-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;border-radius:3px;}
+
+.base-info ul{margin:0 auto;width:840px;}
+.base-info ul li{display:inline;float:left;margin:28px 30px 0 30px;min-height:36px;width:360px;}
+
+.border_1,.border_2{border:1px solid #E7E7E7;height:34px;line-height:34px;overflow:visible;position:relative;}
+.border_1 span{display:inline-block;height:34px;padding:0 10px;}
+.border_1 input,.border_1 select,.border_1 .sod_select{color:#666;text-align:left;position:absolute;top:2px;right:5px;z-index:9;}
+
+.sod_select{background:url(../images/Index_01.png) right 50% no-repeat;height:30px;line-height:30px;overflow:visible;}
+.sod_select ul{width:100%;}
+.sod_select ul li{cursor:pointer;float:left;height:36px;line-height:36px;margin:0;overflow:hidden;text-overfow:ellipsis;white-space:nowrap;text-indent:10px;width:100%;}
+
+.w_1{display:inline;margin-left:100px;width:134px;}
+.w_1 input{width:72px;}
+
+.w_2{width:106px;}
+.w_2 select,.w_2 .sod_select{background:none;width:46px;}
+
+.w_3{width:358px;}
+.w_3 input,.w_3 select,.w_3 .sod_select{width:270px;}
+
+.w_4{display:inline;margin-left:100px;width:258px;}
+.w_4 input{width:170px;}
+
+.w_5{width:358px;}
+.w_5 input{width:242px;}
+
+.w_6{display:inline;margin-left:100px;width:258px;}
+.w_6 input{width:156px;}
+
+.w_7{width:358px;}
+.w_7 input{width:214px;}
+
+.w_8{width:358px;}
+.w_8 input{width:298px;}
+
+.w_9{width:170px;}
+.w_9 input,.w_9 select,.w_9 .sod_select{width:108px;}
+
+.w_10{width:214px;}
+.w_10 input{width:152px;}
+
+.w_11{width:126px;}
+.w_11 input{width:64px;}
+
+/**
+===============================================================
+	+ 任职年限 +
+===============================================================
+**/
+.years{padding-top:20px;}
+.years ul{margin:0 auto;width:440px;}
+.years ul li{float:left;min-height:36px;margin-top:20px;width:100%;}
+.years ul li span{display:inline-block;height:36px;line-height:36px;padding:0 10px;}
+
+.border_2 input,.border_2 select,.border_2 .sod_select{color:#666;text-align:left;position:absolute;top:2px;right:5px;z-index:9;}
+
+.w_12{width:154px;}
+.w_12 input{width:144px;}
+
+.w_13{width:344px;}
+.w_13 input{width:334px;}
+
+.w_14{width:100px;}
+.w_14 input{width:90px;}
+
+.deooration{border:1px solid #E7E7E7;font-size:12px;font-family:"微软雅黑";height:90px;line-height:22px;margin-top:10px;outline:none;resize:none;padding:5px;width:306px;}
+
+
+.up-load{background:#7CBAE5;color:#FFF;cursor:pointer;font-size:12px;margin-top:3px;outline:none;width:100px;/**/-webkit-border-radius:3px;-moz-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;border-radius:3px;}
+
+a.add-more{display:block;background:#D7D7D7;color:#000;height:30px;line-height:30px;margin-top:3px;text-align:center;text-decoration:none;/**/-webkit-border-radius:3px;-moz-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;border-radius:3px;}
+
+/**
+===============================================================
+	+ 处分 +
+===============================================================
+**/
+
+.w_20{width:372px;}
+.w_20 input{width:362px;}
+
+/**
+===============================================================
+	+ 论文发表 +
+===============================================================
+**/
+.paper{padding-top:20px;}
+.paper ul{margin:0 auto;width:840px;}
+.paper ul li{display:inline;float:left;margin:20px 30px 0 30px;min-height:36px;width:360px;}
+.paper ul li span{display:inline-block;height:36px;line-height:36px;padding:0 10px;}
+
+.w_15{width:292px;}
+.w_15 input{width:282px;}
+
+.w_16{width:222px;}
+.w_16 input{width:212px;}
+
+.w_17{width:208px;}
+.w_17 input{width:198px;}
+
+.w_18{width:264px;}
+.w_18 input{width:254px;}
+
+.w_19{width:236px;}
+.w_19 input{width:226px;}
+
+/**
+===============================================================
+	+ 办学思想 +
+===============================================================
+**/
+.bxsx{padding-top:20px;}
+.bxsx ul{margin:0 auto;width:840px;}
+.bxsx ul li{float:left;min-height:36px;margin-top:20px;width:100%;}
+.bxsx ul li span{display:inline-block;height:36px;line-height:36px;padding-right:10px;}
+.bxsx ul li textarea{border:1px solid #E7E7E7;font-size:12px;font-family:"微软雅黑";height:230px;line-height:22px;outline:none;resize:none;padding:5px;width:826px;}
+
+/**
+===============================================================
+	+ 切换步骤 +
+===============================================================
+**/
+.change-channel{display:none;overflow:visible;width:800px;position:relative;z-index:99;}
+.change-channel ul{margin:20px auto;width:760px;}
+.change-channel ul li{float:left;border-bottom:1px solid #EEE;color:#666;height:50px;line-height:50px;overflow:hidden;width:190px;position:relative;z-index:9999;}
+.change-channel ul li a{color:#666;text-decoration:none;}
+.change-channel ul li i{padding-right:5px;}
+.change-channel ul li span{background:#B9B9B9;color:#FFF;display:inline-block;font-size:12px;height:22px;line-height:24px;padding:0 6px;position:absolute;top:14px;right:15px;z-index:9;/**/-webkit-border-radius:3px;-moz-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;border-radius:3px;}
+.change-channel ul li span.bh{background:#F90;}
+.change-channel ul li span.tx{background:#2F9833;}
+
+.change-channel .close{background:#F90;color:#FFF;font-size:22px;font-weight:bold;height:26px;line-height:22px;text-align:center;text-decoration:none;width:26px;position:absolute;top:-24px;right:-10px;z-index:9;}
+*+html .change-channel .close{top:-4px;}
+
+
+/**
+===============================================================
+	+ PUBLIC +
+===============================================================
+**/
+h2{font-size:18px;}
+.auto{margin:0 auto;width:1000px;}
+.fl{float:left;}
+.fr{float:right;}
+.container{width:100%;}
+.bgf{background:#00FF66;}
+
+.transition,.next-step a{-o-transition:all 0.4s;-moz-transition:all 0.4s;-ms-transition:all 0.4s;-webkit-transition:all 0.4s;transition:all 0.4s;}
+
+.opacity{filter:alpha(Opacity=70);-moz-opacity:0.7;-o-opacity:0.7;-webkit-opacity:0.7;opacity:0.7;}
+
+.clear-fix:after{content:'.';clear:both;display:block;height:0;visibility:hidden;overflow:hidden;}
+.clear-fix{*zoom:1;}
+
+.clear-both{clear:both;display:block;height:0;visibility:hidden;overflow:hidden;}

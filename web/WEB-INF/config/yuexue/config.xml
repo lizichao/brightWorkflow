@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<jraf-config name="yuexue" desc="悦学">
+  <!--设置变量 varidx 从2开始,(0:FileUtil.getHomePath,1:FileUtil.getWebPath)-->
+  <CfgPath>/WEB-INF/config/yuexue/</CfgPath>
+  <DataSource>
+    <ds name="brightcom.database" refname="brightcom.database" />
+  </DataSource>
+  <ParamCfg>{2}brightcom.xml</ParamCfg>
+  <MenuCfg>{2}menus.xml</MenuCfg>
+  <EventCfg>{2}events.xml</EventCfg>
+  <Session>
+    <Field name="deptcode" title="机构代码" type="String" maxlen="60" notnull="true" />
+  </Session>
+  <database>
+    <file name="base" desc="基础设置" path="{2}db/base-table.xml" />
+	<file name="community" desc="社区" path="{2}db/bbs-table.xml" />
+	<file name="learn" desc="学习" path="{2}db/learn-table.xml" />
+	<file name="sell" desc="商城" path="{2}db/sell-table.xml" />
+  </database>
+  <operation>
+    <file name="baseOpr" desc="基础设置" path="{2}op/base-config.xml" />
+	<file name="communityOpr" desc="社区" path="{2}op/bbs-config.xml" />
+	<file name="learnOpr" desc="学习" path="{2}op/learn-config.xml" />
+	<file name="sellOpr" desc="商城" path="{2}op/sell-config.xml" />
+  </operation>
+</jraf-config>
+

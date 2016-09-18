@@ -1,0 +1,69 @@
+{
+properties : [{
+    name : "allowBlank",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to require at least one item in the list to be selected, true to allow no selection (defaults to true)."
+  },{
+    name : "appendOnly",
+    desc : "<b>String</b> True if the list should only allow append drops when drag/drop is enabled (use for lists which are sorted, defaults to false)"
+  },{
+    name : "blankText",
+    desc : "<b>String</b> Default text displayed when the control contains no items"
+  },{
+    name : "ddReorder",
+    type : "boolean",
+    desc : "<b>Boolean</b> Whether the items in the MultiSelect list are drag/drop reorderable (defaults to false)."
+  },{
+    name : "delimiter",
+    desc : "<b>String</b> The string used to delimit between items when set or returned as a string of values (defaults to ',')."
+  },{
+    name : "displayField",
+    desc : "<b>String/Number</b> Name/Index of the desired display field in the dataset (defaults to 0)."
+  },{
+    name : "dragGroup",
+    type : "mixed",
+    desc : "<b>Mixed</b> The ddgroup name(s) for the MultiSelect DragZone (defaults to undefined)."
+  },{
+    name : "dropGroup",
+    type : "mixed",
+    desc : "<b>Mixed</b> The ddgroup name(s) for the MultiSelect DropZone (defaults to undefined)."
+  },{
+    name : "height",
+    desc : "<b>String</b> The height of this component in pixels (defaults to auto)."
+  },{
+    name : "legend",
+    desc : "<b>String</b> Wraps the object with a fieldset and specified legend."
+  },{
+    name : "maxSelections",
+    type : "number",
+    desc : "<b>Number</b> Maximum number of selections allowed (defaults to Number.MAX_VALUE)."
+  },{
+    name : "maxSelectionsText",
+    desc : "<b>String</b> Validation message displayed when maxSelections is not met"
+  },{
+    name : "minSelections",
+    type : "number",
+    desc : "<b>Number</b> Minimum number of selections allowed (defaults to 0)."
+  },{
+    name : "minSelectionsText",
+    desc : "<b>String</b> Validation message displayed when minSelections is not met"
+  },{
+    name : "store",
+    type : "mixed",
+    desc : "<b>Ext.data.Store</b> The {@link Ext.data.Store} to bind this."
+  },{
+    name : "tbar",
+    type : "object/array",
+    desc : "<b>Object/Array</b> The top toolbar of the panel. This can be a {@link Ext.Toolbar} object, a toolbar config, or an array of buttons/button configs to be added to the toolbar. Note that this is not available as a property after render. To access the top toolbar after render, use {@link #getTopToolbar}."
+  },{
+    name : "valueField",
+    desc : "<b>String/Number</b> Name/Index of the desired value field in the dataset (defaults to 1)."
+  },{
+    name : "view",
+    type : "mixed",
+    desc : "<b>Ext.ListView</b> The Ext.ListView used to render the multiselect list."
+  },{
+    name : "width",
+    desc : "<b>String</b> Width in pixels of the control (defaults to 100)."
+  }] 
+}

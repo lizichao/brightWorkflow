@@ -1,0 +1,11 @@
+{
+listeners : [{
+    name : "move",
+    type : "function",
+    defaults : 'function(scope,x,y){}'
+  },{
+    name : "resize",
+    type : "function",
+    defaults : 'function(scope,adjWidth,adjHeight,rawWidth,rawHeight){}'
+  }]
+}

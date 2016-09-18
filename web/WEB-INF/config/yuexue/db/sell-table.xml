@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/sell-table.xml">
+  <Table desc="购买记录" name="sell_buy_record">
+    <Field name="buy_record_id" title="buy_record_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_info_id" title="课件ID" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="status" title="是否已购买状态 20-已购买" type="String" maxlen="32" pk="false" />
+    <Field name="addbookshelf_time" title="加入书架时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="buy_time" title="购买时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="sell_integral" desc="积分信息">
+    <Field name="integral_id" title="integral_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="integral_num" title="积分数" type="String" maxlen="32" pk="false" />
+    <Field name="integral_type" title="积分类型" type="String" maxlen="32" pk="false" />
+    <Field name="source_id" title="积分来源" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false"  />
+    <Field name="remark" title="备注" type="String" maxlen="200" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="sell_integral_log" desc="积分消费记录">
+    <Field name="integral_log_id" title="integral_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_info_id" title="课件ID" type="String" maxlen="32" pk="false" />
+    <Field name="consumption_num" title="消费积分数" type="String" maxlen="32" pk="false" />
+    <Field name="consumption_time" title="消费时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="userid" title="发送人或是消费者" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="touserid" title="接收人" type="String" maxlen="32" pk="false" />
+    <Field name="remark" title="备注" type="String" maxlen="200" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="sell_paper_info" desc="课件信息">
+    <Field name="paper_info_id" title="paper_info_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_info_name" title="课件名" type="String" maxlen="32" pk="false" />
+    <Field name="author" title="作者" type="String" maxlen="100" pk="false" gen="session.username" />
+    <Field name="watch_count" title="阅读次数" type="long" maxlen="10" pk="false" />
+    <Field name="down_count" title="下载次数" type="String" maxlen="45" pk="false" />
+    <Field name="price" title="价格" type="String" maxlen="32" pk="false" />
+    <Field name="pref_price" title="优惠价格" type="String" maxlen="32" pk="false" />
+    <Field name="resource_type" title="资源类型" type="String" maxlen="32" pk="false" />
+    <Field name="intro" title="简介" type="String" maxlen="500" pk="false" />
+    <Field name="file_path" title="附件路径" type="String" maxlen="100" pk="false" />
+    <Field name="file_name" title="附件名" type="String" maxlen="100" pk="false" />
+    <Field name="file_size" title="附件大小" type="double" maxlen="22" pk="false" />
+    <Field name="file_type" title="附件类型" type="String" maxlen="10" pk="false" />
+    <Field name="preview_path" title="预览地址" type="String" maxlen="100" pk="false" />
+    <Field name="trans_status" title="转换状态" type="String" maxlen="100" pk="false" />
+    <Field name="trans_error" title="转换信息" type="String" maxlen="255" pk="false" />
+    <Field name="book_type" title="书本类型" type="String" maxlen="100" pk="false" />
+    <Field name="subjectid" title="学科" type="String" maxlen="100" pk="false" />
+    <Field name="book_sma_category" title="课外读物小类" type="String" maxlen="32" pk="false" />
+    <Field name="book_big_category" title="课外读物大类" type="String" maxlen="32" pk="false" />
+    <Field name="book_volume" title="册(0-全一册 1-上册 2-下册)" type="String" maxlen="32" pk="false" />
+    <Field name="grade_code" title="年级" type="String" maxlen="32" pk="false" />
+    <Field name="classid" title="班级ID" type="String" maxlen="32" pk="false" />
+    <Field name="cover_path" title="封面路径" type="String" maxlen="100" pk="false" />
+    <Field name="upload_userid" title="上传人ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="upload_time" title="上传时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="book_attachment_id" title="Book附件ID" type="String" maxlen="100" pk="false" />
+    <Field name="attachment_id" title="附件ID" type="String" maxlen="100" pk="false" />
+    <Field name="subject_book_id" title="SubjectBookID" type="String" maxlen="100" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="sell_paper_recommended" desc="推荐记录">
+    <Field name="recommended_id" title="recommended_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_info_id" title="课件ID" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false" />
+    <Field name="classid" title="班级ID" type="String" maxlen="32" pk="false" />
+    <Field name="group_id" title="小组ID" type="String" maxlen="32" pk="false" />
+    <Field name="send_id" title="发送老师" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="send_time" title="发送时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="阅读记录" name="sell_read_log">
+    <Field name="read_log_id" title="read_log_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_info_id" title="课件ID" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="begin_time" title="开始时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="end_time" title="结束时间" type="Timestamp" pk="false" />
+    <Field name="stat_status" title="统计状态 默认为N" type="String" maxlen="32" pk="false" />
+    <Field name="stat_time" title="统计时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="praise" title="是否点赞" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table desc="" name="pay_integral">
+    <Field name="integral_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="order_id" type="String" maxlen="40" pk="false" />
+    <Field name="integral_num" type="String" maxlen="32" pk="false" />
+    <Field name="userid" type="String" maxlen="32" pk="false" />
+    <Field name="valid" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="modify_date" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+   <Table desc="附件分享记录" name="learn_attachment_share">
+    <Field name="share_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" type="String" maxlen="40" pk="false" />
+    <Field name="paper_id" type="String" maxlen="32" pk="false" />
+    <Field name="remark" type="String" maxlen="200" pk="false" />
+    <Field name="valid" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" type="String" maxlen="40" pk="false"  />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+</Database>
+

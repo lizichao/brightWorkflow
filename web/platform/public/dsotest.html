@@ -1,0 +1,104 @@
+<html>
+
+<body>
+<object id="dsoframe" codeBase="dsoframer.cab#2.2.1.2" height="90%" width="100%" classid="clsid:00460182-9E5E-11d5-B7C8-B8269041DD57">
+    <param name="BorderStyle" value="1">
+    <param name="Titlebar" value="0">
+    <param name="Toolbars" value="0">
+    <param name="Menubar" value="0">
+</object>
+<input type="button" value="New" onclick="CreateNew();">
+<input type="button" value="Open" onclick="Open();">
+<input type="button" value="Close" onclick="Close();">
+<input type="button" value="Title" onclick="Caption();">
+<input type="button" value="ShowTitlebar" onclick="Titlebar();">
+<input type="button" value="ShowToolbars" onclick="Toolbars();">
+<input type="button" value="ShowMenubar" onclick="Menubar();">
+<input type="button" value="HostName" onclick="HostName();">
+<input type="button" value="DocumentFullName" onclick="DocumentFullName();">
+<input type="button" value="PrintPreview" onclick="PrintPreview();">
+<input type="button" value="Print" onclick="PrintOut();">
+<input type="button" value="HttpPost" onclick="HttpPost();">
+<input type="button" value="MenuDisplay" onclick="SetMenuDisplay();">
+</body>
+<script language="javascript">
+//ProgId: Excel.Sheet Excel.Chart PowerPoint.Show MSProject.Project Visio.Drawing Word.Document
+function CreateNew()
+{	
+	//(ProgId)
+	dsoframe.CreateNew("Excel.Sheet");
+}
+function Open()
+{
+	//path,readonly,progid,WebUsername,WebPass
+	var up = window.location.protocol+"//"+window.location.host+"";
+	dsoframe.Open(up+"/20090520.xls",true);
+}
+function Save()
+{
+	dsoframe.Save("path");
+}
+function Close()
+{
+	dsoframe.Close();
+}
+//set Title
+function Caption()
+{
+	dsoframe.Caption=Math.random();
+}
+//disp/hide titlebar
+function Titlebar()
+{
+	dsoframe.Titlebar=!dsoframe.Titlebar;
+}
+function Toolbars()
+{
+	dsoframe.Toolbars=!dsoframe.Toolbars;
+}
+function Menubar()
+{
+	dsoframe.Menubar=!dsoframe.Menubar;
+}
+function HostName()
+{
+	//DsoFramerControl
+	alert(dsoframe.HostName);
+}
+function DocumentFullName()
+{
+	alert(dsoframe.DocumentFullName);
+}
+function PrintPreview()
+{
+	dsoframe.PrintPreview();
+}
+function PrintOut()
+{
+	dsoframe.PrintOut();
+}
+function HttpPost()
+{
+	dsoframe.HttpInit();
+	dsoframe.HttpAddPostString("RecordID","20090520");
+	dsoframe.HttpAddPostCurrFile("FileData", "文档名.doc");
+	var rst=dsoframe.HttpPost("/p.ajax?sysName=pcmc&oprID=test&actions=upload");
+	alert(rst);
+}
+function SetMenuDisplay()
+{
+	//二进制    000000000
+	//NEW               1
+	//OPEN             1
+	//CLOSE           1
+	//SAVE           1
+	//SAVEAS        1
+	//PRINT        1
+	//PGSETUP     1
+	//PROPS      1
+	//PRINTPV   1
+	var __mn=window.prompt("菜单二进制000000000","000000000");
+	dsoframe.SetMenuDisplay(parseInt(__mn,2));
+}
+</script>
+</html>

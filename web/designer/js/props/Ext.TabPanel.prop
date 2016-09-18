@@ -1,0 +1,87 @@
+{
+properties : [{
+    name : "activeTab",
+    desc : "<b>String/Number</b> A string id or the numeric index of the tab that should be initially activated on render (defaults to none)"
+  },{
+    name : "animScroll",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to animate tab scrolling so that hidden tabs slide smoothly into view (defaults to true)"
+  },{
+    name : "autoTabSelector",
+    desc : "<b>String</b> The CSS selector used to search for tabs in existing markup when autoTabs = true (defaults to 'div.x-tab')"
+  },{
+    name : "autoTabs",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to query the DOM for any divs with a class of 'x-tab' to be automatically converted to tabs and added to this panel (defaults to false)"
+  },{
+    name : "baseCls",
+    desc : "<b>String</b> The base CSS class applied to the panel (defaults to 'x-tab-panel')"
+  },{
+    name : "deferredRender",
+    type : "boolean",
+    desc : "<b>Boolean</b> true by default to defer the rendering of child items to the browsers DOM until a tab is activated"
+  },{
+    name : "enableTabScroll",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to enable scrolling to tabs that may be invisible due to overflowing the overall TabPanel width"
+  },{
+    name : "itemTpl",
+    type : "template",
+    desc : "<b>Ext.Template</b> (Optional) A Template or XTemplate which may be provided to process the data object returned from getTemplateArgs to produce a clickable selector element in the tab strip"
+  },{
+    name : "layoutConfig",
+    type : "object",
+    desc : "<b>Object</b> This is a config object containing properties specific to the chosen layout (to be used in conjunction with the {@link #layout} config value). For complete details regarding the valid config options for each layout type, see the layout class corresponding to the type specified: {@link Ext.layout.Accordion}, {@link Ext.layout.AnchorLayout}, {@link Ext.layout.BorderLayout}, {@link Ext.layout.CardLayout}, {@link Ext.layout.ColumnLayout}, {@link Ext.layout.FitLayout}, {@link Ext.layout.FormLayout} and {@link Ext.layout.TableLayout}."
+  },{
+    name : "layoutOnTabChange",
+    type : "boolean",
+    desc : "<b>Boolean</b> Set to true to force a layout of the active tab when the tab is changed. Defaults to false"
+  },{
+    name : "minTabWidth",
+    type : "number",
+    desc : "<b>Number</b> Minimun tab width"
+  },{
+    name : "monitorResize",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to automatically monitor window resize events to handle anything that is sensitive to the current size of the viewport. This value is typically managed by the chosen {@link #layout} and should not need to be set manually."
+  },{
+    name : "plain",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to render the window body with a transparent background so that it will blend into the framing elements, false to add a lighter background color to visually highlight the body element and separate it more distinctly from the surrounding frame (defaults to false)."
+  },{
+    name : "resizeTabs",
+    type : "boolean",
+    desc : "<b>Boolean</b> Resize tabs automaticly"
+  },{
+    name : "scrollDuration",
+    type : "number",
+    desc : "<b>Float</b> The number of milliseconds that each scroll animation should last (defaults to .35)"
+  },{
+    name : "scrollIncrement",
+    type : "number",
+    desc : "<b>Number</b> The number of pixels to scroll each time a tab scroll button is pressed (defaults to 100, or if resizeTabs = true, the calculated tab width)"
+  },{
+    name : "scrollRepeatInterval",
+    type : "number",
+    desc : "<b>Number</b> Number of milliseconds between each scroll while a tab scroll button is continuously pressed (defaults to 400)"
+  },{
+    name : "tabCls",
+    desc : "<b>String</b> This config option is used on child Components of ths TabPanel"
+  },{
+    name : "tabMargin",
+    type : "number",
+    desc : "<b>Number</b> The number of pixels of space to calculate into the sizing and scrolling of tabs"
+  },{
+    name : "tabPosition",
+    values : ["top","bottom"],
+    desc : "<b>String</b> The position where the tab strip should be rendered (defaults to 'top'). The only other supported value is 'bottom'. Note: tab scrolling is only supported for tabPosition: 'top'."
+  },{
+    name : "tabWidth",
+    type : "number",
+    desc : "<b>Number</b> Default tab width"
+  },{
+    name : "wheelIncrement",
+    type : "number",
+    desc : "<b>Number</b> For scrolling tabs, the number of pixels to increment on mouse wheel scrolling (defaults to 20)"
+  }]
+}

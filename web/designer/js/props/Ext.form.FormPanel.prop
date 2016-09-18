@@ -1,0 +1,108 @@
+{
+properties : [{
+    name : "api",
+    type : "object",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Object</b> If specified load and submit actions will be handled with Ext.form.Action.DirectLoad and Ext.form.Action.DirectSubmit."
+  },{
+    name : "baseParams",
+    type : "object",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Object</b> Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}."
+  },{
+    name : "buttons",
+    type : "array",
+    desc : "<b>Array</b> An array of {@link Ext.Button} instances (or valid button configs) to add to the footer of this panel"
+  },{
+    name : "errorReader",
+    type : "mixed",
+    classnm : "Ext.form.BasicForm",
+    defaults: "new JrafXmlReader(meta,recordType,'id')",
+    desc : "<b>DataReader</b> An Ext.data.DataReader (e.g. {@link Ext.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions. This is completely optional as there is built-in support for processing JSON."
+  },{
+    name : "fileUpload",
+    type : "boolean",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Boolean</b> Set to true if this form is a file upload."
+  },{
+    name : "formId",
+    desc : "<b>String</b> The id of the FORM tag (defaults to an auto-generated id)"
+  },{
+    name : "hideLabels",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to hide field labels by default (sets display:none). Defaults to false"
+  },{
+    name : "itemCls",
+    desc : "<b>String</b> A css class to apply to the x-form-item of fields. This property cascades to child containers"
+  },{
+    name : "labelAlign",
+    values : ["left","top","right"],
+    desc : "<b>String</b> Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\"). This property cascades to child containers if not set."
+  },{
+    name : "labelPad",
+    type : "number",
+    desc : "<b>Number</b> The default padding in pixels for field labels (defaults to 5)"
+  },{
+    name : "labelSeparator",
+    desc : "<b>String</b> The separator to display after the text of each fieldLabel"
+  },{
+    name : "labelWidth",
+    type : "number",
+    desc : "<b>Number</b> The width of labels in pixels"
+  },{
+    name : "method",
+    values : ["GET","POST"],
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>String</b> The request method to use (GET or POST) for form actions if one isn't supplied in the action options"
+  },{
+    name : "minButtonWidth",
+    type : "number",
+    desc : "<b>Number</b> Minimum width of all buttons in pixels (defaults to 75)"
+  },{
+    name : "monitorPoll",
+    type : "number",
+    desc : "<b>Number</b> The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)"
+  },{
+    name : "monitorValid",
+    type : "boolean",
+    desc : "<b>Boolean</b> If true, the form monitors its valid state client-side and regularly fires the clientvalidation event passing that state"
+  },{
+    name : "paramOrder",
+    type : "mixed",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Array/String</b> A list of params to be executed server side. Defaults to undefined. Only used for the api load configuration"
+  },{
+    name : "paramsAsHash",
+    type : "boolean",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Boolean</b> Only used for the api load configuration. Send parameters as a collection of named arguments (defaults to false)."
+  },{
+    name : "reader",
+    type : "mixed",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>DataReader</b> An Ext.data.DataReader (e.g. Ext.data.XmlReader) to be used to read data when executing 'load' actions"
+  },{
+    name : "standardSubmit",
+    type : "boolean",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Boolean</b> If set to true, standard HTML form submits are used instead of XHR (Ajax) style form submissions. Defaults to false"
+  },{
+    name : "timeout",
+    type : "number",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Number</b> Timeout for form actions in seconds (default is 30 seconds)."
+  },{
+    name : "trackResetOnLoad",
+    type : "boolean",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>Boolean</b> If set to true, reset() resets to the last loaded or setValues() data instead of when the form was first created. Defaults to false."
+  },{
+    name : "url",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>String</b> The URL to use for form actions if one isn't supplied in the doAction options"
+  },{
+    name : "waitTitle",
+    classnm : "Ext.form.BasicForm",
+    desc : "<b>String</b> The default title to show for the waiting message box (defaults to 'Please Wait...')"
+  }]
+}

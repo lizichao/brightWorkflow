@@ -1,0 +1,62 @@
+{
+properties : [{
+    name : "allowOtherMenus",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow multiple menus to be displayed at the same time (defaults to false)"
+  },{
+    name : "defaultAlign",
+    desc : "<b>String</b> The default Ext.Element.alignTo anchor position value for this menu relative to its element of origin (defaults to 'tl-bl?')"
+  },{
+    name : "defaultOffsets",
+    type : "array",
+    desc : "<b>Array</b> An array specifying the [x, y] offset in pixels by which to change the default Menu popup position after aligning according to the defaultAlign configuration. Defaults to [0, 0]"
+  },{
+    name : "defaults",
+    type : "object",
+    desc : "<b>Object</b> A config object that will be applied to all items added to this container either via the items config or via the add method"
+  },{
+    name : "enableScrolling",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow the menu container to have scroller controls if the menu is too long (defaults to true)"
+  },{
+    name : "floating",
+    type : "boolean",
+    desc : "<b>Boolean</b> By default, a Menu configured as floating:true will be rendered as an Ext.Layer (an absolutely positioned, floating Component with zindex=15000).If configured as floating:false, the Menu may be used as child item of another Container instead of a free-floating Layer."
+  },{
+    name : "ignoreParentClicks",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to ignore clicks on any item in this menu that is a parent item (displays a submenu) so that the submenu is not dismissed when clicking the parent item (defaults to false)"
+  },{
+    name : "items",
+    type : "mixed",
+    desc : "<b>Mixed</b> An array of items to be added to this menu. Menus may contain either menu items, or general Components."
+  },{
+    name : "maxHeight",
+    type : "number",
+    desc : "<b>Number</b> The maximum height of the menu. Only applies when enableScrolling is set to True (defaults to null)."
+  },{
+    name : "minWidth",
+    type : "number",
+    desc : "<b>Number</b> The minimum width of the menu in pixels (defaults to 120)"
+  },{
+    name : "plain",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to remove the incised line down the left side of the menu. Defaults to false"
+  },{
+    name : "scrollIncrement",
+    type : "number",
+    desc : "<b>Number</b> The amount to scroll the menu. Only applies when enableScrolling is set to True (defaults to 24)"
+  },{
+    name : "shadow",
+    desc : "<b>String/Boolean</b> Shadow to be used",
+    values : ["sides","frame","drop",'true'],
+    editable: true
+  },{
+    name : "showSeparator",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to show the icon separator. (defaults to true)"
+  },{
+    name : "subMenuAlign",
+    desc : "<b>String</b> The Ext.Element.alignTo anchor position value to use for submenus of this menu (defaults to 'tl-tr?')"
+  }]
+}

@@ -1,0 +1,15 @@
+{
+listeners : [{
+    name : "afteredit",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "beforeedit",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "validateedit",
+    type : "function",
+    defaults : 'function(e){}'
+  }]
+}

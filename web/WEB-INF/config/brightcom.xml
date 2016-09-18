@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="gb2312"?>
+<baseElement>
+	<!--设置变量 varidx 从2开始,(0:FileUtil.getHomePath,1:FileUtil.getWebPath)-->
+	<brightcom_home>{0}</brightcom_home>
+	<log4j_path>{1}WEB-INF/config/log4j.properties</log4j_path>
+	<web_path varidx="2">{1}</web_path>
+	<sys_name>校长职级评审系统</sys_name>
+
+	<brightcom>
+		<database>
+			<!--方言-->
+			<dialect>cn.brightcom.jraf.dialect.MySQLDialect</dialect>
+			<!--JDBC连接提供者-->
+			<provider>cn.brightcom.jraf.db.ProxoolDBProvider</provider>
+			<!--是否使用数据库自增字段-->
+			<getGeneratedKeys>false</getGeneratedKeys>
+		</database>
+		<!--超级管理员-->
+		<sysmgr>~admin~</sysmgr>
+		<!--菜单图标CSS-->
+		<menuicon>award-star-bronze-1|book|book-open|brick|bricks|disk|email|feed|flag-blue|folder|grid|group|key|monitor|note|page-excel|page-word|photo|report|printer|user|</menuicon>
+		<!--是否压缩JS-->
+		<jscompress>false</jscompress>
+		<!--是否生成JS文件-->
+		<jsfile>true</jsfile>
+		<!--重新生成指定日期前生成的JS文件-->
+		<jsfiledate>2011-01-12 12:14:00</jsfiledate>
+		<errpage>/platform/public/errpage.jsp</errpage>
+		<!--是否用dotNet通用加密-->
+		<DesFlag>true</DesFlag>
+	</brightcom>
+	
+	<!--非超级管理员禁止访问页面-->
+	<sysmgrpage>
+		<page>/platform/sm/paramlist.jsp</page>
+		<page>/platform/sm/paramlist.js</page>
+		<page>/platform/sm/subsys.jsp</page>
+		<page>/platform/sm/subsys.js</page>
+		<page>/platform/sm/sysmenu.jsp</page>
+		<page>/platform/sm/sysmenu.js</page>
+		<page>/platform/sm/tabledesigner.jsp</page>
+		<page>/platform/sm/tabledesigner.js</page>
+		<page>/platform/sm/oprdesigner.jsp</page>
+		<page>/platform/sm/oprdesigner.js</page>
+		<page>/platform/sm/dbxmldesigner.jsp</page>
+		<page>/platform/sm/dbxmldesigner.js</page>
+		<page>/platform/sm/rolelist.jsp</page>
+		<page>/platform/sm/rolelist.js</page>
+		<page>/designer/</page>
+		<page>/platform/oauth/clientmgr.jsp</page>
+		<page>/platform/oauth/clientmgr.js</page>
+		<page>/platform/oauth/version.jsp</page>
+		<page>/platform/oauth/version.js</page>
+		<page>/platform/cas/services.jsp</page>
+		<page>/platform/cas/services.js</page>
+	</sysmgrpage>
+	
+	<!--登录名校验,缺省usercode-->
+	<login>
+		<!--登录次数-->
+		<times>5</times>
+		<!--锁定时间 分钟-->
+		<locktime>30</locktime>
+		<field class="MobileValidator">^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[0,6-8])|(18[0-9]))\d{8}$</field>
+		<field class="EmailValidator">^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$</field>
+		<!--主页跳转-->
+		<mainpage>
+			<!--学校管理员-->
+			<page usertype="1" result="10"/><!-- 校长类型用户 -->
+			<page usertype="2" result="20"/><!--人事干部类型用户 -->
+			<page usertype="3" result="30"/><!--专家类型用户		 -->	
+			<page usertype="4" result="40"/><!--领导类型用户	 -->	
+			<page usertype="5" result="50"/><!--管理员类型用户	 -->		
+			<page usertype="6" result="60"/><!--区级领导类型用户	 -->		
+		</mainpage>
+	</login>
+
+	<!--系统缺省提示信息-->
+	<Msgs>
+		<Msg code="00001">交易配置文件尚未定义或参数有误</Msg>
+		<Msg code="00002">提交失败,交易未处理</Msg>
+		<Msg code="00003">相应跳转路径未定义</Msg>
+		<Msg code="00004">未指定处理该业务处理类</Msg>
+		<Msg code="00005">ProcesserServlet处理异常</Msg>
+		<Msg code="00006">文件上传处理异常</Msg>
+
+		<Msg code="00011">须经授权才能使用,您无此交易的执行权限</Msg>
+		<Msg code="00012">列级权限数据处理异常</Msg>
+		<!--数据校验-->
+		<Msg code="00054">字段类型未正确定义</Msg>
+		<Msg code="00055">必须输入</Msg>
+		<Msg code="00056">长度必须</Msg>
+		<Msg code="00057">非法的整数值</Msg>
+		<Msg code="00058">精度必须为</Msg>
+		<Msg code="00059">非法数字</Msg>
+		<Msg code="00060">日期格式非法,应为yyyy-MM-dd HH:mm:ss或者yyyy-MM-dd</Msg>
+		<!--系统日志-->
+		<Msg code="00081">记录日志失败</Msg>
+		<Msg code="00082">日志查询失败</Msg>
+		<!--基本交易-->
+		<Msg code="00101">查询数据列表异常</Msg>
+		<Msg code="00102">查询数据明细异常</Msg>
+		<Msg code="00103">新增数据成功</Msg>
+		<Msg code="00104">新增数据失败</Msg>
+		<Msg code="00105">更新数据成功</Msg>
+		<Msg code="00106">更新数据失败</Msg>
+		<Msg code="00107">删除数据成功</Msg>
+		<Msg code="00108">删除数据失败</Msg>
+	</Msgs>
+
+    <mencoder>
+		<cmd>D:/yuexue/mplayer/mp4.bat</cmd>
+		<trans_type>,pdf,doc,docx,xls,xlsx,ppt,pptx</trans_type>
+	</mencoder>
+	<book>
+	   <log_level>detail</log_level>
+	</book>
+
+	<!--定时器-->
+	<daemonListener>
+		<script>
+		//专家基本信息
+		 //timer.schedule(new cn.com.bright.yuexue.report.ImportFileTask(),30000,60000);
+		</script>
+	</daemonListener>
+	
+	<sell>
+		<!-- OpenOffice提供服务的端口 -->
+		<openofficeport>8100</openofficeport>
+		<!-- SWFTools组件地址 将pdf转换swf -->
+		<swftoolspath>D:/yuexue/SWFTools/pdf2swf.exe</swftoolspath>
+		<!-- 预览时 pdf转换swf的页数范围 页数范围和打印机的设置一样 -->
+		<swfpagesarg> -p 1-10</swfpagesarg>
+		<!-- 预览时 pdf转换swf的页数百分比 0~1 页数向上取整 如果为空则取 swfpagesarg 的设置 -->
+		<swfpagespercent>0.2</swfpagespercent>		
+		<!-- 云商城的文件类型 设置和accept一致 -->
+		<trans_type>.swf,.txt,.xls,.xlsx,.doc,.docx,.ppt,.pptx,.pdf,.bmp,.jpg,.jpeg,.png,.gif,.mpg,.mpeg,.mp3,.mp4,.avi</trans_type>
+		<!-- 视频预览时的播放时长 秒-->
+		<video_preview_time>20</video_preview_time>		
+	</sell>
+	
+	<!--平台默认Cache提供者-->
+	<cache>
+		<provider>cn.brightcom.jraf.cache.HashtableCacheProvider</provider>
+	</cache>
+
+	<upload>
+		<provider>cn.brightcom.jraf.file.SavaFileUploadFile</provider>
+		<filepath>/upload/</filepath>
+		<allowFileTypes>swf,txt,rar,zip,js,xls,xlsx,doc,docx,ppt,pptx,pdf,bmp,jpg,jpeg,png,gif,mpg,mpeg,mp3,mp4,avi,apk,bpmn,bar,bpmn20.xml</allowFileTypes>
+		<denyFileTypes>jsp,exe,ocx</denyFileTypes>
+		<fileLimitSize>200M</fileLimitSize>
+		<sizeMax>500M</sizeMax>
+	</upload>
+</baseElement>

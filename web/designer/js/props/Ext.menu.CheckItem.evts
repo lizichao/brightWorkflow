@@ -1,0 +1,11 @@
+{
+listeners : [{
+    name : "beforecheckchange",
+    type : "function",
+    defaults : 'function(chkitem,checked){}'
+  },{
+    name : "checkchange",
+    type : "function",
+    defaults : 'function(chkitem,checked){}'
+  }]
+}

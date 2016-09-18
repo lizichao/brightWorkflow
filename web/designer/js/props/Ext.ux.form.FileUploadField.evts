@@ -1,0 +1,7 @@
+{
+listeners : [{
+    name : "fileselected",
+    type : "function",
+    defaults : 'function(scope,value){}'
+  }]
+}

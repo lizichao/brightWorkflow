@@ -1,0 +1,38 @@
+{
+properties : [{
+    name : "animate",
+    type : "boolean",
+    desc : "<b>Boolean</b> Turn on or off animation. Defaults to true"
+  },{
+    name : "clickToChange",
+    type : "boolean",
+    desc : "<b>Boolean</b> Determines whether or not clicking on the Slider axis will change the slider. Defaults to true"
+  },{
+    name : "decimalPrecision",
+    desc : "<b> Number/Boolean</b> The number of decimal places to which to round the Slider's value. Defaults to 0.To disable rounding, configure as false."
+  },{
+    name : "increment",
+    type : "number",
+    desc : "<b>Float</b> How many units to change the slider when adjusting by drag and drop. Use this option to enable 'snapping'"
+  },{
+    name : "keyIncrement",
+    type : "number",
+    desc : "<b>Float</b> How many units to change the Slider when adjusting with keyboard navigation. Defaults to 1. If the increment config is larger, it will be used instead."
+  },{
+    name : "maxValue",
+    type : "number",
+    desc : "<b>Float</b> The maximum value for the Slider. Defaults to 100."
+  },{
+    name : "minValue",
+    type : "number",
+    desc : "<b>Float</b> The minimum value for the Slider. Defaults to 0."
+  },{
+    name : "Value",
+    type : "number",
+    desc : "<b>Float</b> The value to initialize the slider with. Defaults to minValue"
+  },{
+    name : "vertical",
+    type : "boolean",
+    desc : "<b>Boolean</b> Orient the Slider vertically rather than horizontally, defaults to false."
+  }]
+}

@@ -1,0 +1,6 @@
+{
+properties : [{
+    name : "text",
+    desc : "<b>String</b> The text to be used as innerHTML (html tags are accepted)"
+  }] 
+}

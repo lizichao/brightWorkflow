@@ -1,0 +1,32 @@
+<html>
+<script language="javascript">
+var ua = navigator.userAgent.toLowerCase();
+var iecheck = function(r){return r.test(ua);};
+var isIE = !iecheck(/opera/) && iecheck(/msie/);
+var arr=[1,2];
+arr.concat([3]);
+var rtnAwd={};
+function mykeydown(){
+	var keynum=isIE?event.keyCode:event.which;
+	//alert(keynum);
+	if(keynum==13){
+		if(isIE) event.keyCode=9;
+		else event.which=9;
+		alert(event.srcElement.type);
+	}
+	alert('arr.len='+arr.length);
+	
+}
+alert(rtnAwd['errmsg']==null);
+//document.onkeydown=mykeydown;
+ if   (!isIE)   document.captureEvents(Event.KEYDOWN|Event.KEYUP);   
+</script>
+<body>
+<form   name=yourform>   
+  Box   1:   <input   type=checkbox   name=box1  onclick="arr.concat([3]);alert('arr.len='+arr.length)" ><br>   
+  Box   2:   <input   type=text   name=box2   ><br>   
+  Box   3:   <input   type=text   name=box3   ><br>   
+  Box   4:   <input   type=text   name=box4   ><br>   
+
+</body>
+</html>

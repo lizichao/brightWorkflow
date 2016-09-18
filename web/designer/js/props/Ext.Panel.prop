@@ -1,0 +1,205 @@
+{
+properties : [{
+    name : "animCollapse",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to animate the transition when the panel is collapsed, false to skip the animation (defaults to true if the Ext.Fx class is available, otherwise false)"
+  },{
+    name : "applyTo",
+    type : "mixed",
+    desc : "<b>Mixed</b> The id of the node, a DOM node or an existing Element corresponding to an existing element present in the DOM to render this component to. Using this config, a call to render() is not required."
+  },{
+    name : "autoHeight",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to use height:'auto', false to use fixed height (defaults to false)."
+  },{
+    name : "autoLoad",
+    type : "mixed",
+    desc : "<b>Object/String/Function</b> A valid url spec according to the Updater {@link Ext.Updater#update} method. If autoLoad is not null, the panel will attempt to laod its contents immediately upon render."
+  },{
+    name : "autoScroll",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to use overflow:'auto' on the panel's body element and show scroll bars automatically when necessary, false to clip any overflowing content (defaults to false)."
+  },{
+    name : "baseCls",
+    desc : "<b>String</b> The base CSS class applied to the fieldset (defaults to 'x-fieldset')."
+  },{
+    name : "bbar",
+    type : "object/array",
+    desc : "<b>Object/Array</b> The bottom toolbar of the panel. This can be a {@link Ext.Toolbar} object, a toolbar config, or an array of buttons/button configs to be added to the toolbar. Note that this is not available as a property after render. To access the bottom toolbar after render, use {@link #getBottomToolbar}."
+  },{
+    name : "bbarCfg",
+    type : "object",
+    desc : "<b>Object</b> A DomHelper element specification object specifying the element structure of this Panel's bbar Element. See bodyCfg also"
+  },{
+    name : "bodyBorder",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display an interior border on the body element of the panel, false to hide it (defaults to true). This only applies when {@link #border} = true. If border = true and bodyBorder = false, the border will display as a 1px wide inset border, giving the entire body element an inset appearance."
+  },{
+    name : "bodyCfg",
+    type : "object",
+    desc : "<b>Object</b> A DomHelper element specification object may be specified for any Panel Element"
+  },{
+    name : "bodyCssClass",
+    type : "mixed",
+    desc : "<b>Object/String/Function</b> Additional css class selector to be applied to the body element in the format expected by Ext.Element.addClass (defaults to null)"
+  },{
+    name : "bodyStyle",
+    type : "mixed",
+    desc : "<b>Object/String/Function</b> Custom CSS styles to be applied to the body element in the format expected by Ext.Element.applyStyles (defaults to null)"
+  },{
+    name : "border",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the borders of the panel's body element, false to hide them (defaults to true). By default, the border is a 2px wide inset border, but this can be further altered by setting {@link #bodyBorder} to false."
+  },{
+    name : "buttonAlign",
+    values : ["center","left","right"],
+    defaults: "center",
+    desc : "<b>String</b> Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")"
+  },{
+    name : "buttons",
+    type : "array",
+    desc : "<b>Array</b> An array of {@link Ext.Button} instances (or valid button configs) to add to the footer of this panel"
+  },{
+    name : "bwrapCfg",
+    type : "object",
+    desc : "<b>Object</b> A DomHelper element specification object specifying the element structure of this Panel's bwrap Element"
+  },{
+    name : "closable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the 'close' tool button and allow the user to close the window, false to hide the button and disallow closing the window (default to true)."
+  },{
+    name : "collapseFirst",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to make sure the collapse/expand toggle button always renders first (to the left of) any other tools in the contained panels' title bars, false to render it last (defaults to false)."
+  },{
+    name : "collapsed",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to render the panel collapsed, false to render it expanded (defaults to false)."
+  },{
+    name : "collapsedCls",
+    desc : "<b>String</b> A CSS class to add to the panel's element after it has been collapsed (defaults to 'x-panel-collapsed')"
+  },{
+    name : "collapsible",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow the user to collapse this region (defaults to false). If true, an expand/collapse tool button will automatically be rendered into the title bar of the region, otherwise the button will not be shown. Note that a title bar is required to display the toggle button -- if no region title is specified, the region will only be collapsible if {@link #collapseMode} is set to 'mini'."
+  },{
+    name : "columnWidth",
+    desc : "<b>String</b> The columnWidth property is always evaluated as a percentage, and must be a decimal value greater than 0 and less than 1 (e.g., .25)."
+  },{
+    name : "contentEl",
+    desc : "<b>String</b> The id of an existing HTML node to use as the panel's body content (defaults to '')."
+  },{
+    name : "disabled",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to start disabled (defaults to false)"
+  },{
+    name : "draggable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow the window to be dragged by the header bar, false to disable dragging (defaults to true). Note that by default the window will be centered in the viewport, so if dragging is disabled the window may need to be positioned programmatically after render (e.g., myWindow.setPosition(100, 100);)."
+  },{
+    name : "elements",
+    desc : "<b>String</b> A comma-delimited list of panel elements to initialize when the panel is rendered. Normally, this list will be generated automatically based on the items added to the panel at config time, but sometimes it might be useful to make sure a structural element is rendered even if not specified at config time (for example, you may want to add a button or toolbar dynamically after the panel has been rendered). Adding those elements to this list will allocate the required placeholders in the panel when it is rendered. Valid values are: 'header,' 'body,' 'footer,' 'tbar' (top bar) abd 'bbar' (bottom bar) - defaults to 'body.'"
+  },{
+    name : "fbar",
+    type : "object/array",
+    desc : "<b>Object/Array</b> A Toolbar object, a Toolbar config, or an array of Buttons/Button configs, describing a Toolbar to be rendered into this Panel's footer element"
+  },{
+    name : "floating",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to float the panel (absolute position it with automatic shimming and shadow), false to display it inline where it is rendered (defaults to false). Note that by default, setting floating to true will cause the panel to display at negative offsets so that it is hidden -- because the panel is absolute positioned, the position must be set explicitly after render (e.g., myPanel.setPosition(100,100);). Also, when floating a panel you should always assign a fixed width, otherwise it will be auto width and will expand to fill to the right edge of the viewport."
+  },{
+    name : "footer",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to create the footer element explicitly, false to skip creating it. By default, when footer is not specified, if one or more buttons have been added to the panel the footer will be created automatically, otherwise it will not."
+  },{
+    name : "footerCfg",
+    type : "object",
+    desc : "<b>Object</b> A DomHelper element specification object specifying the element structure of this Panel's footer Element"
+  },{
+    name : "frame",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to render the panel with custom rounded borders, false to render with plain 1px square borders (defaults to false)."
+  },{
+    name : "header",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to create the Panel's header element explicitly, false to skip creating it"
+  },{
+    name : "headerAsText",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the panel title in the header, false to hide it (defaults to true)."
+  },{
+    name : "headerCfg",
+    type : "object",
+    desc : "<b>Object</b> A DomHelper element specification object specifying the element structure of this Panel's header Element"
+  },{
+    name : "hideCollapseTool",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to hide the expand/collapse toggle button when collapsible == true, false to display it (defaults to false)."
+  },{
+    name : "html",
+    type : "mixed",
+    desc : "<b>String/Object</b> An HTML fragment, or a DomHelper specification to use as the panel's body content (defaults to '')"
+  },{
+    name : "iconCls",
+    desc : "<b>String</b> A css class which sets a background image to be used as the icon for this button"
+  },{
+    name : "keys",
+    type : "object/array",
+    desc : "<b>Object/Array</b> A KeyMap config object (in the format expected by {@link Ext.KeyMap#addBinding) used to assign custom key handling to this panel (defaults to null)."
+  },{
+    name : "maskDisabled",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to mask the panel when it is disabled, false to not mask it (defaults to true). Either way, the panel will always tell its contained elements to disable themselves when it is disabled, but masking the panel can provide an additional visual cue that the panel is disabled."
+  },{
+    name : "minButtonWidth",
+    type : "number",
+    desc : "<b>Number</b> Minimum width of all buttons in pixels (defaults to 75)"
+  },{
+    name : "preventBodyReset",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to false. When set to true, an extra css class 'x-panel-normal' will be added to the panel's element"
+  },{
+    name : "resizeEvent",
+    desc : "<b>String</b> The event to listen to for resizing in layouts. Defaults to 'bodyresize'"
+  },{
+    name : "shadow",
+    desc : "<b>String/Boolean</b> Shadow to be used",
+    values : ["sides","frame","drop",'true'],
+    editable: true
+  },{
+    name : "shadowOffset",
+    type : "number",
+    desc : "<b>Number</b> Number of pixels to offset the shadow (defaults to 3) @constructor @param {Object} config An object with config options. @param {String/HTMLElement} existingEl (optional) Uses an existing DOM element. If the element is not found it creates it."
+  },{
+    name : "shim",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to disable the iframe shim in browsers which need one (defaults to true)"
+  },{
+    name : "tbar",
+    type : "object/array",
+    desc : "<b>Object/Array</b> The top toolbar of the panel. This can be a Ext.Toolbar object, a toolbar config, or an array of buttons/button configs to be added to the toolbar"
+  },{
+    name : "tbarCfg",
+    type : "object",
+    desc : "<b>Object</b> A DomHelper element specification object specifying the element structure of this Panel's tbar Element"
+  },{
+    name : "title",
+    desc : "<b>String</b> The title text to be used as innerHTML (html tags are accepted) to display in the panel header (defaults to '')"
+  },{
+    name : "titleCollapse",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow expand/collapse of each contained panel by clicking anywhere on the title bar, false to allow expand/collapse only when the toggle tool button is clicked (defaults to true). When set to false, {@link #hideCollapseTool} should be false also."
+  },{
+    name : "toolTemplate",
+    type : "template",
+    desc : "<b>Ext.Template</b> A Template used to create tools in the header Element"
+  },{
+    name : "tools",
+    type : "array",
+    desc : "<b>Array</b> An array of tool button configs to be added to the header tool area. Each tool config should contain the id of the tool, and can also contain an 'on' event handler config containing one or more event handlers to assign to this tool. The optional property 'hidden:true' can be included to hide the tool by default. Example usage: <pre><code> tools:[{ id:'refresh', // hidden:true, on:{ click: function(){ // refresh logic } } }] </code></pre> A valid tool id should correspond to the CSS classes 'x-tool-{id}' (normal) and 'x-tool-{id}-over' (mouseover). By default, the following tools are provided: toggle (default when collapsible = true), close, minimize, maximize, restore, gear, pin, unpin, right, left, up, down, refresh, minus, plus, search and save. Note that these tool classes only provide the visual button -- any required functionality must be provided by adding event handlers that implement the necessary behavior."
+  },{
+    name : "unstyled",
+    type : "boolean",
+    desc : "<b>Boolean</b> Overrides the baseCls setting to baseCls = 'x-plain' which renders the panel unstyled except for required attributes for Ext layouts to function (e.g. overflow:hidden)"
+  }]
+}

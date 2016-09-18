@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+    	var _editInfoWin; 
+    	function openEditInfoWin(_rec){ 
+	    	_editInfoWin=Ext.getCmp('editInfoWin'); 
+	    	if(!_editInfoWin){
+	    	_editInfoWin=new Ext.Window(
+    		{
+		    	title:'推荐信息查看',
+		    	id:'editInfoWin',
+		    	layout:'fit',
+		    	width:700,
+		    	height:360,
+		    	closeAction:'hide',
+		    	plain:true,
+		    	modal: true,
+		    	items:editInfoForm
+    		});} 
+	    	_editInfoWin.show();
+	    	editInfoForm.getForm().reset();
+	    	editInfoForm.getForm().loadRecord(_rec);
+	    	editInfoForm.record=_rec;
+    	}
+    	var colorWin = new Ext.Window({
+		            title: "颜色选择",
+		            items: {
+		            id : 'colorSelect',
+					width:247,
+					height:156,
+					autoScroll : true,
+					closable : true,
+		            html : '&lt;iframe src="/school/color/index.jsp" width="100%" height="100%" id="iframe" frameborder="0"&gt;&lt;/iframe&gt;'
+		            }
+		       })
+    	</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="RecommendedRecord">[  {
+    xtype : "Field",
+    name : "recommended_id",
+    width : 150,
+    fieldLabel : "主键",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "paper_id",
+    width : 150,
+    fieldLabel : "课件编号",
+    allowBlank : false,
+    type : "string"
+},{
+    xtype : "Field",
+    name : "folder_id",
+    width : 150,
+    fieldLabel : "章节",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "folder_code",
+    width : 150,
+    fieldLabel : "章节号码",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "subject_id",
+    width : 150,
+    fieldLabel : "学科id",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "grade_code",
+    width : 150,
+    fieldLabel : "班级代码",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "attachment_id",
+    width : 150,
+    fieldLabel : "附件id",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "grade_name",
+    width : 150,
+    fieldLabel : "年级",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "coursenm",
+    width : 150,
+    fieldLabel : "学科",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "folder_name",
+    width : 150,
+    fieldLabel : "章节名称",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "resource_type",
+    width : 150,
+    fieldLabel : "课件类型",
+    allowBlank : false,
+    type : "string"
+} ,{
+    xtype : "Field",
+    name : "paper_name",
+    width : 150,
+    fieldLabel : "课件名称",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "cover_path",
+    width : 150,
+    fieldLabel : "封面图片路径",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "cover_color",
+    width : 150,
+    fieldLabel : "背景颜色",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "orderidx",
+    width : 150,
+    fieldLabel : "显示顺序",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "valid",
+    width : 150,
+    fieldLabel : "有效",
+    allowBlank : true,
+    type : "string"
+},{
+    xtype : "Field",
+    name : "recommend",
+    width : 150,
+    fieldLabel : "是否推荐",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "create_by",
+    width : 150,
+    fieldLabel : "建立人",
+    allowBlank : true,
+    type : "string"
+}, {
+    xtype : "Field",
+    name : "username",
+    width : 150,
+    fieldLabel : "创建人",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "create_date",
+    width : 150,
+    fieldLabel : "建立时间",
+    allowBlank : true,
+    type : "date",
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "remark",
+    width : 150,
+    fieldLabel : "备注",
+    allowBlank : true,
+    type : "string"
+}]
+</Record>
+ <Record classname="RecSubject">[  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "subjectid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjcode",
+    fieldLabel : "subjcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjname",
+    fieldLabel : "subjname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "shortnm",
+    fieldLabel : "shortnm",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+    <Store classname="StoreSubject">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "StoreSubject",
+  recordType : RecSubject,
+  idProperty : "subjectid",
+  api : {read:{sysName : "yuexue",oprID : "Knowledge",actions : "getActiveSubject"}
+  },
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false,
+  baseParams : {PageSize:"0"},
+  autoLoad : true
+}</Store>
+      <Store classname="RecommendedStore">{
+  xtype : "Store",
+  classname : "RecommendedStore",
+  type : "JrafXmlStore",
+  recordType : RecommendedRecord,
+  idProperty : "recommended_id",
+  api : {
+    read :     {
+      sysName : "yuexue",
+      oprID : "Learning",
+      actions : "getRecommendList"
+  },
+    update :     {
+      sysName : "yuexue",
+      oprID : "Learning",
+      actions : "updateRecommended"
+  },
+    destroy :     {
+      sysName : "yuexue",
+      oprID : "Learning",
+      actions : "delRecommended"
+  }
+},
+  autoLoad : false,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true,
+  listeners : {
+    write : function (store,action,result,res,rs){if (res.success){if (_editInfoWin){_editInfoWin.hide();}}}
+}
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+    <Panel classname="editInfoForm" xtype="form">{
+  xxtype: "Jpanel",
+  xtype: "form",
+  classname : "editInfoForm",
+  id : "editInfoForm",
+  frame : true,
+  bodyBorder : false,
+  fileUpload: true,
+  items : [ {
+          layout : "form",
+          bodyBorder : false,
+          labelAlign: "right",
+          columnWidth : 0.5,
+          items : [            {
+              name : "cover_color_button",
+              fieldLabel : "资源背景颜色",
+              allowBlank : true,
+              buttonAlign : "left",
+              buttons : [ {
+	          text : "请点击选择相应颜色",
+	          width:100,
+	          height:25,
+	          handler : function(){colorWin.show();}
+	      }]
+          }]
+      },    {
+          layout : "form",
+          bodyBorder : false,
+          labelAlign: "right",
+          columnWidth : 0.33,
+          items : [            {
+              name : "cover_color",
+              fieldLabel : "资源背景颜色",
+              id : "cover_color",
+              allowBlank : false,
+              width : 150,
+              xtype : "textfield"
+          }]
+        },    {
+          layout : "form",
+          bodyBorder : false,
+          labelAlign: "right",
+          columnWidth : 0.33,
+          items : [            {
+              name : "orderidx", 
+              id : "orderidx", 
+              fieldLabel : "排序",
+              allowBlank : false,
+              width : 150,
+              xtype : "textfield"
+          },{
+              name : "recommended_id",
+              fieldLabel : "推荐编号",
+              xtype : "hidden",
+              allowBlank : true
+          }  ,            {
+              name : "paper_id",
+              fieldLabel : "资源编号",
+              xtype : "hidden",
+              allowBlank : true
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "remark",
+              id : "remark",
+              fieldLabel : "备注",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      }, {
+        layout: "column",
+        items: [{
+            layout: "form",
+         	items: [{
+				xtype: "fileuploadfield",
+			    emptyText: "选择上传封面图片",
+			    fieldLabel: "封面图片",
+			    buttonText : "选择图标",
+			    allowBlank : true,
+			    name: "cover_path_file",
+			    width: 200,
+			    listeners: {
+			        fileselected: function(u, v) {
+			            userPanel.getForm().findField("cover_path").setSelValue(v);
+			        }
+			    }				        
+            }],
+            columnWidth: 0.5,
+            border: false
+        },
+        {
+            layout: "form",labelAlign : "left",
+            items: [{
+                allowBlank: true,
+                xtype: "displayfield",
+                value: "图片尺寸:1024*460",
+                style: "color:red",
+                width: 100
+            }],
+            columnWidth: 0.5,
+            border: false
+        }],
+        border: false
+    },                 {
+	        layout: "form",
+	        bodyBorder: false,
+	        columnWidth: 1,
+	        labelAlign: "right",
+	        items: [  {
+				    name: "cover_path",
+				    allowBlank: true,
+				    xtype: "displayfield",
+				    fieldLabel: "照片预览",
+				    width: 160,
+				    height: 120,
+				    defaultAutoCreate: {
+				        width: 160,
+				        height: 120,
+				        tag: "img",
+				        src: Ext.BLANK_IMAGE_URL
+				    },
+				    getRawValue: function() {
+				        return this.value || '';
+				    },
+				    setRawValue: function(v) {
+				        var p = Ext.BLANK_IMAGE_URL;
+				        p = v ? Jraf_ContextPath + v: p;
+				        this.value = v || '';
+				        this.el.dom.src = p;
+				    },
+				    setSelValue: function(v) {
+				        this.value = v;
+				        this.el.dom.src = v;
+				    }
+			}]
+}],
+  id : "editInfoForm",
+  buttonAlign : "center",
+  buttons : [    {
+      text : "保存",
+      width : 100,
+      height : 25,
+      iconCls : "disk",
+      handler : function() {
+	       var _forma = this.ownerCt.ownerCt;
+	      var _rec=_forma.record;
+	      if (_forma.getForm().isValid()){
+	      	  jr = new JrafRequest('yuexue','Learning','updateRecommended',{idProperty:'recommended_id'});
+		      jr.setForm(_forma);
+		      jr.setSuccFn(function(a,_resp,xr){
+		     			 if(a.records){
+	    				  a.records[0].set('cover_color',_forma.getForm().findField("cover_color").getRawValue());
+	    				  a.records[0].set('orderidx',_forma.getForm().findField("orderidx").getRawValue());
+	    				  a.records[0].set('remark',_forma.getForm().findField("remark").getRawValue());
+	    				  a.records[0].set('cover_path',_forma.getForm().findField("cover_path").getRawValue());
+	    				}	
+					_forma.getForm().updateRecord(_rec);
+		            xr.update(_rec,a.records);
+		            _forma.getForm().loadRecord(_rec);
+				 	_forma.ownerCt.hide();
+				 	colorWin.hide();
+				  });
+				  jr.postData();
+			}
+        }
+  },    {
+      text : "取消",
+      width : 100,
+      height : 25,
+      iconCls : "arrow-undo",
+      handler : function() {_editInfoWin.hide();colorWin.hide();}
+  }]
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        title : "查询条件",
+        frame : true,
+        items : [          {
+            layout : "column",
+            bodyBorder : false,
+            items : [              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "subjname",
+                    fieldLabel : "学科",
+                   	allowBlank : true,
+								    editable : true,
+								    xtype : "combo",
+							  	    width : 150,
+								    store : StoreSubject,
+								    emptyText : "请选择学科",
+								    triggerAction : "all",
+								    displayField : "subjname",
+								    valueField : "subjectid",
+								    hiddenName : "qry_subjectid",
+								    mode : "local" 
+                       
+                }]
+            },{
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "qry_grade_code",
+                    fieldLabel : "年级",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "paracombo",					
+                    baseParams : {paramname:'c_grade',defaultValArr:[['','']]}
+                       
+                }]
+            }],
+            anchor : "100%"
+        }, {
+            layout : "column",
+            bodyBorder : false,
+            items : [              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "create_by",
+                    fieldLabel : "作者",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "textfield",
+                       
+                }]
+            },{
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "qry_paper_name",
+                    fieldLabel : "作品名称",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "textfield",
+                       
+                }]
+            }],
+            anchor : "100%"
+        }],
+        buttonAlign : "center",
+        id : "RecommendedForm",
+        buttons : [        {
+          text : "查询",
+          handler : function(){var qStore=Ext.getCmp('RecommendedGrid').getStore();qStore.setFormParam(Ext.getCmp('RecommendedForm'));qStore.setPageInfo(JrafSession.get('PageSize'),'1');qStore.load();}
+      }]
+    },      {
+        xtype : "grid",
+        id : "RecommendedGrid",
+        region : "center",
+        autoWidth : true,
+        frame : true,
+        title : "查询结果",
+        viewConfig : {
+        forceFit : false
+    },
+        stripeRows : true,
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        store : RecommendedStore,
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:RecommendedStore,displayInfo: true}),
+        tbar : [
+        {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+		  			var _grid=this.ownerCt.ownerCt;
+		  			var param={valid:"N",recommend:"N"};
+				 Ext.Msg.confirm('系统提示','是否确认删除儿选中行记录?',function(btn){
+				  if(btn == 'yes'){
+		  			 var ckrs=_grid.getSelectionModel().getSelections();
+						for(var i=0;i&lt;ckrs.length;i++){
+							var recommendedids = ckrs[i].get('recommended_id');
+						 	param['recommended_id']=!param['recommended_id'] ? recommendedids:[].concat(param['recommended_id']).concat(recommendedids);
+							_grid.getStore().remove(ckrs[i]);
+						}
+						var jr=new JrafRequest('yuexue','Learning','delRecommended');
+				 		jr.setExtraPs(param);
+						jr.setSuccFn(function(data,status){
+					    
+					    });
+						jr.postData();
+					}
+				　})}}],
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+        {width:50,sortable:true,header:'年级',dataIndex:'grade_name'},
+        {width:100,sortable:true,header:'学科',dataIndex:'coursenm'},
+        {width:120,sortable:true,header:'章节名称',dataIndex:'folder_name'},
+        {width:200,sortable:true,header:'课件名称',dataIndex:'paper_name',renderer:function(value, cellmeta, record, rowIndex, columnIndex, store){
+        	return '&lt;a href="/mooc/student/coursewarePlay.jsp?attachment_id='+record.data["attachment_id"]+'&amp;folder_id='+record.data["folder_id"]+'&amp;paper_id='+record.data["paper_id"]+'&amp;status=&amp;foldercode='+record.data["folder_code"]+'&amp;subjectid='+record.data["subject_id"]+'&amp;grade_code='+record.data["grade_code"]+'" style="color:blue"&gt;'+value+'&lt;/a&gt;';
+        }},
+        {width:60,sortable:true,header:'课件类型',dataIndex:'resource_type',renderer:Ext.util.Format.paramRenderer('c_resource_type','未定义')},
+        {width:80,sortable:true,header:'作者',dataIndex:'username'},
+        {width:100,sortable:true,header:'首页大图',dataIndex:'cover_path',renderer:function(v){
+			if(v)if(v!='') return '&lt;img style="height: 40px;width: 45px;" src="'+Jraf_ContextPath+v+'"/&gt;';
+			return '';
+		}},
+        {width:130,sortable:true,header:'推荐时间',dataIndex:'create_date',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+        {width:100,sortable:true,header:'显示顺序',dataIndex:'orderidx'},
+        {width:100,sortable:true,header:'是否有效',dataIndex:'valid',renderer:function(value){
+        	if(value=='Y'){ return "&lt;font color='green'&gt;有效&lt;/font&gt;";}
+        	else if(value=='N'){ return "&lt;font color='red'&gt;无效&lt;/font&gt;";}
+        	else{return "&lt;font color='black'&gt;--&lt;/font&gt;";}
+        }}]),
+        sm : new Ext.grid.CheckboxSelectionModel({ listeners:{selectionchange:function(sm){var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}}}}),
+        listeners : {rowdblclick : function(g,rowIndex,e){var _rec=g.getSelectionModel().getSelected();openEditInfoWin(_rec);}}
+    }]
+}]</MainPanel>
+</view>
+

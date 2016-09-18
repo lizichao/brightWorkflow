@@ -1,0 +1,7 @@
+{
+properties : [{
+    name : "items",
+    type : "mixed",
+    desc : "<b>Mixed</b> An Array of Checkboxes or Checkbox config objects to arrange in the group"
+  }]
+}

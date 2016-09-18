@@ -1,0 +1,25 @@
+{
+properties : [{
+    name : "incrementValue",
+    type : "number",
+    desc : "<b>Number</b> "
+  },{
+    name : "alternateIncrementValue",
+    type : "number",
+    desc : "<b>Number</b> "
+  },{
+    name : "accelerate",
+    type : "boolean",
+    desc : "<b>Boolean</b> "
+  },{
+    name : "defaultValue",
+    type : "number",
+    desc : "<b>Number</b> "
+  },{
+    name : "triggerClass",
+    desc : "<b>String</b> "
+  },{
+    name : "splitterClass",
+    desc : "<b>String</b> "
+  }]
+}

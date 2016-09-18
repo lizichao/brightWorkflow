@@ -1,0 +1,27 @@
+{
+listeners : [{
+    name : "blue",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "change",
+    type : "function",
+    defaults : 'function(scope,newValue,oldValue){}'
+  },{
+    name : "focus",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "invalid",
+    type : "function",
+    defaults : 'function(scope,msg){}'
+  },{
+    name : "specialkey",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "valid",
+    type : "function",
+    defaults : 'function(scope){}'
+  }]
+}

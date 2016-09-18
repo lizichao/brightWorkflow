@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+html,body,h3{margin:0; padding:0;}
+body{font-size:12px;}
+h3{background:#6CB4FC; display:block; height:29px; padding:0 20px;}
+h3 a{
+	position:relative;
+	float:left;
+	padding:0 5px 0 15px;
+	margin-right:14px;
+	height:29px;
+	background:url(images/tab_bg.png) 0 0 no-repeat;
+	outline:none;
+	font-size:12px;
+	line-height:29px;
+	blr:expression(this.onFocus=this.blur());
+}
+h3 a em{
+	position:absolute;
+	right:-24px;
+	top:0;
+	height:29px;
+	width:24px;
+	background:url(images/tab_bg.png) 0 -29px no-repeat;
+}
+h3 a em.cur{
+	background:url(images/tab_bg.png) 0 -116px no-repeat;	
+}
+h3 a em.last{
+background:url(images/tab_bg.png) 0 -174px no-repeat;	
+}
+
+
+h3 a.selected{
+
+	background:url(images/tab_bg.png) 0 -58px no-repeat;
+}
+h3 a.selected em{
+
+	background:url(images/tab_bg.png) 0 -87px no-repeat;
+}
+
+h3 a.last em.cur,
+h3 a.selected em.last{
+background:url(images/tab_bg.png) 0 -145px no-repeat;	
+}
+
+-->
+</style>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript"> 
+$(function(){ 
+
+	$("body h3").idTabs("!mouseover"); 
+	
+	$('body > h3 > a').hover(function(){
+		$('body > h3 > a > em').removeClass("cur");									 
+		$(this).prev("a").children("em").addClass("cur");									 
+	},function(){
+			
+	})
+
+});
+</script>
+</head>
+
+<body>
+<h3><a style="z-index:100" class="selected" href="#tabc1">待办工作<em></em></a>
+                <a style="z-index:99" href="#tabc2">超时件<em></em></a>
+                <a style="z-index:98" href="#tabc3">文件处理<em></em></a>
+                <a style="z-index:97" href="#tabc4">督办件<em class="last"></em></a>
+</h3>
+
+</body>
+</html>

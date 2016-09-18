@@ -1,0 +1,28 @@
+{
+listeners : [{
+    name : "beforechange",
+    type : "function",
+    defaults : 'function(slider,newValue,oldValue){}',
+    desc : "beforechange : ( Ext.Slider slider, Number newValue, Number oldValue )"
+  },{
+    name : "change",
+    type : "function",
+    defaults : 'function(slider,newValue){}'
+  },{
+    name : "changecomplete",
+    type : "function",
+    defaults : 'function(slider,newValue){}'
+  },{
+    name : "drag",
+    type : "function",
+    defaults : 'function(slider,e){}'
+  },{
+    name : "dragend",
+    type : "function",
+    defaults : 'function(slider,e){}'
+  },{
+    name : "dragstart",
+    type : "function",
+    defaults : 'function(slider,e){}'
+  }]
+}

@@ -1,0 +1,13 @@
+{
+properties : [{
+    name : "xtype",
+    desc : "<b>String</b> 类型"
+  },{
+    name : "classname",
+    desc : "<b>String</b> 类名"
+  },{
+    name : "value",
+    type : "mixed",
+    desc : "<b>String</b> 脚本"
+  }]
+}

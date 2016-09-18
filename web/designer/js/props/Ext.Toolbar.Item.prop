@@ -1,0 +1,6 @@
+{
+properties : [{
+    name : "overflowText",
+    desc : "<b>String</b> Text to be used for the menu if the item is overflowed"
+  }] 
+}

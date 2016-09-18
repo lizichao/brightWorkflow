@@ -1,0 +1,15 @@
+{
+listeners : [{
+    name : "activate",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "click",
+    type : "function",
+    defaults : 'function(item,e){}'
+  },{
+    name : "deactivate",
+    type : "function",
+    defaults : 'function(item){}'
+  }]
+}

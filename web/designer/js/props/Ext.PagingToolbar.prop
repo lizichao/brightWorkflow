@@ -1,0 +1,46 @@
+{
+properties : [{
+    name : "afterPageText",
+    desc : "<b>String</b> Customizable piece of the default paging text (defaults to 'of {0}')"
+  },{
+    name : "beforePageText",
+    desc : "<b>String</b> The text displayed before the input item (defaults to 'Page')"
+  },{
+    name : "displayInfo",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to display the displayMsg (defaults to false)"
+  },{
+    name : "displayMsg",
+    desc : "<b>String</b> The paging status message to display (defaults to 'Displaying {0} - {1} of {2}')"
+  },{
+    name : "emptyMsg",
+    desc : "<b>String</b> The message to display when no records are found (defaults to 'No data to display')"
+  },{
+    name : "firstText",
+    desc : "<b>String</b> The quicktip text displayed for the first page button (defaults to 'First Page')"
+  },{
+    name : "lastText",
+    desc : "<b>String</b> The quicktip text displayed for the last page button (defaults to 'Last Page')"
+  },{
+    name : "nextText",
+    desc : "<b>String</b> The quicktip text displayed for the next page button (defaults to 'Next Page')"
+  },{
+    name : "pageSize",
+    type : "number",
+    desc : "<b>Number</b> The number of records to display per page (defaults to 20)"
+  },{
+    name : "prependButtons",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to insert any configured items before the paging buttons. Defaults to false"
+  },{
+    name : "prevText",
+    desc : "<b>String</b> The quicktip text displayed for the previous page button (defaults to 'Previous Page')"
+  },{
+    name : "refreshText",
+    desc : "<b>String</b> The quicktip text displayed for the Refresh button (defaults to 'Refresh')"
+  },{
+    name : "store",
+    type : "mixed",
+    desc : "<b>Ext.data.Store</b> The {@link Ext.data.Store} to bind this."
+  }]
+}

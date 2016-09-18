@@ -1,0 +1,27 @@
+{
+listeners : [{
+    name : "beforecomplete",
+    type : "function",
+    defaults : 'function(scope,value,startValue){}'
+  },{
+    name : "beforestartedit",
+    type : "function",
+    defaults : 'function(scope,boundEl,value){}'
+  },{
+    name : "canceledit",
+    type : "function",
+    defaults : 'function(scope,value,startValue){}'
+  },{
+    name : "complete",
+    type : "function",
+    defaults : 'function(scope,value,startValue){}'
+  },{
+    name : "specialkey",
+    type : "function",
+    defaults : 'function(field,e){}'
+  },{
+    name : "startedit",
+    type : "function",
+    defaults : 'function(boundEl,value){}'
+  }]
+}

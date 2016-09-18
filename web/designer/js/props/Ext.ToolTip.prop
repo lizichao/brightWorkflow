@@ -1,0 +1,42 @@
+{
+properties : [{
+    name : "anchorOffset",
+    type : "number",
+    desc : "<b>Number</b> A numeric pixel value used to offset the default position of the anchor arrow (defaults to 0)"
+  },{
+    name : "anchorToTarget",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to anchor the tooltip to the target element, false to anchor it relative to the mouse coordinates (defaults to true)"
+  },{
+    name : "autoHide",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to automatically hide the tooltip after the mouse exits the target element or after the dismissDelay has expired if set (defaults to true)"
+  },{
+    name : "delegate",
+    desc : "<b>String</b> Optional. A DomQuery selector which allows selection of individual elements within the target element to trigger showing and hiding the ToolTip as the mouse moves within the target"
+  },{
+    name : "dismissDelay",
+    type : "number",
+    desc : "<b>Number</b> Delay in milliseconds before the tooltip automatically hides (defaults to 5000)"
+  },{
+    name : "hideDelay",
+    type : "number",
+    desc : "<b>Number</b> Delay in milliseconds after the mouse exits the target element but before the tooltip actually hides (defaults to 200)"
+  },{
+    name : "mouseOffset",
+    type : "array",
+    desc : "<b>Array</b> An XY offset from the mouse position where the tooltip should be shown (defaults to [15,18])"
+  },{
+    name : "showDelay",
+    type : "number",
+    desc : "<b>Number</b> Delay in milliseconds before the tooltip displays after the mouse enters the target element (defaults to 500)"
+  },{
+    name : "target",
+    type : "mixed",
+    desc : "<b>Mixed</b> The target HTMLElement, Ext.Element or id to monitor for mouseover events to trigger showing this ToolTip"
+  },{
+    name : "trackMouse",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to have the tooltip follow the mouse as it moves over the target element (defaults to false)"
+  }]
+}

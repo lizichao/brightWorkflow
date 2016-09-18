@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+	</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+    </Records>
+    <Stores>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "form",
+  classname : "EditNewsInfoForm",
+  id : "EditNewsInfoForm",
+  frame : true,
+  fileUpload : true ,
+  items : [    {
+      layout : "column",
+      items : [        {
+          layout : "form",
+          columnWidth : 1,
+          border : false,
+          labelAlign : "right",
+          items : [ {
+              name : "news_title",
+              fieldLabel : "内容",
+              allowBlank : false,
+              width : 650,
+              height : 260,
+              xtype : "htmleditor"
+          }]
+      },            {
+          layout : "form",
+          columnWidth : 1,
+          border : false,
+          labelAlign : "right",
+          items : [            {
+              name : "pcombo",
+				      fieldLabel : "新闻图片",
+				      xtype : "paratreecombo" ,
+				      width : 360,
+				      baseParams : {paramname:'grouptype'},
+				      nparams : {loadAll:false,codelen:'1,1'}
+          }]
+      },            {
+          layout : "form",
+          columnWidth : 1,
+          border : false,
+          labelAlign : "right",
+          items : [            {
+              name : "news_img",
+				      id : "news_img",
+				      fieldLabel : "新闻图片",
+				      xtype : "textfield" ,
+				      inputType : 'file',
+				      width : 360
+          }]
+      },        {
+          layout : "form",
+          columnWidth : 1,
+          border : false,
+          labelAlign : "right",
+          items : [            {
+              name : "news_video",
+				      id : "news_video",
+				      fieldLabel : "新闻视频",
+				      xtype : "textfield" ,
+				      inputType : 'file',
+				      width : 360
+          }]
+      }]
+  }],
+  buttons : [
+     {text : '保存',
+	  handler : function() {
+	     _forma = Ext.getCmp('EditNewsInfoForm');
+		  if(_forma.getForm().isValid()) { 
+		     //_forma.getForm().updateRecord(_forma.record);
+		     //var newFlag=Ext.isEmpty(_forma.getForm().findField('news_id').getValue());
+		     var jr;
+		     if(true){
+			 	    jr=new JrafRequest('pcmc','news','insertNewsInfo');
+			 	 } else {
+			 	    jr=new JrafRequest('pcmc','news','updateNewsInfo');
+			 	 }
+			 	 jr.setForm(_forma);
+			 	 jr.setSuccFn(function(a,_resp,xr){
+			   	  //editNewsInfoWin.hide();
+			   });
+				 jr.postData();
+		 }
+	   }
+     },
+     {text : '返回',
+		  handler : function() {
+			 
+		 }
+    }
+  ],
+  buttonAlign : "center"
+    
+}]</MainPanel>
+</view>
+

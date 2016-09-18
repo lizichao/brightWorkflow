@@ -1,0 +1,24 @@
+{
+properties : [{
+    name : "animate",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to animate the progress bar during transitions (defaults to false)"
+  },{
+    name : "baseCls",
+    desc : "<b>String</b> The base CSS class to apply to the progress bar's wrapper element (defaults to 'x-progress')"
+  },{
+    name : "id",
+    desc : "<b>String</b> The progress bar element's id (defaults to an auto-generated id)"
+  },{
+    name : "text",
+    desc : "<b>String</b> The progress bar text (defaults to '')"
+  },{
+    name : "textEl",
+    type : "mixed",
+    desc : "<b>Mixed</b> The element to render the progress text to (defaults to the progress bar's internal text element)"
+  },{
+    name : "value",
+    type : "number",
+    desc : "<b>Float</b> A floating point value between 0 and 1 (e.g., .5, defaults to 0)"
+  }]
+}

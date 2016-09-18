@@ -1,0 +1,8 @@
+{
+listeners : [{
+    name : "update",
+    type : "function",
+    defaults : 'function(scope,num,str){}',
+    desc : "update : (Ext.ProgressBar this,Number The,String The)"
+  }]
+}

@@ -1,0 +1,91 @@
+{
+properties : [{
+    name : "animate",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable animated expand/collapse (defaults to the value of Ext.enableFx)"
+  },{
+    name : "bubbleEvents",
+    type : "array",
+    desc : "<b>Array</b> An array of events that, when fired, should be bubbled to any parent container. Defaults to ['add', 'remove']"
+  },{
+    name : "containerScroll",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to register this container with ScrollManager"
+  },{
+    name : "ddAppendOnly",
+    type : "boolean",
+    desc : "<b>Boolean</b> true if the tree should only allow append drops (use for trees which are sorted)"
+  },{
+    name : "ddGroup",
+    desc : "<b>String</b> The DD group this TreePanel belongs to"
+  },{
+    name : "ddScroll",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable body scrolling"
+  },{
+    name : "dragConfig",
+    type : "object",
+    desc : "<b>Object</b> Custom config to pass to the Ext.tree.TreeDragZone instance"
+  },{
+    name : "dropConfig",
+    type : "object",
+    desc : "<b>Object</b> Custom config to pass to the Ext.tree.TreeDropZone instance"
+  },{
+    name : "enableDD",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable drag and drop"
+  },{
+    name : "enableDrag",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable just drag"
+  },{
+    name : "enableDrop",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable just drop"
+  },{
+    name : "hlColor",
+    desc : "<b>String</b> The color of the node highlight (defaults to 'C3DAF9')"
+  },{
+    name : "hlDrop",
+    type : "boolean",
+    desc : "<b>Boolean</b> false to disable node highlight on drop (defaults to the value of Ext.enableFx)"
+  },{
+    name : "lines",
+    type : "boolean",
+    desc : "<b>Boolean</b> false to disable tree lines (defaults to true)"
+  },{
+    name : "loader",
+    type : "object",
+    desc : "<b>Object</b> A Ext.tree.TreeLoader for use with this TreePanel"
+  },{
+    name : "pathSeparator",
+    desc : "<b>String</b> The token used to separate sub-paths in path strings (defaults to '/') @constructor @param {Object} config"
+  },{
+    name : "requestMethod",
+    desc : "<b>String</b> The HTTP request method for loading data (defaults to the value of Ext.Ajax.method)"
+  },{
+    name : "root",
+    type : "object",
+    desc : "<b>Object</b> The root node for the tree."
+  },{
+    name : "rootVisible",
+    type : "boolean",
+    desc : "<b>Boolean</b> false to hide the root node (defaults to true)"
+  },{
+    name : "selModel",
+    type : "object",
+    desc : "<b>Object</b> The SelectionModel the grid should use to handle selections"
+  },{
+    name : "singleExpand",
+    type : "boolean",
+    desc : "<b>Boolean</b> true if only 1 node per branch may be expanded"
+  },{
+    name : "trackMouseOver",
+    type : "boolean",
+    desc : "<b>Boolean</b> false to disable mouse over highlighting"
+  },{
+    name : "useArrows",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to use Vista-style arrows in the tree (defaults to false)"
+  }]
+}

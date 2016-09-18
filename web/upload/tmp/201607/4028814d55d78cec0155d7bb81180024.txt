@@ -1,0 +1,334 @@
+lzchao
+lzchao$lxkj
+Activiti BPMN 2.0 designer
+http://activiti.org/designer/update/
+mysql -uroot 
+mysql -h localhost -u root -p
+grant all PRIVILEGES on workflowdb.* to zhaokehui@'192.168.1.65' identified by '123456';
+flush privileges;
+
+ select * from mysql.user;
+
+DynamicFormController
+BpmProcessController
+vivian
+form/dynamic/task/complete
+oracle 数据库 sys 密码222
+
+add_paper_to_bookcomment.jsp
+
+act_ru_identitylink
+配置的是直接处理人，则在这个表里面存的是参与人
+配置的是候选人，则在这个表里面存的是候选人和参与人
+
+
+深圳市电化教育馆 
+  yanghl 杨焕亮
+  zhanghm 张惠敏 
+
+办公室 
+huangwl 黄伟龙
+huangsz 黄舜铮 
+shengxl 盛晓斓 
+
+应用中心 
+huangzw 黄泽武 
+wangyy 王奕奕 
+
+信息网络中心 
+pengy 彭 岩
+cheny 陈颖
+chenhao 陈浩 
+
+装备中心 
+lishan 李 山
+songjz 宋金州 
+
+制作中心 
+liangjr 梁敬仁
+liyl 李永龙 
+2015/10/14 15:08:48
+雷海波 2015/10/14 15:08:48
+馆长、副馆长、主任、副主任、部门负责人、科员
+
+雷海波 2015/10/14 15:08:58
+职位
+
+雷海波 2015/10/14 15:09:20
+部门内部排序 数字类型的
+
+
+act_hi_identitylink
+配置的是直接处理人，则在这个表里面存的是参与人
+配置的是候选人，则在这个表里面存的是候选人和参与人
+
+参与人只有流程实例id，没有taskid
+候选人只有有taskid，没有流程实例id
+
+for (Element recordElement : recordList) {
+				String userTaskVO = recordElement.getChildText("userTaskVO");
+				%>
+				  <script type="text/javascript">
+				  userTaskArray.push(<%=userTaskVO%>);
+				  </script>
+				<% 
+			}
+			
+			
+"[{"assigneeName":null,"createTime":null,"parentTaskId":null,
+"handlers":[
+{"userType":"99","userName":"超级管理员","userId":"1","userCode":"admin"},
+{"userType":"99","userName":"121212","userId":"402881e54a7f31c4014a7f4954630009","userCode":"1212"},
+{"userType":"99","userName":"cs","userId":"40280981477c3fa901477c4360db0003","userCode":"cscscs"}],
+"description":null,
+"taskName":"直接主管审核",
+"startTime":null,
+"comment":null,
+"assignee":null,
+"endTime":null,
+"taskId":"60014"}]";
+
+2578.75   1005  1573.75
+1663    555  1108
+
+11559.66 2889.915 1005 1889.915
+8959  1791 555  1241
+ 
+
+402881824c27d80b014c35122ce300a8
+
+SELECT a.userid,
+       a.usercode,
+       a.username,
+       d.deptid,
+       d.deptname
+  FROM pcmc_user a, pcmc_user_dept b, pcmc_dept d
+ WHERE     a.userid = b.userid
+       AND b.deptid = d.deptid
+       AND d.deptid = '402880e74e2e0f88014e2ead7abc0004';
+	   
+	   
+	   select * from pcmc_dept where deptid='402880e74e2e0f88014e2ead7abc0004';
+select * from pcmc_user where username='阿斯达';
+select * from pcmc_user where username='cs';
+select * from pcmc_user where username='121212';
+select * from pcmc_user where username='顶顶顶顶顶';
+select * from pcmc_user where userid="402881824c27d80b014c35122ce300a8";
+select * from pcmc_user where userid="402881824d516090014d55533c0f004e";
+select * from pcmc_user where userid="402881824c27d80b014c3514d13800ae";
+select * from pcmc_user where userid="402881824c27d80b014c351e5ec600b9";
+
+
+
+SELECT a.userid,
+       a.usercode,
+       a.username,
+       c.ROLEID,
+       d.deptid,
+       d.deptname,
+       e.ROLENAME
+  FROM pcmc_user a,
+       pcmc_user_dept b,
+       pcmc_user_role c,
+       pcmc_dept d,
+       pcmc_role e
+ WHERE     a.userid = c.userid
+       AND a.userid = b.userid
+       AND b.deptid = d.deptid
+       AND c.ROLEID = e.ROLEID
+   AND b.deptid ='1'
+  AND c.ROLEID = '41';
+  挂起
+  http://localhost:8812/workflow/workspace/myParticipant.jsp
+   http://localhost:8812/workflow/workcal/workcal-view.jsp
+   \workflow\workcal\workcal-view.jsp
+   
+    http://localhost:8812/workflow/workspace/component.jsp
+  
+  <Store classname="RefillNodeStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "RefillNodeStore",
+  recordType : nodeEditRec,
+  api : {read:{sysName:"workflow",oprID:"ProcessManage",actions:"getUserTaskNodes"}},
+  autoLoad : true,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+
+
+SELECT *
+  FROM pcmc_dept d
+ WHERE d.levels =
+          (SELECT b.levels
+             FROM pcmc_user a
+                  LEFT JOIN pcmc_user_dept c ON a.userid = c.userid
+                  LEFT JOIN pcmc_dept b ON c.deptid = b.deptid
+            WHERE     a.state > 0
+                  AND a.userid = '402882e94d3265d7014d32ab1a900060');
+
+ SELECT *
+  FROM pcmc_dept d
+ WHERE d.deptid =
+          (SELECT b.pdeptid
+             FROM pcmc_user a
+                  LEFT JOIN pcmc_user_dept c ON a.userid = c.userid
+                  LEFT JOIN pcmc_dept b ON c.deptid = b.deptid
+            WHERE     a.state > 0
+                  AND a.userid = '402882e94d3265d7014d32ab1a900060')
+
+SELECT a.*,
+       b.deptid,
+       b.deptcode,
+       b.deptname
+  FROM pcmc_user a
+       LEFT JOIN pcmc_user_dept c ON a.userid = c.userid
+       LEFT JOIN pcmc_dept b ON c.deptid = b.deptid
+ WHERE     a.state > 0
+       AND a.userid IN ('1',
+                        '2',
+                        '402881e54a7f31c4014a7f4954630009',
+                        '402881824b2e1f3d014b2fd3f36b00a4',
+                        '40280981477c3fa901477c4360db0003',
+                        '402882e94d3265d7014d32ab1a900060')				  
+						
+						  <td>
+	  {{for CurrentTasks}}
+		{{if #getIndex()<#parent.parent.data.CurrentTasks.length-1}}
+				 {{:taskName}},
+			{{else}}
+				 {{:taskName}}
+			{{/if}}
+	  {{/for}}
+      </td>
+      <td>
+	  {{for Handlers}}
+		{{if #getIndex()<#parent.parent.data.Handlers.length-1}}
+				 {{:userName}},
+			{{else}}
+				 {{:userName}}
+			{{/if}}
+	  {{/for}}
+      </td>
+	  
+	  	  {{for Handlers}}
+		{{if #getIndex()<#parent.parent.data.Handlers.length-1}}
+				 {{:userName}},
+			{{else}}
+				 {{:userName}}
+			{{/if}}
+	  {{/for}}
+	  
+	  调休上班
+	  补休放假
+
+
+select * from fawen t where t.flddjh='F20151347'
+
+http://localhost:8088/lemon/content/cms/cms-article-list.jsp
+
+FaWenFormEventUtil
+fawenForm.jsp
+main_upload.jsp
+
+部门
+SELECT a.userid,
+       a.usercode,
+       a.username,
+       c.ROLEID,
+       d.deptid,
+       d.deptname,
+       e.ROLENAME
+  FROM pcmc_user a,
+       pcmc_user_dept b,
+       pcmc_user_role c,
+       pcmc_dept d,
+       pcmc_role e
+ WHERE     a.userid = c.userid
+       AND a.userid = b.userid
+       AND b.deptid = d.deptid
+       AND c.ROLEID = e.ROLEID
+       group by d.deptid, e.ROLEID
+	   
+	    editor:new Ext.form.Checkbox(
+					   {inputValue : '0'}
+					 ),
+					 renderer:new Ext.util.Format.checkboxRenderer()
+					 
+					 问下大家，我的项目的日志总是打印不出来，是应该怎么配置？哪位发下配置看下？
+					 fawenformevenutil
+ 
+http://localhost:8812//workflow/template/completeTaskForm.jsp?taskId=545203
+
+如果是部门会签，则监控人或者主办人一般没在会签部门里，所以可以减签
+如果是人员会签，则监控人或者
+
+a,b
+转审要跟踪到原处理人，
+如果转审后的处理人是e，并且e不是该任务的代理人，并且e也没有配置代理，那么不新增记录
+如果b专审给c，那么要判断b是代理人，则最终变成
+a,c
+
+新增处理人判断如果新增a,也就是新增的是被代理人，此时a的代理人没变则不增加记录，
+如果变了则变成a,e，
+如果新增的人是代理人，则没关系，变成b,c
+
+编辑处理人
+ 如果编辑后的人是被代理人，并且该人也设置了代理，则判断没有一样的记录就新增,有一样的就不新增。
+ 如果编辑后的人是代理人，并且该人也设置了代理，则新增记录
+ 
+ 
+ 77	745314	745327	usertask1	402881ec506fcf1701507048ee60005b	李山	402881ec506fcf170150704975d7005e	宋金州	vacation	请假申请	1	1	402881ec506fcf1701507050a162006a	2015-12-09 11:44:30
+79	745372	745385	usertask1	402881ec506fcf1701507046a8a10055	梁敬仁	402881ec506fcf1701507047975c0058	李永龙	vacation	请假申请	1	1	402881ec506fcf1701507050a162006a	2015-12-09 12:03:53
+999	745314	745327	usertask1	402881c1513810b40151383ed6f300c5	根-科员	402881ec506fcf170150704975d7005e	宋金州	vacation	请假申请	1	1	402881ec506fcf1701507050a162006a	2015-12-09 11:44:30
+转审
+添加子任务
+修改流程
+新增处理人
+编辑处理人
+
+http://192.168.1.65:8080/workflow/template/completeTaskForm.jsp?taskId=802514
+
+http://localhost:8812/workflow/template/completeTaskForm.jsp?taskId=815605
+ 
+4998
+
+工作总结
+工作岗位认识
+公司建议
+
+
+本人于今年7月份入职，主要负责公司工作流平台的设计与开发，开放时间为3个月，平台是基于activiti的
+工作流引擎框架扩展，在原有的引擎上扩展实现一些带有中国特色的流程功能，完成的功能点如下：
+1、流程部署与下载，流程定义扩展开发，主要开发出流程节点配置页面，管理员可以针对某个节点来配置该节点的权限，可配置项为角色、部门、功能组件
+2、发起流程和审批任务共性开发，发起流程表单、审批任务表单、流程查看表单模板页面开发
+3、我的代办、我的已办、我的申请单、我参与的流程、流程监控列表页面开发
+4、开发出具有共性的功能组件，主要有转审，抄送、添加子任务、新增处理人、编辑处理人、会签修改流程、驳回上一节点等，可以满足用户在流程流转过程中
+所需要的一些特殊干预，增加了流程的灵活性。
+5、任务超时提醒功能，对每个待办任务定时查询，满足条件的可以以短信、邮件的方式提醒。
+5、开发出请假流程、参考电教馆OA开发出收文、发文流程，可以作为demo供以后开发参考。
+
+
+
+工作岗位认识：主要职责是根据自己之前开发工作流项目的经验来和公司现有平台集成，开发出一套稳定的流程框架，
+使用这个框架开发人员只需注重流程业务的开发，通过插件绘制好流程图，再开发出实现业务逻辑的监听器一般就可以满足需求，
+简化了开发流程，提高了开发效率。在开发过程中由我一人开发，由于刚开始对平台的不熟悉，整合起来进度稍慢，后来慢慢动手开发熟悉平台架构后开发
+效率有所提升，在开发过程中学习了ext的有关用法，jsrender的渲染处理以及平台前后台交互对报文的处理格式要求。主要的认识是由于以前是和别人一起开发，
+遇到问题可以讨论请教，现在则是重新开发，很多知识点要根据经验和调试来试验是否可行，可见在以后再做项目时，要把重要的知识点总结归纳，记录下来方便以后使用。
+7599
+
+微信标签数量 89
+
+
+问下大家，现在长沙java开发的行情咋样？哪个区的it公司多点，有买房的打算
+
+
+http://115.28.139.116:8090/masterreview/index.jsp
+
+http://localhost:8812/masterreview/professor/professorselect.jsp
+
+在填写的时候一级二级三级指标也要在页面上显示出来给校长看吧，比如个人素养-专业发展-进修学习？
+
+areaInitListener

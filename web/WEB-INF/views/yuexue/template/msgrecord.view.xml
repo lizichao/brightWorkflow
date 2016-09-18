@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions></Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="msg_recordRecord">[  {
+    xtype : "Field",
+    name : "deptname",
+    width : 150,
+    fieldLabel : "发送人所在学校",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "username",
+    width : 150,
+    fieldLabel : "发送人姓名",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "rclassname",
+    width : 150,
+    fieldLabel : "接收人所在班级",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "rusername",
+    width : 150,
+    fieldLabel : "接收人姓名",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "msgid",
+    width : 150,
+    fieldLabel : "msgid",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "post_data",
+    width : 150,
+    fieldLabel : "发送数据",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "feedback_time",
+    width : 150,
+    fieldLabel : "反馈时间",
+    allowBlank : true,
+    type : "date",
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "status",
+    width : 150,
+    fieldLabel : "发送状态",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "template_name",
+    width : 150,
+    fieldLabel : "template_name",
+    allowBlank : true,
+    type : "string"
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="msg_recordStore">{
+  xtype : "Store",
+  classname : "msg_recordStore",
+  type : "JrafXmlStore",
+  recordType : msg_recordRecord,
+  idProperty : "deptname",
+  api : {
+    read :     {
+      sysName : "yuexue",
+      oprID : "Template",
+      actions : "query_message_record"
+  }
+},
+  autoLoad : true,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        title : "查询条件",
+        frame : true,
+        items : [          {
+            name : "query_deptname",
+            fieldLabel : "部门名称",
+            width : 200,
+            allowBlank : true,
+            xtype : "textfield"
+        }],
+        buttonAlign : "center",
+        id : "msg_recordQuery",
+        buttons : [        {
+          text : "查询",
+          handler : function(){var qStore=Ext.getCmp('msg_recordGrid').getStore();qStore.setFormParam(Ext.getCmp('msg_recordQuery'));qStore.setPageInfo(JrafSession.get('PageSize'),'1');qStore.load();}
+      }]
+    },      {
+        xtype : "grid",
+        id : "msg_recordGrid",
+        region : "center",
+        autoWidth : true,
+        frame : true,
+        title : "查询结果",
+        viewConfig : {
+        forceFit : false
+    },
+        stripeRows : true,
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        store : msg_recordStore,
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:msg_recordStore,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+        {width:100,sortable:true,header:'模板名称',dataIndex:'template_name'},
+        {width:100,sortable:true,header:'发送人所在学校',dataIndex:'deptname'},
+        {width:100,sortable:true,header:'发送人姓名',dataIndex:'username'},
+        {width:100,sortable:true,header:'接收人所在班级',dataIndex:'rclassname'},
+        {width:100,sortable:true,header:'接收人姓名',dataIndex:'rusername'},
+        {width:260,sortable:true,header:'发送数据',dataIndex:'post_data'},
+        {width:100,sortable:true,header:'发送状态',dataIndex:'status',renderer:Ext.util.Format.paramRenderer('template_status','未定义')}])
+    }]
+}]</MainPanel>
+</view>
+

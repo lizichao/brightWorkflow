@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+   suspendRender=function(v){
+	    if (v=='1'){
+		   return '否';
+		}
+	    if (v=='2'){
+		   return '是';
+		}
+		 return '否';
+    };
+    
+   endtimeRender=function(v){
+	    if (v){
+		   return '是';
+		}else{
+		 return '否';
+		}
+    };
+    
+   function viewRender(value, meta, rec, rowIdx, colIdx, ds){
+      //var processdefid = rec.get('processdefid');
+      var returnStr = "&lt;a href=\"/workflow/template/processViewForm.jsp?processInstanceId="+value+"\" target=\"_blank\" &gt;"+value+"&lt;/a&gt;";
+	  return returnStr;	
+    };
+    
+    
+    </Functions>
+    
+    
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="ProcessMonitorRec">[  {
+    xtype : "Field",
+    name : "processinstanceid",
+    width : 150,
+    fieldLabel : "流程实例Id",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "processinstancename",
+    width : 150,
+    fieldLabel : "流程标题",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "processdefname",
+    width : 150,
+    fieldLabel : "流程类型",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "processcurrenttask",
+    width : 150,
+    fieldLabel : "当前节点",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "processhandler",
+    width : 150,
+    fieldLabel : "流程处理人",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "startusername",
+    width : 150,
+    fieldLabel : "流程创建人",
+    allowBlank : false,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "processstarttime",
+    width : 150,
+    fieldLabel : "流程发起时间",
+    allowBlank : true,
+    type : "date",
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "processendtime",
+    width : 150,
+    fieldLabel : "流程结束时间",
+    allowBlank : true,
+    type : "date",
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "processendtime",
+    width : 150,
+    fieldLabel : "是否结束",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "processsuspension",
+    width : 150,
+    fieldLabel : "是否挂起",
+    allowBlank : true,
+    type : "string"
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="ProcessMonitorStore">{
+  xtype : "Store",
+  classname : "ProcessMonitorStore",
+  type : "JrafXmlStore",
+  recordType : ProcessMonitorRec,
+  idProperty : "processinstanceid",
+  api : {
+    read :     {
+      sysName : "workflow",
+      oprID : "workSpaceAction",
+      actions : "queryProcessMonitor"
+  },
+    create :     {
+      sysName : "workflow",
+      oprID : "workSpaceAction",
+      actions : "queryProcessMonitor"
+  },
+    update :     {
+      sysName : "workflow",
+      oprID : "workSpaceAction",
+      actions : "queryProcessMonitor"
+  },
+    destroy :     {
+      sysName : "workflow",
+      oprID : "workSpaceAction",
+      actions : "queryProcessMonitor"
+  }
+},
+  autoLoad : true,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true,
+  listeners : {
+    write : function (store,action,result,res,rs){if (res.success){if (_editInfoWin){_editInfoWin.hide();}}}
+}
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+    <Panel classname="EditInfoForm" xtype="panel">{
+  xtype : "panel",
+  classname : "EditInfoForm",
+  frame : true,
+  bodyBorder : false,
+  items : [    {
+      layout : "column",
+      bodyBorder : false,
+      items : [        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processinstanceid",
+              fieldLabel : "流程实例Id",
+              width : 150,
+              allowBlank : false,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processinstancename",
+              fieldLabel : "流程标题",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processdefname",
+              fieldLabel : "流程类型",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processcurrenttask",
+              fieldLabel : "当前节点",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processhandler",
+              fieldLabel : "流程处理人",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "startusername",
+              fieldLabel : "流程创建人",
+              width : 150,
+              allowBlank : false,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processstarttime",
+              fieldLabel : "流程发起时间",
+              width : 150,
+              allowBlank : true,
+              xtype : "datefield",
+              format : "Y-m-d H:i:s"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processendtime",
+              fieldLabel : "流程结束时间",
+              width : 150,
+              allowBlank : true,
+              xtype : "datefield",
+              format : "Y-m-d H:i:s"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processendtime",
+              fieldLabel : "是否结束",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "processsuspension",
+              fieldLabel : "是否挂起",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      }]
+  }],
+  id : "EditInfoForm",
+  buttonAlign : "center",
+  buttons : [    {
+      text : "保存",
+      width : 100,
+      height : 25,
+      iconCls : "disk",
+      handler : function() {var _forma = Ext.getCmp('EditInfoForm');if (_forma.getForm().isValid()){if(_forma.record){_forma.getForm().updateRecord(_forma.record);ProcessMonitorStore.save();}}}
+  },    {
+      text : "取消",
+      width : 100,
+      height : 25,
+      iconCls : "arrow-undo",
+      handler : function() {_editInfoWin.hide();}
+  }]
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        title : "查询条件",
+        frame : true,
+        items : [          {
+            layout : "column",
+            bodyBorder : false,
+            items : [              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "query_processKey",
+                    fieldLabel : "流程定义key",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "hidden"
+                }]
+            },              {
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "processInstanceId",
+                    fieldLabel : "流程实例id",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "textfield"
+                }]
+            },{
+                layout : "form",
+                bodyBorder : false,
+                columnWidth : 0.5,
+                items : [                  {
+                    name : "startusername",
+                    fieldLabel : "发起人",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "textfield"
+                }]
+            }, ],
+            anchor : "100%"
+        }],
+        buttonAlign : "center",
+        id : "ProcessMonitorForm",
+        buttons : [        {
+          text : "查询",
+          handler : function(){var qStore=Ext.getCmp('ProcessMonitorGrid').getStore();qStore.setFormParam(Ext.getCmp('ProcessMonitorForm'));qStore.setPageInfo(JrafSession.get('PageSize'),'1');qStore.load();}
+      }]
+    },      {
+        xtype : "grid",
+        id : "ProcessMonitorGrid",
+        region : "center",
+        autoWidth : true,
+        frame : true,
+        title : "查询结果",
+        viewConfig : {
+        forceFit : false
+    },
+        stripeRows : true,
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        store : ProcessMonitorStore,
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:ProcessMonitorStore,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+        {width:100,sortable:true,header:'流程实例Id',dataIndex:'processinstanceid',renderer:viewRender},
+        {width:100,sortable:true,header:'流程标题',dataIndex:'processinstancename',renderer:Ext.util.Format.paramRenderer('undefined',''),hidden : true},
+        {width:100,sortable:true,header:'流程类型',dataIndex:'processdefname',renderer:Ext.util.Format.paramRenderer('undefined','')},
+        {width:100,sortable:true,header:'当前节点',dataIndex:'processcurrenttask',renderer:Ext.util.Format.paramRenderer('undefined','')},
+        {width:100,sortable:true,header:'流程处理人',dataIndex:'processhandler',renderer:Ext.util.Format.paramRenderer('undefined','')},
+        {width:100,sortable:true,header:'流程创建人',dataIndex:'startusername',renderer:Ext.util.Format.paramRenderer('undefined','')},
+        {width:130,sortable:true,header:'流程发起时间',dataIndex:'processstarttime',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+        {width:130,sortable:true,header:'流程结束时间',dataIndex:'processendtime',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+        {width:100,sortable:true,header:'是否结束',dataIndex:'processendtime',renderer:endtimeRender},
+        {width:100,sortable:true,header:'是否挂起',dataIndex:'processsuspension',renderer:suspendRender}]),
+        sm : new Ext.grid.CheckboxSelectionModel({ listeners:{selectionchange:function(sm){
+                  var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}
+               }
+            }
+         }),
+        listeners : {rowdblclick : function(g,rowIndex,e){}}
+    }]
+}]</MainPanel>
+</view>
+

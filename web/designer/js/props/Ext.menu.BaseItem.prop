@@ -1,0 +1,27 @@
+{
+properties : [{
+    name : "activeClass",
+    desc : "<b>String</b> The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")"
+  },{
+    name : "canActivate",
+    type : "boolean",
+    desc : "<b>Boolean</b> True if this item can be visually activated (defaults to false)"
+  },{
+    name : "clickHideDelay",
+    type : "number",
+    desc : "<b>Number</b> Length of time in milliseconds to wait before hiding after a click (defaults to 100)"
+  },{
+    name : "handler",
+    type : "function",
+    desc : "<b>Function</b> A function that will handle the click event of this menu item (optional)",
+    defaults : "function(item,e){}"
+  },{
+    name : "hideOnClick",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide the containing menu after this item is clicked (defaults to true)"
+  },{
+    name : "scope",
+    type : "object",
+    desc : "<b>Object</b> The scope (this reference) in which the handler function will be called"
+  }]
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>弹出</title>
+<meta name="keywords" content="关键字" />
+<meta name="description" content="描述" />
+<link href="css/style.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--模拟select-->
+<script type="text/javascript" src="js/divselect.js"></script>
+<script type="text/javascript"> 
+$(function(){ 
+$.divselect("#divselect2","#inputselect2"); 
+
+}); 
+</script> 
+<!--模拟select-->
+
+</head>
+
+<body>
+
+<!--弹出-->
+
+<div class="hi-box hi-zs">   
+<div class="hi-main">
+
+<div class="hi-hd">
+<h3><i class="ico-zs"></i>转审</h3> 
+<span class="hi-close"> </span>  
+</div>
+
+
+<div class="hi-form">
+<ul>
+<li>
+
+<div class="formControls hi-select" id="divselect2"><cite>代理人</cite> 
+<dl> 
+<dd><a href="javascript:;" selectid="1">代理人1</a></dd> 
+<dd><a href="javascript:;" selectid="2">代理人</a></dd>
+</dl> <input name="" type="hidden" value="" id="inputselect2"/>  <i></i></div>  
+</li>
+</ul>
+</div>
+
+<div class="hi-page">
+<div class="hi-btn"><input name="" type="submit" value="提 交" class=" hi-radius3" /></div>  
+</div>
+
+
+</div>
+</div>
+
+<!--弹出-->
+
+<script type="text/javascript">
+$(".hi-table tr:odd").addClass("odd-row");
+</script>
+</body>
+</html>

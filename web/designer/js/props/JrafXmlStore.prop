@@ -1,0 +1,27 @@
+{
+properties : [{
+    name : "api",
+    type : "object",
+    desc : "<b>Object</b>",
+    defaults : '{\n  read:{sysName:"",oprID:"",actions:""},\n  destroy:{sysName:"",oprID:"",actions:""},\n  create:{sysName:"",oprID:"",actions:""},\n  update:{sysName:"",oprID:"",actions:""}}'
+  },{
+    name : "classname",
+    desc : "<b>String</b>"
+  },{
+    name : "idProperty",
+    desc : "<b>String</b>"
+  },{
+    name : "meta",
+    type : "object",
+    desc : "<b>Object</b> ",
+    defaults : "{\n'totalRecords':'Response Data PageInfo RecordCount',\n'record':'Response Data Record',\n'success':'Response @result',\n'result':'Response @result',\n'ftype':'Response Forward ftype',\n'forward':'Response Forward forward',\n'hintmsg':'Response Hint Msg',\n'errmsg':'Response Error Msg',\n'successProperty':'success',\n'root':'records',\n'totalProperty':'totalRecords'\n}"
+  },{
+    name : "recordType",
+    type : "object",
+    desc : "<b>Object</b>"
+  },{
+    name : "writeAllFields",
+    type : "boolean",
+    desc : "<b>Boolean</b>"
+  }]
+}

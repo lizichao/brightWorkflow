@@ -1,0 +1,50 @@
+{
+properties : [{
+    name : "deferEmptyText",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to defer emptyText being applied until the store's first load"
+  },{
+    name : "emptyText",
+    desc : "<b>String</b> The text to display in the view when there is no data to display (defaults to '')"
+  },{
+    name : "enableTabbing",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable tabbing. Default is false"
+  },{
+    name : "itemSelector",
+    desc : "<b>String</b> This is a required setting. A simple CSS selector (e.g. div.some-class or span:first-child) that will be used to determine what nodes this DataView will be working with"
+  },{
+    name : "loadingText",
+    desc : "<b>String</b> A string to display during data load operations (defaults to undefined)"
+  },{
+    name : "multiSelect",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow selection of more than one item at a time, false to allow selection of only a single item at a time or no selection at all, depending on the value of singleSelect (defaults to false)"
+  },{
+    name : "overClass",
+    desc : "<b>String</b> A CSS class to apply to each item in the view on mouseover (defaults to undefined)"
+  },{
+    name : "selectedClass",
+    desc : "<b>String</b> A CSS class to apply to each selected item in the view (defaults to 'x-view-selected')"
+  },{
+    name : "simpleSelect",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to enable multiselection by clicking on multiple items without requiring the user to hold Shift or Ctrl, false to force the user to hold Ctrl or Shift to select more than on item (defaults to false)"
+  },{
+    name : "singleSelect",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow selection of exactly one item at a time, false to allow no selection at all (defaults to false). Note that if multiSelect = true, this value will be ignored"
+  },{
+    name : "store",
+    type : "mixed",
+    desc : "<b>Ext.data.Store</b> The {@link Ext.data.Store} to bind this."
+  },{
+    name : "tpl",
+    type : "template",
+    desc : "<b>String/Array</b> The HTML fragment or an array of fragments that will make up the template used by this DataView. This should be specified in the same format expected by the constructor of {@link Ext.XTemplate}."
+  },{
+    name : "trackOver",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to enable mouseenter and mouseleave events"
+  }]
+}

@@ -1,0 +1,20 @@
+{
+listeners : [{
+    name : "afteredit",
+    type : "function",
+    defaults : 'function(roweditor,changes,record,rowIndex){}'
+  },{
+    name : "beforeedit",
+    type : "function",
+    defaults : 'function(roweditor,rowIndex){}'
+  },{
+    name : "canceledit",
+    type : "function",
+    defaults : 'function(roweditor,forced){}',
+    desc : "canceledit : ( Ext.ux.grid.RowEditor roweditor, Boolean forced)"
+  },{
+    name : "alidateedit",
+    type : "function",
+    defaults : 'function(roweditor,changes,record,rowIndex){}'
+  }]
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"  
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       
+     <context:annotation-config/>  
+	  <context:component-scan base-package="cn.com.bright.workflow,cn.com.bright.masterReview">
+	</context:component-scan>
+
+	<!-- 默认通过application.properties读取配置 -->
+	<!--  
+    <bean id="applicationProperties" class="com.mossle.core.spring.ApplicationPropertiesFactoryBean"/>-->
+    
+    <context:property-placeholder ignore-unresolvable="true" local-override="true"
+                                  location="classpath*:/application.properties,classpath*:/application.local.properties"/>
+                                  
+    <bean id="applicationContextHelper" class="cn.com.bright.workflow.core.spring.ApplicationContextHelper"/>
+    
+    <!--
+    <aop:config>
+		<aop:pointcut id="startProcessAdvice" expression="@annotation(cn.com.bright.workflow.annotation.StartProcess)" />
+		<aop:advisor advice-ref="startProcessInterceptor" pointcut-ref="startProcessAdvice"/>
+	</aop:config> -->
+		<!-- 解析注解的前置通知实现类 -->
+	   <!--<bean id="startProcessInterceptor" class="cn.com.bright.workflow.aop.StartProcessInterceptor"></bean> -->
+	
+<!--
+    <util:properties id="APP_PROPERTIES" location="classpath:application.properties" local-override="true"/>  -->
+
+    <!-- 定义受环境影响易变的变量 -->
+    <!--  
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="applicationProperties"/>
+    </bean>
+-->
+	<!-- 国际化 -->
+
+
+	
+	
+<!-- 
+   <bean class="com.mossle.core.logback.JulHandler"/>
+	<bean id="applicationContextHelper" class="com.mossle.core.spring.ApplicationContextHelper"/>
+		<bean id="exportor" class="com.mossle.ext.export.CsvExportor"/>
+		<bean id="templateService" class="com.mossle.ext.template.FreemarkerTemplateService">
+		<property name="baseDir" value="${store.baseDir}/cms/template"/>
+	</bean>
+	 -->
+
+
+<!-- 
+	<bean id="storeHelper" class="com.mossle.ext.store.FileStoreHelper">
+		<property name="baseDir" value="${store.baseDir}"/>
+	</bean>
+	 -->
+	 <!-- 
+    <bean id="workflowBean" class="cn.com.bright.workflow.web.WorkflowBean">
+		<property name="repositoryService" ref="repositoryService"/>
+	</bean> -->
+<!-- 
+    <bean id="addSubTaskComponent" class="cn.com.bright.workflow.web.component.FunctionComponentDefine">
+		<property name="id" value="repositoryService"/>
+		<property name="type" value="button"/>
+		<property name="displayHtml" value="button"/>
+	</bean> -->
+</beans>

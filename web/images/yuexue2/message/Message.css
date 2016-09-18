@@ -1,0 +1,179 @@
+@charset "utf-8";
+/* CSS Document */
+body,html,div,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dt,dd,form,fieldset,legend,input,textarea,select,i{margin:0;padding:0}
+body{background:#EBF9FD url(bodyBg.jpg) 0 0 repeat-x;color:#FFF;font-family:FZChild,"新宋体",Arial, Helvetica, sans-serif;font-size:16px;line-height:22px;}
+div{overflow:hidden;}
+li{list-style-type:none;}
+img{border:0;vertical-align:middle;}
+i{font-style:normal;}
+
+/* HREF 样式 */
+a:link{color:#333;text-decoration:none;}
+a:visited{color:#333;text-decoration:none;}
+a:hover{color:#D92727;text-decoration:underline;}
+a:active{color:#333;text-decoration:none;}
+
+/* 消息 */
+html,body{height:100%;width:100%;}
+#body{background:url(footerBg.jpg) 0 bottom repeat-x;height:100%;width:100%;}
+#homeWork{background:url(footerBg.jpg) 0 bottom repeat-x;width:100%;height:100%;}
+#main{height:680px;margin:0 auto;width:1220px;position:relative;z-index:1;}
+.main{height:680px;margin:0 auto;width:1220px;}
+
+/* 一级栏目 */
+#columsLevel_One{height:680px;width:60px;position:absolute;top:0;left:0;z-index:9;}
+#columsLevel_One .close{position:absolute;top:5px;left:2px;z-index:99;}
+#columsLevel_One .colums_01{position:absolute;top:80px;left:2px;z-index:98;}
+#columsLevel_One .colums_02{position:absolute;top:375px;left:2px;z-index:97;}
+#columsLevel_One .n{height:35px;width:35px;position:absolute;top:70px;right:0;z-index:100;}
+
+/* 二级栏目 */
+#columsLevel_Two{height:680px;width:294px;position:absolute;top:0;left:62px;z-index:9;}
+#columsLevel_Two .top{background:url(columsLevel_Two_Top.png) 0 0 no-repeat;height:26px;margin-top:5px;width:294px;}
+#columsLevel_Two .content{background:url(columsLevel_Two_Content.png) 0 0 repeat-y;height:610px;width:294px;}
+#columsLevel_Two .bottom{background:url(columsLevel_Two_Bottom.png) 0 0 no-repeat;height:36px;width:294px;}
+
+.team,.teamList{margin:0 auto;width:278px;}
+.team .teamName,.teamItem .teamName,.teamItem .teamName_y{margin-top:25px;margin-left:10px;}
+
+.teamList ul{width:100%;}
+.teamList ul li{float:left;margin-top:10px;overflow:visible;width:100%;position:relative;z-index:1;}
+.teamItem{margin-top:10px;width:100%;}
+.teamItem .img_02{display:inline;float:left;margin-left:5px;margin-top:25px;}
+
+/* 消息区 */
+#MessageArea{height:600px;width:860px;position:absolute;top:0;right:0;z-index:9;}
+.messageTitle{display:inline-block;font-size:22px;height:36px;margin-top:5px;}
+.messageTitle i{float:left;height:36px;line-height:36px;}
+.messageTitle .leftBg{background:url(Ico.png) 0 -130px no-repeat;width:15px;}
+.messageTitle .centerBg{background:url(Ico.png) 0 -169px repeat-x;}
+.messageTitle .rightBg{background:url(Ico.png) -132px -130px no-repeat;width:12px;}
+#ScrollContent{overflow-y:auto;height:550px;width:820px;margin-top:5px;width:100%;}
+.messageContent{margin:10px auto 0 auto;width:820px;}
+
+/* 在线帮助 */
+#onLineHelp{height:820px;width:1220px;position:absolute;top:0;left:0;z-index:9;}
+#helpScrollContent{height:770px;margin-top:5px;width:100%;}
+.helpContent{margin:10px auto 0 auto;width:1180px;}
+#helpTools{height:70px;width:1220px;position:absolute;bottom:10px;left:0;z-index:9;}
+
+/* 用户 */
+.user,.user_2{width:100%;}
+.user .date,.user_2 .date{float:left;height:30px;line-height:30px;margin-top:20px;text-align:center;width:100%;}
+.user .userPhoto{display:inline;float:left;height:80px;width:78px;}
+.user .userMessage{display:inline;float:left;margin-left:20px;margin-top:20px;width:580px;}
+.user_2 .userPhoto{display:inline;float:right;height:80px;width:78px;}
+.user_2 .userMessage{display:inline;float:right;margin-right:20px;margin-top:20px;width:580px;}
+.user .userPhoto .img_01,.user_2 .userPhoto .img_01{margin-top:3px;margin-left:10px;}
+
+.borderTop,.borderBottom{height:15px;width:580px;}
+.user .userMessage .userMessageContent{padding:0 10px 0 20px;width:550px;}
+.user_2 .userMessage .userMessageContent{padding:0 20px 0 10px;width:550px;}
+
+.m_c{width:550px;}
+.m_c img{max-width:500px;}
+
+.m_BlueBorderTop{background:url(MessageBorder.png) 0 0 no-repeat;}
+.m_BlueBorderBottom{background:url(MessageBorder.png) 0 -68px no-repeat;}
+.m_Blue{background:url(Blue.png) 0 0 repeat-y;}
+.m_YellowBorderTop{background:url(MessageBorder.png) 0 -85px no-repeat;}
+.m_YellowBorderBottom{background:url(MessageBorder.png) 0 -153px no-repeat;}
+.m_Yellow{background:url(Yellow.png) 0 0 repeat-y;}
+
+/* 工具区 */
+#ToolArea{max-height:210px;width:860px;position:absolute;bottom:10px;right:0;z-index:9;}
+.send{height:50px;width:100%;}
+.send ul{width:100%;}
+.send ul li{float:left;height:50px;}
+.send ul li.toolsPic{width:140px;}
+.send ul li.toolsPic img{display:inline;float:left;margin-left:10px;}
+/**.send ul li.txtInput{background:url(Input_Bg.png) 0 0 no-repeat;height:50px;width:520px;}*/
+.send ul li.txtInput input{
+    border:1;
+    height:46px;
+    width:480px;
+    border-radius:1.5em;
+    font-size:20pt;
+    font-family: inherit;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.send ul li.helpTxtInput{background:url(helpInput_Bg.png) 50% 0 no-repeat;height:50px;width:880px;}
+.send ul li.helpTxtInput input{border:0;height:40px;line-height:40px;margin-top:4px;margin-left:30px;width:820px;}
+.send ul li.submit{text-align:right;width:190px;}
+.send ul li.submit input{background:url(send.png) 0 0 no-repeat;border:0;cursor:pointer;height:50px;width:160px;}
+.send ul li.speak{height:50px;width:520px;}
+.addTeam{height:64px;text-align:center;width:100%;}
+.others{height:124px;margin-top:10px;width:100%;}
+.others ul{width:100%;}
+.others ul li{background:url(othersBg.png) 0 0 no-repeat;display:inline;float:left;height:124px;margin-left:15px;overflow:hidden;width:94px;}
+.others ul li img{height:80px;margin-top:5px;margin-left:4px;width:85px;}
+.others ul li p{height:30px;line-height:30px;margin-left:2px;margin-top:8px;overflow:hidden;text-align:center;width:90px;}
+
+/* 头像 */
+.photo{background:url(photoBg.png) 0 0 no-repeat;display:inline;float:left;height:80px;width:78px;position:relative;z-index:2;}
+.photo .img_01{height:72px;width:72px;position:absolute;top:3px;left:4px;z-index:9;}
+.photo .img_02{height:26px;width:26px;position:absolute;bottom:7px;right:7px;z-index:10;}
+.teamName,.teamName_y{display:inline;float:left;height:30px;}
+.teamName span,.teamName_y span{float:left;font-size:18px;height:30px;line-height:32px;}
+.teamName .leftBg{background:url(Ico.png) 0 -64px no-repeat;width:15px;}
+.teamName .centerBg{background:url(Ico.png) 0 -96px repeat-x;}
+.teamName .rightBg{background:url(Ico.png) -129px -64px no-repeat;width:15px;}
+.teamName_y .leftBg{background:url(Ico.png) 0 0 no-repeat;width:15px;}
+.teamName_y .centerBg{background:url(Ico.png) 0 -32px repeat-x;}
+.teamName_y .rightBg{background:url(Ico.png) -129px 0 no-repeat;width:15px;}
+
+/* 数字 */
+.number{height:26px;min-width:26px;position:absolute;}
+.number span{float:left;font-size:22px;height:26px;line-height:24px;}
+.number .leftBg{background:url(number.png) 0 0 no-repeat;width:13px;}
+.number .centerBg{background:url(number.png) 0 -26px repeat-x;top:0px;}
+.number .rightBg{background:url(number.png) -13px 0 no-repeat;width:13px;}
+.number_01{top:4px;right:30px;z-index:9;}
+.number_02{top:0;right:0;z-index:9;}
+
+/* 作业 */
+.homeWorkTitle{height:680px;width:60px;position:relative;z-index:1;}
+.homeWorkContent{width:1048px;}
+.homeWorkSubject{background:url(/images/yuexue2/message/subject_bg.png);width:123px;position:absolute;z-index:999;}
+
+.homeWorkItem{margin-top:20px;width:100%;}
+.homeWorkItem .title{background:url(Bg_01.png) 0 bottom no-repeat;height:35px;width:100%;position:relative;z-index:200;}
+.homeWorkItem .title img{height:35px;}
+.homeWorkItem .content{background:url(Bg_02.png) 0 0 repeat-y;width:100%;}
+.homeWorkItem .bottom{background:url(Bg_03.png) 0 bottom no-repeat;height:20px;width:100%;}
+
+.homeWorkItem ul{margin-left:24px;width:1000px;}
+.homeWorkItem ul li{float:left;height:32px;line-height:32px;margin-top:5px;overflow:hidden;width:100%;}
+.homeWorkItem ul li span{display:inline;float:left;height:32px;}
+.homeWorkItem ul li .num{background:url(Yuan.png) 0 5px no-repeat;text-align:center;width:24px;}
+.homeWorkItem ul li .num img{margin-top:8px;}
+.homeWorkItem ul li .inputTxt{background:url(Bg_04.png) 0 0 no-repeat;display:inline;height:32px;width:930px;}
+.homeWorkItem ul li .inputTxt input{border:0;font-family:FZChild;font-size:14px;height:28px;line-height:28px;margin-top:1px;margin-left:10px;width:910px;}
+.homeWorkItem ul li .editor{height:32px;width:60%;}
+.homeWorkItem ul li .txt{display:inline;height:32px;line-height:32px;width:930px;}
+.homeWorkItem ul li .gx{background:url(TxtBg.png) 0 5px no-repeat;text-align:center;width:50px;}
+
+/* 弹出信息 */
+.mask{background:#666666;height:100%;width:100%;position:fixed;top:0;left:0;z-index:9998;filter:alpha(Opacity=70);-moz-opacity:0.7;opacity:0.7;}
+.maskContainer{height:100%;width:100%;position:fixed;top:0;left:0;z-index:9999;}
+
+.teamMember{background:url(teamMemberBg.png) 0 0 no-repeat;height:456px;margin:50px auto 0 auto;width:714px;position:relative;z-index:1;}
+.memberNum{background:url(teamMemberNumBg.png) 0 0 no-repeat;font-size:20px;width:121px;height:35px;line-height:36px;text-indent:40px;position:absolute;top:82px;left:45px;z-index:2;}
+.memberList{overflow-y:auto;height:300px;width:650px;position:absolute;top:120px;left:32px;z-index:2;}
+.memberList ul{width:100%;}
+.memberList ul li{float:left;height:126px;margin-top:20px;overflow:hidden;width:125px;}
+.memberList ul li .pic{margin-left:26px;}
+.memberList ul li .txt{background:url(teamMemberLiBg.png) 0 0 no-repeat;font-size:16px;margin-left:13px;margin-top:8px;display:inline;float:left;height:36px;line-height:36px;text-align:center;width:104px;}
+
+/* Public */
+.fl{float:left;}
+.fr{float:right;}
+.ml10{margin-left:10px;}
+.container{width:100%;}
+.fzChild{font-family:FZChild;}
+.ScrollBar{background:#CEA468;position:absolute;}
+.ScrollBar div{background:#FEC810;cursor:pointer;position:absolute;left:0px; top:0px;}
+.bgf{background:#00FF66;}

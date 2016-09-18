@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<twweb>
+	<urlPrefix>/</urlPrefix>
+	<defaultSessionTimeOut></defaultSessionTimeOut>
+	<isWorkDirPersistent>true</isWorkDirPersistent>
+	<isDefaultDirectoryDisplayed>false</isDefaultDirectoryDisplayed>
+	<security-domain></security-domain>
+	<vhost></vhost>
+	<vhostaliases></vhostaliases>
+	<visitLog>none</visitLog>
+	<cache>
+	<static-file-cache>
+	<cache-size>50</cache-size>
+	<time-to-live>5</time-to-live>
+	<max-file-size>1</max-file-size>
+	<cache-state>enable</cache-state>
+	</static-file-cache>
+	</cache>
+	<connchnl>
+		<channel>
+		<enabled>yes</enabled>
+		</channel>
+		<connection>
+		<type>http</type>
+		<port>7006</port>
+		<threadtimeout>300</threadtimeout>
+		<clienttimeout>30</clienttimeout>
+		<numthreads>500</numthreads>
+		<queuesize>1000</queuesize>
+		<compression>off</compression>
+		</connection>
+	</connchnl>
+	<session-descriptor>
+		<session-param>
+			<param-name>SessionStoreType</param-name>
+			<param-value>memory</param-value>
+		</session-param>
+		<session-param>
+			<param-name>SessionTimeout</param-name>
+			<param-value>30</param-value>
+		</session-param>
+	</session-descriptor>
+	<resource-ref>
+		<res-ref-name>brightcom.database</res-ref-name>
+		<jndi-name>brightcom.database</jndi-name>
+	</resource-ref>
+</twweb>

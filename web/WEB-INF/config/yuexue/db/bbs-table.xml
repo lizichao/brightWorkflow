@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/bbs-table.xml">
+  <Table desc="关注版块" name="bbs_attention">
+    <Field name="attention_id" title="关注编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="board_id" title="版块编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="showno" title="显示序号" type="long" maxlen="5" pk="false" />
+    <Field name="create_time" title="关注时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="is_attention" title="是否关注（不关注时不显示在首页，在更多或其他中显示）" type="long" maxlen="3" pk="false" />
+  </Table>
+  <Table name="bbs_board" desc="版块">
+    <Field name="board_id" title="版块编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="pboard_id" title="版块编号" type="String" maxlen="32" pk="false" />
+    <Field name="deptid" title="部门编号" type="String" maxlen="32" pk="false" />
+    <Field name="board_name" title="版块名称" type="String" maxlen="100" pk="false" />
+    <Field name="board_desc" title="版块描述" type="String" maxlen="1200" pk="false" />
+    <Field name="icon" title="图标" type="String" maxlen="100" pk="false" />
+    <Field name="visit_range" title="访问范围（0对所有人开放；1对老师开放；2对学生开放）" type="String" maxlen="2" pk="false" />
+    <Field name="is_enable" title="是否启用" type="long" maxlen="3" pk="false" />
+    <Field name="showno" title="显示顺序" type="long" maxlen="5" pk="false" />
+    <Field name="is_push_message" title="是否消息推送" type="long" maxlen="3" pk="false" />
+    <Field name="is_need_audit" title="是否需要审核" type="long" maxlen="3" pk="false" />
+    <Field name="create_by" title="创建人" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_time" title="创建时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="最后修改人" type="String" maxlen="32" pk="false" />
+    <Field name="modify_time" title="最后修改时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="long" maxlen="3" pk="false" />
+  </Table>
+  <Table name="bbs_favorite" desc="收藏帖子">
+    <Field name="favorite_id" title="收藏编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="post_id" title="帖子编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_time" title="关注时间" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table name="bbs_moderator" desc="版主">
+    <Field name="moderator_id" title="编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="board_id" title="版块编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="版主" type="String" maxlen="32" pk="false" />
+    <Field name="create_time" title="上任时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="valid" title="是否有效" type="long" maxlen="3" pk="false" />
+  </Table>
+  <Table name="bbs_post" desc="帖子">
+    <Field name="post_id" title="帖子编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="board_id" title="版块编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="subject" title="主题" type="String" maxlen="200" pk="false" />
+    <Field name="content" title="帖子内容" type="String" maxlen="65535" pk="false" />
+    <Field name="create_time" title="发帖时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="repley_count" title="回复总数" type="long" maxlen="10" pk="false" />
+    <Field name="browse_count" title="浏览总数" type="long" maxlen="10" pk="false" />
+    <Field name="last_reply_userid" title="最后回复人" type="String" maxlen="32" pk="false" />
+    <Field name="last_reply_time" title="最后回复时间" type="Timestamp" pk="false" />
+    <Field name="status" title="帖子状态（0待审核；1审核通过；2审核不通过；3锁定；4删除；5暂存；）" type="String" maxlen="2" pk="false" />
+    <Field name="source" title="来源" type="String" maxlen="10" pk="false" />
+    <Field name="ip" title="ip" type="String" maxlen="15" pk="false" />
+    <Field name="is_recommend" title="是否推荐" type="long" maxlen="3" pk="false" />
+    <Field name="is_hot" title="是否热帖" type="long" maxlen="3" pk="false" />
+    <Field name="is_top" title="是否置顶" type="long" maxlen="3" pk="false" />
+    <Field name="toptime" title="置顶时间" type="Timestamp" pk="false" />
+    <Field name="file_icon" title="含附件类型（0无附件；1附件；2图标）" type="String" maxlen="1" pk="false" />
+    <Field name="audit_by" title="审核人编号" type="String" maxlen="32" pk="false" />
+    <Field name="audit_time" title="审核时间" type="Timestamp" pk="false" />
+    <Field name="delete_time" title="删除时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="版主帖子处理" name="bbs_post_process">
+    <Field name="post_id" title="帖子编号" type="String" maxlen="32" notnull="true" pk="false" />
+    <Field name="process_id" title="编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="content" title="处理内容" type="String" maxlen="65535" pk="false" />
+    <Field name="cause" title="处理原因（0广告帖；1色情帖；2骂人帖；...；99其他）" type="String" maxlen="2" pk="false" />
+    <Field name="status" title="帖子处理状态（1锁定；2删除）" type="String" maxlen="2" pk="false" />
+    <Field name="process_time" title="处理时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="最后修改人" type="String" maxlen="32" pk="false" />
+    <Field name="modify_time" title="最后修改时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="long" maxlen="3" pk="false" />
+  </Table>
+  <Table name="bbs_praise" desc="点赞">
+    <Field name="praise_id" title="编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="post_id" title="帖子编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" gen="session.userid" />
+  </Table>
+  <Table name="bbs_reply" desc="帖子回复">
+    <Field name="reply_id" title="回复编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="post_id" title="帖子编号" type="String" maxlen="32" pk="false" />
+    <Field name="preply_id" title="源回复编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="回复用户" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="reply_content" title="回复内容" type="String" maxlen="65535" pk="false" />
+    <Field name="reply_time" title="回复时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="status" title="回复状态（0待审核；1审核通过；2审核不通过；3锁定；4版主删除；5楼主删除；6创建者删除）" type="String" maxlen="2" pk="false" />
+    <Field name="ups" title="顶次数" type="long" maxlen="5" pk="false" />
+    <Field name="downs" title="踩次数" type="long" maxlen="5" pk="false" />
+    <Field name="source" title="来源" type="String" maxlen="10" pk="false" />
+    <Field name="ip" title="ip" type="String" maxlen="15" pk="false" />
+    <Field name="file_icon" title="含附件类型（0无附件；1附件；2图标）" type="String" maxlen="1" pk="false" />
+    <Field name="audit_by" title="审核人" type="String" maxlen="32" pk="false" />
+    <Field name="audit_time" title="审核时间" type="Timestamp" pk="false" />
+    <Field name="delete_time" title="删除时间" type="long" pk="false" />
+  </Table>
+  <Table name="bbs_reply_process" desc="版主回复处理">
+    <Field name="process_id" title="编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="reply_id" title="回复编号" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="用户编号" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="content" title="处理内容" type="String" maxlen="65535" pk="false" />
+    <Field name="cause" title="处理原因（0广告；1色情；2骂人；...；99其他）" type="String" maxlen="2" pk="false" />
+    <Field name="status" title="回复处理状态（1锁定；2删除）" type="String" maxlen="2" pk="false" />
+    <Field name="process_time" title="处理时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="最后修改人" type="String" maxlen="32" pk="false" />
+    <Field name="modify_time" title="最后修改时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="long" maxlen="3" pk="false" />
+  </Table>
+  <Table desc="社区用户" name="bbs_user">
+    <Field name="userid" title="用户编号" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userlevel" title="用户等级" type="String" maxlen="2" pk="false" />
+    <Field name="status" title="用户状态（0正常；1禁言；2封杀）" type="String" maxlen="2" pk="false" />
+    <Field name="create_time" title="创建时间" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+</Database>
+

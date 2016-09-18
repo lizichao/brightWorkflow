@@ -1,0 +1,15 @@
+{
+properties : [{
+    name : "fields",
+    type : "mixed",
+    desc : "<b>Array/Object</b> Either an Array of Field definition objects (which will be passed to Ext.data.Record.create, or a Record constructor created from Ext.data.Record.create"
+  },{
+    name : "id",
+    type : "number",
+    desc : "<b>Number</b> The subscript within row Array that provides an ID for the Record"
+  },{
+    name : "idIndex",
+    type : "number",
+    desc : "<b>Number</b> The subscript within row Array that provides an ID for the Record"
+  }]
+}

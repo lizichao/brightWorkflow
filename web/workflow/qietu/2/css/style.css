@@ -1,0 +1,81 @@
+body{ padding:0; margin:0;}
+
+
+/*公用*/
+.ico-cs{ background:url(../images/ico-cs.png) no-repeat center; color:#404040; width:20px; height:20px; vertical-align:middle; display:inline-block; margin-right:10px; }
+.ico-zrw{ background:url(../images/ico-zrw.png) no-repeat center; color:#404040; width:20px; height:20px; vertical-align:middle; display:inline-block; margin-right:10px; }
+.ico-jq{ background:url(../images/ico-jq.png) no-repeat center; color:#404040; width:20px; height:20px; vertical-align:middle; display:inline-block; margin-right:10px; }
+.ico-xzclr{ background:url(../images/ico-xzclr.png) no-repeat center; color:#404040; width:20px; height:20px; vertical-align:middle; display:inline-block; margin-right:10px; }
+.ico-zs{ background:url(../images/ico-zs.png) no-repeat center; color:#404040; width:20px; height:20px; vertical-align:middle; display:inline-block; margin-right:10px; }
+.hi-box ul,.hi-box li{ list-style:none; padding:0; margin:0}
+.hi-box{ background:#f5f5f5; border:1px solid #d0d0d0; font-family:"宋体"; font-size:12px;    -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.4);}
+.hi-box a{ text-decoration:none; font-size:12px; color:#404040}
+.hi-main{ padding:10px 15px;}
+.hi-radius3{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.hi-hd{ height:30px; line-height:30px;}
+.hi-hd h3{ padding:0; margin:0; float:left; font-size:12px}
+.hi-close{ display:block; float:right; width:10px; height:30px; background:url(../images/hi-close.png) no-repeat center right; cursor:pointer}
+.hi-reach{ height:24px; border:1px solid #b8b8b8; overflow:hidden; float:left;margin:0 10px; margin-top:2px; }
+.hi-reach .inputt{ width:80px; height:24px; line-height:24px; display:block; float:left; background:none; padding:0 10px; border:none; border-right:1px solid #b8b8b8}
+.hi-reach .btnn{ cursor:pointer;height:24px; width:24px;  line-height:28px; display:block; float:left; background:url(../images/ico-btnn.png) no-repeat center;border:none}
+.hi-zd{ float:left;}
+.hi-zd a{ display:block; float:left; background:#fff; margin:0 10px; padding:0 10px; border:1px solid #b8b8b8; color:#9e9e9e; height:28px; line-height:28px;}
+.hi-table{margin-top:10px;background:#fff;}
+.hi-table table{width: 100%; empty-cells: show; background-color: transparent; border-collapse: collapse; border-spacing: 0;}
+.hi-table table th{font-weight: bold;}
+.hi-table table th, .hi-table table td{padding:5px 5px; line-height: 20px;text-align:center;}
+.hi-table .odd-row td{background:#f5f5f5}
+.table-bordered{border: 1px solid #ddd; border-collapse: separate;}
+.hi-page{ height:30px; line-height:30px; margin-top:10px;}
+.hi-page .hi-num{ float:left; margin-right:10px;}
+.hi-page .hi-num input{ width:38px; text-align:center; height:24px; line-height:24px; border:1px solid #b8b8b8; background:none; margin:0 5px}
+.hi-page a{display:block; float:left; width:10px; overflow:hidden; text-indent:-999px; margin-right:10px}
+.ico-sy{ background:url(../images/ico-sy.png) no-repeat center;  }
+.ico-syy{ background:url(../images/ico-syy.png) no-repeat center;  }
+.ico-xyy{ background:url(../images/ico-xyy.png) no-repeat center;  }
+.ico-wy{ background:url(../images/ico-wy.png) no-repeat center;  }
+.hi-btn input{ background:#56a845; height:30px; text-align:center; font-size:14px; color:#fff; border:none; cursor:pointer; padding:0 15px}
+.hi-form li{ height:26px; margin-top:10px;}
+.hi-form .form-label{cursor: text; text-align: right;float:left;width:60px; line-height:24px;}
+.hi-form .formControls{border:1px solid #d0d0d0;float:left;background:url(../images/hi-input.gif) no-repeat top right;}
+.hi-form .formControls input{font-size: 12px;width:164px;border:none;height: 24px;line-height:24px;padding:0 4px;vertical-align:middle;background:none}
+.hi-form .formControls.hi-select select{font-size: 12px;width:174px;border:1px solid #d0d0d0;height: 24px;line-height:normal;padding:0;vertical-align:middle;background:none}
+.hi-select.formControls{border:none}
+.hi-select.formControls input{width:142px}
+
+
+
+/*抄送*/
+.hi-cs{ width:776px; height:430px;}
+.hi-cs .hi-btn{ float:right}
+/*减签*/
+.hi-jq{ width:408px; height:430px;}
+.hi-jq .hi-btn{ text-align:center}
+/*新增处理人*/
+.hi-xzclr{ width:450px; height:430px;}
+.hi-xzclr .hi-btn{ text-align:center}
+.hi-xzcl{ margin-top:10px; overflow:hidden}
+.hi-xzclr .hi-tims { height:330px; width:150px; border:1px solid #d0d0d0; background:#fff; float:left; overflow-y:auto; margin-right:15px;}
+.hi-xzclr .hi-tims li{ height:30px; line-height:30px; text-align:center;cursor:pointer}
+.hi-xzclr .hi-tims li.odd-row{ background:#f5f5f5}
+.hi-xzclr .hi-tims li.on{ background:#d0d0d0}
+.hi-xzclr .hi-yd{ width:31px; margin-right:15px; float:left}
+.hi-xzclr .hi-yd li{ width:29px; height:28px; text-align:center; line-height:28px; background:#fff; cursor:pointer; color:#c5c5c5; font-size:14px; border:1px solid #c5c5c5; margin:2px 0;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; }
+.hi-xzclr .hi-yd ul{ padding-top:100px}
+.hi-xzclr .hi-db{ width:31px; float:left}
+.hi-xzclr .hi-db li{ width:29px; height:28px; text-align:center; line-height:28px; background:#fff; cursor:pointer; color:#c5c5c5; font-size:12px; border:1px solid #c5c5c5; margin:2px 0;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px; }
+.hi-xzclr .hi-db ul{ padding-top:100px}
+/*新增代理流程*/
+.hi-xzdllc { width:280px; height:290px;}
+.hi-xzdllc .hi-btn{ text-align:center}
+.hi-xzdllc .hi-form { margin-bottom:30px;}
+/*转审*/
+.hi-zs { width:210px; height:180px;}
+.hi-zs .hi-btn{ text-align:center}
+.hi-zs .hi-form { margin-bottom:30px;}
+
+/*子任务*/
+.hi-zrw{ width:776px; height:430px;}
+.hi-zrw .hi-btn{ float:right}
+
+

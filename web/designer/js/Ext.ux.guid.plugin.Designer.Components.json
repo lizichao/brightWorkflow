@@ -1,0 +1,610 @@
+[{
+  text : "Forms",
+  childeren : [{
+        text : "Form Panel",
+        qtip : "A panel containing form elements",
+        config : {
+          xtype : "form",
+          title : "Form"
+        }
+    },{
+      text : "Column Field",
+      gtip : "Column Field",
+      wizard: "wizard/column-field-wiz.json"
+    },{
+        text : "CompositeField",
+        qtip : "allowing a number of form Fields to be rendered on the same row",
+        config : {
+          xtype : "compositefield",
+          fieldLabel : "Label",
+          anchor : '-20',
+          defaults: {
+            flex: 1
+          },
+          __JSON__items : "[{xtype:'textfield',fieldLabel : 'text1'},{xtype:'textfield',fieldLabel : 'text2'}]"
+        }
+    },{
+    	text : "Check & Radio",
+		childeren : [{
+	      text : "Checkbox",
+	      qtip : "A checkbox",
+	      config : {
+	        xtype : "checkbox",
+	        fieldLabel : "Label",
+	        boxLabel : "Box label",
+	        name : "checkbox",
+	        inputValue : "cbvalue"
+	      }
+	    },{
+	     text : "CheckboxGroup",
+	     gtip : "A checkboxgroup",
+	     wizard: "wizard/chkboxgroup-wiz.json"
+		},{
+	      text : "Radio",
+	      qtip : "A radio form element",
+	      config : {
+	        xtype : "radio",
+	        fieldLabel : "Label",
+	        boxLabel : "Box label",
+	        name : "radio",
+	        inputValue : "radiovalue"
+	      }
+	    },{
+	     text : "RadioGroup",
+	     gtip : "A radiogroup",
+	     wizard: "wizard/radiogroup-wiz.json"
+	    }]
+    },{
+      text : "Combo",
+      childeren : [{
+	      text : "ComboBox",
+	      qtip : "A combo box",
+	      config : {
+	        xtype : "combo",
+	        fieldLabel : "Text",
+	        name : "combovalue",
+	        hiddenName : "combovalue",
+			valueField : 'value',
+			displayField : 'combotxt',
+	        __JSON__store: "store"
+	      }
+	    },{
+	      text : "ItemSelector.ux",
+	      qtip : "A ItemSelector Field",
+	      config : {
+	        xtype: 'itemselector',
+	        name: 'itemselector',
+	        fieldLabel: 'ItemSelector',
+	        imagePath:'/ext/examples/ux/images',
+	        __JSON__multiselects: '[{legend:"UnSelected",width: 250,height: 200,store: ds,displayField: "text",valueField: "value"},{legend:"Selected",width: 250,height: 200,store: []}]'
+	      }
+	    },{
+	      text : "MultiSelect.ux",
+	      qtip : "A MultiSelect Field",
+	      config : {
+	        xtype : "multiselect",
+	        fieldLabel : "Multiselect",
+	        name : "multiselect",
+	        __JSON__store: "store",
+			valueField : 'value',
+			displayField : 'combotxt',
+	        width: 250,
+	        height: 200
+	      }
+	  	},{
+	      text : "JrafMultiCombo",
+	      qtip : "A JrafMultiCombo box",
+	      config : {
+	        xtype : "multicombo",
+	        fieldLabel : "Text",
+	        name : "combovalue",
+	        hiddenName : "combovalue",
+	        checkField : "checked",
+			valueField : 'value',
+			displayField : 'combotxt',
+	        __JSON__store: "store"
+	      }
+	    },{
+	      text : "JrafTreeCombo",
+	      qtip : "A JrafTreeCombo box",
+	      config : {
+	        xtype : "treecombo",
+	        fieldLabel : "Text",
+	        name : "combovalue",
+	        hiddenName : "combovalue",
+			valueField : 'value',
+			displayField : 'combotxt',
+			__JSON__root: 'new Ext.tree.AsyncTreeNode()',
+			action:{sysName:'',oprID:'',actions:''},
+			nparams:{nid:'nid',pid:'pid',ntext:'{tname}',loadAll:false,codelen:'4,2,3,3',isLeaf:'childnum',expanded:true,chk:true,sm:'all',chkfld:'',chkval:''}
+	      }
+	    }]
+    },{
+      text : "Date & Time",
+      childeren : [{
+	      text : "DateField",
+	      qtip : "A Text Field where you can only enter a date",
+	      config : {
+	        xtype : "datefield",
+	        fieldLabel : "Date",
+	        name : "datevalue"
+	      }
+	    },{
+	      text : "TimeField",
+	      qtip : "A Text Field where you can only enter a time",
+	      config : {
+	        xtype : "timefield",
+	        fieldLabel : "Time",
+	        name : "timevalue"
+	      }
+	  }]
+    },{
+      text : "Number",
+      childeren : [{
+	      text : "NumberField",
+	      qtip : "A Text Field where you can only enter numbers",
+	      config : {
+	        xtype : "numberfield",
+	        fieldLabel : "Number",
+	        name : "numbervalue"
+	      }
+	    },{
+	      text : "SpinnerField.ux",
+	      qtip : "A SpinnerField",
+	      config : {
+	        xtype : "spinnerfield",
+	        fieldLabel : "spinnerfield",
+	        name : "spinnerfield"
+	      }
+	    }]
+    },{
+      text : "Text & Label",
+      childeren : [{
+	      text : "DisplayField",
+	      qtip : "A display-only text field which is not validated and not submitted",
+	      config : {
+	        xtype : "displayfield",
+	        fieldLabel : "DisplayLabel",
+	        name : "displayfield",
+	        value : "displayvalue"
+	      }
+	    },{
+	      text : "Label",
+	      qtip : "A textlabel",
+	      config : {
+	        xtype : "label",
+	        text : "Label"
+	      }
+	    },{
+	      text : "TextArea",
+	      qtip : "A Text Area",
+	      config : {
+	        xtype : "textarea",
+	        fieldLabel : "Text",
+	        name : "textarea"
+	      }
+	    },{
+	      text : "TextField",
+	      qtip : "A Text Field",
+	      config : {
+	        xtype : "textfield",
+	        fieldLabel : "Text",
+	        name : "textvalue"
+	      }
+	    }]
+    },{
+      text : "FieldSet",
+      qtip : "A Fieldset, containing other form elements",
+      config : {
+        xtype : "fieldset",
+        title : "Legend",
+        autoHeight : true
+      }
+    },{
+      text : "FileUpload.ux",
+      qtip : "A File Upload Field",
+      config : {
+        xtype : "fileuploadfield",
+        emptyText: 'Select an file',
+        fieldLabel: 'File',
+        name: 'filepath',
+        width: 260
+      }
+    },{
+      text : "Hidden",
+      qtip : "A basic hidden field",
+      config : {
+        xtype : "hidden",
+        fieldLabel : "Hidden Field",
+        name : "hiddenvalue"
+      }
+    },{
+      text : "HtmlEditor",
+      qtip : "A HTML Editor component",
+      config : {
+        xtype : "htmleditor",
+        fieldLabel : "HTML Editor",
+        name : "htmleditor",
+        width : 600,
+        height : 320
+      }
+    }]
+},{
+  text : "Buttons",
+  childeren : [{
+      text : "Button",
+      qtip : "A button",
+      config : {
+        xtype : "button",
+        text : "Ok"
+      }
+    },{
+      text : "ButtonGroup",
+      qtip : "A button group",
+      config : {
+        xtype : "buttongroup",
+        columns: 3,
+        title : "ButtonGroup"
+      }
+    },{
+      text : "CycleButton",
+      qtip : "A cycle button",
+      config : {
+        xtype : "cycle",
+        showText : true,
+        prependText : "cycle",
+        __JSON__items : "[{xtype:'menuitem',text:'text only',iconCls:'view-text',checked:true}]"
+      }
+    },{
+      text : "SplitButton",
+      qtip : "A split button",
+      config : {
+        xtype : "splitbutton",
+        text : "split"
+      }
+    }]
+},{
+  text : "Charts",
+  childeren : [{
+      text : "BarChart",
+      qtip : "A BarChart",
+      config : {
+        xtype : "barchart",
+        __JSON__store: "new Ext.data.JsonStore({fields: ['year', 'comedy', 'action', 'drama', 'thriller'],data: [{year: 2005, comedy: 34000000, action: 23890000, drama: 18450000, thriller: 20060000},{year: 2006, comedy: 56703000, action: 38900000, drama: 12650000, thriller: 21000000},{year: 2007, comedy: 42100000, action: 50410000, drama: 25780000, thriller: 23040000},{year: 2008, comedy: 38910000, action: 56070000, drama: 24810000, thriller: 26940000}]})",
+        yField: 'year',
+        __JSON__xAxis: "new Ext.chart.NumericAxis({stackingEnabled: true,labelRenderer: Ext.util.Format.usMoney})",
+        series: [{
+                xField: 'comedy',
+                displayName: 'Comedy'
+            },{
+                xField: 'action',
+                displayName: 'Action'
+            },{
+                xField: 'drama',
+                displayName: 'Drama'
+            },{
+                xField: 'thriller',
+                displayName: 'Thriller'
+            }]
+      }
+    },{
+      text : "ColumnChart",
+      qtip : "A ColumnChart",
+      config : {
+        xtype : "columnchart",
+        __JSON__store: "new Ext.data.JsonStore({fields:['name', 'visits', 'views'],data: [{name:'Jul 07', visits: 245000, views: 3000000},{name:'Aug 07', visits: 240000, views: 3500000},{name:'Sep 07', visits: 355000, views: 4000000},{name:'Oct 07', visits: 375000, views: 4200000},{name:'Nov 07', visits: 490000, views: 4500000},{name:'Dec 07', visits: 495000, views: 5800000},{name:'Jan 08', visits: 520000, views: 6000000},{name:'Feb 08', visits: 620000, views: 7500000}]})",
+        xField: 'name',
+        yField: 'visits'
+      }
+    },{
+      text : "LineChart",
+      qtip : "A LineChart",
+      config : {
+        xtype : "linechart",
+        __JSON__store: "new Ext.data.JsonStore({fields:['name', 'visits', 'views'],data: [{name:'Jul 07', visits: 245000, views: 3000000},{name:'Aug 07', visits: 240000, views: 3500000},{name:'Sep 07', visits: 355000, views: 4000000},{name:'Oct 07', visits: 375000, views: 4200000},{name:'Nov 07', visits: 490000, views: 4500000},{name:'Dec 07', visits: 495000, views: 5800000},{name:'Jan 08', visits: 520000, views: 6000000},{name:'Feb 08', visits: 620000, views: 7500000}]})",
+        xField: 'name',
+        yField: 'visits',
+        series: [{
+                type: 'column',
+                displayName: 'Page Views',
+                yField: 'views'
+            },{
+                type:'line',
+                displayName: 'Visits',
+                yField: 'visits'
+            }]
+      }
+    },{
+      text : "StackedBarChart",
+      qtip : "A Stacked Bar Chart",
+      config : {
+        xtype : "stackedbarchart",
+        __JSON__store: "new Ext.data.JsonStore({fields: ['year', 'comedy', 'action', 'drama', 'thriller'],data: [{year: 2005, comedy: 34000000, action: 23890000, drama: 18450000, thriller: 20060000},{year: 2006, comedy: 56703000, action: 38900000, drama: 12650000, thriller: 21000000},{year: 2007, comedy: 42100000, action: 50410000, drama: 25780000, thriller: 23040000},{year: 2008, comedy: 38910000, action: 56070000, drama: 24810000, thriller: 26940000}]})",
+        yField: 'year',
+        __JSON__xAxis: "new Ext.chart.NumericAxis({stackingEnabled: true,labelRenderer: Ext.util.Format.usMoney})",
+        series: [{
+                xField: 'comedy',
+                displayName: 'Comedy'
+            },{
+                xField: 'action',
+                displayName: 'Action'
+            },{
+                xField: 'drama',
+                displayName: 'Drama'
+            },{
+                xField: 'thriller',
+                displayName: 'Thriller'
+            }]
+      }
+    },{
+      text : "StackedColumnChart",
+      qtip : "A StackedColumnChart",
+      config : {
+        xtype : "stackedcolumnchart",
+        __JSON__store: "new Ext.data.JsonStore({fields:['name', 'visits', 'views'],data: [{name:'Jul 07', visits: 245000, views: 3000000},{name:'Aug 07', visits: 240000, views: 3500000},{name:'Sep 07', visits: 355000, views: 4000000},{name:'Oct 07', visits: 375000, views: 4200000},{name:'Nov 07', visits: 490000, views: 4500000},{name:'Dec 07', visits: 495000, views: 5800000},{name:'Jan 08', visits: 520000, views: 6000000},{name:'Feb 08', visits: 620000, views: 7500000}]})",
+        xField: 'name',
+        series: [{
+                displayName: 'Page Views',
+                yField: 'views'
+            },{
+                displayName: 'Visits',
+                yField: 'visits'
+            }]
+      }
+    },{
+      text : "PieChart",
+      qtip : "A Pie Chart",
+      config : {
+        xtype : "piechart",
+        __JSON__store: "new Ext.data.JsonStore({fields: ['season', 'total'],data: [{season: 'Summer',total: 150},{season: 'Fall',total: 245},{season: 'Winter',total: 117},{season: 'Spring',total: 184}]})",
+        dataField: 'total',
+        categoryField: 'season'
+      }
+    }]
+},{
+  text : "Toolbar",
+  childeren : [{
+      text : "PagingToolbar",
+      qtip : "A PagingToolbar",
+      config : {
+        xtype : "paging",
+        __JSON__pageSize: "JrafSession.get('PageSize')",
+        __JSON__store: "store",
+        displayInfo: true
+      }
+    },{
+      text : "StatusBar.ux",
+      qtip : "A StatusBar",
+      config : {
+        xtype : "statusbar",
+        defaultText : 'Default status text',
+        text : "Ready"
+      }
+    },{
+      text : "Toolbar",
+      qtip : "A basic Toolbar",
+      config : {
+        xtype : "toolbar"
+      }
+    },{
+      text : "Toolbar.Fill",
+      qtip : "->",
+      config : {
+        xtype : "tbfill"
+      }
+    },{
+      text : "Toolbar.Separator",
+      qtip : "-",
+      config : {
+        xtype : "tbseparator"
+      }
+    },{
+      text : "Toolbar.Spacer",
+      qtip : " ",
+      config : {
+        xtype : "tbspacer"
+      }
+    },{
+      text : "Toolbar.TextItem",
+      qtip : "text",
+      config : {
+        xtype : "tbtext",
+        text : "text"
+      }
+    }]
+},{
+  text : "Menus",
+  childeren : [{
+      text : "Menu",
+      qtip : "a menu",
+      config : {
+        xtype : "menu",
+        fieldLabel : "Menu"
+      }
+    },{
+      text : "ColorMenu",
+      qtip : "A ColorPalette menu",
+      config : {
+        xtype : "colormenu",
+        fieldLabel : "colormenu"
+      }
+    },{
+      text : "DateMenu",
+      qtip : "A date menu",
+      config : {
+        xtype : "datemenu",
+        fieldLabel : "datemenu"
+      }
+    },{
+      text : "Menu.Item",
+      qtip : "A menu item",
+      config : {
+        xtype : "menuitem",
+        text : "menuitem"
+      }
+    },{
+      text : "Menu.CheckItem",
+      qtip : "A menu item contains checkbox",
+      config : {
+        xtype : "menucheckitem",
+        text : "menucheckitem"
+      }
+    },{
+      text : "Menu.Separator",
+      qtip : "-",
+      config : {
+        xtype : "menuseparator"
+      }
+    },{
+      text : "Menu.TextItem",
+      qtip : "a static text string to a menu",
+      config : {
+        xtype : "menutextitem",
+        text : "menutextitem"
+      }
+    }]
+},{
+  text : "Panels",
+  childeren : [{
+      text : "Panel",
+      qtip : "A simple panel with default layout",
+      config : {
+        xtype : "panel",
+        title : "Panel"
+      }
+    },{
+      text : "Tab Panel",
+      qtip : "A panel with many tabs",
+      wizard : 'wizard/tabpanel-wiz.json'
+    },{
+      text : "Grid Panel",
+      qtip : "Grid with store",
+      wizard : "wizard/grid-wiz.json"
+    },{
+      text : "Tree Panel",
+      qtip : "A tree panel",
+      config : {
+        xtype : "treepanel",
+        title: 'TreePanel',
+        height: 400,
+        animate : true,
+        autoScroll : true,
+        containerScroll : true,
+        rootVisible: true,
+        __JSON__root : "new Ext.tree.AsyncTreeNode({text:'Tree Root',draggable : false})",
+        __JSON__loader: "new JrafXmlTreeLoader("+
+        	"{nparams: {nid:'nid',pid:'pid',ntext:'{nodetxt}',loadAll:false,codelen:'4,2,3',isLeaf:'leafflag',expanded:true,chk:false,sm:'folder|leaf|all'},"+
+        	"action: {sysName:'',oprID:'',actions:''}})"
+      }
+    }]
+},{
+  text : "Layouts",
+  childeren : [{
+      text : "Absolute Layout",
+      qtip : "Layout containing many elements, absolutely positionned with x/y values",
+      config : {
+        layout : "absolute",
+        title : "AbsoluteLayout Container"
+      }
+    },{
+      text : "Accordion Layout",
+      qtip : "Layout as accordion",
+      wizard: "wizard/accordion-wiz.json"
+    },{
+      text : "Anchor Layout",
+      qtip : "Layout containing many elements, sized with \"anchor\" percentage values",
+      config : {
+        layout : "anchor",
+        title : "AnchorLayout Container"
+      }
+    },{
+      text : "Border Layout",
+      qtip : "Layout with regions",
+      wizard : "wizard/border-wiz.json"
+    },{
+      text : "Card Layout",
+      qtip : "Layout containing many elements, only one can be displayed at a time",
+      config : {
+        layout : "card",
+        title : "CardLayout Container",
+        activeItem : 0
+      }
+    },{
+      text : "Column Layout",
+      qtip : "Layout of columns",
+      wizard : "wizard/column-wiz.json"
+    },{
+      text : "Fit Layout",
+      qtip : "Layout containing only one element, fitted to container",
+      config : {
+        layout : "fit",
+        title : "FitLayout Container"
+      }
+    },{
+      text : "Table Layout",
+      qtip : "Layout of table",
+      wizard : "wizard/table-wiz.json"
+    }]
+},{
+  text : "Custom",
+  childeren : [{
+      text : "Param Combo",
+      config : {
+        xtype : "paracombo",
+        fieldLabel : "ParamText",
+        name : "combovalue",
+        hiddenName : "combovalue",
+        __JSON__baseParams: "{paramname : 'boolean'}"
+      }
+    },{
+      text : "Param MultiCombo",
+      config : {
+        xtype : "paramulticombo",
+        fieldLabel : "ParamText",
+        name : "combovalue",
+        hiddenName : "combovalue",
+        __JSON__baseParams: "{paramname : 'boolean'}"
+      }
+    },{
+      text : "ParamTree Combo",
+      config : {
+        xtype : "paratreecombo",
+        fieldLabel : "ParamTreeText",
+        name : "combovalue",
+        hiddenName : "combovalue",
+        nparams: {chk:false,codelen:'1,1'},
+        __JSON__baseParams: "{paramname : 'grouptype'}"
+      }
+    },{
+      text : "DeptTree Combo",
+      config : {
+        xtype : "depttreecombo",
+        fieldLabel : "DeptText",
+        name : "combovalue",
+        hiddenName : "combovalue"
+      }
+    },{
+      text : "SubSys Combo",
+      config : {
+        xtype : "syscombo",
+        fieldLabel : "SubsysText",
+        name : "combovalue",
+        hiddenName : "combovalue"
+      }
+    },{
+      text : "UserTree Combo",
+      config : {
+        xtype : "usertreecombo",
+        fieldLabel : "DeptUserText",
+        name : "combovalue",
+        hiddenName : "combovalue"
+      }
+    }]
+},{
+  text : "Template",
+  childeren : [{
+      text : "Simple Query",
+      gtip : "Simple Query",
+      wizard: "wizard/simplequery-temp-wiz.json"
+    }]
+}]

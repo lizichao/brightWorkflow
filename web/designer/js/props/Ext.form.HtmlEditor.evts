@@ -1,0 +1,38 @@
+{
+listeners : [{
+    name : "activate",
+    type : "function",
+    defaults : 'function(scope){}',
+    desc : "activate : ( HtmlEditor this )"
+  },{
+    name : "beforepush",
+    type : "function",
+    defaults : 'function(scope,html){}',
+    desc : "beforepush : ( HtmlEditor this, String html )"
+  },{
+    name : "beforesync",
+    type : "function",
+    defaults : 'function(scope,html){}',
+    desc : "beforesync : ( HtmlEditor this, String html )"
+  },{
+    name : "editmodechange",
+    type : "function",
+    defaults : 'function(scope,sourceEdit){}',
+    desc : "editmodechange : ( HtmlEditor this, Boolean sourceEdit )"
+  },{
+    name : "initialize",
+    type : "function",
+    defaults : 'function(scope){}',
+    desc : "initialize : ( HtmlEditor this )"
+  },{
+    name : "push",
+    type : "function",
+    defaults : 'function(scope,html){}',
+    desc : "push : ( HtmlEditor this, String html )"
+  },{
+    name : "sync",
+    type : "function",
+    defaults : 'function(scope,html){}',
+    desc : "sync : ( HtmlEditor this, String html )"
+  }]
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/student-table.xml">
+  <Table desc="临时存储学生信息表" name="temp_base_student">
+    <Field name="xxbs" type="String" maxlen="255" notnull="false" pk="false" />
+    <Field name="xm" type="String" maxlen="255" pk="false" />
+    <Field name="xb" type="String" maxlen="255" pk="false" />
+    <Field name="csrq" type="Timestamp" pk="false" />
+    <Field name="csdxzq" type="String" maxlen="255" pk="false" />
+    <Field name="jg" type="String" maxlen="255" pk="false" />
+    <Field name="mz" type="String" maxlen="255" pk="false" />
+    <Field name="gj" type="String" maxlen="255" pk="false" />
+    <Field name="sfzjlx" type="String" maxlen="255" pk="false" />
+    <Field name="gatqw" type="String" maxlen="255" pk="false" />
+    <Field name="jkzk" type="String" maxlen="255" pk="false" />
+    <Field name="zzmm" type="String" maxlen="255" pk="false" />
+    <Field name="sfzjh" type="String" maxlen="255" pk="false" />
+    <Field name="hkxz" type="String" maxlen="255" pk="false" />
+    <Field name="hkszdxzqh" type="String" maxlen="255" pk="false" />
+    <Field name="bh" type="String" maxlen="255" pk="false" />
+    <Field name="rxny" type="String" maxlen="255" pk="false" />
+    <Field name="rxfs" type="String" maxlen="255" pk="false" />
+    <Field name="jdfs" type="String" maxlen="255" pk="false" />
+    <Field name="xzz" type="String" maxlen="255" pk="false" />
+    <Field name="txdz" type="String" maxlen="255" pk="false" />
+    <Field name="jtdz" type="String" maxlen="255" pk="false" />
+    <Field name="lxdh" type="String" maxlen="255" pk="false" />
+    <Field name="yzbm" type="String" maxlen="255" pk="false" />
+    <Field name="sfdszn" type="String" maxlen="255" pk="false" />
+    <Field name="sfsgxqjy" type="String" maxlen="255" pk="false" />
+    <Field name="sflset" type="String" maxlen="255" pk="false" />
+    <Field name="sfxysqzz" type="String" maxlen="255" pk="false" />
+    <Field name="sfxsyb" type="String" maxlen="255" pk="false" />
+    <Field name="sfge" type="String" maxlen="255" pk="false" />
+    <Field name="sfls" type="String" maxlen="255" pk="false" />
+    <Field name="sxxjl" type="String" maxlen="255" pk="false" />
+    <Field name="sxxfs" type="String" maxlen="255" pk="false" />
+    <Field name="sfxyczxc" type="String" maxlen="255" pk="false" />
+    <Field name="zym" type="String" maxlen="255" pk="false" />
+    <Field name="sfzyxq" type="String" maxlen="255" pk="false" />
+    <Field name="xx" type="String" maxlen="255" pk="false" />
+    <Field name="tc" type="String" maxlen="255" pk="false" />
+    <Field name="xjfh" type="String" maxlen="255" pk="false" />
+    <Field name="bnxh" type="String" maxlen="255" pk="false" />
+    <Field name="xsly" type="String" maxlen="255" pk="false" />
+    <Field name="dzxx" type="String" maxlen="255" pk="false" />
+    <Field name="zydz" type="String" maxlen="255" pk="false" />
+    <Field name="cjlx" type="String" maxlen="255" pk="false" />
+    <Field name="sfyzfgmxw" type="String" maxlen="255" pk="false" />
+    <Field name="sbjd" type="String" maxlen="255" pk="false" />
+    <Field name="cy1xm" type="String" maxlen="255" pk="false" />
+    <Field name="cy1gx" type="String" maxlen="255" pk="false" />
+    <Field name="cy1gxsm" type="String" maxlen="255" pk="false" />
+    <Field name="cy1xzz" type="String" maxlen="255" pk="false" />
+    <Field name="cy1hkszd" type="String" maxlen="255" pk="false" />
+    <Field name="cy1lx" type="String" maxlen="255" pk="false" />
+    <Field name="cy1sfjhr" type="String" maxlen="255" pk="false" />
+    <Field name="cy1sfzjlx" type="String" maxlen="255" pk="false" />
+    <Field name="cy1sfzh" type="String" maxlen="255" pk="false" />
+    <Field name="cy1mz" type="String" maxlen="255" pk="false" />
+    <Field name="cy1gzdw" type="String" maxlen="255" pk="false" />
+    <Field name="cy1zw" type="String" maxlen="255" pk="false" />
+    <Field name="cy2xm" type="String" maxlen="255" pk="false" />
+    <Field name="cy2gx" type="String" maxlen="255" pk="false" />
+    <Field name="cy2gxsm" type="String" maxlen="255" pk="false" />
+    <Field name="cy2xzz" type="String" maxlen="255" pk="false" />
+    <Field name="cy2hkszd" type="String" maxlen="255" pk="false" />
+    <Field name="cy2lx" type="String" maxlen="255" pk="false" />
+    <Field name="cy2sfjhr" type="String" maxlen="255" pk="false" />
+    <Field name="cy2sfzjlx" type="String" maxlen="255" pk="false" />
+    <Field name="cy2sfzh" type="String" maxlen="255" pk="false" />
+    <Field name="cy2mz" type="String" maxlen="255" pk="false" />
+    <Field name="cy2gzdw" type="String" maxlen="255" pk="false" />
+    <Field name="cy2zw" type="String" maxlen="20" pk="false" />
+    <Field name="sfwgzn" type="String" maxlen="20" pk="false" />
+  </Table>
+</Database>
+

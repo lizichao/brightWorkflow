@@ -1,0 +1,15 @@
+{
+listeners : [{
+    name : "beforetabchange",
+    type : "function",
+    defaults : 'function(scope,newTab,currentTab){}'
+  },{
+    name : "contextmenu",
+    type : "function",
+    defaults : 'function(scope,tab,e){}'
+  },{
+    name : "tabchange",
+    type : "function",
+    defaults : 'function(scope,tab){}'
+  }]
+}

@@ -1,0 +1,107 @@
+{
+listeners : [{
+    name : "bodyscroll",
+    type : "function",
+    defaults : 'function(scrollLeft,scrollTop){}'
+  },{
+    name : "cellclick",
+    type : "function",
+    defaults : 'function(grid,rowIndex,columnIndex,e){}'
+  },{
+    name : "cellcontextmenu",
+    type : "function",
+    defaults : 'function(grid,rowIndex,columnIndex,e){}'
+  },{
+    name : "celldblclick",
+    type : "function",
+    defaults : 'function(grid,rowIndex,columnIndex,e){}'
+  },{
+    name : "cellmousedown",
+    type : "function",
+    defaults : 'function(grid,rowIndex,columnIndex,e){}'
+  },{
+    name : "click",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "columnmove",
+    type : "function",
+    defaults : 'function(oldIndex,newIndex){}'
+  },{
+    name : "columnresize",
+    type : "function",
+    defaults : 'function(columnIndex,newSize){}'
+  },{
+    name : "contextmenu",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "dblclick",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "headerclick",
+    type : "function",
+    defaults : 'function(grid,columnIndex,e){}'
+  },{
+    name : "headercontextmenu",
+    type : "function",
+    defaults : 'function(grid,columnIndex,e){}'
+  },{
+    name : "headerdblclick",
+    type : "function",
+    defaults : 'function(grid,columnIndex,e){}'
+  },{
+    name : "headermousedown",
+    type : "function",
+    defaults : 'function(grid,columnIndex,e){}'
+  },{
+    name : "keydown",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "keypress",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "mousedown",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "mouseout",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "mouseover",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "mouseup",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "reconfigure",
+    type : "function",
+    defaults : 'function(grid,store,colModel){}'
+  },{
+    name : "rowclick",
+    type : "function",
+    defaults : 'function(grid,rowIndex,e){}'
+  },{
+    name : "rowcontextmenu",
+    type : "function",
+    defaults : 'function(grid,rowIndex,e){}'
+  },{
+    name : "rowdblclick",
+    type : "function",
+    defaults : 'function(grid,rowIndex,e){}'
+  },{
+    name : "rowmousedown",
+    type : "function",
+    defaults : 'function(grid,rowIndex,e){}'
+  },{
+    name : "sortchange",
+    type : "function",
+    defaults : 'function(grid,sortInfo){}'
+  }]
+}

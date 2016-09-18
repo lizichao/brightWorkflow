@@ -1,0 +1,223 @@
+﻿.wrapper{
+	width:100%;
+}
+.main{
+	position:relative;
+	display:block;
+	margin:0 auto;
+	padding:3px 0;
+	width:960px;
+	text-align:left;
+	z-index:100;
+}
+.main .m_side{
+	float:left;
+	width:220px;
+}
+.main .m_side .ms_user{
+	height:80px;
+	background:url(../images/bg1.png) no-repeat;
+	text-align:center;
+	font-size:14px;
+	color:#fff;
+}
+.main .m_side .ms_user p{
+	padding:15px 0;
+}
+.main .m_side .ms_notice{
+	padding:1px 0 0 0;
+}
+.main .m_side .ms_notice li{
+	
+}
+.main .m_side .ms_notice li a{
+	display:block;
+	padding:0 0 0 30px;
+	margin-top:2px;
+
+	line-height:27px;
+	background:url(../images/icon.png) no-repeat;
+}
+.main .m_side .ms_notice li.notice a{background-position:0 -50px;}
+.main .m_side .ms_notice li.notice_cur a{background-position:0 -80px;}
+
+.main .m_side .ms_notice li.message a{background-position:0 -108px;}
+.main .m_side .ms_notice li.message_cur a{background-position:0 -138px;}
+
+.main .m_side .ms_notice li.post a{background-position:0 -166px;}
+.main .m_side .ms_notice li.post_cur a{background-position:0 -196px;}
+.main .m_side .ms_notice li a,.main .m_side .ms_notice li a:visited{
+	display:block;
+	color:#fff;
+	font-weight:bold;
+}
+.main .m_side .ms_notice li ul{
+	display:none;
+	border:3px #CDE5FD solid;
+	border-top:none;
+	border-bottom:2px #CDE5FD solid;
+}
+.main .m_side .ms_notice li li{
+	text-align:left;
+	padding:0 5px;
+	color:#828385;
+	height:24px;
+}
+.main .m_side .ms_notice li li.tab{
+	background:#F0F7FF
+}
+.main .m_side .ms_notice li li a{
+	display:inline;
+	padding:0;
+	margin:0;
+	background:none;
+	font-size:12px;
+	font-weight:lighter;
+}
+.main .m_side .ms_notice li li a,.main .m_side .ms_notice li li a:visited{
+	color:#424443;
+}
+
+.main .m_side .ms_schedule{
+	padding:3px 0 0 0;
+}
+.main .m_side .ms_schedule h3{
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	color:#C84225;
+	font-size:14px;
+	background:url(../images/icon.png) 0 -230px no-repeat;
+}
+.main .m_content{
+	float:right;
+	width:736px;
+}
+.main .m_content .mc_menu{
+	display:block;
+	clear:both;
+}
+.main .m_content .mc_menu ul{
+	padding:10px 0 0 20px;
+}
+.main .m_content .mc_menu li{
+	float:left;
+	padding:0 12px;
+}
+.main .m_content .mc_artlist{
+	padding:3px 0 0 0;
+}
+.main .m_content .mc_artlist h3{
+	position:relative;
+	display:block;
+	padding:0 0 0 10px;
+	height:29px;
+	line-height:29px;
+	font-size:14px;
+	background:url(../images/tit_bg.png) no-repeat;
+	clear:both;
+}
+.main .m_content .mc_artlist h3 a{
+	position:relative;
+	float:left;
+	padding:0 5px 0 15px;
+	margin-right:14px;
+	height:29px;
+	background:url(../images/tab_bg8.png) 0 0 no-repeat;
+	_padding:0 24px 0 10px;
+	_margin-right:0;
+	_background:url(../images/tab_bg.png) 0 0 no-repeat;
+	outline:none;
+	blr:expression(this.onFocus=this.blur());
+}
+.main .m_content .mc_artlist h3 a em{
+	position:absolute;
+	right:-24px;
+	top:0;
+	height:29px;
+	width:24px;
+	background:url(../images/tab_bg8.png) 0 -29px no-repeat;
+	_right:0;
+	_background:url(../images/tab_bg.png) 0 -29px no-repeat;
+}
+.main .m_content .mc_artlist h3 a.selected{
+	background:url(../images/tab_bg8.png) 0 -58px no-repeat;	
+	_background:url(../images/tab_bg.png) 0 -58px no-repeat;
+}
+.main .m_content .mc_artlist h3 a.selected em{
+	background:url(../images/tab_bg8.png) 0 -87px no-repeat;
+	_background:url(../images/tab_bg.png) 0 -87px no-repeat;
+}
+.main .m_content .mc_artlist h3 a,.main .m_content .mc_artlist h3 a:visited{
+	color:#C5E4F9
+}
+.main .m_content .mc_artlist h3 a.selected,.main .m_content .mc_artlist h3 a.selected:visited{
+	color:#3183D5
+}
+
+
+.main .m_content .mc_artlist h3 span.sh{
+	position:absolute;
+	right:0;
+	top:0;
+	height:25px;
+	width:21px;
+	background:url(../images/icon.png) 0 -300px no-repeat;
+	cursor:pointer
+}
+.main .m_content .mc_artlist h3 span.sh2{
+	background:url(../images/icon.png) 0 -330px no-repeat;	
+}
+
+.main .m_content .mc_artlist ul{
+	position:relative;
+	border:3px #CDE5FD solid;
+	border-top:none;
+	border-bottom:2px #CDE5FD solid;
+}
+.main .m_content .mc_artlist li{
+	padding:0 6px;
+	line-height:24px;
+	color:#848484
+}
+.main .m_content .mc_artlist li.tab{
+	background:#F0F7FF
+}
+.main .m_content .mc_artlist li.more{
+	display:block;
+	margin:10px 0 0 0;
+	height:15px;
+	overflow:hidden;
+	background:none;	
+}
+.main .m_content .mc_artlist li.more a{
+	display:block;
+	float:right;
+	margin:0 10px 0 0;
+	width:46px;
+	height:15px;
+	text-indent:-10000px;
+	overflow:hidden;
+	background:url(../images/icon.png) 0 -270px no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

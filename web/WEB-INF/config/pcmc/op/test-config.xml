@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/test-config.xml">
+  <Operation id="test" bean="cn.brightcom.jraf.report.ReportTest" desc="测试类">
+    <Action rowacc="" colacc="" old="" accredit="" oauth="" base="" desc="打印测试" log="" nologin="true" webservice="" name="userprt">
+      <Flow>
+        <Forward result="0" ftype="0" path="/ttttt" />
+      </Flow>
+    </Action>
+  </Operation>
+</Config>
+

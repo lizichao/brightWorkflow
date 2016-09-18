@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face{
+	font-family:'FZChild';
+	src: url('/Font/FZSEJW.eot');
+	src: url('/Font/FZSEJW.eot?#iefix') format('embedded-opentype'),
+         url('/Font/FZSEJW.woff') format('woff'),
+         url('/Font/HKHBJTW.ttf') format('truetype'),
+         url('/Font/FZSEJW.svg#FZChild') format('svg');
+    font-weight:normal;
+    font-style:normal;
+}

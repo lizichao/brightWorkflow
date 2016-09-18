@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+    	var __roleid='2';
+    	var __subsysid='2';
+var actAttMeta= JrafUTIL.JrafDataMeta(2);
+function loadAccRec(node){
+    var rec=node.attributes.record;
+    var rid=node.getOwnerTree().getLoader().baseParams['roleid'];
+    var sys=rec.get('sysname');
+    var opr=rec.get('oprid');
+    var act=rec.get('action');
+    var c_acc=rec.get('colacc');
+    var r_acc=rec.get('rowacc');
+    
+    if(""==act){
+    	Ext.getCmp('actForm').getForm().reset();
+    	return;
+    }
+    
+    var jr=new JrafRequest('pcmc','sys','getActDetail',{meta:actAttMeta,recordType:actAttRecord,idProperty:'actname'});
+	jr.setExtraPs({__sysName:sys,__oprID:opr,__actions:act});
+    jr.setSuccFn(function(a,_resp,xr){
+    	Ext.getCmp('actForm').getForm().loadRecord(a.records[0]);
+    });
+	jr.postData();
+	
+	var c_grid=Ext.getCmp('colGrid');
+	if("true"==c_acc){
+		c_grid.setVisible(true);
+		var c_sto=c_grid.getStore();
+		c_sto.setBaseParam("roleid",rid);
+		c_sto.setBaseParam("sys",sys);
+		c_sto.setBaseParam("opr",opr);
+		c_sto.setBaseParam("act",act);
+		c_sto.load();
+	}
+	else{
+		c_grid.setVisible(false);
+	}
+	
+	var r_panel=Ext.getCmp('rowpanel');
+	if('true'==r_acc){
+		r_panel.setVisible(true);
+		var r_grid=Ext.getCmp('rowGrid');
+		var r_sto=r_grid.getStore();
+		
+		var rvals=[{id:'roleid',value:rid},{id:'__sysname',value:sys},{id:'oprname',value:opr},{id:'actname',value:act}];
+		var jr=new JrafRequest('pcmc','sm_permission','getRowPerms',{recordType:rowRecord,idProperty:'rolerowid'});
+		jr.setExtraPs({sys:sys,opr:opr,act:act});
+        jr.setSuccFn(function(a,_resp,xr){
+        	r_sto.loadData(_resp.responseXML);
+        	Ext.each(a.records,function(r){
+        		if(rid==r.get('roleid')){
+        			rvals.push({id:'sqlwhere',value:r.get('sqlwhere')});
+        			return;
+        		}
+        	});
+        	Ext.getCmp('rowForm').getForm().setValues(rvals);
+        });
+		jr.postData();
+	}
+	else{
+		r_panel.setVisible(false);
+	}
+	
+};</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="colRecord">[  {
+    xtype : "Field",
+    name : "name",
+    fieldLabel : "字段名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "title",
+    fieldLabel : "描述",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "colacc",
+    fieldLabel : "授权可见",
+    type : "boolean",
+    allowBlank : true
+}]</Record>
+      <Record classname="actAttRecord">[  {
+    xtype : "Field",
+    name : "actname",
+    fieldLabel : "name",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "desc",
+    fieldLabel : "desc",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "base",
+    fieldLabel : "base",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "tblname",
+    fieldLabel : "tblname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "basesql",
+    fieldLabel : "basesql",
+    type : "string",
+    allowBlank : true
+}]</Record>
+      <Record classname="rowRecord">[  {
+    xtype : "Field",
+    name : "rolerowid",
+    fieldLabel : "rolerowid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "roleid",
+    fieldLabel : "roleid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "rolename",
+    fieldLabel : "rolename",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sysname",
+    fieldLabel : "sysname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oprname",
+    fieldLabel : "oprname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "actname",
+    fieldLabel : "actname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sqlwhere",
+    fieldLabel : "sqlwhere",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="colStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "colStore",
+  recordType : colRecord,
+  idProperty : "name",
+  api : {read:{sysName:"pcmc",oprID:"sm_permission",actions:"getColPerms"}},
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+      <Store classname="rowStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "rowStore",
+  recordType : rowRecord,
+  idProperty : "rolerowid",
+  api : {read:{sysName:"pcmc",oprID:"sm_permission",actions:"getRowPerms"}},
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    layout : "border",
+    items : [      {
+        region : "center",
+        title : "交易属性",
+        layout:'border',
+        items : [          {
+            xtype : "form",
+            id : "actForm",
+            region:'north',
+            autoHeight:true,
+            items : [              {
+                xtype : "panel",
+                layout : "column",
+                items : [                  {
+                    xtype : "panel",
+                    layout : "form",
+                    columnWidth : 0.35,
+                    items : [                      {
+                        xtype : "displayfield",
+                        fieldLabel : "交易名",
+                        name : "desc"
+                    }],
+                    border : false
+                },                  {
+                    xtype : "panel",
+                    layout : "form",
+                    columnWidth : 0.3,
+                    items : [                      {
+                        xtype : "displayfield",
+                        fieldLabel : "交易类型",
+                        name : "base",
+                        width : 61
+                    }],
+                    border : false
+                },                  {
+                    xtype : "panel",
+                    layout : "form",
+                    columnWidth : 0.35,
+                    items : [                      {
+                        xtype : "displayfield",
+                        fieldLabel : "数据表",
+                        name : "tblname",
+                        width : 100
+                    }],
+                    border : false
+                }],
+                border : false
+            },              {
+                xtype : "textarea",
+                fieldLabel : "SQL查询",
+                name : "basesql",
+                anchor : "99%",
+                readOnly : true,
+                height : 40
+            }],
+            labelAlign : "right"
+        },          
+        {
+        	xtype:'tabpanel',
+        	region:'center',
+        	activeTab : 0,
+        	items:[
+        		{
+        			title : "列级权限",
+        			autoHeight:true,
+        			items:[
+        				{
+				            xtype : "editorgrid",
+				            region:'center',
+				            frame : true,
+				            viewConfig : {forceFit:true},
+				            columnLines : true,
+				            autoWidth:true,
+				            autoHeight : false,
+				            height : 280,
+				            id : "colGrid",
+				            store : colStore,
+				            colModel : new Ext.grid.ColumnModel([new JrafRowNumberer(),
+				{width:40,sortable:true,header:'字段名',dataIndex:'name'},
+				{width:40,sortable:true,header:'描述',dataIndex:'title'},
+				{width:40,sortable:true,header:'授权可见',dataIndex:'colacc',editor:new Ext.form.Checkbox(),renderer:new Ext.util.Format.checkboxRenderer()}]),
+				            buttonAlign : "center",
+				            buttons : [{
+								text : '列级授权',
+								handler : function() {
+									var c_grid=Ext.getCmp('colGrid');
+									var c_sto=c_grid.getStore();
+						
+									var jr=new JrafRequest('pcmc','sm_permission','saveColPerm');
+									var ps=JrafUTIL.crDataAllRecNoEncode(colStore,{roleid:c_sto.baseParams['roleid'],
+										sys:c_sto.baseParams['sys'],opr:c_sto.baseParams['opr'],act:c_sto.baseParams['act']});
+									jr.setExtraPs(ps);
+									jr.postData();
+								}
+							}],
+				            hidden : true
+				        }
+        			]
+        		},
+        		{
+        			title : "行级权限",
+        			items:[
+        				{
+				            xtype : "panel",
+				            title : "行级权限",
+				            id : "rowpanel",
+				            items : [              {
+				                xtype : "grid",
+				                frame : true,
+				                viewConfig : {forceFit:true},
+				                columnLines : true,
+				                autoWidth:true,
+				                autoHeight : false,
+				                height : 200,
+				                id : "rowGrid",
+				                store : rowStore,
+				                tbar : [],
+				                colModel : new Ext.grid.ColumnModel([new JrafRowNumberer(),
+				{width:40,sortable:true,header:'角色',dataIndex:'rolename'},
+				{width:40,sortable:true,header:'限定条件',dataIndex:'sqlwhere'}])
+				            },              {
+				                xtype : "form",
+				                id : "rowForm",
+				                items : [                  {
+				                    xtype : "textarea",
+				                    fieldLabel : "当前角色行级权限",
+				                    name : "sqlwhere",
+				                    anchor : "99%"
+				                },                  {
+				                    xtype : "hidden",
+				                    fieldLabel : "Hidden Field",
+				                    name : "roleid"
+				                },                  {
+				                    xtype : "hidden",
+				                    fieldLabel : "Hidden Field",
+				                    name : "sysname"
+				                },                  {
+				                    xtype : "hidden",
+				                    fieldLabel : "Hidden Field",
+				                    name : "oprname"
+				                },                  {
+				                    xtype : "hidden",
+				                    fieldLabel : "Hidden Field",
+				                    name : "actname"
+				                }],
+				                buttonAlign : "center",
+				                buttons : [{
+					text:'保存',handler:function(){
+						var jr=new JrafRequest('pcmc','sm_permission','saveRowPerm');
+						jr.setForm('rowForm');
+						jr.postData();
+				}
+				}]
+				            }]
+				        }
+        			]
+        		}
+        	]
+        }],
+        autoScroll : true
+    },      {
+        region : "west",
+        title : "交易权限",
+        width : 240,
+        collapsible : true,
+        split : true,
+        layout : "fit",
+        items : [          {
+            xtype : "treepanel",
+            height : 400,
+            id : "act-tree",
+            animate : true,
+            autoScroll : true,
+            containerScroll : true,
+            rootVisible : false,
+            root : new Ext.tree.AsyncTreeNode({id:'-1'}),
+            loader : new JrafXmlTreeLoader({
+				nparams: {nid:'id',pid:'pid',ntext:'{oprid}.{action}({acctext})({desc})',loadAll:true,expanded:true,chk:true,chkfld:'selected',chkval:'checked'},
+				action: {sysName:'pcmc',oprID:'sm_permission',actions:'getActPermissions'},
+				baseParams: {roleid:__roleid,subsysid:__subsysid}
+			}),
+            listeners : {
+				click : function(node,e){loadAccRec(node);}
+			},
+            buttonAlign : "center",
+            buttons : [{
+				text : '交易授权',
+				handler : function() {
+					var ns=Ext.getCmp('act-tree').getChecked();
+					var param={roleid:2};
+					for (var i=0,len=ns.length;i&lt;len;i++) {
+				    	var rec=ns[i].attributes.record;
+				    	var val=rec.get('oprid')+','+rec.get('action');
+				        param['chkOpr']=!param['chkOpr'] ? val:[].concat(param['chkOpr']).concat(val);
+			        }
+					jr=new JrafRequest('pcmc','sm_permission','saveActPermissions');
+					jr.setExtraPs(param);
+					jr.postData();
+				}
+			}]
+        }]
+    }]
+}]</MainPanel>
+</view>
+

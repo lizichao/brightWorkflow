@@ -1,0 +1,52 @@
+{
+properties : [{
+    name : "activeItem",
+    desc : "<b>String/Number</b> A string component id or the numeric index of the component that should be initially activated within the container's layout on render. For example, activeItem: 'item-1' or activeItem: 0 (index 0 = the first item in the container's collection). activeItem only applies to layout styles that can display items one at a time (like {@link Ext.layout.Accordion}, {@link Ext.layout.CardLayout} and {@link Ext.layout.FitLayout}). Related to {@link Ext.layout.ContainerLayout#activeItem}."
+  },{
+    name : "autoDestroy",
+    type : "boolean",
+    desc : "<b>Boolean</b> If true the container will automatically destroy any contained component that is removed from it, else destruction must be handled manually (defaults to true)."
+  },{
+    name : "bubbleEvents",
+    type : "array",
+    desc : "<b>Array</b> An array of events that, when fired, should be bubbled to any parent container. Defaults to ['add', 'remove']"
+  },{
+    name : "bufferResize",
+    desc : "<b>Boolean/Number</b> When set to true (50 milliseconds) or a number of milliseconds, the layout assigned for this container will buffer the frequency it calculates and does a re-layout of components. This is useful for heavy containers or containers with a large quantity of sub-components for which frequent layout calls would be expensive. Defaults to 50."
+  },{
+    name : "defaultType",
+    desc : "<b>String</b> The default type of container represented by this object as registered in {@link Ext.ComponentMgr} (defaults to 'panel')."
+  },{
+    name : "defaults",
+    type : "object",
+    desc : "<b>Object</b> A config object that will be applied to all components added to this container either via the {@link #items} config or via the {@link #add} or {@link #insert} methods. The defaults config can contain any number of name/value property pairs to be added to each item, and should be valid for the types of items being added to the container. For example, to automatically apply padding to the body of each of a set of contained {@link Ext.Panel} items, you could pass: defaults: {bodyStyle:'padding:15px'}."
+  },{
+    name : "forceLayout",
+    type : "boolean",
+    desc : "<b>Boolean</b> If true the container will force a layout initially even if hidden or collapsed. This option is useful for forcing forms to render in collapsed or hidden containers. (defaults to false)"
+  },{
+    name : "hideBorders",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide the borders of each contained component, false to defer to the component's existing border settings (defaults to false)"
+  },{
+    name : "layout",
+    desc : "<b>String</b> The layout type to be used in this container. If not specified, a default {@link Ext.layout.ContainerLayout} will be created and used. Valid values are: accordion, anchor, border, card, column, fit, form and table. Specific config values for the chosen layout type can be specified using {@link #layoutConfig}.",
+    defaults: "auto",
+    values :  function(){var d=[];for (i in Ext.Container.LAYOUTS) {d.push(i);} return d;}()
+  },{
+    name : "layoutConfig",
+    type : "object",
+    desc : "<b>Object</b> This is a config object containing properties specific to the chosen layout (to be used in conjunction with the {@link #layout} config value). For complete details regarding the valid config options for each layout type, see the layout class corresponding to the type specified: {@link Ext.layout.Accordion}, {@link Ext.layout.AnchorLayout}, {@link Ext.layout.BorderLayout}, {@link Ext.layout.CardLayout}, {@link Ext.layout.ColumnLayout}, {@link Ext.layout.FitLayout}, {@link Ext.layout.FormLayout} and {@link Ext.layout.TableLayout}."
+  },{
+    name : "monitorResize",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to automatically monitor window resize events to handle anything that is sensitive to the current size of the viewport. This value is typically managed by the chosen layout and should not need to be set manually"
+  },{
+    name : "resizeEvent",
+    desc : "<b>String</b> The event to listen to for resizing in layouts. Defaults to 'resize'"
+  },{
+    name : "split",
+    type : "boolean",
+    desc : "<b>Boolean</b>"
+  }]
+}

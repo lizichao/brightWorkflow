@@ -1,0 +1,48 @@
+{
+properties : [{
+    name : "border",
+    type : "boolean",
+    desc : "<b>Boolean</b> border"
+  },{
+    name : "bodyStyle",
+    desc : "<b>String</b> bodyStyle"
+  },{
+    name : "drawUpIcon",
+    type : "boolean",
+    desc : "<b>Boolean</b> drawUpIcon"
+  },{
+    name : "drawDownIcon",
+    type : "boolean",
+    desc : "<b>Boolean</b> drawDownIcon"
+  },{
+    name : "drawLeftIcon",
+    type : "boolean",
+    desc : "<b>Boolean</b> drawLeftIcon"
+  },{
+    name : "drawRightIcon",
+    type : "boolean",
+    desc : "<b>Boolean</b> drawRightIcon"
+  },{
+    name : "drawTopIcon",
+    type : "boolean",
+    desc : "<b>Boolean</b> drawTopIcon"
+  },{
+    name : "drawBotIcon",
+    type : "boolean",
+    desc : "<b>Boolean</b> drawBotIcon"
+  },{
+    name : "delimiter",
+    desc : "<b>String</b> The string used to delimit between items when set or returned as a string of values (defaults to ',')."
+  },{
+    name : "hideNavIcons",
+    type : "boolean",
+    desc : "<b>Boolean</b> hideNavIcons"
+  },{
+    name : "imagePath",
+    desc : "<b>String</b> imagePath"
+  },{
+    name : "multiselects",
+    type : "array",
+    desc : "<b>Array</b> An array of Ext.ux.form.MultiSelect config objects, with at least all required parameters"
+  }]
+}

@@ -1,0 +1,22 @@
+{
+properties : [{
+    name : "buttonCfg",
+    type : "object",
+    desc : "<b>Object</b> A standard Ext.Button config object"
+  },{
+    name : "buttonOffset",
+    type : "number",
+    desc : "<b>Number</b> The number of pixels of space reserved between the button and the text field (defaults to 3)"
+  },{
+    name : "buttonOnly",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the file upload field as a button with no visible text field (defaults to false)"
+  },{
+    name : "buttonText",
+    desc : "<b>String</b> The button text to display on the upload button (defaults to 'Browse...')"
+  },{
+    name : "enableTabbing",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to enable tabbing. Default is false"
+  }]
+}

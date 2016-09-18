@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="gb2312"?>
+<baseElement>
+	<!--设置变量 varidx 从2开始,(0:FileUtil.getHomePath,1:FileUtil.getWebPath)-->
+	<ext>
+		<root>{1}platform</root>
+	</ext>
+	<cas>
+		<attributes>userid|usercode|usernm|pagesize|menutype|deptid|deptcode|deptname|</attributes>
+	</cas>
+</baseElement>

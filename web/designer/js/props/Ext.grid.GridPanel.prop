@@ -1,0 +1,116 @@
+{
+properties : [{
+    name : "autoExpandColumn",
+    desc : "<b>String</b> The id of a column in this grid that should expand to fill unused space. This value specified here can not be 0"
+  },{
+    name : "autoExpandMax",
+    type : "number",
+    desc : "<b>Number</b> The maximum width the autoExpandColumn can have (if enabled). Defaults to 1000"
+  },{
+    name : "autoExpandMin",
+    type : "number",
+    desc : "<b>Number</b> The minimum width the autoExpandColumn can have (if enabled). Defaults to 50"
+  },{
+    name : "bubbleEvents",
+    type : "array",
+    desc : "<b>Array</b> An array of events that, when fired, should be bubbled to any parent container. Defaults to []"
+  },{
+    name : "cm",
+    type : "object",
+    desc : "<b>Object</b> An Ext.grid.ColumnModel for this grid"
+  },{
+    name : "colModel",
+    type : "object",
+    desc : "<b>Object</b> The Ext.grid.ColumnModel to use when rendering the grid (required)."
+  },{
+    name : "columnLines",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to add css for column separation lines. Default is false"
+  },{
+    name : "columns",
+    type : "array",
+    desc : "<b>Array</b> An array of columns to auto create a Ext.grid.ColumnModel"
+  },{
+    name : "ddGroup",
+    desc : "<b>String</b> The DD group this GridPanel belongs to. Defaults to 'GridDD' if not specified"
+  },{
+    name : "ddText",
+    desc : "<b>String</b> Configures the text in the drag proxy. Defaults to: \nddText : '{0} selected row{1}' \n{0} is replaced with the number of selected rows."
+  },{
+    name : "deferRowRender",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true to enable deferred row rendering"
+  },{
+    name : "disableSelection",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to disable selections in the grid. Defaults to false"
+  },{
+    name : "enableColumnHide",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true to enable hiding of columns with the header menu"
+  },{
+    name : "enableColumnMove",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true to enable drag and drop reorder of columns. false to turn off column reordering via drag drop"
+  },{
+    name : "enableColumnResize",
+    type : "boolean",
+    desc : "<b>Boolean</b> false to turn off column resizing for the whole grid. Defaults to true"
+  },{
+    name : "enableDragDrop",
+    type : "boolean",
+    desc : "<b>Boolean</b> Enables dragging of the selected rows of the GridPanel. Defaults to false"
+  },{
+    name : "enableHdMenu",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true to enable the drop down button for menu in the headers"
+  },{
+    name : "hideHeaders",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide the grid's header. Defaults to false"
+  },{
+    name : "loadMask",
+    type : "object",
+    desc : "<b>Object</b> An Ext.LoadMask config or true to mask the grid while loading. Defaults to false"
+  },{
+    name : "maxHeight",
+    type : "number",
+    desc : "<b>Number</b> Sets the maximum height - ignored if autoHeight is not on."
+  },{
+    name : "minColumnWidth",
+    type : "number",
+    desc : "<b>Number</b> The minimum width a column can be resized to. Defaults to 25"
+  },{
+    name : "selModel",
+    type : "object",
+    desc : "<b>Object</b> The SelectionModel the grid should use to handle selections"
+  },{
+    name : "sm",
+    type : "object",
+    desc : "<b>Object</b> The SelectionModel the grid should use to handle selections (shortcut of selModel)"
+  },{
+    name : "stateEvents",
+    type : "array",
+    desc : "<b>Array</b> An array of events that, when fired, should trigger this component to save its state. Defaults to:\nstateEvents: ['columnmove', 'columnresize', 'sortchange']"
+  },{
+    name : "store",
+    type : "mixed",
+    desc : "<b>Ext.data.Store</b> The {@link Ext.data.Store} to bind this."
+  },{
+    name : "stripeRows",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to stripe the rows. Default is false"
+  },{
+    name : "trackMouseOver",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to highlight rows when the mouse is over. Default is true for GridPanel, but false for EditorGridPanel"
+  },{
+    name : "view",
+    type : "object",
+    desc : "<b>Object</b> The Ext.grid.GridView used by the grid. This can be set before a call to render()"
+  },{
+    name : "viewConfig",
+    type : "object",
+    desc : "<b>Object</b> A config object that will be applied to the grid's UI view"
+  }]
+}

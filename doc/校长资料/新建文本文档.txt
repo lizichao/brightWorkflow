@@ -1,0 +1,205 @@
+http://epu97l.axshare.com/#c=2
+
+var processInstanceId = '<%=processInstanceId%>';
+var processBusinessKey = '<%=processBusinessKey%>';
+var processDefKey = '<%=processDefKey%>';
+
+
+
+
+var educationArray =[];
+	educationArray.push("<div class='show-list radius-3'>"+gradeEvaluateRowNumNext+"、<a href='javascript:void(0);' target='_self' onclick=\"deleteSingleOption(this,'gradeEvaluate',\'"+gradeEvaluateRowNumNext+"\','');\" class='del radius-3'>删除</a></div>");
+	educationArray.push("<div class='container'>");
+	educationArray.push("<ul class='clear-fix'>");
+	educationArray.push("<input type='hidden' id='gradeEvaluateId"+gradeEvaluateRowNumNext+"'  value=''>");
+	
+	educationArray.push("<li>");
+	educationArray.push("<span class='fl'>义务教育：</span>");
+	educationArray.push("<div class='border_2 w_12 fl'>");
+	educationArray.push("<input type='text' id='compulsory_education"+gradeEvaluateRowNumNext+"' value='' placeholder=''>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
+	educationArray.push("<li>");
+	educationArray.push("<span class='fl'>高中：</span>");
+	educationArray.push("<div class='border_2 w_12 fl'>");
+	educationArray.push("<input type='text' id='high_school"+gradeEvaluateRowNumNext+"' value='' placeholder=''>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
+	educationArray.push("<li>");
+	educationArray.push("<span class='fl'>中职：</span>");
+	educationArray.push("<div class='border_2 w_12 fl'>");
+	educationArray.push("<select name='' id='secondary_school"+gradeEvaluateRowNumNext+"'><option value='2016' >2016</option></select>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
+	
+	educationArray.push("</ul>");
+	educationArray.push("</div>");
+	
+	
+	
+	
+	
+	  sql.append(" UPDATE headmaster");
+        sql.append(" SET ");
+      //  sql.append(" processInstanceId = ?,");
+      //  sql.append("headerMasterId = ?,");
+      //  sql.append("headerMasterName = ?,");
+      //  sql.append("mobile = ?,");
+      //  sql.append(" identitycard = ?,");
+       // sql.append(" school_id = ?,");
+      //  sql.append("  school_name = ?,");
+         sql.append("  present_occupation = ?,");
+        sql.append("  apply_level = ?,");
+        
+        sql.append(" school_name_space = ?,");
+        sql.append(" student_number = ?,");
+        sql.append(" school_count = ?,");
+        sql.append("school_type = ?,");
+        sql.append(" manage_difficulty_attachment_id = ?,");
+        
+        sql.append(" school_name_space_ago = ?,");
+        sql.append(" student_number_ago = ?,");
+        sql.append("  school_count_ago = ?,");
+        sql.append("  school_type_ago = ?,");
+        sql.append(" manage_difficulty_ago_attachment_id = ?,");
+        
+        sql.append(" run_school = ?,");
+        sql.append("  school_management = ?,");
+        sql.append("  education_science = ?,");
+        sql.append(" external_environment = ?,");
+        sql.append("  student_development = ?,");
+        sql.append("  teacher_development = ?,");
+        
+       // sql.append(" apply_result = 0,");
+        sql.append(" apply_status = ?,");
+        //sql.append(" apply_total_point = ?,");
+        sql.append(" modify_by = ?,");
+        sql.append("modify_date = ?,");
+        sql.append("work_report = ?");
+        sql.append("ispositive = ?");
+        sql.append(" WHERE id = ?");
+        
+        Object[] param = new Object[] { masterReviewVO.getPresentOccupation(),
+                masterReviewVO.getApplylevel(), masterReviewVO.getSchoolNameSpace(),
+                masterReviewVO.getStudentNumber(), masterReviewVO.getSchoolCount(),
+                masterReviewVO.getSchoolType(), masterReviewVO.getManage_difficulty_attachment_id(),
+                masterReviewVO.getSchoolNameSpaceAgo(), masterReviewVO.getStudentNumberAgo(),
+                masterReviewVO.getSchoolCountAgo(), masterReviewVO.getSchoolTypeAgo(),
+                masterReviewVO.getManage_difficulty_ago_attachment_id(), masterReviewVO.getRun_school(),
+                masterReviewVO.getSchool_management(), masterReviewVO.getEducation_science(),
+                masterReviewVO.getExternal_environment(), masterReviewVO.getStudent_development(),
+                masterReviewVO.getTeacher_development(), "1", userid, DatetimeUtil.getNow(""),
+                masterReviewVO.getWork_report(), masterReviewVO.getIsPositive(), masterReviewVO.getId() };
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				  Element dataElement = xmlDocUtil.getRequestData();
+        String id = dataElement.getChildText("id"); //生成的主键id
+        String headerMasterId = dataElement.getChildText("headerMasterId");   
+        String headerMasterName = dataElement.getChildText("headerMasterName");   
+        String mobile = dataElement.getChildText("mobile");   
+        String identitycard = dataElement.getChildText("identitycard");   
+        String schoolId = dataElement.getChildText("school_id");   
+        String schoolName = dataElement.getChildText("school_name");   
+        
+        
+        String presentOccupation = dataElement.getChildText("present_occupation"); //现任职务
+        String applylevel = dataElement.getChildText("apply_level");
+        
+        
+        String school_name_space = dataElement.getChildText("school_name_space"); //学校类型
+        String schoolType = dataElement.getChildText("schoolType"); //学校类型
+        String schoolCount = dataElement.getChildText("schoolCount"); //校区数量
+        String studentNumber = dataElement.getChildText("studentNumber"); //学生人数
+        String manage_difficulty_attachment_id = dataElement.getChildText("manage_difficulty_attachment_id"); //学生人数
+        
+        String school_name_space_ago = dataElement.getChildText("school_name_space_ago"); //近八年学校类型
+        String schoolTypeAgo = dataElement.getChildText("schoolTypeAgo"); //近八年学校类型
+        String schoolCountAgo = dataElement.getChildText("schoolCountAgo"); //近八年校区数量
+        String studentNumberAgo = dataElement.getChildText("studentNumberAgo"); //近八年学生人数
+        String manage_difficulty_ago_attachment_id = dataElement.getChildText("manage_difficulty_ago_attachment_id"); //近八年学生人数
+        
+        String manage_difficulty_approve_result = dataElement.getChildText("manage_difficulty_approve_result"); 
+        String manage_difficulty_ago_approve_result = dataElement.getChildText("manage_difficulty_ago_approve_result");
+       // String apply_result = dataElement.getChildText("apply_result"); 
+      //  String apply_status = dataElement.getChildText("apply_status");
+       // String apply_total_point = dataElement.getChildText("apply_total_point"); 
+        String work_report = dataElement.getChildText("work_report");
+        String isSaveDraft = dataElement.getChildText("isSaveDraft");
+        String ispositive = dataElement.getChildText("ispositive");
+       // String work_report_approve_result = dataElement.getChildText("work_report_approve_result");
+      //  String base_info_approve_result = dataElement.getChildText("base_info_approve_result");
+        
+        String address = dataElement.getChildText("address");
+        String school_class = dataElement.getChildText("school_class");
+        String present_major_occupation = dataElement.getChildText("present_major_occupation");
+        String join_work_time = dataElement.getChildText("join_work_time");
+        String join_educate_work_time = dataElement.getChildText("join_educate_work_time");
+        String politics_status = dataElement.getChildText("politics_status");
+        String teach_age = dataElement.getChildText("teach_age");
+        String native_place = dataElement.getChildText("native_place");
+        String census_register = dataElement.getChildText("census_register");
+        String nation = dataElement.getChildText("nation");
+        String person_img_attachId = dataElement.getChildText("person_img_attachId");
+        
+        
+        String option_tab_type = dataElement.getChildText("option_tab_type");
+        String option_tab_values = dataElement.getChildText("option_tab_values");
+   
+        
+        MasterReviewVO masterReviewVO= new MasterReviewVO();
+        masterReviewVO.setId(id);
+        masterReviewVO.setHeaderMasterId(headerMasterId);
+        masterReviewVO.setHeaderMasterName(headerMasterName);
+        masterReviewVO.setMobile(mobile);
+        masterReviewVO.setIdentitycard(identitycard);
+        masterReviewVO.setSchoolId(schoolId);
+        masterReviewVO.setSchoolName(schoolName);
+        masterReviewVO.setPresentOccupation(presentOccupation);
+        masterReviewVO.setApplylevel(applylevel);
+        
+        masterReviewVO.setSchoolNameSpace(school_name_space);
+        masterReviewVO.setSchoolType(schoolType);
+        masterReviewVO.setSchoolCount(schoolCount);
+        masterReviewVO.setStudentNumber(studentNumber);
+        
+        masterReviewVO.setSchoolNameSpaceAgo(school_name_space_ago);
+        masterReviewVO.setSchoolTypeAgo(schoolTypeAgo);
+        masterReviewVO.setSchoolCountAgo(schoolCountAgo);
+        masterReviewVO.setStudentNumberAgo(studentNumberAgo);
+        masterReviewVO.setWork_report(work_report);
+        
+        masterReviewVO.setManage_difficulty_ago_approve_result(manage_difficulty_ago_approve_result);
+        masterReviewVO.setManage_difficulty_approve_result(manage_difficulty_approve_result);
+        masterReviewVO.setManage_difficulty_attachment_id(manage_difficulty_attachment_id);
+        masterReviewVO.setManage_difficulty_ago_attachment_id(manage_difficulty_ago_attachment_id);
+        masterReviewVO.setIsSaveDraft(isSaveDraft);
+        masterReviewVO.setIsPositive(ispositive);
+        
+        masterReviewVO.setSchool_class(school_class);
+        masterReviewVO.setPresent_major_occupation(present_major_occupation);
+        masterReviewVO.setJoin_work_time(DateUtil.stringToDate(join_work_time));
+        masterReviewVO.setJoin_educate_work_time(DateUtil.stringToDate(join_educate_work_time));
+        masterReviewVO.setPolitics_status(politics_status);
+        masterReviewVO.setTeach_age(teach_age);
+        masterReviewVO.setNative_place(native_place);
+        masterReviewVO.setCensus_register(census_register);
+        masterReviewVO.setNation(nation);
+        masterReviewVO.setPerson_img_attachId(person_img_attachId);
+        masterReviewVO.setOption_tab_type(option_tab_type);
+        
+        
+        buildOptionTabVO(masterReviewVO,option_tab_type,option_tab_values);
+       // optionTabDeal(masterReviewVO,option_tab_type,option_tab_values);
+	

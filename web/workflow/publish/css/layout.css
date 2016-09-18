@@ -1,0 +1,105 @@
+﻿/*--主体--*/
+.main{
+	display:block;
+	margin:0 auto;
+	padding:10px 0 0 0;
+	width:960px;
+	text-align:left;
+}
+.table_left{
+	float:left;
+	padding:0 10px;
+	font-weight:bold
+}
+.t_btn{
+	display:block;
+	position:relative;
+	margin:0 auto;
+	width:90%;
+	height:32px;
+	clear:both;
+}
+.t_btn .tb_left{
+	position:absolute;
+	left:-4px;
+	top:0;	
+}
+.t_btn .tb_right{
+	position:absolute;
+	right:0;
+	top:0;	
+}
+h2.t_tit{
+	display:block;
+	margin-bottom:10px;
+	height:76px;
+	line-height:76px;
+	text-align:center;
+	font-size:18px;
+	background:url(../images/icon.png) 0 -370px repeat-x;
+}
+.tab1 h3.tit{
+	display:block;
+	margin:0 auto;
+	padding:0 0 0 10px;
+	height:40px;
+	line-height:30px;
+	width:740px;
+	background:url(../images/icon.png) 0 -460px repeat-x;
+}
+.tab1 h3.tit a{
+	display:inline-block;
+	margin-right:1px;
+	padding:0 7px;
+	float:left;
+	height:34px;
+	font-size:12px;
+	font-weight:lighter;
+	
+}
+.tab1 h3.tit a,.tab1 h3.tit a:visited{	color:#07325F
+}
+.tab1 h3.tit a.selected,.tab1 h3.tit a.selected:visited{
+background:url(../images/icon.png) center -510px no-repeat; color:#000;	
+}
+h3.tit2{
+	margin:-8px -10px 0 -10px;
+	padding:0 10px;
+	height:30px;
+	line-height:30px;
+	color:#fff;
+	background:#E6CA82;
+	font-size:12px;
+}
+.h2tit{
+	display:block;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-size:26px;
+}
+.h2tit label{
+	color:#F65746;
+	font-size:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

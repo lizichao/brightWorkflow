@@ -1,0 +1,10 @@
+{
+properties : [{
+    name : "baseCls",
+    desc : "<b>String</b> Defaults to 'x-btn-group'. See Ext.Panel.baseCls"
+  },{
+    name : "columns",
+    type : "number",
+    desc : "<b>Number</b> The columns configuration property passed to the configured layout manager. See Ext.layout.TableLayout.columns"
+  }]
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GBK"?>
+<jraf-config name="pcmc" desc="系统管理中心">
+	<Menus>
+   		<menu name="pcmc" desc="系统管理中心" url="" icon=""/>
+    </Menus>
+</jraf-config>

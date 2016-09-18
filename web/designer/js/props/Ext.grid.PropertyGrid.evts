@@ -1,0 +1,11 @@
+{
+listeners : [{
+    name : "beforepropertychange",
+    type : "function",
+    defaults : 'function(source,recordId,value,oldValue){}'
+  },{
+    name : "propertychange",
+    type : "function",
+    defaults : 'function(source,recordId,value,oldValue){}'
+  }]
+}

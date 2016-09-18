@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//web/WEB-INF/config/headmaster/template/headmaster.ftl=UTF-8
+encoding//web/masterreview/headmaster/work_experience.jsp=GBK
+encoding//web/workflow/common/WorkCalendar.js=UTF-8
+encoding//web/workflow/component/transfer.jsp=GBK
+encoding//web/workflow/publish/newPublish.jsp=GBK

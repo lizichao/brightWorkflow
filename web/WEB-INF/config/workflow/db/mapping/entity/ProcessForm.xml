@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!--
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+  
+<mapper namespace="cn.com.bright.workflow.api.persistence.ProcessFormEntity">
+
+  <!-- TASK INSERT -->
+  
+  <insert id="insertProcessForm" parameterType="cn.com.bright.workflow.api.persistence.ProcessFormEntity">
+    insert into ${prefix}workflow_form (
+       id,
+       processInstanceId,
+       title,
+       state,
+       current_task_name,
+       handlers,
+       create_people,
+       create_time,
+       update_people,
+       update_time)
+    values (
+            #{id, jdbcType=VARCHAR},
+            #{processInstanceId, jdbcType=VARCHAR},
+            #{title, jdbcType=VARCHAR},
+            #{state, jdbcType=VARCHAR},
+            #{currentTaskName, jdbcType=VARCHAR},
+            #{handlers, jdbcType=VARCHAR},
+            #{createPeople, jdbcType=VARCHAR},
+            #{createTime, jdbcType=TIMESTAMP},
+            #{updatePeople, jdbcType=VARCHAR},
+            #{updateTime, jdbcType=TIMESTAMP}
+    )
+  </insert>
+  
+    <update id="updateProcessForm" parameterType="cn.com.bright.workflow.api.persistence.ProcessFormEntity">
+    update ${prefix}workflow_form
+    <set>
+      title = #{title, jdbcType=VARCHAR},
+      state = #{state, jdbcType=VARCHAR},
+      current_task_name = #{currentTaskName, jdbcType=INTEGER},
+      handlers = #{handlers, jdbcType=VARCHAR},
+      create_people = #{createPeople, jdbcType=VARCHAR},
+      create_time = #{createTime, jdbcType=TIMESTAMP},
+      update_people = #{updatePeople, jdbcType=VARCHAR},
+      update_time = #{updateTime, jdbcType=TIMESTAMP},
+    </set>
+    where id= #{id, jdbcType=VARCHAR}
+  </update>
+  
+  <delete id="deleteProcessForm" parameterType="cn.com.bright.workflow.api.persistence.ProcessFormEntity">
+    delete from ${prefix}workflow_form where id = #{id} 
+  </delete>
+  
+  
+  <resultMap id="processFormResultMap" type="cn.com.bright.workflow.api.persistence.ProcessFormEntity">
+    <id property="id" column="id" jdbcType="VARCHAR" />
+    <result property="processInstanceId" column="processInstanceId" jdbcType="VARCHAR" />
+    <result property="title" column="title" jdbcType="VARCHAR" />
+    <result property="state" column="state" jdbcType="VARCHAR" />
+    <result property="currentTaskName" column="current_task_name" jdbcType="VARCHAR" />
+    <result property="handlers" column="handlers" jdbcType="VARCHAR" />
+    <result property="createPeople" column="create_people" jdbcType="VARCHAR" />
+    <result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+    <result property="updatePeople" column="update_people" jdbcType="TIMESTAMP" />
+    <result property="updateTime" column="update_time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+   <select id="selectProcessForm" resultMap="processFormResultMap">
+    select * from ${prefix}workflow_form where id = #{processInstanceId}
+  </select>
+
+</mapper>

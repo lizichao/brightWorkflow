@@ -1,0 +1,8 @@
+{
+listeners : [{
+    name : "overflowchange",
+    type : "function",
+    defaults : 'function(c,lastOverflow){}',
+    desc : "overflowchange : (Object c, Boolean lastOverflow)"
+  }]
+}

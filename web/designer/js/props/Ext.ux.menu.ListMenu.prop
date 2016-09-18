@@ -1,0 +1,17 @@
+{
+properties : [{
+    name : "labelField",
+    desc : "<b>String</b> Defaults to 'text'"
+  },{
+    name : "loadOnShow",
+    type : "boolean",
+    desc : "<b>Boolean</b> Defaults to true"
+  },{
+    name : "paramPrefix",
+    desc : "<b>String</b> Defaults to 'Loading...'"
+  },{
+    name : "single",
+    type : "boolean",
+    desc : "<b>Boolean</b> Specify true to group all items in this list into a single-select radio button group. Defaults to false"
+  }]
+}

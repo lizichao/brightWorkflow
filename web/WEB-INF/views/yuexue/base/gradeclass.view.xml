@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+function initGradeClass(gdrec){
+	if(gdrec.dirty){
+		Ext.Msg.alert('提示', '请先保存年级信息.');
+		return;
+	}
+	Ext.Msg.confirm('生成班级','按设置班级数批量生成班级?',function(btn){if(btn == 'yes'){
+		var gradecode = gdrec.get('gradecode');
+		var jr = new JrafRequest('yuexue','gclass','init');
+		jr.setSuccFn(function(a,_resp){
+			classStore.load();
+		});
+		jr.setExtraPs({gradecode:gradecode});
+	    jr.postData();
+	}});
+	
+};
+    </Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="gradeRecord">[  {
+    xtype : "Field",
+    name : "gradeid",
+    fieldLabel : "gradeid",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "gradecode",
+    fieldLabel : "年级",
+    type : "int",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "gradename",
+    fieldLabel : "名称",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "shortname",
+    fieldLabel : "简称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classnum",
+    fieldLabel : "班级数",
+    type : "int",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "finished",
+    fieldLabel : "年级分类",
+    type : "int",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "enabled",
+    fieldLabel : "是否启用",
+    type : "bool",
+    allowBlank : false
+}]</Record>
+      <Record classname="classRecord">[  {
+    xtype : "Field",
+    name : "classid",
+    fieldLabel : "classid",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "firstyear",
+    fieldLabel : "入学年",
+    type : "int",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "classcode",
+    fieldLabel : "班级",
+    type : "int",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "classnm",
+    fieldLabel : "名称",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "shortnm",
+    fieldLabel : "简称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "icon",
+    fieldLabel : "图标",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classteacher",
+    fieldLabel : "班主任",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classsize",
+    fieldLabel : "班级人数",
+    type : "int",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "createdt",
+    fieldLabel : "创建日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "state",
+    fieldLabel : "状态",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="gradeStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "gradeStore",
+  recordType : gradeRecord,
+  idProperty : "gradeid",
+  api : {read:{sysName:"yuexue",oprID:"grade",actions:"list"},update:{sysName:"yuexue",oprID:"grade",actions:"upt"}},
+  autoLoad : true,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false,
+  baseParams : {PageSize:-1,enabledType:true}
+}</Store>
+      <Store classname="classStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "classStore",
+  recordType : classRecord,
+  idProperty : "classid",
+  api : {read:{sysName:"yuexue",oprID:"gclass",actions:"query"},update:{sysName:"yuexue",oprID:"gclass",actions:"upt"}},
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false,
+  baseParams : {PageSize:-1}
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+    <Panel classname="gdtypeCombo" xtype="combo">{
+  xxtype : "Jpanel",
+  xtype : "combo",
+  classname : "gdtypeCombo",
+  valueField : "v",
+  displayField : "t",
+  store : new Ext.data.ArrayStore({id: 0,fields: ['v','t'], data: [['1', '入学年级'],['0','----'],['2','毕业年级']]}),
+  mode : "local",
+  forceSelection : true,
+  triggerAction : "all"
+}</Panel>
+    <Panel classname="enableCombo" xtype="combo">{
+  xxtype : "Jpanel",
+  xtype : "combo",
+  classname : "enableCombo",
+  valueField : "v",
+  displayField : "t",
+  store : new Ext.data.ArrayStore({id: 0,fields: ['v','t'], data: [[true, '启用'],[false,'停用']]}),
+  mode : "local",
+  forceSelection : true,
+  triggerAction : "all"
+}</Panel>
+    <Panel classname="clsStateCombo" xtype="combo">{
+  xxtype : "Jpanel",
+  xtype : "combo",
+  classname : "clsStateCombo",
+  valueField : "v",
+  displayField : "t",
+  store : new Ext.data.ArrayStore({id: 0,fields: ['v','t'], data: [['1', '启用'],['0','停用'],['3','已毕业']]}),
+  mode : "local",
+  forceSelection : true,
+  triggerAction : "all"
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "anchor",
+    items : [      {
+        xtype : "editorgrid",
+        frame : true,
+        viewConfig : {forceFit:true},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        title : "年级设置",
+        store : gradeStore,
+        tbar : [{xtype:"checkbox",boxLabel:"显示启用",checked:true,listeners:{
+        	check : function(cb,chked){
+        		var _grid=this.ownerCt.ownerCt;
+        		_grid.getStore().setBaseParam("enabledType",chked);
+        		_grid.getStore().load();
+        	}
+        }},
+        {xtype: 'tbseparator'},
+        {text:'保存',iconCls:'disk',ref: '../saveBtn',handler:function(){var _grid=this.ownerCt.ownerCt;Ext.Msg.confirm('保存数据','确认保存已修改数据?',function(btn){if(btn == 'yes'){_grid.getStore().save();}});}}],
+        colModel : new Ext.grid.ColumnModel([
+{width:40,sortable:true,header:'年级',dataIndex:'gradename'},
+{width:40,sortable:true,header:'班级数',dataIndex:'classnum',editor: new Ext.form.NumberField({allowBlank:false,allowDecimals:false,allowNegative:false})},
+{width:40,sortable:true,header:'年级分类',dataIndex:'finished',editor:gdtypeCombo,renderer:Ext.util.Format.storeRenderer(gdtypeCombo.store,"v","t")},
+{width:40,sortable:true,header:'是否启用',dataIndex:'enabled',editor:enableCombo,renderer:function(v){return v?"启用":"停用"}}]),
+        sm: new Ext.grid.RowSelectionModel({singleSelect:true,listeners:{
+        	rowselect: function(sm, row, rec) {
+	        	var _pdgrid=this.grid.ownerCt.get(1);
+	        	if(rec.phantom === true)
+	        	{
+	        		_pdgrid.setDisabled(true);
+	             }
+	             else
+	             {
+	             	_pdgrid.setDisabled(false);
+		        	_pdgrid.setTitle('班级设置--['+rec.get('gradename')+']');
+		        	_pdgrid.graderec=rec;
+	                _pdgrid.getStore().setBaseParam('gradecode',rec.get('gradecode'));
+	                _pdgrid.getStore().load();
+	             }
+            }}}),
+        anchor : "100% 50%"
+    },      {
+        xtype : "editorgrid",
+        frame : true,
+        viewConfig : {forceFit:true},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        title : "班级设置",
+        disabled : true,
+        store : classStore,
+        tbar : [{text:'批量生成',iconCls:'add',ref: '../addBtn',handler:function(){var _grid=this.ownerCt.ownerCt;initGradeClass(_grid.graderec);}},
+{xtype: 'tbseparator'},
+{text:'保存',iconCls:'disk',ref: '../saveBtn',handler:function(){var _grid=this.ownerCt.ownerCt;Ext.Msg.confirm('保存数据','确认保存已修改数据?',function(btn){if(btn == 'yes'){_grid.getStore().save();}});}}],
+        colModel : new Ext.grid.ColumnModel([
+{width:40,sortable:true,header:'班级',dataIndex:'classcode'},
+{width:40,sortable:true,header:'名称',dataIndex:'classnm',editor: new Ext.form.TextField({allowBlank:false})},
+{width:40,sortable:true,header:'入学年',dataIndex:'firstyear',editor: new Ext.form.NumberField({allowBlank:false,allowDecimals:false,allowNegative:false,minValue:2005,maxValue:2050})},
+{width:40,sortable:true,header:'班级人数',dataIndex:'classsize'},
+{width:40,sortable:true,header:'状态',dataIndex:'state',editor:clsStateCombo,renderer:Ext.util.Format.storeRenderer(clsStateCombo.store,"v","t")}]),
+        anchor : "100% 50%"
+    }]
+}]</MainPanel>
+</view>
+

@@ -1,0 +1,155 @@
+Ext.namespace("jsp.platform.sm");jsp.platform.sm.workflowlist=function(){var __caches__=[];this.__caches__=__caches__;var _editInfoWin; function openEditInfoWin(_rec){ _editInfoWin=Ext.getCmp('editInfoWin'); if(!_editInfoWin){_editInfoWin=new Ext.Window({title:'数据录入',id:'editInfoWin',layout:'fit',width:600,height:300,closeAction:'hide',plain:true,modal: true,items:EditInfoForm});} _editInfoWin.show();EditInfoForm.getForm().reset();EditInfoForm.getForm().getForm().loadRecord(_rec);EditInfoForm.record=_rec;}var WorkflowDefinitionRec=Ext.data.Record.create([  {
+    xtype : "Field",
+    name : "ID_",
+    width : 150,
+    fieldLabel : "流程定义ID",
+    allowBlank : true,
+    type : "string"
+},  {
+    xtype : "Field",
+    name : "RESOURCE_NAME_",
+    width : 150,
+    fieldLabel : "流程资源名称",
+    allowBlank : true,
+    type : "string"
+}]);
+this.WorkflowDefinitionRec=WorkflowDefinitionRec;this.__caches__.push(WorkflowDefinitionRec);var WorkflowDefinitionStore=Ext.create({
+  xtype : "Store",
+  classname : "WorkflowDefinitionStore",
+  type : "JrafXmlStore",
+  recordType : WorkflowDefinitionRec,
+  idProperty : "ID_",
+  api : {
+    read :     {
+      sysName : "pcmc",
+      oprID : "workflowlist",
+      actions : "queryWorkflowDefinition"
+  },
+    create :     {
+      sysName : "pcmc",
+      oprID : "workflowlist",
+      actions : "queryWorkflowDefinition"
+  },
+    update :     {
+      sysName : "pcmc",
+      oprID : "workflowlist",
+      actions : "queryWorkflowDefinition"
+  },
+    destroy :     {
+      sysName : "pcmc",
+      oprID : "workflowlist",
+      actions : "queryWorkflowDefinition"
+  }
+},
+  autoLoad : false,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true,
+  listeners : {
+    write : function (store,action,result,res,rs){if (res.success){if (_editInfoWin){_editInfoWin.hide();}}}
+}
+},'Store');
+this.WorkflowDefinitionStore=WorkflowDefinitionStore;this.__caches__.push(WorkflowDefinitionStore);var EditInfoForm=Ext.create({
+  xtype : "panel",
+  classname : "EditInfoForm",
+  frame : true,
+  bodyBorder : false,
+  items : [    {
+      layout : "column",
+      bodyBorder : false,
+      items : [        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "ID_",
+              fieldLabel : "流程定义ID",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      },        {
+          layout : "form",
+          bodyBorder : false,
+          columnWidth : 0.5,
+          labelAlign : "right",
+          items : [            {
+              name : "RESOURCE_NAME_",
+              fieldLabel : "流程资源名称",
+              width : 150,
+              allowBlank : true,
+              xtype : "textfield"
+          }]
+      }]
+  }],
+  id : "EditInfoForm",
+  buttonAlign : "center",
+  buttons : [    {
+      text : "保存",
+      width : 100,
+      height : 25,
+      iconCls : "disk",
+      handler : function() {var _forma = Ext.getCmp('EditInfoForm');if (_forma.getForm().isValid()){if(_forma.record){_forma.getForm().updateRecord(_forma.record);WorkflowDefinitionStore.save();}}}
+  },    {
+      text : "取消",
+      width : 100,
+      height : 25,
+      iconCls : "arrow-undo",
+      handler : function() {_editInfoWin.hide();}
+  }]
+},'panel');
+this.EditInfoForm=EditInfoForm;this.__caches__.push(EditInfoForm);var MainPanel=new Ext.Panel({layout:'fit',border:false,bodyBorder:false,items:[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        title : "查询条件",
+        frame : true,
+        items : [          {
+            name : "workflowDefinitionKey",
+            fieldLabel : "流程定义类型",
+            width : 150,
+            allowBlank : true,
+            xtype : "textfield"
+        }],
+        buttonAlign : "center",
+        id : "WorkflowDefinitionForm",
+        buttons : [        {
+          text : "查询",
+          handler : function(){var qStore=Ext.getCmp('WorkflowDefinitionGrid').getStore();qStore.setFormParam(Ext.getCmp('WorkflowDefinitionForm'));qStore.setPageInfo(JrafSession.get('PageSize'),'1');qStore.load();}
+      }]
+    },      {
+        xtype : "grid",
+        id : "WorkflowDefinitionGrid",
+        region : "center",
+        autoWidth : true,
+        frame : true,
+        title : "查询结果",
+        viewConfig : {
+        forceFit : false
+    },
+        stripeRows : true,
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        store : WorkflowDefinitionStore,
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:WorkflowDefinitionStore,displayInfo: true}),
+        tbar : [{text:'新增',iconCls:'add',ref: '../addBtn',handler:function(){var _grid=this.ownerCt.ownerCt;var recordType=_grid.getStore().recordType;var nr=new recordType();_grid.getStore().add(nr);_grid.getSelectionModel().selectLastRow();openEditInfoWin(nr);}},{xtype: 'tbseparator'},{text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){var _grid=this.ownerCt.ownerCt;var ckrs=_grid.getSelectionModel().getSelections();for(var i=0;i<ckrs.length;i++){_grid.getStore().remove(ckrs[i]);}}},{xtype: 'tbseparator'},{text:'保存',iconCls:'disk',ref: '../saveBtn',handler:function(){var _grid=this.ownerCt.ownerCt;Ext.Msg.confirm('保存数据','确认保存已修改数据?',function(btn){if(btn == 'yes'){_grid.getStore().save();}});}}],
+        colModel : new Ext.grid.ColumnModel([
+	        new Ext.grid.CheckboxSelectionModel(),
+	        {width:100,sortable:true,header:'流程定义ID',dataIndex:'ID_',renderer:Ext.util.Format.paramRenderer('undefined','')},
+	        {width:100,sortable:true,header:'流程名称',dataIndex:'RESOURCE_NAME_',renderer:Ext.util.Format.paramRenderer('undefined','')},
+	        {width:100,sortable:true,header:'流程Key',dataIndex:'RESOURCE_NAME_',renderer:Ext.util.Format.paramRenderer('undefined','')},
+	        {width:100,sortable:true,header:'版本号',dataIndex:'RESOURCE_NAME_',renderer:Ext.util.Format.paramRenderer('undefined','')},
+	        {width:100,sortable:true,header:'XML',dataIndex:'RESOURCE_NAME_',renderer:Ext.util.Format.paramRenderer('undefined','')},
+	        {width:100,sortable:true,header:'图片',dataIndex:'RESOURCE_NAME_',renderer:Ext.util.Format.paramRenderer('undefined','')}
+        ]),
+        sm : new Ext.grid.CheckboxSelectionModel({ listeners:{selectionchange:function(sm){var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}}}}),
+        listeners : {rowdblclick : function(g,rowIndex,e){var _rec=g.getSelectionModel().getSelected();openEditInfoWin(_rec);}}
+    }]
+}]});
+this.MainPanel=MainPanel;var __jrafonload=function(_params_){};
+this.__jrafonload=__jrafonload;this.__caches__.push(__jrafonload);};

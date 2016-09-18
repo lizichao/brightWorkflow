@@ -1,0 +1,18 @@
+{
+properties : [{
+    name : "closable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to render a close tool button into the tooltip header (defaults to false)"
+  },{
+    name : "defaultAlign",
+    desc : "<b>String</b> The default {@link Ext.Element#alignTo) anchor position value for this menu relative to its element of origin (defaults to \"tl-bl?\")"
+  },{
+    name : "maxWidth",
+    type : "number",
+    desc : "<b>Number</b> The maximum width in pixels"
+  },{
+    name : "minWidth",
+    type : "number",
+    desc : "<b>Number</b> The minimum width in pixels"
+  }]
+}

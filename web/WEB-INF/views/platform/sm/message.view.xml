@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+    	var sendMsgWin;
+		  function openSendMsgWin(sendMsgForm,rec){
+				 sendMsgWin = Ext.getCmp("sendMsgWin");
+				 if(!sendMsgWin){
+						   sendMsgWin=new Ext.Window({title:'消息发送',
+								                                id:'sendMsgWin',
+								                                layout:'fit',
+								                                width:800,height:320,
+								                                closeAction:'hide',plain: true,
+								                                modal: true,autoDestroy:false,
+								                                items: sendMsgForm
+								                              });
+				}
+				sendMsgWin.show();
+				if(rec){
+					sendMsgForm.getForm().reset();
+					sendMsgForm.record=rec;
+					sendMsgForm.getForm().loadRecord(rec);    
+					sendMsgForm.isnew=rec.phantom;
+					Ext.getCmp("select_dept_or_userBt").enable();
+				}
+		}
+		
+		var readMsgWin;
+		function openReadMsgWin(readMsgForm,rec){
+				 readMsgWin = Ext.getCmp("readMsgWin");
+				 if(!readMsgWin){
+						   readMsgWin=new Ext.Window({title:'阅读消息',
+								                                id:'readMsgWin',
+								                                layout:'fit',
+								                                width:800,height:320,
+								                                closeAction:'hide',plain: true,
+								                                modal: true,autoDestroy:false,
+								                                items: readMsgForm
+								                              });
+				}
+				readMsgWin.show();
+				readMsgForm.getForm().reset();
+				readMsgForm.record=rec;
+				readMsgForm.getForm().loadRecord(rec);
+				if(rec.get("read_flag")=="N"){
+						var jr = new JrafRequest('pcmc','message','updateReceives');
+						jr.setExtraPs({receiver_id:rec.get("receiver_id")});
+					  jr.postData();
+			  }
+		}
+		
+		var viewMsgWin;
+		function openViewMsgWin(viewMsgForm,rec){
+				 viewMsgWin = Ext.getCmp("viewMsgWin");
+				 if(!viewMsgWin){
+						   viewMsgWin=new Ext.Window({title:'查看消息',
+								                                id:'viewMsgWin',
+								                                layout:'fit',
+								                                width:800,height:320,
+								                                closeAction:'hide',plain: true,
+								                                modal: true,autoDestroy:false,
+								                                items: viewMsgForm
+								                              });
+				}
+				viewMsgWin.show();
+				viewMsgForm.getForm().reset();
+				viewMsgForm.record=rec;
+				viewMsgForm.getForm().loadRecord(rec);
+		}
+		
+		//信息提示框   
+	  function alterMsg(_str){
+			Ext.Msg.show({
+				title : '系统提示',
+				msg : _str,
+				icon : Ext.Msg.INFO,
+				buttons : Ext.Msg.OK
+			});
+		}
+		
+    function renderTitle(value, meta, rec, rowIdx, colIdx, ds){
+		    if(typeof(value)=="undefined") return '';
+	    	return '&lt;div ext:qtitle="" ext:qtip="' + value + '"&gt;'+ value +'&lt;/div&gt;';
+		}</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="msgRecord">[  {
+    xtype : "Field",
+    name : "messages_id",
+    fieldLabel : "消息ID",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "title",
+    fieldLabel : "标题",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sender",
+    fieldLabel : "发送人ID",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "send_time",
+    fieldLabel : "发送时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "message",
+    fieldLabel : "内容",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "del_flag",
+    fieldLabel : "删除标记 N:有效 Y :删除",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "receive_names",
+    fieldLabel : "接收者",
+    type : "string",
+    allowBlank : true
+}]</Record>
+      <Record classname="remsgRecord">[  {
+    xtype : "Field",
+    name : "receiver_id",
+    fieldLabel : "接收编号",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "messages_id",
+    fieldLabel : "消息编号",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "receiver",
+    fieldLabel : "接收者编号",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "receive_names",
+    fieldLabel : "接收者",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "read_flag",
+    fieldLabel : "阅读标记 N:未读 Y :已读",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "read_time",
+    fieldLabel : "阅读时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "del_flag",
+    fieldLabel : "删除标记 N:有效 Y :删除",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sender",
+    fieldLabel : "发送人ID",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sender_name",
+    fieldLabel : "发送人",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "title",
+    fieldLabel : "标题",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "message",
+    fieldLabel : "内容",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "send_time",
+    fieldLabel : "发送时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "received_time",
+    fieldLabel : "接收时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "read_time",
+    fieldLabel : "阅读时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "notify_time",
+    fieldLabel : "通知时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="msgStore">{
+  xxtype : "Store",
+  classname : "msgStore",
+  recordType : msgRecord,
+  idProperty : "messages_id",
+  api : {
+    read:{sysName:"pcmc",oprID:"message",actions:"getMessagesList"}
+	},
+  autoLoad : true,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+      <Store classname="remsgYStore">{
+  xxtype : "Store",
+  classname : "remsgYStore",
+  recordType : remsgRecord,
+  idProperty : "receiver_id",
+  api : {
+    read:{sysName:"pcmc",oprID:"message",actions:"getReceivesList"}
+	},
+  baseParams : {read_type: 'Y'},
+  autoLoad : true,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+		<Store classname="remsgNStore">{
+  xxtype : "Store",
+  classname : "remsgNStore",
+  recordType : remsgRecord,
+  idProperty : "receiver_id",
+  api : {
+    read:{sysName:"pcmc",oprID:"message",actions:"getReceivesList"}
+	},
+  baseParams : {read_type: 'N'},
+  autoLoad : true,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+    <Panel classname="sendMsgForm" xtype="form">{
+		  xxtype : "Jpanel",
+		  xtype : "form",
+		  classname : "sendMsgForm",
+		  id : "sendMsgForm",
+		  items : [{
+            layout : "column",
+            items : [            {
+          layout : "form",
+          columnWidth : 1,
+          border : false,
+          labelAlign : "right",	
+          items : [   {
+							xtype: 'compositefield',
+							fieldLabel: '接收人',		
+							msgTarget : 'side',
+							anchor    : '-20',
+							defaults: {
+								flex: 1
+							},
+							items: [  {									
+									xtype : "textfield",
+									width : 600,
+									name : "receive_names"
+			          }, {
+								xtype : "button",
+								iconCls: "zoom-out",
+								id : "select_dept_or_userBt",
+								width : 40,
+								text : "选择",				
+								handler : function() {
+										var retValue = window.showModalDialog("/platform/sm/select_dept_or_user.jsp","选择消息接收部门或人员","dialogWidth:520px;dialogHeight:320px;center:1;menubar:no;status:no;resizable:no;help:0;");
+										if(retValue){
+										   sendMsgForm.getForm().findField("receivers").setValue(retValue[0]);
+										   sendMsgForm.getForm().findField("receive_names").setValue(retValue[1]);										   
+										}
+								},
+								autoWidth : false				
+							}]
+			  		}
+		 		 ]},          {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "标题",
+                    allowBlank : false,
+                    width : 660,
+                    xtype : "textfield",
+                    name : "title"
+                }],
+                columnWidth : 1,
+                border : false
+            },              {
+                layout : "form",
+                border : false,
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "内容",
+                    allowBlank : false,
+                    width : 660,
+                    height : 120,                
+                    xtype : "textarea",
+                    name : "message"
+                }],
+                columnWidth : 1
+            },              {
+                layout : "form",
+                border : false,
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "发送方式",
+                    boxLabel : "在线短消息",
+                    width : 80,
+                    xtype : "checkbox",
+                    name : "sendtype",
+                    inputValue : "S"
+                }],
+                columnWidth : 0.35
+            },              {
+                layout : "form",
+                border : false,
+                labelAlign : "left",
+                items : [                  {
+                    boxLabel : "电子邮件",
+                    width : 80,
+                    xtype : "checkbox",
+                    name : "sendtype",
+                    inputValue : "E"
+                }],
+                columnWidth : 0.65
+            },                      {
+                layout : "form",
+                border : false,
+                labelAlign : "right",
+                hidden : true,
+                items : [                  {
+                    fieldLabel : "已选择用户",
+                    width : 320,
+                    height : 32,                 
+                    xtype : "textarea",
+                    name : "receivers"
+                }],
+                columnWidth : 1
+            }],
+            border : false
+        }],
+		  labelAlign : "left",
+		  labelWidth : 80,
+		  frame : true,
+		  buttons : [{
+		 	text:'确认', 
+			handler:function(){
+			  var _form=Ext.getCmp('sendMsgForm');
+			  if(_form.getForm().isValid()) {
+				   var receivers = sendMsgForm.getForm().findField("receivers").getValue();
+					 var receive_names = sendMsgForm.getForm().findField("receive_names").getValue(); 
+					 if(receivers=="" || receive_names==""){
+						  alterMsg("请选择接收消息者！");
+						  return false;
+					 }
+				   var jr=new JrafRequest('pcmc','message','addMessage');
+				   jr.setForm(_form);
+				   jr.setSuccFn(function(a,_resp,xr){
+				      sendMsgWin.hide();
+				  	  msgStore.load();
+				   });
+				   jr.postData();				   
+			  }
+		  }
+		},{
+		 	text:'关闭', 
+			handler:function(){ 
+				sendMsgWin.hide();
+		  }
+		}],
+		  buttonAlign : "center"
+		}</Panel>
+		<Panel classname="readMsgForm" xtype="form">{
+		  xxtype : "Jpanel",
+		  xtype : "form",
+		  classname : "readMsgForm",
+		  id : "readMsgForm",
+		  items : [{
+            layout : "column",
+            items : [              {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "发送用户",
+                    allowBlank : false,
+                    width : 250,
+                    xtype : "displayfield",
+                    name : "sender_name"
+                }],
+                columnWidth : 0.5,
+                border : false
+            },              {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "发送时间",
+                    width : 250,
+                    xtype : "datefield",
+                    name : "send_time",
+                    format : "Y-m-d H:i:s"
+                }],
+                columnWidth : 0.5,
+                border : false
+            },              {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "标题",
+                    width : 660,
+                    xtype : "textfield",
+                    name : "title"
+                }],
+                columnWidth : 1,
+                border : false
+            },              {
+                layout : "form",
+                border : false,
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "内容",
+                    width : 660,
+                    height : 120,                
+                    xtype : "textarea",
+                    name : "message"
+                }],
+                columnWidth : 1
+            }],
+            border : false
+        }],
+		  labelAlign : "left",
+		  labelWidth : 80,
+		  frame : true,
+		  buttons : [{
+			 	text:'回复', 
+				handler:function(){
+						readMsgWin.hide();
+						sendMsgForm.getForm().reset();
+						openSendMsgWin(sendMsgForm);
+						var _rec = readMsgForm.record;						
+						sendMsgForm.getForm().findField("title").setValue("Re:"+_rec.get("title"));
+						sendMsgForm.getForm().findField("receivers").setValue("0-"+_rec.get("sender")+";");
+						sendMsgForm.getForm().findField("receive_names").setValue(_rec.get("sender_name"));
+						Ext.getCmp("select_dept_or_userBt").disable();
+			  }
+			},{
+			 	text:'转发', 
+				handler:function(){
+					  readMsgWin.hide();
+						sendMsgForm.getForm().reset();
+						openSendMsgWin(sendMsgForm);
+						var _rec = readMsgForm.record;
+						var _fwmessage = "\n\n\n---------- 转发消息 ----------\n"+
+														 "发送用户："+_rec.get("sender_name")+"\n"+
+														 "发送时间："+_rec.get("send_time").dateFormat('Y-m-d H:i:s')+"\n"+
+														 "接收用户："+_rec.get("receive_names")+"\n"+
+														 "标题："+_rec.get("title")+"\n"+
+														 +_rec.get("message");
+						
+						sendMsgForm.getForm().findField("title").setValue("Fw:"+_rec.get("title"));
+						sendMsgForm.getForm().findField("message").setValue(_fwmessage);
+						Ext.getCmp("select_dept_or_userBt").enable();
+			  }
+			},{
+			 	text:'关闭', 
+				handler:function(){ 
+					readMsgWin.hide();
+			  }
+			}],
+		  buttonAlign : "center"
+		}</Panel>
+		<Panel classname="viewMsgForm" xtype="form">{
+		  xxtype : "Jpanel",
+		  xtype : "form",
+		  classname : "viewMsgForm",
+		  id : "viewMsgForm",
+		  items : [{
+            layout : "column",
+            items : [              {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "接收用户",
+                    allowBlank : false,
+                    width : 250,
+                    xtype : "displayfield",
+                    name : "receive_names"
+                }],
+                columnWidth : 1,
+                border : false
+            },              {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "标题",
+                    width : 660,
+					disabled:true,
+                    xtype : "textfield",
+                    name : "title"
+                }],
+                columnWidth : 1,
+                border : false
+            },              {
+                layout : "form",
+                border : false,
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "内容",
+                    width : 660,
+					disabled:true,
+                    height : 120,                
+                    xtype : "textarea",
+                    name : "message"
+                }],
+                columnWidth : 1
+            },              {
+                layout : "form",
+                labelAlign : "right",
+                items : [                  {
+                    fieldLabel : "发送时间",
+                    width : 250,
+                    xtype : "datefield",
+                    name : "send_time",
+                    disabled:true,
+                    format : "Y-m-d H:i:s"
+                }],
+                columnWidth : 0.5,
+                border : false
+            }],
+            border : false
+        }],
+		  labelAlign : "left",
+		  labelWidth : 80,
+		  frame : true,
+		  buttons : [{
+			 	text:'关闭', 
+				handler:function(){ 
+					viewMsgWin.hide();
+			  }
+			}],
+		  buttonAlign : "center"
+		}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    layout : "anchor",
+    items : [      {
+        xtype : "tabpanel",
+        activeTab : 0,
+        anchor : "100% 100%",
+        items : [          {
+            xtype : "editorgrid",
+            frame : true,
+            title : "未读消息",
+            viewConfig : {forceFit:true},
+            columnLines : true,
+            autoHeight : false,
+            itemId : "notReadGrid",
+            store : remsgNStore,
+            tbar : [{text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+	            var _grid=this.ownerCt.ownerCt;var ckrs=_grid.getSelectionModel().getSelections();
+	            var remsg_ids = "'-1'";
+	            for(var i=0;i&lt;ckrs.length;i++){
+	            	_grid.getStore().remove(ckrs[i]);
+	            	remsg_ids = remsg_ids +",'"+ckrs[i].data['receiver_id']+"'";
+	            }
+	            var jr = new JrafRequest('pcmc','message','deleteReceives');
+							jr.setExtraPs({remsg_ids:remsg_ids});
+							jr.setSuccFn(function(a,_resp,xr){
+								remsgNStore.load();
+							});
+		  			  jr.postData();
+            }},{xtype: 'tbseparator'},{text:'刷新',tooltip:'Load Fields from baseTable',iconCls:'arrow-refresh',handler:function(){
+             	remsgNStore.load();
+        		}}],
+            bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:remsgNStore,displayInfo: true}),
+            colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+            {width:60,sortable:true,header:'信息标题',dataIndex:'title',renderer:renderTitle},
+            {width:40,sortable:true,header:'发送者',dataIndex:'sender_name'},
+            {width:30,sortable:true,header:'发送时间',dataIndex:'send_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+            {width:30,sortable:true,header:'接收时间',dataIndex:'received_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')}]),
+            sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}}}}),
+            listeners : {
+  						rowdblclick : function(grid,rowIndex,e){
+								var rec = grid.getSelectionModel().getSelected();
+								openReadMsgWin(readMsgForm,rec);
+							}
+						},loadMask : {msg : '加载数据中，请稍候...'},stripeRows : true
+        },          {
+            xtype : "editorgrid",
+            frame : true,
+            title : "已读消息",
+            viewConfig : {forceFit:true},
+            columnLines : true,
+            autoHeight : false,
+            itemId : "alreadyReadGrid",
+            store : remsgYStore,
+            tbar : [{text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+		        	var _grid=this.ownerCt.ownerCt;var ckrs=_grid.getSelectionModel().getSelections();
+		        	var remsg_ids = "'-1'";
+	            for(var i=0;i&lt;ckrs.length;i++){
+	            	_grid.getStore().remove(ckrs[i]);
+	            	remsg_ids = remsg_ids +",'"+ckrs[i].data['receiver_id']+"'";
+	            }
+	            var jr = new JrafRequest('pcmc','message','deleteReceives');
+							jr.setExtraPs({remsg_ids:remsg_ids});
+							jr.setSuccFn(function(a,_resp,xr){
+								remsgYStore.load();
+							});
+		  			  jr.postData();
+	        	}}],
+            bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:remsgYStore,displayInfo: true}),
+            colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+						{width:60,sortable:true,header:'信息标题',dataIndex:'title',renderer:renderTitle},
+            {width:40,sortable:true,header:'发送者',dataIndex:'sender_name'},
+            {width:30,sortable:true,header:'发送时间',dataIndex:'send_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+            {width:30,sortable:true,header:'接收时间',dataIndex:'received_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+						{width:30,sortable:true,header:'阅读时间',dataIndex:'read_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')}]),
+            sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}}}}),
+            listeners : {
+  						rowdblclick : function(grid,rowIndex,e){
+								var rec = grid.getSelectionModel().getSelected();
+								openReadMsgWin(readMsgForm,rec);
+							}
+						}
+        },          {
+            xtype : "editorgrid",
+            frame : true,
+            title : "我发送的消息",
+            viewConfig : {forceFit:true},
+            columnLines : true,
+            autoHeight : false,
+            itemId : "mySendGrid",
+            store : msgStore,
+            tbar : [{text:'新增',iconCls:'add',ref: '../addBtn',handler:function(){var _grid=this.ownerCt.ownerCt;var recordType=_grid.getStore().recordType;var nr=new recordType();_grid.getStore().add(nr);_grid.getSelectionModel().selectLastRow();var rec=_grid.getSelectionModel().getSelected();openSendMsgWin(sendMsgForm,rec);}},
+            {xtype: 'tbseparator'},
+            {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+            	var _grid=this.ownerCt.ownerCt;var ckrs=_grid.getSelectionModel().getSelections();
+              var msg_ids = "'-1'";
+	            for(var i=0;i&lt;ckrs.length;i++){
+	            	_grid.getStore().remove(ckrs[i]);
+	            	msg_ids = msg_ids +",'"+ckrs[i].data['msg_ids']+"'";
+	            }
+	            var jr = new JrafRequest('pcmc','message','deleteReceives');
+							jr.setExtraPs({msg_ids:msg_ids});
+							jr.setSuccFn(function(a,_resp,xr){
+								msgStore.load();
+							});
+		  			  jr.postData();
+            }}],
+            bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:msgStore,displayInfo: true}),
+            colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+						{width:60,sortable:true,header:'信息标题',dataIndex:'title',renderer:renderTitle},
+            {width:40,sortable:true,header:'接送者',dataIndex:'receive_names',renderer:renderTitle},
+						{width:40,sortable:true,header:'发送时间',dataIndex:'send_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')}]),
+            sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}}}}),
+            listeners : {
+  						rowdblclick : function(grid,rowIndex,e){
+								var rec = grid.getSelectionModel().getSelected();
+								openViewMsgWin(viewMsgForm,rec);
+							}
+						}
+        }]
+    }]
+}]</MainPanel>
+</view>
+

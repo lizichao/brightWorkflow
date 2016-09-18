@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="GBK"?>
+<jraf-config name="imps" desc="智能管理系统" status="debug" logxml="false" cfg="new">
+    <global-session>
+        <Field name="userid" title="操作员流水号" type="long" maxlen="19" notnull="true"></Field>
+        <Field name="usercode" title="操作员代码" type="String" maxlen="20" notnull="true"></Field>
+        <Field name="username" title="用户名" type="String" maxlen="60" notnull="true"></Field>
+		<Field name="deptcode" title="机构代码" type="String" maxlen="60" notnull="true"></Field>
+		<Field name="deptname" title="机构名" type="String" maxlen="60" notnull="true"></Field>
+		<Field name="deptid" title="机构id" type="String" maxlen="60" notnull="true"></Field>
+		<!--  
+		<Field name="pdeptid" title="父单位ID" type="String" maxlen="60" notnull="true"></Field>
+		<Field name="levels" title="层级" type="String" maxlen="60" notnull="true"></Field>-->
+		<Field name="usertype" title="用户类型" type="String" maxlen="2" notnull="true"></Field>
+		<Field name="portrait" title="头像" type="String" maxlen="2" notnull="true"></Field>
+		<Field name="gender" title="性别" type="String" maxlen="2" notnull="false"></Field>
+		<Field name="mobile" title="手机" type="String" maxlen="20" notnull="false"></Field>
+		<Field name="nickname" title="昵称" type="String" maxlen="100" notnull="false"></Field>
+    </global-session>
+    <database>
+    </database>
+    
+   <operation>
+   </operation>
+   <subsys>
+   		<sys name="pcmc" desc="系统管理中心" path="/WEB-INF/config/pcmc/config.xml"/>
+		<sys name="workflow" desc="工作流管理" path="/WEB-INF/config/workflow/config.xml"/>
+	    <sys name="headmaster" desc="校长职级评审系统" path="/WEB-INF/config/headmaster/config.xml"/>
+	    <sys name="yuexue" desc="互动课堂" path="/WEB-INF/config/yuexue/config.xml"/>
+   </subsys>
+</jraf-config>

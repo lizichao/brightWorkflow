@@ -1,0 +1,122 @@
+{
+listeners : [{
+    name : "append",
+    type : "function",
+    defaults : 'function(tree,parent,node,index){}'
+  },{
+    name : "beforeappend",
+    type : "function",
+    defaults : 'function(tree,parent,node){}'
+  },{
+    name : "beforechildrenrendered",
+    type : "function",
+    defaults : 'function(node){}'
+  },{
+    name : "beforeclick",
+    type : "function",
+    defaults : 'function(node,e){}'
+  },{
+    name : "beforecollapsenode",
+    type : "function",
+    defaults : 'function(node,deep,anim){}',
+    desc : "beforecollapsenode : ( Node node, Boolean deep, Boolean anim)"
+  },{
+    name : "beforedblclick",
+    type : "function",
+    defaults : 'function(node,e){}'
+  },{
+    name : "beforeexpand",
+    type : "function",
+    defaults : 'function(node,deep,anim){}',
+    desc : "beforeexpandnode : ( Node node, Boolean deep, Boolean anim)"
+  },{
+    name : "beforeinsert",
+    type : "function",
+    defaults : 'function(tree,parent,node,refNode){}'
+  },{
+    name : "beforeload",
+    type : "function",
+    defaults : 'function(node){}'
+  },{
+    name : "beforemovenode",
+    type : "function",
+    defaults : 'function(tree,node,oldParent,newParent,index){}'
+  },{
+    name : "beforenodedrop",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "beforeremove",
+    type : "function",
+    defaults : 'function(tree,parent,node){}'
+  },{
+    name : "checkchange",
+    type : "function",
+    defaults : 'function(node,checked){}'
+  },{
+    name : "click",
+    type : "function",
+    defaults : 'function(node,e){}'
+  },{
+    name : "collapsenode",
+    type : "function",
+    defaults : 'function(node){}'
+  },{
+    name : "contextmenu",
+    type : "function",
+    defaults : 'function(node,e){}'
+  },{
+    name : "dblclick",
+    type : "function",
+    defaults : 'function(node,e){}'
+  },{
+    name : "disabledchange",
+    type : "function",
+    defaults : 'function(node,disabled){}'
+  },{
+    name : "dragdrop",
+    type : "function",
+    defaults : 'function(treepanel,node,dd,e){}',
+    desc : "dragdrop : ( Ext.tree.TreePanel this, Ext.tree.TreeNode node, DD dd, event e)"
+  },{
+    name : "enddrag",
+    type : "function",
+    defaults : 'function(treepanel,node,e){}'
+  },{
+    name : "expandnode",
+    type : "function",
+    defaults : 'function(node){}'
+  },{
+    name : "insert",
+    type : "function",
+    defaults : 'function(tree,parent,node,refNode){}'
+  },{
+    name : "load",
+    type : "function",
+    defaults : 'function(node){}'
+  },{
+    name : "movenode",
+    type : "function",
+    defaults : 'function(tree,node,oldParent,newParent,index){}'
+  },{
+    name : "nodedragover",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "nodedrop",
+    type : "function",
+    defaults : 'function(e){}'
+  },{
+    name : "remove",
+    type : "function",
+    defaults : 'function(tree,parent,node){}'
+  },{
+    name : "startdrag",
+    type : "function",
+    defaults : 'function(treepanel,node,e){}'
+  },{
+    name : "textchange",
+    type : "function",
+    defaults : 'function(node,text,oldText){}'
+  }]
+}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+	<resource-ref>
+		<res-ref-name>brightcom.database</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<jndi-name>java:/brightcom.database</jndi-name>
+	</resource-ref>
+</jboss-web>

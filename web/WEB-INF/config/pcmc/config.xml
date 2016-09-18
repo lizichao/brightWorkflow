@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<jraf-config name="pcmc" desc="系统管理中心">
+  <!--设置变量 varidx 从2开始,(0:FileUtil.getHomePath,1:FileUtil.getWebPath)-->
+  <CfgPath>/WEB-INF/config/pcmc/</CfgPath>
+  <DataSource>
+    <ds name="brightcom.database" refname="brightcom.database" />
+  </DataSource>
+  <ParamCfg>{2}brightcom.xml</ParamCfg>
+  <MenuCfg>{2}menus.xml</MenuCfg>
+  <EventCfg>{2}events.xml</EventCfg>
+  <Session>
+    <Field name="deptcode" title="机构代码" type="String" maxlen="60" notnull="true" />
+  </Session>
+  <database>
+    <file name="pcmc" desc="系统管理中心" path="{2}db/pcmc-table.xml,{2}db/cas-table.xml,{2}db/oauth-table.xml" />
+  </database>
+  <operation>
+    <file name="sm" desc="系统管理中心" path="{2}op/sm-config.xml" />
+    <file name="pm" desc="系统管理中心" path="{2}op/pm-config.xml" />
+    <file name="ext" desc="GuiDesigner" path="{2}op/ext-config.xml" />
+    <file name="sys" desc="SystemConfig" path="{2}op/sys-config.xml" />
+    <file name="cas" desc="CentralAuth" path="{2}op/cas-config.xml" />
+    <file name="oauth" desc="OAuth" path="{2}op/oauth-config.xml" />
+    <file path="{2}op/test-config.xml" />
+  </operation>
+</jraf-config>
+

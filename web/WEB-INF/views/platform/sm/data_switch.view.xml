@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions></Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records />
+    <Stores />
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    xtype : "tabpanel",
+    items : [      {
+        xtype : "panel",
+        title : "待发送数据",
+        id : "send_queue",
+        closable : false,
+        autoScroll : true,
+        frame : false,
+		listeners: {'beforedestroy' : function(){window.frames['send_queue'].src="javascript:false";}},
+        html : "&lt;iframe id=\"video_search\" name=\"send_queue\" src=\"send_queue.jsp\" scrolling=\"auto\" frameborder=\"0\" width=\"100%\" height=\"100%\"&gt;&lt;/iframe&gt;"
+    },      {
+        xtype : "panel",
+        title : "已发送数据",
+        id : "send_history",
+        closable : false,
+        autoScroll : true,
+        frame : false,
+		listeners: {'beforedestroy' : function(){window.frames['send_history'].src="javascript:false";}},
+        html : "&lt;iframe id=\"video_search\" name=\"send_history\" src=\"send_history.jsp\" scrolling=\"auto\" frameborder=\"0\" width=\"100%\" height=\"100%\"&gt;&lt;/iframe&gt;"
+    }],
+    activeTab : 0
+}]</MainPanel>
+</view>
+

@@ -1,0 +1,27 @@
+{
+listeners : [{
+    name : "activate",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "deactivate",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "maximize",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "minimize",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "resize",
+    type : "function",
+    defaults : 'function(scope,width,height){}'
+  },{
+    name : "restore",
+    type : "function",
+    defaults : 'function(scope){}'
+  }]
+}

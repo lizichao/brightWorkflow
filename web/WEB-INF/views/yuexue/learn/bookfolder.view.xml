@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>var _subjectbookid,_gradecode,_subjectid,_subjname;
+	   function loadRec(node){
+	     var _forma = Ext.getCmp('BookFolderForm');
+	     _forma.getForm().reset();
+		 _forma.record=node.attributes.record;
+		 _forma.treeNode=node;
+	     _forma.getForm().loadRecord(node.attributes.record);	      
+	   }
+	   function deleteNode(node){
+			var pn=node.previousSibling||node.parentNode;
+			node.remove();
+			pn.select();
+			loadRec(pn);
+	  };
+	  function updateNode(node,rec){
+			var att=node.getOwnerTree().getLoader().createAttrByRec(rec);
+			node.setText(att.text);
+	  };
+	  function disableKnowledgePointGrid(){
+		   JrafUTIL.findCmp(MainPanel,'KnowledgePointGrid').disable();
+		   StoreKnowledgePoint.setBaseParam('qry_folder_code', '-1');
+		   StoreKnowledgePoint.load();
+	  };
+	</Functions>
+    <onLoad>
+	    _subjectbookid = JrafUTIL.getParam(arguments[0],'subjectbookid');
+	    _subjname = JrafUTIL.getParam(arguments[0],'subjname');	
+		_gradecode = JrafUTIL.getParam(arguments[0],'gradecode');
+		_subjectid = JrafUTIL.getParam(arguments[0],'subjectid');
+		var _publishercode = JrafUTIL.getParam(arguments[0],'publishercode');
+		var _gradename = JrafUTIL.getSysParamDesc('c_grade',_gradecode);
+		var _publishername = JrafUTIL.getSysParamDesc('c_publisher',_publishercode);
+	    var _folderTree = JrafUTIL.findCmp(MainPanel,"BookFolderTree");
+		_folderTree.getRootNode().setText(_subjname+'-'+_gradename+'-'+_publishername);
+		_folderTree.getRootNode().setId("-1");		
+        _folderTree.getLoader().baseParams['qry_subject_book_id']=_subjectbookid;</onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="RecKnowledgePoint">[  {
+    xtype : "Field",
+    name : "fp_id",
+    fieldLabel : "fp_id",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "folder_id",
+    fieldLabel : "folder_id",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "k_point_id",
+    fieldLabel : "k_point_id",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "subjectid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjname",
+    fieldLabel : "subjname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "grade_code",
+    fieldLabel : "grade_code",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "k_point_name",
+    fieldLabel : "k_point_name",
+    type : "string",
+    allowBlank : true
+}]</Record>
+      <Record classname="RecBookFolder">[  {
+    xtype : "Field",
+    name : "folder_id",
+    fieldLabel : "folder_id",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "parent_folder_id",
+    fieldLabel : "parent_folder_id",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "folder_code",
+    fieldLabel : "folder_code",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "folder_name",
+    fieldLabel : "folder_name",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "begin_page_num",
+    fieldLabel : "begin_page_num",
+    type : "int",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "end_page_num",
+    fieldLabel : "end_page_num",
+    type : "int",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "display_order",
+    fieldLabel : "display_order",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "subjectid",
+    fieldLabel : "subjectid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "grade_code",
+    fieldLabel : "grade_code",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "child_count",
+    fieldLabel : "child_count",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="StoreKnowledgePoint">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "StoreKnowledgePoint",
+  recordType : RecKnowledgePoint,
+  idProperty : "fp_id",
+  api : {read:{sysName:"yuexue",oprID:"Knowledge",actions:"getKnowledgePoint"},
+  	 create:{sysName:"yuexue",oprID:"Knowledge",actions:"addKnowPoint"},
+     update:{sysName:"yuexue",oprID:"Knowledge",actions:"updateKnowPoint"},
+     destroy:{sysName:"yuexue",oprID:"Knowledge",actions:"deleteKnowPoint"}
+  },
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    layout : "border",
+    items : [      {
+        region : "west",
+        title : "教材目录",
+        xtype : "treepanel",
+        height : 400,
+        width : 400,
+        animate : true,
+        autoScroll : true,
+        containerScroll : true,
+        split : true,
+        collapsible : true,
+        titleCollapse : false,
+        rootVisible : true,
+        root : new Ext.tree.AsyncTreeNode({id:"-1",text:"数学-二年级-北师大版"}),
+        loader : new JrafXmlTreeLoader({
+            nparams: {nid:'folder_id',pid:'parent_folder_id',ntext:'{folder_name}',isLeaf:'child_count',expanded:false},
+            action: {sysName:'yuexue',oprID:'Knowledge',actions:'getBookChildFolder'},
+            baseParams:{PageSize:'-1',qry_subject_book_id:'456'}
+        }),
+        itemId : "BookFolderTree",
+        listeners : {
+            click : function(node,e){
+               var _rec = node.attributes.record;
+               if(_rec){
+                 if(_rec.get('folder_id')==''){
+		               disableKnowledgePointGrid();
+                 } else {
+		               StoreKnowledgePoint.setBaseParam('folder_id', _rec.get('folder_id'));
+		               StoreKnowledgePoint.setBaseParam('qry_folder_code', _rec.get('folder_code'));
+		               JrafUTIL.findCmp(MainPanel,'KnowledgePointGrid').disable();
+		               StoreKnowledgePoint.load({callback:function(recs,opts,success){
+		               	JrafUTIL.findCmp(MainPanel,'KnowledgePointGrid').enable();
+		               }});
+                 }
+	               loadRec(node);
+	               JrafUTIL.findCmp(MainPanel,'bookfolderFrom').enable();
+               }
+            },
+            contextmenu : function(node,e){
+			   	  e.preventDefault();
+				  node.select();
+				  node.expand();
+				  var noderec=node.attributes.record;
+				  var tmenu=node.getOwnerTree().menu;
+				  if(!tmenu){
+				      tmenu =  new Ext.menu.Menu({
+							items : [{
+								id : 'addNode',
+								text : '新增',
+								iconCls:'add'
+							},{
+								id : 'delNode',
+								text : '删除',
+								iconCls:'delete'
+							}],
+							listeners: {
+								itemclick: function(item) {
+									var node = item.parentMenu.treeNode;
+									var noderec = node.attributes.record;
+									var displayOrder=0;
+									var folderCode;
+									switch (item.id) {
+									case 'addNode':
+									   if (node.isLeaf()){
+										   node.leaf = false;
+									   }
+									   if(noderec == undefined ){
+										   displayOrder =0;
+										   folderCode ='';
+									   }else{
+										   displayOrder = noderec.data['child_count'];
+										   displayOrder = Ext.isEmpty(displayOrder)?'0':displayOrder;
+										   folderCode = noderec.data['folder_code'];
+									   }
+									   var nDisplayOrder = new Number(displayOrder)+1;
+									   var newRec = new RecBookFolder({folder_id:'',parent_folder_id:node.id,folder_name:'新章节',subject_book_id:_subjectbookid,
+									   folder_code:folderCode,display_order:nDisplayOrder,child_count:0});
+									   var newNode = node.getOwnerTree().getLoader().createNodeByRec(newRec);
+									   node.appendChild(newNode);
+									   newNode.select();
+									   loadRec(newNode);
+									   disableKnowledgePointGrid();
+									   break;
+									case 'delNode':
+									   if(''==noderec.get('folder_id')){
+											deleteNode(node);
+											break;
+									   } 
+										Ext.Msg.show({
+											title : '提示',
+											msg :"确认删除?",
+											icon : Ext.Msg.WARNING,
+											buttons : Ext.Msg.YESNO,
+											fn:function(buttonId){
+												if('yes'==buttonId){
+													var jr=new JrafRequest('yuexue','Knowledge','deleteBookFolder');
+													jr.setExtraPs({folder_id:noderec.data['folder_id']});
+													jr.setSuccFn(function(a,_resp,xr){
+														deleteNode(node);
+														disableKnowledgePointGrid();
+													});
+													jr.postData();
+												}
+											}
+										});									   
+									    break;
+									}
+							   }
+						    }
+					  });
+	                  node.getOwnerTree().menu=tmenu;
+				  }
+				  tmenu.showAt(e.getXY());
+				  tmenu.treeNode=node;
+				  loadRec(node);
+			}
+         }
+    },      {
+        region : "center",
+        layout : "border",
+        itemId : "bookfolderFrom",
+        disabled : true,
+        items : [          {
+            region : "north",
+            xtype : "form",
+            title : "教材目录",
+            labelAlign : "right",
+            labelWidth : 80,
+            autoHeight : true,
+            frame : true,
+            items : [      {
+			  layout : "column",
+			  bodyBorder : false,
+			  items : [     {
+				  layout : "form",
+				  bodyBorder : false,
+				  columnWidth : 0.99,
+				  labelAlign : "right",
+				  items : [        {
+								name : "folder_name",
+								fieldLabel : "目录名称",
+								allowBlank : true,
+								width : 250,
+								xtype : "textfield"
+							}
+				  ]}, {
+				  layout : "form",
+				  bodyBorder : false,
+				  columnWidth : 0.5,
+				  labelAlign : "right",
+				  items : [        {
+								name : "begin_page_num",
+								fieldLabel : "章节开始页码",
+								allowBlank : true,
+								width : 60,
+								xtype : "numberfield"
+							}
+				  ]}, {
+				  layout : "form",
+				  bodyBorder : false,
+				  columnWidth : 0.5,
+				  labelAlign : "right",
+				  items : [        {
+								name : "end_page_num",
+								fieldLabel : "章节结束页码",
+								allowBlank : true,
+								width : 60,
+								xtype : "numberfield"
+							}
+				  ]}
+			]},              {
+                name : "display_order",
+                fieldLabel : "显示顺序",
+                allowBlank : true,
+                width : 50,
+                xtype : "textfield"
+            },              {
+                name : "folder_id",
+                fieldLabel : "目录ID",
+                xtype : "hidden"
+            },              {
+                name : "parent_folder_id",
+                fieldLabel : "父目录ID",
+                xtype : "hidden"
+            },              {
+                name : "folder_code",
+                fieldLabel : "目录代码",
+                xtype : "hidden"
+            } ,{
+                name : "subject_book_id",
+                fieldLabel : "学科教材ID",
+                xtype : "hidden"
+            }],
+            buttonAlign : "center",
+            id : "BookFolderForm",
+            buttons : [
+			   {  text : "保存",
+				  id :"saveBtn",
+				  handler : function(){
+				     var _form=this.ownerCt.ownerCt;
+					 var newFlag=Ext.isEmpty(_form.record.data['folder_id']);
+	                 var jr;
+					 if(newFlag){
+						jr=new JrafRequest('yuexue','Knowledge','addBookFolder',);
+					 }
+					 else{
+						jr=new JrafRequest('yuexue','Knowledge','updateBookFolder');
+					 }
+					 jr.setForm(_form);
+					 jr.setSuccFn(function(a,_resp,xr){
+					     _form.getForm().updateRecord(_form.record);
+						 if(newFlag){
+						    var _newRec = a.records[0];
+						    var _node = _form.treeNode;
+						    var _parentfolder_code = _node.attributes.record.data['folder_code'];
+						    _node.attributes.record.set('folder_code',_parentfolder_code+','+_newRec.data['folder_id']);
+						    StoreKnowledgePoint.setBaseParam('folder_id', _newRec.data['folder_id']);
+						    StoreKnowledgePoint.setBaseParam('qry_folder_code', _node.attributes.record.data['folder_code']);
+						    StoreKnowledgePoint.load();
+						    xr.realize(_form.record,a.records);
+						 }
+						 else{
+						    //xr.update(_form.record,a.records); 
+						 }
+						 _form.getForm().loadRecord(_form.record);
+						 updateNode(_form.treeNode,_form.record);
+						 JrafUTIL.findCmp(MainPanel,'KnowledgePointGrid').enable();
+					 });
+					 jr.postData();					 
+				  }
+			   }
+			]
+        },          {
+            region : "center",
+            xtype : "editorgrid",
+            id : "GridKnowledgePoint",
+            itemId : "KnowledgePointGrid",
+            disabled : true,
+            autoWidth : true,
+            frame : true,
+            title : "知识点",
+            viewConfig : {forceFit :false},
+            columnLines : true,
+            autoHeight : false,
+            height : 320,
+            store : StoreKnowledgePoint,
+            stripeRows : true,
+            clicksToEdit : 1,
+            tbar : [
+			   {text:'新增',iconCls:'add',ref: '../addBtn',handler:function(){
+				   var _folderTree = JrafUTIL.findCmp(MainPanel,"BookFolderTree");
+				   var _node = _folderTree.getSelectionModel().getSelectedNode();
+				   if (_node){
+					   var _grid=Ext.getCmp('GridKnowledgePoint');
+					   var recordType=_grid.getStore().recordType;
+					   var newRec=new recordType();
+					   newRec.set('subjectid',_subjectid);
+					   newRec.set('subjname',_subjname);
+					   newRec.set('grade_code',_gradecode);
+					   newRec.set('folder_id',_node.id);
+
+					   _grid.getStore().insert(0,newRec); 
+				   }
+				   else{
+					  Ext.Msg.alert('提示', '请先选择左边的目录节点');
+				   }
+				   
+			   }},{xtype: 'tbseparator'},
+			   {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+					var _grid=Ext.getCmp('GridKnowledgePoint');
+					var ckrs=_grid.getSelectionModel().getSelections();
+					if (ckrs.length&gt;0){
+						Ext.Msg.confirm('除选数据','确认要删除选中数据?',function(btn){
+						if(btn == 'yes'){
+								for(var i=0;i&lt;ckrs.length;i++){
+								   _grid.getStore().remove(ckrs[i]);
+								}
+								_grid.getStore().save();
+							}
+						});
+					}		       
+			   }},{xtype: 'tbseparator'},
+			   {text:'保存',iconCls:'disk',ref: '../saveBtn',handler:function(){
+					var _grid=Ext.getCmp('GridKnowledgePoint');
+					Ext.Msg.confirm('保存数据','确认保存已修改数据?',function(btn){
+						if(btn == 'yes'){
+							_grid.getStore().save();
+						}
+					});
+			  }}
+			],
+            bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:StoreKnowledgePoint,displayInfo: true}),
+            colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),	
+				{width:100,sortable:true,header:'学科',dataIndex:'subjname'},
+				{width:60,sortable:true,header:'年级',dataIndex:'grade_code',renderer:Ext.util.Format.paramRenderer('c_grade','未定义')},
+				{width:160,sortable:true,header:'知识点',dataIndex:'k_point_name',editor: new Ext.form.TextField({allowBlank: false})}
+			 ]),
+            sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){
+				 var _grid=this.grid;
+				 if(sm.getCount()){
+					_grid.removeBtn.enable();				
+				 }
+				 else{
+					_grid.removeBtn.disable();				
+				 }
+			 }}}),
+            listeners : {
+				rowdblclick : function(g,rowIndex,e){
+					var rec=g.getSelectionModel().getSelected();				
+				}
+			}
+        }]
+    }]
+}]</MainPanel>
+</view>
+

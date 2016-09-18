@@ -1,0 +1,31 @@
+{
+listeners : [{
+    name : "itemclick",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "itemdoubleclick",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "itemdrag",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "itemdragend",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "itemdragstart",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "itemmouseout",
+    type : "function",
+    defaults : 'function(item){}'
+  },{
+    name : "itemmouseover",
+    type : "function",
+    defaults : 'function(item){}'
+  }]
+}

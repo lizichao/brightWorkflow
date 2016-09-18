@@ -1,0 +1,10 @@
+{
+properties : [{
+    name : "arrowHandler",
+    type : "function",
+    desc : "<b>Function</b> A function called when the arrow button is clicked (can be used instead of click event)"
+  },{
+    name : "arrowTooltip",
+    desc : "<b>String</b> The title attribute of the arrow"
+  }] 
+}

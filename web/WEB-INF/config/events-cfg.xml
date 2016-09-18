@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="GBK"?>
+<EventManage>
+	<!--
+	<Listener class="cn.brightcom.">
+		<Event name="pcmc.sm." type="begin|end" async="true|false"/>
+	</Listener>-->
+</EventManage>

@@ -1,0 +1,27 @@
+{
+properties : [{
+    name : "backgroundColor",
+    desc : "<b>String</b> The background color of the chart. Defaults to '#ffffff'"
+  },{
+    name : "expressInstall",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to prompt the user to install flash if not installed. Note that this uses Ext.FlashComponent.EXPRESS_INSTALL_URL, which should be set to the local resource. Defaults to false."
+  },{
+    name : "flashParams",
+    type : "object",
+    desc : "<b>Object</b> A set of key value pairs to be passed to the flash object as parameters. Possible parameters can be found here: http://kb2.adobe.com/cps/127/tn_12701.html Defaults to undefined"
+  },{
+    name : "flashVars",
+    type : "object",
+    desc : "<b>Object</b> A set of key value pairs to be passed to the flash object as flash variables. Defaults to undefined"
+  },{
+    name : "flashVersion",
+    desc : "<b>String</b> Indicates the version the flash content was published for. Defaults to '9.0.45'"
+  },{
+    name : "url",
+    desc : "<b>String</b> The URL of the chart to include. Defaults to undefined"
+  },{
+    name : "wmode",
+    desc : "<b>String</b> The wmode of the flash object. This can be used to control layering. Defaults to 'opaque'"
+  }]
+}

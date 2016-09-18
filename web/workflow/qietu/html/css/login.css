@@ -1,0 +1,148 @@
+﻿html,form,h1,h2,h3,h4,h5,p{
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	text-align:center;
+	font-family:微软雅黑, 宋体, Arial, Helvetica, sans-serif;
+	behavior:url(js/csshover3.htc);
+	color:#4b453f;
+	font-size:12px;
+	line-height:22px;
+	background:#CBF6FF url(../images/login_bg.png)
+}
+div,ul,li,ol,p
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+img{
+	border:0;
+}
+a{
+	color:#4b453f;
+	text-decoration:none;
+}
+a:visited{
+	color:#4b453f;
+	text-decoration:none;
+}
+a:hover{
+	color:#686059;
+	text-decoration:none;
+}
+a:active{
+	text-decoration:none;
+	color:#4b453f;
+}
+.clear{clear:both;display:block;float:none;font-size:0;overflow:hidden;visibility:hidden;width:0;height:0;}
+
+html{overflow:hidden;}
+body{
+	height:100%;
+	width:100%;
+	overflow:hidden;
+
+}
+.wrapper{
+	width:100%;
+}
+.wrapper .login_box{
+	display:block;
+	position:relative;
+	margin:160px auto 0 auto;
+	width:557px;
+	height:340px;
+	background:url(../images/login_box.png) no-repeat;
+}
+.wrapper .login_box input.uname,.wrapper .login_box input.upass{
+	position:absolute;
+	left:222px;
+	color:#565656;
+	font-size:12px;
+	height:18px;
+	line-height:18px;
+	width:150px;
+	border:none;
+	vertical-align:middle;
+	background:transparent;
+}
+.wrapper .login_box input.uname{
+	top:140px;
+}
+.wrapper .login_box input.upass{
+	top:180px;
+}
+.wrapper .login_box input.ubtn{
+	position:absolute;
+	display:block;
+	left:416px;
+	top:130px;
+	height:74px;
+	width:78px;
+	cursor:pointer;
+	border:none;
+	text-indent:-10000px;
+	vertical-align:middle;
+	background:transparent;
+}
+.wrapper .login_box .text{
+	position:absolute;
+	top:246px;
+	left:15px;
+	line-height:18px;
+	width:520px;
+	color:#6CB3FF
+}
+.wrapper .login_box .btn_d{
+	position:absolute;
+	top:290px;
+	left:15px;
+	line-height:18px;
+	width:520px;
+	text-align:center
+}
+
+.btn1{
+	position:relative;
+	display:inline-block;
+	padding:0 12px 0 0;
+	margin:0 0 0 36px;
+	height:25px;
+	line-height:25px;
+	font-size:12px;
+	font-weight:lighter;
+	cursor:pointer;
+	border:none;
+	blr:expression(this.onFocus=this.blur());
+	outline:none;
+	vertical-align:middle;
+	background:url(../images/login_icon.png) right -25px no-repeat;
+}
+.btn1 span{
+	position:absolute;
+	left:-28px;;
+	top:0;
+	_top:-1px;
+	height:25px;
+	width:28px;
+	background:url(../images/login_icon.png) 0 0 no-repeat;
+}
+.btn1,.btn1:visited{
+	color:#07438B
+}
+
+
+
+
+
+
+
+
+
+
+
+

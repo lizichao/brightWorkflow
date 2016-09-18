@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+    var param = {cur_studentIds:""};
+	function showFamilyWin(rec){
+		var win=MainPanel['familyWin'];
+		if(!win){
+			win=new Ext.Window({
+				title:'家庭成员',
+		        layout:'fit',
+		        width:550,
+		        height:320,
+		        closeAction:'hide',
+		        plain: true,
+		        modal: true,
+		        items:familyPanel
+		    });
+		    MainPanel['familyWin']=win;
+		    __caches__.push(win);
+		}
+		win.show();
+		familyPanel.getForm().reset();
+		familyPanel.getForm().getEl().dom.reset();
+		familyPanel.record=rec;
+		familyPanel.getForm().loadRecord(rec);
+	};
+</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+    <Record classname="studentAttrRecord">[  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "userid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "usercode",
+    fieldLabel : "登录名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "姓名",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "nickname",
+    fieldLabel : "昵称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "portrait",
+    fieldLabel : "头像",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "description",
+    fieldLabel : "描述",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "idnumber",
+    fieldLabel : "身份证号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classid",
+    fieldLabel : "班级编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "classnm",
+    fieldLabel : "班级名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gradecode",
+    fieldLabel : "年级",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "studentno",
+    fieldLabel : "学号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "firstyear",
+    fieldLabel : "入学年份",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "finishyear",
+    fieldLabel : "毕业年份",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "email",
+    fieldLabel : "邮箱",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "phone",
+    fieldLabel : "固话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mobile",
+    fieldLabel : "移动电话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gender",
+    fieldLabel : "性别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "modifydt",
+    fieldLabel : "最后修改时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "birthday",
+    fieldLabel : "出生日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "state",
+    fieldLabel : "状态",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "studinfoid",
+    fieldLabel : "主键",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oldname",
+    fieldLabel : "曾用名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "xmpy",
+    fieldLabel : "姓名拼音",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stuid",
+    fieldLabel : "学籍号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "origin",
+    fieldLabel : "籍贯",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ctid",
+    fieldLabel : "证件类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "health",
+    fieldLabel : "健康情况",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "cid",
+    fieldLabel : "国籍",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "psid",
+    fieldLabel : "政治面貌",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nid",
+    fieldLabel : "民族",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oid",
+    fieldLabel : "港澳台侨外",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "hkxz",
+    fieldLabel : "户口性质",
+    type : "string",
+    allowBlank : true
+},    {
+    xtype : "Field",
+    name : "areacode",
+    fieldLabel : "出生地行政区代码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "csd",
+    fieldLabel : "出生地",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "bid",
+    fieldLabel : "血型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "studyway",
+    fieldLabel : "就读方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mailaddress",
+    fieldLabel : "通信地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "houseaddress",
+    fieldLabel : "家庭地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "telephone",
+    fieldLabel : "联系电话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "postcode",
+    fieldLabel : "邮政编码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "singleflag",
+    fieldLabel : "是否独生子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "preflag",
+    fieldLabel : "是否受过学前教育",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stayflag",
+    fieldLabel : "是否留守儿童",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "helpflag",
+    fieldLabel : "是否享受一补",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "orphanflag",
+    fieldLabel : "是否孤儿",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "martyr",
+    fieldLabel : "是否烈士或优抚子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "goway",
+    fieldLabel : "上下学方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "carflag",
+    fieldLabel : "是否需要乘坐校车",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "effectdate",
+    fieldLabel : "身份证有效期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "rollid",
+    fieldLabel : "学籍辅号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "attendant",
+    fieldLabel : "随班就读",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "farmer",
+    fieldLabel : "是否进城务工人员随迁子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "houseaid",
+    fieldLabel : "户口所在地行政区",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "did",
+    fieldLabel : "残疾类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "cwid",
+    fieldLabel : "入学方式",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "hard",
+    fieldLabel : "困难程度",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "addressnow",
+    fieldLabel : "现住地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "helpneed",
+    fieldLabel : "是否需要申请资助",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "dtance",
+    fieldLabel : "上下学距离",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "specialty",
+    fieldLabel : "特长",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "homepage",
+    fieldLabel : "主页地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "buydegree",
+    fieldLabel : "是否政府购买学位",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "soldierflag",
+    fieldLabel : "是否军人子女",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "kindergarten",
+    fieldLabel : "幼儿园毕业学校",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pschool",
+    fieldLabel : "小学毕业学校",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "juniormiddle",
+    fieldLabel : "初中毕业学校",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "updatetime",
+    fieldLabel : "修改日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "createtime",
+    fieldLabel : "创建日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "是否有效",
+    type : "string",
+    allowBlank : true
+}]</Record>
+<Record classname="familyRecord">[  {
+    xtype : "Field",
+    name : "family_id",
+    fieldLabel : "主键",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "用户编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "name",
+    fieldLabel : "家庭成员或监护人姓名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nid",
+    fieldLabel : "民族",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nuxes",
+    fieldLabel : "关系",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "relation",
+    fieldLabel : "关系说明",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ctid",
+    fieldLabel : "证件类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "cno",
+    fieldLabel : "证件号码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "unit",
+    fieldLabel : "工作单位",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "duty",
+    fieldLabel : "工作职务",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "address",
+    fieldLabel : "地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "houseaid",
+    fieldLabel : "户口所在地行政区",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "telephone",
+    fieldLabel : "联系电话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "tutor",
+    fieldLabel : "是否监护人",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "是否有效",
+    type : "string",
+    allowBlank : true
+}]</Record>
+<Record classname="nodeRecord">[  {
+    xtype : "Field",
+    name : "sid",
+    fieldLabel : "sid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pid",
+    fieldLabel : "pid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptid",
+    fieldLabel : "deptid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "scode",
+    fieldLabel : "scode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gcode",
+    fieldLabel : "gcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sname",
+    fieldLabel : "sname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stype",
+    fieldLabel : "stype",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "isleaf",
+    fieldLabel : "isleaf",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+     <Store classname="familyStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "familyStore",
+  recordType : familyRecord,
+  idProperty : "family_id",
+  api : {
+	  read:{sysName:"yuexue",oprID:"family",actions:"getFamilyList"},
+	  create:{sysName:"yuexue",oprID:"family",actions:"insertFamilyUser"},
+	  destroy:{sysName:"yuexue",oprID:"family",actions:"uptFamilyUser"}
+  },
+  autoLoad : false,
+  autoSave : false,
+  baseParams : {paramname:'qry_userid'},
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+<Store classname="studentAttrStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "studentAttrStore",
+  recordType : studentAttrRecord,
+  idProperty : "pk",
+  api : {
+	  read:{sysName : "yuexue",oprID : "student",actions : "query"}
+	},
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+     <Panel classname="familyPanel" xtype="form">{
+    xxtype: "Jpanel",
+    xtype: "form",
+    frame: true,
+    labelAlign: "right",
+    classname: "familyPanel",
+    items: [{
+        layout: "column",
+        bodyBorder: false,
+        items: [{
+            layout: "form",
+            bodyBorder: false,
+            columnWidth: 0.99,
+            items: [{
+                layout: "column",
+                bodyBorder: false,
+                items: [{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "name",
+                        fieldLabel: "监护人姓名",
+                        allowBlank: false,
+                        minLength: 2,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "nid",
+                        fieldLabel: "民族",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "nid",
+                        baseParams: {
+                            paramname: 'MZM'
+                        }
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "nuxes",
+                        fieldLabel: "关系",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "nuxes",
+                        baseParams: {
+                            paramname: 'relation'
+                        }
+                    },{
+				        name : "userid",
+				        xtype: "textfield",
+				        allowBlank : true,
+				        xtype : "hidden"
+						},{
+				        name : "family_id",
+				        xtype: "textfield",
+				        allowBlank : true,
+				        xtype : "hidden"
+						}]
+               	　　},{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "relation",
+                        fieldLabel: "关系说明",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "ctid",
+                        fieldLabel: "证件类型",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "ctid",
+                        baseParams: {
+                            paramname: 'ZJLXM'
+                        }
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "cno",
+                        fieldLabel: "证件号码",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "unit",
+                        fieldLabel: "工作单位",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "duty",
+                        fieldLabel: "工作职务",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+				      name : "address",
+				      fieldLabel : "地址",
+				      width: 160,
+				      allowBlank : true,
+				      xtype : "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+				      name : "houseaid",
+				      fieldLabel : "户口所在地",
+				      width: 160,
+				      allowBlank : true,
+				      xtype : "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "telephone",
+                        fieldLabel: "联系电话",
+                        allowBlank: true,
+                        width: 160,
+                        vtype: "phone",
+                        xtype: "textfield"
+                    }]
+                },
+                {
+	                    layout: "form",
+	                    bodyBorder: false,
+	                    columnWidth: 0.5,
+	                    labelAlign: "right",
+	                    items: [{
+	                        xtype : "radiogroup",
+							fieldLabel : "是否监护人",
+							width : 100,
+							items : [    {
+							    boxLabel :　"是",
+							    name : "tutor",
+							    inputValue : "true",
+							    checked : true
+							},    {
+							    boxLabel : "否",
+							    name : "tutor",
+							    inputValue : "false"
+							}]
+	                    }]
+	                }]
+            }]
+        }]
+    }],
+    buttonAlign: "center",
+    buttons: [{
+        text: '保存',
+        handler: function() {
+			var familyForm=this.ownerCt.ownerCt;
+			var rec=familyForm.record;
+		    var jr;
+	    	if(typeof(rec.get('family_id')) == "undefined"){
+                jr=new JrafRequest('yuexue','family','insertFamilyUser',{recordType:familyRecord,idProperty:'family_id'});
+            }else{
+                jr=new JrafRequest('yuexue','family','uptFamilyUser',{recordType:familyRecord,idProperty:'family_id'});
+            }
+            familyForm.getForm().findField("userid").setValue(param.cur_studentIds);
+			jr.setForm(familyForm);
+            jr.setSuccFn(function(a,_resp,xr){
+            	 this.ownerCt.ownerCt.ownerCt.hide();
+            });
+            jr.postData();
+        }
+    },
+    {
+        text: '关闭',
+        handler: function() {
+            this.ownerCt.ownerCt.ownerCt.hide();
+        }
+    }],
+    autoScroll: true,
+    labelWidth: 80
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    frame : true,
+    items : [      {
+        xtype : "form",
+        title : "查询面板",
+        region : "north",
+        autoHeight : true,
+        frame : true,
+        labelAlign : "right",
+        items : [  {
+            layout : "column",
+            bodyBorder : false,
+            anchor : "100%",
+            items : [              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_username",
+                    fieldLabel : "姓名",
+                    width : 150,
+                    allowBlank : true,
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_idnumber",
+                    fieldLabel : "身份证号",
+                    allowBlank : true,
+                    width : 150,
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [  {
+						xtype : "treecombo",
+			            fieldLabel : "所在班级",
+						emptyText : "请选择班级",
+			            name : "classname",
+			            hiddenName : "classname",
+			            valueField : "sid",
+			            displayField : "sname",
+			            triggerAction : "all",
+		              	width : 150,
+			            lazyRender : true,
+			            editable : false,
+			            forceSelection : true,
+			            rootVisible : false,
+			            root : new Ext.tree.AsyncTreeNode({id:'-1',text:'Tree Root',draggable : false}),
+			            nparams : {nid:'sid',pid:'pid',ntext:'{sname}',loadAll:false,expanded:true,sm:'all',isLeaf:'isleaf'},
+			            action: {sysName:'yuexue',oprID:'grade',actions:'gradecls'},
+			            baseParams : {stype:'$NODEVALUE$',scode:'$NODEVALUE$'},
+			            recordType:nodeRecord,
+			            listeners: {
+		                select: function(scope,node) {
+		                	if(node.attributes.record.data.stype=='2'){
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue('');
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue(node.attributes.record.data.scode);
+		                	} else {
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue(node.id);
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue('');       		
+		                	}
+		                },
+		                change: function(scope,node) {
+		                  if(!node){
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_classid").setValue('');
+		                		this.ownerCt.ownerCt.ownerCt.getForm().findField("qry_gradecode").setValue('');			                  
+		                  }
+		                }
+		            }
+                },{
+			        name : "qry_classid",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        xtype : "hidden"
+					},{
+			        name : "qry_gradecode",
+			        xtype: "textfield",
+			        allowBlank : true,
+			        xtype : "hidden"
+				}]
+            }]
+        }],
+        buttonAlign : "center",
+        buttons : [{
+			  text : '查询', handler : function() {
+				studentAttrStore.setFormParam(this.ownerCt.ownerCt);
+				studentAttrStore.setPageInfo(JrafSession.get('PageSize'),'1');
+				studentAttrStore.load();
+			}
+		}]
+    },{
+    	xtype : "grid",
+        region : "center",
+        frame : true,
+        title : "学生信息",
+        viewConfig : {forceFit:true,cellTpl:JrafUTIL.selCellTpl()},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        itemId : "student-grid",
+        store : studentAttrStore,
+        tbar : [],
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:studentAttrStore,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+			{width:80,sortable:true,header:'姓名',dataIndex:'username'},
+			{width:40,sortable:true,header:'性别',dataIndex:'gender',renderer:Ext.util.Format.paramRenderer('gender')},
+			{width:130,sortable:true,header:'身份证号',dataIndex:'idnumber'},
+			{width:80,sortable:true,header:'所在班级',dataIndex:'classnm'},
+			{width:120,sortable:true,header:'邮箱',dataIndex:'email'},
+			{width:80,sortable:true,header:'移动电话',dataIndex:'mobile'}]),
+        sm : new Ext.grid.CheckboxSelectionModel({
+        listeners:{
+        	selectionchange:function(sm){
+        		var familyGrid=JrafUTIL.findCmp(MainPanel,'family-grid');
+        		if(sm.getCount()){
+        			familyGrid.addBtn.enable();
+        		}else{
+        			familyGrid.addBtn.disable();
+        		}
+        	},
+	        rowselect: function(sm, row, rec) {
+	        	var familyGrid=JrafUTIL.findCmp(MainPanel,'family-grid');
+	        	familyGrid.getStore().setBaseParam('qry_userid',rec.get('studinfoid'));
+	        	param.cur_studentIds = rec.get('studinfoid');
+			   	familyGrid.getStore().load();
+        }}}),
+		anchor : "100% 35%"
+    },       {
+        	title : "家庭成员信息",
+	        xtype : "grid",
+	        frame : true,
+	        viewConfig : {forceFit:false},
+	        itemId : "family-grid",
+	        columnLines : true,
+	        autoHeight : false,
+	        store : familyStore,
+	        tbar : [{text:'新增',iconCls:'add',ref: '../addBtn',disabled: true,handler:function(){var _grid=this.ownerCt.ownerCt;var recordType=_grid.getStore().recordType;var nr=new recordType();_grid.getStore().add(nr);_grid.getSelectionModel().selectLastRow();var rec=_grid.getSelectionModel().getSelected();showFamilyWin(rec);}},
+	        {xtype: 'tbseparator'},
+	        {text:'删除',iconCls:'delete',ref: '../removeBtn',disabled: true,handler:function(){
+				 Ext.Msg.confirm('系统提示','是否确认删除选中记录行?',function(btn){
+		  			var _grid=JrafUTIL.findCmp(MainPanel,'family-grid');
+		  			 var ckrs=_grid.getSelectionModel().getSelections();
+		  			 var param={valid:"N"};
+					 for(var i=0;i&lt;ckrs.length;i++){
+					    var familyids = ckrs[i].get('family_id');
+					 	param['family_id']=!param['family_id'] ? familyids:[].concat(param['family_id']).concat(familyids);
+					 }
+					 var jr=new JrafRequest('yuexue','family','uptFamilyUser');
+				 		jr.setExtraPs(param);
+						jr.setSuccFn(function(data,status){
+					    
+					    });
+						jr.postData();
+					})}
+				}],
+	        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:familyStore,displayInfo: true}),
+	        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+			{width:130,sortable:true,header:'家庭成员或监护人姓名',dataIndex:'name'},
+			{width:80,sortable:true,header:'关系',dataIndex:'nuxes',renderer:Ext.util.Format.paramRenderer('relation')},
+			{width:80,sortable:true,header:'身份证件类型',dataIndex:'ctid',renderer:Ext.util.Format.paramRenderer('ZJLXM')},
+			{width:120,sortable:true,header:'身份证件号',dataIndex:'cno'},
+			{width:80,sortable:true,header:'是否监护人',dataIndex:'tutor',renderer:Ext.util.Format.paramRenderer('global_boolean')},
+			{width:120,sortable:true,header:'联系电话',dataIndex:'telephone'},
+			{width:200,sortable:true,header:'工作单位',dataIndex:'unit'}]),
+			sm : new Ext.grid.CheckboxSelectionModel({
+	        listeners:{
+	        	selectionchange:function(sm){
+	        		var familyGrid=JrafUTIL.findCmp(MainPanel,'family-grid');
+	        		if(sm.getCount()){
+	        			familyGrid.removeBtn.enable();
+	        		}else{
+	        			familyGrid.removeBtn.disable();
+	        		}
+	        	}
+	        }}),
+	        listeners : {
+		    	rowdblclick:function(g,rowIndex){
+					var rec=g.getSelectionModel().getSelected();
+					showFamilyWin(rec);
+				}
+	    	},
+			region : "south",
+	     anchor : "100% 46%"
+    }],
+    layout : "anchor"
+}]</MainPanel>
+</view>
+

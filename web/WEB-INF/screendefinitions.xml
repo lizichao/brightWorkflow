@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="gb2312"?>
+<screen-definitions>
+	<default-template>/template/mytemplate.jsp</default-template>
+	
+	<template name="theme1">
+		<url>/blog/tmpl/theme1.jsp</url>
+	</template>
+	
+	<template name="blogmgr">
+		<url>/blog/manage/personmain.jsp</url>
+	</template>
+	
+	<screen name="login">
+		<parameter key="title" value="International Transaction System" direct="true"/>
+		<parameter key="banner" value="/banner.jsp"/>
+		<parameter key="leftbar" value="/leftbar.jsp?subsysid=8"/>
+		<parameter key="menubar" value="/menubar.jsp?subsysid=8"/>
+		<parameter key="body" value="/body.jsp" direct="true"/>
+		<parameter key="footer" value="/footer.jsp"/>
+	</screen>
+	
+	<screen name="theme1" template="theme1">
+		<parameter key="title" 		value="轻舞飞扬" direct="true"/>
+		<parameter key="banner" 	value="/blog/tmpl/theme/1/banner.jsp"/>
+		<parameter key="menu" 		value="/blog/tmpl/theme/1/menu.jsp"/>
+		
+		<parameter key="photo" 		value="/blog/tmpl/theme/1/photo.jsp" 		desc="个性图片"/>
+		<parameter key="label" 		value="/blog/tmpl/theme/1/label.jsp" 		desc="活力地带"/>
+		<parameter key="calendar" 	value="/blog/tmpl/theme/1/calendar.jsp"		desc="日历"/>
+		<parameter key="links" 		value="/blog/tmpl/theme/1/links.jsp" 		desc="友情链接"/>
+		<parameter key="album" 		value="/blog/tmpl/theme/1/album.jsp" 		desc="相册"/>
+		<parameter key="topic" 		value="/blog/tmpl/theme/1/topic.jsp" 		desc="专辑列表"/>
+		<parameter key="aclass" 	value="/blog/tmpl/theme/1/aclass.jsp" 		desc="我的文章分类"/>
+		<parameter key="alist" 		value="/blog/tmpl/theme/1/alist.jsp" 		desc="最新文章列表"/>
+		<parameter key="comment" 	value="/blog/tmpl/theme/1/comment.jsp" 		desc="最新评论"/>
+		<parameter key="message" 	value="/blog/tmpl/theme/1/message.jsp" 		desc="最新留言"/>
+		<parameter key="bulletin" 	value="/blog/tmpl/theme/1/bulletin.jsp"		desc="公告"/>
+		<parameter key="blanktop" 	value="/blog/tmpl/theme/1/blanktop.jsp"		desc="空白栏"/>
+		<parameter key="ulinks" 	value="/blog/tmpl/theme/1/ulinks.jsp" 		desc="自定义链接"/>
+		
+		<parameter key="counter" 	value="/blog/tmpl/theme/1/counter.jsp" 		desc="计数器"/>
+		<parameter key="ckzone4" 	value="/blog/tmpl/theme/1/ckzone4.jsp" 		desc=""/>
+		<parameter key="article" 	value="/blog/tmpl/theme/1/article.jsp" 		desc=""/>
+		<parameter key="foot" 		value="/blog/tmpl/theme/1/foot.jsp" 		desc=""/>
+		
+		<parameter key="feedsurl" 	value="/blog/tmpl/theme/1/s/feeds.jsp" 		direct="true"/>
+		<parameter key="alisturl" 	value="/blog/tmpl/theme/1/s/alist.jsp" 		direct="true"/>
+		<parameter key="commenturl" value="/blog/tmpl/theme/1/s/comment.jsp" 	direct="true"/>
+	</screen>
+	
+	<screen name="blogmgr" template="blogmgr">
+		<parameter key="title" value="博客管理" direct="true"/>
+		<parameter key="banner" value="/blog/manage/pubinfo.jsp"/>
+	</screen>
+
+</screen-definitions>

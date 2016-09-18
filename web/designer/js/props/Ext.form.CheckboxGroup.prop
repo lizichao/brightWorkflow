@@ -1,0 +1,22 @@
+{
+properties : [{
+    name : "allowBlank",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to validate that at least one item in the group is checked (defaults to true)"
+  },{
+    name : "blankText",
+    desc : "<b>String</b> Error text to display if the allowBlank validation fails"
+  },{
+    name : "columns",
+    type : "mixed",
+    desc : "<b>mixed</b> Specifies the number of columns to use when displaying grouped checkbox/radio controls using automatic layout"
+  },{
+    name : "items",
+    type : "mixed",
+    desc : "<b>Mixed</b> An Array of Checkboxes or Checkbox config objects to arrange in the group"
+  },{
+    name : "vertical",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to distribute contained controls across columns, completely filling each column top to bottom before starting on the next column"
+  }]
+}

@@ -1,0 +1,4 @@
+.ux-cell-color-gray{font-style:italic;text-decoration:line-through;color:gray;}
+.upload-progress-table{width:auto;border-collapse:collapse;margin-top:7px;font:normal 12px tahoma, arial, verdana, sans-serif;}
+.upload-progress-table .upload-progress-label{width:60px;text-align:left;padding:2px 2px 2px 15px;}
+.upload-progress-table .upload-progress-value{width:150px;}

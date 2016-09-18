@@ -1,0 +1,4 @@
+.scr_con {position:relative;height:680px;width:1090px;}
+#dv_scroll{position:absolute;height:680px;overflow:auto;width:1090px;}
+#dv_scroll .Scroller-Container{width:100%; position:absolute}
+

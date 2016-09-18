@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions> </Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="logQRecord">[  {
+    xtype : "Field",  
+    name : "userid",
+    fieldLabel : "指定用户",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "begindate",
+    fieldLabel : "开始日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "enddate",
+    fieldLabel : "结束日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "sysname",
+    fieldLabel : "子系统编号",
+    type : "string",
+    allowBlank : true
+}]</Record>
+      <Record classname="logRecord">[  {
+    xtype : "Field",
+    name : "logid",
+    fieldLabel : "logid",
+    type : "int",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "用户",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "begintime",
+    fieldLabel : "交易开始时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "endtime",
+    fieldLabel : "交易结束时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "sysname2",
+    fieldLabel : "子系统",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oprid2",
+    fieldLabel : "业务",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "actions2",
+    fieldLabel : "交易",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ipaddr",
+    fieldLabel : "IP地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "issuccess",
+    fieldLabel : "是否成功",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "basetbl",
+    fieldLabel : "操作数据表",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "key_id",
+    fieldLabel : "主键值",
+    type : "string",
+    allowBlank : true
+}]</Record>
+      <Record classname="userRecord">[  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "指定用户",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "usercode",
+    fieldLabel : "usercode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "username",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptcode",
+    fieldLabel : "deptcode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptname",
+    fieldLabel : "deptname",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="logStore">{
+  xtype : "Store",
+  classname : "logStore",
+  type : "JrafXmlStore",
+  recordType : logRecord,
+  idProperty : "logid",
+  api : {read:{sysName:"pcmc",oprID:"LogBean",actions:"searchLog"}},
+  autoLoad : false,
+  autoSave : false,
+  paramsAsHash : true,
+  sortInfo:{field:'begintime',direction:'DESC'},
+  remoteSort : true
+}</Store>
+      <Store classname="userStore">{
+  xtype : "Store",
+  classname : "userStore",
+  type : "JrafXmlStore",
+  recordType : userRecord,
+  idProperty : "userid",
+  api : {read:{sysName:"pcmc",oprID:"userrole",actions:"queryUser"}},
+  baseParams : {query:""},
+  autoLoad : false,
+  autoSave : false,
+  paramsAsHash : true,
+  remoteSort : true
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        region : "north",
+        autoHeight : true,
+        items : [          {
+            layout : "column",
+            items : [      {
+                layout : "form",
+                columnWidth : 0.33,
+                border : false,
+                items : [                  {
+                    xtype : "syscombo",
+                    fieldLabel : "指定子系统",
+                    emptyText : "所有系统",
+                    name : "__sysname",
+                    width : 150,
+                    hiddenName : "__sysname",
+                    valueField : "shortname",
+                    editable : true,
+                    customProperties : true
+                }]
+            },                {
+                layout : "form",
+                columnWidth : 0.33,
+                border : false,
+                items : [                  {
+                    name : "begindate",
+                    fieldLabel : "开始日期",
+                    allowBlank : true,
+                    xtype : "datefield",
+                    width : 150,
+                    format : "Y-m-d"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.33,
+                border : false,
+                items : [                  {
+                    name : "enddate",
+                    fieldLabel : "结束日期",
+                    allowBlank : true,
+                    width : 150,
+                    xtype : "datefield",
+                    format : "Y-m-d"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.5,
+                border : false,
+                items : [                  {
+                    name : "userid",
+                    fieldLabel : "指定用户",
+                    emptyText : "所有用户",
+                    allowBlank : true,
+                    displayField : "username",
+                    valueField : "userid",
+                    xtype : "combo",
+                    width : 300,
+                    store : userStore,
+                    minChars : 2,
+                    typeAhead : false,
+                    forceSelection : true,
+                    hideTrigger : true,
+                    tpl : "&lt;tpl for=\".\"&gt;&lt;div class=\"x-combo-list-item\"&gt;{deptname}-{usercode}-{username}&lt;/div&gt;&lt;/tpl&gt;",
+                    loadingText : "Searching...",
+                    pageSize : 15,
+                    hiddenName : "userid"
+                }]
+            },                    {
+                layout : "form",
+                columnWidth : 0.5,
+                border : false,
+                items : [                  {
+                    xtype : "oprtreecombo",
+                    fieldLabel : "指定操作",
+                    emptyText : "所有操作",
+                    name : "__actions",
+                    width : 300,
+                    hiddenName : "__actions",
+                    valueField : "enname",
+					displayField:"cnname",
+                    editable : true,
+                    customProperties : true
+                }]
+            }]
+        }],
+        id : "logQForm",
+        buttons : [{
+	text : '查询',
+		handler : function() {
+			logStore.setFormParam(Ext.getCmp('logQForm'));
+			logStore.setPageInfo(JrafSession.get('PageSize'),'1');
+			logStore.load();
+		}
+ }],
+        buttonAlign : "center",
+        frame : true,
+        labelWidth : 100,
+        labelAlign : "left"
+    },      {
+        xtype : "grid",
+        region : "center",
+        frame : true,
+        title : "系统日志",
+        viewConfig : {forceFit:false},
+        columnLines : true,
+        autoWidth : true,
+        autoHeight : false,
+        height : 420,
+        id : "logGrid",
+        store : logStore,
+        tbar : [],
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:logStore,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new JrafRowNumberer(),
+			{width:120,sortable:true,header:'用户',dataIndex:'username'},
+			{width:120,sortable:true,header:'交易开始时间',dataIndex:'begintime',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+			{width:120,sortable:true,header:'交易结束时间',dataIndex:'endtime',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+			{width:100,sortable:true,header:'子系统',dataIndex:'sysname2'},
+			{width:200,sortable:true,header:'业务',dataIndex:'oprid2'},
+			{width:150,sortable:true,header:'交易',dataIndex:'actions2'},
+			{width:150,sortable:true,header:'IP地址',dataIndex:'ipaddr'},
+			{width:100,sortable:true,header:'数据表名',dataIndex:'basetbl'},
+			{width:200,sortable:true,header:'主键值',dataIndex:'key_id'}
+        ]),
+        listeners : {
+  rowdblclick : function(g,rowIndex,e){
+	var rec=g.getSelectionModel().getSelected();
+	var href=JrafUTIL.buildHttpUrl('pcmc','log','showlog')+'&amp;logid='+rec.id+'&amp;forward=/platform/sm/LogXml.jsp';
+	var win=new Ext.Window({
+		title:'系统日志',
+	 	layout:'fit',
+	 	width:640,
+	 	height:480,
+	 	closeAction:'close',
+	 	plain: true,
+		modal: true,
+	 	items:JrafUTIL.createCodePanel(href,'点击查看日志')
+	 });
+ 	win.show();
+}
+},
+        stripeRows : true
+    }]
+}]</MainPanel>
+</view>
+

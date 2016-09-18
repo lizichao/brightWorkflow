@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/sell-config.xml">
+  <Operation id="Sell" bean="cn.com.bright.yuexue.sell.Sell" desc="云商城">
+    <Action log="" colacc="" old="" rowacc="" oauth="true" base="" desc="查找课件信息" accredit="" nologin="" webservice="" name="queryPaperInfo">
+      <Request>
+        <Field name="qry_paper_info_id" title="课件ID" type="String" />
+        <Field name="qry_book_type" title="书本类型" type="String" />
+        <Field name="qry_subjectid" title="学科" type="String" />
+        <Field name="qry_paper_info_name" title="课件名" type="String" />
+        <Field name="qry_grade_code" title="年级" type="String" />
+        <Field name="qry_book_volume" title="书册" type="String" />
+        <Field name="qry_book_big_category" title="课外读物大类" type="String" />
+        <Field name="qry_book_sma_category" title="课外读物小类" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="Insert" colacc="" webservice="" old="" desc="添加阅读记录" rowacc="" log="" oauth="true" name="addReadLog">
+      <Request>
+        <Field name="paper_info_id" title="课件ID" type="String" />
+      </Request>
+      <Table name="sell_read_log" />
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="true" base="Update" desc="更新阅读记录" accredit="" log="" webservice="" name="updateReadLog">
+      <Request>
+        <Field name="read_log_id" title="阅读日志ID" type="String" />
+        <Field name="end_time" title="结束时间" type="Timestamp" gen="datetime" />
+        <Field name="modify_by" title="修改人" type="String" gen="session.username" />
+        <Field name="modify_date" title="修改时间" type="Timestamp" gen="datetime" />
+      </Request>
+      <Table name="sell_read_log" />
+    </Action>
+    <Action log="" colacc="" old="" rowacc="" oauth="true" base="" desc="上传云商城课件" accredit="" nologin="" webservice="" name="uploadPaperInfoList">
+      <Request>
+        <Field name="paper_info_name" title="课件名" type="String" maxlen="100" />
+        <Field name="paper_attachment" title="课件附件" type="file" />
+        <Field name="cover_attachment" title="封面附件" type="file" />
+        <Field name="price" title="价格" type="String" maxlen="10" />
+        <Field name="pref_price" title="优惠价格" type="String" maxlen="10" />
+        <Field name="resource_type" title="资源类型" type="String" maxlen="40" />
+        <Field name="intro" title="简介" type="String" maxlen="200" />
+        <Field name="book_type" title="书本类型" type="String" maxlen="40" />
+        <Field name="subjectid" title="分类" type="String" maxlen="40" />
+        <Field name="classid" title="班级" type="String" maxlen="40" />
+        <Field name="grade_code" title="年级" type="String" maxlen="40" />
+        <Field name="book_volume" title="分册" type="String" maxlen="40" />
+        <Field name="book_big_category" title="课外读物大类" type="String" maxlen="40" />
+        <Field name="book_sma_category" title="课外读物大类" type="String" maxlen="40" />
+        <Field name="subject_book_id" title="学科书本ID" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="true" base="" desc="老师推荐课件" colacc="" nologin="" webservice="" name="addPaperRecommended">
+      <Request>
+        <Field name="paper_info_id" title="课件ID" type="String" />
+        <Field name="userids" title="学生ID数组" type="String" />
+        <Field name="classids" title="班级ID数组" type="String" />
+        <Field name="group_ids" title="小组ID数组" type="String" />
+      </Request>
+    </Action>
+    <Action colacc="" rowacc="" base="" accredit="" webservice="" old="" desc="学生购买课件" log="" nologin="" oauth="true" name="buyPaperInfo">
+      <Request>
+        <Field name="paper_info_id" title="课件ID" type="String" maxlen="40" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="600901">你没有足够的习豆(积分)，请及时充值！</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="学生获取推荐课件" rowacc="" nologin="" oauth="true" name="queryPaperRecommended">
+      <Request>
+        <Field name="qry_paper_info_id" title="课件ID" type="String" />
+        <Field name="qry_book_type" title="书本类型" type="String" />
+        <Field name="qry_subjectid" title="学科" type="String" />
+        <Field name="qry_paper_info_name" title="课件名" type="String" />
+      </Request>
+    </Action>
+    <Action base="Insert" old="" desc="增加一个积分记录" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="true" name="addSellIntegral">
+      <Table name="sell_integral" />
+    </Action>
+    <Action base="" old="" desc="得到客户的消费记录列表" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="true" name="querySellIntegralLog" />
+    <Action accredit="" nologin="" base="List" colacc="" webservice="" old="" desc="得到登录用户的积分" rowacc="" log="" oauth="true" name="getUserSellIntegral">
+      <Query basesql="select * from sell_integral t1 where t1.valid = 'Y'">
+        <Field name="qyr_userid" title="用户ID" type="String" gen="session.userid" refname="t1.userid" op="=" />
+      </Query>
+    </Action>
+    <Action rowacc="" accredit="" old="" log="" oauth="true" base="List" desc="得到客户的购买记录" colacc="" nologin="" webservice="" name="queryBuyRecord">
+      <Query basesql="select ps.username, spi.*, sbr.buy_time, getParamDesc('c_book_type', spi.book_type) as book_type_desc from sell_paper_info spi, sell_buy_record sbr, pcmc_user ps where spi.paper_info_id = sbr.paper_info_id and sbr.userid = ps.userid" orderby="sbr.buy_time desc">
+        <Field name="qry_paper_info_id" title="资源ID" type="String" notnull="true" refname="spi.paper_info_id" op="=" />
+      </Query>
+    </Action>
+    <Action colacc="" rowacc="" base="" accredit="" webservice="" old="" desc="创建交易单" log="" nologin="" oauth="true" name="addPayLog">
+      <Request>
+        <Field name="integral_num" title="充值金额" type="String" maxlen="32" />
+        <Field name="userid" title="用户" type="String" maxlen="40" gen="session.userid" />
+        <Field name="order_id" title="订单ID" type="String" maxlen="40" />
+        <Field name="state" title="交易结果" type="String" maxlen="2" defaultval="0" />
+      </Request>
+    </Action>
+    <Action colacc="" rowacc="" base="List" accredit="" webservice="" old="" desc="得到我的充值记录" log="" nologin="" oauth="true" name="getMyPayLog">
+      <Query basesql="select * from pay_integral where 1=1" orderby="create_date desc ">
+        <Field name="userid" title="用户ID" type="String" maxlen="40" gen="session.userid" refname="userid" op="=" />
+      </Query>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="true" base="List" desc="我的余额" accredit="" log="" webservice="" name="getMyPrice">
+      <Query basesql="select money_num from pcmc_user where 1=1">
+        <Field name="userid" title="用户ID" type="String" gen="session.userid" refname="userid" op="=" />
+      </Query>
+    </Action>
+    <Action accredit="" nologin="true" base="" colacc="" webservice="" old="" desc="修改交易单" rowacc="" log="" oauth="true" name="uptPayLog">
+      <Request>
+        <Field name="order_id" title="订单ID" type="String" maxlen="100" />
+        <Field name="state" title="交易状态" type="String" maxlen="2" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="true" base="List" colacc="" webservice="" old="" desc="查询交易结果" rowacc="" log="" oauth="true" name="queryPay_State">
+      <Query basesql="select * from pay_integral where 1=1 ">
+        <Field name="order_id" title="订单ID" type="String" maxlen="100" refname="order_id" op="=" />
+      </Query>
+    </Action>
+     <Action accredit="" nologin="true" base="" colacc="" webservice="" old="" desc="添加用户分享记录" rowacc="" log="" oauth="true" name="addShareByUser">
+      <Request>
+        <Field name="paper_id" title="课件ID" type="String" />
+        <Field name="share_userid" title="分享者id" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+</Config>
+

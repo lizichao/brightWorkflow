@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Language" content="zh-cn" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>1</title>
+<meta name="keywords" content="1" />
+<meta name="description" content="1" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link href="css/public.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.idTabs.min.js"></script>
+<script type="text/javascript">
+$(function(){ 
+	
+			   		
+
+		   
+	$('.ms_notice > ul > li.message > a').click(function(){								  
+		$(this).next('ul').toggle();
+		$(this).parent('li').toggleClass("message_cur")
+	});
+	
+	$('.ms_notice > ul > li.notice > a').click(function(){								  
+		$(this).next('ul').toggle();
+		$(this).parent('li').toggleClass("notice_cur")
+	});
+	
+	$('.ms_notice > ul > li.post > a').click(function(){								  
+		$(this).next('ul').toggle();
+		$(this).parent('li').toggleClass("post_cur")
+	});
+	
+
+
+	
+	
+	$('.mc_artlist > h3 > span').toggle(function(){
+		$(this).parent('h3').next('.sh_div').hide();		
+		$(this).addClass("sh2");
+												 },function(){
+				$(this).parent().next('.sh_div').show();	
+				$(this).removeClass("sh2");
+													})
+	
+	
+	$('#tab1 > h3 > a').hover(function(){
+		$('#tab1 > h3 > a > em').removeClass("cur");									 
+		$(this).prev("a").children("em").addClass("cur");									 
+	},function(){
+		//$(this).prev("a").css("border","none")		
+	})
+	
+	$('#tab2 > h3 > a').hover(function(){
+		$('#tab2 > h3 > a > em').removeClass("cur");									 
+		$(this).prev("a").children("em").addClass("cur");									 
+	},function(){
+		//$(this).prev("a").css("border","none")		
+	})
+	
+	
+});
+</script>
+<!--[if IE 6]>
+ <script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+ <script>
+   DD_belatedPNG.fix('.ie6png');
+ </script>
+<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+    <!--[if !IE]><!--><!--头部开始--><!--<![endif]-->
+    <div class="header">
+        
+ <div class="h_nav">
+ 			<div class="h_text">
+            	2012年4月10日 下午 17：15  星期二
+            </div>
+            <ul>
+          		<li><a href="#">首&nbsp;&nbsp;页</a></li>
+                <li><a href="#">业务处理</a></li>
+                <li><a href="#">公共信息</a></li>
+                <li><a href="#">个人事务</a></li>
+                <li><a class="login" href="#">退出</a></li>
+            </ul>
+        </div>
+ </div>
+    <!--[if !IE]><!--><!--头部结束--><!--<![endif]-->
+    
+    <!--[if !IE]><!--><!--主体开始--><!--<![endif]-->
+    <div class="main">
+		<div class="m_side">
+        	<div class="ms_user">
+            	<div class="mu_content">
+            	
+            	当前用户：邓志彬<br />
+             
+            
+                </div>
+                <div class="ms_user_bottom"></div>
+            </div>
+            <div class="ms_notice">
+            	<ul>
+                	<li class="lv1 message message_cur"><a href="#">催办信息</a><ul style="display:block"><li><a href="#">&bull; 国庆放假通知</a></li>
+                            <li><a href="#">&bull; 测试信息发布</a></li>
+                        </ul>
+                    </li>
+                    <li class="lv1 notice"><a href="#">会议通知</a><ul><li><a href="#">国庆放假通知</a></li>
+                            <li><a href="#">测试信息发布</a></li>
+                        </ul>
+                    </li>
+                    <li class="lv1 post"><a href="#">最新公告(2)</a><ul><li><a href="#">国庆放假通知</a></li>
+                            <li><a href="#">测试信息发布</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="ms_schedule">
+            	<h3>个人日程</h3>	
+                <div class="ms_schedule_content">
+                	<img src="images/pic1.jpg" alt="1" />
+                </div>
+            </div>
+        </div>
+        <div class="m_content">
+        	<div class="mc_menu">
+            	<ul>
+                	<li><a href="#"><img src="images/icon1.png" alt="" /><br />来文登记</a></li>
+                    <li><a href="#"><img src="images/icon2.png" alt="" /><br />发文拟搞</a></li>
+                    <li><a href="#"><img src="images/icon3.png" alt="" /><br />行政审批</a></li>
+                    <li><a href="#"><img src="images/icon4.png" alt="" /><br />领导日程</a></li>
+                    <li><a href="#"><img src="images/icon5.png" alt="" /><br />文档查询</a></li>
+                    <li><a href="#"><img src="images/icon7.png" alt="" /><br />短信发送</a></li>
+                    <li><a href="#"><img src="images/icon8.png" alt="" /><br />新闻报送</a></li>
+                    <li><a href="#"><img src="images/icon9.png" alt="" /><br />会议申请</a></li>
+                </ul>
+            </div>
+            <div class="mc_artlist" id="tab1">
+            	<h3><a style="z-index:100" class="selected" href="#tabc1">待办工作<em></em></a>
+                <a style="z-index:99" href="#tabc2">超时件<em></em></a>
+                <a style="z-index:98" href="#tabc3">文件处理<em></em></a>
+                <a style="z-index:97" href="#tabc4">文件处理<em></em></a>
+                <a style="z-index:96" href="#tabc5">督办件<em class="last"></em></a><span class="sh"></span></h3>
+                <div class="sh_div">
+                <ul id="tabc1">
+                	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                 <ul id="tabc2">
+                   	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                 <ul id="tabc3">
+                	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                 <ul id="tabc4">
+                   	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                   <ul id="tabc5">55
+                   </ul>
+                </div>
+            </div>
+            <div class="mc_artlist" id="tab2">
+            	<h3><a style="z-index:100"  class="selected"  href="#tab2c1">督办邮件督办邮件<em></em></a><a style="z-index:99"  href="#tab2c2">未读邮件<em></em></a><a href="#tab2c3" style="z-index:98" >已读邮件<em class="last"></em></a><img onclick="window.location.href='index.html'" class="email" src="images/email.png" alt="1" /><span class="sh"></span></h3>
+                <div class="sh_div">
+                <ul id="tab2c1">
+                	<li>&bull; <a href="#">中国教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                <ul id="tab2c2">
+                	<li>&bull; <a href="#">中国ddddd教育科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                <ul id="tab2c3">
+                	<li>&bull; <a href="#">中国教育eeeeeee科学研究院院长袁振国来深做报告</a></li>
+                    <li>&bull; <a href="#">吴以环副市长带队调研我市职业教育</a></li>
+                    <li>&bull; <a href="#">我市开展中小学安全教育活动 23所学校获表彰</a></li>
+                    <li>&bull; <a href="#">深圳首个职业教育名校长工作室揭牌</a></li>
+                    <li>&bull; <a href="#">我市将进一步加强中小学幼儿园工作人员管理</a></li>
+                    <li class="more"><a href="#">更多>></a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+ 
+        
+    </div>
+    <div class="clear"></div>
+    <!--[if !IE]><!--><!--主体结束--><!--<![endif]-->
+    
+    <!--[if !IE]><!--><!--底部开始--><!--<![endif]-->
+    <div class="footer">
+        <p><a href="#">关于深圳市教育局</a> | <a href="#">帮助信息</a> | <a href="#">敬请斧正</a> | <a href="#">信息发布</a></p>
+    </div>
+    <!--[if !IE]><!--><!--头部结束--><!--<![endif]-->
+</div>
+<script type="text/javascript"> 
+$(function(){ 
+	$(".h_nav > ul > li:eq(0)").addClass("cur");
+	$(".ms_notice > ul > li > ul > li:nth-child(2n)").addClass("tab");
+	$(".mc_artlist > .sh_div > ul > li:nth-child(2n)").addClass("tab");
+	$("#tab1 h3").idTabs("!mouseover"); 
+	$("#tab2 h3").idTabs("!mouseover"); 
+});
+</script>
+</body>
+</html>

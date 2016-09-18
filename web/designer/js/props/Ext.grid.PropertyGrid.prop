@@ -1,0 +1,15 @@
+{
+properties : [{
+    name : "customEditors",
+    type : "object",
+    desc : "<b>Object</b> An object containing name/value pairs of custom editor type definitions that allow the grid to support additional types of editable fields"
+  },{
+    name : "propertyNames",
+    type : "object",
+    desc : "<b>Object</b> An object containing property name/display name pairs"
+  },{
+    name : "source",
+    type : "object",
+    desc : "<b>Object</b> A data object to use as the data source of the grid (see setSource for details)"
+  }]
+}

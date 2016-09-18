@@ -1,0 +1,22 @@
+{
+listeners : [{
+    name : "actioncomplete",
+    type : "function",
+    classnm : "Ext.form.BasicForm",
+    defaults : 'function(scope,action){}'
+  },{
+    name : "actionfailed",
+    type : "function",
+    classnm : "Ext.form.BasicForm",
+    defaults : 'function(scope,action){}'
+  },{
+    name : "beforeaction",
+    type : "function",
+    classnm : "Ext.form.BasicForm",
+    defaults : 'function(scope,action){}'
+  },{
+    name : "clientvalidation",
+    type : "function",
+    defaults : 'function(scope,valid){}'
+  }]
+}

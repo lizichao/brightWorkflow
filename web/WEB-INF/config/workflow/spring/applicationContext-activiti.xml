@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:aa="http://java.sun.com/xml/ns/javaee"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+		<!--http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd
+	<aa:interceptors>
+		<class>org.activiti.cdi.impl.annotation.StartProcessInterceptor</class>
+	</aa:interceptors>	 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName">
+	        <value>org.logicalcobwebs.proxool.ProxoolDriver</value>
+	    </property>
+	    <property name="url">
+	        <value>proxool.brightcom.database</value>
+	    </property>
+   </bean>
+   
+   	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+        <property name="dataSource" ref="dataSource" />
+	</bean>
+<!--
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/workflow" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+  
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mooclocal" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	-->
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+  
+	<bean id="processEngineConfiguration" class="cn.com.bright.workflow.bpmn.proxy.ProxyProcessEngineConfigurationImpl" >
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<!-- Database configurations -->
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="dbIdentityUsed" value="false"/>
+		<!-- job executor configurations -->
+		<property name="jobExecutorActivate" value="false" />
+		<property name="history" value="audit" />
+		<property name="customFormEngines"  >
+	       <list>
+	         <bean class="cn.com.bright.workflow.form.TaskFormEngine">
+			 </bean>
+	         <bean class="cn.com.bright.workflow.form.ProcessStartFormEngine">
+			 </bean>
+			 <bean class="cn.com.bright.workflow.form.ProcessViewFormEngine">
+			 </bean>
+	       </list>
+        </property>
+        
+		<!-- 添加的自定义监听器 -->
+ 	   <property name="postBpmnParseHandlers">
+    	 <list>
+			<bean class="cn.com.bright.workflow.bpmn.parser.ProxyUserTaskBpmnParseHandler">
+				<property name="taskListenerId" value="customTaskListener"/>
+				<property name="useDefaultUserTaskParser" value="false"/>
+			</bean>
+			<bean class="cn.com.bright.workflow.bpmn.parser.ProxyProcessBpmnParseHandler">
+			    <property name="startProcessListeners">
+					<list>
+					  <value>processStartListener</value>
+					  <value>processStartLogListener</value>
+					  <value>processStartCopyToListener</value>
+					  <value>processStartFormListener</value>
+					</list>
+				</property>
+				<property name="endProcessListeners">
+					<list>
+					  <value>processEndFormListener</value>
+					</list>
+				</property>
+				<!--  <property name="useDefaultExecutionParser" value="false"/>-->
+			</bean>
+			<bean class="cn.com.bright.workflow.bpmn.parser.ProxySequenceFlowParseHandler">
+			   <property name="takeSequenceFlowListeners">
+					<list>
+					  <value>sequenceFlowStateListener</value>
+					  <value>sequenceMultiCreateListener</value>
+					</list>
+			    </property>
+			</bean>
+    	 </list>
+	   </property>
+	<!-- 
+        <property name="customFormEngines">
+    	 	<list>
+				<bean class="cn.com.bright.workflow.form.TaskFormEngine">
+				</bean>
+    	 	</list>
+		</property> -->
+ 
+		<property name="bpmnParser">
+			<bean class="cn.com.bright.workflow.bpmn.parser.CustomBpmnParser" />
+		</property>
+		<property name="activityBehaviorFactory">
+			<bean class="cn.com.bright.workflow.bpmn.behavior.CustomActivityBehaviorFactory" />
+		</property>
+        <!-- 生成流程图的字体 -->
+        <property name="activityFontName" value="宋体"/>
+        <property name="labelFontName" value="宋体"/>
+        
+        <!-- 组织机构适配 -->
+        <property name="customSessionFactories">
+			<list>
+				<bean class="cn.com.bright.workflow.api.persistence.ProcessFormEntityManagerFactory" >
+					<property name="processFormEntityManager">
+						<bean class="cn.com.bright.workflow.api.persistence.ProcessFormEntityManager"/>
+                    </property>
+               </bean>
+               	<bean class="cn.com.bright.workflow.api.persistence.HistoricProcessFormEntityManagerFactory" >
+					<property name="historicProcessFormEntityManager">
+						<bean class="cn.com.bright.workflow.api.persistence.HistoricProcessFormEntityManager"/>
+                    </property>
+               </bean>
+           </list>
+		</property>
+
+        <!-- 缓存支持
+        <property name="processDefinitionCache">
+            <bean class="me.kafeitu.demo.activiti.util.cache.DistributedCache" />
+        </property>-->
+
+        <!-- 自动部署 
+        <property name="deploymentResources">
+            <list>
+                <value>classpath*:/deployments/*</value>
+            </list>
+        </property>-->
+	</bean>
+	
+	<bean id="processEngine" class="cn.com.bright.workflow.bpmn.proxy.ProxyProcessEngineFactoryBean">
+		<property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+		<!--lemon  <property name="enabled" value="${bpm.enabled}"/>-->
+	</bean>
+	
+	<!-- 服务组件的bean -->
+	<bean id="repositoryService" factory-bean="processEngine"
+		factory-method="getRepositoryService" />
+	<bean id="runtimeService" factory-bean="processEngine"
+		factory-method="getRuntimeService" />
+	<bean id="taskService" factory-bean="processEngine"
+		factory-method="getTaskService" />
+	<bean id="historyService" factory-bean="processEngine"
+		factory-method="getHistoryService" />
+	<bean id="managementService" factory-bean="processEngine"
+		factory-method="getManagementService" />
+	<bean id="formService" factory-bean="processEngine"
+		factory-method="getFormService" />
+	<bean id="identityService" factory-bean="processEngine"
+		factory-method="getIdentityService" />
+		
+	<bean id="processStartListener" class="cn.com.bright.workflow.bpmn.listener.ProcessStartListener"/>
+	<bean id="processStartLogListener" class="cn.com.bright.workflow.bpmn.listener.ProcessStartLogListener"/>
+	<bean id="processStartCopyToListener" class="cn.com.bright.workflow.bpmn.listener.ProcessStartCopyToListener"/>
+	<bean id="processEndFormListener" class="cn.com.bright.workflow.bpmn.listener.ProcessEndFormListener"/>
+	<bean id="processStartFormListener" class="cn.com.bright.workflow.bpmn.listener.ProcessStartFormListener"/>
+	
+	<bean id="sequenceFlowStateListener" class="cn.com.bright.workflow.bpmn.listener.SequenceFlowStateListener"/>
+	<bean id="sequenceMultiCreateListener" class="cn.com.bright.workflow.bpmn.listener.SequenceMultiCreateListener"/>
+	
+	<!-- 在解析usertak的时候加的自定义监听器，监听事件根据监听器自己内部实现区分-->
+	<bean id="customTaskListener" class="cn.com.bright.workflow.bpmn.listener.ProxyTaskListener">
+		<property name="taskListeners">
+			<list>
+				<bean class="cn.com.bright.workflow.bpmn.listener.ConfRoleTaskListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.TaskHistoricIdentityListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.TaskDelegateListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.LogCompleteTaskListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.RemoveInternalVariableTaskListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.CopyToTaskListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.TaskMultiMonitorListener"/>
+				<bean class="cn.com.bright.workflow.bpmn.listener.ProcessUpdateFormListener"/>
+			</list>
+		</property>
+	</bean>
+</beans>

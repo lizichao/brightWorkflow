@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions></Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="nodeRecord">[  {
+    xtype : "Field",
+    name : "sid",
+    fieldLabel : "sid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pid",
+    fieldLabel : "pid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "deptid",
+    fieldLabel : "deptid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "scode",
+    fieldLabel : "scode",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sname",
+    fieldLabel : "sname",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "stype",
+    fieldLabel : "stype",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "isleaf",
+    fieldLabel : "isleaf",
+    type : "string",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores />
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    items : [      {
+        xtype : "form",
+        title : "Form",
+        region : "north",
+        height : 80,
+        items : [
+        	{
+        		xtype : "treecombo",
+	            fieldLabel : "班级",
+	            name : "classid",
+	            hiddenName : "classid",
+	            valueField : "sid",
+	            displayField : "sname",
+	            triggerAction : "all",
+	            width : 300,
+	            lazyRender : true,
+	            editable : false,
+	            forceSelection : true,
+	            rootVisible : false,
+	            root : new Ext.tree.AsyncTreeNode({id:'-1',text:'Tree Root',draggable : false}),
+	            nparams : {nid:'sid',pid:'pid',ntext:'{sname}',loadAll:false,expanded:true,sm:'leaf',isLeaf:'isleaf'},
+	            action: {sysName:'yuexue',oprID:'grade',actions:'gradecls'},
+	            baseParams : {stype:'$NODEVALUE$',scode:'$NODEVALUE$',deptid:'402882e6476634b5014767195d950002'},
+	            recordType:nodeRecord
+        	}
+        ]
+    },{
+	    xtype : "treepanel",
+	    title : "TreePanel",
+	    region : "center",
+	    height : 400,
+	    animate : true,
+	    autoScroll : true,
+	    containerScroll : true,
+	    rootVisible : false,
+	    root : new Ext.tree.AsyncTreeNode({id:'-1',text:'Tree Root',draggable : false}),
+	    loader : new JrafXmlTreeLoader({nparams: {nid:'sid',pid:'pid',ntext:'{sname}',loadAll:false,expanded:true,sm:'all',isLeaf:'isleaf'},action: {sysName:'yuexue',oprID:'grade',actions:'gradecls'},baseParams : {stype:'$NODEVALUE$',scode:'$NODEVALUE$',deptid:'402882e6476634b5014767195d950002'},recordType:nodeRecord})
+	}]
+}]</MainPanel>
+</view>
+

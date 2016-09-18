@@ -1,0 +1,52 @@
+{
+listeners : [{
+    name : "add",
+    type : "function",
+    defaults : 'function(store,records,index){}'
+  },{
+    name : "beforeload",
+    type : "function",
+    defaults : 'function(store,options){}'
+  },{
+    name : "beforewrite",
+    type : "function",
+    defaults : 'function(store,action,rs,options,arg){}'
+  },{
+    name : "clear",
+    type : "function",
+    defaults : 'function(store,records){}'
+  },{
+    name : "datachanged",
+    type : "function",
+    defaults : 'function(store){}'
+  },{
+    name : "exception",
+    type : "function",
+    defaults : 'function(misc){}'
+  },{
+    name : "load",
+    type : "function",
+    defaults : 'function(store,records,options){}'
+  },{
+    name : "loadexception",
+    type : "function",
+    defaults : 'function(misc){}'
+  },{
+    name : "metachange",
+    type : "function",
+    defaults : 'function(store,meta){}'
+  },{
+    name : "remove",
+    type : "function",
+    defaults : 'function(store,record,index){}'
+  },{
+    name : "update",
+    type : "function",
+    defaults : 'function(store,record,operation){}'
+  },{
+    name : "write",
+    type : "function",
+    defaults : 'function(store,action,result,res,rs){}',
+    desc : "write : ( Ext.data.Store store, String action, Object result, Ext.Direct.Transaction res, Record/Record[] rs )"
+  }]
+}

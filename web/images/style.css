@@ -1,0 +1,49 @@
+.welBg1 {
+	background-attachment: fixed;
+	background-image: url(welImg02.jpg);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.welBg2 {
+	background-attachment: fixed;
+	background-image: url(welImg03.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+table {
+	font-family: "ËÎÌו";
+	font-size: 12px;
+	color: #333333;
+}
+.bg3 {
+	background-attachment: fixed;
+	background-image: url(bg3.gif);
+	background-repeat: repeat-x;
+	background-position: center top;
+}
+.toprbg {
+	background-attachment: scroll;
+	background-image: url(topn4.jpg);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.subLtitle {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FF3300;
+}
+.datatitle {
+	background-image: url(nypic03.jpg);
+	height: 25px;
+	font-size: 14px;
+	algin:center;
+}
+.datarow {
+	 zmm: expression(
+		  onmouseover = function(){ style.background='#ECECEC';},
+		  onmouseout = function(){ style.background='white';}
+	 );
+	 cursor:hand;
+	 font-size: 14px;
+	 height: 25px;
+}

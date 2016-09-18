@@ -1,0 +1,16 @@
+{
+properties : [{
+    name : "checked",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to initialize this checkbox as checked (defaults to false). Note that if this checkbox is part of a radio group (group = true) only the last item in the group that is initialized with checked = true will be rendered as checked"
+  },{
+    name : "group",
+    desc : "<b>String</b> All check items with the same group name will automatically be grouped into a single-select radio button group (defaults to '')"
+  },{
+    name : "groupClass",
+    desc : "<b>String</b> The default CSS class to use for radio group check items (defaults to \"x-menu-group-item\")"
+  },{
+    name : "itemCls",
+    desc : "<b>String</b> The default CSS class to use for check items (defaults to \"x-menu-item x-menu-check-item\")"
+  }]
+}

@@ -1,0 +1,19 @@
+{
+properties : [{
+    name : "autoCreate",
+    type : "mixed",
+    desc : "<b>String/Object</b> A DomHelper element spec, or true for a default element spec"
+  },{
+    name : "growMax",
+    type : "number",
+    desc : "<b>Number</b> The maximum height to allow when grow = true (defaults to 1000)"
+  },{
+    name : "growMin",
+    type : "number",
+    desc : "<b>Number</b> The minimum height to allow when grow = true (defaults to 60)"
+  },{
+    name : "preventScrollbars",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to prevent scrollbars from appearing regardless of how much text is in the field (equivalent to setting overflow: hidden, defaults to false)"
+  }]
+}

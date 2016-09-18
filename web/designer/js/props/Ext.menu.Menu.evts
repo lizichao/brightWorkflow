@@ -1,0 +1,19 @@
+{
+listeners : [{
+    name : "click",
+    type : "function",
+    defaults : 'function(menu,menuItem,e){}'
+  },{
+    name : "itemclick",
+    type : "function",
+    defaults : 'function(baseItem,e){}'
+  },{
+    name : "mouseout",
+    type : "function",
+    defaults : 'function(menu,e,menuItem){}'
+  },{
+    name : "mouseover",
+    type : "function",
+    defaults : 'function(menu,e,menuItem){}'
+  }]
+}

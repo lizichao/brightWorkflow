@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions></Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records />
+    <Stores />
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[{
+    xtype : "panel",
+    items:[{
+	    xtype : "form",
+	    title : "修改密码",
+	    items : [      {
+	        xtype : "textfield",
+	        fieldLabel : "原密码",
+	        name : "oldpwd",
+	        inputType : "password",
+	        allowBlank : false
+	    },      {
+	        xtype : "textfield",
+	        fieldLabel : "新密码",
+	        id : "newpwd",
+	        name : "newpwd",
+	        inputType : "password",
+	        allowBlank : false
+	    },      {
+	        xtype : "textfield",
+	        fieldLabel : "确认新密码",
+	        name : "newpwd2",
+	        inputType : "password",
+	        allowBlank : false,
+	        vtype:'valEqual',
+			valEqual:{field:'newpwd'}
+	    }],
+	    buttonAlign : "left",
+	    buttons : [{
+			text : '保存',
+			handler : function() {
+				var _form=this.ownerCt.ownerCt;
+				var jr = new JrafRequest('yuexue','user','chgpwd');
+	            jr.setForm(_form);
+	            jr.postData();
+			}
+		}]
+	}]
+}]</MainPanel>
+</view>
+

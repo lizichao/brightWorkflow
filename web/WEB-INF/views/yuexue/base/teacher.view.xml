@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions>
+    function openTeacherWindow(rec){
+    	var jsurl="/yuexue/base/teacherdetail.js";
+		var jsobjnm="jsp.yuexue.base.teacherdetail";
+		var __mfunc=function(){
+			var crtobj='var _mainPanel=new '+jsobjnm+'();';
+			if (window.execScript) {
+			   window.execScript(crtobj);
+			} else {
+			   window.eval(crtobj);
+			}
+			//创建window
+			var teahcerWin=new Ext.Window({
+				title:"教师信息",
+				layout:'fit',
+				width:900,
+				height:500,
+				closable:true,
+				closeAction:'close',
+				maximizable:true,
+				plain: true,
+				modal: true,
+				items:_mainPanel.MainPanel
+			});
+			teahcerWin.show();
+			//加载数据
+			//MainPanel.itrec=itrec;
+			
+		_mainPanel.__jrafonload({objRec:[rec]});
+		_mainPanel.teahcerWin = teahcerWin;
+		JrafUTIL.putCmp(jsobjnm,_mainPanel);
+		}.createDelegate(this);
+		JrafUTIL.scriptLoader(Jraf_ContextPath+jsurl,true,__mfunc);
+	};
+    
+    function showUser(rec){
+	var win=MainPanel['userwin'];
+	if(!win){
+		win=new Ext.Window({
+			title:'教师信息',
+	        layout:'fit',
+	        width:680,
+	        height:460,
+	        closeAction:'hide',
+	        plain: true,
+	        modal: true,
+	        items:userPanel
+	    });
+	    MainPanel['userwin']=win;
+	    __caches__.push(win);
+	}
+	win.show();
+	userPanel.getForm().reset();
+	userPanel.getForm().getEl().dom.reset();
+	userPanel.record=rec;
+	userPanel.getForm().loadRecord(rec);
+};
+ function impData(rec){
+   var xlsWin = MainPanel['xlswin'];
+   if(!xlsWin){
+		xlsWin = new Ext.Window({
+			title:'教师基本信息导入',
+	        layout:'fit',
+	        width:535,
+	        height:320,
+	        closeAction:'hide',
+	        plain: true,
+	        modal: true,
+	        items:xlsForm
+		});
+		MainPanel['xlswin']=xlsWin;
+		__caches__.push(xlsWin);
+   }
+     xlsWin.show();
+     
+ };</Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="teacherRecord">[  {
+     xtype : "Field",
+    name : "userid",
+    fieldLabel : "userid",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "usercode",
+    fieldLabel : "登录名",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "userpwd",
+    fieldLabel : "登录密码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "username",
+    fieldLabel : "姓名",
+    type : "string",
+    allowBlank : false
+},  {
+    xtype : "Field",
+    name : "nickname",
+    fieldLabel : "昵称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "portrait",
+    fieldLabel : "头像",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "description",
+    fieldLabel : "描述",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "idnumber",
+    fieldLabel : "身份证号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "email",
+    fieldLabel : "邮箱",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "phone",
+    fieldLabel : "固话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mobile",
+    fieldLabel : "移动电话",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gender",
+    fieldLabel : "性别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "modifydt",
+    fieldLabel : "最后修改时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "birthday",
+    fieldLabel : "出生日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "state",
+    fieldLabel : "状态",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "teacher_id",
+    fieldLabel : "主键",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "userid",
+    fieldLabel : "用户编号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ctid",
+    fieldLabel : "证件类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "houseaddress",
+    fieldLabel : "家庭地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "oid",
+    fieldLabel : "港澳台侨",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "psid",
+    fieldLabel : "政治面貌",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "nid",
+    fieldLabel : "民族",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "hkxz",
+    fieldLabel : "户口性质",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "edu",
+    fieldLabel : "最高学历",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "preflag",
+    fieldLabel : "是否学前教育专业",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sfyjszgz",
+    fieldLabel : "是否有教师资格证",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "fzjg",
+    fieldLabel : "发证机关",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "jszgzzl",
+    fieldLabel : "教师资格证种类",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "jszgzhm",
+    fieldLabel : "教师资格证号码",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "rzlb",
+    fieldLabel : "任职类别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "xzzw",
+    fieldLabel : "行政职务",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "begin_year",
+    fieldLabel : "来校(园)日期(年月)",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sbtid",
+    fieldLabel : "参加社保类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ylbx",
+    fieldLabel : "有无医疗保险",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sndkhqk",
+    fieldLabel : "上年度考核情况",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "bzqk",
+    fieldLabel : "编制情况",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "jbgz",
+    fieldLabel : "基本工资(元/月)",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "jxgz",
+    fieldLabel : "绩效工资(元/月)",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "jtbz",
+    fieldLabel : "其他津贴补助(元/月)",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pjsr",
+    fieldLabel : "上年平均月收入(元/月)",
+    type : "float",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ywylbx",
+    fieldLabel : "有无养老保险",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "zfgjj",
+    fieldLabel : "有无住房公积金",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sybx",
+    fieldLabel : "有无失业保险",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "gsbx",
+    fieldLabel : "有无工伤保险",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "ywsybx",
+    fieldLabel : "有无生育保险",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "edu_dept",
+    fieldLabel : "获得最高学历机构",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "zgxw",
+    fieldLabel : "最高学位",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "xw_dept",
+    fieldLabel : "获得最高学位机构",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "job_year",
+    fieldLabel : "参加工作年份",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "job_type",
+    fieldLabel : "岗位类别",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "job_grade",
+    fieldLabel : "岗位等级",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "htqk",
+    fieldLabel : "签订合同情况",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pthdj",
+    fieldLabel : "普通话等级",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "cjqsrq",
+    fieldLabel : "从教起始日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "rksd",
+    fieldLabel : "主要任课学段",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "rjkc",
+    fieldLabel : "任教课程",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "zyjszw",
+    fieldLabel : "专业技术职务",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sfqrzsf",
+    fieldLabel : "是否全日制师范类专业毕业",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pxqk",
+    fieldLabel : "近三年专任教师接受培训情况",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "mfshs",
+    fieldLabel : "是否属于免费师范生",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "jsgw",
+    fieldLabel : "是否持有教师岗位",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "valid",
+    fieldLabel : "是否有效",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "updatedate",
+    fieldLabel : "修改日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+},  {
+    xtype : "Field",
+    name : "createdate",
+    fieldLabel : "添加日期",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d"
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="teacherStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "teacherStore",
+  recordType : teacherRecord,
+  idProperty : "userid",
+  api : {read:{sysName:"yuexue",oprID:"teacher",actions:"query"}},
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels>
+  <Panel classname="xlsForm" xtype="form">{
+	  xtype : "form",
+	  classname : "xlsForm",
+	  fileUpload : true,
+	  items : [   {
+		xtype:'uploadpanel',
+		itemId : 'uploadPanel',
+		border : false,
+		fileSize : 5024*3500,//限制文件大小
+		uploadUrl :'/p.ajaxutf',
+		filePostName : 'doc_file', //后台接收参数
+		fileTypes : '*.xls',//可上传文件类型
+		file_upload_limit:"5",
+		height : 210,
+		upBtn:false,
+		stopBtn:false,
+		fileTypesDescription:'所有文件',
+		successFn:function(a){	
+		   var xlsWin = MainPanel['xlswin'];
+			xlsWin.hide();
+		}		
+		}],
+	  frame : true,
+	  buttonAlign:'center',
+	  buttons : [{
+		text : '上 传',
+		handler : function() {
+			var _form=this.ownerCt.ownerCt;
+			var up = _form.getComponent('uploadPanel');
+			var ps = Ext.apply({'sysName':'yuexue','oprID':'doc','actions':'importDocFile'},JrafUTIL.crParams([{doc_flag:"teacher"}]));
+			up.startUpload(this,null,ps);
+		}
+  }]
+}</Panel>
+    <Panel classname="userPanel" xtype="form">{
+    xxtype: "Jpanel",
+    xtype: "form",
+    frame: true,
+    fileUpload: true,
+    labelAlign: "right",
+    classname: "userPanel",
+    items: [{
+        layout: "column",
+        bodyBorder: false,
+        items: [{
+            layout: "form",
+            bodyBorder: false,
+            columnWidth: 0.99,
+            items: [{
+                layout: "column",
+                bodyBorder: false,
+                items: [{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "usercode",
+                        fieldLabel: "登录账号",
+                        allowBlank: false,
+                        minLength: 3,
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "userpwd",
+                        fieldLabel: "登录密码",
+                        allowBlank: false,
+                        minLength: 6,
+                        width: 160,
+                        inputType : "password",
+                        xtype: "textfield"
+                    }]
+                },{
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "username",
+                        fieldLabel: "姓名",
+                        allowBlank: false,
+                        width: 160,
+                        xtype: "textfield"
+                    },{
+				        name : "userid",
+				        xtype: "textfield",
+				        allowBlank : true,
+				        xtype : "hidden"
+						},{
+				        name : "studinfoid",
+				        xtype: "textfield",
+				        allowBlank : true,
+				        xtype : "hidden"
+						}]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "idnumber",
+                        fieldLabel: "身份证号",
+                        allowBlank: true,
+                        minLength: 12,
+                        width: 160,
+                        vtype : "idcard",
+                        xtype: "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "gender",
+                        fieldLabel: "性别",
+                        allowBlank: true,
+                        width: 160,
+                        xtype: "paracombo",
+                        hiddenName: "gender",
+                        baseParams: {
+                            paramname: 'gender'
+                        }
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "birthday",
+                        fieldLabel: "出生日期",
+                        allowBlank: true,
+                        width: 160,
+                        format : "Y-m-d",
+                        xtype: "datefield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "mobile",
+                        fieldLabel: "移动电话",
+                        allowBlank: false,
+                        width: 160,
+                        vtype: "mobile",
+                        xtype: "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "phone",
+                        fieldLabel: "联系电话",
+                        allowBlank: true,
+                        width: 160,
+                        vtype: "phone",
+                        xtype: "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                        name: "email",
+                        fieldLabel: "邮箱",
+                        allowBlank: true,
+                        vtype: "email",
+                        width: 160,
+                        xtype: "textfield"
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 1,
+                    labelAlign: "right",
+                    items: [{
+                        name: "description",
+                        fieldLabel: "备注",
+                        allowBlank: true,
+                        xtype: "textarea",
+                        maxLength: 200,
+                        maxLengthText: "最大长度为200",
+                        width: 460,
+                        height: 40
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+									    xtype: "fileuploadfield",
+									    emptyText: "选择上传照片",
+									    fieldLabel: "照片",
+									    name: "portraitFile",
+									    width: 200,
+									    buttonText : "选择照片",
+									    listeners: {
+									        fileselected: function(u, v) {
+									            userPanel.getForm().findField("portrait").setSelValue(v);
+									        }
+									    }
+									}]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 0.5,
+                    labelAlign: "right",
+                    items: [{
+                    		xtype : "combo",
+									      fieldLabel : "状态",
+									      allowBlank : false,
+									      name : "state",
+									      hiddenName : "state",
+									      valueField : "v",
+									      displayField : "t",
+									      triggerAction : "all",
+									      mode : "local",
+									      store : new Ext.data.ArrayStore({id: 0,fields: ['v','t'],
+									      data: [['1', '有效'],['2','无效'],['8','锁定']]}),
+									      width : 150
+                    }]
+                },
+                {
+                    layout: "form",
+                    bodyBorder: false,
+                    columnWidth: 1,
+                    labelAlign: "right",
+                    items: [  {
+									    name: "portrait",
+									    allowBlank: true,
+									    xtype: "displayfield",
+									    fieldLabel: "照片预览",
+									    width: 160,
+									    height: 120,
+									    defaultAutoCreate: {
+									        width: 160,
+									        height: 120,
+									        tag: "img",
+									        src: Ext.BLANK_IMAGE_URL
+									    },
+									    getRawValue: function() {
+									        return this.value || '';
+									    },
+									    setRawValue: function(v) {
+									        var p = Ext.BLANK_IMAGE_URL;
+									        p = v ? Jraf_ContextPath + v: p;
+									        this.value = v || '';
+									        this.el.dom.src = p;
+									    },
+									    setSelValue: function(v) {
+									        this.value = v;
+									        this.el.dom.src = v;
+									    }
+									}]
+                }]
+            },
+            {
+                xtype: "fieldset",
+                title: "基础信息",
+                id: "study_item",
+                collapsible: true,
+                hidden: true,
+                items: [{
+                    layout: "column",
+                    bodyBorder: false,
+                    items: [{
+                        layout: "form",
+                        bodyBorder: false,
+                        columnWidth: 0.5,
+                        items: [{}]
+                    }]
+                }]
+            }]
+        }]
+    }],
+    buttonAlign: "center",
+    buttons: [{
+        text: '保存',
+        handler: function() {
+						var _form=this.ownerCt.ownerCt;
+						var rec=_form.record;
+						var jr;
+	    	    if(rec.phantom){
+                jr=new JrafRequest('yuexue','teacher','add',{recordType:teacherRecord,idProperty:'userid'});
+            }else{
+                jr=new JrafRequest('yuexue','teacher','upt',{recordType:teacherRecord,idProperty:'userid'});
+            }
+						jr.setForm(_form);
+            jr.setSuccFn(function(a,_resp,xr){
+                _form.getForm().updateRecord(rec);
+                xr.realize(rec,a.records);
+		        	  _form.ownerCt.hide();
+            });
+            jr.postData();
+        }
+    },
+    {
+        text: '关闭',
+        handler: function() {
+            this.ownerCt.ownerCt.ownerCt.hide();
+        }
+    }],
+    autoScroll: true,
+    labelWidth: 80
+}</Panel>
+  </SubPanels>
+  <MainPanel>[  {
+    xtype : "panel",
+    layout : "border",
+    bodyBorder : false,
+    frame : true,
+    items : [      {
+        xtype : "form",
+        region : "north",
+        bodyBorder : false,
+        height : 65,
+        labelAlign : "right",
+        items : [          {
+            layout : "column",
+            bodyBorder : false,
+            anchor : "100%",
+            items : [              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_username",
+                    fieldLabel : "姓名",
+                    allowBlank : true,
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.33,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_idnumber",
+                    fieldLabel : "身份证号",
+                    allowBlank : true,
+                    vtype : "idcard",
+                    xtype : "textfield"
+                }]
+            },              {
+                layout : "form",
+                columnWidth : 0.34,
+                bodyBorder : false,
+                items : [                  {
+                    name : "qry_mobile",
+                    fieldLabel : "手机号",
+                    allowBlank : true,
+                    vtype : "mobile",
+                    xtype : "textfield"
+                }]
+            }]
+        }],
+        buttonAlign : "center",
+        buttons : [{
+			text : '查询', handler : function() {
+				teacherStore.setFormParam(this.ownerCt.ownerCt);
+				teacherStore.setPageInfo(JrafSession.get('PageSize'),'1');
+				teacherStore.load();
+			}
+		}]
+    },      {
+        xtype : "grid",
+        frame : true,
+        viewConfig : {forceFit:false},
+        columnLines : true,
+        autoHeight : false,
+        height : 320,
+        title : "教师",
+        store : teacherStore,
+        tbar : [{text:'新增',iconCls:'add',ref: '../addBtn',handler:function(){var _grid=this.ownerCt.ownerCt;var recordType=_grid.getStore().recordType;var nr=new recordType();_grid.getStore().add(nr);_grid.getSelectionModel().selectLastRow();var rec=_grid.getSelectionModel().getSelected();openTeacherWindow(rec);}},
+				{xtype: 'tbseparator'},
+				{text:'导入',iconCls:'application-get',ref: '../impBtn',handler:function(){impData();}},
+				{xtype: 'tbseparator'},
+		{text:'数据模板下载',iconCls:'arrow-down',ref: '../downBtn',handler:function(){var url="/reports/model/teacher_info.xls";window.open(url);}}],
+        bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:teacherStore,displayInfo: true}),
+        colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+					{width:100,sortable:true,header:'登录名',dataIndex:'usercode'},
+					{width:80,sortable:true,header:'姓名',dataIndex:'username'},
+					{width:56,sortable:true,header:'头像',dataIndex:'portrait',renderer:function(v){
+						if(v)if(v!='') return '&lt;img style="height: 40px;width: 45px;" src="'+Jraf_ContextPath+v+'"/&gt;';
+						return '';
+					}},
+					{width:130,sortable:true,header:'身份证号',dataIndex:'idnumber'},
+					{width:120,sortable:true,header:'邮箱',dataIndex:'email'},
+					{width:80,sortable:true,header:'移动电话',dataIndex:'mobile'},
+					{width:40,sortable:true,header:'性别',dataIndex:'gender',renderer:Ext.util.Format.paramRenderer('gender')},
+					{width:115,sortable:true,header:'最后修改时间',dataIndex:'modifydt',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+					{width:40,sortable:true,header:'状态',dataIndex:'state',renderer:Ext.util.Format.paramRenderer('userstate')}]),
+        listeners : {
+	    	rowdblclick:function(g,rowIndex){
+				var rec=g.getSelectionModel().getSelected();
+				openTeacherWindow(rec);
+			}
+	    },
+        region : "center"
+    }]
+}]</MainPanel>
+</view>
+

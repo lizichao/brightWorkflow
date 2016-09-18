@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/cas-table.xml">
+  <Table name="registeredserviceimpl" desc="服务">
+    <Field name="id" title="主键" type="long" maxlen="19" notnull="false" pk="true" gen="autoinc" sequenceName="HIBERNATE_SEQUENCE" />
+    <Field name="name" title="名称" type="String" maxlen="255" notnull="true" pk="false" />
+    <Field name="serviceid" title="服务URL" type="String" maxlen="255" notnull="true" pk="false" />
+    <Field name="description" title="描述" type="String" maxlen="255" notnull="true" pk="false" />
+    <Field name="theme" title="主题名" type="String" maxlen="255" notnull="true" pk="false" />
+    <Field name="enabled" title="启用" type="long" maxlen="1" notnull="false" pk="false" />
+    <Field name="ssoenabled" title="参与SSO" type="long" maxlen="1" notnull="false" pk="false" />
+    <Field name="allowedtoproxy" title="允许作为代理" type="long" maxlen="1" notnull="false" pk="false" />
+    <Field name="anonymousaccess" title="匿名访问" type="long" maxlen="1" notnull="false" pk="false" />
+    <Field name="evaluation_order" title="排序号" type="long" maxlen="10" notnull="false" pk="false" />
+    <Field name="ignoreattributes" title="忽略属性" type="long" maxlen="1" notnull="false" pk="false" />
+  </Table>
+  <Table name="rs_attributes" desc="服务属性">
+    <Field name="a_id" title="主键" type="long" maxlen="10" notnull="false" pk="true" gen="autoinc" sequenceName="HIBERNATE_SEQUENCE" />
+    <Field name="registeredserviceimpl_id" type="long" maxlen="19" notnull="false" fk="true" />
+    <Field name="a_name" title="属性" type="String" maxlen="255" notnull="false" pk="false" />
+  </Table>
+</Database>
+

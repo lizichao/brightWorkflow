@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="taskServiceImplExt" class="cn.com.bright.workflow.service.TaskServiceImplExt">
+	   <constructor-arg ref="processEngineConfiguration"></constructor-arg>  
+    </bean>
+    
+    <bean id="formResourceService" class="cn.com.bright.workflow.service.FormResourceService"/>
+    <bean id="processOperateService" class="cn.com.bright.workflow.service.ProcessOperateService"/>
+    <bean id="taskOperateService" class="cn.com.bright.workflow.service.TaskOperateService"/>
+    <bean id="taskQueryService" class="cn.com.bright.workflow.service.TaskQueryService"/>
+    <bean id="processQueryService" class="cn.com.bright.workflow.service.ProcessQueryService"/>
+   <!-- -->
+    <bean id="processPermissionService" class="cn.com.bright.workflow.service.ProcessPermissionService"/>
+    <bean id="workflowLogService" class="cn.com.bright.workflow.service.WorkflowLogService"/>
+    <bean id="userQueryService" class="cn.com.bright.workflow.service.UserQueryService"/>
+    <bean id="departmentQueryService" class="cn.com.bright.workflow.service.DepartmentQueryService"/>
+    <bean id="workflowDefExtService" class="cn.com.bright.workflow.service.WorkflowDefExtService"/>
+     <bean id="processFormService" class="cn.com.bright.workflow.service.ProcessFormService"/>
+   
+    <bean id="transferFunctionEventListener" class="cn.com.bright.workflow.bpmn.listener.component.TransferFunctionEventListener"/>
+    <bean id="subTaskFunctionEventListener" class="cn.com.bright.workflow.bpmn.listener.component.SubTaskFunctionEventListener"/>
+    <bean id="editTaskHandlerListener" class="cn.com.bright.workflow.bpmn.listener.component.EditTaskHandlerListener"/>
+     <bean id="rollbackPreviousListener" class="cn.com.bright.workflow.bpmn.listener.component.RollbackPreviousListener"/>
+     <bean id="addTaskHandlerListener" class="cn.com.bright.workflow.bpmn.listener.component.AddTaskHandlerListener"/>
+     <bean id="functionComponentService" class="cn.com.bright.workflow.service.FunctionComponentService"/>  
+        
+      <bean id="workcalRuleManager" class="cn.com.bright.workflow.workcal.manager.WorkcalRuleManager"/>
+      <bean id="workcalPartManager" class="cn.com.bright.workflow.workcal.manager.WorkcalPartManager"/>
+      <bean id="workcalTypeManager" class="cn.com.bright.workflow.workcal.manager.WorkcalTypeManager"/>
+    
+    <!-- 
+    <bean id="formServiceImplExt" class="cn.com.bright.workflow.service.FormServiceImplExt">
+    </bean> -->
+</beans>

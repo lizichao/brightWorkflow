@@ -1,0 +1,35 @@
+{
+listeners : [{
+    name : "click",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "menuhide",
+    type : "function",
+    defaults : 'function(scope,menu){}'
+  },{
+    name : "menushow",
+    type : "function",
+    defaults : 'function(scope,menu){}'
+  },{
+    name : "menutriggerout",
+    type : "function",
+    defaults : 'function(scope,menu,e){}'
+  },{
+    name : "menutriggerover",
+    type : "function",
+    defaults : 'function(scope,menu,e){}'
+  },{
+    name : "mouseout",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "mouseover",
+    type : "function",
+    defaults : 'function(scope,e){}'
+  },{
+    name : "toggle",
+    type : "function",
+    defaults : 'function(scope,pressed){}'
+  }]
+}

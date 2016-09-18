@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="GBK"?>
+<Database CONFIG-FILE-PATH="{2}db/learn-table.xml">
+  <Table name="learn_attachment" desc="附件信息">
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="userid" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="file_name" title="附件名称" type="String" maxlen="100" pk="false" />
+    <Field name="file_size" title="附件大小" type="long" maxlen="22" pk="false" />
+    <Field name="file_type" title="附件类型" type="String" maxlen="10" pk="false" />
+    <Field name="file_path" title="附件路径" type="String" maxlen="100" pk="false" />
+    <Field name="video_time" title="视频时长" type="long" maxlen="10" pk="false" />
+    <Field name="file_md5" title="附件md5值" type="String" maxlen="32" pk="false" />
+    <Field name="trans_status" title="转换状态" type="String" maxlen="10" pk="false" />
+    <Field name="trans_error" title="转换错误信息" type="String" maxlen="1000" pk="false" />
+    <Field name="access_path" title="访问地址" type="String" maxlen="100" pk="false" />
+    <Field name="cover_path" title="封面路径" type="String" maxlen="100" pk="false" />
+    <Field name="page_count" title="页数" type="long" maxlen="10" pk="false" />
+    <Field name="watch_scale" title="观看平均时间与视频时长比例" type="long" maxlen="3" pk="false" />
+    <Field name="watch_count" title="观看人数" type="long" maxlen="10" pk="false" />
+    <Field name="watch_again_count" title="重看人数" type="long" maxlen="10" pk="false" />
+    <Field name="avg_score" title="观后评分" type="long" maxlen="10" pk="false" />
+    <Field name="upload_time" title="上传时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="学生讨论信息" name="learn_comment">
+    <Field name="comment_id" title="comment_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="p_comment_id" title="父消息ID" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="userid" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="classid" title="classid" type="String" maxlen="32" pk="false" />
+    <Field name="group_id" title="group_id" type="String" maxlen="32" pk="false" />
+    <Field name="attachment_id" title="教材附件ID" type="String" maxlen="32" pk="false" />
+    <Field name="paper_id" title="paper_id" type="String" maxlen="32" pk="false" />
+    <Field name="paper_praxes_id" title="试题ID" type="String" maxlen="32" pk="false" />
+    <Field name="send_id" title="发送ID" type="String" maxlen="32" pk="false" />
+    <Field name="receive_id" title="接收人编号" type="String" maxlen="32" pk="false" />
+    <Field name="comment" title="内容" type="String" maxlen="1000" pk="false" />
+    <Field name="praise_count" title="点赞人数" type="long" maxlen="10" pk="false" />
+    <Field name="praise_user" title="点赞人员" type="String" maxlen="500" pk="false" />
+    <Field name="show_top" title="置顶" type="String" maxlen="1" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_examination_paper" desc="试卷(课件)">
+    <Field name="paper_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="subject_id" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="grade_code" title="年级" type="String" maxlen="5" pk="false" />
+    <Field name="folder_id" title="章节" type="long" maxlen="10" pk="false" />
+    <Field name="resource_type" title="类型" type="String" maxlen="32" pk="false" />
+    <Field name="resource_id" title="资源包" type="String" maxlen="32" pk="false" />
+    <Field name="paper_name" title="试卷(课件)名称" type="String" maxlen="100" pk="false" />
+    <Field name="cover_path" title="封面图片路径" type="String" maxlen="100" pk="false" />
+    <Field name="choose_type" title="组卷方式" type="String" maxlen="32" pk="false" />
+    <Field name="promoted_quantity" title="晋级试题数量" type="long" maxlen="10" pk="false" />
+    <Field name="limit_times" title="答题时间(分钟)" type="long" maxlen="5" pk="false" />
+    <Field name="qualified_score" title="及格分数" type="long" maxlen="5" pk="false" />
+    <Field name="share_level" title="共享范围" type="long" maxlen="5" pk="false" />
+    <Field name="user_id" title="教师ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="deptcode" title="所在学校" type="String" maxlen="32" pk="false" gen="session.deptcode" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="publish_status" title="是否发布" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="remark" title="备注" type="String" maxlen="400" pk="false" />
+  </Table>
+  <Table desc="试卷结果" name="learn_examination_result">
+    <Field name="result_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="my_examination_id" title="my_examination_id" type="String" maxlen="32" pk="false" />
+    <Field name="paper_id" title="试卷ID" type="String" maxlen="32" pk="false" />
+    <Field name="paper_praxes_id" title="paper_praxes_id" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_result" title="结果" type="String" maxlen="1000" pk="false" />
+    <Field name="correct_result" title="批改结果" type="String" maxlen="10" pk="false" />
+    <Field name="is_right" title="回答正确" type="long" maxlen="5" pk="false" />
+    <Field name="score" title="得分" type="double" maxlen="5" pk="false" />
+    <Field name="student_draf_path" title="学生草稿图片路径" type="String" maxlen="200" pk="false" />
+    <Field name="teacher_draf_path" title="教师留痕图片路径" type="String" maxlen="200" pk="false" />
+    <Field name="deptcode" title="所在学校" type="String" maxlen="32" pk="false" gen="session.deptcode" />
+    <Field name="classid" title="classid" type="String" maxlen="32" pk="false" />
+    <Field name="teacherid" title="批改教师" type="String" maxlen="32" pk="false" />
+    <Field name="marking_time" title="批改时间" type="Timestamp" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="consuming_time" title="耗时" type="long" maxlen="10" pk="false" />
+    <Field name="difficulty_stat_flag" title="难度统计标记" type="long" maxlen="3" pk="false" />
+  </Table>
+  <Table desc="分组讨论" name="learn_group">
+    <Field name="group_id" title="group_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="classid" title="classid" type="String" maxlen="32" pk="false" />
+    <Field name="group_subject" title="讨论主题" type="String" maxlen="60" pk="false" />
+    <Field name="group_name" title="小组名称" type="String" maxlen="60" pk="false" />
+    <Field name="grouping_type" title="分组方式" type="String" maxlen="32" pk="false" />
+    <Field name="group_status" title="小组状态" type="String" maxlen="32" pk="false" />
+    <Field name="group_result" title="小组结果" type="String" maxlen="1000" pk="false" />
+    <Field name="userid" title="教师ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_group_member" desc="分组成员">
+    <Field name="member_id" title="member_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="group_id" title="group_id" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false" />
+    <Field name="group_manager" title="组长" type="String" maxlen="1" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_my_examination" desc="我的试卷(课件)">
+    <Field name="my_examination_id" title="my_examination_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="send_id" title="send_id" type="String" maxlen="32" pk="false" />
+    <Field name="paper_id" title="paper_id" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="学生ID" type="String" maxlen="32" pk="false" />
+    <Field name="status" title="试卷状态" type="String" maxlen="32" pk="false" />
+    <Field name="arrived_time" title="送达时间" type="Timestamp" pk="false" />
+    <Field name="receive_time" title="接收时间" type="Timestamp" pk="false" />
+    <Field name="begin_time" title="开始时间" type="Timestamp" pk="false" />
+    <Field name="end_time" title="完成时间" type="Timestamp" pk="false" />
+    <Field name="paper_score" title="问卷得分" type="long" maxlen="5" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="random_paper_id" title="随机组卷ID" type="String" maxlen="32" pk="false" />
+  </Table>
+  <Table desc="题目选项" name="learn_options">
+    <Field name="option_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="praxes_id" title="习题" type="String" maxlen="32" pk="false" />
+    <Field name="display_order" title="显示顺序" type="long" maxlen="5" pk="false" />
+    <Field name="option_content" title="选项内容" type="String" maxlen="10000" pk="false" />
+    <Field name="is_right" title="正确答案" type="long" maxlen="5" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+  </Table>
+  <Table name="learn_paper_attachment" desc="试卷(课件)附件">
+    <Field name="paper_attachment_id" title="paper_attachment_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_id" title="paper_id" type="String" maxlen="32" pk="false" />
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" pk="false" />
+    <Field name="display_order" title="显示顺序" type="long" maxlen="5" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_paper_draft" desc="作业草稿">
+    <Field name="draft_id" title="draft_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="my_examination_id" title="my_examination_id" type="String" maxlen="32" pk="false" />
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_paper_options" desc="试卷题目选项">
+    <Field name="paper_option_id" title="主键" type="String" maxlen="70" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_praxes_id" title="外键" type="String" maxlen="32" pk="false" />
+    <Field name="option_id" title="主键" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_id" title="习题" type="String" maxlen="32" pk="false" />
+    <Field name="display_order" title="显示顺序" type="long" maxlen="5" pk="false" />
+    <Field name="option_content" title="选项内容" type="String" maxlen="10000" pk="false" />
+    <Field name="is_right" title="正确答案" type="long" maxlen="5" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+  </Table>
+  <Table name="learn_paper_praxes" desc="试卷题目">
+    <Field name="paper_praxes_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_id" title="试卷ID" type="String" maxlen="32" pk="false" />
+    <Field name="display_order" title="顺序" type="long" maxlen="5" pk="false" />
+    <Field name="praxes_id" title="praxes_id" type="String" maxlen="32" pk="false" />
+    <Field name="subject_id" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="grade_code" title="年级" type="String" maxlen="3" pk="false" />
+    <Field name="k_point_id" title="知识点" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_type" title="类型" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_content" title="内容" type="String" maxlen="10000" pk="false" />
+    <Field name="discrimination" title="区分度" type="double" maxlen="3" pk="false" />
+    <Field name="difficulty_level" title="难度系数" type="double" maxlen="3" pk="false" />
+    <Field name="score" title="分数" type="double" maxlen="6" pk="false" />
+    <Field name="deptcode" title="所在学校" type="String" maxlen="32" pk="false" gen="session.deptcode" />
+    <Field name="userid" title="教师ID" type="String" maxlen="32" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="right_result" title="正确答案(问答题和判断题)" type="String" maxlen="300" pk="false" />
+    <Field name="share_level" title="共享范围" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_hint" title="解题思路" type="String" maxlen="10000" pk="false" />
+  </Table>
+  <Table name="learn_paper_send" desc="试卷(课件)下发">
+    <Field name="send_id" title="send_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_id" title="paper_id" type="String" maxlen="32" pk="false" />
+    <Field name="receiver_names" title="接收者名称" type="String" maxlen="400" pk="false" />
+    <Field name="receiver_ids" title="接收者ID" type="String" maxlen="2000" pk="false" />
+    <Field name="send_content" title="作业说明" type="String" maxlen="400" pk="false" />
+    <Field name="is_delayed" title="定时发送" type="String" maxlen="1" pk="false" />
+    <Field name="send_time" title="发送时间" type="Timestamp" pk="false" />
+    <Field name="complete_time" title="完成时间" type="Timestamp" pk="false" />
+    <Field name="userid" title="教师ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="deptcode" title="所在学校" type="String" maxlen="32" pk="false" gen="session.deptcode" />
+    <Field name="public_time" title="发布时间" type="Timestamp" pk="false" />
+    <Field name="public_status" title="发布状态" type="String" maxlen="1" pk="false" />
+    <Field name="republic" title="是否重发" type="String" maxlen="1" pk="false" />
+    <Field name="show_result" title="显示答案" type="String" maxlen="1" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table desc="习题库" name="learn_praxes">
+    <Field name="praxes_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="subject_id" title="学科" type="String" maxlen="32" pk="false" />
+    <Field name="grade_code" title="年级" type="String" maxlen="3" pk="false" />
+    <Field name="k_point_id" title="知识点" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_type" title="类型" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_content" title="内容" type="String" maxlen="10000" pk="false" />
+    <Field name="discrimination" title="区分度" type="double" maxlen="3" pk="false" />
+    <Field name="difficulty_level" title="难度系数" type="double" maxlen="3" pk="false" />
+    <Field name="score" title="分数" type="double" maxlen="6" pk="false" />
+    <Field name="share_level" title="共享范围" type="long" maxlen="5" pk="false" />
+    <Field name="source_praxes_id" title="原题ID" type="String" maxlen="32" pk="false" />
+    <Field name="deptcode" title="所在学校" type="String" maxlen="32" pk="false" gen="session.deptcode" />
+    <Field name="userid" title="教师ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="right_result" title="正确答案(判断题和问答题)" type="String" maxlen="300" pk="false" />
+    <Field name="praxes_hint" title="解题思路" type="String" maxlen="10000" pk="false" />
+  </Table>
+  <Table desc="自动组卷规则" name="learn_choose_rule">
+    <Field name="rule_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_id" title="试卷ID" type="String" maxlen="32" pk="false" />
+    <Field name="praxes_type" title="题型" type="String" maxlen="32" pk="false" />
+    <Field name="folder_code" title="教材目录" type="String" maxlen="300" pk="false" />
+    <Field name="difficulty_all" title="不限难度" type="String" maxlen="1" pk="false" />
+    <Field name="difficulty_min" title="最小难度" type="double" maxlen="2" pk="false" />
+    <Field name="difficulty_max" title="最大难度" type="double" maxlen="2" pk="false" />
+    <Field name="praxes_count" title="试题数量" type="long" maxlen="3" pk="false" />
+    <Field name="praxes_score" title="试题分数" type="long" maxlen="3" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_comment_attachment" desc="留言附件">
+    <Field name="comment_attachment_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="附件ID" type="String" maxlen="32" notnull="true" pk="false" />
+    <Field name="comment_id" title="留言ID" type="String" maxlen="32" notnull="true" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="2" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table name="learn_book_read" desc="书本阅读">
+    <Field name="read_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="书本附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="read_page" title="阅读页数" type="long" maxlen="10" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_my_book" desc="我的书架">
+    <Field name="my_book_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="book_attachment_id" type="String" maxlen="40" pk="false" />
+    <Field name="attachment_id" title="书本附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="valid" title="有效标记" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="书本注释" name="learn_book_comment">
+    <Field name="book_comment_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="书本附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="attach_page_num" title="关联页码" type="long" maxlen="5" pk="false" />
+    <Field name="comment" title="教师注释" type="String" maxlen="4000" pk="false" />
+    <Field name="userid" title="教师ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效标识" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_book_paper" desc="注释资源">
+    <Field name="book_paper_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="book_comment_id" title="书本注释ID" type="String" maxlen="40" pk="false" />
+    <Field name="paper_id" title="试卷课件ID" type="String" maxlen="40" pk="false" />
+    <Field name="receiver_names" title="接收者" type="String" maxlen="400" pk="false" />
+    <Field name="receiver_ids" title="接受者ID" type="String" maxlen="2000" pk="false" />
+    <Field name="valid" title="有效标识" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_book_comment_attachment" desc="注释附件表">
+    <Field name="comment_attach_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="book_comment_id" title="书本注释ID" type="String" maxlen="40" pk="false" />
+    <Field name="attachment_id" title="附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_book_read_his" desc="书本阅读记录">
+    <Field name="read_his_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="attachment_id" title="书本附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="attachment_page" title="书本页码" type="long" maxlen="10" pk="false" />
+    <Field name="open_time" title="打开时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="leave_time" title="离开时间" type="Timestamp" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_book_annotate" desc="书本批注信息">
+    <Field name="book_annotate_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="书本附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="attach_page_num" title="页码" type="long" maxlen="5" pk="false" />
+    <Field name="annotate_attachment_id" title="批注附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_homework" desc="作业单">
+    <Field name="homework_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="subjectid" title="学科ID" type="String" maxlen="32" pk="false" />
+    <Field name="classid" title="班级ID" type="String" maxlen="32" pk="false" />
+    <Field name="homework_content" title="作业说明" type="String" maxlen="1000" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_userid" title="建立用户ID" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" gen="datetime" />
+  </Table>
+  <Table name="temp_praxes" desc="试题篮管理">
+    <Field name="temp_id" title="主键编号" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="praxes_id" title="试题ID" type="String" maxlen="40" pk="false" />
+  </Table>
+  <Table desc="视频观看记录信息" name="learn_attachment_log">
+    <Field name="log_id" title="log_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="userid" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="begin_time" title="开始时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="end_time" title="结束时间" type="Timestamp" pk="false" />
+    <Field name="play_time" title="播放时长" type="String" maxlen="32" pk="false" />
+    <Field name="praise" title="是否点赞" type="String" maxlen="1" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="stat_status" title="统计状态" type="String" maxlen="1" pk="false" />
+    <Field name="stat_time" title="统计时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table desc="视频评分信息" name="learn_attachment_score">
+    <Field name="score_id" title="score_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="attachment_id" title="attachment_id" type="String" maxlen="32" pk="false" />
+    <Field name="userid" title="userid" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="score" title="评分" type="String" maxlen="32" pk="false" />
+    <Field name="valid" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="stat_status" title="统计状态" type="String" maxlen="1" pk="false" />
+    <Field name="stat_time" title="统计时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_exam_result_correct" desc="教师批改附件信息">
+    <Field name="correct_id" title="主键" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="result_id" title="作业结果ID" type="String" maxlen="40" pk="false" />
+    <Field name="attachment_id" title="教师批改附件ID" type="String" maxlen="40" pk="false" />
+    <Field name="userid" title="用户ID" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="valid" title="有效标识" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.username" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+  </Table>
+  <Table name="learn_examination_recommend" desc="课件推荐">
+    <Field name="recommended_id" title="主键" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="paper_id" title="课件编号" type="String" maxlen="32" notnull="true" pk="false" />
+    <Field name="cover_path" title="封面图片路径" type="String" maxlen="100" pk="false" />
+    <Field name="cover_color" title="背景颜色" type="String" maxlen="100" pk="false" />
+    <Field name="orderidx" title="显示顺序" type="String" maxlen="5" pk="false" />
+    <Field name="valid" title="是否推荐" type="String" maxlen="1" pk="false" />
+    <Field name="recommend" title="有效" type="String" maxlen="1" pk="false" />
+    <Field name="create_by" title="建立人" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_date" title="建立时间" type="Timestamp" pk="false" gen="sysdate" />
+    <Field name="modify_by" title="修改人" type="String" maxlen="40" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="remark" title="备注" type="String" maxlen="400" pk="false" />
+  </Table>
+  <Table desc="资源包" name="busi_resource">
+    <Field name="resource_id" type="String" maxlen="32" notnull="true" pk="true" />
+    <Field name="resource_name" title="资源包名" type="String" maxlen="100" pk="false" />
+    <Field name="subject_id" title="年级科目" type="String" maxlen="32" pk="false" />
+    <Field name="class_info" title="介绍" type="String" maxlen="200" pk="false" />
+    <Field name="class_counts" title="课节数" type="double" maxlen="11" pk="false" />
+    <Field name="class_price" title="价格" type="double" maxlen="2" pk="false" />
+    <Field name="class_pic" title="图片" type="String" maxlen="255" pk="false" />
+    <Field name="create_by" title="上传者" type="String" maxlen="32" pk="false" />
+    <Field name="create_date" title="上传时间" type="Timestamp" pk="false" />
+    <Field name="modify_by" type="String" maxlen="32" pk="false" />
+    <Field name="modify_date" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="1" pk="false" />
+    <Field name="status" title="状态" type="String" maxlen="255" pk="false" />
+  </Table>
+  <Table desc="资源包" name="learn_resource">
+    <Field name="resource_id" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+    <Field name="resource_name" title="资源包名" type="String" maxlen="200" pk="false" />
+    <Field name="subject_id" title="年级科目" type="String" maxlen="32" pk="false" />
+    <Field name="class_info" title="介绍" type="String" maxlen="300" pk="false" />
+    <Field name="class_counts" title="课节数" type="double" maxlen="10" pk="false" />
+    <Field name="class_price" title="价格" type="double" maxlen="9" pk="false" />
+    <Field name="class_pic" title="图片" type="String" maxlen="255" pk="false" />
+    <Field name="userid" type="String" maxlen="32" pk="false" gen="session.userid" />
+    <Field name="watch_count" title="购买次数" type="double" maxlen="10" pk="false" />
+    <Field name="create_by" title="上传者" type="String" maxlen="32" pk="false" gen="session.username" />
+    <Field name="create_date" title="上传时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modify_by" title="修改者" type="String" maxlen="32" pk="false" />
+    <Field name="modify_date" title="修改时间" type="Timestamp" pk="false" />
+    <Field name="valid" title="是否有效" type="String" maxlen="1" pk="false" />
+    <Field name="status" title="状态" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="learn_my_resource" desc="我购买的资源包">
+    <Field name="my_resource_id" title="我的资源包Id" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="resource_id" title="资源包ID" type="String" maxlen="40" notnull="true" pk="false" />
+    <Field name="class_price" title="价格" type="String" maxlen="10" pk="false" />
+    <Field name="user_id" type="String" maxlen="40" pk="false" gen="session.userid" />
+    <Field name="create_by" type="String" maxlen="30" pk="false" gen="session.username" />
+    <Field name="create_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="modifi_by" type="String" maxlen="30" pk="false" gen="session.username" />
+    <Field name="modifi_date" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="valid" title="是否有效" type="String" maxlen="1" pk="false" />
+  </Table>
+  <Table name="busi_winxin_message_record" desc="发送模板消息表">
+    <Field name="msgid" title="发送消息ID" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="touser" title="接收用户openid" type="String" maxlen="40" pk="false" />
+    <Field name="template_id" title="模板ID" type="String" maxlen="100" pk="false" />
+    <Field name="url" title="地址" type="String" maxlen="200" pk="false" />
+    <Field name="post_data" title="发送数据" type="String" maxlen="2000" pk="false" />
+    <Field name="errcode" title="错误编号" type="String" maxlen="200" pk="false" />
+    <Field name="errmsg" title="错误消息" type="String" maxlen="200" pk="false" />
+    <Field name="feedback_time" title="时间" type="Timestamp" pk="false" gen="datetime" />
+    <Field name="status" title="发送状态" type="String" maxlen="5" pk="false" />
+    <Field name="send_user_id" title="发送人ID" type="String" maxlen="40" pk="false" />
+  </Table>
+  <Table name="busi_winxin_message_template" desc="模板库表">
+    <Field name="template_id" title="模板ID" type="String" maxlen="40" notnull="true" pk="true" gen="uuid" />
+    <Field name="template_id_short" title="模板编号" type="String" maxlen="100" pk="false" />
+    <Field name="template_name" title="模块库名称" type="String" maxlen="200" pk="false" />
+    <Field name="template_sample" title="模板库样本" type="String" maxlen="2000" pk="false" />
+    <Field name="template_code" title="模板类型编号" type="String" maxlen="10" pk="false" />
+  </Table>
+</Database>
+

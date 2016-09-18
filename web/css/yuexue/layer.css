@@ -1,0 +1,132 @@
+@charset "utf-8";
+
+*{margin:0;padding:0;border:0;}
+
+.mainPanel {
+	width: 1064px;
+	margin:0 auto;
+	font-size: 12px;	
+	height: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight)+"px");
+	height: 700px;
+	background-color: #F7F7F7;
+}
+.menuPanel {
+	width: 59px;
+	float:left;
+	height: 100%;
+	display:block;
+	background-color: #F7F7F7;
+}
+.subMenuPanel {position:fixed;_position:relative;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight)-34+"px");width: 59px;height: 100%;zoom:1;background-color: #F7F7F7;}
+.subMenuPanel .topPanel{
+	position:absolute; left:0; top:125px;background-color: #F7F7F7;
+}
+.subMenuPanel .bottomPanel{
+	position:absolute; left:0; bottom:25px;background-color: #F7F7F7;
+}
+.menuPanel-middlePanel-boundaryLine, .middlePanel-rightPanel-boundaryLine, .subMainPanel-boundaryLine {
+	float:left;	
+}
+.boundaryLine { width: 1px;	height: 100%;float:left; background-image: url(/images/yuexue/web_teacher_line01.gif);	}
+.middlePanel {
+	width: 320px;
+	float:left;
+	font-size: 12px;
+	display:block;
+	background-color: #F7F7F7;
+}
+.rightPanel {
+	width: 683px;
+	height: 100%;
+	float:left;
+	display:block;
+	font-size: 12px;
+	background-color: #F7F7F7;
+}
+.balloon {
+ left: 50px;
+ top: 0;
+ position:absolute;
+ color: #FFF;
+ font-size: 12px;
+ text-align: center;
+ width: 30px;
+ height: 24px;
+ line-height: 24px;
+ cursor: pointer;
+ background: #ffba00;
+ -moz-border-radius: 12px;
+ -webkit-border-radius: 12px;
+ border-radius: 12px;
+}
+.subMainPanel {
+	width: 643px;
+	height: 768px;
+	font-size: 12px;
+}
+.subRightPanel {
+	display: none;
+	left: 145px;
+	top: 0;
+	width: 832px;
+	height: 100%;
+	z-index: 200;
+	position: absolute;
+	font-size: 12px;
+	text-align: center;
+}
+.subRightPanel .corner {
+ position: absolute;
+ z-index: 100;
+ background-color: #222;
+ width: 1px;
+ height: 1px;
+ cursor: pointer;
+ opacity:0.2;/*
+ -moz-border-radius:20px;
+ -webkit-border-radius:20px;
+ border-radius:20px;*/
+}
+.subRightPanel .cornerTL { 
+ left:-1px;
+ top:-1px; 
+}
+.subRightPanel .cornerTR { 
+ right:-1px; 
+ top:-1px; 
+}
+.subRightPanel .cornerBL { 
+ left:-1px; 
+ bottom:-1px;
+}
+.subRightPanel .cornerBR { 
+ right:-1px; 
+ bottom:-1px;
+}
+.subRightPanel .cornerL { 
+ left:-1px;
+ top:-1px; 
+}
+.subRightPanel .cornerR { 
+ right:-1px; 
+ top:-1px; 
+}
+.loader{
+ position: absolute;/*
+ z-index: 110;
+ background-color: #222;
+ opacity:0.2;
+ text-align:center;
+ vertical-align:middle;
+ display:table-cell;
+ -moz-border-radius:20px;
+ -webkit-border-radius:20px;
+ border-radius:20px;*/
+}
+.subRightPanelBody {
+	display: none;
+	width: 830px;
+	float:left;
+	height: 100%;
+	font-size: 12px;
+}

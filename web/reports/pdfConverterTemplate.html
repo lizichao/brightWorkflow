@@ -1,0 +1,248 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<title><!--fileName--></title>
+	<meta http-equiv="Pragma" content="no-cache"> 
+	<meta name="viewport" content="width = 920, user-scalable = no" />
+<style type="text/css">
+<!--
+.flipbook-viewport .flipbook{	
+  	width:100%;
+  	height:100%;
+	left:-450px;
+	z-index:99;
+	top:-320px;
+	margin-top:10px;
+}
+.flipbook-viewport .page{	
+   	width:50%;
+  	height:100%;
+	z-index:99;
+	background-color:white;	
+	background-repeat:no-repeat;	
+	background-size:100% 100%;
+}
+-->
+</style>
+<link href="/js/jquery/plugin/Leedialog/dialog.css" rel="stylesheet" type="text/css"/>
+<script src="/js/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="/js/jquery/common.js" type="text/javascript"></script>
+<script src="/js/jquery/jsrender.min.js" type="text/javascript"></script>
+<script src="/js/jquery/plugin/turnjs4/modernizr.2.5.3.min.js" type="text/javascript" ></script>
+<script src="/js/CuPlayer/swfobject.js" type="text/javascript" ></script>
+<script src="/js/jquery/plugin/Leedialog/dialog.js" type="text/javascript"></script>
+<script id="BookCommentRec" type="text/x-jsrender">
+{{for Data}}
+<div class="book_comment">
+   <div>{{:create_by}}:</div>
+   <div>{{:comment}}</div>
+   {{for Papers}}
+     <div class="book_comment_paper" onclick="openPaperWindow('{{:paper_id}}','{{:my_examination_id}}')"><a href="#"><span>[{{:resource_type}}]<span><span>{{:paper_name}}<span></a></div>
+   {{/for}}
+</div>
+{{/for}}
+</script>
+<script type="text/javascript">
+var _readPageNum=1;
+var _attachmentid="";
+var _subjectid="";
+var _subjectbookid="";
+var _teacherid="";
+var _groupid="";
+var _classid="";
+var _bookTurning="0";
+var _showBookOp="0";
+var _folderid="";
+var _gradecode="";
+function showOpWindow(){
+   if (_bookTurning=="0"){
+     if (_showBookOp=="0"){
+        $("#bookOpWindow").show();
+		_showBookOp="1";
+	 }
+	 else{
+	    $("#bookOpWindow").hide();
+		_showBookOp="0";
+	 }
+   }
+}
+function selectChapter(){
+    var urlPath = "/yuexue/student/select_chapter.jsp?subjectbookid="+_subjectbookid+"&folderid="+_folderid;	
+    var iTop = (window.screen.availHeight-400)/2;
+	var iWidth = (window.screen.availWidth-615)/2;
+	var returnArray = window.showModalDialog(urlPath,document.title,"dialogHeight:400px;dialogWidth:615px;center:1;menubar:no;status:no;resizable:no;help:0;scrollbars:no;");
+	if (!returnArray) {
+	    returnArray = window.returnValue;
+	}
+	var _pageNum = returnArray[2];
+	if (_pageNum!="" && parseInt(_pageNum)>0){
+	    $(".flipbook").turn("page",_pageNum); 
+	}
+}
+function openMessageWin(){
+    var _height = window.screen.availHeight;
+	var _width = window.screen.availWidth;
+    var urlPath = 	'/yuexue/message/main.jsp?classid='+_classid+"&subjectid="+_subjectid;
+	    urlPath+="&folderid="+_folderid+"&attachment_id="+_attachmentid+"&M="+Math.random();
+	window.open(urlPath,'消息','height='+_height+',width='+_width+',top=0,left=0,toolbar=no,menubar=yes,scrollbars=yes,resizable=no,location=no, status=no');     
+}
+function openResourceWin(){
+     var _height = window.screen.availHeight;
+	 var _width = window.screen.availWidth;
+     var urlPath = 	'/yuexue/student/wisdom_source.jsp?classid='+_classid+"&subjectid="+_subjectid+"&gradecode="+_gradecode+"&attachment_id="+_attachmentid;
+     var bcReq = new BcRequest("yuexue","Book","getBookFolder");
+     bcReq.setExtraPs({"PageSize":"1","qry_subject_book_id":_subjectbookid,"qry_folder_id":_folderid,"qry_page_num":_readPageNum});
+     bcReq.setSuccFn(function(data,status){
+	     var _tempid = _folderid;
+		 if (data.Data.length>0){
+		    _tempid =  data.Data[0].folder_id;
+		 }
+	     urlPath+="&folderid="+_tempid+"&M="+Math.random();
+	     window.open(urlPath,'智慧源','height='+_height+',width='+_width+',top=0,left=0,toolbar=no,menubar=yes,scrollbars=yes,resizable=no,location=no, status=no'); 
+     });
+     bcReq.postData();	
+}
+function GetQueryString(name) {  
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");  
+    var r = window.location.search.substr(1).match(reg);  
+    if (r != null) return unescape(r[2]); return "";  
+}
+function loadApp() {    
+	_attachmentid = GetQueryString("attachmentid");
+	_subjectid = GetQueryString("subjectid");
+	_subjectbookid = GetQueryString("subjectbookid");
+	_folderid = GetQueryString("folderid");
+	_classid = GetQueryString("classid");
+	_teacherid = GetQueryString("teacherid");
+	_groupid = GetQueryString("groupid");
+	_gradecode = GetQueryString("gradecode");
+
+	if (_attachmentid==""){
+	   _attachmentid="402882e548436f390148437015c20009";
+	}	
+	if (_subjectid==""){
+	   _subjectid="31";
+	}
+    var _height = $(window).height();	
+    var _width = $(window).width();
+	var _left = _width/2;
+	var _top = _height/2+20;
+	var bookPageSize = parseInt($("#book_page_size").val());
+    $(".flipbook").css("left","-"+_left+"px");
+	$(".flipbook").css("top","-"+_top+"px");	
+	$(".flipbook").turn({			
+		width:_width,			
+		height:_height,			
+		elevation: 50,			
+		gradients: false,			
+		autoCenter: true,
+		pages:bookPageSize,
+		when:{
+		   start:function(event, pageObject, corner) {
+		      _bookTurning="1";
+		   },
+		   turned:function(event, page, pageObject) {
+		      _readPageNum = page;
+		   },
+		   end:function(event, pageObject, turned){
+		      _bookTurning="0"; 
+		   },
+           missing: function (event, pages) {			  
+			  for (var i=6;i<=bookPageSize;i++){
+				 var element = $('<div />', {});
+				 if ($(".flipbook").turn('addPage',element,i)){
+					 element.html("<div id='book_page_"+i+"'><img src='"+i+".jpg' width='"+_left+"' height='"+_height+"'/></div>");
+				 }
+			  }
+		   }
+		}
+	});
+	var bcReq = new BcRequest("yuexue","Book","getMyBookRead");
+	bcReq.setExtraPs({"attachment_id":_attachmentid});
+	bcReq.setSuccFn(function(data,status){
+	    if (data.Data.length>0){
+		   _readPageNum = data.Data[0].read_page;  
+		   if (_readPageNum<2) _readPageNum=2;
+		   $(".flipbook").turn("page",_readPageNum);
+		}
+		else{
+		   $(".flipbook").turn("page",2);
+		}
+	});
+    bcReq.postData();	
+}
+yepnope({	
+   test : Modernizr.csstransforms,	
+   yep: ['/js/jquery/plugin/turnjs4/turn.js'],	
+   nope: ['/js/jquery/plugin/turnjs4/turn.html4.min.js'],	
+   both: ['/js/jquery/plugin/turnjs4/basic.css'],	
+   complete: loadApp
+});
+var _closeFalg="N";
+function closeReadBook(evt){
+   if (_closeFalg=="N"){
+      _closeFalg = "Y";
+      logReadPageNum();
+   }
+}
+function onbeforeunload_handler(){
+   if (_closeFalg=="N"){
+      _closeFalg = "Y";
+      logReadPageNum();
+   }
+}
+window.onbeforeunload = onbeforeunload_handler;
+function logReadPageNum(){
+   var bcReq = new BcRequest("yuexue","Book","saveBookRead");
+   bcReq.setExtraPs({"attachment_id":_attachmentid,"read_page":_readPageNum});
+   bcReq.setSuccFn(function(data,status){       
+   });
+   bcReq.postData();
+   if($.browser.msie) { 
+      alert('系统已记录你的阅读页数,下次将自动帮你打开刚才的页面');
+   }
+}
+</script>
+</head>
+<body onunload="closeReadBook(event);">
+ <input type="hidden" name="book_page_size" id="book_page_size" value="<!--book_page_size-->"/>
+	<div  align="center" valign="middle">
+		<table id="bookOpWindow" width="100%" border="0" cellpadding="0" cellspacing="0" style="display:none">
+		  <tr>
+			<td width="100%" style="background:url(/images/yuexue2/tanchu_bg01.png) repeat-x;position:fixed;z-index:9999;">
+			  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			  <tr>
+				<td width="10">&nbsp;</td>
+				<td width="53"><!--<img src="/images/yuexue2/tanchu_button_left.png" width="53" height="55" onclick="showOpWindow();"/>--></td>
+				<td width="15">&nbsp;</td>
+				<td width="53"><img src="/images/yuexue2/tanchu_button_big.png" width="53" height="55" onclick="alert('放大功能开发中,敬请期待!');"/></td>
+				<td width="15">&nbsp;</td>
+				<td width="53"><img src="/images/yuexue2/tanchu_button_small.png" width="53" height="55" onclick="alert('缩小功能开发中,敬请期待!');"/></td>
+				<td width="15">&nbsp;</td>
+				<td width="158"><img src="/images/yuexue2/tanchu_button_zhangjie.png" width="158" height="55" onclick="selectChapter();"/></td>
+				<td width="15">&nbsp;</td>
+				<td width="158"><img src="/images/yuexue2/tanchu_button_xiaoxi.png" width="158" height="55" onclick="openMessageWin();"/></td>
+				<td width="15">&nbsp;</td>
+				<td width="158"><img src="/images/yuexue2/tanchu_button_xiangpi.png" width="158" height="55" onclick="alert('橡皮擦功能开发中,敬请期待!');"/></td>
+				<td width="15">&nbsp;</td>
+				<td width="158"><img src="/images/yuexue2/tanchu_button_zhihui.png" width="158" height="55" onclick="openResourceWin();"/></td>
+				<td>&nbsp;</td>
+			  </tr>
+			  </table>
+			</td>
+		  </tr>
+		</table>
+	<div>	
+	<div class="flipbook-viewport">	
+	    <div class="container" onclick="showOpWindow();">			
+		<div id="book_page_obj" class="flipbook">	
+		    <!--bookcotent-->		    				
+		</div>	
+		</div>
+	</div>
+</body>
+</HTML>

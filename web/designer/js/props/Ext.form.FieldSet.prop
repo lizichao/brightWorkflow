@@ -1,0 +1,28 @@
+{
+properties : [{
+    name : "animCollapse",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to animate the transition when the panel is collapsed, false to skip the animation (defaults to false)"
+  },{
+    name : "baseCls",
+    desc : "<b>String</b> The base CSS class applied to the fieldset (defaults to 'x-fieldset')"
+  },{
+    name : "checkboxName",
+    desc : "<b>String</b> The name to assign to the fieldset's checkbox if checkboxToggle = true (defaults to '[checkbox id]-checkbox')"
+  },{
+    name : "checkboxToggle",
+    type : "mixed",
+    desc : "<b>Mixed</b> true to render a checkbox into the fieldset frame just in front of the legend to expand/collapse the fieldset when the checkbox is toggled. (defaults to false)"
+  },{
+    name : "collapsible",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to make the fieldset collapsible and have the expand/collapse toggle button automatically rendered into the legend element"
+  },{
+    name : "itemCls",
+    desc : "<b>String</b> A css class to apply to the x-form-item of fields (see Ext.layout.FormLayout.fieldTpl for details)"
+  },{
+    name : "labelWidth",
+    type : "number",
+    desc : "<b>Number</b> The width of labels. This property cascades to child containers."
+  }]
+}

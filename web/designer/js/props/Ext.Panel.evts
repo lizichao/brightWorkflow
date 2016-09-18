@@ -1,0 +1,52 @@
+{
+listeners : [{
+    name : "activate",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforeclose",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "beforecollapse",
+    type : "function",
+    defaults : 'function(scope,animate){}',
+    desc : "beforecollapse : ( Ext.Panel p, Boolean animate)"
+  },{
+    name : "beforeexpand",
+    type : "function",
+    defaults : 'function(scope,animate){}',
+    desc : "beforeexpand : ( Ext.Panel p, Boolean animate)"
+  },{
+    name : "bodyresize",
+    type : "function",
+    defaults : 'function(scope,width,height){}',
+    desc : "bodyresize : ( Ext.Panel p, Number width, Number height)"
+  },{
+    name : "close",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "collapse",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "deactivate",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "expand",
+    type : "function",
+    defaults : 'function(scope){}'
+  },{
+    name : "iconchange",
+    type : "function",
+    defaults : 'function(scope,str,str2){}',
+    desc : "iconchange : ( Ext.Panel p, String The, String The)"
+  },{
+    name : "titlechange",
+    type : "function",
+    defaults : 'function(scope,str,str2){}',
+    desc : "titlechange : ( Ext.Panel p, String The )"
+  }]
+}

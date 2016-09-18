@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1">
+  <resRefBindings xmi:id="ResourceRefBinding_1" jndiName="brightcom.database">
+    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1"/>
+  </resRefBindings>
+</webappbnd:WebAppBinding>

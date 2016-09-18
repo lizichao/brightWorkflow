@@ -1,0 +1,24 @@
+{
+listeners : [{
+    name : "beforequery",
+    type : "function",
+    defaults : 'function(queryEvent){}',
+    desc : "<b>function</b> An object that has these properties:<br>combo : Ext.form.ComboBox <br>This combo box<br>query : String <br>The query<br>forceAll : Boolean <br>True to force 'all' query<br>cancel : Boolean <br>Set to true to cancel the query"
+  },{
+    name : "beforeselect",
+    type : "function",
+    defaults : 'function(combo,record,index){}'
+  },{
+    name : "collapse",
+    type : "function",
+    defaults : 'function(combo){}'
+  },{
+    name : "expand",
+    type : "function",
+    defaults : 'function(combo){}'
+  },{
+    name : "select",
+    type : "function",
+    defaults : 'function(combo,record,index){}'
+  }]
+}

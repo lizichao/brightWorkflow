@@ -1,0 +1,87 @@
+{
+properties : [{
+    name : "animateTarget",
+    desc : "<b>String</b> Id or element from which the window should animate while opening (defaults to null with no animation)"
+  },{
+    name : "closable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the 'close' tool button and allow the user to close the window, false to hide the button and disallow closing the window (default to true)."
+  },{
+    name : "closeAction",
+    desc : "<b>String</b> The action to take when the close button is clicked. The default action is 'close' which will actually remove the window from the DOM and destroy it. The other valid option is 'hide' which will simply hide the window by setting visibility to hidden and applying negative offsets, keeping the window available to be redisplayed via the {@link #show} method."
+  },{
+    name : "collapsed",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to render the window collapsed, false to render it expanded (defaults to false)"
+  },{
+    name : "constrain",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to constrain the window within its containing element, false to allow it to fall outside of its containing element"
+  },{
+    name : "constrainHeader",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to constrain the window header within its containing element (allowing the window body to fall outside of its containing element) or false to allow the header to fall outside its containing element (defaults to false)"
+  },{
+    name : "defaultButton",
+    desc : "<b>String/Number/Button</b> The id / index of a button or a button instance to focus when this window received the focus"
+  },{
+    name : "draggable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow the window to be dragged by the header bar, false to disable dragging (defaults to true)"
+  },{
+    name : "expandOnShow",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to always expand the window when it is displayed, false to keep it in its current state (which may be collapsed) when displayed (defaults to true)"
+  },{
+    name : "hidden",
+    type : "boolean",
+    desc : "<b>Boolean</b> Render this component hidden (default is true). If true, the hide method will be called internally"
+  },{
+    name : "initHidden",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to hide the window until show() is explicitly called (defaults to true)"
+  },{
+    name : "manager",
+    type : "object",
+    desc : "<b>Ext.WindowGroup</b> A reference to the WindowGroup that should manage this window (defaults to Ext.WindowMgr)."
+  },{
+    name : "maximizable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the 'maximize' tool button and allow the user to maximize the window, false to hide the button and disallow maximizing the window (defaults to false)"
+  },{
+    name : "maximized",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to initially display the window in a maximized state. (Defaults to false)"
+  },{
+    name : "minHeight",
+    type : "number",
+    desc : "<b>Number</b> The minimum height in pixels allowed for this window (defaults to 100). Only applies when resizable = true"
+  },{
+    name : "minWidth",
+    type : "number",
+    desc : "<b>Number</b> The minimum width in pixels allowed for this window (defaults to 200). Only applies when resizable = true"
+  },{
+    name : "minimizable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to display the 'minimize' tool button and allow the user to minimize the window, false to hide the button and disallow minimizing the window (defaults to false)"
+  },{
+    name : "modal",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to make the window modal and mask everything behind it when displayed, false to display it without restricting access to other UI elements (defaults to false)."
+  },{
+    name : "onEsc",
+    type : "function",
+    desc : "<b>Function</b> Allows override of the built-in processing for the escape key. Default action is to close the Window"
+  },{
+    name : "plain",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to render the window body with a transparent background so that it will blend into the framing elements, false to add a lighter background color to visually highlight the body element and separate it more distinctly from the surrounding frame (defaults to false)."
+  },{
+    name : "resizable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow user resizing at each edge and corner of the window, false to disable resizing (defaults to true)"
+  },{
+    name : "resizeHandles",
+    desc : "<b>String</b> A valid Ext.Resizable handles config string (defaults to 'all'). Only applies when resizable = true"
+  }]
+}

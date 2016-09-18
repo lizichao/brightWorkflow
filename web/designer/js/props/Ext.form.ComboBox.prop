@@ -1,0 +1,138 @@
+{
+properties : [{
+    name : "allQuery",
+    desc : "<b>String</b> The text query to send to the server to return all records for the list with no filtering (defaults to '')"
+  },{
+    name : "autoCreate",
+    type : "mixed",
+    desc : "<b>String/Object</b> A DomHelper element spec, or true for a default element spec (defaults to {tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})"
+  },{
+    name : "displayField",
+    desc : "<b>String</b> The underlying data field name to bind to this CombBox (defaults to undefined if mode = 'remote' or 'text' if mode = 'local')"
+  },{
+    name : "forceSelection",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to restrict the selected value to one of the values in the list, false to allow the user to set arbitrary text into the field (defaults to false)"
+  },{
+    name : "handleHeight",
+    type : "number",
+    desc : "<b>Number</b> The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)"
+  },{
+    name : "hiddenId",
+    desc : "<b>String</b> If hiddenName is specified, hiddenId can also be provided to give the hidden field a unique id (defaults to the hiddenName)"
+  },{
+    name : "hiddenName",
+    desc : "<b>String</b> If specified, a hidden form field with this name is dynamically generated to store the field's data value (defaults to the underlying DOM element's name)"
+  },{
+    name : "hiddenValue",
+    desc : "<b>String</b> Sets the initial value of the hidden field if hiddenName is specified to contain the selected valueField, from the Store. Defaults to the configured value"
+  },{
+    name : "itemSelector",
+    desc : "<b>String</b> A CSS selector in any format supported by {@link Ext.DomQuery} that will be used to filter the data loaded from the store (defaults to '')."
+  },{
+    name : "lazyInit",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to not initialize the list for this combo until the field is focused (defaults to true)"
+  },{
+    name : "lazyRender",
+    type : "boolean",
+    desc : "<b>Boolean</b> true to prevent the ComboBox from rendering until requested"
+  },{
+    name : "listAlign",
+    desc : "<b>String</b> A valid anchor position value. See {@link Ext.Element#alignTo} for details on supported anchor positions (defaults to 'tl-bl')"
+  },{
+    name : "listClass",
+    desc : "<b>String</b> CSS class to apply to the dropdown list element (defaults to '')"
+  },{
+    name : "listEmptyText",
+    desc : "<b>String</b> The empty text to display in the data view if no items are found"
+  },{
+    name : "listWidth",
+    type : "number",
+    desc : "<b>Number</b> The width in pixels of the dropdown list (defaults to the width of the ComboBox field)"
+  },{
+    name : "loadingText",
+    desc : "<b>String</b> A string to display during data load operations (defaults to undefined). If specified, this text will be displayed in a loading div and the view's contents will be cleared while loading, otherwise the view's contents will continue to display normally until the new data is loaded and the contents are replaced."
+  },{
+    name : "maxHeight",
+    type : "number",
+    desc : "<b>Number</b> Sets the maximum height - ignored if autoHeight is not on."
+  },{
+    name : "minChars",
+    type : "number",
+    desc : "<b>Number</b> The minimum number of characters the user must type before autocomplete and typeahead activate (defaults to 4, does not apply if editable = false)"
+  },{
+    name : "minHeight",
+    type : "number",
+    desc : "<b>Number</b> The minimum height in pixels of the dropdown list when the list is constrained by its distance to the viewport edges (defaults to 90)"
+  },{
+    name : "minListWidth",
+    type : "number",
+    desc : "<b>Number</b> The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if listWidth has a higher value)"
+  },{
+    name : "mode",
+    desc : "<b>String</b> Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server) also used for shadow"
+  },{
+    name : "pageSize",
+    type : "number",
+    desc : "<b>Number</b> Number of element to be shown on page"
+  },{
+    name : "queryDelay",
+    type : "number",
+    desc : "<b>Number</b> The length of time in milliseconds to delay between the start of typing and sending the query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')"
+  },{
+    name : "queryParam",
+    desc : "<b>String</b> Name of the query as it will be passed on the querystring (defaults to 'query')"
+  },{
+    name : "resizable",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to allow user resizing."
+  },{
+    name : "selectOnFocus",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to select any existing text in the field immediately on focus. Only applies when editable = true (defaults to false)"
+  },{
+    name : "selectedClass",
+    desc : "<b>String</b> CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')"
+  },{
+    name : "shadow",
+    desc : "<b>String/Boolean</b> Shadow to be used",
+    values : ["sides","frame","drop",'true'],
+    editable: true
+  },{
+    name : "store",
+    type : "mixed",
+    desc : "<b>Ext.data.Store</b> The {@link Ext.data.Store} to bind this."
+  },{
+    name : "title",
+    desc : "<b>String</b> If supplied, a header element is created containing this text and added into the top of the dropdown list"
+  },{
+    name : "tpl",
+    type : "template",
+    desc : "<b>String/Array</b> The template string, or Ext.XTemplate instance to use to display each item in the dropdown list"
+  },{
+    name : "transform",
+    type : "mixed",
+    desc : "<b>Mixed</b> The id, DOM node or element of an existing select to convert to a ComboBox"
+  },{
+    name : "triggerAction",
+    desc : "<b>String</b> The action to execute when the trigger field is activated. Use 'all' to run the query specified by the allQuery config option (defaults to 'query')"
+  },{
+    name : "triggerClass",
+    desc : "<b>String</b> An additional CSS class used to style the trigger button. The trigger will always get the class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger' which displays a downward arrow icon)."
+  },{
+    name : "typeAhead",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to populate and autoselect the remainder of the text being typed after a configurable delay (typeAheadDelay) if it matches a known value (defaults to false)"
+  },{
+    name : "typeAheadDelay",
+    type : "number",
+    desc : "<b>Number</b> The length of time in milliseconds to wait until the typeahead text is displayed if typeAhead = true (defaults to 250)"
+  },{
+    name : "valueField",
+    desc : "<b>String</b> The underlying data value name to bind to this ComboBox"
+  },{
+    name : "valueNotFoundText",
+    desc : "<b>String</b> When using a name/value combo, if the value passed to setValue is not found in the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)"
+  }]
+}

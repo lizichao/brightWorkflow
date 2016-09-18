@@ -1,0 +1,31 @@
+{
+properties : [{
+    name : "autoCreate",
+    type : "mixed",
+    desc : "<b>String/Object</b> A DomHelper element spec, or true for a default element spec (defaults to {tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})"
+  },{
+    name : "boxLabel",
+    desc : "<b>String</b> The text that appears beside the checkbox"
+  },{
+    name : "checked",
+    type : "boolean",
+    desc : "<b>Boolean</b> True if the the checkbox should render already checked (defaults to false)"
+  },{
+    name : "fieldClass",
+    desc : "<b>String</b> The default CSS class for the checkbox (defaults to \"x-form-field\")"
+  },{
+    name : "focusClass",
+    desc : "<b>String</b> The CSS class to use when the checkbox receives focus (defaults to undefined)"
+  },{
+    name : "handler",
+    type : "function",
+    desc : "<b>Function</b> A function called when the button is clicked (can be used instead of click event)"
+  },{
+    name : "inputValue",
+    desc : "<b>String</b> The value that should go into the generated input element's value attribute"
+  },{
+    name : "scope",
+    type : "object",
+    desc : "<b>Object</b> The scope of the handler"
+  }]
+}

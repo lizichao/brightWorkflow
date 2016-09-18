@@ -1,0 +1,139 @@
+<class id="root">
+	<class id="Ext.Component">
+		<class id="Ext.BoxComponent">
+			<class id="Ext.form.Field">
+				<class id="Ext.form.TextField">
+					<class id="Ext.form.NumberField">
+						<class id="Ext.ux.form.SpinnerField" />
+					</class>
+					<class id="Ext.form.TextArea" />
+					<class id="Ext.form.TriggerField">
+						<class id="Ext.form.ComboBox">
+							<class id="Ext.form.TimeField" />
+							<class id="Ext.ux.form.SelectBox" />
+							<class id="JrafTreeCombo">
+								<class id="Jraf.DeptTreeCombox" />
+								<class id="Jraf.ParaTreeCombox" />
+								<class id="Jraf.UserTreeCombox" />
+							</class>
+							<class id="JrafMultiCombo">
+								<class id="Jraf.ParaMultiCombox" />
+							</class>
+							<class id="Jraf.ParaCombox" />
+							<class id="Jraf.SysCombox" />
+							<class id="Jraf.SimpleCombo" />
+						</class>
+						<class id="Ext.form.DateField" />
+						<class id="Ext.form.TwinTriggerField" />
+					</class>
+					<class id="Ext.ux.form.FileUploadField" />
+					<class id="Ext.ux.form.MultiSelect" />
+					<class id="Ext.ux.form.ItemSelector" />
+				</class>
+				<class id="Ext.form.Checkbox">
+					<class id="Ext.form.Radio" />
+				</class>
+				<class id="Ext.form.CheckboxGroup">
+					<class id="Ext.form.RadioGroup" />
+				</class>
+				<class id="Ext.form.CompositeField" />
+				<class id="Ext.form.DisplayField" />
+				<class id="Ext.form.Hidden" />
+				<class id="Ext.form.HtmlEditor" />
+				<class id="Ext.ux.form.ItemSelector" />
+				<class id="Ext.ux.form.MultiSelect" />
+			</class>
+			<class id="Ext.form.Label" />
+			<class id="Ext.Button">
+				<class id="Ext.SplitButton">
+					<class id="Ext.CycleButton" />
+				</class>
+			</class>
+			<class id="Ext.Container">
+				<class id="Ext.Panel">
+					<class id="Ext.ButtonGroup" />
+					<class id="Ext.TabPanel" />
+					<class id="Ext.Tip">
+						<class id="Ext.ToolTip">
+							<class id="Ext.QuickTip" />
+						</class>
+						<class id="Ext.ux.SliderTip" />
+					</class>
+					<class id="Ext.Window" />
+					<class id="Ext.form.FieldSet" />
+					<class id="Ext.form.FormPanel" />
+					<class id="Ext.grid.GridPanel">
+						<class id="Ext.grid.EditorGridPanel">
+							<class id="Ext.grid.PropertyGrid" />
+						</class>
+						<class id="Ext.ux.grid.TableGrid" />
+					</class>
+					<class id="Ext.tree.TreePanel">
+						<class id="Ext.ux.tree.ColumnTree" />
+					</class>
+					<class id="Ext.ux.GMapPanel" />
+					<class id="Ext.ux.grid.RowEditor" />
+				</class>
+				<class id="Ext.Toolbar">
+					<class id="Ext.PagingToolbar" />
+					<class id="Ext.ux.StatusBar" />
+				</class>
+				<class id="Ext.Viewport" />
+				<class id="Ext.menu.Menu">
+					<class id="Ext.menu.ColorMenu" />
+					<class id="Ext.menu.DateMenu" />
+					<class id="Ext.ux.menu.ListMenu" />
+					<class id="Ext.ux.menu.RangeMenu" />
+				</class>
+			</class>
+			<class id="Ext.DataView">
+				<class id="Ext.ListView" />
+			</class>
+			<class id="Ext.FlashComponent">
+				<class id="Ext.chart.Chart">
+					<class id="Ext.chart.CartesianChart">
+						<class id="Ext.chart.BarChart" />
+						<class id="Ext.chart.ColumnChart" />
+						<class id="Ext.chart.LineChart" />
+						<class id="Ext.chart.StackedBarChart" />
+						<class id="Ext.chart.StackedColumnChart" />
+					</class>
+					<class id="Ext.chart.PieChart" />
+				</class>
+			</class>
+			<class id="Ext.ProgressBar" />
+			<class id="Ext.Slider" />
+			<class id="Ext.Spacer" />
+			<class id="Ext.Toolbar.Item">
+				<class id="Ext.Toolbar.Separator" />
+				<class id="Ext.Toolbar.Spacer">
+					<class id="Ext.Toolbar.Fill" />
+				</class>
+				<class id="Ext.Toolbar.TextItem" />
+			</class>
+		</class>
+		<class id="Ext.menu.BaseItem" xtype="menubaseitem">
+			<class id="Ext.menu.Item" xtype="menuitem">
+				<class id="Ext.menu.CheckItem" />
+			</class>
+			<class id="Ext.menu.Separator" xtype="menuseparator"/>
+			<class id="Ext.menu.TextItem" xtype="menutextitem"/>
+		</class>
+		<class id="Ext.Editor" xtype="editor">
+			<class id="Ext.tree.TreeEditor"/>
+		</class>
+	</class>
+	<class id="Ext.data.Store">
+		<class id="Ext.data.ArrayStore" />
+		<class id="Ext.data.GroupingStore">
+			<class id="JrafXmlStore" />
+		</class>
+	</class>
+	<class id="Jraf.GuiDesigner">
+		<class id="Jraf.designer.onLoad" />
+		<class id="Jraf.designer.Functions" />
+		<class id="Jraf.designer.Record" />
+		<class id="Jraf.designer.Field" />
+		<class id="Jraf.designer.Jpanel" />
+	</class>
+</class>

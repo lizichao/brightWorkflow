@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/oauth-config.xml">
+  <Session />
+  <Operation id="oauth2_client" bean="cn.brightcom.oauth2.service.OAuthClientMgr" desc="OAuth客户端管理">
+    <Action old="" accredit="" rowacc="" nologin="" name="addClient" base="" desc="新增客户端" colacc="" log="" webservice="">
+      <Request>
+        <Field name="client_type" title="客户端类型" type="String" maxlen="2" notnull="true" pk="false" />
+        <Field name="redirect_uris" title="重定向URI" type="String" maxlen="1000" notnull="true" pk="false" />
+        <Field name="default_scopes" title="缺省权限" type="String" maxlen="1000" pk="false" />
+        <Field name="app_name" title="应用名称" type="String" maxlen="200" notnull="true" pk="false" />
+        <Field name="app_desc" title="应用描述" type="String" maxlen="400" pk="false" />
+        <Field name="app_uri" title="应用URI" type="String" maxlen="400" pk="false" />
+        <Field name="app_type" title="应用类型" type="String" maxlen="2" pk="false" />
+        <Field name="state" title="状态" type="String" maxlen="2" pk="false" />
+      </Request>
+      <Message>
+        <Msg code="10001">新增客户端成功</Msg>
+        <Msg code="10002">新增客户端失败</Msg>
+      </Message>
+    </Action>
+    <Action base="Update" old="" desc="修改客户端" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" name="uptClient">
+      <Request>
+        <Field name="client_id" title="ClientID" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+        <Field name="client_type" title="客户端类型" type="String" maxlen="2" notnull="true" pk="false" />
+        <Field name="redirect_uris" title="重定向URI" type="String" maxlen="1000" notnull="true" pk="false" />
+        <Field name="default_scopes" title="缺省权限" type="String" maxlen="1000" pk="false" />
+        <Field name="app_name" title="应用名称" type="String" maxlen="200" notnull="true" pk="false" />
+        <Field name="app_desc" title="应用描述" type="String" maxlen="400" pk="false" />
+        <Field name="app_uri" title="应用URI" type="String" maxlen="400" pk="false" />
+        <Field name="app_type" title="应用类型" type="String" maxlen="2" pk="false" />
+        <Field name="state" title="状态" type="String" maxlen="2" pk="false" />
+      </Request>
+      <Table name="oauth_client" />
+    </Action>
+    <Action base="Delete" old="" desc="删除客户端" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" name="delClient">
+      <Table name="oauth_client" />
+    </Action>
+    <Action base="Detail" old="" desc="客户端明细" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" name="detClient">
+      <Table name="oauth_client" />
+    </Action>
+    <Action base="List" old="" desc="查询客户端" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" name="listClient">
+      <Table name="oauth_client" />
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增版本" rowacc="" log="" oauth="" name="addVer">
+      <Request>
+        <Field name="client_id" title="ClientID" type="String" maxlen="32" notnull="true" />
+        <Field name="version_code" title="版本号" type="long" maxlen="10" notnull="true" />
+        <Field name="version_name" title="版本名称" type="String" maxlen="10" notnull="true" />
+        <Field name="file_name" title="文件名" type="String" maxlen="50" notnull="true" />
+        <Field name="version_type" title="版本类型" type="String" maxlen="2" />
+        <Field name="description" title="更新说明" type="String" maxlen="2000" />
+        <Field name="uploadfile" title="上传文件" type="file" notnull="true" />
+        <Field name="state" title="状态" type="String" maxlen="2" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="修改版本" rowacc="" log="" oauth="" name="uptVer">
+      <Request>
+        <Field name="version_id" title="VersionID" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+        <Field name="version_code" title="版本号" type="long" maxlen="10" notnull="true" />
+        <Field name="version_name" title="版本名称" type="String" maxlen="10" notnull="true" />
+        <Field name="file_name" title="文件名" type="String" maxlen="50" notnull="true" />
+        <Field name="version_type" title="版本类型" type="String" maxlen="2" />
+        <Field name="description" title="更新说明" type="String" maxlen="2000" />
+        <Field name="uploadfile" title="上传文件" type="file" />
+        <Field name="state" title="状态" type="String" />
+      </Request>
+    </Action>
+    <Action base="" old="" desc="删除版本" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="delVer">
+      <Request>
+        <Field name="version_id" title="VersionID" type="String" maxlen="32" notnull="true" pk="true" gen="uuid" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="取最新版本" rowacc="" nologin="true" oauth="true" name="getLatestVer">
+      <Request>
+        <Field name="vtype" title="版本类型" type="String" maxlen="2" />
+      </Request>
+    </Action>
+    <Action base="List" old="" desc="查询版本" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="listVer">
+      <Query orderby="version_code desc" />
+      <Table name="oauth_client_version" />
+    </Action>
+  </Operation>
+  <Operation id="oauth2_auth" bean="cn.brightcom.oauth2.service.OAuthCodeMgr" desc="OAuth授权码管理" />
+  <Operation id="oauth2_token" bean="cn.brightcom.oauth2.service.OAuthAccessTokenMgr" desc="OAuth访问码管理" />
+</Config>
+

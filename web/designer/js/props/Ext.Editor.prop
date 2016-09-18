@@ -1,0 +1,63 @@
+{
+properties : [{
+    name : "alignment",
+    desc : "<b>String</b> The position to align to (see Ext.Element.alignTo for more details, defaults to \"c-c?\")."
+  },{
+    name : "allowBlur",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to complete the editing process if in edit mode when the field is blurred. Defaults to false."
+  },{
+    name : "autoSize",
+    values : ["false","true","width","height","none"]
+    desc : "<b>Boolean/String</b> True for the editor to automatically adopt the size of the underlying field, \"width\" to adopt the width only, or \"height\" to adopt the height only, \"none\" to always use the field dimensions. (defaults to false)"
+  },{
+    name : "cancelOnEsc",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to cancel the edit when the escape key is pressed. Defaults to true"
+  },{
+    name : "completeOnEnter",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to complete the edit when the enter key is pressed. Defaults to true"
+  },{
+    name : "constrain",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to constrain the editor to the viewport"
+  },{
+    name : "field",
+    type : "mixed",
+    desc : "<b>Mixed</b> The Field object (or descendant) or config object for field"
+  },{
+    name : "hideEl",
+    type : "boolean",
+    desc : "<b>Boolean</b> False to keep the bound element visible while the editor is displayed (defaults to true)"
+  },{
+    name : "ignoreNoChange",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to skip the edit completion process (no save, no events fired) if the user completes an edit and the value has not changed (defaults to false)."
+  },{
+    name : "offsets",
+    type : "array",
+    desc : "<b>Array</b> The offsets to use when aligning (see Ext.Element.alignTo for more details. Defaults to [0, 0]."
+  },{
+    name : "revertInvalid",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to automatically revert the field value and cancel the edit when the user completes an edit and the field validation fails (defaults to true)"
+  },{
+    name : "shadow",
+    desc : "<b>String/Boolean</b> Shadow to be used",
+    values : ["sides","frame","drop",'true'],
+    editable: true
+  },{
+    name : "swallowKeys",
+    type : "boolean",
+    desc : "<b>Boolean</b> Handle the keydown/keypress events so they don't propagate (defaults to true)"
+  },{
+    name : "updateEl",
+    type : "boolean",
+    desc : "<b>Boolean</b> True to update the innerHTML of the bound element when the update completes (defaults to false)"
+  },{
+    name : "value",
+    type : "mixed",
+    desc : "<b>Mixed</b> The data value of the underlying field (defaults to \"\")"
+  }]
+}

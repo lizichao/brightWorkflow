@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="GBK"?>
+<view>
+  <Scripts>
+    <Functions></Functions>
+    <onLoad></onLoad>
+  </Scripts>
+  <Datasets>
+    <Records>
+      <Record classname="SendHistoryRecord">[  {
+    xtype : "Field",
+    name : "send_id",
+    fieldLabel : "主键",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "sys_name",
+    fieldLabel : "子系统名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "table_name",
+    fieldLabel : "业务表名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pk_name",
+    fieldLabel : "主键字段名称",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "pk_value",
+    fieldLabel : "主键字段值",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "op_model",
+    fieldLabel : "操作类型",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "dest_ipaddress",
+    fieldLabel : "目的地IP地址",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "dest_port",
+    fieldLabel : "目的地端口号",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "created_date",
+    fieldLabel : "建立时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "send_date",
+    fieldLabel : "发送时间",
+    type : "date",
+    allowBlank : true,
+    dateFormat : "Y-m-d H:i:s"
+},  {
+    xtype : "Field",
+    name : "error_msg",
+    fieldLabel : "错误信息",
+    type : "string",
+    allowBlank : true
+},  {
+    xtype : "Field",
+    name : "try_count",
+    fieldLabel : "发送次数",
+    type : "float",
+    allowBlank : true
+}]</Record>
+    </Records>
+    <Stores>
+      <Store classname="SendHistoryStore">{
+  xxtype : "Store",
+  xtype : "Store",
+  classname : "SendHistoryStore",
+  recordType : SendHistoryRecord,
+  idProperty : "send_id",
+  api : {
+    read:{sysName:"pcmc",oprID:"dataswitch",actions:"getSendHistory"},
+    destroy:{sysName:"pcmc",oprID:"dataswitch",actions:"retransmit"}
+  },
+  autoLoad : false,
+  autoSave : false,
+  writeAllFields : true,
+  paramsAsHash : true,
+  remoteSort : false
+}</Store>
+    </Stores>
+  </Datasets>
+  <SubPanels />
+  <MainPanel>[  {
+    layout : "border",
+    items : [    {
+            xtype : "form",
+			region : "north",
+            id : "QryForm",
+			frame : true,
+			autoHeight:true,
+			items:[{
+			    layout : "column",
+				items:[
+				    {
+					  layout : "form",
+					  columnWidth : 0.5,
+					  border : false,
+					  items : [ 	  
+						   {
+							xtype: 'compositefield',
+							fieldLabel: '发送成功时间',			
+							msgTarget : 'side',
+							anchor    : '-20',
+							defaults: {
+								flex: 1
+							},
+							items: [
+								{
+									xtype     : 'datefield',
+									name      : 'begin_date',
+									format : "Y-m-d",
+									fieldLabel: 'Start'
+								},
+								{
+									xtype     : 'datefield',
+									name      : 'end_date',
+									format : "Y-m-d",
+									fieldLabel: 'End'
+								}
+							]
+						  }
+					  ]},
+					   {
+						xtype : "button",
+						iconCls: "zoom-out",
+						text : "&amp;nbsp;&amp;nbsp;检&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;索&amp;nbsp;&amp;nbsp;",				
+						handler : function() {
+						   SendHistoryStore.setFormParam(Ext.getCmp('QryForm'));
+						   SendHistoryStore.setPageInfo(JrafSession.get('PageSize'),'1');
+						   SendHistoryStore.load();
+						},                
+						autoWidth : false
+					}
+				]
+			}]
+           },    {
+            xtype : "grid",
+            frame : true,
+			region : "center",
+            viewConfig : {forceFit:true},
+            columnLines : true,
+            autoHeight : false,
+            height : 320,
+            title : "已发送数据",
+            store : SendHistoryStore,
+            tbar : [{text:'重新发送',iconCls:'arrow-redo',ref: '../removeBtn',disabled: true,handler:function(){
+			var _grid=this.ownerCt.ownerCt;
+			var ckrs=_grid.getSelectionModel().getSelections();
+			Ext.Msg.confirm('重新发送','确认要重新发送选中数据?',function(btn){
+				if(btn == 'yes'){ 
+					for(var i=0;i&lt;ckrs.length;i++){
+					   _grid.getStore().remove(ckrs[i]);
+					}
+					_grid.getStore().save();
+				}
+			})
+			}}],
+            bbar : new Ext.PagingToolbar({pageSize: JrafSession.get('PageSize'),store:SendHistoryStore,displayInfo: true}),
+            colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
+				{width:20,sortable:true,header:'子系统名称',dataIndex:'sys_name'},
+				{width:30,sortable:true,header:'业务表名称',dataIndex:'table_name'},
+				{width:30,sortable:true,header:'主键字段名称',dataIndex:'pk_name'},
+				{width:30,sortable:true,header:'主键字段值',dataIndex:'pk_value'},
+				{width:30,sortable:true,header:'操作类型',dataIndex:'op_model'},
+				{width:40,sortable:true,header:'目的地IP地址',dataIndex:'dest_ipaddress'},
+				{width:20,sortable:true,header:'目的地端口号',dataIndex:'dest_port'},
+				{width:30,sortable:true,header:'建立时间',dataIndex:'created_date',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+				{width:30,sortable:true,header:'发送时间',dataIndex:'send_date',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
+				{width:40,sortable:true,header:'错误信息',dataIndex:'error_msg'},
+				{width:20,sortable:true,header:'发送次数',dataIndex:'try_count'}
+			]),
+            sm : new Ext.grid.CheckboxSelectionModel({listeners:{selectionchange:function(sm){var _grid=this.grid;if(sm.getCount()){_grid.removeBtn.enable();}else{_grid.removeBtn.disable();}}}})
+    }
+	]
+}]</MainPanel>
+</view>
+

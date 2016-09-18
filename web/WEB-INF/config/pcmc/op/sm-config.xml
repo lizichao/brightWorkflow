@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/sm-config.xml">
+  <Session />
+  <Operation id="sm_query" bean="cn.brightcom.system.pcmc.sm.QueryBean" desc="查询模块">
+    <Action name="getInfoDetail" base="Detail" desc="查看新闻/公告详细信息">
+      <Table name="pcmc_info" />
+    </Action>
+    <Action name="getKindDetail" base="Detail" desc="查看新闻/公告详细信息">
+      <Table name="pcmc_info_kind" />
+    </Action>
+    <Action name="getInfoList" desc="获取新闻/公告列表">
+      <Request multi="false">
+        <Field name="infotype" title="信息类别" type="String" maxlen="2" notnull="false" />
+        <Field name="title" title="标题" type="String" maxlen="60" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="getInfoKindList" desc="获取新闻/公告列表">
+      <Request multi="false">
+        <Field name="kindname" title="分类名称" type="String" maxlen="10" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="getInfoKindDetail" desc="获取新闻/公告列表">
+      <Request multi="false">
+        <Field name="kindid" title="分类编号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="getParamMasterList" base="ListAll" desc="获取参数列表">
+      <Query orderby="paramname" />
+      <Table name="param_master" />
+    </Action>
+    <Action log="" rowacc="" desc="参数查询" colacc="" base="List" old="" accredit="" nologin="" name="getParamDetailList">
+      <Query basesql="select b.* from param_master a,param_detail b where a.paramid=b.paramid" orderby="paramdetailid">
+        <Field name="paramname" title="参数名称" type="String" maxlen="40" notnull="false" refname="a.paramname" op="=" />
+        <Field name="paramid" title="参数ID" type="long" maxlen="40" notnull="false" refname="a.paramid" />
+      </Query>
+      <Table name="param_detail" />
+    </Action>
+    <Action name="getParamMasterDetail" desc="">
+      <Request multi="false">
+        <Field name="paramid" title="流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="getMessageList" desc="参数查询">
+      <Request multi="false">
+        <Field name="isread" title="是否已阅读" type="String" maxlen="1" minlen="1" notnull="false" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="sm_maintenance" bean="cn.brightcom.system.pcmc.sm.SmMaintenanceBean" desc="系统维护">
+    <Action name="addInfo" desc="增加新闻/公告">
+      <Request multi="false">
+        <Field name="kindid" title="信息类别" type="String" maxlen="2" notnull="true" />
+        <Field name="title" title="标题" type="String" maxlen="100" notnull="true" />
+        <Field name="content" title="内容" type="String" maxlen="9000" notnull="false" />
+        <Field name="userid" title="发布人" type="long" maxlen="19" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="addMessage" desc="发送短消息">
+      <Request multi="false">
+        <Field name="title" title="标题" type="String" maxlen="60" notnull="true" />
+        <Field name="content" title="内容" type="String" maxlen="8000" notnull="false" />
+        <Field name="targetuser" title="接收人" type="String" maxlen="60" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="readMessage" desc="发送短消息">
+      <Request multi="false">
+        <Field name="sendgroupid" title="发送流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="updateInfo" desc="更新新闻/公告">
+      <Request multi="false">
+        <Field name="infoid" title="流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="title" title="标题" type="String" maxlen="60" notnull="true" />
+        <Field name="content" title="内容" type="String" maxlen="8000" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="addParamMaster" base="Insert" desc="增加参数">
+      <Table name="param_master" />
+    </Action>
+    <Action name="addParamDetail" base="Insert" desc="增加参数值">
+      <Table name="param_detail" />
+    </Action>
+    <Action name="updateParamDetail" base="Update" desc="更新参数值">
+      <Table name="param_detail" />
+    </Action>
+    <Action name="deleteInfo" base="Delete" desc="删除新闻/公告">
+      <Table name="pcmc_info" />
+    </Action>
+    <Action name="deleteInfoKind" desc="删除新闻/公告">
+      <Request multi="false">
+        <Field name="kindid" title="流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="deleteParamMaster" base="Delete" desc="删除参数主表信息">
+      <Table name="param_master" />
+    </Action>
+    <Action name="deleteParamDetail" base="Delete" desc="删除参数值信息">
+      <Table name="param_detail" />
+    </Action>
+    <Action name="updateParamMaster" base="Update" desc="更新参数">
+      <Table name="param_master" />
+    </Action>
+    <Action name="updateInfoKind" desc="更新公告分类">
+      <Request multi="false">
+        <Field name="kindid" title="分类流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="kindname" title="分类名称" type="String" maxlen="20" notnull="true" />
+        <Field name="sortno" title="显示序号" type="long" maxlen="2" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="addInfoKind" desc="新增公告分类">
+      <Request multi="false">
+        <Field name="kindname" title="分类名称" type="String" maxlen="20" notnull="true" />
+        <Field name="sortno" title="显示序号" type="long" maxlen="2" notnull="true" />
+        <Field name="userid" title="流水编号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="sm_permission" bean="cn.brightcom.system.pcmc.sm.SmPermissionBean" desc="权限业务处理">
+    <Action log="true" colacc="" base="" rowacc="" oauth="" old="" desc="系统登录" accredit="" nologin="" webservice="" name="login">
+      <Request>
+        <Field name="usercode" title="操作员编号" type="String" maxlen="20" notnull="true" />
+        <Field name="userpwd" title="操作员口令" type="String" maxlen="80" minlen="3" notnull="true" />
+        <Field name="username" title="操作员姓名" type="String" maxlen="80" minlen="3" notnull="false" />
+      </Request>
+      <Flow>
+        <Forward result="0" ftype="0" path="/platform/main.jsp" /> 
+        <Forward result="10" ftype="0" path="/masterreview/headmaster/headmasterIndex.jsp" /><!-- 校长类型用户 -->
+        <Forward result="20" ftype="0" path="/masterreview/personalleader/personalleaderIndex.jsp" /><!-- 人事干部类型用户 -->
+        <Forward result="30" ftype="0" path="/masterreview/professor/professorIndex.jsp" /><!-- 专家类型用户 -->
+        <Forward result="40" ftype="0" path="/masterreview/leader/leaderIndex.jsp" /><!-- 领导类型用户 -->
+        <Forward result="50" ftype="0" path="/platform/main.jsp" /><!-- 管理员类型用户 -->
+        <Forward result="60" ftype="0" path="/masterreview/arealeader/arealeaderIndex.jsp" /><!-- 区级类型用户 -->
+      </Flow>
+    </Action>
+    <Action name="uptRoleMenuPerms" desc="角色菜单授权">
+      <Request multi="false">
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="menuid" title="菜单流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10105">角色菜单授权成功</Msg>
+        <Msg code="10106">角色菜单授权异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getRoleMenuPerms" desc="取角色菜单权限列表">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10107">查询指定角色菜单权限列表异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getActPermissions" desc="取角色交易权限列表">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10108">查询角色操作权限异常</Msg>
+      </Message>
+    </Action>
+    <Action name="saveActPermissions" desc="角色交易授权">
+      <Request multi="false">
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="chkOpr" title="业务交易号" type="String" maxlen="100" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10109">角色交易授权成功</Msg>
+        <Msg code="10110">角色交易授权异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getColPerms" desc="角色列级权限列表">
+      <Request multi="false">
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="sys" title="sysName" type="String" maxlen="100" notnull="true" />
+        <Field name="opr" title="oprID" type="String" maxlen="100" notnull="true" />
+        <Field name="act" title="actions" type="String" maxlen="100" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10111">取交易Response Field列表异常</Msg>
+        <Msg code="10112">取列级授权字段列表异常</Msg>
+      </Message>
+    </Action>
+    <Action name="saveColPerm" desc="角色列级授权">
+      <Request multi="false">
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="sys" title="sysName" type="String" maxlen="100" notnull="true" />
+        <Field name="opr" title="oprID" type="String" maxlen="100" notnull="true" />
+        <Field name="act" title="actions" type="String" maxlen="100" notnull="true" />
+        <Field name="name" title="字段名" type="String" maxlen="100" notnull="true" />
+        <Field name="colacc" title="是否可见" type="String" maxlen="5" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10113">角色列级权限成功</Msg>
+        <Msg code="10114">角色列级授权异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getRowPerms" desc="角色行级权限列表">
+      <Request multi="false">
+        <Field name="sys" title="sysName" type="String" maxlen="100" notnull="true" />
+        <Field name="opr" title="oprID" type="String" maxlen="100" notnull="true" />
+        <Field name="act" title="actions" type="String" maxlen="100" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10115">查询角色行级权限异常</Msg>
+      </Message>
+    </Action>
+    <Action name="saveRowPerm" desc="角色行级授权">
+      <Request multi="false">
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="__sysname" title="sysName" type="String" maxlen="100" notnull="true" />
+        <Field name="oprname" title="oprID" type="String" maxlen="100" notnull="true" />
+        <Field name="actname" title="actions" type="String" maxlen="100" notnull="true" />
+        <Field name="sqlwhere" title="限定条件" type="String" maxlen="200" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10117">更新角色行级权限成功</Msg>
+        <Msg code="10118">更新角色行级权限异常</Msg>
+      </Message>
+    </Action>
+  </Operation>
+  <Operation id="session" bean="cn.brightcom.system.pcmc.sm.Session" desc="Session">
+    <Action name="get" desc="Session">
+      <Request multi="false" />
+    </Action>
+  </Operation>
+  <Operation bean="cn.brightcom.system.pcmc.sm.TableDesigner" id="tbldesigner" desc="Table Designer">
+    <Action name="datatypes" desc="取数据类型">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" minlen="2" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10201">取数据类型异常</Msg>
+      </Message>
+    </Action>
+    <Action name="alltables" desc="子系统数据表">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" minlen="2" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10202">查询数据库表异常</Msg>
+      </Message>
+    </Action>
+    <Action name="droptable" desc="删除数据库表" log="true">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" minlen="2" notnull="true" />
+        <Field name="owner" title="表空间" type="String" maxlen="20" minlen="2" notnull="false" />
+        <Field name="table_name" title="表名" type="String" maxlen="50" minlen="2" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10203">删除数据表成功</Msg>
+        <Msg code="10204">删除数据表异常</Msg>
+      </Message>
+    </Action>
+    <Action name="tablecolumns" desc="查询表字段列表">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" minlen="2" notnull="true" />
+        <Field name="__owner" title="表空间" type="String" maxlen="20" minlen="2" notnull="false" />
+        <Field name="__table_name" title="表名" type="String" maxlen="50" minlen="2" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10205">查询表字段异常</Msg>
+      </Message>
+    </Action>
+    <Action name="dropcol" desc="删除字段" log="true">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" minlen="2" notnull="true" />
+        <Field name="__owner" title="表空间" type="String" maxlen="20" minlen="2" notnull="true" />
+        <Field name="__table_name" title="表名" type="String" maxlen="50" minlen="2" notnull="true" />
+        <Field name="column_id" title="字段名" type="String" maxlen="20" minlen="2" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10207">删除数据表字段成功</Msg>
+        <Msg code="10208">删除数据表字段异常</Msg>
+      </Message>
+    </Action>
+    <Action name="addcol" desc="新增字段" log="true">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" notnull="true" />
+        <Field name="__owner" title="表空间" type="String" maxlen="20" notnull="true" />
+        <Field name="__table_name" title="表名" type="String" maxlen="50" notnull="true" />
+        <Field name="__table_desc" title="表名说明" type="String" maxlen="100" notnull="false" />
+        <Field name="__newtblflag" title="newTable" type="String" maxlen="5" notnull="false" />
+        <Field name="column_name" title="字段名" type="String" maxlen="20" notnull="true" />
+        <Field name="data_type" title="类型" type="String" maxlen="20" notnull="true" />
+        <Field name="data_width" title="长度" type="long" maxlen="20" notnull="false" />
+        <Field name="data_scale" title="精度" type="long" maxlen="20" notnull="false" />
+        <Field name="allownull" title="允许空" type="String" maxlen="5" notnull="false" />
+        <Field name="data_default" title="缺省值" type="String" maxlen="100" notnull="false" />
+        <Field name="constraint_name" title="constraint name" type="String" maxlen="20" notnull="false" />
+        <Field name="ispk" title="是否主键" type="String" maxlen="5" notnull="false" />
+        <Field name="column_desc" title="字段说明" type="String" maxlen="100" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10209">新增数据表字段成功</Msg>
+        <Msg code="10210">新增数据表字段异常</Msg>
+      </Message>
+    </Action>
+    <Action name="uptcol" desc="修改字段" log="true">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" notnull="true" />
+        <Field name="__owner" title="表空间" type="String" maxlen="20" notnull="true" />
+        <Field name="__table_name" title="表名" type="String" maxlen="50" notnull="true" />
+        <Field name="__table_desc" title="表名说明" type="String" maxlen="100" notnull="false" />
+        <Field name="column_id" title="字段名old" type="String" maxlen="20" notnull="true" />
+        <Field name="column_name" title="字段名new" type="String" maxlen="20" notnull="true" />
+        <Field name="data_type" title="类型" type="String" maxlen="20" notnull="true" />
+        <Field name="data_width" title="长度" type="long" maxlen="20" notnull="false" />
+        <Field name="data_scale" title="精度" type="long" maxlen="20" notnull="false" />
+        <Field name="allownull" title="允许空" type="String" maxlen="5" notnull="false" />
+        <Field name="data_default" title="缺省值" type="String" maxlen="100" notnull="false" />
+        <Field name="constraint_name" title="constraint name" type="String" maxlen="20" notnull="false" />
+        <Field name="ispk" title="是否主键" type="String" maxlen="5" notnull="false" />
+        <Field name="column_desc" title="字段说明" type="String" maxlen="100" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10211">修改数据表字段成功</Msg>
+        <Msg code="10212">修改数据表字段异常</Msg>
+      </Message>
+    </Action>
+    <Action name="dbXMLcolumns" desc="dbxml处理">
+      <Request multi="false">
+        <Field name="__sysname" title="子系统" type="String" maxlen="20" notnull="true" />
+        <Field name="__owner" title="表空间" type="String" maxlen="20" notnull="true" />
+        <Field name="__table_name" title="表名" type="String" maxlen="50" notnull="true" />
+        <Field name="__table_desc" title="表名说明" type="String" maxlen="100" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10213">查询系统Table字段定义异常</Msg>
+      </Message>
+    </Action>
+  </Operation>
+  <Operation id="menu" bean="cn.brightcom.system.pcmc.sm.MenuBean" desc="Menu">
+    <Action name="addShortCuts" desc="快捷菜单">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="menuid" title="菜单流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="addLinkType" base="Insert" desc="增加友情链接分类">
+      <Table name="pcmc_frdlink_type" />
+    </Action>
+    <Action name="deleteLinkType" base="Delete" desc="删除友情链接分类">
+      <Table name="pcmc_frdlink_type" />
+    </Action>
+    <Action name="updateLinkType" base="Update" desc="更新友情链接分类">
+      <Table name="pcmc_frdlink_type" />
+    </Action>
+    <Action name="addFrdLink" desc="增加友情链接">
+      <Request multi="false">
+        <Field name="linktypeid" title="待办事宜流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="linkname" title="链接名称" type="String" maxlen="100" notnull="true" />
+        <Field name="imgurl" title="图片地址" type="String" maxlen="100" notnull="false" />
+        <Field name="linkurl" title="链接地址" type="String" maxlen="200" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="deleteFrdLink" base="Delete" desc="删除友情链接">
+      <Table name="pcmc_frdlink" />
+    </Action>
+    <Action name="updateFrdLink" base="Update" desc="更新友情链接">
+      <Table name="pcmc_frdlink" />
+    </Action>
+    <Action name="getLinkTypeList" base="ListAll" desc="获取友情链接分类列表">
+      <Table name="pcmc_frdlink_type" />
+    </Action>
+    <Action name="getLinkTypeDetail" desc="获取友情链接分类详细信息">
+      <Request multi="false">
+        <Field name="linktypeid" title="流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="getFrdLinkList" desc="获取友情链接列表">
+      <Request multi="false">
+        <Field name="frdlinkid" title="流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="getAllLinkDetail" desc="获取友情链接所有信息">
+      <Request multi="false" />
+    </Action>
+    <Action name="getMenuShortCuts" desc="取菜单列表">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="getMenuShortCutTree" desc="取菜单列表">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="roleid" title="角色流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="userid" title="操作员流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="getFrdlink" base="ListAll" desc="获取友情链接列表">
+      <Table name="pcmc_frdlink" />
+    </Action>
+    <Action name="getMenuById" base="Detail" desc="根据菜单ID取详细信息">
+      <Table name="pcmc_menu" />
+    </Action>
+    <Action name="addMenu" base="Insert" desc="增加菜单">
+      <Table name="pcmc_menu" />
+      <Message>
+        <Msg code="00103">新增菜单成功</Msg>
+        <Msg code="00104">新增菜单失败</Msg>
+      </Message>
+    </Action>
+    <Action name="updateMenu" base="Update" desc="更新菜单">
+      <Table name="pcmc_menu" />
+      <Message>
+        <Msg code="00105">修改菜单成功</Msg>
+        <Msg code="00106">修改菜单失败</Msg>
+      </Message>
+    </Action>
+    <Action name="deleteMenu" desc="删除菜单">
+      <Request multi="false">
+        <Field name="menuid" title="菜单流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10301">请先删除此菜单下所有的菜单项</Msg>
+        <Msg code="10302">删除菜单成功</Msg>
+        <Msg code="10303">删除菜单异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getUserMenuBySubsys" desc="取用户子系统菜单列表">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10304">查询用户菜单异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getMenuListByPid" base="List" desc="根据Pmenu取得相应菜单列表">
+      <Query orderby="a.pmenuid,a.orderidx,a.menuid" basesql="select a.*,(select count(*) from pcmc_menu where pmenuid=a.menuid) as isleaf from pcmc_menu a">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="pmenuid" title="菜单流水号" type="long" maxlen="19" notnull="true" />
+      </Query>
+      <Message>
+        <Msg code="00101">查询菜单列表异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getMenuIcons" desc="取菜单图标列表">
+      <Request multi="false" />
+      <Message>
+        <Msg code="10305">查询菜单图标列表异常</Msg>
+      </Message>
+    </Action>
+  </Operation>
+  <Operation id="dept" bean="cn.brightcom.system.pcmc.sm.DepartmentBean" desc="机构管理">
+    <Action accredit="" nologin="" old="" colacc="" webservice="" base="" desc="增加机构信息" rowacc="" log="" oauth="" name="addDept">
+      <Request>
+        <Field name="deptcode" title="机构编号" type="String" maxlen="20" notnull="true" />
+        <Field name="pdeptid" title="父机构流水号" type="String" maxlen="32" notnull="false" />
+        <Field name="deptname" title="机构名称" type="String" maxlen="100" notnull="true" />
+        <Field name="depttype" title="机构类别" type="String" maxlen="2" notnull="true" />
+        <Field name="levels" title="层次号" type="long" maxlen="3" notnull="false" />
+        <Field name="linkman" title="联系人" type="String" maxlen="40" notnull="false" />
+        <Field name="phone" title="联系电话" type="String" maxlen="60" notnull="false" />
+        <Field name="email" title="email" type="String" maxlen="100" notnull="false" />
+        <Field name="addr" title="地址" type="String" maxlen="200" notnull="false" />
+        <Field name="zip" title="邮政编码" type="String" maxlen="10" notnull="false" />
+        <Field name="manager" title="负责人" type="String" maxlen="40" notnull="false" />
+        <Field name="remark" title="备注" type="String" maxlen="200" notnull="false" />
+        <Field name="state" title="状态" type="String" maxlen="1" defaultval="1" />
+      </Request>
+      <Message>
+        <Msg code="10401">新增机构成功</Msg>
+        <Msg code="10402">新增机构异常</Msg>
+        <Msg code="10403">机构编号已经存在</Msg>
+      </Message>
+    </Action>
+    <Action name="changeDept" desc="异动机构">
+      <Request multi="false">
+        <Field name="deptid" title="机构流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="changetype" title="异动类别" type="String" maxlen="2" notnull="true" />
+        <Field name="changedate" title="异动时间" type="Timestamp" notnull="true" />
+        <Field name="cdeptid" title="异动合并机构流水号" type="long" maxlen="19" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10405">异动机构成功</Msg>
+        <Msg code="10406">异动机构异常</Msg>
+      </Message>
+    </Action>
+    <Action name="updateDept" base="Update" desc="更新部门信息">
+      <Table name="pcmc_dept" />
+      <Message>
+        <Msg code="00105">修改机构信息成功</Msg>
+        <Msg code="00106">修改机构信息失败</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="Update" colacc="" webservice="" old="" desc="删除部门信息" rowacc="" log="" oauth="" name="deleteDept">
+      <Request>
+        <Field name="deptid" title="deptid" type="String" notnull="true" />
+        <Field name="state" title="状态" type="String" defaultval="9" />
+      </Request>
+      <Table name="pcmc_dept" />
+      <Message>
+        <Msg code="00105">删除机构信息成功</Msg>
+        <Msg code="00106">删除机构信息失败</Msg>
+      </Message>
+    </Action>
+    <Action name="getDeptList" base="ListAll" desc="获取所有部门列表">
+      <Table name="pcmc_dept" />
+    </Action>
+    <Action name="getRootDeptDetail" base="ListAll" desc="获取根机构明细">
+      <Query orderby="deptcode" basesql="select * from pcmc_dept where deptid=pdeptid or pdeptid is null" />
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="List" desc="取下级机构列表" colacc="" log="" webservice="" name="getCurrentDeptList">
+      <Query basesql="select a.*,(select count(*) from pcmc_dept where pdeptid=a.deptid and deptid&lt;&gt;pdeptid and state&lt;&gt;'9') as childNum from pcmc_dept a where pdeptid&lt;&gt;deptid and state&lt;&gt;'9'" orderby="deptcode">
+        <Field name="pdeptid" title="目前部门流水号" type="String" maxlen="32" notnull="false" />
+      </Query>
+    </Action>
+    <Action base="List" old="" desc="取下级机构及用户列表" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getCurDeptUserList">
+      <Query basesql="select du.* from(select userid as nid,deptid as pid,usercode as ncode,username as nm,0 as nod,'user' as icon,0 as childNum,'N' as selected_flag from pcmc_user union select a.deptid as nid,a.pdeptid as pid,a.deptcode as ncode,a.deptname as nm, 1 as nod,'folder' as icon,((select count(*) from pcmc_dept where pdeptid=a.deptid and deptid&lt;&gt;pdeptid)+(select count(*) from pcmc_user where deptid=a.deptid)) as childNum, 'N' as selected_flag from pcmc_dept a where pdeptid&lt;&gt;deptid  ) du where 1=1" orderby="nod,ncode">
+        <Field name="pid" title="目前部门流水号" type="String" maxlen="32" notnull="false" />
+      </Query>
+    </Action>
+    <Action name="getDeptDetail" base="Detail" desc="根据部门ID获取部门信息">
+      <Table name="pcmc_dept" />
+    </Action>
+  </Operation>
+  <Operation id="log" bean="cn.brightcom.system.pcmc.sm.LogBean" desc="日志">
+    <Action name="showlog" base="Detail" desc="日志明细">
+      <Table name="pcmc_log" />
+    </Action>
+    <Action colacc="" rowacc="" old="" accredit="" webservice="" base="" desc="日志查询" log="" nologin="" oauth="true" name="searchLog">
+      <Request>
+        <Field name="userid" title="用户流水号" pk="true" />
+        <Field name="begindate" title="开始日期" type="Timestamp" notnull="false" />
+        <Field name="enddate" title="结束日期" type="Timestamp" notnull="false" />
+        <Field name="__sysname" title="子系统编号" type="String" notnull="false" />
+        <Field name="mytablename" title="数据表名" type="String" notnull="false" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="pendjob" bean="cn.brightcom.system.pcmc.sm.PendJobBean" desc="代办事宜">
+    <Action name="getPendJobListFirst" desc="获得待办事宜列表">
+      <Request multi="false" />
+    </Action>
+    <Action name="getPendjobList" desc="获得待办事宜列表">
+      <Request multi="false" />
+    </Action>
+    <Action name="getAllPendjobByUser" desc="获得待办事宜列表">
+      <Request multi="false" />
+    </Action>
+    <Action name="getPendjobListByUser" desc="条件查询待办事宜列表">
+      <Request multi="false">
+        <Field name="username" title="接受对象" type="String" maxlen="40" notnull="false" />
+        <Field name="sendtime" title="发送日期" type="Timestamp" maxlen="19" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="getPendjobListById" desc="根据待办事宜编号获得待办事宜列表">
+      <Request multi="false">
+        <Field name="pendjobid" title="待办事宜流水号" type="long" maxlen="19" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="deletePendjob" desc="删除待办事宜">
+      <Request multi="false">
+        <Field name="pendjobid" title="待办事宜流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="addPendjob" desc="增加待办事宜">
+      <Request multi="false">
+        <Field name="pendjobid" title="待办事宜流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="userid" title="接受人流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="title" title="标题" type="String" maxlen="60" notnull="true" />
+        <Field name="url" title="链接" type="String" maxlen="1000" notnull="false" />
+        <Field name="sendtime" title="发送时间" type="Timestamp" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="updatePendjob" desc="修改待办事宜">
+      <Request multi="false">
+        <Field name="pendjobid" title="待办事宜流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="userid" title="接受人流水号" type="long" maxlen="19" notnull="true" />
+        <Field name="title" title="标题" type="String" maxlen="60" notnull="true" />
+        <Field name="url" title="链接" type="String" maxlen="1000" notnull="false" />
+        <Field name="sendtime" title="发送时间" type="Timestamp" notnull="false" />
+      </Request>
+    </Action>
+    <Action name="browPendjob" desc="查看待办事宜">
+      <Request multi="false">
+        <Field name="pendjobid" title="待办事宜流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="setJobStatus" desc="将待办事宜设置为已访问">
+      <Request multi="false">
+        <Field name="pendjobid" title="待办事宜流水号" type="long" maxlen="19" notnull="true" pk="true" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="subsys" bean="cn.brightcom.system.pcmc.sm.SubsysBean" desc="子系统">
+    <Action name="getSubSysList" base="ListAll" desc="获取子系统列表">
+      <Table name="pcmc_subsys" />
+    </Action>
+    <Action name="getUserPcmcSubsys" desc="">
+      <Request multi="false" />
+      <Message>
+        <Msg code="10503">获取登陆用户子系统失败</Msg>
+      </Message>
+    </Action>
+    <Action name="getSubSysDetail" base="Detail" desc="取得子系统信息">
+      <Table name="pcmc_subsys" />
+    </Action>
+    <Action name="addSubSys" base="Insert" desc="增加子系统">
+      <Table name="pcmc_subsys" />
+      <Message>
+        <Msg code="00103">新增子系统成功</Msg>
+        <Msg code="00104">新增子系统失败</Msg>
+      </Message>
+    </Action>
+    <Action name="updateSubSys" base="Update" desc="更新子系统">
+      <Table name="pcmc_subsys" />
+      <Message>
+        <Msg code="00105">更新子系统成功</Msg>
+        <Msg code="00106">更新子系统失败</Msg>
+      </Message>
+    </Action>
+    <Action name="deleteSubSys" desc="删除子系统">
+      <Request multi="false">
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10501">删除子系统成功</Msg>
+        <Msg code="10502">删除子系统失败</Msg>
+      </Message>
+    </Action>
+  </Operation>
+  <Operation bean="cn.brightcom.system.pcmc.sm.UserRoleBean" id="userrole" desc="用户.角色">
+   <Action base="" old="" desc="取用户详细信息" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getUserDetail">
+      <Request>
+        <Field name="userid" title="用户ID" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+    <Action name="listAllRole" base="ListAll" desc="取得所有角色">
+      <Table name="pcmc_role" />
+    </Action>
+    <Action desc="取得所有角色" base="" old="" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="getRoleList">
+      <Request>
+        <Field name="__sysname" title="子系统名" type="String" maxlen="40" notnull="false" />
+        <Field name="userid" title="操作员流水编号" type="String" maxlen="32" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10601">查询角色列表异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getRoleBySubsys" base="List" desc="取子系统角色">
+      <Query>
+        <Field name="subsysid" title="子系统流水号" type="long" maxlen="19" notnull="true" />
+      </Query>
+      <Table name="pcmc_role" />
+    </Action>
+    <Action name="getMRoleList" desc="取得管理角色">
+      <Request multi="false" />
+      <Message>
+        <Msg code="10602">查询用户管理角色异常</Msg>
+      </Message>
+    </Action>
+    <Action name="getRoleActExits" desc="获得交易授权信息">
+      <Request multi="false">
+        <Field name="roleid" type="long" maxlen="19" />
+        <Field name="__oprid" type="String" maxlen="40" />
+        <Field name="action" type="String" maxlen="40" />
+      </Request>
+    </Action>
+    <Action name="getRoleDetail" base="Detail" desc="取得角色详细信息">
+      <Table name="pcmc_role" />
+    </Action>
+    <Action name="addRole" base="Insert" desc="增加角色">
+      <Table name="pcmc_role" />
+      <Message>
+        <Msg code="00103">新增角色成功</Msg>
+        <Msg code="00104">新增角色失败</Msg>
+      </Message>
+    </Action>
+    <Action name="deleteRole" base="Delete" desc="删除角色">
+      <Table name="pcmc_role" />
+      <Message>
+        <Msg code="00107">删除角色成功</Msg>
+        <Msg code="00108">删除角色失败</Msg>
+      </Message>
+    </Action>
+    <Action name="updateRole" base="Update" desc="更新角色">
+      <Table name="pcmc_role" />
+      <Message>
+        <Msg code="00105">更新角色成功</Msg>
+        <Msg code="00106">更新角色失败</Msg>
+      </Message>
+    </Action>
+    <Action name="addUserRole" base="Insert" desc="授权角色给用户">
+      <Table name="pcmc_user_role" />
+      <Message>
+        <Msg code="00103">用户角色授权成功</Msg>
+        <Msg code="00104">用户角色授权失败</Msg>
+      </Message>
+    </Action>
+    <Action name="deleteUserRole" base="Delete" desc="取消给用户授权的角色">
+      <Table name="pcmc_user_role" />
+      <Message>
+        <Msg code="00107">取消用户角色授权成功</Msg>
+        <Msg code="00108">取消用户角色授权失败</Msg>
+      </Message>
+    </Action>
+    <Action desc="删除用户" base="" old="" accredit="" colacc="" rowacc="" log="true" nologin="" webservice="" oauth="" name="deleteUser">
+      <Request>
+        <Field name="userid" title="操作员流水号" type="String" maxlen="32" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10603">删除用户成功</Msg>
+        <Msg code="10604">删除用户失败</Msg>
+      </Message>
+    </Action>
+    <Action name="addUser" desc="增加用户" log="true">
+      <Request multi="false">
+        <Field name="usercode" title="帐号" type="String" minlen="2" maxlen="20" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" minlen="3" maxlen="100" notnull="false" />
+        <Field name="userpwd1" title="重复输入密码" type="String" minlen="3" maxlen="100" notnull="false" />
+        <Field name="phone" title="操作员电话" type="String" maxlen="60" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="60" notnull="false" />
+        <Field name="email" title="电子邮箱" type="String" maxlen="60" notnull="false" />
+        <Field name="pagesize" title="每页显示记录数" type="long" maxlen="3" notnull="true" />
+        <Field name="usertype" title="用户类型" type="String" maxlen="3" notnull="false" />
+        <Field name="deptid" title="单位代码" type="String" maxlen="40" notnull="false" />
+        <Field name="state" title="是否冻结" type="String" maxlen="1" minlen="1" notnull="true" />
+        <Field name="roleid" title="角色流水编号" type="long" maxlen="19" notnull="false" />
+        <Field name="urole" title="角色流水编号" type="String" maxlen="200" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10605">新增用户成功</Msg>
+        <Msg code="10606">新增用户失败</Msg>
+        <Msg code="10607">用户名已经存在</Msg>
+      </Message>
+    </Action>
+    <Action name="updateUser" desc="更新用户" log="true">
+      <Request multi="false">
+        <Field name="userid" title="操作员编号" type="String" maxlen="40" notnull="true" />
+        <Field name="usercode" title="帐号" type="String" minlen="2" maxlen="20" notnull="true" />
+        <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="密码" type="String" minlen="3" maxlen="100" notnull="false" />
+        <Field name="userpwd1" title="重复输入密码" type="String" minlen="3" maxlen="100" notnull="false" />
+        <Field name="phone" title="操作员电话" type="String" maxlen="60" notnull="false" />
+        <Field name="mobile" title="手机号码" type="String" maxlen="60" notnull="false" />
+        <Field name="email" title="电子邮箱" type="String" maxlen="60" notnull="false" />
+        <Field name="pagesize" title="每页显示记录数" type="long" maxlen="3" notnull="true" />
+        <Field name="usertype" title="用户类型" type="String" maxlen="3" notnull="false" />
+        <Field name="deptid" title="单位代码" type="String" maxlen="40" notnull="false" />
+        <Field name="state" title="是否冻结" type="String" maxlen="1" minlen="1" notnull="true" />
+        <Field name="roleid" title="角色流水编号" type="long" maxlen="19" notnull="false" />
+        <Field name="urole" title="角色流水编号" type="String" maxlen="200" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10609">修改用户信息成功</Msg>
+        <Msg code="10610">修改用户信息失败</Msg>
+        <Msg code="10611">原密码不正确</Msg>
+      </Message>
+    </Action>
+    <Action name="changePwd" desc="修改密码" log="true">
+      <Request multi="false">
+        <Field name="userid" title="操作员编号" type="String" maxlen="40" notnull="true" />
+        <Field name="userpwd" title="操作员口令" type="String" minlen="3" maxlen="100" notnull="false" />
+        <Field name="userpwd1" title="操作员新口令" type="String" minlen="3" maxlen="100" notnull="false" />
+      </Request>
+      <Message>
+        <Msg code="10613">修改密码成功</Msg>
+        <Msg code="10614">修改密码失败</Msg>
+        <Msg code="10615">原密码不正确</Msg>
+      </Message>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" name="getAllUser" base="ListAll" desc="获取所有用户列表" accredit="" log="" webservice="">
+      <Table name="pcmc_user" />
+    </Action>
+    <Action colacc="" rowacc="" old="" accredit="" webservice="" base="List" desc="取得所有操作员信息" log="" nologin="" oauth="" name="getUserList">
+      <Query basesql="SELECT a.*,b.deptid,b.deptname FROM pcmc_user a left join pcmc_user_dept c on a.userid=c.userid left join pcmc_dept b on c.deptid=b.deptid WHERE a.state&gt;'0'">
+        <Field name="qry_usercode" title="操作员编号" type="String" maxlen="20" notnull="false" refname="a.usercode" op="%%" />
+        <Field name="qry_username" title="操作员姓名" type="String" maxlen="40" notnull="false" refname="a.username" op="%%" />
+        <Field name="qry_deptcode" title="部门名称" type="String" maxlen="100" notnull="false" refname="b.deptcode" op="*%" />
+        <Field name="qrySessionDeptCode" title="部门代码" type="String" maxlen="40" notnull="false" gen="session.deptcode" refname="b.deptcode" op="*%" />
+      </Query>
+    </Action>
+    <Action desc="查询用户" base="" old="" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="queryUser">
+      <Request>
+        <Field name="query" title="条件" type="String" maxlen="20" notnull="false" />
+        <Field name="usertype" title="用户类别" type="String" maxlen="2" />
+      </Request>
+    </Action>
+    <Action accredit="" log="" base="" colacc="" webservice="" old="" desc="当前用户信息" rowacc="" nologin="" oauth="true" name="userDetail" />
+    <Action base="Update" old="" desc="冻结解冻用户" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="setUserDisable">
+      <Table name="pcmc_user" />
+    </Action>
+    <Action log="" rowacc="" base="List" accredit="" webservice="" old="" desc="获取用户可用的子系统" colacc="" nologin="" name="getSubSysByUser">
+      <Query basesql="select distinct sm.orderidx,sm.subsysid,sm.cnname,sm.imgurl from pcmc_user st,pcmc_user_role sd,pcmc_subsys sm,pcmc_role sn  where st.userid=sd.userid and   sm.subsysid = sn.subsysid and   sn.roleid=sd.roleid" orderby="sm.orderidx">
+        <Field name="userid" title="用户ID" type="String" notnull="false" gen="session.userid" refname="st.userid" op="=" />
+      </Query>
+    </Action>
+  </Operation>
+  <Operation id="param" bean="cn.brightcom.system.pcmc.sm.ParameterBean" desc="ParameterBean">
+    <Action name="uptjs" desc="Gen JS">
+      <Request multi="false" />
+    </Action>
+    <Action name="paratreelist" desc="参数查询">
+      <Request multi="false">
+        <Field name="paramname" title="参数名称" type="String" maxlen="40" notnull="true" />
+        <Field name="paramcode" title="pid" type="String" maxlen="40" notnull="false" />
+        <Field name="codelen" title="codelen" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+  </Operation>
+  <Operation id="tprole" bean="cn.brightcom.system.pcmc.sm.UserTypeRole" desc="用户类型角色">
+    <Action base="Insert" old="" desc="新增类型角色" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="addrole">
+      <Table name="pcmc_ustype_role" />
+    </Action>
+    <Action base="Update" old="" desc="更新类型角色" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="uptrole">
+      <Table name="pcmc_ustype_role" />
+    </Action>
+    <Action base="Delete" old="" desc="删除类型角色" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="delrole">
+      <Table name="pcmc_ustype_role" />
+    </Action>
+    <Action old="" accredit="" rowacc="" nologin="" oauth="" base="List" desc="查询类型角色" colacc="" log="" webservice="" name="list">
+      <Query>
+        <Field name="usertype" title="usertype" type="String" maxlen="2" notnull="false" />
+      </Query>
+      <Table name="pcmc_ustype_role" />
+    </Action>
+  </Operation>
+  
+    <Operation id="deptManage" bean="cn.brightcom.system.pcmc.sm.DeptManage" desc="机构基础数据管理">
+    <Action base="" old="" desc="初始化基础数据" accredit="" colacc="" rowacc="" log="" nologin="" webservice="" oauth="" name="init">
+      <Request>
+        <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="true" />
+      </Request>
+    </Action>
+    <Action nologin="" colacc="" old="" rowacc="" oauth="" base="List" desc="查询机构管理员" accredit="" log="" webservice="" name="deptmgr">
+      <Query basesql="select a.userid,a.usercode,a.username,a.state from pcmc_user a,pcmc_user_dept b where a.userid=b.userid and a.usertype='9'">
+        <Field name="deptid" title="deptid" type="String" maxlen="32" notnull="true" refname="b.deptid" op="=" />
+      </Query>
+    </Action>
+  </Operation>
+</Config>
+

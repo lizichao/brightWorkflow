@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config>
+    <Session>
+    </Session>
+    <Operation id="ext" bean="cn.brightcom.jraf.ext.ExtDesigner"  desc="GUIDesigner">
+		<Action name="getFiles" desc="取文件列表">
+		    <Request multi="false">
+			</Request>
+		</Action>
+		<Action name="getContent" desc="取设计文件">
+		    <Request multi="false">
+		    	<Field name="path" title="文件名" type="String" maxlen="100" notnull="true"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10005">获取定义文件异常</Msg>
+		    </Message>
+		</Action>
+		<Action name="genjsp" desc="生成JSP文件">
+		    <Request multi="false">
+		    	<Field name="path" title="文件名" type="String" maxlen="100" notnull="true"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10001">生成JSP文件成功</Msg>
+		      	<Msg code="10002">生成JSP文件失败</Msg>
+		    </Message>
+		</Action>
+		<Action name="saveFile" desc="更新设计文件">
+		    <Request multi="false">
+		    	<Field name="path" title="文件名" type="String" maxlen="100" notnull="true"></Field>
+		    	<Field name="action" title="action" type="String" maxlen="20" notnull="true" desc="new/save/remove"></Field>
+		    	<Field name="mainpanel" title="main" type="String" notnull="false"></Field>
+		    	<Field name="func" title="functions" type="String" notnull="false"></Field>
+		    	<Field name="onload" title="onload" type="String" notnull="false"></Field>
+		    	<Field name="reccls" title="recordclass" type="String" notnull="false"></Field>
+		    	<Field name="recits" title="recorditems" type="String" notnull="false"></Field>
+		    	<Field name="stocls" title="storeclass" type="String" notnull="false"></Field>
+		    	<Field name="stoatt" title="storeattributes" type="String" notnull="false"></Field>
+		    	<Field name="jplcls" title="jpanelclass" type="String" notnull="false"></Field>
+		    	<Field name="jplits" title="jpanelitems" type="String" notnull="false"></Field>
+		    	<Field name="jplxtp" title="jpanelitems" type="String" notnull="false"></Field>
+			</Request>
+		    <Message>
+		      	<Msg code="10003">更新设计文件成功</Msg>
+		      	<Msg code="10004">更新设计文件失败</Msg>
+		    </Message>
+		</Action>
+    </Operation>
+</Config>

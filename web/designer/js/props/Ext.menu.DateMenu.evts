@@ -1,0 +1,7 @@
+{
+listeners : [{
+    name : "select",
+    type : "function",
+    defaults : 'function(picker,date){}'
+  }]
+}

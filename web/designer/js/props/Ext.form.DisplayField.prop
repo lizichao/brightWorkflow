@@ -1,0 +1,10 @@
+{
+properties : [{
+    name : "fieldClass",
+    desc : "<b>String</b> The default CSS class for the field (defaults to \"x-form-display-field\")"
+  },{
+    name : "htmlEncode",
+    type : "boolean",
+    desc : "<b>Boolean</b> false to skip HTML-encoding the text when rendering it (defaults to false)"
+  }]
+}

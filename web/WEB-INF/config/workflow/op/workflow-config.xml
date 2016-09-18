@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="GBK"?>
+<Config CONFIG-FILE-PATH="{2}op/workflow-config.xml">
+  <Operation id="ProcessManage" bean="cn.com.bright.workflow.web.action.workspace.ProcessManageAction" desc="流程管理">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询流程定义列表" rowacc="" log="true" oauth="" name="queryProcessDefinition">
+      <Request>
+        <Field name="query_processDefKey" title="流程定义key" type="String" />
+        <Field name="query_processDefName" title="流程定义名字" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="部署流程定义" rowacc="" log="" oauth="" name="importProcessDefinition">
+       <Request>
+        <Field name="doc_flag" title="文件标识" type="String" maxlen="40" notnull="true" />
+        <Field name="doc_file" title="URL" type="file" maxlen="200" notnull="true" />
+      </Request>
+      <Message>
+        <Msg code="10601">流程定义部署失败</Msg>
+      </Message>
+    </Action>
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="下载流程定义资源" rowacc="" log="" oauth="" name="downProcessResource">
+       <Request>
+        <Field name="query_processDefId" title="流程定义id" type="String" maxlen="40" notnull="true" />
+        <Field name="resourceType" title="资源类型" type="String" maxlen="40" notnull="true" />
+      </Request>
+      <Flow>
+         <Forward result="10" ftype="0" path="/platform/public/download.jsp" />
+      </Flow>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="流程定义操作" rowacc="" log="" oauth="" name="processDefinitionOperate">
+       <Request>
+        <Field name="query_processDefId" title="流程定义id" type="String" maxlen="40" notnull="true" />
+        <Field name="query_suspensionState" title="流程定义挂起状态" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="流程节点查询" rowacc="" log="" oauth="" name="getUserTaskNodes">
+       <Request>
+        <Field name="query_processDefId" title="流程定义id" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="发起流程" rowacc="" log="" oauth="" name="startWorkflow">
+       <Request>
+        <Field name="query_processDefId" title="流程定义id" type="String" maxlen="40" notnull="true" />
+      </Request>
+    </Action>
+  </Operation>
+  
+  <Operation id="processEditManage" bean="cn.com.bright.workflow.web.action.workspace.ProcessEditManageAction" desc="流程定义编辑">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询流程定义节点已编辑数据" rowacc="" log="true" oauth="" name="querySingleProcessDef">
+      <Request>
+        <Field name="query_processDefKey" title="流程定义key" type="String" />
+        <Field name="query_processDefId" title="流程定义Id" type="String" />
+      </Request>
+    </Action>
+    
+    <Action  base="Insert" colacc="" webservice="" old="" desc="插入节点数据" rowacc=""  oauth="" name="insertNodeEdit">
+        <Table name="workflow_node_remind" />
+    </Action>
+    <Action  base="" colacc="" webservice="" old="" desc="查找节点数据" rowacc=""  oauth="" name="getNodeEdit">
+       <Request>
+         <Field name="query_processDefKey" title="流程定义key" type="String" />
+         <Field name="query_processDefId" title="流程定义Id" type="String" />
+       </Request>
+    </Action>
+    
+    <Action accredit="" nologin="" base="Update" colacc="" webservice="" old="" desc="更新节点数据" rowacc="" log="true" oauth="" name="updateNodeEdit">
+     <Table name="workflow_node_remind" />
+    </Action>
+    
+    <Action accredit="" nologin="" base="Insert" colacc="" webservice="" old="" desc="增加节点角色" rowacc="" log="" oauth="" name="addNodeRole">
+       <Table name= "workflow_node_role" />
+      <!-- 
+      <Request>
+        <Field name="roleId" title="角色id" type="String" />
+        <Field name="roleName" title="角色名字" type="String" />
+        <Field name="roleSubSysid" title="角色子系统id" type="String" />
+        <Field name="processdefkey" title="流程定义key" type="String" />
+        <Field name="taskdefkey" title="任务定义key" type="String" />
+        <Field name="taskdefname" title="节点定义名称" type="String" />
+      </Request> -->
+      <Message>
+        <Msg code="10601">新增节点角色成功</Msg>
+        <Msg code="10602">新增节点角色失败</Msg>
+      </Message>
+    </Action>
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询节点角色" rowacc="" log="" oauth="" name="queryRole">
+      <Request>
+        <Field name="query_processDefKey" title="流程定义key" type="String" />
+        <Field name="query_taskDefKey" title="节点定义key" type="String" />
+      </Request>
+    </Action>
+     <Action accredit="" nologin="" base="Delete" colacc="" webservice="" old="" desc="删除节点角色" rowacc="" log="" oauth="" name="deleteNodeRole">
+        <Table name= "workflow_node_role" />
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询节点部门" rowacc="" log="" oauth="" name="queryDepartment">
+      <Request>
+        <Field name="query_processDefKey" title="流程定义key" type="String" />
+        <Field name="query_taskDefKey" title="节点定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="Insert" colacc="" webservice="" old="" desc="新增节点部门" rowacc="" log="" oauth="" name="addNodeDepartment">
+      <Table name="workflow_node_department" />
+     <!-- 
+      <Request>
+        <Field name="processdefkey" title="流程定义key" type="String" />
+        <Field name="taskdefkey" title="节点定义key" type="String" />
+        <Field name="taskdefname" title="节点定义名称" type="String" />
+        <Field name="deptId" title="部门Id" type="String" />
+        <Field name="deptName" title="部门名称" type="String" />
+      </Request>-->
+    </Action>
+    <Action accredit="" nologin="" base="Delete" colacc="" webservice="" old="" desc="删除节点部门" rowacc="" log="" oauth="" name="deleteNodeDepartment">
+      <Table name="workflow_node_department" />
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询节点功能组件" rowacc="" log="" oauth="" name="queryComponent">
+      <Request>
+        <Field name="query_processDefKey" title="流程定义key" type="String" />
+        <Field name="query_taskDefKey" title="节点定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="Insert" colacc="" webservice="" old="" desc="增加节点功能组件" rowacc="" log="" oauth="" name="addNodeComponent">
+          <Table name="workflow_node_component" />
+          <!-- 
+      <Request>
+        <Field name="processdefkey" title="流程定义key" type="String" />
+        <Field name="taskdefkey" title="节点定义key" type="String" />
+        <Field name="taskdefname" title="节点定义名称" type="String" />
+        <Field name="node_type" title="节点类型" type="String" />
+        <Field name="component_type" title="功能组件类型" type="String" />
+        <Field name="component_name" title="功能组件名称" type="String" />
+      </Request> -->
+    </Action>
+    <Action accredit="" nologin="" base="Delete" colacc="" webservice="" old="" desc="删除节点功能组件" rowacc="" log="" oauth="" name="deleteNodeComponent">
+      <!-- <Request>
+          <Field name="deleteComponentIds" title="功能组件Id" type="String" />
+      </Request>-->
+        <Table name="workflow_node_component" />
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询流程扩展属性" rowacc="" log="" oauth="" name="queryProcessEditDef">
+      <Request>
+        <Field name="query_processDefKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增流程扩展属性" rowacc="" log="" oauth="" name="addProcessEditDef">
+      <Request>
+        <Field name="processDefKey" title="流程定义key" type="String" />
+        <Field name="processFormKey" title="流程详情查看整体页面路径" type="String" />
+      </Request>
+       <Message>
+        <Msg code="10603">新增流程定义扩展成功</Msg>
+        <Msg code="10604">新增流程定义扩展失败</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新流程扩展属性" rowacc="" log="" oauth="" name="updateProcessEditDef">
+      <Request>
+        <Field name="processDefKey" title="流程定义key" type="String" />
+        <Field name="processFormKey" title="流程详情查看整体页面路径" type="String" />
+      </Request>
+       <Message>
+        <Msg code="10605">更新流程定义扩展成功</Msg>
+        <Msg code="10606">更新流程定义扩展失败</Msg>
+      </Message>
+    </Action> 
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取节点所能够配置的功能组件" rowacc="" log="" oauth="" name="getNodeComponent">
+      <Request>
+        <Field name="nodetype" title="节点类型" type="String" />
+        <Field name="processdefkey" title="流程定义key" type="String" />
+        <Field name="taskdefkey" title="任务定义key" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取节点所能够配置的角色" rowacc="" log="" oauth="" name="getNodeRole">
+      <Request>
+        <Field name="nodetype" title="节点类型" type="String" />
+        <Field name="processdefkey" title="流程定义key" type="String" />
+        <Field name="taskdefkey" title="任务定义key" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取节点所能够配置的部门" rowacc="" log="" oauth="" name="getNodeDepartment">
+      <Request>
+        <Field name="nodetype" title="节点类型" type="String" />
+        <Field name="processdefkey" title="流程定义key" type="String" />
+        <Field name="taskdefkey" title="任务定义key" type="String" />
+      </Request>
+   </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询是否有相同的功能组件" rowacc="" log="" oauth="" name="findExistNodeComponent">
+      <Request>
+        <Field name="processdefkey" title="流程key" type="String" />
+        <Field name="taskdefkey" title="任务key" type="String" />
+        <Field name="component_type" title="功能组件类型" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+  
+  <Operation id="vacationWorkflow" bean="cn.com.bright.workflow.demo.vacation.action.VacationAction" desc="请假流程">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="申请请假" rowacc="" log="" oauth="" name="startVacationProcess">
+      <Request>
+        <Field name="days" title="请假天数" type="String" />
+        <Field name="reason" title="请假原因" type="String" />
+        <Field name="ff" title="请假原因测试" type="String" />
+      </Request>
+      <Message>
+        <Msg code="10601">发起请假流程成功</Msg>
+        <Msg code="10602">发起请假流程失败</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="完成请假任务" rowacc="" log="" oauth="" name="completeVacationTask">
+       <Message>
+        <Msg code="10608">当前任务是主办任务，还有协办任务未完成</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询请假详情" rowacc="" log="true" oauth="" name="viewVacationDetail">
+      <Request>
+        <Field name="query_businessKey" title="请假业务Id" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+  
+  <Operation id="formServiceOperate" bean="cn.com.bright.workflow.web.action.form.FormServiceAction" desc="form服务Action">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询发起表单" rowacc="" log="true" oauth="" name="getRenderedStartForm">
+      <Request>
+        <Field name="query_processKey" title="流程定义key" type="String" />
+      </Request>
+      <Message>
+        <Msg code="10201">流程定义已经挂起，不能发起流程</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询任务审批表单" rowacc="" log="true" oauth="" name="getRenderedTaskForm">
+      <Request>
+        <Field name="query_taskId" title="任务Id" type="String" />
+      </Request>
+      <Message>
+        <Msg code="10607">当前用户没有任务审批权限</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询流程详情表单" rowacc="" log="true" oauth="" name="getRenderedViewForm">
+      <Request>
+        <Field name="query_processInstanceId" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询流程审批日志" rowacc="" log="true" oauth="" name="getApproveLog">
+      <Request>
+        <Field name="processInstanceId" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="流程监控查询任务详情" rowacc="" log="true" oauth="" name="getTaskEditData">
+      <Request>
+        <Field name="processInstanceId" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询多实例节点未完成协办任务部门" rowacc="" log="" oauth="" name="getMultiNodes">
+      <Request>
+        <Field name="processInstanceId" title="流程实例Id" type="String" />
+        <Field name="multiTaskKey" title="节点key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询任务配置的处理人" rowacc="" log="" oauth="" name="getTaskConfigHandlers">
+      <Request>
+        <Field name="taskId" title="任务Id" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+  
+  <Operation id="workSpaceAction" bean="cn.com.bright.workflow.web.action.workspace.WorkSpaceAction" desc="工作空间Action">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询我的代办" rowacc="" log="" oauth="" name="queryMyTask">
+      <Request>
+        <Field name="query_processKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询我的申请单" rowacc="" log="" oauth="" name="queryMyApplication">
+      <Request>
+        <Field name="query_processKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询我参与的流程" rowacc="" log="" oauth="" name="queryMyParticipation">
+      <Request>
+        <Field name="query_processKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询我的已办" rowacc="" log="" oauth="" name="queryMyHistoryTasks">
+      <Request>
+        <Field name="query_processKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询流程监控" rowacc="" log="" oauth="" name="queryProcessMonitor">
+      <Request>
+        <Field name="query_processKey" title="流程定义key" type="String" />
+        <Field name="processInstanceId" title="流程实例id" type="String" />
+        <Field name="startusername" title="发起人" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询在线流程图" rowacc="" log="" oauth="" name="generateDiagram">
+      <Request>
+          <Field name="processInstanceId" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="回收流程" rowacc="" log="" oauth="" name="revokeProcess">
+      <Request>
+          <Field name="processInstanceIds" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="挂起流程" rowacc="" log="" oauth="" name="suspendProcess">
+      <Request>
+          <Field name="processInstanceIds" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="激活流程" rowacc="" log="" oauth="" name="activateProcess">
+      <Request>
+          <Field name="processInstanceIds" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除流程" rowacc="" log="" oauth="" name="deleteProcess">
+      <Request>
+          <Field name="processInstanceIds" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询我被代理的流程" rowacc="" log="" oauth="" name="queryMyDelegatedProcess">
+      <Request>
+          <Field name="processInstanceId" title="流程实例Id" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询可以发起的流程" rowacc="" log="" oauth="" name="queryStartProcess">
+    </Action>
+  </Operation>
+  
+  
+  <Operation id="componentAction" bean="cn.com.bright.workflow.web.component.ComponentAction" desc="功能组件Action">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="转审" rowacc="" log="" oauth="" name="transferComponent">
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="退回上一步" rowacc="" log="" oauth="" name="rollbackPrevious">
+      <Request>
+        <Field name="taskId" title="任务定义Id" type="String" />
+        <Field name="taskDefKey" title="任务定义key" type="String" />
+        <Field name="processInstanceId" title="流程实例id" type="String" />
+        <Field name="processDefinitionId" title="流程定义id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询加减签节点" rowacc="" log="" oauth="" name="queryCounterNodes">
+      <Request>
+        <Field name="query_processDefId" title="流程定义id" type="String" />
+        <Field name="query_processInstanceId" title="流程实例id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="加减签节点" rowacc="" log="" oauth="" name="counterSignOperate">
+      <Request>
+        <Field name="componentName" title="组件名称" type="String" />
+        <Field name="counterSignOperate" title="组件操作" type="String" />
+        <Field name="componentParam" title="组件参数" type="String" />
+        <Field name="processInstanceId" title="流程实例id" type="String" />
+        <Field name="processDefKey" title="流程定义key" type="String" />
+        <Field name="processDefName" title="流程定义名称" type="String" />
+        <Field name="multiKind" title="部门还是人员" type="String" />
+        <Field name="multiInstance" title="串行还是并行" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查找转审人" rowacc="" log="" oauth="" name="queryTransferUsers">
+      <Request>
+        <Field name="isPage" title="是否分页" type="String" />
+        <Field name="userInfo" title="查询用户信息" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="添加子任务" rowacc="" log="" oauth="" name="addSubTask">
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="结束会签" rowacc="" log="" oauth="" name="closeCounterSign">
+      <Request>
+        <Field name="taskId" title="任务id" type="String" />
+        <Field name="query_processInstanceId" title="流程实例id" type="String" />
+        <Field name="query_processDefId" title="流程定义id" type="String" />
+        <Field name="multiNodeId" title="会签节点id" type="String" />
+        <Field name="processParam" title="流程变量" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="新增处理人" rowacc="" log="" oauth="" name="addTaskHandler">
+      <Request>
+        <Field name="query_taskId" title="taskId" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="编辑处理人" rowacc="" log="" oauth="" name="editTaskHandler">
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="收回任务" rowacc="" log="" oauth="" name="revokeTask">
+      <Request>
+        <Field name="sourceTaskId" title="源节点任务id" type="String" />
+        <Field name="targetTaskKey" title="目的节点任务key" type="String" />
+        <Field name="targetTaskAssignee" title="目的节点任务处理人" type="String" />
+        <Field name="targetTaskName" title="目的节点任务名字" type="String" />
+        <Field name="processInstanceId" title="流程实例id" type="String" />
+      </Request>
+    </Action>
+    <Action colacc="" rowacc="" old="" accredit="" webservice="" base="" desc="取得所有操作员信息" log="" nologin="" oauth="" name="getUserList">
+      <Request>
+       <Field name="userInfo" title="查询用户信息" type="String" />
+      </Request>
+    </Action>
+   <Action colacc="" rowacc="" old="" accredit="" webservice="" base="" desc="取得最新处理人的代理信息" log="" nologin="" oauth="" name="getLastDelegateUsers">
+      <Request>
+        <Field name="processInstanceId" title="流程实例id" type="String" />
+        <Field name="taskId" title="任务id" type="String" />
+        <Field name="delegateUser" title="代理人字符串" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取修改流程数据" rowacc="" log="" oauth="" name="getEditCounterInfo">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="processDefKey" title="流程定义key" type="String" />
+       <Field name="taskDefKey" title="任务定义key" type="String" />
+       <Field name="taskId" title="任务Id" type="String" />
+       <Field name="multiKind" title="会签种类" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="修改流程" rowacc="" log="" oauth="" name="editCounterInfo">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="processDefKey" title="流程定义key" type="String" />
+       <Field name="taskDefKey" title="任务定义key" type="String" />
+           <Field name="taskId" title="任务Id" type="String" />
+       <Field name="dealWay" title="主办方式" type="String" />
+       <Field name="businessKey" title="业务key" type="String" />
+       <Field name="multiKind" title="会签种类" type="String" />
+             
+       <Field name="addDept" title="新增部门" type="String" />
+       <Field name="removeDept" title="删除部门" type="String" />
+       <Field name="majorDept" title="主办部门" type="String" />
+       <Field name="submitDepts" title="选择部门" type="String" />
+       
+       <Field name="addUser" title="新增人员" type="String" />
+       <Field name="removeUser" title="删除人员" type="String" />
+       <Field name="majorUser" title="主办人员" type="String" />
+       <Field name="submitUsers" title="选择人员" type="String" />
+       <Field name="unChangeUser" title="未改变人员" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+  
+  
+   <Operation id="delegateTaskAction" bean="cn.com.bright.workflow.web.action.DelegateTaskAction" desc="自动代理Action">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="增加代理记录" rowacc="" log="" oauth="" name="addDelegateTask">
+      <Request>
+        <Field name="startTime" title="开始时间" type="String" />
+        <Field name="endTime" title="结束时间" type="String" />
+        <Field name="delegateUser" title="代理人" type="String" />
+        <Field name="delegateUserName" title="代理人名称" type="String" />
+        <Field name="processDefKey" title="代理流程key" type="String" />
+        <Field name="processDefName" title="代理流程Name" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查找代理记录" rowacc="" log="" oauth="" name="searchDelegateTask">
+       <Request>
+        <Field name="starttime" title="开始时间" type="String" />
+        <Field name="endtime" title="结束时间" type="String" />
+        <Field name="delegateuser" title="代理人" type="String" />
+        <Field name="processDefKey" title="代理流程key" type="String" />
+        <Field name="originaluser" title="原始人" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新代理记录" rowacc="" log="" oauth="" name="updateDelegateTask">
+       <Request>
+         <Field name="seqId" title="主键Id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除代理记录" rowacc="" log="" oauth="" name="deleteDelegateTask">
+      <Request>
+         <Field name="delegateTaskIds" title="主键Id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询新增代理配置" rowacc="" log="" oauth="" name="searchDelegateAddConfig">
+    </Action>
+  </Operation>
+  
+   <Operation id="workcalController" bean="cn.com.bright.workflow.workcal.web.WorkcalController" desc="工作日历控制器">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询工作日历" rowacc="" log="" oauth="" name="getWorkcalCalendar">
+    </Action>
+  </Operation>
+  
+   <Operation id="workcalTypeController" bean="cn.com.bright.workflow.workcal.web.WorkcalTypeController" desc="工作日历类型控制器">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询工作日历类型" rowacc="" log="" oauth="" name="queryWorkcalType">
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="编辑工作日历类型" rowacc="" log="" oauth="" name="workcalTypeInput">
+       <Request>
+         <Field name="workcalTypeId" title="工作日历类型Id" type="String" />
+         <Field name="workcalTypeName" title="工作日历类型名称" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除工作日历类型" rowacc="" log="" oauth="" name="deleteWorkcalType">
+       <Request>
+         <Field name="workcalTypeIds" title="工作日历类型Id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查找单个工作日历类型" rowacc="" log="" oauth="" name="getWorkcalType">
+       <Request>
+         <Field name="workcalTypeId" title="工作日历类型Id" type="String" />
+       </Request>
+    </Action>
+  </Operation>
+  
+   <Operation id="workcalRuleController" bean="cn.com.bright.workflow.workcal.web.WorkcalRuleController" desc="工作日历规则控制器">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询工作日历规则" rowacc="" log="" oauth="" name="queryWorkcalRule">
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="编辑工作日历规则" rowacc="" log="" oauth="" name="workcalRuleInput">
+       <Request>
+         <Field name="workcalRuleId" title="工作日历规则Id" type="String" />
+         <Field name="year" title="工作日历规则年" type="String" />
+         <Field name="week" title="工作日历规则星期" type="String" />
+         <Field name="workcalRuleName" title="工作日历规则名称" type="String" />
+         <Field name="workDate" title="工作日历规则日期" type="String" />
+         <Field name="status" title="工作日历规则状态" type="String" />
+         <Field name="workcalTypeId" title="工作日历规则类型id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除工作日历规则" rowacc="" log="" oauth="" name="deleteWorkcalRule">
+      <Request>
+         <Field name="workcalRuleIds" title="工作日历规则Id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询单个工作日历规则" rowacc="" log="" oauth="" name="getWorkcalRuleSingle">
+      <Request>
+         <Field name="workcalRuleId" title="工作日历规则Id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询工作日历规则不分页" rowacc="" log="" oauth="" name="queryWorkcalRuleNoPage">
+    </Action>
+   </Operation>
+  
+  
+   <Operation id="workcalPartController" bean="cn.com.bright.workflow.workcal.web.WorkcalPartController" desc="工作日历时间段控制器">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询工作日历时间段" rowacc="" log="" oauth="" name="queryWorkcalPart">
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="编辑工作日历时间段" rowacc="" log="" oauth="" name="workcalPartInput">
+      <Request>
+         <Field name="workcalPartId" title="工作日历时间段Id" type="String" />
+         <Field name="shift" title="工作日历时间段方式" type="String" />
+         <Field name="start_time" title="工作日历时间段开始时间" type="String" />
+         <Field name="end_time" title="工作日历时间段结束时间" type="String" />
+         <Field name="workcalRuleId" title="工作日历时间段规则id" type="String" />
+         <Field name="workcalRuleName" title="工作日历时间段规则名称" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除工作日历时间段" rowacc="" log="" oauth="" name="deleteWorkcalPart">
+       <Request>
+         <Field name="workcalPartIds" title="工作日历时间段Id" type="String" />
+       </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询单个工作日历时间段" rowacc="" log="" oauth="" name="getWorkcalPartSingle">
+       <Request>
+         <Field name="workcalPartId" title="工作日历时间段Id" type="String" />
+       </Request>
+    </Action>
+   </Operation>
+   
+   
+  <Operation id="publishAction" bean="cn.com.bright.workflow.publish.PublishAction" desc="发文流程">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="申请发文" rowacc="" log="" oauth="" name="startPublish">
+      <Request>
+        <Field name="flddjh" title="登记号" type="String" />
+        <Field name="fwtm" title="发文题名" type="String" />
+        <Field name="fldgwlx" title="发文公文类型" type="String" />
+        <Field name="fldzbbmmc" title="主办部门" type="String" />
+        <Field name="fldngr" title="拟稿人" type="String" />
+        <Field name="fldjjcd" title="紧急程度" type="String" />
+        <Field name="fldmj" title="密级" type="String" />
+        <Field name="fldwz" title="文种" type="String" />
+        <Field name="attachments" title="附件" type="String" />
+        <Field name="processDefKey" title="流程定义key" type="String" />
+        <Field name="originalAttachmentId" title="发文申请原文id" type="String" />
+      </Request>
+      <Message>
+        <Msg code="10601">发起发文流程成功</Msg>
+        <Msg code="10602">发起发文流程失败</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="完成发文任务" rowacc="" log="" oauth="" name="completePublishTask">
+      <Request>
+        <Field name="id" title="主键id" type="String" />
+        <Field name="officeApprover" title="办公室主任审核人" type="String" />
+        <Field name="departmentPrincipalHandler" title="部门会签主办人" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询发文详情" rowacc="" log="true" oauth="" name="viewPublish">
+      <Request>
+        <Field name="query_businessKey" title="发文业务Id" type="String" />
+        <Field name="processInstanceId" title="流程实例Id" type="String" />
+        <Field name="processDefKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询发文配置登记号" rowacc="" log="true" oauth="" name="getPublishNumber">
+      <Request>
+        <Field name="processDefKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="上传附件" rowacc="" log="true" oauth="" name="uploadAttachMentList">
+      <Request>
+       <Field name="attachments" title="附件" type="file" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="下载附件" rowacc="" log="" oauth="" name="downLoadPublishAttachment">
+      <Request>
+       <Field name="attachmentId" title="附件" type="String" />
+      </Request>
+      <Flow>
+         <Forward result="10" ftype="0" path="/platform/public/download.jsp" />
+       </Flow>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取发文加减签" rowacc="" log="" oauth="" name="getCounterInfo">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="counterOperate" title="加减签操作" type="String" />
+       <Field name="officeApprover" title="办公室审核人" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="触发发文加减签" rowacc="" log="" oauth="" name="notifyCounterOperate">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="counterOperate" title="加减签操作" type="String" />
+       <Field name="counterUserIds" title="加减签人员" type="String" />
+       <Field name="counterUserIds" title="加减签人员" type="String" />
+       <Field name="taskId" title="任务ID" type="String" />
+       <Field name="id" title="业务key" type="String" />
+      </Request>
+    </Action>
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="保存发文业务数据" rowacc="" log="" oauth="" name="savePublishData">
+      <Request>
+	       <Field name="fwtm" title="发文提名" type="String" />
+	       <Field name="fldjjcd" title="发文紧急程度" type="String" />
+	       <Field name="fldmj" title="发文密级" type="String" />
+	       <Field name="fldwz" title="发文文种" type="String" />
+	       <Field name="id" title="主键id" type="String" />
+      </Request>
+    </Action>
+     <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除发文附件" rowacc="" log="true" oauth="" name="deletePublishAttachment">
+      <Request>
+        <Field name="attachmentId" title="附件Id" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+  
+
+  <Operation id="receiveFileAction" bean="cn.com.bright.workflow.receiveFile.ReceiveFileAction" desc="收文流程">
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="申请收文" rowacc="" log="" oauth="" name="startReceiveFileProcess">
+      <Request>
+        <Field name="receiveTitle" title="收文标题" type="String" />
+        <Field name="receiveOffice" title="来文机关" type="String" />
+        <Field name="receiveWord" title="来文字号" type="String" />
+        <Field name="fileType" title="文件分类" type="String" />
+        <Field name="receiveDate" title="收文日期" type="String" />
+        <Field name="urgent" title="紧急程度" type="String" />
+        <Field name="securityLevel" title="秘密等级" type="String" />
+        <Field name="finishDate" title="办结日期" type="String" />
+        <Field name="receiveRemark" title="拟办意见" type="String" />
+        <Field name="registerNumber" title="收文登记号" type="String" />
+        <Field name="processDefKey" title="流程定义key" type="String" />
+         <Field name="attachments" title="附件" type="String" />
+      </Request>
+      <Message>
+        <Msg code="10601">发起收文流程成功</Msg>
+        <Msg code="10602">发起收文流程失败</Msg>
+      </Message>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="完成收文任务" rowacc="" log="" oauth="" name="completeReceiveFileTask">
+      <Request>
+        <Field name="id" title="主键id" type="String" />
+        <Field name="officeApprover" title="监控人" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询收文详情" rowacc="" log="true" oauth="" name="viewReceiveFile">
+      <Request>
+        <Field name="query_businessKey" title="发文业务Id" type="String" />
+        <Field name="processInstanceId" title="流程实例Id" type="String" />
+        <Field name="processDefKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="查询收文登记号" rowacc="" log="true" oauth="" name="getReceiveFileNumber">
+      <Request>
+        <Field name="processDefKey" title="流程定义key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除收文附件" rowacc="" log="true" oauth="" name="deleteReceiveFileAttachment">
+      <Request>
+         <Field name="attachmentId" title="附件Id" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="保存收文数据" rowacc="" log="true" oauth="" name="saveReceiveFileData">
+      <Request>
+        <Field name="receiveTitle" title="收文标题" type="String" />
+        <Field name="receiveOffice" title="来文机关" type="String" />
+        <Field name="receiveWord" title="来文字号" type="String" />
+        <Field name="fileType" title="文件分类" type="String" />
+        <Field name="receiveDate" title="收文日期" type="String" />
+        <Field name="urgent" title="紧急程度" type="String" />
+        <Field name="securityLevel" title="秘密等级" type="String" />
+        <Field name="finishDate" title="办结日期" type="String" />
+        <Field name="receiveRemark" title="拟办意见" type="String" />
+        <Field name="id" title="主键id" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="触发发文加减签" rowacc="" log="" oauth="" name="notifyCounterOperate">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="counterOperate" title="加减签操作" type="String" />
+       <Field name="counterUserIds" title="加减签人员" type="String" />
+       <Field name="counterUserIds" title="加减签人员" type="String" />
+       <Field name="taskId" title="任务ID" type="String" />
+       <Field name="id" title="业务key" type="String" />
+      </Request>
+    </Action>
+    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取发文加减签" rowacc="" log="" oauth="" name="getCounterInfo">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="counterOperate" title="加减签操作" type="String" />
+       <Field name="officeApprover" title="办公室审核人" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="获取修改流程数据" rowacc="" log="" oauth="" name="getEditCounterInfo">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="processDefKey" title="流程定义key" type="String" />
+       <Field name="taskDefKey" title="任务定义key" type="String" />
+      </Request>
+    </Action>
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="修改流程" rowacc="" log="" oauth="" name="editCounterInfo">
+      <Request>
+       <Field name="processInstanceId" title="流程实例Id" type="String" />
+       <Field name="processDefKey" title="流程定义key" type="String" />
+       <Field name="taskDefKey" title="任务定义key" type="String" />
+       <Field name="dealWay" title="主办方式" type="String" />
+       <Field name="addDept" title="新增部门" type="String" />
+       <Field name="removeDept" title="删除部门" type="String" />
+       <Field name="majorDept" title="主办部门" type="String" />
+       <Field name="collectionElementVariable" title="多实例元素" type="String" />
+       <Field name="collectionVariable" title="多实例元素变量" type="String" />
+       <Field name="submitDepts" title="选择部门" type="String" />
+       <Field name="businessKey" title="业务key" type="String" />
+      </Request>
+    </Action>
+  </Operation>
+</Config>
+

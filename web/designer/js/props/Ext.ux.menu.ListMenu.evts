@@ -1,0 +1,7 @@
+{
+listeners : [{
+    name : "checkchange",
+    type : "function",
+    defaults : 'function(item,checked){}'
+  }]
+}

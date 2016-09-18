@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<EventManage>
+<!--  
+	<Listener class="cn.com.bright.yuexue.util.CaptchaValidateListener">
+		<Event name="pcmc.sm_permission.login" type="begin" async="false"/>
+	</Listener>-->
+	<Listener class="cn.brightcom.system.pcmc.event.LoginListener">
+		<Event name="pcmc.sm_permission.login" type="end" async="false"/>
+		<Event name="pcmc.sm_permission.logout" type="end" async="false"/>
+	</Listener>
+	<Listener class="cn.brightcom.system.pcmc.event.LoginPWDListener">
+		<Event name="pcmc.sm_permission.login" type="begin" async="false"/>
+	</Listener>
+</EventManage>
