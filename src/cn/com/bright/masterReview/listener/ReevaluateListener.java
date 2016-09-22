@@ -32,6 +32,6 @@ public class ReevaluateListener implements ExecutionListener  {
         
         String businessKey = execution.getProcessBusinessKey();
         
-        execution.setVariable("isReevaluate", "0");
+        execution.setVariable("isReevaluate", "0");//标志这两个审核人之间的差值来决定是否要由教育局人事处复评，0表示相差不大，1表示相差很大
     }
 }
