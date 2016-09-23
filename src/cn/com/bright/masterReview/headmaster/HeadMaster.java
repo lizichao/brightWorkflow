@@ -166,7 +166,7 @@ public class HeadMaster extends UserManage{
             StringBuffer sqlBuf = new StringBuffer("");
 
             sqlBuf.append("SELECT t.*, a.deptname");
-            sqlBuf.append(" FROM headmaster_base_info t INNER JOIN pcmc_dept a ON t.deptid = a.deptid where 1=1 and valid = '1' order by t.create_date desc");
+            sqlBuf.append(" FROM headmaster_base_info t INNER JOIN pcmc_dept a ON t.deptid = a.deptid INNER JOIN pcmc_user_dept b ON t.userid = b.userid where 1=1 and valid = '1' order by t.create_date desc");
             
             if (StringUtil.isNotEmpty(username)) {
                 sqlBuf.append(" and username like ?");

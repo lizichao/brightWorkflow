@@ -796,6 +796,7 @@ public class UserManage{
 		{
 			sqlBuf.append(" and ").append(bind).append("='1'");
 		}
+		sqlBuf.append(" and state").append("!='9'");
 		ArrayList bvals = new ArrayList();
 		bvals.add(chkVal);
 		

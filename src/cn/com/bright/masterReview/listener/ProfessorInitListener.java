@@ -37,9 +37,9 @@ public class ProfessorInitListener {
         
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(),businessKey,UserManage.PROFESSOR_TYPE);
       
-        if(CollectionUtils.isEmpty(list)){
-            throw new NoApproveUsersException("下级审核人未找到，请联系管理员配置！");
-        }
+//        if(CollectionUtils.isEmpty(list)){
+//            throw new NoApproveUsersException("下级审核人未找到，请联系管理员配置！");
+//        }
              
         for (Map<String, Object> map : list) {
             String user_id = map.get("user_id").toString();

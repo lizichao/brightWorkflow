@@ -295,7 +295,7 @@ public class ProfessorAction extends UserManage {
     protected Element getUserById(String userid)
         throws Exception
     {
-        String sql = "select a.*,b.id from pcmc_user a,headmaster_professor_info b where a.userid=b.userid and a.userid=?";
+        String sql = "select a.*,b.id,b.deptid from pcmc_user a,headmaster_professor_info b where a.userid=b.userid and a.userid=?";
         ArrayList<Object> bvals = new ArrayList<Object>();
         bvals.add(userid);
         return DaoUtil.getOneRecord(sql, bvals);
@@ -314,7 +314,7 @@ public class ProfessorAction extends UserManage {
             StringBuffer sqlBuf = new StringBuffer("");
 
             sqlBuf.append(" SELECT *");
-            sqlBuf.append(" FROM headmaster_professor_info where 1=1 and valid = '1'");
+            sqlBuf.append(" FROM headmaster_professor_info  where 1=1 and valid = '1'");
             
             if (StringUtil.isNotEmpty(username)) {
                 sqlBuf.append(" and username like ?");

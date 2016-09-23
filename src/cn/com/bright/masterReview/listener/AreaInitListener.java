@@ -41,7 +41,7 @@ public class AreaInitListener implements ExecutionListener {
         sql.append(" WHERE t.userid =?");
 
         String masterDeptcode = ApplicationContextHelper.getJdbcTemplate().queryForObject(sql.toString(),String.class, userid);
-        masterDeptcode= masterDeptcode.substring(0,9);
+        masterDeptcode= masterDeptcode.substring(0,8);
         
         //查出校长所在区的对应的区级管理员
         sql.setLength(0);
@@ -60,7 +60,7 @@ public class AreaInitListener implements ExecutionListener {
         
         
          List<String> allHandlers = new ArrayList<String>();
-         allHandlers.add("4028814d5499edd2015499efc4670004");
-         execution.setVariable("personalUsers", allHandlers);
+        // allHandlers.add("4028814d5499edd2015499efc4670004");
+         execution.setVariable("areaHeader", list.get(0).get("userid"));
     }
 }

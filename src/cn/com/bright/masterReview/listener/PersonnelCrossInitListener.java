@@ -42,7 +42,7 @@ public class PersonnelCrossInitListener implements ExecutionListener {
         sql.append(" WHERE t.id = ?");
 
         String masterDeptcode = ApplicationContextHelper.getJdbcTemplate().queryForObject(sql.toString(),String.class, businessKey);
-       // masterDeptcode= masterDeptcode.substring(0,9);
+       masterDeptcode= masterDeptcode.substring(0,8);
         
         //查询其他区的人事干部，并且按人事干部打过分的校长数量升序排序，第一个是打分最少的人事干部(可能是没打过分的人事干部)
         sql.setLength(0);
@@ -69,6 +69,6 @@ public class PersonnelCrossInitListener implements ExecutionListener {
          List<String> allHandlers = new ArrayList<String>();
          allHandlers.add("4028814d5499edd2015499efc4670004");
        //  execution.setVariable("personalUsers", allHandlers);
-         execution.setVariable("personalCrossUser", "4028814d5499edd2015499efc4670004");
+         execution.setVariable("personalCrossUser", list.get(0).get("userid"));
     }
 }

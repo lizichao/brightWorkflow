@@ -650,6 +650,7 @@
         <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
         <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
         <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+         <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
       </Request>
     </Action>
     
@@ -707,6 +708,7 @@
         <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
         <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
         <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+         <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
       </Request>
     </Action>
     
@@ -757,6 +759,7 @@
         <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
         <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
         <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+         <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
       </Request>
     </Action>
     
@@ -822,6 +825,7 @@
         <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
         <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
         <Field name="mobile" title="手机号码" type="String" maxlen="30" notnull="false" />
+         <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
       </Request>
     </Action>
     

@@ -43,7 +43,7 @@ public class PersonnelInitListener implements ExecutionListener {
         sql.append(" WHERE t.id = ?");
 
         String masterDeptcode = ApplicationContextHelper.getJdbcTemplate().queryForObject(sql.toString(),String.class, businessKey);
-        //masterDeptcode= masterDeptcode.substring(0,9);
+        masterDeptcode= masterDeptcode.substring(0,8);
         
         //查询本区的人事干部，并且按人事干部打过分的校长数量升序排序，第一个是打分最少的人事干部(可能是没打过分的人事干部)
         sql.setLength(0);
@@ -56,7 +56,7 @@ public class PersonnelInitListener implements ExecutionListener {
         sql.append("   ON t.userid = a.personnel_leader");
         sql.append(" INNER JOIN pcmc_user_dept b ON t.userid = b.userid");
         sql.append(" INNER JOIN pcmc_dept c ON b.deptid = c.deptid");
-        sql.append(" WHERE c.deptcode == ?");
+        sql.append(" WHERE c.deptcode = ?");
         sql.append(" ORDER BY approvenums");
  
 
@@ -70,6 +70,6 @@ public class PersonnelInitListener implements ExecutionListener {
          List<String> allHandlers = new ArrayList<String>();
          allHandlers.add("4028814d5499edd2015499efc4670004");
         // execution.setVariable("personalUsers", allHandlers);
-         execution.setVariable("personalUser", "4028814d5499edd2015499efc4670004");
+         execution.setVariable("personalUser", list.get(0).get("userid"));
     }
 }

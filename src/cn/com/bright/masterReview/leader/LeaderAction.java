@@ -323,7 +323,7 @@ public class LeaderAction extends UserManage{
             StringBuffer sqlBuf = new StringBuffer("");
 
             sqlBuf.append(" SELECT *");
-            sqlBuf.append(" FROM headmaster_leader_info where 1=1 and valid = '1'");
+            sqlBuf.append(" FROM headmaster_leader_info  where 1=1 and valid = '1'");
             
             if (StringUtil.isNotEmpty(username)) {
                 sqlBuf.append(" and username like ?");

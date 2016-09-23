@@ -294,7 +294,7 @@ public class ArealeaderAction extends UserManage{
     protected Element getUserById(String userid)
         throws Exception
     {
-        String sql = "select a.*,b.id from pcmc_user a,headmaster_arealeader_info b where a.userid=b.userid and a.userid=?";
+        String sql = "select a.*,b.id,b.deptid from pcmc_user a,headmaster_arealeader_info b where a.userid=b.userid and a.userid=?";
         ArrayList<Object> bvals = new ArrayList<Object>();
         bvals.add(userid);
         return DaoUtil.getOneRecord(sql, bvals);
@@ -313,7 +313,7 @@ public class ArealeaderAction extends UserManage{
             StringBuffer sqlBuf = new StringBuffer("");
 
             sqlBuf.append(" SELECT t.*, a.deptname");
-            sqlBuf.append(" FROM headmaster_arealeader_info t INNER JOIN pcmc_dept a ON t.deptid = a.deptid where 1=1 and t.valid = '1'");
+            sqlBuf.append(" FROM headmaster_arealeader_info t INNER JOIN pcmc_dept a ON t.deptid = a.deptid  INNER JOIN pcmc_user_dept b ON t.userid = b.userid  where 1=1 and t.valid = '1'");
             
             if (StringUtil.isNotEmpty(username)) {
                 sqlBuf.append(" and t.username like ?");

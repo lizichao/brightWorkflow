@@ -18,10 +18,11 @@ Ext.namespace("jsp.masterreview.headmaster");jsp.masterreview.headmaster.headmas
           _editInfoWin.show();
           EditInfoForm.getForm().reset();
       
-          if(_rec.data.id){
+        
+         EditInfoForm.getForm().loadRecord(_rec);
+           if(_rec.data.id){
             EditInfoForm.getForm().findField('deptid').setComboVal(_rec.get('deptid'),_rec.get('deptname'));
           }
-         EditInfoForm.getForm().loadRecord(_rec);
           EditInfoForm.record=_rec;
         }
     var HeadMasterRec=Ext.data.Record.create([ {
@@ -141,14 +142,14 @@ Ext.namespace("jsp.masterreview.headmaster");jsp.masterreview.headmaster.headmas
     name : "join_work_time",
     fieldLabel : "参加工作时间",
     type : "date",
-    dateFormat : "Y-m-d",
+    dateFormat : "Y-m-d H:i:s",
     allowBlank : true
 },{
     xtype : "Field",
     name : "join_educate_work_time",
     fieldLabel : "参加教育工作时间",
      type : "date",
-    dateFormat : "Y-m-d",
+   dateFormat : "Y-m-d H:i:s",
     allowBlank : true
 },{
     xtype : "Field",
@@ -485,10 +486,12 @@ this.HeadMasterStore=HeadMasterStore;this.__caches__.push(HeadMasterStore);var E
           labelAlign : "right",
           items : [            {
               name : "census_register",
-              fieldLabel : "户籍",
+               fieldLabel : "户籍",
               width : 150,
               allowBlank : true,
-              xtype : "textfield"
+              xtype : "paracombo",
+              hiddenName : "census_register",
+              baseParams : {paramname:'headmaster_census_register'}
           }]
       },{
           layout : "form",
@@ -702,8 +705,8 @@ this.EditInfoForm=EditInfoForm;this.__caches__.push(EditInfoForm);var MainPanel=
         {width:100,sortable:true,header:'学校类型',dataIndex:'school_class',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'现任职务',dataIndex:'present_occupation',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'现任专业技术职务',dataIndex:'present_major_occupation',renderer:Ext.util.Format.paramRenderer('undefined','')},
-        {width:100,sortable:true,header:'参加工作时间',dataIndex:'join_work_time',renderer:Ext.util.Format.paramRenderer('undefined','')},
-        {width:100,sortable:true,header:'参加教育工作时间',dataIndex:'join_educate_work_time',renderer:Ext.util.Format.paramRenderer('undefined','')},
+        {width:100,sortable:true,header:'参加工作时间',dataIndex:'join_work_time',renderer:Ext.util.Format.dateRenderer('Y-m-d')},
+        {width:100,sortable:true,header:'参加教育工作时间',dataIndex:'join_educate_work_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
         {width:100,sortable:true,header:'政治面貌',dataIndex:'politics_status',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'教龄',dataIndex:'teach_age',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'籍贯',dataIndex:'native_place',renderer:Ext.util.Format.paramRenderer('undefined','')},

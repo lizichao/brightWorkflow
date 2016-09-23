@@ -48,6 +48,7 @@ import cn.com.bright.workflow.api.vo.HistoryActinstVO;
 import cn.com.bright.workflow.api.vo.ProcessStartVO;
 import cn.com.bright.workflow.api.vo.TaskCompleteVO;
 import cn.com.bright.workflow.core.spring.ApplicationContextHelper;
+import cn.com.bright.workflow.exception.NoApproveUsersException;
 import cn.com.bright.workflow.exception.PermissionValidateException;
 import cn.com.bright.workflow.exception.ProcessInstanceStartException;
 import cn.com.bright.workflow.exception.TaskDelegateException;
@@ -333,12 +334,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
             data.addContent(record);
             XmlDocPkgUtil.setChildText(record, "processInstanceId", ""+processInstanceId);
             xmlDocUtil.getResponse().addContent(data);
-        } catch (ProcessInstanceStartException e) {
+        }  catch (ProcessInstanceStartException e) {
             e.printStackTrace();
             log4j.logError("[发起校长职级评审流程失败.]" + e.getMessage());
             log4j.logError(e);
             xmlDocUtil.writeErrorMsg("10607", "您没权限发起该流程");
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
             log4j.logError("[发起校长职级评审流程失败.]" + e.getMessage());
             log4j.logError(e);
@@ -884,6 +885,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
             log4j.logError(e);
         } catch (Exception e) {
             e.printStackTrace();
+            if(e.getCause().getCause() instanceof NoApproveUsersException){
+                xmlDocUtil.writeErrorMsg("106099", "下个节点没有找到审批人，请联系技术支持人员！");
+            }else{
+                xmlDocUtil.writeErrorMsg("106099", "任务提交失败！");
+            }
+            xmlDocUtil.setResult("-1");
             log4j.logError(e);
         }        
     }
@@ -1007,7 +1014,11 @@ public class MasterReviewAction extends BaseWorkflowAction {
             log4j.logError(e);
         } catch (Exception e) {
             e.printStackTrace();
-            xmlDocUtil.writeErrorMsg("106099", "提交失败！");
+            if(e.getCause().getCause() instanceof NoApproveUsersException){
+                xmlDocUtil.writeErrorMsg("106099", "下个节点没有找到审批人，请联系技术支持人员！");
+            }else{
+                xmlDocUtil.writeErrorMsg("106099", "任务提交失败！");
+            }
             xmlDocUtil.setResult("-1");
             log4j.logError(e);
         }            
@@ -1049,6 +1060,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
             log4j.logError(e);
         } catch (Exception e) {
             e.printStackTrace();
+            if(e.getCause().getCause() instanceof NoApproveUsersException){
+                xmlDocUtil.writeErrorMsg("106099", "下个节点没有找到审批人，请联系技术支持人员！");
+            }else{
+                xmlDocUtil.writeErrorMsg("106099", "任务提交失败！");
+            }
+            xmlDocUtil.setResult("-1");
             log4j.logError(e);
         }                 
     }
@@ -1128,6 +1145,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
              log4j.logError(e);
          } catch (Exception e) {
              e.printStackTrace();
+             if(e.getCause().getCause() instanceof NoApproveUsersException){
+                 xmlDocUtil.writeErrorMsg("106099", "下个节点没有找到审批人，请联系技术支持人员！");
+             }else{
+                 xmlDocUtil.writeErrorMsg("106099", "任务提交失败！");
+             }
+             xmlDocUtil.setResult("-1");
              log4j.logError(e);
          }         
      }
@@ -1176,6 +1199,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
             log4j.logError(e);
         } catch (Exception e) {
             e.printStackTrace();
+            if(e.getCause().getCause() instanceof NoApproveUsersException){
+                xmlDocUtil.writeErrorMsg("106099", "下个节点没有找到审批人，请联系技术支持人员！");
+            }else{
+                xmlDocUtil.writeErrorMsg("106099", "任务提交失败！");
+            }
+            xmlDocUtil.setResult("-1");
             log4j.logError(e);
         }         
     }
