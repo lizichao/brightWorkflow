@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import cn.com.bright.masterReview.util.MasterReviewConstant;
 import cn.com.bright.workflow.core.spring.ApplicationContextHelper;
-
+//流程发起监听
 @Component
 public class HeadMasterStartListener {
 
