@@ -2,7 +2,12 @@
 <%@ page import="org.jdom.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="cn.brightcom.jraf.web.*"%>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
 <%
+//isFristApply为表示是从开始节点提交下一步进入驳回充填节点
+  String isFristApply =(String)request.getParameter("isFristApply");
+isFristApply = StringUtils.isNotEmpty(isFristApply)? isFristApply : "0";
+
   String userid = (String)session.getAttribute("userid");
   String username =(String)session.getAttribute("username");
   String usertype =(String)session.getAttribute("usertype");
@@ -68,6 +73,7 @@ var processInstanceId = '<%=processInstanceId%>';
 var processBusinessKey = '<%=processBusinessKey%>';
 var processDefKey = '<%=processDefKey%>';
 var current_option_num = '<%=current_option_num%>';
+var isFristApply = '<%=isFristApply%>';
 function beforeSubmit(formJsonData){
 	var mobile = $("#mobile").val();
 	
@@ -586,7 +592,7 @@ function saveDraft(){
 }
 
 $(document).ready(function(){	
-	debugger
+	$("#completeTitle").val("填写资料");
 	Brightcom.workflow.beforeSubmit = beforeSubmit;
 	Brightcom.workflow.afterSubmit = afterSubmit;
 	$("#id").val(<%=masterReviewVO%>.id);
@@ -599,7 +605,7 @@ $(document).ready(function(){
 	 if(current_option_num && current_option_num != 'null'){
 		 changeOption(parseInt(current_option_num))
 	 }else{
-		 changeOption(<%=masterReviewVO%>.current_option_num || 1)
+		 changeOption(<%=masterReviewVO%>.current_option_num || (isFristApply=='1'? '2' :'1'))
 	 }
 	
 
@@ -803,7 +809,7 @@ function changeOption(optionType){
 			switch (optionType) {
 		       case 1:
 			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/base_info.jsp", {limit: 25}, function(){
+			    	$("#mainDiv").load("/masterreview/headmaster/base_info.jsp?base_info=0", {limit: 25}, function(){
 			    		initOptionClick(1);
 			    		initRefillData(masterReviewVO);
 			        });

@@ -4,6 +4,9 @@
   String username =(String)session.getAttribute("username");
   String usertype =(String)session.getAttribute("usertype");
   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
+  
+  //sourceType为表示是从开始节点进入这个页面还是从驳回充填节点进入这个页面，1表示从开始节点进入这个页面
+  String sourceType =(String)request.getParameter("sourceType");
  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +16,14 @@
 <meta name="description" content="" />
 <title>深圳市校长职级评审系统</title>
 <script>
+var sourceType = '<%=sourceType%>'
 $(function(){
+	//1表示从开始节点进入这个页面
+	if(sourceType && sourceType == '1'){
+		
+		//$("#base_next_btn").text("保存");
+		$("#base_change_div").hide();
+	}
 	Headmaster.findMasterBaseInfo('<%=userid%>');
 	Headmaster.initSelectCom();
 	/*
@@ -38,8 +48,7 @@ $(function(){
 	initSwfuploadContainer();
 });
 
-function initRefillData(masterReviewVO){
-}
+
 
 
 
@@ -286,7 +295,7 @@ function countBirthDate(identitycardObj){
 		<div class="txt fl">
 			<h2><i>1</i>基础信息</h2>
 		</div>
-		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
+		<div id="base_change_div" class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>
 	</div>
 	<!-- 标题 e -->
@@ -404,7 +413,7 @@ function countBirthDate(identitycardObj){
 		</ul>
 	</div>
 	<!-- 基础信息填写 e -->
-	<div class="next-step" style="text-align:center;">
-	   <a href="javascript:void(0);" target="_self" onclick="saveUpdateRefillData()" title="">下一步</a></div>
+	   <div class="next-step" style="text-align:center;">
+	   <a id="base_next_btn" href="javascript:void(0);" target="_self" onclick="saveUpdateRefillData()" title="">下一步</a></div>
 </body>
 </html>

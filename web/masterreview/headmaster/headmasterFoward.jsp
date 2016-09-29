@@ -48,7 +48,7 @@
 		if(recordList.size()>0){
 			Element record = (Element)recordList.get(0);
 			taskId = record.getChildTextTrim("taskId");
-			fowardUrl = "/workflow/template/completeTaskForm.jsp?taskId="+taskId;
+			fowardUrl = "/workflow/template/completeTaskForm.jsp?taskId="+taskId+"&isFristApply=1";
 		}
 		response.sendRedirect(fowardUrl);
 	}

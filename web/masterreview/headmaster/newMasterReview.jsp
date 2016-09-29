@@ -114,7 +114,7 @@ $(document).ready(function(){
 	 Headmaster.initWebUploader('manageDifficultyAgo',1,'manageDifficulty','点击上传','manageDifficultyAgoAttachId','manageDifficultyAgoDiv');
 	 Headmaster.initWebUploader('manageDifficulty',2,'manageDifficulty','点击上传','manageDifficultyAttachId','manageDifficultyDiv');
 	
-	$("#mainDiv").load("/masterreview/headmaster/base_info.jsp", {limit: 25}, function(){
+	$("#mainDiv").load("/masterreview/headmaster/base_info.jsp?sourceType=1", {limit: 25}, function(){
 		$('#change').click(function(){
 			alert("请先填写好个人信息！")
 			return false;
