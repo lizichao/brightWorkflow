@@ -13,7 +13,7 @@
 			<property name="autoReconnect" value="true"/>
 		</driver-properties>-->
 	
-	 <!-- 
+	
 		<driver-url>jdbc:mysql://localhost:3306/headmasterdb</driver-url>
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
 		<driver-properties>
@@ -22,8 +22,8 @@
 			<property name="useUnicode" value="true"/>
 			<property name="characterEncoding" value="utf-8"/>
 			<property name="autoReconnect" value="true"/>
-		</driver-properties>-->
-		
+		</driver-properties>
+		 <!-- 
 			
 			<driver-url>jdbc:mysql://localhost:3306/workflowdb</driver-url>
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
@@ -33,7 +33,7 @@
 			<property name="useUnicode" value="true"/>
 			<property name="characterEncoding" value="utf-8"/>
 			<property name="autoReconnect" value="true"/>
-		</driver-properties>
+		</driver-properties>-->
 		
 		<!--  
 		<driver-url>jdbc:mysql://192.168.1.2:3306/moocdb</driver-url>

@@ -2,6 +2,8 @@ package cn.com.bright.masterReview.api;
 
 import java.util.Date;
 
+import cn.com.bright.workflow.api.vo.AttachMentVO;
+
 /**
  * ¼õ·Ö´¦·Ö
  * @ClassName: PunishmentVO 
@@ -25,6 +27,10 @@ public class PunishmentVO {
     private Date implement_time;
     private String approve_result;
   
+    private String prove_attachment_id;
+    
+    
+    private AttachMentVO proveAttachMentVO = new AttachMentVO();
 
    
 
@@ -93,6 +99,22 @@ public class PunishmentVO {
     public void setApprove_result(String approve_result) {
         this.approve_result = approve_result;
     }
+
+	public String getProve_attachment_id() {
+		return prove_attachment_id;
+	}
+
+	public void setProve_attachment_id(String prove_attachment_id) {
+		this.prove_attachment_id = prove_attachment_id;
+	}
+
+	public AttachMentVO getProveAttachMentVO() {
+		return proveAttachMentVO;
+	}
+
+	public void setProveAttachMentVO(AttachMentVO proveAttachMentVO) {
+		this.proveAttachMentVO = proveAttachMentVO;
+	}
 
    
     

@@ -90,7 +90,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		  });
 		bcReq.setSuccFn(function(data,status){
-			changeOption(10);
+			changeOption(11);
 		});
 		bcReq.postData();
 	}else{
@@ -136,8 +136,8 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>9</i>管理难度</h2>
-			<p>任选一所近八年管理难度最大的学校情况填写。</p>
+			<h2><i>10</i>管理难度</h2>
+			<p>1、有交流任职经历的，填写现任职学校。2、任选一所近八年管理难度最大的学校情况填写。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>
@@ -213,7 +213,7 @@ function headmasterBeforeSubmit(formJsonData){
 	</div>
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(8)">上一步</a>
+	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(9)">上一步</a>
 	   <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 </div>
 </body>

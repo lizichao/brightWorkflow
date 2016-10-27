@@ -17,6 +17,7 @@ public class BookPublishVO {
     private String book_name;
     private String complete_way;
     private Date publish_time;
+    private String publish_company;
     private String complete_chapter;
     private String complete_word;
     private String author_order;
@@ -107,5 +108,11 @@ public class BookPublishVO {
     public void setApprove_result(String approve_result) {
         this.approve_result = approve_result;
     }
+	public String getPublish_company() {
+		return publish_company;
+	}
+	public void setPublish_company(String publish_company) {
+		this.publish_company = publish_company;
+	}
     
 }

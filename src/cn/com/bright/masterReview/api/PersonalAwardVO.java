@@ -22,7 +22,12 @@ public class PersonalAwardVO {
     private Date awardsTime;
     private String approve_result;
     
+    private String awardsAttachmentId1;
+    private String awards_type1;//½±ÏîÀà±ð1
+    
     private AttachMentVO personalAttachVO = new AttachMentVO();
+    
+    private AttachMentVO personalAttachVO1 = new AttachMentVO();
     public String getAwardsName() {
         return awardsName;
     }
@@ -83,4 +88,24 @@ public class PersonalAwardVO {
     public void setAwards_type(String awards_type) {
         this.awards_type = awards_type;
     }
+	public String getAwardsAttachmentId1() {
+		return awardsAttachmentId1;
+	}
+	public void setAwardsAttachmentId1(String awardsAttachmentId1) {
+		this.awardsAttachmentId1 = awardsAttachmentId1;
+	}
+	public String getAwards_type1() {
+		return awards_type1;
+	}
+	public void setAwards_type1(String awards_type1) {
+		this.awards_type1 = awards_type1;
+	}
+	public AttachMentVO getPersonalAttachVO1() {
+		return personalAttachVO1;
+	}
+	public void setPersonalAttachVO1(AttachMentVO personalAttachVO1) {
+		this.personalAttachVO1 = personalAttachVO1;
+	}
+    
+    
 }

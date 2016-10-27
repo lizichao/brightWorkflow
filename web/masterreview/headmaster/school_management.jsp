@@ -35,6 +35,21 @@ $(function(){
 
 function initSchoolManagementData(masterReviewVO){
 	$("#school_management").val(masterReviewVO.school_management);
+	
+	var manageDifficultySelId = masterReviewVO.school_management_attachMentVO.attachmentId;
+	var manageDifficultyFileName = masterReviewVO.school_management_attachMentVO.fileName;
+	if(manageDifficultySelId){
+		var attachmentArray =[];
+		attachmentArray.push("<a class=\"chachu\"  href=\"<%=basePath%>WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\">"+manageDifficultyFileName+"</a>");
+		attachmentArray.push("&nbsp;&nbsp;");
+		attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >删除</a>");
+		
+		$("#school_management_attach_div1").append(attachmentArray.join(""));
+	}
+	
+	 $("#school_management_attachId1").val(manageDifficultySelId);
+	 
+	 Headmaster.initWebUploader('school_management_attach_span',1,'school_management','点击上传','school_management_attachId','school_management_attach_div');
 }
 
 function saveUpdateRefillData(){
@@ -48,7 +63,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(12);
+			changeOption(13);
 		});
 		bcReq.postData();
 	}else{
@@ -61,11 +76,13 @@ function getSubmitStrings(){
 	var submitArray = [];
 	var school_management = $("#school_management").val();
 	var businessKey = $("#id").val();
+	var school_management_attachId = $("#school_management_attachId1").val();
 	
 	var workExperienceObject = {
 			"id":$("#id").val(),
 			"businessKey":$("#id").val(),
-			"school_management":school_management
+			"school_management":school_management,
+			"school_management_attachId":school_management_attachId
 	}
 	submitArray.push(workExperienceObject);
 	return JSON.stringify(submitArray);
@@ -85,7 +102,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl" >
-			<h2><i>11</i>学校管理</h2>
+			<h2><i>12</i>学校管理</h2>
 			<p >
 				<span id="span1" >1、规划发展  </span>
 				<span id="span2" >2、机构设置  </span>
@@ -105,16 +122,19 @@ function headmasterBeforeSubmit(formJsonData){
 				<textarea id="school_management" name="school_management"></textarea>
 				<p style="color:#999;text-align:right;">0/1000</p>
 			</li>
-			<li>
-				<span class="fl">证明材料：</span>
-				<input type="button" value="点击上传" class="up-load fl" />
+			
+			<input type="hidden" id="school_management_attachId1" name="school_management_attachId" value="">
+			<li  style='height:45px;' class='position_relative'>
+			   <span class='fl'>证明材料：</span>
+			   <div id='school_management_attach_span1' class='position_upload_button_professional'></div>
 			</li>
+			<div id="school_management_attach_div1" class="only_attachments"></div>
 		</ul>
 	</div>
 	<!-- 办学思想 e -->
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(10)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(11)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

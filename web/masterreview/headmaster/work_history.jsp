@@ -119,10 +119,7 @@ function addWorkHistorySingle(obj){
 
 function saveUpdateRefillData(){
 	var isRefillTask = $("#isRefillTask").val();
-	
 	if(isRefillTask){
-		submitMasterApply();
-		/*
 		var submitStrings =  getSubmitStrings();
 		var bcReq = new BcRequest('headmaster','masterReviewAction','saveUpdateRefillData');
 		bcReq.setExtraPs({
@@ -131,12 +128,14 @@ function saveUpdateRefillData(){
 			    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(23);
+			changeOption(5);
 		});
-		bcReq.postData();*/
+		bcReq.postData();
 	}else{
 		submitRefillTask();
-    }
+	}
+	
+	
 }
 
 function getSubmitStrings(){
@@ -180,7 +179,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>23</i>工作经历</h2>
+			<h2><i>4</i>工作经历</h2>
 			<p>填写校长本人曾经的工作经历。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -196,7 +195,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="add"><a href="javascript:void(0);" onclick="addWorkHistorySingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(22)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(3)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

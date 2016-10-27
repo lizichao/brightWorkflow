@@ -18,6 +18,7 @@
     <div class='show-list radius-3'>{{:#index+1}}<a href='javascript:void(0);' target='_self'  onclick="deleteSingleOption(this,'socialDuty','{{:#index+1}}','{{:id}}');" class='del radius-3'>删除</a></div>
    <div class="container">
      <input type='hidden' id="socialDutyId{{:#index+1}}"  value='{{:id}}'>
+     <input type='hidden' id='proveAttachId{{:#index+1}}'  value='{{:proveAttachMentVO.attachmentId}}'>
 	<ul class="clear-fix">
 
 	<li>
@@ -40,11 +41,23 @@
     </li>
 
 	<li>
-      <span class="fl">完成情况：</span>
-      <div class="border_2 w_13 fl">
-       <input type="text" id='complete_state{{:#index+1}}' value='{{:complete_state}}' placeholder="请输入完成情况" />
-      </div>
+       <span class="fl">完成情况：</span>
+       <textarea maxlength='100' title='不得超过100字' name='complete_state{{:#index+1}}' id='complete_state{{:#index+1}}' class='fl deooration' placeholder='请输入完成情况' >{{:complete_state}}</textarea>
     </li>
+
+
+	 <li style='height:45px;' class='position_relative'>
+      <span class="fl">证明材料：</span>
+      <div id='social_duty_upload_div{{:#index+1}}' class='position_upload_button_professional'></div>
+    </li>
+
+    <div id='social_duty_div{{:#index+1}}' class='only_attachments'>
+       {{if proveAttachMentVO.attachmentId !==null}}
+         <a class='chachu' href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}">{{:proveAttachMentVO.fileName}}</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <a class='chachu'  href='javascript:void(0);' onclick='Headmaster.deleteReceiveFileAttachment("{{:proveAttachMentVO.attachmentId}}",this);' >删除</a>
+       {{/if}}
+    </div>
 
    </ul>
 </div>
@@ -70,6 +83,10 @@ function bulidSocialDuty(socialDutyVOs){
 		 var subTaskContent= $("#socialDutyRec").render(dataObject);
 		 $("#socialDutyRefill").append(subTaskContent);
 		 
+		 for(var i =0;i<socialDutyVOs.length;i++){
+			 Headmaster.initWebUploader('social_duty_upload_div',(i+1),'social_duty_type','点击上传','proveAttachId','social_duty_div');
+		 }
+		 
 	}
 	//$("#socialDutyRefill").append("<div class='add'><a class='add-more' href='javascript:void(0);' onclick='addSocialDutySingle(this)' >+</a></div> ");
 }
@@ -84,7 +101,7 @@ function addSocialDutySingle(obj){
 	educationArray.push("<ul  class='clear-fix'>");
 	
 	educationArray.push("<input type='hidden' id='socialDutyId"+socialDutyRowNumNext+"'  value=''>");
-	educationArray.push("<input type='hidden' id='proveId"+socialDutyRowNumNext+"' value=''>");
+	educationArray.push("<input type='hidden' id='proveAttachId"+socialDutyRowNumNext+"'  value=''>");
 	
 	educationArray.push("<li><span class='fl'>承担上级部门安排的社会责任工作：</span>");
 	educationArray.push("<div class='border_2 w_25 fl'>");
@@ -106,10 +123,16 @@ function addSocialDutySingle(obj){
 	
 	
 	educationArray.push("<li><span class='fl'>完成情况：</span>");
-	educationArray.push("<div class='border_2 w_13 fl'>");
-	educationArray.push("<input type='text' id='complete_state"+socialDutyRowNumNext+"'   value='' placeholder='请输入完成情况' />");
-	educationArray.push("</div>");
+	educationArray.push("<textarea maxlength='100' title='不得超过100字' name='complete_state"+socialDutyRowNumNext+"' id='complete_state"+socialDutyRowNumNext+"' class='fl deooration' placeholder='请输入完成情况' ></textarea>");
 	educationArray.push("</li>");
+	
+	educationArray.push("<li style='height:45px;' class='position_relative'>");
+	educationArray.push(" <span class='fl'>证明材料：</span>");
+	educationArray.push(" <div id='social_duty_upload_div"+socialDutyRowNumNext+"' class='position_upload_button_professional'></div>");
+	educationArray.push("</li>");
+	
+	
+	educationArray.push("<div id='social_duty_div"+socialDutyRowNumNext+"' class='only_attachments'></div>");
 	
 	educationArray.push("</ul>");
 	educationArray.push("</div>");
@@ -122,6 +145,14 @@ function addSocialDutySingle(obj){
 	$("#socialDutyRefill").append(educationArray.join(""));
 	
 	$("#socialDutyRowNum").val(socialDutyRowNumNext);
+	
+	/*
+	 * 1、professionalTitlespan:上传按钮显示位置id
+	 4、buttonName ： 按钮名称
+	 5、hiddenAttachId：隐藏附件id，选中后把附件值保存在该隐藏域里
+	 6、 hiddenDisplayId:附件显示的div id
+	 */
+	 Headmaster.initWebUploader('social_duty_upload_div',socialDutyRowNumNext,'social_duty_type','点击上传','proveAttachId','social_duty_div');
 }
 
 function saveUpdateRefillData(){
@@ -135,7 +166,7 @@ function saveUpdateRefillData(){
 			    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(21);
+			changeOption(22);
 		});
 		bcReq.postData();
 	}else{
@@ -144,6 +175,7 @@ function saveUpdateRefillData(){
 }
 
 function getSubmitStrings(){
+	debugger
 	var submitArray = [];
 	var socialDutyRowNum = $("#socialDutyRowNum").val();
 	for(var i=0;i<socialDutyRowNum;i++){
@@ -154,6 +186,7 @@ function getSubmitStrings(){
 		var arrange_department = $("#arrange_department"+rowNum).val();
 		var complete_state = $("#complete_state"+rowNum).val();
 		var businessKey = $("#id").val();
+		var proveAttachId = $("#proveAttachId"+rowNum).val();
 		if(!superior_task){
 			continue;
 		}
@@ -163,7 +196,8 @@ function getSubmitStrings(){
 				"businessKey":$("#id").val(),
 				"superior_task":superior_task,
 				"arrange_department":arrange_department,
-				"complete_state":complete_state
+				"complete_state":complete_state,
+				"proveAttachId":proveAttachId
 		}
 		submitArray.push(workExperienceObject);
 	}
@@ -184,7 +218,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>20</i>社会责任</h2>
+			<h2><i>21</i>社会责任</h2>
 			<p>填写学校积极承担上级行政部门安排的帮扶、支教活动等情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -200,7 +234,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="add"><a href="javascript:void(0);" onclick="addSocialDutySingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(19)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(20)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

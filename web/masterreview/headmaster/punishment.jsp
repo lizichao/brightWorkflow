@@ -19,6 +19,7 @@
     <div class='show-list radius-3'>{{:#index+1}}<a href='javascript:void(0);' target='_self'  onclick="deleteSingleOption(this,'punishment','{{:#index+1}}','{{:id}}');" class='del radius-3'>删除</a></div>
    <div class="container">
      <input type='hidden' id="punishmentId{{:#index+1}}"  value='{{:id}}'>
+     <input type='hidden' id='proveAttachId{{:#index+1}}'  value='{{:proveAttachMentVO.attachmentId}}'>
 	<ul class="clear-fix">
 
 	<li>
@@ -51,10 +52,21 @@
 
 	<li>
       <span class="fl">处分结果：</span>
-      <div class="border_2 w_13 fl">
-       <input type="text" id='process_result{{:#index+1}}' value='{{:process_result}}'  placeholder="请输入处分结果"/>
-      </div>
+       <textarea maxlength='100' title='不得超过100字' name='approve_result{{:#index+1}}' id='approve_result{{:#index+1}}' class='fl deooration' >{{:approve_result}}</textarea>
     </li>
+
+    <li style='height:45px;' class='position_relative'>
+      <span class="fl">证明材料：</span>
+      <div id='punishment_upload_div{{:#index+1}}' class='position_upload_button_professional'></div>
+    </li>
+
+    <div id='punishment_div{{:#index+1}}' class='only_attachments'>
+       {{if proveAttachMentVO.attachmentId !==null}}
+         <a class='chachu' href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}">{{:proveAttachMentVO.fileName}}</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <a class='chachu'  href='javascript:void(0);' onclick='Headmaster.deleteReceiveFileAttachment("{{:proveAttachMentVO.attachmentId}}",this);' >删除</a>
+       {{/if}}
+    </div>
   
    </ul>
 </div>
@@ -80,6 +92,9 @@ function bulidPunishment(punishmentVOs){
 		 var subTaskContent= $("#punishmentRec").render(dataObject);
 		 $("#punishmentRefill").append(subTaskContent);
 		 
+		 for(var i =0;i<punishmentVOs.length;i++){
+			 Headmaster.initWebUploader('punishment_upload_div',(i+1),'punishment_type','点击上传','proveAttachId','punishment_div');
+		 }
 	}
 	//$("#punishmentRefill").append("<div class='add'><a class='add-more' href='javascript:void(0);' onclick='addPunishmentSingle(this)' >+</a></div> ");
 }
@@ -95,6 +110,7 @@ function addPunishmentSingle(obj){
 	
 	
 	educationArray.push("<input type='hidden' id='punishmentId"+punishmentRowNumNext+"'  value=''>");
+	educationArray.push("<input type='hidden' id='proveAttachId"+punishmentRowNumNext+"'  value=''>");
 
 	
 	educationArray.push("<li><span class='fl'>时间：</span>");
@@ -124,12 +140,16 @@ function addPunishmentSingle(obj){
 	
 	
 	educationArray.push("<li><span class='fl'>处理结果：</span>");
-	educationArray.push("<div class='border_2 w_13 fl'>");
-	educationArray.push("<input type='text' id='process_result"+punishmentRowNumNext+"'   value='' placeholder='请输入处理结果' />");
-	educationArray.push("</div>");
+	educationArray.push("<textarea maxlength='100' title='不得超过100字' name='process_result"+punishmentRowNumNext+"'  id='process_result"+punishmentRowNumNext+"'  class='fl deooration' placeholder='请输入处理结果' ></textarea>");
 	educationArray.push("</li>");
 	
-
+	educationArray.push("<li style='height:45px;' class='position_relative'>");
+	educationArray.push(" <span class='fl'>证明材料：</span>");
+	educationArray.push(" <div id='punishment_upload_div"+punishmentRowNumNext+"' class='position_upload_button_professional'></div>");
+	educationArray.push("</li>");
+	
+	
+	educationArray.push("<div id='punishment_div"+punishmentRowNumNext+"' class='only_attachments'></div>");
 	
 	educationArray.push("</ul>");
 	educationArray.push("</div>");
@@ -141,25 +161,36 @@ function addPunishmentSingle(obj){
 	$("#punishmentRefill").append(educationArray.join(""));
 	
 	$("#punishmentRowNum").val(punishmentRowNumNext);
+	
+	/*
+	 * 1、professionalTitlespan:上传按钮显示位置id
+	 4、buttonName ： 按钮名称
+	 5、hiddenAttachId：隐藏附件id，选中后把附件值保存在该隐藏域里
+	 6、 hiddenDisplayId:附件显示的div id
+	 */
+	 Headmaster.initWebUploader('punishment_upload_div',punishmentRowNumNext,'punishment_type','点击上传','proveAttachId','punishment_div');
 }
 
 function saveUpdateRefillData(){
-	var isRefillTask = $("#isRefillTask").val();
+    var isRefillTask = $("#isRefillTask").val();
+	
 	if(isRefillTask){
+		submitMasterApply();
+		/*
 		var submitStrings =  getSubmitStrings();
 		var bcReq = new BcRequest('headmaster','masterReviewAction','saveUpdateRefillData');
 		bcReq.setExtraPs({
-			    "option_tab_type":'punishment',
+			    "option_tab_type":'workHistory',
 			    "option_tab_values":submitStrings,
 			    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
 			changeOption(23);
 		});
-		bcReq.postData();
+		bcReq.postData();*/
 	}else{
 		submitRefillTask();
-	}
+    }
 }
 
 function getSubmitStrings(){
@@ -174,6 +205,7 @@ function getSubmitStrings(){
 		var department = $("#department"+rowNum).val();
 		var process_result = $("#process_result"+rowNum).val();
 		var businessKey = $("#id").val();
+		var proveAttachId = $("#proveAttachId"+rowNum).val();
 		if(!implement_time){
 			continue;
 		}
@@ -184,7 +216,8 @@ function getSubmitStrings(){
 				"description":description,
 				"people":people,
 				"department":department,
-				"process_result":process_result
+				"process_result":process_result,
+				"proveAttachId":proveAttachId
 		}
 		submitArray.push(workExperienceObject);
 	}
@@ -205,7 +238,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>22</i>处分</h2>
+			<h2><i>23</i>处分</h2>
 			<p>填写校长本人受到党纪、行政处分或处理情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -221,8 +254,8 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="add"><a href="javascript:void(0);" onclick="addPunishmentSingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(21)">上一步</a>
-	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(22)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">提交申请</a>
 	</div>
 </body>
 </html>

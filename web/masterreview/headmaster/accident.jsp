@@ -18,6 +18,7 @@
     <div class='show-list radius-3'>{{:#index+1}}<a href='javascript:void(0);' target='_self'  onclick="deleteSingleOption(this,'accident','{{:#index+1}}','{{:id}}');" class='del radius-3'>删除</a></div>
    <div class="container">
       <input type='hidden' id="accidentId{{:#index+1}}"  value='{{:id}}'>
+     <input type='hidden' id='proveAttachId{{:#index+1}}'  value='{{:proveAttachMentVO.attachmentId}}'>
 	<ul class="clear-fix">
 	<li>
         <span class="fl">责任事故名称：</span>
@@ -39,10 +40,21 @@
     </li>
 	<li>
       <span class="fl">处分结果：</span>
-      <div class="border_2 w_13 fl">
-       <input type="text" id='approve_result{{:#index+1}}' value='{{:approve_result}}'  />
-      </div>
+       <textarea maxlength='100' title='不得超过100字' name='approve_result{{:#index+1}}' id='approve_result{{:#index+1}}' class='fl deooration' >{{:approve_result}}</textarea>
     </li>
+
+   <li style='height:45px;' class='position_relative'>
+      <span class="fl">证明材料：</span>
+      <div id='accident_upload_div{{:#index+1}}' class='position_upload_button_professional'></div>
+    </li>
+
+    <div id='accident_div{{:#index+1}}' class='only_attachments'>
+       {{if proveAttachMentVO.attachmentId !==null}}
+         <a class='chachu' href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}">{{:proveAttachMentVO.fileName}}</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <a class='chachu'  href='javascript:void(0);' onclick='Headmaster.deleteReceiveFileAttachment("{{:proveAttachMentVO.attachmentId}}",this);' >删除</a>
+       {{/if}}
+    </div>
 
    </ul>
 </div>
@@ -68,6 +80,11 @@ function bulidAccident(accidentVOs){
 		 var subTaskContent= $("#accidentRec").render(dataObject);
 		 $("#accidentRefill").append(subTaskContent);
 		 
+		 
+		 for(var i =0;i<accidentVOs.length;i++){
+			 Headmaster.initWebUploader('accident_upload_div',(i+1),'accident_type','点击上传','proveAttachId','accident_div');
+		 }
+		 
 	}
 	//$("#accidentRefill").append("<div class='add'><a class='add-more' href='javascript:void(0);' onclick='addAccidentSingle(this)' >+</a></div> ");
 }
@@ -82,6 +99,7 @@ function addAccidentSingle(obj){
 	educationArray.push("<ul  class='clear-fix'>");
 	
 	educationArray.push("<input type='hidden' id='accidentId"+accidentRowNumNext+"'  value=''>");
+	educationArray.push("<input type='hidden' id='proveAttachId"+accidentRowNumNext+"'  value=''>");
 	
 	educationArray.push("<li><span class='fl'>责任事故名称：</span>");
 	educationArray.push("<div class='border_2 w_23 fl'>");
@@ -102,11 +120,16 @@ function addAccidentSingle(obj){
 	educationArray.push("</li>");
 	
 	educationArray.push("<li><span class='fl'>处理结果：</span>");
-	educationArray.push("<div class='border_2 w_13 fl'>");
-	educationArray.push("<input type='text' id='process_result"+accidentRowNumNext+"'   value='' placeholder='请输入处理结果' />");
-	educationArray.push("</div>");
+	educationArray.push("<textarea maxlength='100' title='不得超过100字' name='process_result"+accidentRowNumNext+"'  id='process_result"+accidentRowNumNext+"'  class='fl deooration' placeholder='请输入处理结果' ></textarea>");
 	educationArray.push("</li>");
 	
+	educationArray.push("<li style='height:45px;' class='position_relative'>");
+	educationArray.push(" <span class='fl'>证明材料：</span>");
+	educationArray.push(" <div id='accident_upload_div"+accidentRowNumNext+"' class='position_upload_button_professional'></div>");
+	educationArray.push("</li>");
+	
+	
+	educationArray.push("<div id='accident_div"+accidentRowNumNext+"' class='only_attachments'></div>");
 	
 	
 	educationArray.push("</ul>");
@@ -119,6 +142,14 @@ function addAccidentSingle(obj){
 	$("#accidentRefill").append(educationArray.join(""));
 	
 	$("#accidentRowNum").val(accidentRowNumNext);
+	
+	/*
+	 * 1、professionalTitlespan:上传按钮显示位置id
+	 4、buttonName ： 按钮名称
+	 5、hiddenAttachId：隐藏附件id，选中后把附件值保存在该隐藏域里
+	 6、 hiddenDisplayId:附件显示的div id
+	 */
+	 Headmaster.initWebUploader('accident_upload_div',accidentRowNumNext,'accident_type','点击上传','proveAttachId','accident_div');
 }
 
 
@@ -134,7 +165,7 @@ function saveUpdateRefillData(){
 			}
 		);
 		bcReq.setSuccFn(function(data,status){
-			changeOption(22);
+			changeOption(23);
 		});
 		bcReq.postData();
 	}else{
@@ -153,6 +184,7 @@ function getSubmitStrings(){
 		var implement_time = $("#implement_time"+rowNum).val();
 		var process_result = $("#process_result"+rowNum).val();
 		var businessKey = $("#id").val();
+		var proveAttachId = $("#proveAttachId"+rowNum).val();
 		if(!accident_name){
 			continue;
 		}
@@ -162,7 +194,8 @@ function getSubmitStrings(){
 				"accident_name":accident_name,
 				"description":description,
 				"implement_time":implement_time,
-				'process_result' :process_result
+				'process_result' :process_result,
+				"proveAttachId":proveAttachId
 		}
 		submitArray.push(workExperienceObject);
 	}
@@ -184,7 +217,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>21</i>责任事故</h2>
+			<h2><i>22</i>责任事故</h2>
 			<p>填写学校出现安全责任事故，或出现严重违纪现象，受到上级通报批评以上处理。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -200,7 +233,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="add"><a href="javascript:void(0);" onclick="addAccidentSingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
-	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(20)">上一步</a>
+	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(21)">上一步</a>
 	   <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

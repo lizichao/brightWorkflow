@@ -26,6 +26,21 @@ $(function(){
 
 function initStudentDevelopmentData(masterReviewVO){
 	$("#student_development").val(masterReviewVO.student_development);
+	
+	var manageDifficultySelId = masterReviewVO.student_development_attachMentVO.attachmentId;
+	var manageDifficultyFileName = masterReviewVO.student_development_attachMentVO.fileName;
+	if(manageDifficultySelId){
+		var attachmentArray =[];
+		attachmentArray.push("<a class=\"chachu\"  href=\"<%=basePath%>WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\">"+manageDifficultyFileName+"</a>");
+		attachmentArray.push("&nbsp;&nbsp;");
+		attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >删除</a>");
+		
+		$("#student_development_attach_div1").append(attachmentArray.join(""));
+	}
+	
+	 $("#student_development_attachId1").val(manageDifficultySelId);
+	 
+	 Headmaster.initWebUploader('student_development_attach_span',1,'student_development','点击上传','student_development_attachId','student_development_attach_div');
 }
 
 function saveUpdateRefillData(){
@@ -39,7 +54,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(15);
+			changeOption(16);
 		});
 		bcReq.postData();
 	}else{
@@ -52,11 +67,13 @@ function getSubmitStrings(){
 	var submitArray = [];
 	var student_development = $("#student_development").val();
 	var businessKey = $("#id").val();
+	var student_development_attachId = $("#student_development_attachId1").val();
 	
 	var workExperienceObject = {
 			"id":$("#id").val(),
 			"businessKey":$("#id").val(),
-			"student_development":student_development
+			"student_development":student_development,
+			"student_development_attachId":student_development_attachId
 	}
 	submitArray.push(workExperienceObject);
 	return JSON.stringify(submitArray);
@@ -76,7 +93,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl" id="showorhide">
-			<h2><i>14</i>学生发展</h2>
+			<h2><i>15</i>学生发展</h2>
 			<p class="hide">
 			   <span id="span1" >1、全面发展   </span>
 			   <span id="span2" >2、评价 </span>
@@ -93,16 +110,19 @@ function headmasterBeforeSubmit(formJsonData){
 				<textarea id="student_development" name="student_development"></textarea>
 				<p style="color:#999;text-align:right;">0/1000</p>
 			</li>
-			<li>
-				<span class="fl">证明材料：</span>
-				<input type="button" value="点击上传" class="up-load fl" />
+			
+		   <input type="hidden" id="student_development_attachId1" name="student_development_attachId" value="">
+			<li  style='height:45px;' class='position_relative'>
+			   <span class='fl'>证明材料：</span>
+			   <div id='student_development_attach_span1' class='position_upload_button_professional'></div>
 			</li>
+			<div id="student_development_attach_div1" class="only_attachments"></div>
 		</ul>
 	</div>
 	<!-- 办学思想 e -->
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(13)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(14)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 

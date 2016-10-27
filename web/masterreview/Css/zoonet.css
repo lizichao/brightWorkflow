@@ -116,19 +116,21 @@ input,select{display:inline-block;border:0;color:#666;height:30px;line-height:30
 .w_6 input{width:156px;}
 
 .w_7{width:358px;}
-.w_7 input{width:214px;}
+.w_7 input,.w_7 select,.w_7 .sod_select{width:214px;}
 
 .w_8{width:358px;}
 .w_8 input{width:298px;}
 
-.w_9{width:170px;}
-.w_9 input,.w_9 select,.w_9 .sod_select{width:108px;}
+.w_9{display:inline;width:170px;}
+.w_9 input,.w_9 select,.w_9 .sod_select{width:88px;}
 
 .w_10{width:214px;}
 .w_10 input{width:152px;}
 
 .w_11{width:126px;}
 .w_11 input{width:64px;}
+
+
 
 /**
 ===============================================================

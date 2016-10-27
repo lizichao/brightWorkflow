@@ -81,12 +81,16 @@
 		      if (d) {
 		          bb = d.items ? d.items: []
 		      }
+		      if(!bb){
+		    	  return result_;
+		      }
 		      for(var i=0;i<bb.length;i++){
 		    	  var eachSel = {'id':bb[i][0],'text':bb[i][1]};
 		    	  result_.push(eachSel);
 		      }
 		      return result_;
 		  }
+		  return result_;
 	}
 	  
 	

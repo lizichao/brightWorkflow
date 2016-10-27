@@ -32,7 +32,7 @@
         <input type='text' id='publish_time_paper{{:#index+1}}' value='{{timeCovert publishTime/}}' placeholder='' onclick='selectDeleteTime()'>
      </div>
     </li>
-	<li><span class='fl'>杂志及宣读学术名称：</span>
+	<li><span class='fl'>杂志名称：</span>
        <div class="border_2 w_27 fl">
         <input type='text' id='magazine_meet_name{{:#index+1}}' value='{{:magazineMeetName}}'/>
     </li>
@@ -194,7 +194,7 @@ function addPaperSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li><span class='fl'>杂志及宣读学术名称：</span>");
+	educationArray.push("<li><span class='fl'>杂志名称：</span>");
 	educationArray.push("<div class='border_2 w_27 fl'>");
 	educationArray.push("<input type='text' id='magazine_meet_name"+paperTitleRowNumNext+"' name='magazine_meet_name"+paperTitleRowNumNext+"' />");
 	educationArray.push("</div>");
@@ -297,7 +297,7 @@ function saveUpdateRefillData(){
 			    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(6);
+			changeOption(7);
 		});
 		bcReq.postData();
 	}else{
@@ -364,7 +364,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>5</i>论文发表</h2>
+			<h2><i>6</i>论文发表</h2>
 			<p>填写个人论文发表情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -381,7 +381,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(4)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(5)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

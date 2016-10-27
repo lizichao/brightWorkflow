@@ -24,7 +24,7 @@ Ext.namespace("jsp.masterreview.professor");jsp.masterreview.professor.professor
     type : "string"
 },  {
     xtype : "Field",
-    name : "user_sex",
+    name : "usersex",
     width : 150,
     fieldLabel : "ÐÔ±ð",
     allowBlank : false,

@@ -178,6 +178,7 @@ var refuseTypeId = '<%=refuseTypeId%>';
 <script language="JavaScript">
 
 function rollbackProcess(){
+	debugger
 	//var refuseType = 
 //	var refuseTypeId = 
 	top.rollBackExecute(refuseType,refuseTypeId);

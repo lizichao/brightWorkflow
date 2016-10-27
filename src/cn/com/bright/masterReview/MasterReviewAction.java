@@ -141,6 +141,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
             deleteWorkHistory();
         }else if ("deleteGradeEvaluate".equals(action)) {
             deleteGradeEvaluate();
+        }else if ("deleteStudyTrain".equals(action)) {
+        	deleteStudyTrain();
         }else if ("updateWorkExperience".equals(action)) {
             updateWorkExperience();
         }else if ("updateEducation".equals(action)) {
@@ -182,7 +184,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
 
 
-    private void saveUpdateRefillData() throws ParseException, IOException {
+
+
+
+	private void saveUpdateRefillData() throws ParseException, IOException {
         Element dataElement = xmlDocUtil.getRequestData();
         String option_tab_type = dataElement.getChildText("option_tab_type");
         String option_tab_values = dataElement.getChildText("option_tab_values");
@@ -231,7 +236,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         String schoolName = dataElement.getChildText("school_name");   
         
         
-        String presentOccupation = dataElement.getChildText("present_occupation"); //现任职务
+        String present_occupation = dataElement.getChildText("present_occupation"); //现任职务
         String applylevel = dataElement.getChildText("apply_level");
         
         
@@ -270,6 +275,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         String census_register = dataElement.getChildText("census_register");
         String nation = dataElement.getChildText("nation");
         String person_img_attachId = dataElement.getChildText("person_img_attachId");
+        String lodge_school = dataElement.getChildText("lodge_school");
         
         
         String option_tab_type = dataElement.getChildText("option_tab_type");
@@ -284,7 +290,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         masterReviewVO.setIdentitycard(identitycard);
         masterReviewVO.setSchoolId(schoolId);
         masterReviewVO.setSchoolName(schoolName);
-        masterReviewVO.setPresentOccupation(presentOccupation);
+        masterReviewVO.setPresent_occupation(present_occupation);
         masterReviewVO.setApplylevel(applylevel);
         
         masterReviewVO.setSchoolNameSpace(school_name_space);
@@ -318,6 +324,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         masterReviewVO.setPerson_img_attachId(person_img_attachId);
         masterReviewVO.setOption_tab_type(option_tab_type);
         masterReviewVO.setApply_status(isSaveDraft);
+        masterReviewVO.setLodge_school(lodge_school);
         
         
         buildOptionTabVO(masterReviewVO,option_tab_type,option_tab_values);
@@ -351,7 +358,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
     private MasterReviewVO buildOptionTabVO(MasterReviewVO masterReviewVO, String option_tab_type,
                                String option_tab_values) throws ParseException, IOException {
         masterReviewVO.setOption_tab_type(option_tab_type);
-        if(StringUtil.isEmpty(option_tab_type)){
+        if(StringUtil.isEmpty(option_tab_type) || StringUtil.isEmpty(option_tab_values)){
             return masterReviewVO;
         }
         List<Map<String, String>> optionTabList = new ArrayList<Map<String, String>>();
@@ -372,7 +379,21 @@ public class MasterReviewAction extends BaseWorkflowAction {
             optionTabList.add(optionTabMap);
         }
 
-        if (option_tab_type.equals("baseinfo")) {// 现任管理难度
+        masterReviewVO = setAttrValue(masterReviewVO, option_tab_type,
+				optionTabList, optionTabStrs);
+        return masterReviewVO;
+    }
+
+
+
+
+
+
+
+	private MasterReviewVO setAttrValue(MasterReviewVO masterReviewVO,
+			String option_tab_type, List<Map<String, String>> optionTabList,
+			List<String> optionTabStrs) throws IOException {
+		if (option_tab_type.equals("baseinfo")) {// 现任管理难度
             masterReviewVO = JsonUtil.stringToObject(optionTabStrs.get(0),MasterReviewVO.class);
             if (null != masterReviewVO.getJoin_work_time()) {
                 masterReviewVO.setJoin_work_time(DateUtil.stringToDate(DateUtil.dateToDateString(masterReviewVO.getJoin_work_time())));
@@ -380,8 +401,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             if (null != masterReviewVO.getJoin_educate_work_time()) {
                 masterReviewVO.setJoin_educate_work_time(DateUtil.stringToDate(DateUtil.dateToDateString(masterReviewVO.getJoin_educate_work_time())));
             }
-        }else
-        if (option_tab_type.equals("workExperience")) {// 任职年限
+        }else if (option_tab_type.equals("workExperience")) {// 任职年限
             List<WorkExperienceVO> workExperienceVOs = new ArrayList<WorkExperienceVO>();
             for (Map<String, String> eachMap : optionTabList) {
                 WorkExperienceVO workExperienceVO = new WorkExperienceVO();
@@ -400,7 +420,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         workExperienceVO.setWorkYear(value);
                     } else if (key.equals("proveAttachMentId")) {
                         workExperienceVO.setProveAttachMentId(value);
-                    } else if (key.equals("startTime")) {
+                    } else if (key.equals("manage_level")) {
+                        workExperienceVO.setManage_level(value);
+                    }  else if (key.equals("startTime")) {
                         workExperienceVO.setStartTime(DateUtil.stringToDate(value));
                     } else if (key.equals("endTime")) {
                         workExperienceVO.setEndTime(DateUtil.stringToDate(value));
@@ -621,7 +643,11 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         personalAwardVO.setAwards_type(value);
                     } else if (key.equals("awards_time")) {
                         personalAwardVO.setAwardsTime(DateUtil.stringToDate(value));
-                    }
+                    } else if (key.equals("awards_attachment_id1")) {
+                        personalAwardVO.setAwardsAttachmentId1(value);
+                    } else if (key.equals("awards_type1")) {
+                        personalAwardVO.setAwards_type1(value);
+                    } 
                 }
                 personalAwardVOs.add(personalAwardVO);
             }
@@ -703,6 +729,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         schoolReformVO.setCharge_department(value);
                     } else if (key.equals("performance")) {
                         schoolReformVO.setPerformance(value);
+                    } else if (key.equals("proveAttachId")) {
+                    	schoolReformVO.setProve_attachment_id(value);
                     } 
                 }
                 schoolReformVOs.add(schoolReformVO);
@@ -727,6 +755,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         socialDutyVO.setImplement_time(DateUtil.stringToDate(value));
                     } else if (key.equals("complete_state")) {
                         socialDutyVO.setComplete_state(value);
+                    } else if (key.equals("proveAttachId")) {
+                    	socialDutyVO.setProve_attachment_id(value);
                     } 
                 }
                 socialDutyVOs.add(socialDutyVO);
@@ -751,7 +781,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         accidentVO.setProcess_result(value);
                     } else if (key.equals("implement_time")) {
                         accidentVO.setImplement_time(DateUtil.stringToDate(value));
-                    }
+                    }else if (key.equals("proveAttachId")) {
+                    	accidentVO.setProve_attachment_id(value);
+                    } 
                 }
                 accidentVOs.add(accidentVO);
             }
@@ -777,7 +809,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         punishmentVO.setProcess_result(value);
                     } else if (key.equals("implement_time")) {
                         punishmentVO.setImplement_time(DateUtil.stringToDate(value));
-                    }
+                    }else if (key.equals("proveAttachId")) {
+                    	punishmentVO.setProve_attachment_id(value);
+                    } 
                 }
                 punishmentVOs.add(punishmentVO);
             }
@@ -823,26 +857,34 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         gradeEvaluateVO.setHigh_school(value);
                     } else if (key.equals("secondary_school")) {
                         gradeEvaluateVO.setSecondary_school(value);
-                    }
+                    }else if (key.equals("proveAttachId")) {
+                    	gradeEvaluateVO.setProve_attachment_id(value);
+                    } 
                 }
                 gradeEvaluateVOs.add(gradeEvaluateVO);
             }
             masterReviewVO.setGradeEvaluateVOs(gradeEvaluateVOs);
         }else if (option_tab_type.equals("run_school")) {// 办学思想
             masterReviewVO.setRun_school(optionTabList.get(0).get("run_school"));
+            masterReviewVO.setRun_school_attachment_id(optionTabList.get(0).get("run_school_attachId"));
         }else if (option_tab_type.equals("school_management")) {//学校管理
             masterReviewVO.setSchool_management(optionTabList.get(0).get("school_management"));
+            masterReviewVO.setSchool_management_attachment_id(optionTabList.get(0).get("school_management_attachId"));
         }else if (option_tab_type.equals("education_science")) {// 教育教学
             masterReviewVO.setEducation_science(optionTabList.get(0).get("education_science"));
+            masterReviewVO.setEducation_science_attachment_id(optionTabList.get(0).get("education_science_attachId"));
         }else if (option_tab_type.equals("external_environment")) {// 外部环境
             masterReviewVO.setExternal_environment(optionTabList.get(0).get("external_environment"));
+            masterReviewVO.setExternal_environment_attachment_id(optionTabList.get(0).get("external_environment_attachId"));
         }else if (option_tab_type.equals("student_development")) {// 学生发展
             masterReviewVO.setStudent_development(optionTabList.get(0).get("student_development"));
+            masterReviewVO.setStudent_development_attachment_id(optionTabList.get(0).get("student_development_attachId"));
         }else if (option_tab_type.equals("teacher_development")) {// 教师发展
             masterReviewVO.setTeacher_development(optionTabList.get(0).get("teacher_development"));
+            masterReviewVO.setTeacher_development_attachment_id(optionTabList.get(0).get("teacher_development_attachId"));
         }
-        return masterReviewVO;
-    }
+		return masterReviewVO;
+	}
     
     private  void optionTabDeal(MasterReviewVO masterReviewVO,String option_tab_type){
         masterReviewService.optionTabDeal(masterReviewVO,option_tab_type);
@@ -915,7 +957,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         String schoolName = dataElement.getChildText("school_name");   
         
         
-        String presentOccupation = dataElement.getChildText("present_occupation"); //现任职务
+        String present_occupation = dataElement.getChildText("present_occupation"); //现任职务
         String applylevel = dataElement.getChildText("apply_level");
         String ispositive = dataElement.getChildText("ispositive");
         
@@ -1030,17 +1072,84 @@ public class MasterReviewAction extends BaseWorkflowAction {
      * @Title: completeAreaCadresTask 
      * @Description: TODO
      * @return: void
+     * @throws IOException 
+     * @throws ParseException 
      */
-    private void completeAreaCadresTask() {
+    private void completeAreaCadresTask() throws ParseException, IOException {
         Element dataElement = xmlDocUtil.getRequestData();
-        String refuseType = dataElement.getChildText("refuseType");
-        String refuseTypeId = dataElement.getChildText("refuseTypeId");
+       // String refuseType = dataElement.getChildText("refuseType");
+       // String refuseTypeId = dataElement.getChildText("refuseTypeId");
         String id = dataElement.getChildText("id");
+        String isRefillFlag = dataElement.getChildText("isRefillFlag");
+        
+        MasterReviewVO masterReviewVO = new MasterReviewVO();
+        masterReviewVO.setId(id);
+        
+        if(!StringUtils.isEmpty(isRefillFlag)){
+        	 
+        	  String workExperienceStr = dataElement.getChildText("workExperience");
+              String education = dataElement.getChildText("education");
+              String professionalTitle = dataElement.getChildText("professionalTitle");
+            //  String managementDifficulty = dataElement.getChildText("managementDifficulty");
+              String paper = dataElement.getChildText("paper");
+              String workPublish = dataElement.getChildText("workPublish");
+              String subject = dataElement.getChildText("subject");
+              String personalAward = dataElement.getChildText("personalAward");
+              String schoolAward = dataElement.getChildText("schoolAward");
+              String studyTrain = dataElement.getChildText("studyTrain");
+              String schoolReform = dataElement.getChildText("schoolReform");
+              String socialDuty = dataElement.getChildText("socialDuty");
+              String accident = dataElement.getChildText("accident");
+              String punishment = dataElement.getChildText("punishment");
+              String workHistory = dataElement.getChildText("workHistory");
+              String gradeEvaluate = dataElement.getChildText("gradeEvaluate");
+              
+              
+              String base_info_approve_result = dataElement.getChildText("base_info_approve_result");
+              String manage_difficulty_approve_result = dataElement.getChildText("manage_difficulty_approve_result");
+              String manage_difficulty_ago_approve_result = dataElement.getChildText("manage_difficulty_ago_approve_result");
+              String run_school_approve_result = dataElement.getChildText("run_school_approve_result");
+              String school_management_approve_result = dataElement.getChildText("school_management_approve_result");
+              String education_science_approve_result = dataElement.getChildText("education_science_approve_result");
+              String external_environment_approve_result = dataElement.getChildText("external_environment_approve_result");
+              String student_development_approve_result = dataElement.getChildText("student_development_approve_result");
+              String teacher_development_approve_result = dataElement.getChildText("teacher_development_approve_result");
+              
+              
+              
+              masterReviewVO.setBase_info_approve_result(base_info_approve_result);
+              masterReviewVO.setRun_school_approve_result(run_school_approve_result);
+              masterReviewVO.setSchool_management_approve_result(school_management_approve_result);
+              masterReviewVO.setEducation_science_approve_result(education_science_approve_result);
+              masterReviewVO.setExternal_environment_approve_result(external_environment_approve_result);
+              masterReviewVO.setStudent_development_approve_result(student_development_approve_result);
+              masterReviewVO.setTeacher_development_approve_result(teacher_development_approve_result);
+              masterReviewVO.setManage_difficulty_approve_result(manage_difficulty_approve_result);
+              masterReviewVO.setManage_difficulty_ago_approve_result(manage_difficulty_ago_approve_result);
+              
+              buildOptionTabVO(masterReviewVO,"workExperience",workExperienceStr);
+              buildOptionTabVO(masterReviewVO,"education",education);
+              buildOptionTabVO(masterReviewVO,"professionalTitle",professionalTitle);
+            //  buildOptionTabVO(masterReviewVO,"managementDifficulty",managementDifficulty);
+              buildOptionTabVO(masterReviewVO,"paper",paper);
+              buildOptionTabVO(masterReviewVO,"workPublish",workPublish);
+              buildOptionTabVO(masterReviewVO,"subject",subject);
+              buildOptionTabVO(masterReviewVO,"personalAward",personalAward);
+              buildOptionTabVO(masterReviewVO,"schoolAward",schoolAward);
+              buildOptionTabVO(masterReviewVO,"studyTrain",studyTrain);
+              buildOptionTabVO(masterReviewVO,"schoolReform",schoolReform);
+              buildOptionTabVO(masterReviewVO,"socialDuty",socialDuty);
+              buildOptionTabVO(masterReviewVO,"accident",accident);
+              buildOptionTabVO(masterReviewVO,"punishment",punishment);
+              buildOptionTabVO(masterReviewVO,"workHistory",workHistory);
+              buildOptionTabVO(masterReviewVO,"gradeEvaluate",gradeEvaluate);
+        }
+      
 
 
         try {
             TaskCompleteVO taskCompleteVO = super.createTaskCompleteVO();
-            masterReviewService.completeAreaCadresTask(id,refuseType,refuseTypeId, taskCompleteVO);
+            masterReviewService.completeAreaCadresTask(  masterReviewVO,"","", taskCompleteVO,isRefillFlag);
             xmlDocUtil.setResult("0");
             xmlDocUtil.writeHintMsg("10601", "审批校长职级评审流程成功");
         } catch (TaskNoExistException e) {
@@ -1069,6 +1178,37 @@ public class MasterReviewAction extends BaseWorkflowAction {
             log4j.logError(e);
         }                 
     }
+    
+//    private MasterReviewVO buildAreaVO(MasterReviewVO masterReviewVO,String option_tab_values) throws ParseException, IOException {
+//    	// Map<String,List<Map<String, String>>>  resultMap= new HashMap<String,List<Map<String, String>>>();
+//    	 
+//    	 List<Map<String, String>> optionTabList = new ArrayList<Map<String, String>>();
+//    	 
+//        /// List<String> optionTabStrs = new ArrayList<String>();
+//         JSONArray jSONArray = new JSONArray(option_tab_values);
+//         for (int i = 0; i < jSONArray.length(); i++) {
+//             Map<String, String> optionTabMap  = new HashMap<String, String>();
+//             JSONObject jSONObject = jSONArray.getJSONObject(i);
+//           //  String jsonStr = jSONObject.toString();
+//         //    optionTabStrs.add(jsonStr);
+//             Iterator keys = jSONObject.keys();
+//             while (keys.hasNext()) {
+//                 String key = (String) keys.next();
+//                 if (StringUtils.isNotEmpty(jSONObject.getString(key))) {
+//                     optionTabMap.put(key, jSONObject.getString(key));
+//                 }
+//             }
+//             optionTabList.add(optionTabMap);
+//         }
+//         
+//         
+//         buildOptionTabVO();
+//         
+//         
+//         
+//         return masterReviewVO;
+//
+//    }
 
     
     /**
@@ -1278,6 +1418,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             sql.append("c.present_occupation,");
             sql.append("c.present_major_occupation,");
             sql.append(" c.person_img_attachId,");
+            sql.append(" c.lodge_school,");
             sql.append(" t.base_info_approve_result,");
             sql.append("a.attachment_id AS manage_difficulty_attachId,");
             sql.append(" a.file_name AS manage_difficulty_filename,");
@@ -1285,7 +1426,26 @@ public class MasterReviewAction extends BaseWorkflowAction {
             sql.append(" b.file_name AS manage_difficulty_ago_filename,");
             //sql.append(" d.attachment_id AS person_img_attachId,");
             sql.append(" d.file_name AS person_img_filename,");
-            sql.append("d.file_path AS person_img_filepath");
+            sql.append("d.file_path AS person_img_filepath,");
+            
+            sql.append("e.attachment_id AS run_school_attachId,");
+            sql.append(" e.file_name AS run_school_filename ,");
+            
+            sql.append("f.attachment_id AS school_management_attachId,");
+            sql.append(" f.file_name AS school_management_filename,");
+            
+            sql.append("g.attachment_id AS education_science_attachId,");
+            sql.append(" g.file_name AS education_science_filename,");
+            
+            sql.append("h.attachment_id AS external_environment_attachId,");
+            sql.append(" h.file_name AS external_environment_filename,");
+            
+            sql.append("i.attachment_id AS student_development_attachId,");
+            sql.append(" i.file_name AS student_development_filename,");
+            
+            sql.append("j.attachment_id AS teacher_development_attachId,");
+            sql.append(" j.file_name AS teacher_development_filename");
+            
             sql.append("  FROM headmaster t");
             sql.append(" LEFT JOIN headmaster_base_info c ON t.headerMasterId = c.userid");
             sql.append(" LEFT JOIN workflow_attachment a");
@@ -1294,6 +1454,24 @@ public class MasterReviewAction extends BaseWorkflowAction {
             sql.append(" ON t.manage_difficulty_ago_attachment_id = b.attachment_id");
             sql.append(" LEFT JOIN workflow_attachment d");
             sql.append(" ON c.person_img_attachId = d.attachment_id");
+            
+            sql.append(" LEFT JOIN workflow_attachment e");
+            sql.append(" ON t.run_school_attachId = e.attachment_id");
+            
+            sql.append(" LEFT JOIN workflow_attachment f");
+            sql.append(" ON t.school_management_attachId = f.attachment_id");
+            
+            sql.append(" LEFT JOIN workflow_attachment g");
+            sql.append(" ON t.education_science_attachId = g.attachment_id");
+            
+            sql.append(" LEFT JOIN workflow_attachment h");
+            sql.append(" ON t.external_environment_attachId = h.attachment_id");
+            
+            sql.append(" LEFT JOIN workflow_attachment i");
+            sql.append(" ON t.student_development_attachId = i.attachment_id");
+            
+            sql.append(" LEFT JOIN workflow_attachment j");
+            sql.append(" ON t.teacher_development_attachId = j.attachment_id");
             sql.append(" WHERE t.id = ?");
       
             if (StringUtil.isNotEmpty(businessKey)) {
@@ -1314,7 +1492,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 String identitycard = rec.getChildText("idnumber");
                 String schoolId = rec.getChildText("school_id");
                 String schoolName = rec.getChildText("school_name");
-                String presentOccupation = rec.getChildText("present_occupation");
+                String present_occupation = rec.getChildText("present_occupation");
                 String applyLevel = rec.getChildText("apply_level");
                 
                 String present_major_occupation = rec.getChildText("present_major_occupation");
@@ -1384,6 +1562,65 @@ public class MasterReviewAction extends BaseWorkflowAction {
                     personImgAttachMentVO.setFileName(person_img_filename);
                     personImgAttachMentVO.setFilePath(person_img_filepath);
                 }
+                
+                String run_school_attachId = rec.getChildText("run_school_attachid");
+                String run_school_filename = rec.getChildText("run_school_filename");
+                
+                AttachMentVO  run_school_attachMentVO= new AttachMentVO();
+                if(!StringUtil.isEmpty(run_school_attachId)){
+                	run_school_attachMentVO.setAttachmentId(run_school_attachId);
+                	run_school_attachMentVO.setFileName(run_school_filename);
+                }
+                
+                
+                String school_management_attachId = rec.getChildText("school_management_attachid");
+                String school_management_filename = rec.getChildText("school_management_filename");
+                
+                AttachMentVO  school_management_attachMentVO= new AttachMentVO();
+                if(!StringUtil.isEmpty(school_management_attachId)){
+                	school_management_attachMentVO.setAttachmentId(school_management_attachId);
+                	school_management_attachMentVO.setFileName(school_management_filename);
+                }
+                
+                String education_science_attachId = rec.getChildText("education_science_attachid");
+                String education_science_filename = rec.getChildText("education_science_filename");
+                
+                AttachMentVO  education_science_attachMentVO= new AttachMentVO();
+                if(!StringUtil.isEmpty(education_science_attachId)){
+                	education_science_attachMentVO.setAttachmentId(education_science_attachId);
+                	education_science_attachMentVO.setFileName(education_science_filename);
+                }
+                
+                String external_environment_attachId = rec.getChildText("external_environment_attachid");
+                String external_environment_filename = rec.getChildText("external_environment_filename");
+                
+                AttachMentVO  external_environment_attachMentVO= new AttachMentVO();
+                if(!StringUtil.isEmpty(external_environment_attachId)){
+                	external_environment_attachMentVO.setAttachmentId(external_environment_attachId);
+                	external_environment_attachMentVO.setFileName(external_environment_filename);
+                }
+                
+                String student_development_attachId = rec.getChildText("student_development_attachid");
+                String student_development_filename = rec.getChildText("student_development_filename");
+                
+                AttachMentVO  student_development_attachMentVO= new AttachMentVO();
+                if(!StringUtil.isEmpty(student_development_attachId)){
+                	student_development_attachMentVO.setAttachmentId(student_development_attachId);
+                	student_development_attachMentVO.setFileName(student_development_filename);
+                }
+                
+                
+                String teacher_development_attachId = rec.getChildText("teacher_development_attachid");
+                String teacher_development_filename = rec.getChildText("teacher_development_filename");
+                
+                AttachMentVO  teacher_development_attachMentVO= new AttachMentVO();
+                if(!StringUtil.isEmpty(teacher_development_attachId)){
+                	teacher_development_attachMentVO.setAttachmentId(teacher_development_attachId);
+                	teacher_development_attachMentVO.setFileName(teacher_development_filename);
+                }
+                
+                String lodge_school = rec.getChildText("lodge_school");
+                
                 masterReviewVO.setPerson_img_attachMentVO(personImgAttachMentVO);
            
                 masterReviewVO.setId(bussinessKey);
@@ -1393,7 +1630,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 masterReviewVO.setIdentitycard(identitycard);
                 masterReviewVO.setSchoolId(schoolId);
                 masterReviewVO.setSchoolName(schoolName);
-                masterReviewVO.setPresentOccupation(presentOccupation);
+                masterReviewVO.setPresent_occupation(present_occupation);
                 masterReviewVO.setApplylevel(applyLevel);
                 
                 masterReviewVO.setPresent_major_occupation(present_major_occupation);
@@ -1441,6 +1678,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 masterReviewVO.setBase_info_approve_result(base_info_approve_result);
                 masterReviewVO.setCurrent_option_num(current_option_num);
                 
+                masterReviewVO.setRun_school_attachMentVO(run_school_attachMentVO);
+                masterReviewVO.setSchool_management_attachMentVO(school_management_attachMentVO);
+                masterReviewVO.setEducation_science_attachMentVO(education_science_attachMentVO);
+                masterReviewVO.setExternal_environment_attachMentVO(external_environment_attachMentVO);
+                masterReviewVO.setStudent_development_attachMentVO(student_development_attachMentVO);
+                masterReviewVO.setTeacher_development_attachMentVO(teacher_development_attachMentVO);
                
                 
                 masterReviewVO.setWorkExperienceVOs(getWorkExperienceVOs(bussinessKey));
@@ -1460,6 +1703,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 masterReviewVO.setPunishmentVOs(getPunishmentVOs(bussinessKey));
                 masterReviewVO.setWorkHistoryVOs(getWorkHistoryVOs(bussinessKey));
                 masterReviewVO.setGradeEvaluateVOs(getGradeEvaluateVOs(bussinessKey));
+                masterReviewVO.setLodge_school(lodge_school);
                
                 List<HistoryActinstVO> historyActinstVOs = new ArrayList<HistoryActinstVO>();
                 
@@ -1518,8 +1762,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
      */
     private List<GradeEvaluateVO> getGradeEvaluateVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*");
+        sql.append(" SELECT t.*,a.*");
         sql.append(" FROM headmaster_grade_evaluate t");
+        sql.append(" LEFT JOIN workflow_attachment a");
+        sql.append(" ON t.prove_attachment_id = a.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -1534,6 +1780,14 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String approve_result = (String)map.get("approve_result");
             
 
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("prove_attachment_id")){
+                String attachment_id = map.get("prove_attachment_id").toString();
+                String file_name = map.get("file_name").toString();
+                proveAttachMentVO.setAttachmentId(attachment_id);
+                proveAttachMentVO.setFileName(file_name);
+            }
+            
             GradeEvaluateVO gradeEvaluateVO = new GradeEvaluateVO();
             gradeEvaluateVO.setId(id);
             gradeEvaluateVO.setBusinessKey(businessKey);
@@ -1541,6 +1795,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             gradeEvaluateVO.setHigh_school(high_school);
             gradeEvaluateVO.setSecondary_school(secondary_school);;
             gradeEvaluateVO.setApprove_result(approve_result);
+            gradeEvaluateVO.setProveAttachMentVO(proveAttachMentVO);
           
             gradeEvaluateVOs.add(gradeEvaluateVO);
         }
@@ -1599,10 +1854,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
      */
     private List<PunishmentVO> getPunishmentVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*");
+        sql.append(" SELECT t.*,a.*");
         sql.append(" FROM headmaster_punishment t");
-       // sql.append(" LEFT JOIN workflow_attachment a");
-        //sql.append(" ON t.awards_attachment_id = a.attachment_id");
+        sql.append(" LEFT JOIN workflow_attachment a");
+        sql.append(" ON t.prove_attachment_id = a.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -1618,6 +1873,14 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String process_result =(String) map.get("process_result");
             String approve_result = (String)map.get("approve_result");
             
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("prove_attachment_id")){
+                String attachment_id = map.get("prove_attachment_id").toString();
+                String file_name = map.get("file_name").toString();
+                proveAttachMentVO.setAttachmentId(attachment_id);
+                proveAttachMentVO.setFileName(file_name);
+            }
+            
             PunishmentVO punishmentVO = new PunishmentVO();
             punishmentVO.setId(id);
             punishmentVO.setBusinessKey(businessKey);
@@ -1627,6 +1890,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             punishmentVO.setProcess_result(process_result);
             punishmentVO.setPeople(people);
             punishmentVO.setApprove_result(approve_result);
+            punishmentVO.setProveAttachMentVO(proveAttachMentVO);
           
             punishmentVOs.add(punishmentVO);
         }
@@ -1644,10 +1908,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
      */
     private List<AccidentVO> getAccidentVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*");
+        sql.append(" SELECT t.*,a.*");
         sql.append(" FROM headmaster_accident t");
-       // sql.append(" LEFT JOIN workflow_attachment a");
-        //sql.append(" ON t.awards_attachment_id = a.attachment_id");
+        sql.append(" LEFT JOIN workflow_attachment a");
+       sql.append(" ON t.prove_attachment_id = a.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -1662,13 +1926,14 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String description =(String) map.get("description");
             String approve_result =(String) map.get("approve_result");
             
-//            AttachMentVO  attachMentVO= new AttachMentVO();
-//            if(null !=map.get("attachment_id")){
-//                String attachment_id = map.get("attachment_id").toString();
-//                String file_name = map.get("file_name").toString();
-//                attachMentVO.setAttachmentId(attachment_id);
-//                attachMentVO.setFileName(file_name);
-//            }
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("prove_attachment_id")){
+                String attachment_id = map.get("prove_attachment_id").toString();
+                String file_name = map.get("file_name").toString();
+                proveAttachMentVO.setAttachmentId(attachment_id);
+                proveAttachMentVO.setFileName(file_name);
+            }
+            
             
 
             AccidentVO accidentVO = new AccidentVO();
@@ -1679,7 +1944,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             accidentVO.setDescription(description);
             accidentVO.setProcess_result(process_result);
             accidentVO.setApprove_result(approve_result);
-          
+            accidentVO.setProveAttachMentVO(proveAttachMentVO);
             accidentVOs.add(accidentVO);
         }
         return accidentVOs;      
@@ -1695,10 +1960,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
      */
     private List<SocialDutyVO> getSocialDutyVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*");
+        sql.append(" SELECT t.*,a.*");
         sql.append(" FROM headmaster_social_duty t");
-       // sql.append(" LEFT JOIN workflow_attachment a");
-        //sql.append(" ON t.awards_attachment_id = a.attachment_id");
+        sql.append(" LEFT JOIN workflow_attachment a");
+        sql.append(" ON t.prove_attachment_id = a.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -1713,13 +1978,13 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String complete_state =(String) map.get("complete_state");
             String approve_result = (String)map.get("approve_result");
             
-//            AttachMentVO  attachMentVO= new AttachMentVO();
-//            if(null !=map.get("attachment_id")){
-//                String attachment_id = map.get("attachment_id").toString();
-//                String file_name = map.get("file_name").toString();
-//                attachMentVO.setAttachmentId(attachment_id);
-//                attachMentVO.setFileName(file_name);
-//            }
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("prove_attachment_id")){
+                String attachment_id = map.get("prove_attachment_id").toString();
+                String file_name = map.get("file_name").toString();
+                proveAttachMentVO.setAttachmentId(attachment_id);
+                proveAttachMentVO.setFileName(file_name);
+            }
             
 
             SocialDutyVO socialDutyVO = new SocialDutyVO();
@@ -1730,6 +1995,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             socialDutyVO.setArrange_department(arrange_department);
             socialDutyVO.setComplete_state(complete_state);
             socialDutyVO.setApprove_result(approve_result);
+            socialDutyVO.setProveAttachMentVO(proveAttachMentVO);
           
             socialDutyVOs.add(socialDutyVO);
         }
@@ -1746,10 +2012,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
      */
     private List<SchoolReformVO> getSchoolReformVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*");
+        sql.append(" SELECT t.*, a.*, getParamDesc('headmaster_approve_level',t.project_level) as project_level_desc");
         sql.append(" FROM headmaster_school_reform t");
-       // sql.append(" LEFT JOIN workflow_attachment a");
-        //sql.append(" ON t.awards_attachment_id = a.attachment_id");
+        sql.append(" LEFT JOIN workflow_attachment a");
+        sql.append(" ON t.prove_attachment_id = a.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -1760,18 +2026,18 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             Date implement_time = (Date)map.get("implement_time");
             String project_name =(String) map.get("project_name");
-            String project_level =(String) map.get("project_level");
+            String project_level =(String) map.get("project_level_desc");
             String charge_department =(String) map.get("charge_department");
             String performance =(String) map.get("performance");
             String approve_result =(String) map.get("approve_result");
             
-//            AttachMentVO  attachMentVO= new AttachMentVO();
-//            if(null !=map.get("attachment_id")){
-//                String attachment_id = map.get("attachment_id").toString();
-//                String file_name = map.get("file_name").toString();
-//                attachMentVO.setAttachmentId(attachment_id);
-//                attachMentVO.setFileName(file_name);
-//            }
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("prove_attachment_id")){
+                String attachment_id = map.get("prove_attachment_id").toString();
+                String file_name = map.get("file_name").toString();
+                proveAttachMentVO.setAttachmentId(attachment_id);
+                proveAttachMentVO.setFileName(file_name);
+            }
             
 
             SchoolReformVO schoolReformVO = new SchoolReformVO();
@@ -1783,6 +2049,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             schoolReformVO.setCharge_department(charge_department);
             schoolReformVO.setPerformance(performance);
             schoolReformVO.setApprove_result(approve_result);
+            schoolReformVO.setProveAttachMentVO(proveAttachMentVO);
           
             schoolReformVOs.add(schoolReformVO);
         }
@@ -1836,7 +2103,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
     private List<SchoolAwardVO> getSchoolAwardVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*, a.*");
+        sql.append(" SELECT t.*, a.*,getParamDesc('headmaster_approve_level',t.awards_level) as awards_level_desc");
         sql.append(" FROM headmaster_school_award t");
         sql.append(" LEFT JOIN workflow_attachment a");
         sql.append(" ON t.awards_attachment_id = a.attachment_id");
@@ -1851,7 +2118,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String awards_name = (String)map.get("awards_name");
             String work_school = (String)map.get("work_school");
             String awards_company =(String) map.get("awards_company");
-            String awards_level =(String) map.get("awards_level");
+            String awards_level =(String) map.get("awards_level_desc");
             Date awards_time = (Date)map.get("awards_time");
             String approve_result = (String)map.get("approve_result");
             
@@ -1881,10 +2148,15 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
     private List<PersonalAwardVO> getPersonalAwardVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*, a.*");
+        sql.append(" SELECT t.*, a.*,b.attachment_id as attachment_id1,b.file_name as file_name1,");
+        sql.append(" getParamDesc('headmaster_approve_level',t.awards_level) as awards_level_personal_desc,");
+        sql.append(" getParamDesc('headmaster_awards_type',t.awards_type) as awards_type_desc,");
+        sql.append(" getParamDesc('headmaster_awards_type',t.awards_type1) as awards_type1_desc");
         sql.append(" FROM headmaster_personal_award t");
         sql.append(" LEFT JOIN workflow_attachment a");
         sql.append(" ON t.awards_attachment_id = a.attachment_id");
+        sql.append(" LEFT JOIN workflow_attachment b");
+        sql.append(" ON t.awards_attachment_id1 = b.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -1895,10 +2167,11 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             String awards_name = (String)map.get("awards_name");
             String awards_company =(String) map.get("awards_company");
-            String awards_level =(String) map.get("awards_level");
+            String awards_level =(String) map.get("awards_level_personal_desc");
             Date awards_time = (Date)map.get("awards_time");
             String approve_result = (String)map.get("approve_result");
-            String awards_type = (String)map.get("awards_type");
+            String awards_type = (String)map.get("awards_type_desc");
+            String awards_type1_desc = (String)map.get("awards_type1_desc");
             
             AttachMentVO  attachMentVO= new AttachMentVO();
             if(null !=map.get("attachment_id")){
@@ -1906,6 +2179,15 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 String file_name = (String)map.get("file_name");
                 attachMentVO.setAttachmentId(attachment_id);
                 attachMentVO.setFileName(file_name);
+            }
+            
+            
+            AttachMentVO  attachMentVO1= new AttachMentVO();
+            if(null !=map.get("attachment_id1")){
+                String attachment_id1 = (String)map.get("attachment_id1");
+                String file_name1 = (String)map.get("file_name1");
+                attachMentVO1.setAttachmentId(attachment_id1);
+                attachMentVO1.setFileName(file_name1);
             }
 
             PersonalAwardVO personalAwardVO = new PersonalAwardVO();
@@ -1918,6 +2200,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
             personalAwardVO.setPersonalAttachVO(attachMentVO);
             personalAwardVO.setApprove_result(approve_result);
             personalAwardVO.setAwards_type(awards_type);
+            personalAwardVO.setAwards_type1(awards_type1_desc);
+            personalAwardVO.setPersonalAttachVO1(attachMentVO1);
             personalAwardVOs.add(personalAwardVO);
         }
         return personalAwardVOs;   
@@ -1925,7 +2209,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
     private List<SubjectVO> getSubjectVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*, a.*");
+        sql.append(" SELECT t.*, a.*,getParamDesc('headmaster_approve_level',t.subject_level) as subject_level_desc,");
+        sql.append(" getParamDesc('headmaster_is_finish_subject',t.is_finish_subject) as is_finish_subject_desc ");
         sql.append(" FROM headmaster_subject t ");
         sql.append("LEFT JOIN workflow_attachment a");
         sql.append("  ON t.subject_attachment_id = a.attachment_id");
@@ -1939,9 +2224,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             String subjectName = (String)map.get("subject_name");
             String subject_company = (String)map.get("subject_company");
-            String subject_level = (String)map.get("subject_level");
+            String subject_level = (String)map.get("subject_level_desc");
             String subject_responsibility =(String) map.get("subject_responsibility");
-            String is_finish_subject =(String) map.get("is_finish_subject");
+            String is_finish_subject =(String) map.get("is_finish_subject_desc");
             String finish_result = (String)map.get("finish_result");
             Date finish_time = (Date)map.get("finish_time");
             String approve_result = (String)map.get("approve_result");
@@ -1973,7 +2258,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
     private List<BookPublishVO> getBookPublishVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*,");
+        sql.append(" SELECT t.*,getParamDesc('headmaster_complete_form',t.complete_way) as complete_way_desc,");
+        sql.append(" getParamDesc('headmaster_author_sort',t.author_order) as author_order_desc,");
         sql.append(" a.attachment_id AS coverid,");
         sql.append(" a.file_name AS covername,");
         sql.append(" b.attachment_id AS contentid,");
@@ -1992,12 +2278,13 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String id = (String)map.get("id");
             String businessKey =(String) map.get("businessKey");
             String book_name =(String) map.get("book_name");
-            String complete_way = (String)map.get("complete_way");
+            String complete_way = (String)map.get("complete_way_desc");
             Date publish_time = (Date)map.get("publish_time");
             String complete_chapter =(String) map.get("complete_chapter");
             String complete_word = (String)map.get("complete_word");
-            String author_order = (String)map.get("author_order");
+            String author_order = (String)map.get("author_order_desc");
             String approve_result =(String) map.get("approve_result");
+            String publish_company =(String) map.get("publish_company");
 
             BookPublishVO bookPublishVO = new BookPublishVO();
             
@@ -2031,6 +2318,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             bookPublishVO.setComplete_word(complete_word);
             bookPublishVO.setAuthor_order(author_order);
             bookPublishVO.setApprove_result(approve_result);
+            bookPublishVO.setPublish_company(publish_company);
             bookPublishVOs.add(bookPublishVO);
             
             bookPublishVO.setCoverVO(educationAttachMentVO);
@@ -2041,7 +2329,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
     private List<PaperVO> getPaperVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append("SELECT t.*, a.*");
+        sql.append("SELECT t.*, a.*,getParamDesc('headmaster_approve_level',t.organizers_level) as organizers_level_desc,");
+        sql.append(" getParamDesc('headmaster_complete_form',t.complete_way) as complete_way_desc,getParamDesc('headmaster_author_sort',t.author_order) as author_order_desc");
         sql.append(" FROM headmaster_paper t");
         sql.append(" LEFT JOIN workflow_attachment a");
         sql.append(" ON t.paper_attachment_id = a.attachment_id");
@@ -2061,12 +2350,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String paper_meet_name = (String)map.get("paper_meet_name");
             String paper_number =(String) map.get("paper_number");
             String organizers =(String) map.get("organizers");
-            String organizers_level =(String) map.get("organizers_level");
+            String organizers_level =(String) map.get("organizers_level_desc");
             String personal_part = (String)map.get("personal_part");
             String approve_result = (String)map.get("approve_result");
             String publish_company = (String)map.get("publish_company");
-            String complete_way = (String)map.get("complete_way");
-            String author_order = (String)map.get("author_order");
+            String complete_way = (String)map.get("complete_way_desc");
+            String author_order = (String)map.get("author_order_desc");
            
             
             AttachMentVO  attachMentVO= new AttachMentVO();
@@ -2141,7 +2430,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
 
     private List<EducationVO> getEducationVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append("SELECT t.*,");
+        sql.append("SELECT t.*,getParamDesc('headmaster_education',t.education) as education_desc,");
+        sql.append("getParamDesc('headmaster_degree',t.degree) as degree_desc,");
         sql.append(" a.attachment_id AS educationid,");
         sql.append("a.file_name AS educationname,");
         sql.append("b.attachment_id AS degreeid,");
@@ -2165,8 +2455,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
             Date start_date = (Date)map.get("start_date");
             Date end_date = (Date)map.get("end_date");
             
-            String degree = (String)map.get("degree");
-            String education = (String)map.get("education");
+            String degree = (String)map.get("degree_desc");
+            String education = (String)map.get("education_desc");
             String education_type = (String)map.get("education_type");
             String study_form = (String)map.get("study_form");
             
@@ -2226,6 +2516,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             String work_school =(String) map.get("work_school");
             String work_profession = (String)map.get("work_profession");
+            String manage_level = (String)map.get("manage_level");
             String work_year = (String)map.get("work_year");
             Date start_date = (Date)map.get("start_date");
             Date end_date = (Date)map.get("end_date");
@@ -2248,6 +2539,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             workExperienceVO.setEndTime(end_date);
             workExperienceVO.setWorkSchool(work_school);
             workExperienceVO.setWorkProfession(work_profession);
+            workExperienceVO.setManage_level(manage_level);
             workExperienceVO.setWorkYear(work_year);
             workExperienceVO.setProveAttachMentVO(attachMentVO);
             workExperienceVO.setApprove_result(approve_result);
@@ -3425,6 +3717,43 @@ public class MasterReviewAction extends BaseWorkflowAction {
             dao.releaseConnection();
         }        
     }
+    
+
+   /**
+    * 进修学习
+    */
+    private void deleteStudyTrain() {
+    	   Element dataElement = xmlDocUtil.getRequestData();
+           String id = dataElement.getChildTextTrim("id");
+           PlatformDao dao = new PlatformDao();
+           
+           try {
+               dao.beginTransaction();
+               StringBuffer sql = new StringBuffer("update headmaster_studytrain set isvalid=? where id=?");
+               ArrayList<String> bvals = new ArrayList<String>();
+               bvals.add("0");
+               bvals.add(id);
+
+               dao.setSql(sql.toString());
+               dao.setBindValues(bvals);
+               dao.executeTransactionSql();
+               dao.commitTransaction();
+               xmlDocUtil.setResult("0");
+               xmlDocUtil.writeHintMsg("10603", "删除进修学习成功");
+           }
+           catch (Exception e)
+           {
+               e.printStackTrace() ;
+               dao.rollBack();
+               log4j.logError("[删除进修学习错误]"+e.getMessage()) ;
+               log4j.logInfo(JDomUtil.toXML(xmlDocUtil.getXmlDoc(), "GBK", true)) ;
+               xmlDocUtil.writeErrorMsg("10604","删进修学习失败");
+           }
+           finally
+           {
+               dao.releaseConnection();
+           }   		
+	}
 
 
     /**

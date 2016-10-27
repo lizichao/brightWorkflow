@@ -1,5 +1,6 @@
 package cn.com.bright.masterReview.api;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class MasterReviewVO {
     /**
      * 现任职务
      */
-    private String presentOccupation;
+    private String present_occupation;
     
     //现任专业技术职务
     private String present_major_occupation;
@@ -85,6 +86,13 @@ public class MasterReviewVO {
     //个人头像附件Vo
     private AttachMentVO person_img_attachMentVO;
     
+    //寄宿制学校
+    private String lodge_school;
+    
+    
+    
+    
+    
     /**
      * 现学校名称
      */
@@ -104,12 +112,6 @@ public class MasterReviewVO {
      * 现学生人数
      */
     private String studentNumber;
-    
-    private String manage_difficulty_approve_result;
-    
-    private String manage_difficulty_attachment_id;
-    
-    private AttachMentVO manageDifficultyAttachMentVO;
     
     /**
      * 近八年学校名称
@@ -131,12 +133,23 @@ public class MasterReviewVO {
      */
     private String studentNumberAgo;
     
-
-    private String manage_difficulty_ago_approve_result;
+    
+    private String manage_difficulty_approve_result;
+    
+    private String manage_difficulty_attachment_id;
+    
+    private AttachMentVO manageDifficultyAttachMentVO;
+    
+    
+  private String manage_difficulty_ago_approve_result;
     
     private String manage_difficulty_ago_attachment_id;
     
     private AttachMentVO manageDifficultyAgoAttachMentVO;
+    
+    
+
+  
 
     //是通过还是没通过
     private String apply_result;
@@ -161,61 +174,101 @@ public class MasterReviewVO {
     
    //办学思想
     private String run_school;
+    
+    private String run_school_approve_result;
   //学校管理
     private String school_management;
+    
+    private String school_management_approve_result;
   //教育教学
     private String education_science;
+    
+    private String education_science_approve_result;
   //外部环境
     private String external_environment;
+    
+    private String external_environment_approve_result;
   //学生发展
     private String student_development;
+    
+    private String student_development_approve_result;
   //教师发展
     private String teacher_development;
+    
+    private String teacher_development_approve_result;
     
     //提交的选项卡类型
     private String option_tab_type;
     private String current_option_num;
 
+    
+    private String run_school_attachment_id;
+    
+    private AttachMentVO run_school_attachMentVO;
+    
+    private String school_management_attachment_id;
+    
+    private AttachMentVO school_management_attachMentVO;
+    
+    
+    private String education_science_attachment_id;
+    
+    private AttachMentVO education_science_attachMentVO;
+    
+    
+    private String external_environment_attachment_id;
+    
+    private AttachMentVO external_environment_attachMentVO;
+    
+    
+    private String student_development_attachment_id;
+    
+    private AttachMentVO student_development_attachMentVO;
+    
+    
+    private String teacher_development_attachment_id;
+    
+    private AttachMentVO teacher_development_attachMentVO;
 
     /**
      * 任职年限
      */
-    private List<WorkExperienceVO> workExperienceVOs;
+    private List<WorkExperienceVO> workExperienceVOs = new ArrayList<WorkExperienceVO>();
     
     /**
      * 学历情况
      */
-    private List<EducationVO> educationVOs;
+    private List<EducationVO> educationVOs= new ArrayList<EducationVO>();;
     
     /**
      * 职称情况
      */
-    private List<ProfessionalTitleVO> professionalTitleVOs;
+    private List<ProfessionalTitleVO> professionalTitleVOs= new ArrayList<ProfessionalTitleVO>();;
     
     /**
      *论文发表情况
      */
-    private List<PaperVO> paperVOs;
+    private List<PaperVO> paperVOs= new ArrayList<PaperVO>();;
     
     /**
      *  著作出版情况
      */
-    private List<BookPublishVO> bookPublishVOs;
+    private List<BookPublishVO> bookPublishVOs= new ArrayList<BookPublishVO>();;
     
     /**
      * 课题情况
      */
-    private List<SubjectVO> subjectVOs;
+    private List<SubjectVO> subjectVOs= new ArrayList<SubjectVO>();;
     
     /**
      * 个人获奖情况
      */
-    private List<PersonalAwardVO> personalAwardVOs;
+    private List<PersonalAwardVO> personalAwardVOs= new ArrayList<PersonalAwardVO>();;
     
     /**
      * 学校获得荣誉
      */
-    private List<SchoolAwardVO> schoolAwardVOs;
+    private List<SchoolAwardVO> schoolAwardVOs= new ArrayList<SchoolAwardVO>();;
     
     
     private List<HistoryActinstVO> historyActinstVOs;
@@ -223,37 +276,37 @@ public class MasterReviewVO {
     /**
      * 进修学习VO
      */
-    private List<StudyTrainVO> studyTrainVOs;
+    private List<StudyTrainVO> studyTrainVOs= new ArrayList<StudyTrainVO>();;
     
     /**
      * 加分学校特色和改革
      */
-    private List<SchoolReformVO> schoolReformVOs;
+    private List<SchoolReformVO> schoolReformVOs= new ArrayList<SchoolReformVO>();;
     
     /**
      * 加分社会责任
      */
-    private List<SocialDutyVO> socialDutyVOs;
+    private List<SocialDutyVO> socialDutyVOs= new ArrayList<SocialDutyVO>();;
     
     /**
      * 减分责任事故
      */
-    private List<AccidentVO> accidentVOs;
+    private List<AccidentVO> accidentVOs= new ArrayList<AccidentVO>();;
     
     /**
      * 减分处分
      */
-    private List<PunishmentVO> punishmentVOs;
+    private List<PunishmentVO> punishmentVOs= new ArrayList<PunishmentVO>();;
     
     /**
      * 学校等级评估
      */
-    private List<GradeEvaluateVO> gradeEvaluateVOs;
+    private List<GradeEvaluateVO> gradeEvaluateVOs= new ArrayList<GradeEvaluateVO>();;
     
     /**
      * 工作经历
      */
-    private List<WorkHistoryVO> workHistoryVOs;
+    private List<WorkHistoryVO> workHistoryVOs= new ArrayList<WorkHistoryVO>();;
     
     public String getHeaderMasterId() {
         return headerMasterId;
@@ -303,15 +356,17 @@ public class MasterReviewVO {
         this.schoolName = schoolName;
     }
 
-    public String getPresentOccupation() {
-        return presentOccupation;
-    }
+    
 
-    public void setPresentOccupation(String presentOccupation) {
-        this.presentOccupation = presentOccupation;
-    }
+    public String getPresent_occupation() {
+		return present_occupation;
+	}
 
-    public String getApplylevel() {
+	public void setPresent_occupation(String present_occupation) {
+		this.present_occupation = present_occupation;
+	}
+
+	public String getApplylevel() {
         return applylevel;
     }
 
@@ -832,6 +887,173 @@ public class MasterReviewVO {
     public void setCurrent_option_num(String current_option_num) {
         this.current_option_num = current_option_num;
     }
+
+	public String getRun_school_attachment_id() {
+		return run_school_attachment_id;
+	}
+
+	public void setRun_school_attachment_id(String run_school_attachment_id) {
+		this.run_school_attachment_id = run_school_attachment_id;
+	}
+
+	public AttachMentVO getRun_school_attachMentVO() {
+		return run_school_attachMentVO;
+	}
+
+	public void setRun_school_attachMentVO(AttachMentVO run_school_attachMentVO) {
+		this.run_school_attachMentVO = run_school_attachMentVO;
+	}
+
+	public String getSchool_management_attachment_id() {
+		return school_management_attachment_id;
+	}
+
+	public void setSchool_management_attachment_id(
+			String school_management_attachment_id) {
+		this.school_management_attachment_id = school_management_attachment_id;
+	}
+
+	public AttachMentVO getSchool_management_attachMentVO() {
+		return school_management_attachMentVO;
+	}
+
+	public void setSchool_management_attachMentVO(
+			AttachMentVO school_management_attachMentVO) {
+		this.school_management_attachMentVO = school_management_attachMentVO;
+	}
+
+	public String getEducation_science_attachment_id() {
+		return education_science_attachment_id;
+	}
+
+	public void setEducation_science_attachment_id(
+			String education_science_attachment_id) {
+		this.education_science_attachment_id = education_science_attachment_id;
+	}
+
+	public AttachMentVO getEducation_science_attachMentVO() {
+		return education_science_attachMentVO;
+	}
+
+	public void setEducation_science_attachMentVO(
+			AttachMentVO education_science_attachMentVO) {
+		this.education_science_attachMentVO = education_science_attachMentVO;
+	}
+
+	public String getExternal_environment_attachment_id() {
+		return external_environment_attachment_id;
+	}
+
+	public void setExternal_environment_attachment_id(
+			String external_environment_attachment_id) {
+		this.external_environment_attachment_id = external_environment_attachment_id;
+	}
+
+	public AttachMentVO getExternal_environment_attachMentVO() {
+		return external_environment_attachMentVO;
+	}
+
+	public void setExternal_environment_attachMentVO(
+			AttachMentVO external_environment_attachMentVO) {
+		this.external_environment_attachMentVO = external_environment_attachMentVO;
+	}
+
+	public String getStudent_development_attachment_id() {
+		return student_development_attachment_id;
+	}
+
+	public void setStudent_development_attachment_id(
+			String student_development_attachment_id) {
+		this.student_development_attachment_id = student_development_attachment_id;
+	}
+
+	public AttachMentVO getStudent_development_attachMentVO() {
+		return student_development_attachMentVO;
+	}
+
+	public void setStudent_development_attachMentVO(
+			AttachMentVO student_development_attachMentVO) {
+		this.student_development_attachMentVO = student_development_attachMentVO;
+	}
+
+	public String getTeacher_development_attachment_id() {
+		return teacher_development_attachment_id;
+	}
+
+	public void setTeacher_development_attachment_id(
+			String teacher_development_attachment_id) {
+		this.teacher_development_attachment_id = teacher_development_attachment_id;
+	}
+
+	public AttachMentVO getTeacher_development_attachMentVO() {
+		return teacher_development_attachMentVO;
+	}
+
+	public void setTeacher_development_attachMentVO(
+			AttachMentVO teacher_development_attachMentVO) {
+		this.teacher_development_attachMentVO = teacher_development_attachMentVO;
+	}
+
+	public String getLodge_school() {
+		return lodge_school;
+	}
+
+	public void setLodge_school(String lodge_school) {
+		this.lodge_school = lodge_school;
+	}
+
+	public String getRun_school_approve_result() {
+		return run_school_approve_result;
+	}
+
+	public void setRun_school_approve_result(String run_school_approve_result) {
+		this.run_school_approve_result = run_school_approve_result;
+	}
+
+	public String getSchool_management_approve_result() {
+		return school_management_approve_result;
+	}
+
+	public void setSchool_management_approve_result(
+			String school_management_approve_result) {
+		this.school_management_approve_result = school_management_approve_result;
+	}
+
+	public String getEducation_science_approve_result() {
+		return education_science_approve_result;
+	}
+
+	public void setEducation_science_approve_result(
+			String education_science_approve_result) {
+		this.education_science_approve_result = education_science_approve_result;
+	}
+
+	public String getExternal_environment_approve_result() {
+		return external_environment_approve_result;
+	}
+
+	public void setExternal_environment_approve_result(
+			String external_environment_approve_result) {
+		this.external_environment_approve_result = external_environment_approve_result;
+	}
+
+	public String getStudent_development_approve_result() {
+		return student_development_approve_result;
+	}
+
+	public void setStudent_development_approve_result(
+			String student_development_approve_result) {
+		this.student_development_approve_result = student_development_approve_result;
+	}
+
+	public String getTeacher_development_approve_result() {
+		return teacher_development_approve_result;
+	}
+
+	public void setTeacher_development_approve_result(
+			String teacher_development_approve_result) {
+		this.teacher_development_approve_result = teacher_development_approve_result;
+	}
     
     
 }

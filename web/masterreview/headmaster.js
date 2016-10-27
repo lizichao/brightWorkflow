@@ -45,6 +45,7 @@
 			$("#nation").val(result.nation);
 			$("#email").val(result.email);
 			$("#person_img_attachId").val(result.headimgid);
+			$("#lodge_school").val(result.lodge_school);
 			var rootPath = page.getBasePath();
 			if(result.headimgpath){
 				$("#personHeadImg").attr("src",rootPath+ '\\' + result.headimgpath);
@@ -70,7 +71,10 @@
 		   Brightcom.workflow.initSelectCombox('headmaster_politics_status','politics_status');
 		   Brightcom.workflow.initSelectCombox('headmaster_phase_study','phasestudy');
 		   Brightcom.workflow.initSelectCombox('headmaster_census_register','census_register');
-		   Brightcom.workflow.initSelectCombox('headmaster_ispositive','presentOccupation');
+		   Brightcom.workflow.initSelectCombox('headmaster_ispositive','present_occupation');
+		   Brightcom.workflow.initSelectCombox('global_yes_or_no','lodge_school');
+		   Brightcom.workflow.initSelectCombox('headmaster_present_major_occupation','present_major_occupation');
+		   
 	}
 	
 	
@@ -81,17 +85,17 @@
 		$("#identitycard").text(masterReviewVO.identitycard);
 		$("#mobile").text(masterReviewVO.mobile);
 		$("#school_name").text(masterReviewVO.schoolName);
-		$("#presentOccupation").text(JspParamUtil.paramVal('headmaster_ispositive',masterReviewVO.isPositive));
+		$("#present_occupation").text(JspParamUtil.paramVal('headmaster_ispositive',masterReviewVO.present_occupation));
 		
-		$("#usersex").text(masterReviewVO.usersex);
+		$("#usersex").text(JspParamUtil.paramVal('headmaster_user_sex',masterReviewVO.usersex));
 		$("#census_register").text(JspParamUtil.paramVal('headmaster_census_register',masterReviewVO.census_register));
 		$("#nation").text(masterReviewVO.nation);
-		$("#school_class").text(masterReviewVO.school_class);
+		$("#school_class").text(JspParamUtil.paramVal('headmaster_school_type',masterReviewVO.school_class));
 		$("#politics_status").text(JspParamUtil.paramVal('headmaster_politics_status',masterReviewVO.politics_status));
 		$("#teach_age").text(masterReviewVO.teach_age);
 		$("#phasestudy").text(JspParamUtil.paramVal('headmaster_phase_study',masterReviewVO.phasestudy));
 		$("#email").text(masterReviewVO.email);
-		$("#present_major_occupation").text(masterReviewVO.present_major_occupation);
+		$("#present_major_occupation").text(JspParamUtil.paramVal('headmaster_present_major_occupation',masterReviewVO.present_major_occupation));
 		$("#birth_date").text(page.discriCard(masterReviewVO.identitycard));
 		$("#native_place").text(masterReviewVO.native_place);
 		$("#join_work_time").text(Brightcom.workflow.getDateStrByLong(masterReviewVO.join_work_time));
@@ -144,10 +148,10 @@
 	
 		bulidWorkHistory(masterReviewVO.workHistoryVOs,approveType);
 		bulidGradeEvaluate(masterReviewVO.gradeEvaluateVOs,approveType);
-		bulidSchoolReform(masterReviewVO.schoolReformVOs,approveType);
-		bulidSocialDuty(masterReviewVO.socialDutyVOs,approveType);
-		bulidAccident(masterReviewVO.accidentVOs,approveType);
-		bulidPunishment(masterReviewVO.punishmentVOs,approveType);
+		//bulidSchoolReform(masterReviewVO.schoolReformVOs,approveType);
+		//bulidSocialDuty(masterReviewVO.socialDutyVOs,approveType);
+		//bulidAccident(masterReviewVO.accidentVOs,approveType);
+	//	bulidPunishment(masterReviewVO.punishmentVOs,approveType);
 		
 		if(approveType==page.areaApprove){//区级审核
 			 var config = {
@@ -194,6 +198,8 @@
 	function bulidNoDataTemplate(masterReviewVO,propertyName,displayName){
 		if(masterReviewVO[propertyName]){
 			$("#"+propertyName+"_label").text(masterReviewVO[propertyName] || '暂无数据');
+			var rootpath = page.getBasePath();
+			$("#"+propertyName+"_attachment_id").attr("href",rootpath+"WorkflowAttachMentDownload?attachmentId="+masterReviewVO.school_management_attachMentVO.attachmentId);
 		}else{
 			$("#"+propertyName+"_div").empty();
 			var noDataArray = [];
@@ -206,8 +212,9 @@
 		}
 	}
 	
-	
+	/*
 	function bulidSchoolReform(schoolReformVOs,approveType){
+		$("#schoolReformRowNum").val(schoolReformVOs.length);
 		$("#schoolReformDiv").empty();
 		if(schoolReformVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -230,6 +237,7 @@
 	}
 
 	function bulidSocialDuty(socialDutyVOs,approveType){
+		$("#socialDutyRowNum").val(socialDutyVOs.length);
 		$("#socialDutyDiv").empty();
 		if(socialDutyVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -293,9 +301,10 @@
 			noDataArray.push(" <tbody> </table>");
 			$("#punishmentDiv").append(noDataArray.join(""));
 		}
-	}
+	}*/
 
 	function bulidGradeEvaluate(gradeEvaluateVOs,approveType){
+		$("#gradeEvaluateRowNum").val(gradeEvaluateVOs.length);
 		$("#gradeEvaluateDiv").empty();
 		if(gradeEvaluateVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -318,6 +327,7 @@
 	}
 
 	function bulidWorkHistory(workHistoryVOs,approveType){
+		$("#workHistoryRowNum").val(workHistoryVOs.length);
 		$("#workHistoryDiv").empty();
 		if(workHistoryVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -341,6 +351,7 @@
 	
 	//学历情况
 	function bulidEducation(educationVOs,approveType){
+		$("#educationRowNum").val(educationVOs.length);
 		$("#educationDiv").empty();
 		if(educationVOs.length>0){
 			 var education_grades = 0;
@@ -366,6 +377,7 @@
 
 	//任职年限
 	function bulidWorkExperience(workExperienceVOs,approveType ){
+		$("#workExperienceRowNum").val(workExperienceVOs.length);
 		$("#workExperienceDiv").empty();
 		if(workExperienceVOs.length>0){
 			 var dataObject = {'Data': [],'personRowNum':(workExperienceVOs.length+1)};
@@ -389,6 +401,7 @@
 
 	//职称
 	function bulidProfessionalTitle(professionalTitleVOs,approveType){
+		$("#professionalTitleRowNum").val(professionalTitleVOs.length);
 		$("#professionalTitleDiv").empty();
 		if(professionalTitleVOs.length>0){
 			 var dataObject = {'Data': [],'personRowNum':(professionalTitleVOs.length+1)};
@@ -413,6 +426,7 @@
 
 	//论文
 	function bulidPaper(paperVOs,approveType){
+		$("#paperTitleRowNum").val(paperVOs.length);
 		$("#paperDiv").empty();
 		if(paperVOs.length>0){
 			 var dataObject = {'Data': [],'personRowNum':(paperVOs.length*3)};
@@ -421,7 +435,7 @@
 				 dataObject.Data.push(paperVOs[i]);
 			 }
 			 if(approveType==page.professorApprove){
-				 dataObject['paper_grade_rows'] =(paperVOs.length*3)
+				 dataObject['paper_grade_rows'] =(paperVOs.length*5)
 			 }
 			 var subTaskContent= $("#paperRec").render(dataObject);
 			 $("#paperDiv").append(subTaskContent);
@@ -437,6 +451,7 @@
 
 	//著作出版
 	function bulidBookPublish(bookPublishVOs,approveType){
+		$("#workPublishRowNum").val(bookPublishVOs.length);
 		$("#bookPublishDiv").empty();
 		if(bookPublishVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -461,15 +476,16 @@
 
 	//课题
 	function bulidSubject(subjectVOs,approveType){
+		$("#subjectRowNum").val(subjectVOs.length);
 		$("#subjectDiv").empty();
 		if(subjectVOs.length>0){
 			 var dataObject = {'Data': []};
 			 for(var i =0;i<subjectVOs.length;i++){
-				 subjectVOs[i]["personRowNum"]=(subjectVOs.length*3);
+				 subjectVOs[i]["personRowNum"]=(subjectVOs.length*5);
 				 dataObject.Data.push(subjectVOs[i]);
 			 }
 			 if(approveType==page.professorApprove){
-				 dataObject['subject_grade_rows'] =(subjectVOs.length*3);
+				 dataObject['subject_grade_rows'] =(subjectVOs.length*5);
 			 }
 			 var subTaskContent= $("#subjectRec").render(dataObject);
 			 $("#subjectDiv").append(subTaskContent);
@@ -485,11 +501,12 @@
 
 	//个人获奖
 	function bulidPersonalAward(personalAwardVOs,approveType){
+		$("#personalAwardRowNum").val(personalAwardVOs.length);
 		$("#personalAwardDiv").empty();
 		if(personalAwardVOs.length>0){
 			 var dataObject = {'Data': []};
 			 for(var i =0;i<personalAwardVOs.length;i++){
-				 personalAwardVOs[i]["personRowNum"]=(personalAwardVOs.length*2);
+				 personalAwardVOs[i]["personRowNum"]=(personalAwardVOs.length*4);
 				 dataObject.Data.push(personalAwardVOs[i]);
 			 }
 			 if(approveType==page.professorApprove){
@@ -509,11 +526,12 @@
 
 	//学校获奖
 	function bulidSchoolAward(schoolAwardVOs,approveType){
+		$("#schoolAwardRowNum").val(schoolAwardVOs.length);
 		$("#schoolAwardDiv").empty();
 		if(schoolAwardVOs.length>0){
 			 var dataObject = {'Data': []};
 			 for(var i =0;i<schoolAwardVOs.length;i++){
-				 schoolAwardVOs[i]["personRowNum"]=(schoolAwardVOs.length*2);
+				 schoolAwardVOs[i]["personRowNum"]=(schoolAwardVOs.length*3);
 				 dataObject.Data.push(schoolAwardVOs[i]);
 			 }
 			 if(approveType==page.professorApprove){
@@ -533,6 +551,7 @@
 
 
 	function bulidStudyTrains(studyTrainVOs,approveType){
+		$("#studyTrainRowNum").val(studyTrainVOs.length);
 		$("#studyTrainDiv").empty();
 		if(studyTrainVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -557,11 +576,12 @@
 
 
 	function bulidSchoolReforms(schoolReformVOs,approveType){
+		$("#schoolReformRowNum").val(schoolReformVOs.length);
 		$("#schoolReformDiv").empty();
 		if(schoolReformVOs.length>0){
 			 var dataObject = {'Data': []};
 			 for(var i =0;i<schoolReformVOs.length;i++){
-				 schoolReformVOs[i]["personRowNum"]=(schoolReformVOs.length*2);
+				 schoolReformVOs[i]["personRowNum"]=(schoolReformVOs.length*3);
 				 dataObject.Data.push(schoolReformVOs[i]);
 			 }
 			 if(approveType==page.professorApprove){
@@ -580,6 +600,7 @@
 	}
 
 	function bulidSocialDutys(socialDutyVOs,approveType){
+		$("#socialDutyRowNum").val(socialDutyVOs.length);
 		$("#socialDutyDiv").empty();
 		if(socialDutyVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -603,6 +624,7 @@
 	}
 
 	function bulidAccidents(accidentVOs,approveType){
+		$("#accidentRowNum").val(accidentVOs.length);
 		$("#accidentDiv").empty();
 		if(accidentVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -626,6 +648,7 @@
 	}
 
 	function bulidPunishments(punishmentVOs,approveType){
+		$("#punishmentRowNum").val(punishmentVOs.length);
 		$("#punishmentDiv").empty();
 		if(punishmentVOs.length>0){
 			 var dataObject = {'Data': []};
@@ -654,9 +677,9 @@
 		var manageDifficultyFileName = masterReviewVO.manageDifficultyAttachMentVO.fileName;
 		if(manageDifficultySelId){
 			var attachmentArray =[];
-			attachmentArray.push("<a class=\"chachu\"  href=\""+rootPath+"WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\">"+manageDifficultyFileName+"</a>");
+			attachmentArray.push("<a class=\"chachu\"  href=\""+rootPath+"WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\"><font style='color:#ffa200'>点击查看</font></a>");
 			attachmentArray.push("&nbsp;&nbsp;");
-			attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >删除</a>");
+		//	attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >删除</a>");
 			
 			$("#manageDifficultySpan").append(attachmentArray.join(""));
 		}
@@ -665,9 +688,9 @@
 		var manageDifficultyAgoFileName = masterReviewVO.manageDifficultyAgoAttachMentVO.fileName;
 		if(manageDifficultyAgoSelId){
 			var attachmentArray =[];
-			attachmentArray.push("<a class=\"chachu\"  href=\""+rootPath+"WorkflowAttachMentDownload?attachmentId="+manageDifficultyAgoSelId+"\">"+manageDifficultyAgoFileName+"</a>");
+			attachmentArray.push("<a class=\"chachu\"  href=\""+rootPath+"WorkflowAttachMentDownload?attachmentId="+manageDifficultyAgoSelId+"\"><font style='color:#ffa200'>点击查看</font></a>");
 			attachmentArray.push("&nbsp;&nbsp;");
-			attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultyAgoSelId+"\',this);\" >删除</a>");
+		//	attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultyAgoSelId+"\',this);\" >删除</a>");
 			
 			$("#manageDifficultyAgoSpan").append(attachmentArray.join(""));
 		}

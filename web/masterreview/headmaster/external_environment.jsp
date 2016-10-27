@@ -26,6 +26,21 @@ $(function(){
 
 function initExternalEnvironmentData(masterReviewVO){
 	$("#external_environment").val(masterReviewVO.external_environment);
+	
+	var manageDifficultySelId = masterReviewVO.external_environment_attachMentVO.attachmentId;
+	var manageDifficultyFileName = masterReviewVO.external_environment_attachMentVO.fileName;
+	if(manageDifficultySelId){
+		var attachmentArray =[];
+		attachmentArray.push("<a class=\"chachu\"  href=\"<%=basePath%>WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\">"+manageDifficultyFileName+"</a>");
+		attachmentArray.push("&nbsp;&nbsp;");
+		attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >删除</a>");
+		
+		$("#external_environment_attach_div1").append(attachmentArray.join(""));
+	}
+	
+	 $("#external_environment_attachId1").val(manageDifficultySelId);
+	 
+	 Headmaster.initWebUploader('external_environment_attach_span',1,'external_environment','点击上传','external_environment_attachId','external_environment_attach_div');
 }
 
 function saveUpdateRefillData(){
@@ -39,7 +54,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(14);
+			changeOption(15);
 		});
 		bcReq.postData();
 	}else{
@@ -52,11 +67,13 @@ function getSubmitStrings(){
 	var submitArray = [];
 	var external_environment = $("#external_environment").val();
 	var businessKey = $("#id").val();
+	var external_environment_attachId = $("#external_environment_attachId1").val();
 	
 	var workExperienceObject = {
 			"id":$("#id").val(),
 			"businessKey":$("#id").val(),
-			"external_environment":external_environment
+			"external_environment":external_environment,
+			"external_environment_attachId":external_environment_attachId
 	}
 	submitArray.push(workExperienceObject);
 	return JSON.stringify(submitArray);
@@ -76,7 +93,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl" id="showorhide">
-			<h2><i>13</i>外部环境</h2>
+			<h2><i>14</i>外部环境</h2>
 			<p class="hide">
 			     <span id="span1" >1、对外交流 </span>
 			     <span id="span2" >2、家校、社区合作  </span>
@@ -93,16 +110,19 @@ function headmasterBeforeSubmit(formJsonData){
 				<textarea id="external_environment" name="external_environment"></textarea>
 				<p style="color:#999;text-align:right;">0/1000</p>
 			</li>
-			<li>
-				<span class="fl">证明材料：</span>
-				<input type="button" value="点击上传" class="up-load fl" />
+			
+		    <input type="hidden" id="external_environment_attachId1" name="external_environment_attachId" value="">
+			<li  style='height:45px;' class='position_relative'>
+			   <span class='fl'>证明材料：</span>
+			   <div id='external_environment_attach_span1' class='position_upload_button_professional'></div>
 			</li>
+			<div id="external_environment_attach_div1" class="only_attachments"></div>
 		</ul>
 	</div>
 	<!-- 办学思想 e -->
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(12)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(13)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 

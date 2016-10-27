@@ -19,6 +19,7 @@
     <div class='show-list radius-3'>{{:#index+1}}<a href='javascript:void(0);' target='_self'  onclick="deleteSingleOption(this,'professionalTitleType','{{:#index+1}}','{{:id}}');" class='del radius-3'>删除</a></div>
 	<div class="container">
 	<ul class="clear-fix">
+	 
      <input type='hidden' id='professionalTitleId{{:#index+1}}'  value='{{:id}}'>
 	 <input type='hidden' id='professionalAttachId{{:#index+1}}'  value='{{:attachMentVO.attachmentId}}'>
 	<li>
@@ -58,6 +59,7 @@ $(function(){
 
 function initProfessionalData(masterReviewVO){
 	bulidProfessionalTitle(masterReviewVO.professionalTitleVOs);
+	 Headmaster.initWebUploader('professionalTitlespan',1,'professionalTitleType','点击上传','professionalAttachId','professionalTitleDiv');
 }
 
 //职称
@@ -69,7 +71,7 @@ function bulidProfessionalTitle(professionalTitleVOs){
 			 dataObject.Data.push(professionalTitleVOs[i]);
 		 }
 		 var subTaskContent= $("#professionalTitleRec").render(dataObject);
-		 $("#professionalTitleRefill").append(subTaskContent);
+		 $("#professionalTitleRefill").html(subTaskContent);
 		 
 		 for(var i =0;i<professionalTitleVOs.length;i++){
 			 Headmaster.initWebUploader('professionalTitlespan',(i+1),'professionalTitleType','点击上传','professionalAttachId','professionalTitleDiv');
@@ -157,6 +159,7 @@ function saveUpdateRefillData(){
 }
 
 function getSubmitStrings(){
+	debugger
 	var submitArray = [];
 	var professionalTitleRowNum = $("#professionalTitleRowNum").val();
 	for(var i=0;i<professionalTitleRowNum;i++){
@@ -206,14 +209,43 @@ function headmasterBeforeSubmit(formJsonData){
 	</div>
 	<!-- 标题 e -->
 	<!-- 任职年限 s -->
+		<input type="hidden" id="professionalTitleRowNum" name="professionalTitleRowNum" value="1"/>
 	<div id="professionalTitleRefill" class="years">
-		<input type="hidden" id="professionalTitleRowNum" name="professionalTitleRowNum" value="0"/>
+	
 		
+	     <div class='container'>
+	        <ul id='' class='clear-fix'>
+	            <input type='hidden' id='professionalTitleId1'  value=''>
+	            <input type='hidden' id='professionalAttachId1'  value=''>
+	
+				<li>
+				   <span class='fl'>职称名称：</span>
+				   <div class='border_2 w_13 fl'>
+				     <input type='text' id='professionaltitle_name1' value='' placeholder=''>
+				    </div>
+				 </li>
+	
+				<li>
+				   <span class='fl'>获得时间：</span>
+				   <div class='border_2 w_13 fl'>
+				    <input type='text' id='obtain_time1' onclick='selectDeleteTime()' name='obtain_time1' />
+				   </div>
+				 </li>
+	
+				<li style='height:45px;' class='position_relative'>
+				  <span class='fl'>证明材料：</span>
+				  <div id='professionalTitlespan1' class='position_upload_button_professional'></div>
+				</li>
+	
+	         <div id='professionalTitleDiv1' class='only_attachments'></div>
+	    </ul>
+	  </div>
 	</div>
 	
 	
+   <!-- 
 	<div class="add"><a href="javascript:void(0);" onclick="addProfessionalTitleSingle(this)" class="add-more">+</a></div>
-	
+	 -->
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
 	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(2)">上一步</a>

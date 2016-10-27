@@ -58,13 +58,15 @@ public class StudyTrainVO {
     public void setContent(String content) {
         this.content = content;
     }
-    public String getClass_hour() {
-        return class_hour;
-    }
-    public void setClass_hour(String class_hour) {
-        this.class_hour = class_hour;
-    }
-    public String getStudy_place() {
+    
+  
+	public String getClass_hour() {
+		return class_hour;
+	}
+	public void setClass_hour(String class_hour) {
+		this.class_hour = class_hour;
+	}
+	public String getStudy_place() {
         return study_place;
     }
     public void setStudy_place(String study_place) {

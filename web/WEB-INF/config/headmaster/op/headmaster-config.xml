@@ -16,6 +16,7 @@
          <Field name="address" title="地址" type="String" maxlen="4" notnull="false" />
              <Field name="ispositive" title="正副校长" type="String" maxlen="4" notnull="false" />
          <Field name="usersex" title="性别" type="String" maxlen="4" notnull="false" />
+          <Field name="lodge_school" title="寄宿制学校" type="String" maxlen="4" notnull="false" />
          
         <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
 	   <!--  <Field name="presentOccupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
@@ -86,6 +87,7 @@
 	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	     <Field name="lodge_school" title="寄宿制学校" type="String" maxlen="4" notnull="false" />
 	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
@@ -101,6 +103,32 @@
         <Field name="id" title="主键id" type="String" maxlen="60" notnull="false" />
         <Field name="refuseType" title="驳回条目类型" type="String" maxlen="32" notnull="false" />
         <Field name="refuseTypeId" title="驳回条目id " type="String" maxlen="32" notnull="false" />
+        
+         <Field name="isRefillFlag" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="workExperience" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="education" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="professionalTitle" title="驳回条目id " type="String" notnull="false" />
+         <Field name="paper" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="workPublish" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="subject" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="personalAward" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="schoolAward" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="studyTrain" title="驳回条目id " type="String" notnull="false" />
+         <Field name="schoolReform" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="socialDuty" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="accident" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="punishment" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="workHistory" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="gradeEvaluate" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="base_info_approve_result" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="manage_difficulty_approve_result" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="manage_difficulty_ago_approve_result" title="驳回条目id " type="String" notnull="false" />
+         <Field name="run_school_approve_result" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="school_management_approve_result" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="education_science_approve_result" title="驳回条目id " type="String" notnull="false" />
+         <Field name="external_environment_approve_result" title="驳回条目id " type="String" notnull="false" />
+         <Field name="student_development_approve_result" title="驳回条目id " type="String"  notnull="false" />
+         <Field name="teacher_development_approve_result" title="驳回条目id " type="String"  notnull="false" />
        </Request>
     </Action>
     
@@ -339,6 +367,11 @@
       </Request>
    </Action>
    
+   <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="删除工作经历" rowacc="" log="" oauth="" name="deleteStudyTrain">
+      <Request>
+        <Field name="id" title="主键id" type="String" maxlen="32" notnull="true" />
+      </Request>
+   </Action>
    
    <Action accredit="" nologin="" base="" colacc="" webservice="" old="" desc="更新任职年限" rowacc="" log="" oauth="" name="updateWorkExperience">
       <Request>
@@ -547,6 +580,7 @@
 	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
+	     <Field name="lodge_school" title="寄宿制学校" type="String" maxlen="4" notnull="false" />
 	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
 	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
       </Request>
@@ -572,6 +606,7 @@
 	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
+	     <Field name="lodge_school" title="寄宿制学校" type="String" maxlen="4" notnull="false" />
 	    <Field name="teach_age" title="教龄" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
@@ -611,6 +646,7 @@
 	    <Field name="native_place" title="籍贯" type="String" maxlen="10" pk="false" notnull="false"/>
 	    <Field name="census_register" title="户籍" type="String" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="nation" title="民族" type="String" maxlen="32" pk="false" />
+	     <Field name="lodge_school" title="寄宿制学校" type="String" maxlen="4" notnull="false" />
 	    <Field name="person_img_attachId" title="个人头像附件id" type="String" maxlen="32" pk="false" notnull="false"/>
       </Request>
     </Action>

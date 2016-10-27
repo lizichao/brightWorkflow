@@ -43,6 +43,20 @@
          <div class="border_2 w_13 fl"><input type="text" id='workProfession{{:#index+1}}' value='{{:workProfession}}' placeholder="请输入职务" /></div>
     </li>
 	<li>
+       <span class='fl'>行政管理岗位级别：</span>
+       <div class="border_2 w_19 fl">
+         <select   id="manage_level{{:#index+1}}" class='select_left'>
+                   {{for headmaster_manage_level}}
+                     {{if id===#parent.parent.data.manage_level }}
+				       <option value='{{:id}}' selected='selected'>{{:text}}</option>
+				    {{else}}
+				       <option value='{{:id}}' >{{:text}}</option>
+				    {{/if}}
+                    {{/for}}
+          </select>
+      </div>
+    </li>
+	<li>
       <span class="fl">任职年限：</span>
       <div class="border_2 w_14 fl">
          <label id='workYear{{:#index+1}}'> {{:yearDiffDate}}</label>
@@ -87,6 +101,9 @@ function bulidWorkExperience(workExperienceVOs){
 			 var diffDate = BcUtil.get_yearMonthDiffFormat(Brightcom.workflow.getDateStrByLong(workExperienceVOs[i].startTime),Brightcom.workflow.getDateStrByLong(workExperienceVOs[i].endTime));
 			 workExperienceVOs[i]['yearDiffDate'] = diffDate.year || '';
 			 workExperienceVOs[i]['monthDiffDate'] = diffDate.month || '';
+			 
+			 var headmaster_manage_levels =  Brightcom.workflow.getSelectCombox('headmaster_manage_level');
+			 workExperienceVOs[i]['headmaster_manage_level'] = headmaster_manage_levels;
 			
 			 dataObject.Data.push(workExperienceVOs[i]);
 		 }
@@ -137,6 +154,13 @@ function addWorkExperienceSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
+	
+	educationArray.push("<li><span class='fl'>行政管理岗位级别：</span>");
+	educationArray.push("<div class='border_2 w_19 fl'>");
+	educationArray.push("<select id='manage_level"+workExperienceRowNumNext+"' class='select_left'></select>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
 	educationArray.push("<li><span class='fl'>任职年限：</span>");
 	educationArray.push("<div class='border_2 w_14 fl'>");
 //	educationArray.push("<input type='number' id='workYear"+workExperienceRowNumNext+"'   value='' placeholder='请输入年限' />");
@@ -168,6 +192,7 @@ function addWorkExperienceSingle(obj){
 	$("#workExperienceRefill").append(educationArray.join(""));
 	
 	$("#workExperienceRowNum").val(workExperienceRowNumNext);
+	Brightcom.workflow.initSelectCombox('headmaster_manage_level','manage_level'+(workExperienceRowNumNext));
 	
 	Headmaster.initWebUploader('spanButtonPlaceHolder',workExperienceRowNumNext,'workExperienceType','点击上传','proveId','workExperienceTypeDiv');
 }
@@ -184,7 +209,7 @@ function saveUpdateRefillData(){
 			}
 		);
 		bcReq.setSuccFn(function(data,status){
-			changeOption(5);
+			changeOption(6);
 		});
 		bcReq.postData();
 	}else{
@@ -204,6 +229,7 @@ function getSubmitStrings(){
 		var workProfession = $("#workProfession"+rowNum).val();
 		var workYear = $("#workYear"+rowNum).val();
 		var proveAttachMentId = $("#proveId"+rowNum).val();
+		var manage_level = $("#manage_level"+rowNum).val();
 		var businessKey = $("#id").val();
 		if(!workSchool){
 			continue;
@@ -216,6 +242,7 @@ function getSubmitStrings(){
 				"workSchool":workSchool,
 				'workProfession' :workProfession,
 				'workYear' :workYear,
+				 'manage_level':manage_level,
 				'proveAttachMentId' :proveAttachMentId
 		}
 		submitArray.push(workExperienceObject);
@@ -237,8 +264,8 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>4</i>任职年限</h2>
-			<p>填写任正、副校长年限情况。</p>
+			<h2><i>5</i>校长(副校长)任职年限</h2>
+			<p>1、填写任正、副校长年限情况。2、正、副校长任职年限按学年度计算。一学年内实际任职时间累积不足半年的（含寒暑假），当年不计为人追年限，超过半年的，当年任职年限按一年计算；校长任职年限计算截止至2016年*月*日；校长任职时间以任职文件为准。3、教育行政部门、教育系统其它事业单位与学校之间人员相互调任的，如调任前后行政管理岗位级别相同，其校领导任职年限可连续计算，其经历单独填写。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>
@@ -303,7 +330,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(3)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(4)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 

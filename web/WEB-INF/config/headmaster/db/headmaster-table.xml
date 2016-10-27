@@ -18,7 +18,6 @@
     
     
     <Field name="school_class" type="String" maxlen="32" pk="false" />
-    <Field name="presentOccupation" type="String" maxlen="32" pk="false" />
     <Field name="present_major_occupation" type="String" maxlen="32" pk="false" />
     <Field name="present_occupation" title="现任职务" type="String" maxlen="32" pk="false" />
     <Field name="join_work_time" type="Timestamp" maxlen="32" pk="false" />

@@ -46,12 +46,7 @@
           </select>
        </div>
    </li>
-	<li> 
-       <span class="fl">课题内容：</span>
-       <div class="border_2 w_18 fl">
-       <input type='text'  id='subject_responsibility{{:#index+1}}' value='{{:subjectRresponsibility}}'>
-       </div>
-    </li>
+
 	<li>
 		<span class="fl">是否结题：</span>
        	<div class="border_2 w_18 fl">
@@ -78,8 +73,12 @@
          <input type='text' id='finish_result{{:#index+1}}' value='{{:finishResult}}' placeholder=''>
        </div>
     </li>
-	<li>
+	
+	<li style='width:1000px'>
+	  <span class='fl'>课题简介：</span>
+	  <textarea maxlength='100' title='不得超过100字' name='subject_responsibility{{:#index+1}}' id='subject_responsibility{{:#index+1}}' class='fl deooration'>{{:subjectRresponsibility}}</textarea>
 	</li>
+
     <li style='height:45px;' class='position_relative'>
 		<span class='fl'>课题材料：</span>
       	<div id='subjectbutton{{:#index+1}}' class='position_upload_button_professional'></div>
@@ -130,7 +129,6 @@ function bulidSubject(subjectVOs){
 			 
 			 dataObject.Data.push(subjectVOs[i]);
 		 }
-		 debugger;
 		 var subTaskContent= $("#subjectRec").render(dataObject);
 		 $("#subjectRefill").append(subTaskContent);
 		
@@ -175,12 +173,6 @@ function addSubjectSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li>");
-	educationArray.push("<span class='fl'>课题内容：</span>");
-	educationArray.push("<div class='border_2 w_18 fl'>");
-	educationArray.push("<input type='text' id='subject_responsibility"+subjectRowNumNext+"' value='' > ");
-	educationArray.push("</div>");
-	educationArray.push("</li>");
 	
 	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>是否结题：</span>");
@@ -203,7 +195,11 @@ function addSubjectSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li>");
+	
+	
+	educationArray.push("<li style='width:1000px'>");
+	educationArray.push("<span class='fl'>课题简介：</span>");
+	educationArray.push("<textarea title='不得超过100字' name='subject_responsibility"+subjectRowNumNext+"' id='subject_responsibility"+subjectRowNumNext+"' class='fl deooration' maxlength='100'></textarea>");
 	educationArray.push("</li>");
 	
 	educationArray.push("<li style='height:45px;' class='position_relative'>");
@@ -251,7 +247,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(7);
+			changeOption(8);
 		});
 		bcReq.postData();
 	}else{
@@ -309,7 +305,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>6</i>教科研情况</h2>
+			<h2><i>7</i>教科研情况</h2>
 			<p>填写个人课题情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -318,7 +314,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 e -->
 	<!-- 任职年限 s -->
 	<div id="subjectRefill" class="paper">
-			<input type="hidden" id="subjectRowNum" name="subjectRowNum" value="0">
+			<input type="hidden" id="subjectRowNum" name="subjectRowNum" value="0" >
 	</div>
 	
 	<!--  -->
@@ -327,7 +323,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(5)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(6)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

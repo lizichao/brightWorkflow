@@ -41,7 +41,7 @@
 <script src="/workflow/common/jspParamUtil.js"></script>
 <script src="/platform/public/sysparam.js"></script>
 <script type="text/javascript" src="/workflow/js/DatePicker/WdatePicker.js"></script>
-<jsp:include page="/masterreview/public/renderTemplate.jsp" flush="true" >
+<jsp:include page="/masterreview/arealeader/areaRenderTemplate.jsp" flush="true" >
  <jsp:param name="approveType" value="areaApprove" />
  <jsp:param name="basePath" value="<%=basePath%>" />
 </jsp:include>
@@ -66,6 +66,8 @@ $(document).ready(function(){
 
 var refuseTypeSubmit = '';
 var refuseTypeIdSubmit = '';
+
+var isRefillFlag = '';
 function beforeSubmit(formJsonData){
 	var taskDefKey = Brightcom.workflow.getTaskDefKey();
 	var processDefKey = Brightcom.workflow.getProcessDefKey();
@@ -73,11 +75,43 @@ function beforeSubmit(formJsonData){
 	formJsonData.id=  $("#id").val();
 	formJsonData.refuseType=  refuseTypeSubmit;
 	formJsonData.refuseTypeId=  refuseTypeIdSubmit;
+	if(isRefillFlag){
+		formJsonData.base_info_approve_result = $("#base_info_approve_result").val();
+		formJsonData.run_school_approve_result = $("#run_school_approve_result").val();
+		formJsonData.school_management_approve_result = $("#school_management_approve_result").val();
+		formJsonData.education_science_approve_result = $("#education_science_approve_result").val();
+		formJsonData.external_environment_approve_result = $("#external_environment_approve_result").val();
+		formJsonData.student_development_approve_result = $("#student_development_approve_result").val();
+		formJsonData.teacher_development_approve_result = $("#teacher_development_approve_result").val();
+		
+		formJsonData.manage_difficulty_approve_result = $("#manage_difficulty_approve_result").val();
+		formJsonData.manage_difficulty_ago_approve_result = $("#manage_difficulty_ago_approve_result").val();
+		
+		
+		
+		formJsonData.workHistory = getSubmitStrings('workHistory');
+		formJsonData.education = getSubmitStrings('education');
+		formJsonData.professionalTitle = getSubmitStrings('professionalTitle');
+		formJsonData.workExperience = getSubmitStrings('workExperience');
+		formJsonData.paper = getSubmitStrings('paper');
+		formJsonData.workPublish = getSubmitStrings('workPublish');
+		formJsonData.subject = getSubmitStrings('subject');
+		formJsonData.personalAward = getSubmitStrings('personalAward');
+		formJsonData.schoolAward = getSubmitStrings('schoolAward');
+		formJsonData.gradeEvaluate = getSubmitStrings('gradeEvaluate');
+		formJsonData.studyTrain = getSubmitStrings('studyTrain');
+		formJsonData.schoolReform = getSubmitStrings('schoolReform');
+		
+		formJsonData.socialDuty = getSubmitStrings('socialDuty');
+		formJsonData.accident = getSubmitStrings('accident');
+		formJsonData.punishment = getSubmitStrings('punishment');
+	}
+	formJsonData.isRefillFlag = isRefillFlag
+	//return false;
 	
 	//var variableMap = new Brightcom.workflow.HashMap(); 
 //	variableMap.put("areaHeader",'4028814d5499edd2015499f003ca0006');
 //	formJsonData.processParam =variableMap.toJsonObject();
-	
 	/*
 	var variableMap = new Brightcom.workflow.HashMap(); 
 	var ss = [];
@@ -86,12 +120,33 @@ function beforeSubmit(formJsonData){
 	formJsonData.processParam =variableMap.toJsonObject();*/
 }
 
+function getSubmitStrings(checkbox_type){
+	//var workHistorys =  $(":checkbox[id='"+checkbox_type+"_check'][checked]");
+	var submitArray = [];
+	$(":checkbox[id='"+checkbox_type+"_check'][checked]").each(function(i){
+			var workExperienceObject = {
+					"id":$(this).val(),
+					approve_result:'0'
+					
+			}
+		 submitArray.push(workExperienceObject);
+	 });
+	
+	return submitArray.length>0? JSON.stringify(submitArray): "";
+	
+}
+
+
 function afterSubmit(){
 	 window.location.href = "/masterreview/arealeader/arealeaderIndex.jsp";
 }
 
-function submitAreaTask(){
-	Brightcom.workflow.completeButtonTask('flow2',Brightcom.workflow.taskType);
+function submitAreaTask(isrefill){
+	if(isrefill){
+		isRefillFlag = "1";
+	}
+	var submit_flow = isrefill? "flow8" : "flow2";
+	Brightcom.workflow.completeButtonTask(submit_flow,Brightcom.workflow.taskType);
 }
 
 
@@ -99,15 +154,17 @@ function submitAreaTask(){
 function rollBackOpen(refuseType,refuseTypeId){
 	 refuseType = refuseType;
 	 refuseTypeId = refuseTypeId;
-	$.fancybox.open({href:"/masterreview/arealeader/rollBackExecute.jsp?refuseType="+refuseType+"&refuseTypeId="+refuseTypeId,type:'iframe',width:327,height:298,padding:0,margin:0,closeBtn:true,iframe:{scrolling:'no',preload:false}});
+	 $.fancybox.open({href:"/masterreview/arealeader/rollBackExecute.jsp?refuseType="+refuseType+"&refuseTypeId="+refuseTypeId,type:'iframe',width:327,height:298,padding:0,margin:0,closeBtn:true,iframe:{scrolling:'no',preload:false}});
 }
 
 /*
  * 弹出退回窗口的执行方法
  */
 function rollBackExecute(refuseType,refuseTypeId){
+	debugger
 	refuseTypeSubmit = refuseType;
 	refuseTypeIdSubmit = refuseTypeId;
+	isRefillFlag= "1";
 	Brightcom.workflow.completeButtonTask('flow8',Brightcom.workflow.taskType);
 	$.fancybox.close();
 }
@@ -123,10 +180,45 @@ function showOriginalImg(obj){
 	var imgSrc = obj.src;
 	$.fancybox.open({href:"/masterreview/public/showImage.jsp?imgSrc="+imgSrc,type:'iframe',width:sourceWidth,height:sourceHeight,padding:0,margin:0,closeBtn:false,iframe:{scrolling:'auto',preload:false}});
 }
+
+function setRollCheckVal(obj){
+	if($(obj).attr('checked')){
+		$(obj).val('0')
+	}else{
+		$(obj).val('1')
+	}
+}
+
+function setAllCheckVal(obj){
+	//if($(obj).attr('checked')){
+		$("input[type=checkbox]").not(obj ).click();
+	//}else{
+	//	$(obj).val('1')
+	//}
+}
 </script>
 <input type="hidden" id="workflowSubmitAction" name="workflowSubmitAction" value="headmaster@@masterReviewAction@@completeAreaCadresTask">
 <input type="hidden" id="id" name="id" value="">
 <input type="hidden" id="headerMasterId" name="headerMasterId" value="">
+
+<input type="hidden" id="workHistoryRowNum" name="workHistoryRowNum" value="">
+<input type="hidden" id="educationRowNum" name="educationRowNum" value="">
+<input type="hidden" id="professionalTitleRowNum" name="professionalTitleRowNum" value="">
+<input type="hidden" id="workExperienceRowNum" name="workExperienceRowNum" value="">
+<input type="hidden" id="paperTitleRowNum" name="paperTitleRowNum" value="">
+<input type="hidden" id="subjectRowNum" name="subjectRowNum" value="">
+<input type="hidden" id="workPublishRowNum" name="workPublishRowNum" value="">
+<input type="hidden" id="studyTrainRowNum" name="studyTrainRowNum" value="">
+<input type="hidden" id="schoolAwardRowNum" name="schoolAwardRowNum" value="">
+<input type="hidden" id="gradeEvaluateRowNum" name="gradeEvaluateRowNum" value="">
+
+<input type="hidden" id="personalAwardRowNum" name="personalAwardRowNum" value="">
+
+<input type="hidden" id="schoolReformRowNum" name="schoolReformRowNum" value="">
+<input type="hidden" id="socialDutyRowNum" name="socialDutyRowNum" value="">
+<input type="hidden" id="accidentRowNum" name="accidentRowNum" value="">
+<input type="hidden" id="punishmentRowNum" name="punishmentRowNum" value="">
+
 	
 <div class="container">
 		<div class="xiao_bg">
@@ -136,7 +228,11 @@ function showOriginalImg(obj){
 			    <tbody>
                     <tr>
 			            <th width="88%" colspan="6">基础信息</th>
-			            <th width="12%"><a class="allshu" href="javascript:void(0);" onclick="rollBackOpen('allRefuse')">全部退回</a></th>
+			            <th width="12%">
+			              <input type='checkbox'  id="all_approve_result" name='all_approve_result'  onclick="setAllCheckVal(this)" />全选
+			            <!--  <a class="allshu" href="javascript:void(0);" onclick="rollBackOpen('allRefuse')">退回</a>--> 
+			            
+			            </th>
 			        </tr>
 			        <tr>
 			        	<td style="180px;" rowspan="3" colspan="2">
@@ -146,7 +242,10 @@ function showOriginalImg(obj){
 			        	<td style="width:80px;"> <label id="headerMasterName" name="headerMasterName"></label> </td>
 			        	<td class="black text-right">身份证号：</td>
 			        	<td style="width:95px"><label id="identitycard" name="identitycard"></label> </td>
-			        	<td class="tablelink" rowspan="7"><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('baseInfo')">退回</a></td>
+			        	<td class="tablelink" rowspan="7">
+			        	  <input type='checkbox' value='1' id="base_info_approve_result" name='base_info_approve_result'  onclick="setRollCheckVal(this)" />
+			        	  <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('baseInfo')">退回</a>-->
+			        	</td>
 			        </tr>
 			        <tr>
 			        	<td class="black text-right">性别：</td>
@@ -174,7 +273,7 @@ function showOriginalImg(obj){
 			        	<td class="black text-right">教龄：</td>
 			        	<td colspan="1"><label id="teach_age" name="teach_age"></label> </td>
 			        	 <td class="black text-right">现任职务：</td>
-			        	<td colspan="1"><label id="presentOccupation" name="presentOccupation"></label> </td>
+			        	<td colspan="1"><label id="present_occupation" name="present_occupation"></label> </td>
 		        	</tr> 	
 		        	<tr>
 			        	<td class="black text-right">学段：</td>
@@ -220,7 +319,10 @@ function showOriginalImg(obj){
 			        	<td><label id="schoolNameSpaceAgo" name="schoolNameSpaceAgo"></label> </td>
 			        	<td class="black">学校类型：</td>
 			        	<td><label id="schoolTypeAgo" name="schoolTypeAgo"></label> </td>
-			        	<td class="tablelink" rowspan="2"><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('managementDifficultyAgo')">退回</a></td>
+			        	<td class="tablelink" rowspan="2">
+			        	  <input type='checkbox' value='1' id="manage_difficulty_ago_approve_result" name='manage_difficulty_ago_approve_result' onclick='setRollCheckVal(this)'/>
+			        	<!--   <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('managementDifficultyAgo')">退回</a>--> 
+			        	</td>
 			        </tr>
 			         <tr>
 			        	<td class="black">校区数量：</td>
@@ -243,7 +345,10 @@ function showOriginalImg(obj){
 			        	<td><label id="schoolNameSpace" name="schoolNameSpace"></label> </td>
 			        	<td class="black">学校类型：</td>
 			        	<td><label id="schoolType" name="schoolType"></label> </td>
-			        	<td class="tablelink" rowspan="2"><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('managementDifficulty')">退回</a></td>
+			        	<td class="tablelink" rowspan="2">
+			        	  <input type='checkbox' value='1' id="manage_difficulty_approve_result" name='manage_difficulty_approve_result' onclick='setRollCheckVal(this)' />
+			            <!--  	<a class="shu" href="javascript:void(0);" onclick="rollBackOpen('managementDifficulty')">退回</a>-->
+			        	</td>
 			        </tr>
 			        <tr>
 			        	<td class="black">校区数量：</td>
@@ -267,7 +372,16 @@ function showOriginalImg(obj){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="run_school_label" name="run_school_label"></label></td>
-				        	<td class="tablelink" ><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('run_school')">退回</a></td>
+				        	<td rowspan="2" class="tablelink" >
+				        	  <input type='checkbox' value='1' id="run_school_approve_result" name='run_school_approve_result' onclick='setRollCheckVal(this)'/>
+				        	 <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('run_school')">退回</a>-->
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="run_school_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				   </tbody>
 				</table>              
@@ -282,7 +396,16 @@ function showOriginalImg(obj){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="school_management_label" name="school_management_label"></label></td>
-				        	<td class="tablelink" ><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('school_management')">退回</a></td>
+				        	<td rowspan="2"  class="tablelink" >
+				        	  <input type='checkbox' value='1' id="school_management_approve_result" name='school_management_approve_result' onclick='setRollCheckVal(this)'/>
+				        	    <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('school_management')">退回</a>-->
+				        	</td>
+				        </tr>
+				         <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="school_management_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				   </tbody>
 				 </table> 
@@ -297,7 +420,16 @@ function showOriginalImg(obj){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="education_science_label" name="education_science_label"></label></td>
-				        	<td class="tablelink" ><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('education_science')">退回</a></td>
+				        	<td rowspan="2"  class="tablelink" >
+				        	  <input type='checkbox' value='1' id="education_science_approve_result" name='education_science_approve_result' onclick='setRollCheckVal(this)'/>
+				        	    <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('education_science')">退回</a>-->
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="education_science_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				   </tbody>
 				</table> 
@@ -312,7 +444,17 @@ function showOriginalImg(obj){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="external_environment_label" name="external_environment_label"></label></td>
-				        	<td class="tablelink" ><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('external_environment')">退回</a></td>
+				        	<td rowspan="2" class="tablelink" >
+				        	  <input type='checkbox' value='1' id="external_environment_approve_result" name='external_environment_approve_result' onclick='setRollCheckVal(this)'/>
+				        	   <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('external_environment')">退回</a>-->
+				        	</td>
+				        </tr>
+				        
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="external_environment_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				   </tbody>
 				 </table> 
@@ -329,7 +471,16 @@ function showOriginalImg(obj){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="student_development_label" name="student_development_label"></label></td>
-				        	<td class="tablelink" ><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('student_development')">退回</a></td>
+				        	<td rowspan="2" class="tablelink" >
+				        	  <input type='checkbox' value='1' id="student_development_approve_result" name='student_development_approve_result'onclick='setRollCheckVal(this)' />
+				        	    <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('student_development')">退回</a>-->
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="student_development_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				    </tbody>
 				  </table> 
@@ -343,7 +494,16 @@ function showOriginalImg(obj){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="teacher_development_label" name="teacher_development_label"></label></td>
-				        	<td class="tablelink" ><a class="shu" href="javascript:void(0);" onclick="rollBackOpen('teacher_development')">退回</a></td>
+				        	<td rowspan="2" class="tablelink" >
+				        	  <input type='checkbox' value='1' id="teacher_development_approve_result" name='teacher_development_approve_result' onclick='setRollCheckVal(this)'/>
+				        	   <!--  <a class="shu" href="javascript:void(0);" onclick="rollBackOpen('teacher_development')">退回</a>-->
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="teacher_development_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				   </tbody>
 				  </table> 
@@ -387,7 +547,10 @@ function showOriginalImg(obj){
 		       </table>
 			</div>
 				
-			<div class="tabletit"><a href="javascript:void();" onclick="submitAreaTask()" style="background-color:#44b549">提交</a></div>
+			<div class="tabletit">
+			  <a href="javascript:void(0);" onclick="submitAreaTask()" style="background-color:#44b549">提交</a>&nbsp;&nbsp;&nbsp;
+			  <a href="javascript:void(0);" onclick="rollBackOpen()" style="background-color:#44b549">驳回</a>
+			</div>
 		</div>
 	</div>
 

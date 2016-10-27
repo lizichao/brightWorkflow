@@ -44,6 +44,11 @@
        <input type='text' id='publish_time{{:#index+1}}' value='{{timeCovert publish_time/}}' placeholder='' onclick='selectDeleteTime()'>
       </div>
     </li>
+	<li><span class='fl'>出版社：</span>
+      <div class="border_2 w_13 fl">
+       <input type='text' id='publish_company{{:#index+1}}' value='{{:publish_company}}' placeholder=''>
+      </div>
+    </li>
 	<li><span class='fl'>本人完成字数：</span>
       <div class="border_2 w_23 fl">
        <input type='text' id='complete_word{{:#index+1}}' value='{{:complete_word}}' placeholder=''>
@@ -131,6 +136,13 @@ function addWorkPublishSingle(obj){
 	educationArray.push("</li>");
 	
 	educationArray.push("<li>");
+	educationArray.push("<span class='fl'>出版社：</span>");
+	educationArray.push("<div class='border_2 w_13 fl'>");
+	educationArray.push("<input type='text' id='publish_company"+workPublishRowNumNext+"' value='' placeholder='' >");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
+	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>本人完成字数：</span>");
 	educationArray.push("<div class='border_2 w_23 fl'>");
 	educationArray.push("<input type='text' id='complete_word"+workPublishRowNumNext+"' value='' placeholder=''>");
@@ -180,7 +192,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(8);
+			changeOption(9);
 		});
 		bcReq.postData();
 	}else{
@@ -197,6 +209,7 @@ function getSubmitStrings(){
 		var book_name = $("#book_name"+rowNum).val();
 		var complete_way = $("#complete_way"+rowNum).val();
 		var publish_time = $("#publish_time"+rowNum).val();
+		var publish_company = $("#publish_company"+rowNum).val();
 		var complete_chapter = $("#complete_chapter"+rowNum).val();
 		var complete_word = $("#complete_word"+rowNum).val();
 		var author_order = $("#author_order"+rowNum).val();
@@ -212,6 +225,7 @@ function getSubmitStrings(){
 				"book_name":book_name,
 				"complete_way":complete_way,
 				"publish_time":publish_time,
+				"publish_company":publish_company,
 				"complete_chapter":complete_chapter,
 				"complete_word":complete_word,
 				"author_order":author_order,
@@ -237,7 +251,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>7</i>专著出版</h2>
+			<h2><i>8</i>专著出版</h2>
 			<p>填写个人专著出版情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -255,7 +269,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(6)">上一步</a>
+	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(7)">上一步</a>
 	   <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

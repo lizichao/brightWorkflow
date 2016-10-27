@@ -40,7 +40,7 @@
 <script src="/workflow/common/jspParamUtil.js"></script>
 <script src="/platform/public/sysparam.js"></script>
 <script type="text/javascript" src="/workflow/js/DatePicker/WdatePicker.js"></script>
-<jsp:include page="/masterreview/public/renderTemplate.jsp" flush="true" >
+<jsp:include page="/masterreview/professor/professorRenderTemplate.jsp" flush="true" >
  <jsp:param name="approveType" value="professorApprove" />
  <jsp:param name="basePath" value="<%=basePath%>" />
 </jsp:include>
@@ -182,7 +182,7 @@ function countSumGrade(){
 			        	<td class="black text-right">教龄：</td>
 			        	<td colspan="1"><label id="teach_age" name="teach_age"></label> </td>
 			        	 <td class="black text-right">现任职务：</td>
-			        	<td colspan="1"><label id="presentOccupation" name="presentOccupation"></label> </td>
+			        	<td colspan="1"><label id="present_occupation" name="present_occupation"></label> </td>
 		        	</tr> 	
 		        	<tr>
 			        	<td class="black text-right">学段：</td>
@@ -282,9 +282,16 @@ function countSumGrade(){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="run_school_label" name="run_school_label"></label></td>
-				        	<td class="tablelink" >
+				        	<td class="tablelink"  rowspan="2">
 				        		<input id="run_school_grade" class="shuru" type="text" value="" placeholder="输入" onblur="countSumGrade()">
 			        	        <img class="qa" src="/masterreview/images/icon_qa.png" alt="">
+				        	</td>
+				        </tr>
+				        
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="run_school_attachment_id" class="cha" href="#"> 点击查看</a>
 				        	</td>
 				        </tr>
 				   </tbody>
@@ -300,9 +307,15 @@ function countSumGrade(){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="school_management_label" name="school_management_label"></label></td>
-				        	<td class="tablelink" >
+				        	<td class="tablelink"  rowspan="2">
 				        		<input id="school_management_grade" class="shuru" type="text" value="" placeholder="输入" onblur="countSumGrade()">
 			        	        <img class="qa" src="/masterreview/images/icon_qa.png" alt="">
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="school_management_attachment_id" class="cha" href="#"> 点击查看</a>
 				        	</td>
 				        </tr>
 				   </tbody>
@@ -318,9 +331,15 @@ function countSumGrade(){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="education_science_label" name="education_science_label"></label></td>
-				        	<td class="tablelink" >
+				        	<td class="tablelink" rowspan="2">
 				        		<input id="education_science_grade" class="shuru" type="text" value="" placeholder="输入" onblur="countSumGrade()">
 			        	        <img class="qa" src="/masterreview/images/icon_qa.png" alt="">
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="education_science_attachment_id" class="cha" href="#"> 点击查看</a>
 				        	</td>
 				        </tr>
 				   </tbody>
@@ -336,10 +355,17 @@ function countSumGrade(){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="external_environment_label" name="external_environment_label"></label></td>
-	                        <td class="tablelink" >
+	                        <td class="tablelink" rowspan="2">
 				        		<input id="external_environment_grade" class="shuru" type="text" value="" placeholder="输入" onblur="countSumGrade()">
 			        	        <img class="qa" src="/masterreview/images/icon_qa.png" alt="">
 				        	</td>				       
+				        </tr>
+				        
+				          <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="external_environment_attachment_id" class="cha" href="#"> 点击查看</a>
+				        	</td>
 				        </tr>
 				   </tbody>
 				 </table> 
@@ -356,9 +382,16 @@ function countSumGrade(){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="student_development_label" name="student_development_label"></label></td>
-				        	<td class="tablelink" >
+				        	<td class="tablelink" rowspan="2">
 				        		<input id="student_development_grade" class="shuru" type="text" value="" placeholder="输入" onblur="countSumGrade()">
 			        	        <img class="qa" src="/masterreview/images/icon_qa.png" alt="">
+				        	</td>
+				        </tr>
+				        
+				         <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="student_development_attachment_id" class="cha" href="#"> 点击查看</a>
 				        	</td>
 				        </tr>
 				    </tbody>
@@ -373,9 +406,15 @@ function countSumGrade(){
 				        </tr>
 				        <tr>
 				        	<td  colspan="6"><label id="teacher_development_label" name="teacher_development_label"></label></td>
-				        	<td class="tablelink" >
+				        	<td class="tablelink" rowspan="2" >
 				        		<input id="teacher_development_grade" class="shuru" type="text" value="" placeholder="输入" onblur="countSumGrade()">
 			        	        <img class="qa" src="/masterreview/images/icon_qa.png" alt="">
+				        	</td>
+				        </tr>
+				         <tr>
+				        	<td  colspan="5">证明材料：</td>
+				        	<td  class="tablelink" >
+                               <a id="teacher_development_attachment_id" class="cha" href="#"> 点击查看</a>
 				        	</td>
 				        </tr>
 				   </tbody>

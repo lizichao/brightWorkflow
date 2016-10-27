@@ -78,7 +78,7 @@ public class ProfessorAction extends UserManage {
             
             
             if (StringUtil.isNotEmpty(ispositive)) {
-                sqlBuf.append(" and hbase.ispositive = ?");
+                sqlBuf.append(" and hbase.present_occupation = ?");
                 bvals.add(ispositive);
             }
 
@@ -135,7 +135,7 @@ public class ProfessorAction extends UserManage {
             }
             
             if (StringUtil.isNotEmpty(ispositive)) {
-                sqlBuf.append(" and hbase.ispositive = ?");
+                sqlBuf.append(" and hbase.present_occupation = ?");
                 bvals.add(ispositive);
             }
             

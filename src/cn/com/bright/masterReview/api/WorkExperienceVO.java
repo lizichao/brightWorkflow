@@ -22,6 +22,7 @@ public class WorkExperienceVO {
     private String workProfession;
     private String workYear;
     private String proveAttachMentId;
+    private String manage_level;
     private AttachMentVO proveAttachMentVO;
     
     private String approve_result;
@@ -99,5 +100,12 @@ public class WorkExperienceVO {
     public void setApprove_result(String approve_result) {
         this.approve_result = approve_result;
     }
+	public String getManage_level() {
+		return manage_level;
+	}
+	public void setManage_level(String manage_level) {
+		this.manage_level = manage_level;
+	}
+
     
 }

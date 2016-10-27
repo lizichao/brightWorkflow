@@ -245,9 +245,10 @@ function getSubmitStrings(){
 			'census_register':$("#census_register").val(),
 			'nation':$("#nation").val(),
 			'native_place':$("#native_place").val(),
-			'presentOccupation':$("#present_occupation").val(),
+			'present_occupation':$("#present_occupation").val(),
 			'present_major_occupation':$("#present_major_occupation").val(),
 			'person_img_attachId':$("#person_img_attachId").val(),
+			'lodge_school':$("#lodge_school").val(),
 			"businessKey":$("#id").val(),
 			"id":$("#id").val()
 	}
@@ -276,6 +277,7 @@ function headmasterBeforeSubmit(formJsonData){
 	formJsonData.census_register = $("#census_register").val();
 	formJsonData.nation = $("#nation").val();
 	formJsonData.person_img_attachId = $("#person_img_attachId").val();
+	formJsonData.lodge_school = $("#lodge_school").val();
 }
 
 function countBirthDate(identitycardObj){
@@ -317,12 +319,18 @@ function countBirthDate(identitycardObj){
 					<select name="usersex" id="usersex"><option value="">请选择</option></select>
 				</div>
 			</li>
+			
 			<li>
-				<div class="border_1 w_3 fl" style="z-index:98;">
-					<span>学校类型：</span>
-				    <select name="school_class" id="school_class"><option value="">请选择</option></select>
+				<div class="border_1 w_9 fl" style="z-index:91;">
+					<span>籍贯：</span>
+					<input style="margin-left: -25px;" type="text" id="native_place" name="native_place" value="" placeholder="请输入省份地区" />
+				</div>
+				<div class="border_1 w_9 fr" style="z-index:90;">
+					<span>户籍：</span>
+				    <select name="census_register" id="census_register"><option value="">请选择</option></select>
 				</div>
 			</li>
+			
 			<li>
 				<div class="border_1 w_4 fl" style="z-index:97;">
 					<span>出生年月：</span>
@@ -330,49 +338,15 @@ function countBirthDate(identitycardObj){
 				</div>
 			</li>
 			<li>
-				<div class="border_1 w_5 fl" style="z-index:96;">
-					<span>参加工作时间：</span>
-					<input type="text" id="join_work_time" name="join_work_time" onclick='selectDeleteTime()'  placeholder="年-月-日"  />
+			   <div class="border_1 w_3 fl" style="z-index:93;">
+					<span>政治面貌：</span>
+				     <select name="politics_status" id="politics_status"><option value="">请选择</option></select>
 				</div>
 			</li>
 			<li>
 				<div class="border_1 w_6 fl" style="z-index:95;">
 					<span>身份证号码：</span>
 					<input type="text" id="identitycard" name="identitycard" value="" placeholder="请输入18位身份证号码" onblur="countBirthDate(this)" />
-				</div>
-			</li>
-			<li>
-				<div class="border_1 w_7 fl" style="z-index:94;">
-					<span>参加教育工作时间：</span>
-					<input type="text" id="join_educate_work_time" name="join_educate_work_time" onclick='selectDeleteTime()' placeholder="年-月-日" />
-				</div>
-			</li>
-			<li>
-				<div class="border_1 w_3 fl" style="z-index:85;">
-					<span>手机号码：</span>
-					<input type="text" id="mobile" name="mobile" value="" placeholder="请输入手机号码" />
-				</div>
-			</li>
-			<li>
-				<div class="border_1 w_3 fl" style="z-index:93;">
-					<span>政治面貌：</span>
-				     <select name="politics_status" id="politics_status"><option value="">请选择</option></select>
-				</div>
-			</li>
-			<li>
-				<div class="border_1 w_9 fl" style="z-index:91;">
-					<span>籍贯：</span>
-					<input type="text" id="native_place" name="native_place" value="" placeholder="请输入省份地区" />
-				</div>
-				<div class="border_1 w_9 fr" style="z-index:90;">
-					<span>户籍：</span>
-				    <select name="census_register" id="census_register"><option value="">请选择</option></select>
-				</div>
-			</li>
-			<li>
-				<div class="border_1 w_8 fl" style="z-index:92;">
-					<span>教龄：</span>
-					<input type="number" id="teach_age" name="teach_age" value="" />
 				</div>
 			</li>
 			<li>
@@ -384,11 +358,43 @@ function countBirthDate(identitycardObj){
 					<span>民族：</span>
 					<input type="text" id="nation" name="nation" value="" placeholder="民族" />
 				</div>
+				
 			</li>
 			<li>
-				<div class="border_1 w_3 fl" style="z-index:89;">
-					<span>学段：</span>
-					 <select name="phasestudy" id="phasestudy"><option value="">请选择</option></select>
+				<div class="border_1 w_3 fl" style="z-index:85;">
+					<span>手机号码：</span>
+					<input type="text" id="mobile" name="mobile" value="" placeholder="请输入手机号码" />
+				</div>
+			</li>
+			<li>
+			   <div class="border_1 w_8 fl" style="z-index:92;">
+					<span>教龄：</span>
+					<input type="number" id="teach_age" name="teach_age" value="" />
+				</div>
+			
+			</li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:98;">
+					<span>学校类型：</span>
+				    <select name="school_class" id="school_class"><option value="">请选择</option></select>
+				</div>
+			</li>
+			<li>
+			   <div class="border_1 w_3 fl" style="z-index:98;">
+					<span>寄宿制学校:</span>
+				    <select name="lodge_school" id="lodge_school"><option value="">请选择</option></select>
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_5 fl" style="z-index:96;">
+					<span>参加工作时间：</span>
+					<input type="text" id="join_work_time" name="join_work_time" onclick='selectDeleteTime()'  placeholder="年-月-日"  />
+				</div>
+			</li>
+			<li>
+				<div class="border_1 w_7 fl" style="z-index:94;">
+					<span>参加教育工作时间：</span>
+					<input type="text" id="join_educate_work_time" name="join_educate_work_time" onclick='selectDeleteTime()' placeholder="年-月-日" />
 				</div>
 			</li>
 		
@@ -399,15 +405,21 @@ function countBirthDate(identitycardObj){
 				</div>
 			</li>
 			<li>
-				<div class="border_1 w_3 fl" style="z-index:85;">
-					<span>所在学校：</span>
-					<input type="text" id="school_name" name="school_name" value="" placeholder="请输入学校全称" />
+				<div class="border_1 w_7 fl" style="z-index:84;">
+					<span>现任专业技术职务：</span>
+					<select id="present_major_occupation" name="present_major_occupation" ><option value="">请选择</option></select>
 				</div>
 			</li>
 			<li>
-				<div class="border_1 w_7 fl" style="z-index:84;">
-					<span>现任专业技术职务：</span>
-					<input type="text" id="present_major_occupation" name="present_major_occupation" value="" placeholder="请输入现任专业技术职务" />
+			   <div class="border_1 w_3 fl" style="z-index:89;">
+					<span>学段：</span>
+					 <select name="phasestudy" id="phasestudy"><option value="">请选择</option></select>
+				</div>
+			</li>
+				<li>
+				<div class="border_1 w_3 fl" style="z-index:85;">
+					<span>所在学校：</span>
+					<input type="text" id="school_name" name="school_name" value="" placeholder="请输入学校全称" />
 				</div>
 			</li>
 		</ul>

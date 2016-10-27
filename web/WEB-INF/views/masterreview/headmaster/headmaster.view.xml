@@ -340,7 +340,7 @@
               hiddenName : "phasestudy",
               baseParams : {paramname:'headmaster_phase_study'}
           }]
-      },   {
+      },  /* {
           layout : "form",
           bodyBorder : false,
           columnWidth : 0.5,
@@ -354,7 +354,7 @@
               hiddenName : "ispositive",
               baseParams : {paramname:'headmaster_ispositive'}
           }]
-      }, {
+      }, */{
           layout : "form",
           bodyBorder : false,
           columnWidth : 0.5,
@@ -400,7 +400,9 @@
               fieldLabel : "现任职务",
               width : 150,
               allowBlank : true,
-              xtype : "textfield"
+              xtype : "paracombo",
+              hiddenName : "present_occupation",
+              baseParams : {paramname:'headmaster_ispositive'}
           }]
       }, {
           layout : "form",
@@ -715,9 +717,9 @@
         {width:150,sortable:true,header:'身份证号码',dataIndex:'idnumber',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'性别',dataIndex:'usersex',renderer:Ext.util.Format.paramRenderer('headmaster_user_sex')},
         {width:100,sortable:true,header:'学段',dataIndex:'phasestudy',renderer:Ext.util.Format.paramRenderer('headmaster_phase_study')},
-        {width:100,sortable:true,header:'正副校长',dataIndex:'ispositive',renderer:Ext.util.Format.paramRenderer('headmaster_ispositive')},
+       <!--  {width:100,sortable:true,header:'正副校长',dataIndex:'ispositive',renderer:Ext.util.Format.paramRenderer('headmaster_ispositive')},--> 
         {width:100,sortable:true,header:'学校类型',dataIndex:'school_class',renderer:Ext.util.Format.paramRenderer('undefined','')},
-        {width:100,sortable:true,header:'现任职务',dataIndex:'present_occupation',renderer:Ext.util.Format.paramRenderer('undefined','')},
+        {width:100,sortable:true,header:'现任职务',dataIndex:'present_occupation',renderer:Ext.util.Format.paramRenderer('headmaster_ispositive')},
         {width:100,sortable:true,header:'现任专业技术职务',dataIndex:'present_major_occupation',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'参加工作时间',dataIndex:'join_work_time',renderer:Ext.util.Format.dateRenderer('Y-m-d')},
         {width:100,sortable:true,header:'参加教育工作时间',dataIndex:'join_educate_work_time',renderer:Ext.util.Format.dateRenderer('Y-m-d H:i:s')},
