@@ -178,6 +178,7 @@ input,select{display:inline-block;border:0;color:#666;height:30px;line-height:30
 
 .w_13{width:344px;}
 .w_13 input{width:334px;}
+.w_13 textarea{width:334px;}
 
 .w_14{width:100px;}
 .w_14 input{width:90px;}
@@ -255,6 +256,12 @@ a.add-more{display:block;background:#D7D7D7;color:#000;height:30px;line-height:3
 
 .w_27{width:194px;} /* 单行双列行标题是9个字对应的文本宽度 */
 .w_27 input{width:184px;}
+
+.w_28{width:336px;} /* 单行单列标题是5个字对应的文本宽度 */
+.w_28 input{width:326px;}
+
+
+
 
 /**
 ===============================================================
