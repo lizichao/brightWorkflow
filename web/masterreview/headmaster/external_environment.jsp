@@ -26,7 +26,7 @@ $(function(){
 
 function initExternalEnvironmentData(masterReviewVO){
 	$("#external_environment").val(masterReviewVO.external_environment);
-	
+	countChar($("#external_environment"));
 	var manageDifficultySelId = masterReviewVO.external_environment_attachMentVO.attachmentId;
 	var manageDifficultyFileName = masterReviewVO.external_environment_attachMentVO.fileName;
 	if(manageDifficultySelId){
@@ -83,6 +83,31 @@ function headmasterBeforeSubmit(formJsonData){
 	formJsonData.option_tab_type = "external_environment"
 	formJsonData.option_tab_values = getSubmitStrings();
 }
+
+function countChar(curObj) {//¼ÆËã×ÖÊý
+	var maxLength = 1000;//1000¸ö×Ö·û
+	var $curObj;
+	if (curObj instanceof jQuery) {
+		$curObj = curObj;
+	} else {
+		$curObj = $(curObj);
+	}
+	$curObj = $(curObj);
+	var $textPrompt = $curObj.siblings('p[name="text-prompt"]');
+	if ($textPrompt[0]) {//ÅÐ¶ÏÊÇ·ñ´æÔÚ
+		var $numberSpan = $textPrompt.find("span[name='number']");
+		if ($numberSpan[0]) {//ÅÐ¶ÏÊÇ·ñ´æÔÚ
+			var value = $curObj.val();
+			var length = value.length;
+			if (length>maxLength) {
+				length=maxLength;
+				value = value.substring(0,maxLength);
+				$curObj.val(value);
+			}
+			$numberSpan.html(length);
+		}
+	}
+}
 </script>
 </head>
 <body>
@@ -107,8 +132,8 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="bxsx">
 		<ul class="clear-fix">
 			<li>
-				<textarea id="external_environment" name="external_environment"></textarea>
-				<p style="color:#999;text-align:right;">0/1000</p>
+				<textarea id="external_environment" name="external_environment" onkeydown='countChar(this);' onkeyup='countChar(this);'></textarea>
+				<p name="text-prompt" style="color:#999;text-align:right;"><span name="number" style="padding: 0px 0px;">0</span>/1000</p>
 			</li>
 			
 		    <input type="hidden" id="external_environment_attachId1" name="external_environment_attachId" value="">

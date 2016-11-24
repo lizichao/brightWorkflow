@@ -58,7 +58,7 @@
 
    <li>
       <span class='fl'>奖项类别1：</span>
-      <div style='width:320px' class="border_2 w_13 fl">
+      <div class="border_2 w_28 fl">
         <select id="awards_type{{:#index+1}}" class='select_left'>
                    {{for headmaster_awards_type}}
                      {{if id===#parent.parent.data.awards_type }}
@@ -88,7 +88,7 @@
 
      <li>
       <span class='fl'>奖项类别2：</span>
-      <div style='width:320px' class="border_2 w_13 fl">
+      <div class="border_2 w_28 fl">
         <select id="awards_type1{{:#index+1}}" class='select_left'>
                    {{for headmaster_awards_type}}
                      {{if id===#parent.parent.data.awards_type1 }}
@@ -198,7 +198,7 @@ function addPersonalAwardSingle(obj){
 	
 	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>奖项类别1：</span>");
-	educationArray.push("<div style='width:320px' class='border_2 w_13 fl'>");
+	educationArray.push("<div  class='border_2 w_28 fl'>");
 	educationArray.push("<select id='awards_type"+personalAwardRowNumNext+"' class='select_left'></select>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
@@ -215,7 +215,7 @@ function addPersonalAwardSingle(obj){
 	
 	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>奖项类别2：</span>");
-	educationArray.push("<div style='width:320px' class='border_2 w_13 fl'>");
+	educationArray.push("<div class='border_2 w_28 fl'>");
 	educationArray.push("<select id='awards_type1"+personalAwardRowNumNext+"' class='select_left'></select>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");

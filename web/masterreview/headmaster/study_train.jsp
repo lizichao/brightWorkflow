@@ -33,14 +33,14 @@
 
 	<li>
       <span class='fl'>学习进修内容：</span>
-     <div class="border_2 w_19 fl">
+     <div class="border_2 w_23 fl">
       <input type='text' id='content{{:#index+1}}' value='{{:content}}' placeholder=''>
      </div>
     </li>
 
 	<li>
      <span class='fl'>学时：</span>
-     <div class="border_2 w_13 fl">
+     <div class="border_2 w_20 fl">
 		<input type='text' id='class_hour{{:#index+1}}' value='{{:class_hour}}' placeholder=''>
      </div>
     </li>
@@ -122,27 +122,27 @@ function addstudyTrainSingle(obj){
 	educationArray.push("</li>");
 	
 	educationArray.push("<li><span class='fl'>学习进修内容：</span>");
-	educationArray.push("<div class='border_2 w_19 fl'>");
+	educationArray.push("<div class='border_2 w_23 fl'>");
 	educationArray.push("<input type='text' id='content"+studyTrainRowNumNext+"' value='' placeholder='请输入学习进修内容'>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
 	educationArray.push("<li><span class='fl'>学时：</span>");
-	educationArray.push("<div class='border_2 w_13 fl'>");
+	educationArray.push("<div class='border_2 w_20 fl'>");
 	educationArray.push("<input type='text' id='class_hour"+studyTrainRowNumNext+"' value='' placeholder='请输入学时'>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
 	
 	educationArray.push("<li><span class='fl'>学习地点：</span>");
-	educationArray.push("<div class='border_2 w_19 fl'>");
+	educationArray.push("<div class='border_2 w_13 fl'>");
 	educationArray.push("<input type='text' id='study_place"+studyTrainRowNumNext+"' value='' placeholder='请输入学习地点'>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
 	
 	educationArray.push("<li><span class='fl'>主办单位：</span>");
-	educationArray.push("<div class='border_2 w_19 fl'>");
+	educationArray.push("<div class='border_2 w_13 fl'>");
 	educationArray.push("<input type='text' id='organizers"+studyTrainRowNumNext+"' value='' placeholder='请输入主办单位'>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");

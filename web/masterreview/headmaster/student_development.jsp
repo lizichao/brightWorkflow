@@ -26,7 +26,7 @@ $(function(){
 
 function initStudentDevelopmentData(masterReviewVO){
 	$("#student_development").val(masterReviewVO.student_development);
-	
+	countChar($("#student_development"));
 	var manageDifficultySelId = masterReviewVO.student_development_attachMentVO.attachmentId;
 	var manageDifficultyFileName = masterReviewVO.student_development_attachMentVO.fileName;
 	if(manageDifficultySelId){
@@ -83,6 +83,31 @@ function headmasterBeforeSubmit(formJsonData){
 	formJsonData.option_tab_type = "student_development"
 	formJsonData.option_tab_values = getSubmitStrings();
 }
+
+function countChar(curObj) {//¼ÆËã×ÖÊý
+	var maxLength = 1000;//1000¸ö×Ö·û
+	var $curObj;
+	if (curObj instanceof jQuery) {
+		$curObj = curObj;
+	} else {
+		$curObj = $(curObj);
+	}
+	$curObj = $(curObj);
+	var $textPrompt = $curObj.siblings('p[name="text-prompt"]');
+	if ($textPrompt[0]) {//ÅÐ¶ÏÊÇ·ñ´æÔÚ
+		var $numberSpan = $textPrompt.find("span[name='number']");
+		if ($numberSpan[0]) {//ÅÐ¶ÏÊÇ·ñ´æÔÚ
+			var value = $curObj.val();
+			var length = value.length;
+			if (length>maxLength) {
+				length=maxLength;
+				value = value.substring(0,maxLength);
+				$curObj.val(value);
+			}
+			$numberSpan.html(length);
+		}
+	}
+}
 </script>
 </head>
 <body>
@@ -107,8 +132,8 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="bxsx">
 		<ul class="clear-fix">
 			<li>
-				<textarea id="student_development" name="student_development"></textarea>
-				<p style="color:#999;text-align:right;">0/1000</p>
+				<textarea id="student_development" name="student_development" onkeydown='countChar(this);' onkeyup='countChar(this);'></textarea>
+				<p name="text-prompt" style="color:#999;text-align:right;"><span name="number" style="padding: 0px 0px;">0</span>/1000</p>
 			</li>
 			
 		   <input type="hidden" id="student_development_attachId1" name="student_development_attachId" value="">

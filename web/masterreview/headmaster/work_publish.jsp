@@ -45,7 +45,7 @@
       </div>
     </li>
 	<li><span class='fl'>出版社：</span>
-      <div class="border_2 w_13 fl">
+      <div class="border_2 w_26 fl">
        <input type='text' id='publish_company{{:#index+1}}' value='{{:publish_company}}' placeholder=''>
       </div>
     </li>
@@ -137,7 +137,7 @@ function addWorkPublishSingle(obj){
 	
 	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>出版社：</span>");
-	educationArray.push("<div class='border_2 w_13 fl'>");
+	educationArray.push("<div class='border_2 w_26 fl'>");
 	educationArray.push("<input type='text' id='publish_company"+workPublishRowNumNext+"' value='' placeholder='' >");
 	educationArray.push("</div>");
 	educationArray.push("</li>");

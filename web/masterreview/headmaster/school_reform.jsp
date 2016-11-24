@@ -57,8 +57,9 @@
 
 	<li>
       <span class="fl">项目完成情况：</span>
-        <textarea maxlength='100' title='不得超过100字' name='performance{{:#index+1}}' id='performance{{:#index+1}}' class='fl deooration' placeholder='请输入项目完成情况' >{{:performance}}</textarea>
-    </li>
+        <textarea title='不得超过100字' name='performance{{:#index+1}}' id='performance{{:#index+1}}' class='fl deooration' placeholder='请输入项目完成情况' onkeydown='countChar(this);' onkeyup='countChar(this);'>{{:performance}}</textarea>
+    	<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>{{if performance && performance.length}}{{:performance.length}}{{else}}0{{/if}}</span>/100&nbsp;</p>
+	</li>
 
 	 <li style='height:45px;' class='position_relative'>
       <span class="fl">证明材料：</span>
@@ -145,7 +146,8 @@ function addSchoolReformSingle(obj){
 	educationArray.push("</li>");
 	
 	educationArray.push("<li><span class='fl'>项目完成情况：</span>");
-	educationArray.push("<textarea maxlength='100' title='不得超过100字' name='performance"+schoolReformRowNumNext+"' id='performance"+schoolReformRowNumNext+"' class='fl deooration' placeholder='请输入项目完成情况' ></textarea>");
+	educationArray.push("<textarea title='不得超过100字' name='performance"+schoolReformRowNumNext+"' id='performance"+schoolReformRowNumNext+"' class='fl deooration' placeholder='请输入项目完成情况' onkeydown='countChar(this);' onkeyup='countChar(this);'></textarea>");
+	educationArray.push("<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>0</span>/100&nbsp;</p>");
 	educationArray.push("</li>");
 	
 	educationArray.push("<li style='height:45px;' class='position_relative'>");
@@ -232,6 +234,32 @@ function getSubmitStrings(){
 function headmasterBeforeSubmit(formJsonData){
 	formJsonData.option_tab_type = "schoolReform"
 	formJsonData.option_tab_values = getSubmitStrings();
+}
+
+
+function countChar(curObj) {//计算字数
+	var maxLength = 100;//100个字符
+	var $curObj;
+	if (curObj instanceof jQuery) {
+		$curObj = curObj;
+	} else {
+		$curObj = $(curObj);
+	}
+	$curObj = $(curObj);
+	var $textPrompt = $curObj.siblings('p[name="text-prompt"]');
+	if ($textPrompt[0]) {//判断是否存在
+		var $numberSpan = $textPrompt.find("span[name='number']");
+		if ($numberSpan[0]) {//判断是否存在
+			var value = $curObj.val();
+			var length = value.length;
+			if (length>maxLength) {
+				length=maxLength;
+				value = value.substring(0,maxLength);
+				$curObj.val(value);
+			}
+			$numberSpan.html(length);
+		}
+	}
 }
 </script>
 </head>

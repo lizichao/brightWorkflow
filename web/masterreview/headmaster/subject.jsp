@@ -12,7 +12,8 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <title>深圳市校长职级评审系统</title>
-
+<style type="text/css">
+</style>
 <!--课题情况  -->
 <script id="subjectRec" type="text/x-jsrender">	
 {{for Data}}
@@ -74,10 +75,11 @@
        </div>
     </li>
 	
-	<li style='width:1000px'>
+	<li style='width:780px'>
 	  <span class='fl'>课题简介：</span>
-	  <textarea maxlength='100' title='不得超过100字' name='subject_responsibility{{:#index+1}}' id='subject_responsibility{{:#index+1}}' class='fl deooration'>{{:subjectRresponsibility}}</textarea>
-	</li>
+	  <textarea onkeydown='countChar(this)' onkeyup='countChar(this)' title='不得超过100字' name='subject_responsibility{{:#index+1}}' id='subject_responsibility{{:#index+1}}' class='fl deooration' style='width: 674px;'>{{:subjectRresponsibility}}</textarea>
+	  <p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>{{if subjectRresponsibility && subjectRresponsibility.length}}{{:subjectRresponsibility.length}}{{else}}0{{/if}}</span>/100&nbsp;</p>	
+    </li>
 
     <li style='height:45px;' class='position_relative'>
 		<span class='fl'>课题材料：</span>
@@ -197,9 +199,11 @@ function addSubjectSingle(obj){
 	
 	
 	
-	educationArray.push("<li style='width:1000px'>");
+	educationArray.push("<li style='width:780px'>");
 	educationArray.push("<span class='fl'>课题简介：</span>");
-	educationArray.push("<textarea title='不得超过100字' name='subject_responsibility"+subjectRowNumNext+"' id='subject_responsibility"+subjectRowNumNext+"' class='fl deooration' maxlength='100'></textarea>");
+	educationArray.push("<textarea  onkeydown='countChar(this)' onkeyup='countChar(this)' title='不得超过100字' name='subject_responsibility"+subjectRowNumNext+"' id='subject_responsibility"+subjectRowNumNext+"' class='fl deooration' style='width: 674px;'></textarea>");
+	//educationArray.push("<span name='text-prompt' class='text-prompt'><span name='number' style='padding:0px 0px;'>0</span>/100</span>");
+	educationArray.push("<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>0</span>/100&nbsp;</p>");
 	educationArray.push("</li>");
 	
 	educationArray.push("<li style='height:45px;' class='position_relative'>");
@@ -293,6 +297,31 @@ function getSubmitStrings(){
 function headmasterBeforeSubmit(formJsonData){
 	formJsonData.option_tab_type = "subject"
 	formJsonData.option_tab_values = getSubmitStrings();
+}
+
+function countChar(curObj) {//计算字数
+	var maxLength = 100;//100个字符
+	var $curObj;
+	if (curObj instanceof jQuery) {
+		$curObj = curObj;
+	} else {
+		$curObj = $(curObj);
+	}
+	$curObj = $(curObj);
+	var $textPrompt = $curObj.siblings('p[name="text-prompt"]');
+	if ($textPrompt[0]) {//判断是否存在
+		var $numberSpan = $textPrompt.find("span[name='number']");
+		if ($numberSpan[0]) {//判断是否存在
+			var value = $curObj.val();
+			var length = value.length;
+			if (length>maxLength) {
+				length=maxLength;
+				value = value.substring(0,maxLength);
+				$curObj.val(value);
+			}
+			$numberSpan.html(length);
+		}
+	}
 }
 </script>
 

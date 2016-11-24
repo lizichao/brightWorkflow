@@ -33,7 +33,7 @@
      </div>
     </li>
 	<li><span class='fl'>杂志名称：</span>
-       <div class="border_2 w_27 fl">
+       <div class="border_2 w_18 fl">
         <input type='text' id='magazine_meet_name{{:#index+1}}' value='{{:magazineMeetName}}'/>
     </li>
 	<li><span class='fl'>主办单位：</span>
@@ -195,7 +195,7 @@ function addPaperSingle(obj){
 	educationArray.push("</li>");
 	
 	educationArray.push("<li><span class='fl'>杂志名称：</span>");
-	educationArray.push("<div class='border_2 w_27 fl'>");
+	educationArray.push("<div class='border_2 w_18 fl'>");
 	educationArray.push("<input type='text' id='magazine_meet_name"+paperTitleRowNumNext+"' name='magazine_meet_name"+paperTitleRowNumNext+"' />");
 	educationArray.push("</div>");
 	educationArray.push("</li>");

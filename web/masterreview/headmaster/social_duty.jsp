@@ -42,7 +42,8 @@
 
 	<li>
        <span class="fl">完成情况：</span>
-       <textarea maxlength='100' title='不得超过100字' name='complete_state{{:#index+1}}' id='complete_state{{:#index+1}}' class='fl deooration' placeholder='请输入完成情况' >{{:complete_state}}</textarea>
+       <textarea title='不得超过100字' name='complete_state{{:#index+1}}' id='complete_state{{:#index+1}}' style='width:334px;'  class='fl deooration' placeholder='请输入完成情况' onkeydown='countChar(this)' onkeyup='countChar(this)'>{{:complete_state}}</textarea>
+       <p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>{{if complete_state && complete_state.length}}{{:complete_state.length}}{{else}}0{{/if}}</span>/100&nbsp;</p>
     </li>
 
 
@@ -123,7 +124,8 @@ function addSocialDutySingle(obj){
 	
 	
 	educationArray.push("<li><span class='fl'>完成情况：</span>");
-	educationArray.push("<textarea maxlength='100' title='不得超过100字' name='complete_state"+socialDutyRowNumNext+"' id='complete_state"+socialDutyRowNumNext+"' class='fl deooration' placeholder='请输入完成情况' ></textarea>");
+	educationArray.push("<textarea title='不得超过100字' name='complete_state"+socialDutyRowNumNext+"' id='complete_state"+socialDutyRowNumNext+"' style='width:334px;' class='fl deooration' placeholder='请输入完成情况' onkeydown='countChar(this)' onkeyup='countChar(this)'></textarea>");
+	educationArray.push("<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>0</span>/100&nbsp;</p>");
 	educationArray.push("</li>");
 	
 	educationArray.push("<li style='height:45px;' class='position_relative'>");
