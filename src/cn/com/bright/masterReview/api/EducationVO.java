@@ -22,9 +22,10 @@ public class EducationVO {
     
     //学历
     private String education;
+    private String educationDesc;
     //学位
     private String degree;
-    
+    private String degreeDesc;
     //学习形式
     private String study_form;
     
@@ -111,16 +112,32 @@ public class EducationVO {
     public void setEducation(String education) {
         this.education = education;
     }
+    
+    public String getEducationDesc() {
+		return educationDesc;
+	}
 
-    public String getDegree() {
+	public void setEducationDesc(String educationDesc) {
+		this.educationDesc = educationDesc;
+	}
+
+	public String getDegree() {
         return degree;
     }
 
     public void setDegree(String degree) {
         this.degree = degree;
     }
+    
+    public String getDegreeDesc() {
+		return degreeDesc;
+	}
 
-    public AttachMentVO getEducationAttachMentVO() {
+	public void setDegreeDesc(String degreeDesc) {
+		this.degreeDesc = degreeDesc;
+	}
+
+	public AttachMentVO getEducationAttachMentVO() {
         return educationAttachMentVO;
     }
 

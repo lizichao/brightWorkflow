@@ -2455,8 +2455,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
             Date start_date = (Date)map.get("start_date");
             Date end_date = (Date)map.get("end_date");
             
-            String degree = (String)map.get("degree_desc");
-            String education = (String)map.get("education_desc");
+            String degree = (String)map.get("degree");
+            String degree_desc = (String)map.get("degree_desc");
+            String education = (String)map.get("education");
+            String education_desc = (String)map.get("education_desc");
             String education_type = (String)map.get("education_type");
             String study_form = (String)map.get("study_form");
             
@@ -2490,7 +2492,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
             educationVO.setEndTime(end_date);
             educationVO.setApprove_result(approve_result);
             educationVO.setDegree(degree);
+            educationVO.setDegreeDesc(degree_desc);
             educationVO.setEducation(education);
+            educationVO.setEducationDesc(education_desc);
             educationVO.setEducation_type(education_type);
             educationVO.setStudy_form(study_form);
             educationVOs.add(educationVO);
