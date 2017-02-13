@@ -308,7 +308,7 @@ function deleteProfessionalTitleDeal(optionId){
 		}
 	);
 	bcReq.setSuccFn(function(data,status){
-		
+		callBackOfDeleteProfessionalTitleDeal();//回调函数，进行相应的逻辑代码处理
 	});
 	bcReq.postData();
 }

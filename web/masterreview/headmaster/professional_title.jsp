@@ -64,13 +64,17 @@ function initProfessionalData(masterReviewVO){
 
 //职称
 function bulidProfessionalTitle(professionalTitleVOs){
-	$("#professionalTitleRowNum").val(professionalTitleVOs.length);
+	//$("#professionalTitleRowNum").val(professionalTitleVOs.length);
 	if(professionalTitleVOs.length>0){
 		 var dataObject = {'Data': []};
 		 for(var i =0;i<professionalTitleVOs.length;i++){
 			 dataObject.Data.push(professionalTitleVOs[i]);
 		 }
 		 var subTaskContent= $("#professionalTitleRec").render(dataObject);
+		 
+		 //保存初始的基本信息录入的HTML元素，用于删除职称之后，显示职称信息录入显示
+		 initProfessionalTitleRefillHtml = $("#professionalTitleRefill").html();
+			 
 		 $("#professionalTitleRefill").html(subTaskContent);
 		 
 		 for(var i =0;i<professionalTitleVOs.length;i++){
@@ -189,6 +193,16 @@ function getSubmitStrings(){
 function headmasterBeforeSubmit(formJsonData){
 	formJsonData.option_tab_type = "professionalTitle"
 	formJsonData.option_tab_values = getSubmitStrings();
+}
+
+var initProfessionalTitleRefillHtml = "";
+function callBackOfDeleteProfessionalTitleDeal(){
+	if (initProfessionalTitleRefillHtml) {
+		$("#professionalTitleRefill").html(initProfessionalTitleRefillHtml);
+		Headmaster.initWebUploader('professionalTitlespan',1,'professionalTitleType','点击上传','professionalAttachId','professionalTitleDiv');
+	} else {
+		window.location.reload();
+	}
 }
 
 </script>
