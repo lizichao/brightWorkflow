@@ -25,11 +25,11 @@
 	<li>
         <span class="fl">起止年月：</span>		
         <div class="border_2 w_12 fl">
-          <input type="text" id='startTimeExperience{{:#index+1}}' onclick='selectDeleteTime()' value="{{timeCovert startTime/}}"/>
+          <input type="text" id='startTimeExperience{{:#index+1}}' onFocus='selectDeleteTime()' value="{{timeCovert startTime/}}"/>
         </div>
 		<span class="fl">至</span>
 		<div class="border_2 w_12 fl">
-          <input type="text" id='endTimeExperience{{:#index+1}}'  onclick='selectDeleteTime()' value="{{timeCovert endTime/}}" />
+          <input type="text" id='endTimeExperience{{:#index+1}}'  onFocus='selectDeleteTime()' value="{{timeCovert endTime/}}" />
         </div>
 	</li>
 	<li>
@@ -99,8 +99,17 @@ function bulidWorkExperience(workExperienceVOs){
 		 var dataObject = {'Data': []};
 		 for(var i =0;i<workExperienceVOs.length;i++){
 			 var diffDate = BcUtil.get_yearMonthDiffFormat(Brightcom.workflow.getDateStrByLong(workExperienceVOs[i].startTime),Brightcom.workflow.getDateStrByLong(workExperienceVOs[i].endTime));
-			 workExperienceVOs[i]['yearDiffDate'] = diffDate.year || '';
-			 workExperienceVOs[i]['monthDiffDate'] = diffDate.month || '';
+			 
+			 var month = diffDate.month;
+			 var year = parseInt(month/12);
+			 if (year>0) {
+				month = month%12;
+			 }
+			
+			 //workExperienceVOs[i]['yearDiffDate'] = diffDate.year || '';
+			 //workExperienceVOs[i]['monthDiffDate'] = diffDate.month || '';
+			 workExperienceVOs[i]['yearDiffDate'] = year || '';
+			 workExperienceVOs[i]['monthDiffDate'] = month || '';
 			 
 			 var headmaster_manage_levels =  Brightcom.workflow.getSelectCombox('headmaster_manage_level');
 			 workExperienceVOs[i]['headmaster_manage_level'] = headmaster_manage_levels;
@@ -134,11 +143,11 @@ function addWorkExperienceSingle(obj){
 	//educationArray.push("<ul>");
 	educationArray.push("<li><span class='fl'>起止年月：</span>");
 	educationArray.push("<div class='border_2 w_12 fl'>");
-	educationArray.push("<input type='text' id='startTimeExperience"+workExperienceRowNumNext+"' name='startTimeExperience"+workExperienceRowNumNext+"' onclick='selectDeleteTime()'/>");
+	educationArray.push("<input type='text' id='startTimeExperience"+workExperienceRowNumNext+"' name='startTimeExperience"+workExperienceRowNumNext+"' onFocus='selectDeleteTime()'/>");
 	educationArray.push("</div>");
 	educationArray.push("<span class='fl'>至</span>");
 	educationArray.push("<div class='border_2 w_12 fl'>");
-	educationArray.push("<input type='text' id='endTimeExperience"+workExperienceRowNumNext+"' name='endTimeEducation"+workExperienceRowNumNext+"' onclick='selectDeleteTime()'/>");
+	educationArray.push("<input type='text' id='endTimeExperience"+workExperienceRowNumNext+"' name='endTimeEducation"+workExperienceRowNumNext+"' onFocus='selectDeleteTime()'/>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	

@@ -516,9 +516,21 @@ function selectDeleteTime(timeObject){
 				var startDate =  $('#startTimeExperience'+rownum).val();
 				var endDate =  $(dp.srcEl).val();
 				if(startDate && endDate){
+					$('#workYear'+rownum).text('');
+					$('#workMonth'+rownum).text('');
 					var diffDate = BcUtil.get_yearMonthDiffFormat(startDate,endDate);
-					$('#workYear'+rownum).text(diffDate.year);
-					$('#workMonth'+rownum).text(diffDate.month);
+					//$('#workYear'+rownum).text(diffDate.year);
+					//$('#workMonth'+rownum).text(diffDate.month);
+					var month = diffDate.month;
+					var year = parseInt(month/12);
+					if (year>0) {
+						month = month%12;
+						$('#workYear'+rownum).text(year);
+					}
+					
+					if (month>0) {
+						$('#workMonth'+rownum).text(month);
+					}
 				}
 			}
 		}
