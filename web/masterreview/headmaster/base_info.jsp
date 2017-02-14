@@ -245,7 +245,8 @@ function getSubmitStrings(){
 			'census_register':$("#census_register").val(),
 			'nation':$("#nation").val(),
 			'native_place':$("#native_place").val(),
-			'present_occupation':$("#present_occupation").val(),
+			//'present_occupation':$("#present_occupation").val(),
+			'present_occupation':$("#ispositive").val(),//ispositive和present_occupation都代表现任职务
 			'present_major_occupation':$("#present_major_occupation").val(),
 			'person_img_attachId':$("#person_img_attachId").val(),
 			'lodge_school':$("#lodge_school").val(),

@@ -1367,7 +1367,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
            // sql.append(" t.identitycard,");
             sql.append(" t.school_id,");
             sql.append(" t.school_name,");
-            sql.append(" t.present_occupation,");
+            //sql.append(" t.present_occupation,");
             sql.append(" t.apply_level,");
             sql.append(" t.school_name_space,");
             sql.append("t.student_number,");
@@ -1401,7 +1401,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             sql.append("c.userpwd,");
             sql.append("c.deptid,");
             sql.append("c.idnumber,");
-           sql.append("  c.ispositive,");
+            sql.append("  c.ispositive,");
             sql.append(" c.email,");
             sql.append(" c.mobile,");
             sql.append(" c.address,");
