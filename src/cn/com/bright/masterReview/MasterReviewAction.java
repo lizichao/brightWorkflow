@@ -2350,12 +2350,15 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String paper_meet_name = (String)map.get("paper_meet_name");
             String paper_number =(String) map.get("paper_number");
             String organizers =(String) map.get("organizers");
-            String organizers_level =(String) map.get("organizers_level_desc");
+            String organizers_level =(String) map.get("organizers_level");
+            String organizers_level_desc =(String) map.get("organizers_level_desc");
             String personal_part = (String)map.get("personal_part");
             String approve_result = (String)map.get("approve_result");
             String publish_company = (String)map.get("publish_company");
-            String complete_way = (String)map.get("complete_way_desc");
-            String author_order = (String)map.get("author_order_desc");
+            String complete_way = (String)map.get("complete_way");
+            String complete_way_desc = (String)map.get("complete_way_desc");
+            String author_order = (String)map.get("author_order");
+            String author_order_desc = (String)map.get("author_order_desc");
            
             
             AttachMentVO  attachMentVO= new AttachMentVO();
@@ -2376,12 +2379,15 @@ public class MasterReviewAction extends BaseWorkflowAction {
             paperVO.setPaperNumber(paper_number);
             paperVO.setOrganizers(organizers);
             paperVO.setOrganizersLevel(organizers_level);
+            paperVO.setOrganizersLevelDesc(organizers_level_desc);
             paperVO.setPersonalPart(personal_part);
             paperVO.setPaperAttachMentVO(attachMentVO);
             paperVO.setApprove_result(approve_result);
             paperVO.setPublish_company(publish_company);
             paperVO.setComplete_way(complete_way);
+            paperVO.setComplete_way_desc(complete_way_desc);
             paperVO.setAuthor_order(author_order);
+            paperVO.setAuthor_order_desc(author_order_desc);
             paperVOs.add(paperVO);
         }
         return paperVOs;   

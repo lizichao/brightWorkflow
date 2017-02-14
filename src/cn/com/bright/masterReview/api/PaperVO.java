@@ -29,11 +29,15 @@ public class PaperVO {
     
     private String organizersLevel;
     
+    private String organizersLevelDesc;
+    
     private String personalPart;
     
     private String publish_company;
     private String complete_way;
+    private String complete_way_desc;
     private String author_order;
+    private String author_order_desc;
     private String paperAttachmentId;
     
     private AttachMentVO paperAttachMentVO;
@@ -105,8 +109,16 @@ public class PaperVO {
     public void setOrganizersLevel(String organizersLevel) {
         this.organizersLevel = organizersLevel;
     }
+    
+    public String getOrganizersLevelDesc() {
+		return organizersLevelDesc;
+	}
 
-    public String getPersonalPart() {
+	public void setOrganizersLevelDesc(String organizersLevelDesc) {
+		this.organizersLevelDesc = organizersLevelDesc;
+	}
+
+	public String getPersonalPart() {
         return personalPart;
     }
 
@@ -161,14 +173,29 @@ public class PaperVO {
     public void setComplete_way(String complete_way) {
         this.complete_way = complete_way;
     }
+    
+    public String getComplete_way_desc() {
+		return complete_way_desc;
+	}
 
-    public String getAuthor_order() {
+	public void setComplete_way_desc(String complete_way_desc) {
+		this.complete_way_desc = complete_way_desc;
+	}
+
+	public String getAuthor_order() {
         return author_order;
     }
 
     public void setAuthor_order(String author_order) {
         this.author_order = author_order;
     }
-    
+
+	public String getAuthor_order_desc() {
+		return author_order_desc;
+	}
+
+	public void setAuthor_order_desc(String author_order_desc) {
+		this.author_order_desc = author_order_desc;
+	}
     
 }
