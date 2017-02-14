@@ -42,7 +42,7 @@ function initEducationScienceData(masterReviewVO){
 		var attachmentArray =[];
 		attachmentArray.push("<a class=\"chachu\"  href=\"<%=basePath%>WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\">"+manageDifficultyFileName+"</a>");
 		attachmentArray.push("&nbsp;&nbsp;");
-		attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >É¾³ý</a>");
+		attachmentArray.push("<a class=\"chachu\"  href=\"javascript:void(0);\" onclick=\"Headmaster.deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >É¾³ý</a>");
 		
 		$("#education_science_attach_div1").append(attachmentArray.join(""));
 	}

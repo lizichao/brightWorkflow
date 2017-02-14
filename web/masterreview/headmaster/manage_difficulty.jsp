@@ -35,7 +35,7 @@ function bulidManageDifficulty(masterReviewVO){
 		var attachmentArray =[];
 		attachmentArray.push("<a class=\"chachu\"  href=\"<%=basePath%>WorkflowAttachMentDownload?attachmentId="+manageDifficultySelId+"\">"+manageDifficultyFileName+"</a>");
 		attachmentArray.push("&nbsp;&nbsp;");
-		attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >É¾³ý</a>");
+		attachmentArray.push("<a class=\"chachu\"  href=\"javascript:void(0);\" onclick=\"Headmaster.deleteReceiveFileAttachment(\'"+manageDifficultySelId+"\',this);\" >É¾³ý</a>");
 		
 		$("#manageDifficultyDiv2").append(attachmentArray.join(""));
 	}
@@ -46,7 +46,7 @@ function bulidManageDifficulty(masterReviewVO){
 		var attachmentArray =[];
 		attachmentArray.push("<a class=\"chachu\"  href=\"<%=basePath%>WorkflowAttachMentDownload?attachmentId="+manageDifficultyAgoSelId+"\">"+manageDifficultyAgoFileName+"</a>");
 		attachmentArray.push("&nbsp;&nbsp;");
-		attachmentArray.push("<a class=\"chachu\"  href=\"#\" onclick=\"deleteReceiveFileAttachment(\'"+manageDifficultyAgoSelId+"\',this);\" >É¾³ý</a>");
+		attachmentArray.push("<a class=\"chachu\"  href=\"javascript:void(0);\" onclick=\"Headmaster.deleteReceiveFileAttachment(\'"+manageDifficultyAgoSelId+"\',this);\" >É¾³ý</a>");
 		
 		$("#manageDifficultyAgoDiv1").append(attachmentArray.join(""));
 	}
