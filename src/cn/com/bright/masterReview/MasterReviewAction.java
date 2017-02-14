@@ -2169,10 +2169,13 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             String awards_name = (String)map.get("awards_name");
             String awards_company =(String) map.get("awards_company");
-            String awards_level =(String) map.get("awards_level_personal_desc");
+            String awards_level =(String) map.get("awards_level");
+            String awards_level_desc =(String) map.get("awards_level_personal_desc");
             Date awards_time = (Date)map.get("awards_time");
             String approve_result = (String)map.get("approve_result");
-            String awards_type = (String)map.get("awards_type_desc");
+            String awards_type = (String)map.get("awards_type");
+            String awards_type_desc = (String)map.get("awards_type_desc");
+            String awards_type1 = (String)map.get("awards_type1");
             String awards_type1_desc = (String)map.get("awards_type1_desc");
             
             AttachMentVO  attachMentVO= new AttachMentVO();
@@ -2198,11 +2201,14 @@ public class MasterReviewAction extends BaseWorkflowAction {
             personalAwardVO.setAwardsName(awards_name);
             personalAwardVO.setAwardsCompany(awards_company);
             personalAwardVO.setAwardsLevel(awards_level);
+            personalAwardVO.setAwardsLevelDesc(awards_level_desc);
             personalAwardVO.setAwardsTime(awards_time);
             personalAwardVO.setPersonalAttachVO(attachMentVO);
             personalAwardVO.setApprove_result(approve_result);
             personalAwardVO.setAwards_type(awards_type);
-            personalAwardVO.setAwards_type1(awards_type1_desc);
+            personalAwardVO.setAwards_type_desc(awards_type_desc);
+            personalAwardVO.setAwards_type1(awards_type1);
+            personalAwardVO.setAwards_type1_desc(awards_type1_desc);
             personalAwardVO.setPersonalAttachVO1(attachMentVO1);
             personalAwardVOs.add(personalAwardVO);
         }

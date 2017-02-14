@@ -17,13 +17,16 @@ public class PersonalAwardVO {
     private String awardsName;
     private String awardsCompany;
     private String awardsLevel;
+    private String awardsLevelDesc;
     private String awardsAttachmentId;
     private String awards_type;//奖项类别
+    private String awards_type_desc;//奖项类别
     private Date awardsTime;
     private String approve_result;
     
     private String awardsAttachmentId1;
     private String awards_type1;//奖项类别1
+    private String awards_type1_desc;//奖项类别1
     
     private AttachMentVO personalAttachVO = new AttachMentVO();
     
@@ -46,7 +49,13 @@ public class PersonalAwardVO {
     public void setAwardsLevel(String awardsLevel) {
         this.awardsLevel = awardsLevel;
     }
-    public Date getAwardsTime() {
+    public String getAwardsLevelDesc() {
+		return awardsLevelDesc;
+	}
+	public void setAwardsLevelDesc(String awardsLevelDesc) {
+		this.awardsLevelDesc = awardsLevelDesc;
+	}
+	public Date getAwardsTime() {
         return awardsTime;
     }
     public void setAwardsTime(Date awardsTime) {
@@ -88,6 +97,12 @@ public class PersonalAwardVO {
     public void setAwards_type(String awards_type) {
         this.awards_type = awards_type;
     }
+	public String getAwards_type_desc() {
+		return awards_type_desc;
+	}
+	public void setAwards_type_desc(String awards_type_desc) {
+		this.awards_type_desc = awards_type_desc;
+	}
 	public String getAwardsAttachmentId1() {
 		return awardsAttachmentId1;
 	}
@@ -99,6 +114,12 @@ public class PersonalAwardVO {
 	}
 	public void setAwards_type1(String awards_type1) {
 		this.awards_type1 = awards_type1;
+	}
+	public String getAwards_type1_desc() {
+		return awards_type1_desc;
+	}
+	public void setAwards_type1_desc(String awards_type1_desc) {
+		this.awards_type1_desc = awards_type1_desc;
 	}
 	public AttachMentVO getPersonalAttachVO1() {
 		return personalAttachVO1;
