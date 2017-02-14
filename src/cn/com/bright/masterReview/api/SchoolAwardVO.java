@@ -18,6 +18,7 @@ public class SchoolAwardVO {
     private String workSchool;
     private String awardsCompany;
     private String awardsLevel;
+    private String awardsLevelDesc;
     private String awardsAttachmentId;
     private Date awardsTime;
     
@@ -48,7 +49,13 @@ public class SchoolAwardVO {
     public void setAwardsLevel(String awardsLevel) {
         this.awardsLevel = awardsLevel;
     }
-    public Date getAwardsTime() {
+    public String getAwardsLevelDesc() {
+		return awardsLevelDesc;
+	}
+	public void setAwardsLevelDesc(String awardsLevelDesc) {
+		this.awardsLevelDesc = awardsLevelDesc;
+	}
+	public Date getAwardsTime() {
         return awardsTime;
     }
     public void setAwardsTime(Date awardsTime) {

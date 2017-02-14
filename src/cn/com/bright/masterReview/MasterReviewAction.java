@@ -2118,7 +2118,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String awards_name = (String)map.get("awards_name");
             String work_school = (String)map.get("work_school");
             String awards_company =(String) map.get("awards_company");
-            String awards_level =(String) map.get("awards_level_desc");
+            String awards_level =(String) map.get("awards_level");
+            String awards_level_desc =(String) map.get("awards_level_desc");
             Date awards_time = (Date)map.get("awards_time");
             String approve_result = (String)map.get("approve_result");
             
@@ -2138,6 +2139,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             schoolAwardVO.setWorkSchool(work_school);
             schoolAwardVO.setAwardsCompany(awards_company);
             schoolAwardVO.setAwardsLevel(awards_level);
+            schoolAwardVO.setAwardsLevelDesc(awards_level_desc);
             schoolAwardVO.setAwardsTime(awards_time);
             schoolAwardVO.setSchoolAttachVO(attachMentVO);
             schoolAwardVO.setApprove_result(approve_result);
