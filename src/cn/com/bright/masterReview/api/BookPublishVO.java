@@ -16,11 +16,13 @@ public class BookPublishVO {
     private String businessKey;
     private String book_name;
     private String complete_way;
+    private String complete_way_desc;
     private Date publish_time;
     private String publish_company;
     private String complete_chapter;
     private String complete_word;
     private String author_order;
+    private String author_order_desc;
     private String coverAttachmentId;
     private String contentsAttachmentId;
     private String approve_result;
@@ -42,7 +44,13 @@ public class BookPublishVO {
     public void setComplete_way(String complete_way) {
         this.complete_way = complete_way;
     }
-    public Date getPublish_time() {
+    public String getComplete_way_desc() {
+		return complete_way_desc;
+	}
+	public void setComplete_way_desc(String complete_way_desc) {
+		this.complete_way_desc = complete_way_desc;
+	}
+	public Date getPublish_time() {
         return publish_time;
     }
     public void setPublish_time(Date publish_time) {
@@ -66,7 +74,13 @@ public class BookPublishVO {
     public void setAuthor_order(String author_order) {
         this.author_order = author_order;
     }
-    public String getId() {
+    public String getAuthor_order_desc() {
+		return author_order_desc;
+	}
+	public void setAuthor_order_desc(String author_order_desc) {
+		this.author_order_desc = author_order_desc;
+	}
+	public String getId() {
         return id;
     }
     public void setId(String id) {

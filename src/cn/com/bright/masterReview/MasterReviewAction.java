@@ -2282,11 +2282,13 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String id = (String)map.get("id");
             String businessKey =(String) map.get("businessKey");
             String book_name =(String) map.get("book_name");
-            String complete_way = (String)map.get("complete_way_desc");
+            String complete_way = (String)map.get("complete_way");
+            String complete_way_desc = (String)map.get("complete_way_desc");
             Date publish_time = (Date)map.get("publish_time");
             String complete_chapter =(String) map.get("complete_chapter");
             String complete_word = (String)map.get("complete_word");
-            String author_order = (String)map.get("author_order_desc");
+            String author_order = (String)map.get("author_order");
+            String author_order_desc = (String)map.get("author_order_desc");
             String approve_result =(String) map.get("approve_result");
             String publish_company =(String) map.get("publish_company");
 
@@ -2317,10 +2319,12 @@ public class MasterReviewAction extends BaseWorkflowAction {
             bookPublishVO.setBusinessKey(businessKey);
             bookPublishVO.setBook_name(book_name);
             bookPublishVO.setComplete_way(complete_way);
+            bookPublishVO.setComplete_way_desc(complete_way_desc);
             bookPublishVO.setPublish_time(publish_time);
             bookPublishVO.setComplete_chapter(complete_chapter);
             bookPublishVO.setComplete_word(complete_word);
             bookPublishVO.setAuthor_order(author_order);
+            bookPublishVO.setAuthor_order_desc(author_order_desc);
             bookPublishVO.setApprove_result(approve_result);
             bookPublishVO.setPublish_company(publish_company);
             bookPublishVOs.add(bookPublishVO);
