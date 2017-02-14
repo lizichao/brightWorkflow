@@ -2224,9 +2224,11 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             String subjectName = (String)map.get("subject_name");
             String subject_company = (String)map.get("subject_company");
-            String subject_level = (String)map.get("subject_level_desc");
+            String subject_level = (String)map.get("subject_level");
+            String subject_level_desc = (String)map.get("subject_level_desc");
             String subject_responsibility =(String) map.get("subject_responsibility");
-            String is_finish_subject =(String) map.get("is_finish_subject_desc");
+            String is_finish_subject =(String) map.get("is_finish_subject");
+            String is_finish_subject_desc =(String) map.get("is_finish_subject_desc");
             String finish_result = (String)map.get("finish_result");
             Date finish_time = (Date)map.get("finish_time");
             String approve_result = (String)map.get("approve_result");
@@ -2245,8 +2247,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
             subjectVO.setSubjectName(subjectName);
             subjectVO.setSubjectCompany(subject_company);
             subjectVO.setSubjectLevel(subject_level);
+            subjectVO.setSubjectLevelDesc(subject_level_desc);
             subjectVO.setSubjectRresponsibility(subject_responsibility);
             subjectVO.setIsfinishSubject(is_finish_subject);
+            subjectVO.setIsfinishSubjectDesc(is_finish_subject_desc);
             subjectVO.setFinishResult(finish_result);
             subjectVO.setFinishTime(finish_time);
             subjectVO.setSubjectAttachVO(attachMentVO);

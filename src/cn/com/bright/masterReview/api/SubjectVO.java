@@ -19,6 +19,7 @@ public class SubjectVO {
     private String subjectCompany;
     
     private String subjectLevel;
+    private String subjectLevelDesc;
     private String subjectRresponsibility;
     
     private String finishResult;
@@ -26,6 +27,7 @@ public class SubjectVO {
     private Date finishTime;
     
     private String isfinishSubject;
+    private String isfinishSubjectDesc;
     private String subjectAttachmentId;
     
     private String approve_result;
@@ -55,8 +57,16 @@ public class SubjectVO {
     public void setSubjectLevel(String subjectLevel) {
         this.subjectLevel = subjectLevel;
     }
+    
+    public String getSubjectLevelDesc() {
+		return subjectLevelDesc;
+	}
 
-    public String getSubjectRresponsibility() {
+	public void setSubjectLevelDesc(String subjectLevelDesc) {
+		this.subjectLevelDesc = subjectLevelDesc;
+	}
+
+	public String getSubjectRresponsibility() {
         return subjectRresponsibility;
     }
 
@@ -83,8 +93,16 @@ public class SubjectVO {
     public String getIsfinishSubject() {
         return isfinishSubject;
     }
+    
+    public String getIsfinishSubjectDesc() {
+		return isfinishSubjectDesc;
+	}
 
-    public void setIsfinishSubject(String isfinishSubject) {
+	public void setIsfinishSubjectDesc(String isfinishSubjectDesc) {
+		this.isfinishSubjectDesc = isfinishSubjectDesc;
+	}
+
+	public void setIsfinishSubject(String isfinishSubject) {
         this.isfinishSubject = isfinishSubject;
     }
 
