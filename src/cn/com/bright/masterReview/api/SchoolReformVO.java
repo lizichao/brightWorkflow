@@ -20,6 +20,7 @@ public class SchoolReformVO {
     private String project_name;
     //项目级别
     private String project_level;
+    private String project_level_desc;
     //时间
     private Date implement_time;
     //项目主管部门
@@ -46,7 +47,13 @@ public class SchoolReformVO {
     public void setProject_level(String project_level) {
         this.project_level = project_level;
     }
-    public Date getImplement_time() {
+    public String getProject_level_desc() {
+		return project_level_desc;
+	}
+	public void setProject_level_desc(String project_level_desc) {
+		this.project_level_desc = project_level_desc;
+	}
+	public Date getImplement_time() {
         return implement_time;
     }
     public void setImplement_time(Date implement_time) {

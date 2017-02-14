@@ -1781,9 +1781,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
             
 
             AttachMentVO  proveAttachMentVO= new AttachMentVO();
-            if(null !=map.get("prove_attachment_id")){
-                String attachment_id = map.get("prove_attachment_id").toString();
-                String file_name = map.get("file_name").toString();
+            if(null !=map.get("attachment_id")){
+                String attachment_id = (String)map.get("attachment_id");
+                String file_name = (String)map.get("file_name");
                 proveAttachMentVO.setAttachmentId(attachment_id);
                 proveAttachMentVO.setFileName(file_name);
             }
@@ -1874,9 +1874,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String approve_result = (String)map.get("approve_result");
             
             AttachMentVO  proveAttachMentVO= new AttachMentVO();
-            if(null !=map.get("prove_attachment_id")){
-                String attachment_id = map.get("prove_attachment_id").toString();
-                String file_name = map.get("file_name").toString();
+            if(null !=map.get("attachment_id")){
+                String attachment_id = (String)map.get("attachment_id");
+                String file_name = (String)map.get("file_name");
                 proveAttachMentVO.setAttachmentId(attachment_id);
                 proveAttachMentVO.setFileName(file_name);
             }
@@ -1927,9 +1927,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String approve_result =(String) map.get("approve_result");
             
             AttachMentVO  proveAttachMentVO= new AttachMentVO();
-            if(null !=map.get("prove_attachment_id")){
-                String attachment_id = map.get("prove_attachment_id").toString();
-                String file_name = map.get("file_name").toString();
+            if(null !=map.get("attachment_id")){
+                String attachment_id = (String)map.get("attachment_id");
+                String file_name = (String)map.get("file_name");
                 proveAttachMentVO.setAttachmentId(attachment_id);
                 proveAttachMentVO.setFileName(file_name);
             }
@@ -1979,9 +1979,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String approve_result = (String)map.get("approve_result");
             
             AttachMentVO  proveAttachMentVO= new AttachMentVO();
-            if(null !=map.get("prove_attachment_id")){
-                String attachment_id = map.get("prove_attachment_id").toString();
-                String file_name = map.get("file_name").toString();
+            if(null !=map.get("attachment_id")){
+                String attachment_id = (String)map.get("attachment_id");
+                String file_name = (String)map.get("file_name");
                 proveAttachMentVO.setAttachmentId(attachment_id);
                 proveAttachMentVO.setFileName(file_name);
             }
@@ -2026,15 +2026,16 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             Date implement_time = (Date)map.get("implement_time");
             String project_name =(String) map.get("project_name");
-            String project_level =(String) map.get("project_level_desc");
+            String project_level =(String) map.get("project_level");
+            String project_level_desc =(String) map.get("project_level_desc");
             String charge_department =(String) map.get("charge_department");
             String performance =(String) map.get("performance");
             String approve_result =(String) map.get("approve_result");
             
             AttachMentVO  proveAttachMentVO= new AttachMentVO();
-            if(null !=map.get("prove_attachment_id")){
-                String attachment_id = map.get("prove_attachment_id").toString();
-                String file_name = map.get("file_name").toString();
+            if(null !=map.get("attachment_id")){
+                String attachment_id = (String)map.get("attachment_id");
+                String file_name = (String)map.get("file_name");
                 proveAttachMentVO.setAttachmentId(attachment_id);
                 proveAttachMentVO.setFileName(file_name);
             }
@@ -2046,6 +2047,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             schoolReformVO.setImplement_time(implement_time);
             schoolReformVO.setProject_name(project_name);
             schoolReformVO.setProject_level(project_level);
+            schoolReformVO.setProject_level_desc(project_level_desc);
             schoolReformVO.setCharge_department(charge_department);
             schoolReformVO.setPerformance(performance);
             schoolReformVO.setApprove_result(approve_result);
