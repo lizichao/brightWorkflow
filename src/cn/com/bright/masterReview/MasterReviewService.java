@@ -564,10 +564,14 @@ public class MasterReviewService {
         sql.append(" ,create_date");
         sql.append(" ,study_form");
         sql.append(" ,education_type");
+        sql.append(" ,education");
+        sql.append(" ,degree");
         sql.append("  ) VALUES (");
         sql.append(" ?");
         sql.append(" ,? ");
         sql.append(" ,? ");
+        sql.append(" ,?");
+        sql.append(" ,?");
         sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
@@ -585,7 +589,7 @@ public class MasterReviewService {
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (EducationVO educationVO : educationVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_education"));
-            Object[] param = new Object[14];
+            Object[] param = new Object[16];
             param[0] = id;
             param[1] = businessKey;
             param[2] = educationVO.getStartTime();
@@ -600,6 +604,8 @@ public class MasterReviewService {
             param[11] = DatetimeUtil.getNow("");
             param[12] = educationVO.getStudy_form();
             param[13] = educationVO.getEducation_type();
+            param[14] = educationVO.getEducation();
+            param[15] = educationVO.getDegree();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
