@@ -511,10 +511,19 @@ function selectDeleteTime(timeObject){
 		dateFmt:'yyyy-MM-dd',
 		onpicked:function(dp){
 			var selDateId = dp.srcEl.id;
-			if(selDateId && selDateId.substring(0,(selDateId.length-1)) =='endTimeExperience'){
-				var rownum = selDateId.substring((selDateId.length-1)) 
-				var startDate =  $('#startTimeExperience'+rownum).val();
-				var endDate =  $(dp.srcEl).val();
+			var startDate = null;
+			var endDate = null;
+			if (selDateId) {
+				if (selDateId.substring(0,(selDateId.length-1)) =='endTimeExperience') {
+					var rownum = selDateId.substring((selDateId.length-1));
+					startDate =  $('#startTimeExperience'+rownum).val();
+					endDate =  $(dp.srcEl).val();
+				} else if (selDateId.substring(0,(selDateId.length-1)) =='startTimeExperience')  {
+					var rownum = selDateId.substring((selDateId.length-1));
+					startDate =  $(dp.srcEl).val();
+					endDate =  $('#endTimeExperience'+rownum).val();
+				}
+				
 				if(startDate && endDate){
 					$('#workYear'+rownum).text('');
 					$('#workMonth'+rownum).text('');
@@ -533,6 +542,28 @@ function selectDeleteTime(timeObject){
 					}
 				}
 			}
+			/*if(selDateId && selDateId.substring(0,(selDateId.length-1)) =='endTimeExperience'){
+				var rownum = selDateId.substring((selDateId.length-1)) 
+				startDate =  $('#startTimeExperience'+rownum).val();
+				endDate =  $(dp.srcEl).val();
+				if(startDate && endDate){
+					$('#workYear'+rownum).text('');
+					$('#workMonth'+rownum).text('');
+					var diffDate = BcUtil.get_yearMonthDiffFormat(startDate,endDate);
+					//$('#workYear'+rownum).text(diffDate.year);
+					//$('#workMonth'+rownum).text(diffDate.month);
+					var month = diffDate.month;
+					var year = parseInt(month/12);
+					if (year>0) {
+						month = month%12;
+						$('#workYear'+rownum).text(year);
+					}
+					
+					if (month>0) {
+						$('#workMonth'+rownum).text(month);
+					}
+				}
+			}*/
 		}
 	});
 }
