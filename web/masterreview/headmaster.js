@@ -382,6 +382,18 @@
 		if(workExperienceVOs.length>0){
 			 var dataObject = {'Data': [],'personRowNum':(workExperienceVOs.length+1)};
 			 for(var i =0;i<workExperienceVOs.length;i++){
+				 var diffDate = BcUtil.get_yearMonthDiffFormat(Brightcom.workflow.getDateStrByLong(workExperienceVOs[i].startTime),Brightcom.workflow.getDateStrByLong(workExperienceVOs[i].endTime));
+				 var month = diffDate.month;
+				 var year = parseInt(month/12);
+				 var workYear = '';
+				 if (year>0) {
+					month = month%12;
+					workYear = year+'Äê';
+				 }
+				 if (month>0) {
+					 workYear += month+'ÔÂ';
+				 }
+				 workExperienceVOs[i]['workYear']=workYear;
 				 dataObject.Data.push(workExperienceVOs[i]);
 			 }
 			 if(approveType==page.professorApprove){
