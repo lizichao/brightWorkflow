@@ -98,13 +98,13 @@
       <td>{{timeContent startTime endTime/}}</td>
       <td>{{:studySchool}}</td>
       <td>{{:studyProfession}}</td>
-      <td>{{:education}}</td>
+      <td>{{:educationDesc}}</td>
       <td>
          {{if educationAttachMentVO.attachmentId !==null}}
              <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:educationAttachMentVO.attachmentId}}"> 点击查看</a>
         {{/if}}
       </td>
-      <td>{{:degree}}</td>
+      <td>{{:degreeDesc}}</td>
       <td>
          {{if degreeAttachMentVO.attachmentId !==null}}
              <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:degreeAttachMentVO.attachmentId}}"> 点击查看</a>
@@ -230,16 +230,16 @@
 			        	<td class="black">主办单位：</td>
 			        	<td>{{:organizers}}</td>
 			        	<td class="black">主办单位级别：</td>
-			        	<td>{{:organizersLevel}}</td>
+			        	<td>{{:organizersLevelDesc}}</td>
 			        	<td class="black">本人承担部分：</td>
 			        	<td>{{:personalPart}}</td>
 			        </tr>
 
                      <tr>
 			        	<td class="black">完成方式：</td>
-			        	<td>{{:complete_way}}</td>
+			        	<td>{{:complete_way_desc}}</td>
 			        	<td class="black">作者排序：</td>
-			        	<td>{{:author_order}}</td>
+			        	<td>{{:author_order_desc}}</td>
 			        	<td class="black">出版单位：</td>
 			        	<td>{{:publish_company}}</td>
 			        </tr>
@@ -278,7 +278,7 @@
 			        </tr>
                     <tr>
 			        	<td class="black">完成方式：</td>
-			        	<td>{{:complete_way}}</td>
+			        	<td>{{:complete_way_desc}}</td>
 			        	<td class="black">出版时间：</td>
 			        	<td>{{timeCovert publish_time/}} </td>
 			        	<td class="black">本人完成字数：</td>
@@ -288,7 +288,7 @@
 			        	<td class="black">本人承担部分：</td>
 			        	<td>{{:complete_chapter}}</td>
 			        	<td class="black">作者排序：</td>
-			        	<td colspan="1">{{:author_order}}</td>
+			        	<td colspan="1">{{:author_order_desc}}</td>
                         <td class="black">出版社：</td>
 			        	<td colspan="1">{{:publish_company}}</td>
 		        	</tr>
@@ -323,9 +323,9 @@
 			        </tr>
                     <tr>
 			        	<td class="black">课题级别：</td>
-			        	<td colspan="2">{{:subjectLevel}}</td>
+			        	<td colspan="2">{{:subjectLevelDesc}}</td>
 			        	<td class="black"  colspan="2">是否结题：</td>
-			        	<td>{{:isfinishSubject}}</td>
+			        	<td>{{:isfinishSubjectDesc}}</td>
 			        </tr>
                     <tr>
 			        	<td class="black">结题时间：</td>
@@ -374,14 +374,14 @@
 			        </tr>
                     <tr>
 			        	<td class="black">获奖级别：</td>
-			        	<td>{{:awardsLevel}}</td>
+			        	<td>{{:awardsLevelDesc}}</td>
 			        	<td class="black">表彰时间：</td>
 			        	<td colspan="3">{{timeCovert awardsTime/}}</td>
 		        	</tr>
 
               <tr>
 	            <td class="black">奖项类别1：</td>
-			    <td >{{:awards_type}}</td>
+			    <td >{{:awards_type_desc}}</td>
 			    <td colspan="2" class="black">获奖证书1：</td>
 			    <td colspan="2">
                     {{if personalAttachVO.attachmentId !==null}}
@@ -392,7 +392,7 @@
 
               <tr>
                         <td class="black">奖项类别2：</td>
-			        	<td >{{:awards_type1}}</td>
+			        	<td >{{:awards_type1_desc}}</td>
 			        	<td colspan="2" class="black">获奖证书2：</td>
 			        	<td colspan="2">  
                          {{if personalAttachVO1.attachmentId !==null}}
@@ -430,7 +430,7 @@
 			        	<td class="black">任职学校：</td>
 			        	<td>{{:workSchool}}</td>
 			        	<td class="black">获奖级别：</td>
-			        	<td>{{:awardsLevel}}</td>
+			        	<td>{{:awardsLevelDesc}}</td>
 			        	<td class="black">表彰时间：</td>
 			        	<td>{{timeCovert awardsTime/}}</td>
 			        </tr>
@@ -508,7 +508,7 @@
 			        </tr>
                     <tr>
 			        	<td class="black">项目级别：</td>
-			        	<td>{{:class_project_level}}</td>
+			        	<td>{{:project_level_desc}}</td>
 			        	<td class="black">项目主管部门：</td>
 			        	<td>{{:charge_department}}</td>
 			        	<td class="black">项目完成情况：</td>
@@ -590,7 +590,7 @@
 			        	<td class="black">违纪描述：</td>
 			        	<td>{{:description}}</td>
 			        	<td class="black">处理结果：</td>
-			        	<td>{{:approve_result}}</td>
+			        	<td>{{:process_result}}</td>
                         <td  class="black">证明材料：</td>
 			            <td >
                          {{if proveAttachMentVO.attachmentId !==null}}

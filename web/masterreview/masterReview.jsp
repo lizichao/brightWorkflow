@@ -234,42 +234,46 @@ function exportToWord(){
 			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
 			    <tbody>
 			         <tr>
-			            <th width="100%" colspan="6">近八年任职学校</th>
+			            <th width="100%" colspan="4">近八年任职学校</th>
 			        </tr>
 			        <tr>
-			        	<td class="black" colspan="3">学校名称：</td>
-			        	<td><label id="schoolNameSpaceAgo" name="schoolNameSpaceAgo"></label> </td>
-			        	<td class="black">学校类型：</td>
-			        	<td><label id="schoolTypeAgo" name="schoolTypeAgo"></label> </td>
+			        	<td class="black" width="15%">学校名称：</td>
+			        	<td width="35%"><label id="schoolNameSpaceAgo" name="schoolNameSpaceAgo"></label></td>
+			        	<td class="black" width="15%">学校类型：</td>
+			        	<td width="35%"><label id="schoolTypeAgo" name="schoolTypeAgo"></label> </td>
 			        </tr>
-			         <tr>
+			        <tr>
 			        	<td class="black">校区数量：</td>
 			        	<td><label id="schoolCountAgo" name="schoolCountAgo"></label> </td>
 			        	<td class="black">班级数量：</td>
 			        	<td><label id="studentNumberAgo" name="studentNumberAgo"></label> </td>
-			        	<td class="black">证明材料：</td>
-			        	<td><span id="manageDifficultyAgoSpan"></span> </td>
 			        </tr>
-			   </tbody>
+			        <tr>
+			        	<td class="black">证明材料：</td>
+			        	<td colspan="3"><span id="manageDifficultyAgoSpan"></span> </td>
+			        </tr>
+			   	</tbody>
 			</table>
 			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
 			    <tbody>
                     <tr>
-			            <th width="100%" colspan="8">现任职学校</th>
+			            <th width="100%" colspan="4">现任职学校</th>
 			        </tr>
 			        <tr>
-			        	<td class="black" colspan="3">学校名称：</td>
-			        	<td><label id="schoolNameSpace" name="schoolNameSpace"></label> </td>
-			        	<td class="black">学校类型：</td>
-			        	<td><label id="schoolType" name="schoolType"></label> </td>
+			        	<td class="black" width="15%">学校名称：</td>
+			        	<td width="35%"><label id="schoolNameSpace" name="schoolNameSpace"></label> </td>
+			        	<td class="black" width="15%">学校类型：</td>
+			        	<td width="35%"><label id="schoolType" name="schoolType"></label> </td>
 			        </tr>
 			        <tr>
 			        	<td class="black">校区数量：</td>
 			        	<td><label id="schoolCount" name="schoolCount"></label> </td>
 			        	<td class="black">班级数量：</td>
 			        	<td><label id="studentNumber" name="studentNumber"></label> </td>
+			        </tr>
+			        <tr>
 			        	<td class="black">证明材料：</td>
-			        	<td><span id="manageDifficultySpan"></span></td>
+			        	<td colspan="3"><span id="manageDifficultySpan"></span></td>
 			        </tr>
 			   </tbody>
 			</table>

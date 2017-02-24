@@ -753,83 +753,83 @@ function closeUnWindow(){
 			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(3)">职称情况</a><span>未填写</span>
 		</li>
 		<li>
-		   <i>4</i>
-		   	<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(4)">工作经历</a>
-			<span class="tx">已填写</span>
+		    <i>4</i>
+		   	<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(4)">个人获奖情况</a>
+			<span class="bh">被驳回</span>
 		</li>
 		<li>
-			<i>5</i>
-			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(5)">任职年限</a>
+		   <i>5</i>
+		   	<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(5)">工作经历</a>
 			<span class="tx">已填写</span>
 		</li>
 		<li>
 			<i>6</i>
-			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(6)">论文发表</a>
+			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(6)">任职年限</a>
 			<span class="tx">已填写</span>
 		</li>
 		<li>
 			<i>7</i>
-			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(7)">教科研情况</a>
-			<span>未填写</span>
+			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(7)">论文发表</a>
+			<span class="tx">已填写</span>
 		</li>
 		<li>
-		    <i>8</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(8)">专著出版</a>
+			<i>8</i>
+			<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(8)">教科研情况</a>
 			<span>未填写</span>
 		</li>
 		<li>
 		    <i>9</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(9)">进修学习</a>
-			<span class="bh">被驳回</span>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(9)">专著出版</a>
+			<span>未填写</span>
 		</li>
 		<li>
 		    <i>10</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(10)">管理难度</a>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(10)">进修学习</a>
 			<span class="bh">被驳回</span>
 		</li>
 		<li>
 		    <i>11</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(11)">办学思想</a>
-			<span class="tx">已填写</span>
-		</li>
-		<li>
-		    <i>12</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(12)">学校管理</a>
-			<span>未填写</span>
-		</li>
-		<li>
-		    <i>13</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(13)">教育教学</a>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(11)">管理难度</a>
 			<span class="bh">被驳回</span>
 		</li>
 		<li>
-		    <i>14</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(14)">外部环境</a>
+		    <i>12</i>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(12)">办学思想</a>
+			<span class="tx">已填写</span>
+		</li>
+		<li>
+		    <i>13</i>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(13)">学校管理</a>
 			<span>未填写</span>
 		</li>
 		<li>
+		    <i>14</i>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(14)">教育教学</a>
+			<span class="bh">被驳回</span>
+		</li>
+		<li>
 		    <i>15</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(15)">学生发展</a>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(15)">外部环境</a>
 			<span>未填写</span>
 		</li>
 		<li>
 		    <i>16</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(16)">教师发展</a>
-			<span class="bh">被驳回</span>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(16)">学生发展</a>
+			<span>未填写</span>
 		</li>
 		<li>
 		    <i>17</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(17)">学校获奖情况</a>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(17)">教师发展</a>
 			<span class="bh">被驳回</span>
 		</li>
 		<li>
 		    <i>18</i>
-		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(18)">学校等级评估</a>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(18)">学校获奖情况</a>
 			<span class="bh">被驳回</span>
 		</li>
 		<li>
 		    <i>19</i>
-		   	<a href="javascript:void(0);" target="_self" title="" onclick="changeOption(19)">个人获奖情况</a>
+		    <a href="javascript:void(0);" target="_self" title="" onclick="changeOption(19)">学校等级评估</a>
 			<span class="bh">被驳回</span>
 		</li>
 		<li>
@@ -892,116 +892,116 @@ function changeOption(optionType){
 		          break;
 		       case 4:
 			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/work_history.jsp", {limit: 25}, function(){
+			    	$("#mainDiv").load("/masterreview/headmaster/personal_award.jsp", {limit: 25}, function(){
 			    		initOptionClick(4);
+			    		initPersonalAwardData(masterReviewVO);
+			        });
+			   	   break; 
+		       case 5:
+			    	$('.change-channel').close();
+			    	$("#mainDiv").load("/masterreview/headmaster/work_history.jsp", {limit: 25}, function(){
+			    		initOptionClick(5);
 			    		initWorkHistoryData(masterReviewVO);
 			        });
 			   break;  
-			    case 5:
-			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/work_experience.jsp", {limit: 25}, function(){
-			    		initOptionClick(5);
-			    		initWorkExperience(masterReviewVO);
-			        });
-			        break;
 			    case 6:
 			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/paper.jsp", {limit: 25}, function(){
+			    	$("#mainDiv").load("/masterreview/headmaster/work_experience.jsp", {limit: 25}, function(){
 			    		initOptionClick(6);
-			    		initPaperData(masterReviewVO);
+			    		initWorkExperience(masterReviewVO);
 			        });
 			        break;
 			    case 7:
 			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/subject.jsp", {limit: 25}, function(){
+			    	$("#mainDiv").load("/masterreview/headmaster/paper.jsp", {limit: 25}, function(){
 			    		initOptionClick(7);
-			    		initSubjectData(masterReviewVO);
+			    		initPaperData(masterReviewVO);
 			        });
 			        break;
 			    case 8:
 			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/work_publish.jsp", {limit: 25}, function(){
+			    	$("#mainDiv").load("/masterreview/headmaster/subject.jsp", {limit: 25}, function(){
 			    		initOptionClick(8);
-			    		initWorkPublishData(masterReviewVO);
+			    		initSubjectData(masterReviewVO);
 			        });
 			        break;
 			    case 9:
 			    	$('.change-channel').close();
-			    	$("#mainDiv").load("/masterreview/headmaster/study_train.jsp", {limit: 25}, function(){
+			    	$("#mainDiv").load("/masterreview/headmaster/work_publish.jsp", {limit: 25}, function(){
 			    		initOptionClick(9);
+			    		initWorkPublishData(masterReviewVO);
+			        });
+			        break;
+			    case 10:
+			    	$('.change-channel').close();
+			    	$("#mainDiv").load("/masterreview/headmaster/study_train.jsp", {limit: 25}, function(){
+			    		initOptionClick(10);
 			    		initStudyTrainData(masterReviewVO);
 			        });
 			        break;
-			     case 10:
+			     case 11:
 				    	$('.change-channel').close();
 				    	$("#mainDiv").load("/masterreview/headmaster/manage_difficulty.jsp", {limit: 25}, function(){
-				    		initOptionClick(10);
+				    		initOptionClick(11);
 				    		initManageDifficulty(masterReviewVO);
 				        });
 				  break;
-			     case 11:
-				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/run_school.jsp", {limit: 25}, function(){
-				    		initOptionClick(11);
-				    		initRunSchoolData(masterReviewVO);
-				        });
-				  break;  
 			     case 12:
 				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/school_management.jsp", {limit: 25}, function(){
+				    	$("#mainDiv").load("/masterreview/headmaster/run_school.jsp", {limit: 25}, function(){
 				    		initOptionClick(12);
-				    		initSchoolManagementData(masterReviewVO);
+				    		initRunSchoolData(masterReviewVO);
 				        });
 				  break;  
 			     case 13:
 				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/education_science.jsp", {limit: 25}, function(){
+				    	$("#mainDiv").load("/masterreview/headmaster/school_management.jsp", {limit: 25}, function(){
 				    		initOptionClick(13);
-				    		initEducationScienceData(masterReviewVO);
+				    		initSchoolManagementData(masterReviewVO);
 				        });
 				  break;  
 			     case 14:
 				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/external_environment.jsp", {limit: 25}, function(){
+				    	$("#mainDiv").load("/masterreview/headmaster/education_science.jsp", {limit: 25}, function(){
 				    		initOptionClick(14);
-				    		initExternalEnvironmentData(masterReviewVO);
+				    		initEducationScienceData(masterReviewVO);
 				        });
 				  break;  
 			     case 15:
 				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/student_development.jsp", {limit: 25}, function(){
+				    	$("#mainDiv").load("/masterreview/headmaster/external_environment.jsp", {limit: 25}, function(){
 				    		initOptionClick(15);
-				    		initStudentDevelopmentData(masterReviewVO);
+				    		initExternalEnvironmentData(masterReviewVO);
 				        });
 				  break;  
 			     case 16:
 				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/teacher_development.jsp", {limit: 25}, function(){
+				    	$("#mainDiv").load("/masterreview/headmaster/student_development.jsp", {limit: 25}, function(){
 				    		initOptionClick(16);
+				    		initStudentDevelopmentData(masterReviewVO);
+				        });
+				  break;  
+			     case 17:
+				    	$('.change-channel').close();
+				    	$("#mainDiv").load("/masterreview/headmaster/teacher_development.jsp", {limit: 25}, function(){
+				    		initOptionClick(17);
 				    		initTeacherDevelopmentData(masterReviewVO);
 				        });
 				  break; 
-			     case 17:
+			     case 18:
 				    	$('.change-channel').close();
 				    	$("#mainDiv").load("/masterreview/headmaster/school_award.jsp", {limit: 25}, function(){
-				    		initOptionClick(17);
+				    		initOptionClick(18);
 				    		initSchoolAwardData(masterReviewVO);
 				        });
 				  break;  
-			     case 18:
+			     case 19:
 				    	$('.change-channel').close();
 				    	$("#mainDiv").load("/masterreview/headmaster/grade_evaluate.jsp", {limit: 25}, function(){
 				    		initOptionClick(18);
 				    		initGradeEvaluateData(masterReviewVO);
 				        });
-				  break;  
-			     case 19:
-				    	$('.change-channel').close();
-				    	$("#mainDiv").load("/masterreview/headmaster/personal_award.jsp", {limit: 25}, function(){
-				    		initOptionClick(19);
-				    		initPersonalAwardData(masterReviewVO);
-				        });
-				  break;  
+				 break;  
 			     case 20:
 				    	$('.change-channel').close();
 				    	$("#mainDiv").load("/masterreview/headmaster/school_reform.jsp", {limit: 25}, function(){

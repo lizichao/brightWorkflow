@@ -43,6 +43,12 @@
            <input type="text" id='prove_people{{:#index+1}}' value='{{:prove_people}}' placeholder="请输入证明人" />
          </div>
     </li>
+	<li>
+		<span class='fl'>职务：</span>
+		<div class='border_2 w_20 fl'>
+			<input type='text' id='prove_people_duty{{:#index+1}}' value='{{:prove_people_duty}}' placeholder='请输入证明人职务'/>
+		</div>
+	</li>
    </ul>
 </div>
 {{/for}}
@@ -53,7 +59,6 @@ $(function(){
 });
 
 function initWorkHistoryData(masterReviewVO){
-	debugger
 	bulidWorkHistory(masterReviewVO.workHistoryVOs);
 }
 
@@ -104,6 +109,12 @@ function addWorkHistorySingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
+	educationArray.push("<li><span class='fl'>职务：</span>");
+	educationArray.push("<div class='border_2 w_20 fl'>");
+	educationArray.push("<input type='text' id='prove_people_duty"+workHistoryRowNumNext+"' value='' placeholder='请输入证明人职务'>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
 	educationArray.push("</ul>");
 	educationArray.push("</div>");
 	
@@ -128,7 +139,7 @@ function saveUpdateRefillData(){
 			    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(5);
+			changeOption(6);
 		});
 		bcReq.postData();
 	}else{
@@ -148,6 +159,7 @@ function getSubmitStrings(){
 		var end_date = $("#end_date"+rowNum).val();
 		var work_company = $("#work_company"+rowNum).val();
 		var prove_people = $("#prove_people"+rowNum).val();
+		var prove_people_duty = $("#prove_people_duty"+rowNum).val();
 		var businessKey = $("#id").val();
 		if(!work_company){
 			continue;
@@ -158,6 +170,7 @@ function getSubmitStrings(){
 				"end_date":end_date,
 				"work_company":work_company,
 				"prove_people":prove_people,
+				"prove_people_duty":prove_people_duty,
 				"businessKey":businessKey
 		}
 		submitArray.push(workExperienceObject);
@@ -179,7 +192,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>4</i>工作经历</h2>
+			<h2><i>5</i>工作经历</h2>
 			<p>填写校长本人曾经的工作经历。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -195,7 +208,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="add"><a href="javascript:void(0);" onclick="addWorkHistorySingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(3)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(4)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

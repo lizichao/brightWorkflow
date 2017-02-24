@@ -20,7 +20,7 @@
 <div class="container">
 <ul class="clear-fix">
 	 <input type='hidden' id='workPublishId{{:#index+1}}'  value='{{:id}}'>
-
+	<input type='hidden' id="proveId{{:#index+1}}"  value='{{:proveAttachMentVO.attachmentId}}'>
 	<li><span class='fl'>书名：</span>
      <div class="border_2 w_20 fl">
       <input type='text' id='book_name{{:#index+1}}' value='{{:book_name}}' placeholder=''>
@@ -72,6 +72,17 @@
           </select>
       </div>
     </li>
+	<li style='height:45px;' class='position_relative'>
+     	<span class="fl">证明材料：</span>
+     	<div style='padding-left:4px;' id='spanButtonPlaceHolder{{:#index+1}}' class='position_upload_button_professional'></div> 
+	</li>
+    <div id='workPublishTypeDiv{{:#index+1}}' class='only_attachments'>
+       {{if proveAttachMentVO.attachmentId !==null}}
+         <a class='chachu' href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}">{{:proveAttachMentVO.fileName}}</a>
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <a class='chachu'  href='javascript:void(0);' onclick='Headmaster.deleteReceiveFileAttachment("{{:proveAttachMentVO.attachmentId}}",this);' >删除</a>
+       {{/if}}
+    </div>
 </ul>
 </div>
 {{/for}}
@@ -100,6 +111,10 @@ function bulidBookPublish(bookPublishVOs){
 		 }
 		 var subTaskContent= $("#workPublishRec").render(dataObject);
 		 $("#workPublishRefill").append(subTaskContent);
+		 
+		 for(var i =0;i<bookPublishVOs.length;i++){
+			 Headmaster.initWebUploader('spanButtonPlaceHolder',(i+1),'workPublishType','点击上传','proveId','workPublishTypeDiv');
+		 }
 	}
 	//$("#workPublishRefill").append("<div class='add'><a class='add-more' href='javascript:void(0);' onclick='addWorkPublishSingle(this)' >+</a></div> ");
 }
@@ -114,6 +129,7 @@ function addWorkPublishSingle(obj){
 	educationArray.push("<ul class='clear-fix'>");
 	
 	educationArray.push("<input type='hidden' id='workPublishId"+workPublishRowNumNext+"'  value=''>");
+	educationArray.push("<input type='hidden' id='proveId"+workPublishRowNumNext+"' value=''>");
 	educationArray.push("<li>");
 	educationArray.push(" <span class='fl'>书名：</span>");
 	educationArray.push("<div class='border_2 w_20 fl'>");
@@ -164,6 +180,11 @@ function addWorkPublishSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
+	educationArray.push("<li style='height:45px;' class='position_relative'>");
+	educationArray.push("<span class='fl'>证明材料：</span><div id='spanButtonPlaceHolder"+workPublishRowNumNext+"'  class='position_upload_button_professional'></div> ");
+	educationArray.push("</li>");
+	
+	educationArray.push("<div id='workPublishTypeDiv"+workPublishRowNumNext+"' class='only_attachments'></div>");
 	
 	educationArray.push("</ul>");
 	educationArray.push("</div>");
@@ -179,6 +200,9 @@ function addWorkPublishSingle(obj){
 	
 	Brightcom.workflow.initSelectCombox('headmaster_complete_form','complete_way'+(workPublishRowNumNext));
 	Brightcom.workflow.initSelectCombox('headmaster_author_sort','author_order'+(workPublishRowNumNext));
+	
+	Headmaster.initWebUploader('spanButtonPlaceHolder',workPublishRowNumNext,'workPublishType','点击上传','proveId','workPublishTypeDiv');
+	
 }
 
 function saveUpdateRefillData(){
@@ -192,7 +216,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(9);
+			changeOption(10);
 		});
 		bcReq.postData();
 	}else{
@@ -215,6 +239,7 @@ function getSubmitStrings(){
 		var author_order = $("#author_order"+rowNum).val();
 		var coverAttachmentId = $("#coverAttachmentId"+rowNum).val();
 		var contentsAttachmentId = $("#contentsAttachmentId"+rowNum).val();
+		var proveAttachMentId = $("#proveId"+rowNum).val();
 		var businessKey = $("#id").val();
 		if(!book_name){
 			continue;
@@ -231,6 +256,7 @@ function getSubmitStrings(){
 				"author_order":author_order,
 				'coverAttachmentId' :coverAttachmentId,
 				'contentsAttachmentId' :contentsAttachmentId,
+				'proveAttachMentId' :proveAttachMentId
 		}
 		submitArray.push(workExperienceObject);
 	}
@@ -251,7 +277,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>8</i>专著出版</h2>
+			<h2><i>9</i>专著出版</h2>
 			<p>填写个人专著出版情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -269,7 +295,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(7)">上一步</a>
+	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(8)">上一步</a>
 	   <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

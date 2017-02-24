@@ -57,8 +57,8 @@
 
 
    <li>
-      <span class='fl'>奖项类别1：</span>
-      <div class="border_2 w_28 fl">
+      <span class='fl'>是否属于以下奖项：</span>
+      <div class="border_2 w_29 fl">
         <select id="awards_type{{:#index+1}}" class='select_left'>
                    {{for headmaster_awards_type}}
                      {{if id===#parent.parent.data.awards_type }}
@@ -72,7 +72,7 @@
     </li>
 	
     <li class='position_relative'>
-      <span class='fl'>获奖证书1：</span> 
+      <span class='fl'>获奖证书：</span> 
       <div id='personalAwardUpload{{:#index+1}}' class='position_upload_button_professional'></div> 
     </li>
 
@@ -85,7 +85,7 @@
     </div>
 
 
-
+	{{!-- 
      <li>
       <span class='fl'>奖项类别2：</span>
       <div class="border_2 w_28 fl">
@@ -113,6 +113,7 @@
          <a class='chachu'  href='javascript:void(0);' onclick='Headmaster.deleteReceiveFileAttachment("{{:personalAttachVO1.attachmentId}}",this);' >删除</a>
        {{/if}}
     </div>
+	--}}
 </ul>
 </div>
 {{/for}}
@@ -197,14 +198,14 @@ function addPersonalAwardSingle(obj){
 	educationArray.push("</li>");
 	
 	educationArray.push("<li>");
-	educationArray.push("<span class='fl'>奖项类别1：</span>");
-	educationArray.push("<div  class='border_2 w_28 fl'>");
+	educationArray.push("<span class='fl'>是否属于以下奖项：</span>");
+	educationArray.push("<div  class='border_2 w_29 fl'>");
 	educationArray.push("<select id='awards_type"+personalAwardRowNumNext+"' class='select_left'></select>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
 	educationArray.push("<li class='position_relative'>");
-	educationArray.push("<span class='fl'>获奖证书1：</span> ");
+	educationArray.push("<span class='fl'>获奖证书：</span> ");
 	educationArray.push("<div id='personalAwardUpload"+personalAwardRowNumNext+"' class='position_upload_button_professional'></div>");
 	educationArray.push("</li>");
 	
@@ -213,7 +214,7 @@ function addPersonalAwardSingle(obj){
 	
 	
 	
-	educationArray.push("<li>");
+	/*educationArray.push("<li>");
 	educationArray.push("<span class='fl'>奖项类别2：</span>");
 	educationArray.push("<div class='border_2 w_28 fl'>");
 	educationArray.push("<select id='awards_type1"+personalAwardRowNumNext+"' class='select_left'></select>");
@@ -227,7 +228,7 @@ function addPersonalAwardSingle(obj){
 	
 	
 	educationArray.push("<div id='personalAwardTypeDiv1"+personalAwardRowNumNext+"' class='only_attachments'></div>");
-	
+	*/
 	educationArray.push("</ul>");
 	educationArray.push("</div>");
 	
@@ -260,7 +261,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(20);
+			changeOption(5);
 		});
 		bcReq.postData();
 	}else{
@@ -282,8 +283,8 @@ function getSubmitStrings(){
 		var awards_type = $("#awards_type"+rowNum).val();
 		var businessKey = $("#id").val();
 		
-		var awards_attachment_id1 = $("#awards_attachment_id_personal1"+rowNum).val();
-		var awards_type1 = $("#awards_type1"+rowNum).val();
+		var awards_attachment_id1 = '';//$("#awards_attachment_id_personal1"+rowNum).val();
+		var awards_type1 = '';//$("#awards_type1"+rowNum).val();
 		if(!awards_name){
 			continue;
 		}
@@ -318,7 +319,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>19</i>个人获奖情况</h2>
+			<h2><i>4</i>个人获奖情况</h2>
 			<p>填写个人获得市级以上党委政府、教育行政部门授予的表彰和奖励。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -334,7 +335,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="add"><a href="javascript:void(0);" onclick="addPersonalAwardSingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(18)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(3)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	 </div>
 

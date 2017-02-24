@@ -26,11 +26,13 @@ public class BookPublishVO {
     private String coverAttachmentId;
     private String contentsAttachmentId;
     private String approve_result;
+    private String proveAttachMentId;
     
     private AttachMentVO coverVO = new AttachMentVO();
     
     private AttachMentVO contentVO = new AttachMentVO();
     
+    private AttachMentVO proveAttachMentVO = new AttachMentVO();;
     
     public String getBook_name() {
         return book_name;
@@ -113,7 +115,13 @@ public class BookPublishVO {
     public AttachMentVO getContentVO() {
         return contentVO;
     }
-    public void setContentVO(AttachMentVO contentVO) {
+    public AttachMentVO getProveAttachMentVO() {
+		return proveAttachMentVO;
+	}
+	public void setProveAttachMentVO(AttachMentVO proveAttachMentVO) {
+		this.proveAttachMentVO = proveAttachMentVO;
+	}
+	public void setContentVO(AttachMentVO contentVO) {
         this.contentVO = contentVO;
     }
     public String getApprove_result() {
@@ -127,6 +135,12 @@ public class BookPublishVO {
 	}
 	public void setPublish_company(String publish_company) {
 		this.publish_company = publish_company;
+	}
+	public String getProveAttachMentId() {
+		return proveAttachMentId;
+	}
+	public void setProveAttachMentId(String proveAttachMentId) {
+		this.proveAttachMentId = proveAttachMentId;
 	}
     
 }

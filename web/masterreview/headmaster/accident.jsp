@@ -67,6 +67,24 @@ $(function(){
 });
 
 function initAccidentData(masterReviewVO){
+	var situationVOs = masterReviewVO.situationVOs;
+	var isContinue = false;
+	Brightcom.workflow.initSelectCombox('headmaster_yes_no','hasAccident');
+	if (situationVOs!=null&&situationVOs.length>0) {
+		for(var i =0;i<situationVOs.length;i++){
+			if (situationVOs[i].tableName == "headmaster_accident") {
+				isContinue = true;
+				$("#situation_id").val(situationVOs[i].id);
+				$("#hasAccident").val(situationVOs[i].hasSituation);
+				break;
+			}
+		}
+	}
+	if (!isContinue) return;
+	if ($("#hasAccident").val()=="2") {
+		$("#accidentRefill").show();
+		$("#addDiv").show();
+	}
 	bulidAccident(masterReviewVO.accidentVOs);
 }
 
@@ -88,6 +106,7 @@ function bulidAccident(accidentVOs){
 		 
 	}
 	//$("#accidentRefill").append("<div class='add'><a class='add-more' href='javascript:void(0);' onclick='addAccidentSingle(this)' >+</a></div> ");
+	//$('select').selectOrDie();
 }
 
 function addAccidentSingle(obj){
@@ -178,6 +197,12 @@ function saveUpdateRefillData(){
 function getSubmitStrings(){
 	var submitArray = [];
 	var accidentRowNum = $("#accidentRowNum").val();
+	var situationObject = {
+		"situation_id":$("#situation_id").val(),
+		"situation_businessKey":$("#id").val(),
+		"situation_hasSituation":$("#hasAccident").val()
+	}
+	submitArray.push(situationObject);
 	for(var i=0;i<accidentRowNum;i++){
 		var rowNum = (i+1);
 		var id = $("#accidentId"+rowNum).val();
@@ -233,6 +258,17 @@ function countChar(curObj) {//计算字数
 		}
 	}
 }
+
+function showInfoFn(){
+	var hasAccident = $("#hasAccident").val();
+	if (hasAccident=='1') {//不显示数据
+		$("#accidentRefill").hide();
+		$("#addDiv").hide();
+	} else if (hasAccident=='2') { //显示数据
+		$("#accidentRefill").show();
+		$("#addDiv").show();
+	}
+}
 </script>
 
 </head>
@@ -244,20 +280,35 @@ function countChar(curObj) {//计算字数
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>22</i>责任事故</h2>
+			<h2><i>22</i>责任事故情况</h2>
 			<p>填写学校出现安全责任事故，或出现严重违纪现象，受到上级通报批评以上处理。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>
 	</div>
 	<!-- 标题 e -->
+	<!--   -->
+	<div class="years">
+		<div class="container">
+			<ul class="clear-fix">
+				<li>
+					<div class="border_2" style="width: 180px;margin: 0 auto;">
+						<input type="hidden" id="situation_id"/>
+						<span class="fl">有无责任事故情况：</span>
+						<select id="hasAccident" onchange="showInfoFn()"></select>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--  -->
 	<!-- 任职年限 s -->
-	<div id="accidentRefill" class="years">
+	<div id="accidentRefill" class="years" style="display: none">
 		<input type="hidden" id="accidentRowNum" name="accidentRowNum" value="0">
 	</div>
 	<!-- 任职年限 e -->
 	
-	<div class="add"><a href="javascript:void(0);" onclick="addAccidentSingle(this)" class="add-more">+</a></div>
+	<div id="addDiv" class="add" style="display: none"><a href="javascript:void(0);" onclick="addAccidentSingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
 	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(21)">上一步</a>

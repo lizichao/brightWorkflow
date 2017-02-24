@@ -19,13 +19,15 @@ public class StudyTrainVO {
     private Date start_date;
     private Date end_date;
 
+    private String title;
     private String content;
     private String class_hour;
     private String study_place;
     private String organizers;
     private String approve_result;
 
-    
+    private String proveAttachMentId;
+    private AttachMentVO proveAttachMentVO;
     
   
     public String getId() {
@@ -52,7 +54,13 @@ public class StudyTrainVO {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
-    public String getContent() {
+    public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
         return content;
     }
     public void setContent(String content) {
@@ -84,5 +92,17 @@ public class StudyTrainVO {
     public void setApprove_result(String approve_result) {
         this.approve_result = approve_result;
     }
+	public String getProveAttachMentId() {
+		return proveAttachMentId;
+	}
+	public void setProveAttachMentId(String proveAttachMentId) {
+		this.proveAttachMentId = proveAttachMentId;
+	}
+	public AttachMentVO getProveAttachMentVO() {
+		return proveAttachMentVO;
+	}
+	public void setProveAttachMentVO(AttachMentVO proveAttachMentVO) {
+		this.proveAttachMentVO = proveAttachMentVO;
+	}
     
 }

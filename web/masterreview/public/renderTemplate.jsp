@@ -30,13 +30,13 @@
       <td>{{timeContent startTime endTime/}}</td>
       <td>{{:studySchool}}</td>
       <td>{{:studyProfession}}</td>
-      <td>{{:education}}</td>
+      <td>{{:educationDesc}}</td>
       <td>
          {{if educationAttachMentVO.attachmentId !==null}}
              <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:educationAttachMentVO.attachmentId}}"> 点击查看</a>
         {{/if}}
       </td>
-      <td>{{:degree}}</td>
+      <td>{{:degreeDesc}}</td>
       <td>
          {{if degreeAttachMentVO.attachmentId !==null}}
              <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:degreeAttachMentVO.attachmentId}}"> 点击查看</a>
@@ -118,252 +118,272 @@
 
 <!--论文发表情况  -->
 <script id="paperRec" type="text/x-jsrender">	
-<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">论文发表情况</th>
-			        </tr>
-{{for Data}}
-                     <tr>
-			        	<td rowspan="5">{{:#index+1}}</a>
-			        	<td class="black">题目：</td>
-			        	<td colspan="2">{{:title}}</td>
-			        	<td class="black" colspan="2">杂志名称：</td>
-			        	<td>{{:magazineMeetName}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">宣读论文会议名称：</td>
-			        	<td>{{:paperMeetName}}</td>
-			        	<td class="black">刊号：</td>
-			        	<td>{{:paperNumber}}</td>
-			        	<td class="black">发表及宣读时间：</td>
-			        	<td>{{timeCovert publishTime/}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">主办单位：</td>
-			        	<td>{{:organizers}}</td>
-			        	<td class="black">主办单位级别：</td>
-			        	<td>{{:organizersLevel}}</td>
-			        	<td class="black">本人承担部分：</td>
-			        	<td>{{:personalPart}}</td>
-			        </tr>
-
-                      <tr>
-			        	<td class="black">完成方式：</td>
-			        	<td>{{:complete_way}}</td>
-			        	<td class="black">作者排序：</td>
-			        	<td>{{:author_order}}</td>
-			        	<td class="black">出版单位：</td>
-			        	<td>{{:publish_company}}</td>
-			        </tr>
-
-
-                     <tr>
-			        	<td colspan="4" class="black">论文扫描件：</td>
-			        	<td colspan="2">
-                     {{if paperAttachMentVO.attachmentId !==null}}
-                        <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:paperAttachMentVO.attachmentId}}"> 点击查看</a>
-                      {{/if}}
-                      </td>
-			        </tr>
-{{/for}}
-</tbody>
-</table>
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+        	<tr>
+				<th width="100%" colspan="5">论文发表情况</th>
+			</tr>
+			{{for Data}}
+            	<tr>
+					<td rowspan="6" width="5%">{{:#index+1}}</a>
+					<td class="black" width="15%">题目：</td>
+					<td width="32.5%">{{:title}}</td>
+					<td class="black" width="15%">发表及宣读时间：</td>
+					<td width="32.5%">{{timeCovert publishTime/}}</td>
+				</tr>
+				<tr>
+			        <td class="black">杂志名称：</td>
+			        <td>{{:magazineMeetName}}</td>
+			        <td class="black">主办单位：</td>
+			        <td>{{:organizers}}</td>
+				</tr>
+				<tr>
+			        <td class="black">宣读论文会议名称：</td>
+			        <td>{{:paperMeetName}}</td>
+			        <td class="black">主办单位级别：</td>
+			        <td>{{:organizersLevelDesc}}</td>
+				</tr>
+				<tr>
+					<td class="black">刊号：</td>
+			        <td>{{:paperNumber}}</td>
+					<td class="black">本人承担部分：</td>
+			        <td>{{:personalPart}}</td>
+				</tr>	
+				<tr>
+			        <td class="black">完成方式：</td>
+			        <td>{{:complete_way_desc}}</td>
+					<td class="black">作者排序：</td>
+			        <td>{{:author_order_desc}}</td>
+				</tr>
+                <tr>
+			       	<td class="black">论文扫描件：</td>
+			        <td colspan="3">
+                    	{{if paperAttachMentVO.attachmentId !==null}}
+                        	<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:paperAttachMentVO.attachmentId}}"> 点击查看</a>
+                      	{{/if}}
+                    </td>
+			    </tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 <!--专著出版情况  -->
 <script id="workPublishRec" type="text/x-jsrender">	
-<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
 		<tbody>
-                    <tr>
-			            <th width="100%" colspan="7">专著出版情况</th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="3">{{:#index+1}}</a>
-			        	<td class="black">书名：</td>
-			        	<td colspan="5">{{:book_name}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">完成方式：</td>
-			        	<td>{{:complete_way}}</td>
-			        	<td class="black">出版时间：</td>
-			        	<td>{{timeCovert publish_time/}} </td>
-			        	<td class="black">本人完成字数：</td>
-			        	<td>{{:complete_word}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">本人承担部分：</td>
-			        	<td>{{:complete_chapter}}</td>
-			        	<td class="black">作者排序：</td>
-			        	<td colspan="1">{{:author_order}}</td>
-                        <td class="black">出版社：</td>
-			        	<td colspan="1">{{:publish_company}}</td>
-		        	</tr>
-{{/for}}
+        	<tr>
+				<th width="100%" colspan="7">专著出版情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			    	<td rowspan="4" width="5%">{{:#index+1}}</a>
+			        <td class="black" width="15%">书名：</td>
+			        <td colspan="5" width="85%">{{:book_name}}</td>
+			    </tr>
+               	<tr>
+			        <td class="black" width="15%">完成方式：</td>
+			        <td width="15%">{{:complete_way_desc}}</td>
+			        <td class="black" width="15%">出版时间：</td>
+			        <td width="15%">{{timeCovert publish_time/}} </td>
+			        <td class="black" width="15%">本人完成字数：</td>
+			        <td width="15%">{{:complete_word}}</td>
+			    </tr>
+                <tr>
+			        <td class="black">本人承担部分：</td>
+			        <td>{{:complete_chapter}}</td>
+			        <td class="black">作者排序：</td>
+			        <td>{{:author_order_desc}}</td>
+                    <td class="black">出版社：</td>
+			        <td>{{:publish_company}}</td>
+		        </tr>
+				<tr>
+			        <td class="black">证明材料：</td>
+			        <td colspan="6">
+						{{if proveAttachMentVO.attachmentId !==null}}
+                        	<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
+                      	{{/if}}
+					</td>
+		        </tr>
+			{{/for}}
 		</tbody>
-</table>
+	</table>
 </script>
 
 
 <!--课题情况  -->
 <script id="subjectRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">教科研情况</th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="5">{{:#index+1}}</a>
-			        	<td class="black">课题名称：</td>
-			        	<td colspan="2">{{:subjectName}}</td>
-			        	<td class="black" colspan="2">课题立项单位：</td>
-			        	<td>{{:subjectCompany}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">课题级别：</td>
-			        	<td>{{:subjectLevel}}</td>
-			        	<td class="black">是否结题：</td>
-			        	<td colspan="3">{{:isfinishSubject}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">结题时间：</td>
-			        	<td>{{timeCovert finishTime/}}</td>
-			        	<td class="black">获奖情况：</td>
-			        	<td colspan="3">{{:finishResult}}</td>
-		        	</tr>
-
-                     <tr>
-	                    <td class="black" colspan="2">课题职责：</td>
-			        	<td colspan="4">{{:subjectRresponsibility}}</td>
-                   </tr>
-
-                     <tr>
-	                    <td class="black" colspan="2">课题简介：</td>
-			        	<td colspan="4">    
-                     {{if subjectAttachVO.attachmentId !==null}}
-                       <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:subjectAttachVO.attachmentId}}"> 点击查看</a>
-                      {{/if}}
-                      </td>
-                   </tr>
-{{/for}}
-			   </tbody>
-			</table>
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+        	<tr>
+				<th width="100%" colspan="5">教科研情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="6" width="5%">{{:#index+1}}</a>
+			        <td class="black" width="15%">课题名称：</td>
+			        <td width="32.5%">{{:subjectName}}</td>
+			        <td class="black" width="15%">课题立项单位：</td>
+			        <td width="32.5%">{{:subjectCompany}}</td>
+			    </tr>
+				<tr>
+			       	<td class="black">课题级别：</td>
+			        <td>{{:subjectLevelDesc}}</td>
+			        <td class="black">立项时间：</td>
+			        <td>{{timeCovert projectTime/}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">是否结题：</td>
+			        <td>{{:isfinishSubjectDesc}}</td>
+					<td class="black">结题时间：</td>
+			        <td>{{timeCovert finishTime/}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">获奖情况：</td>
+			        <td>{{:finishResult}}</td>
+					<td class="black">&nbsp;</td>
+					<td>&nbsp;</td>
+		        </tr>
+				<tr>
+	                <td class="black">课题简介：</td>
+			        <td colspan="3">{{:subjectRresponsibility}}</td>
+                </tr>
+				<tr>
+	                <td class="black">课题材料：</td>
+			        <td colspan="3">    
+                     	{{if subjectAttachVO.attachmentId !==null}}
+                       		<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:subjectAttachVO.attachmentId}}"> 点击查看</a>
+                      	{{/if}}
+                    </td>
+				</tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 
 <!--个人获奖情况  -->
 <script id="personalAwardRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">个人获奖情况</th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="4">{{:#index+1}}</a>
-			        	<td class="black">获奖名称：</td>
-			        	<td colspan="2">{{:awardsName}}</td>
-			        	<td class="black">表彰单位：</td>
-			        	<td colspan="2">{{:awardsCompany}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">获奖级别：</td>
-			        	<td>{{:awardsLevel}}</td>
-			        	<td class="black">表彰时间：</td>
-			        	<td colspan="3">{{timeCovert awardsTime/}}</td>
-		        	</tr>
-                   <tr>
-                        <td class="black">奖项类别1：</td>
-			        	<td >{{:awards_type}}</td>
-			        	<td colspan="2" class="black">获奖证书1：</td>
-			        	<td colspan="2">  
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+			<tr>
+				<th width="100%" colspan="5">个人获奖情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="4" width="5%">{{:#index+1}}</a>
+			        <td class="black" width="15%">获奖名称：</td>
+			        <td colspan="3" width="80%">{{:awardsName}}</td>
+			    </tr>
+				<tr>
+					<td class="black">表彰单位：</td>
+			        <td colspan="3">{{:awardsCompany}}</td>
+				</tr>
+				<tr>
+			        <td class="black" width="15%">获奖级别：</td>
+			        <td width="32.5%">{{:awardsLevelDesc}}</td>
+			        <td class="black" width="15%">表彰时间：</td>
+			        <td width="32.5%">{{timeCovert awardsTime/}}</td>
+		        </tr>
+				<tr>
+                    <td class="black">是否属于以下奖项：</td>
+			        <td>{{:awards_type_desc}}</td>
+			        <td class="black">获奖证书：</td>
+			        <td>  
                          {{if personalAttachVO.attachmentId !==null}}
-                         <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:personalAttachVO.attachmentId}}"> 点击查看</a>
+                         	<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:personalAttachVO.attachmentId}}"> 点击查看</a>
                          {{/if}}
-                      </td>
-		        	</tr>
-                     <tr>
-                        <td class="black">奖项类别2：</td>
-			        	<td >{{:awards_type1}}</td>
-			        	<td colspan="2" class="black">获奖证书2：</td>
-			        	<td colspan="2">  
-                         {{if personalAttachVO1.attachmentId !==null}}
-                         <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:personalAttachVO1.attachmentId}}"> 点击查看</a>
-                         {{/if}}
-                      </td>
-		        	</tr>
-{{/for}}
-			   </tbody>
-			</table>
+                    </td>
+		        </tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 
 <!--学校获奖情况  -->
 <script id="schoolAwardRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">学校获奖情况</th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="3">{{:#index+1}}</a>
-			        	<td class="black">奖项名称：</td>
-			        	<td colspan="2">{{:awardsName}}</td>
-			        	<td class="black" colspan="2">表彰单位：</td>
-			        	<td>{{:awardsCompany}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">任职学校：</td>
-			        	<td>{{:workSchool}}</td>
-			        	<td class="black">获奖级别：</td>
-			        	<td>{{:awardsLevel}}</td>
-			        	<td class="black">表彰时间：</td>
-			        	<td>{{timeCovert awardsTime/}}</td>
-			        </tr>
-
-               <tr>
-			   <td colspan="4" class="black">获奖证书：</td>
-			   <td colspan="2">
-                    {{if schoolAttachVO.attachmentId !==null}}
-                     <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:schoolAttachVO.attachmentId}}"> 点击查看</a>
-                    {{/if}}
-               </td>
-			 </tr>
-{{/for}}
-			   </tbody>
-			</table>
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+        	<tr>
+				<th width="100%" colspan="5">学校获奖情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="5" width="5%">{{:#index+1}}</a>
+			        <td class="black" width="15%">奖项名称：</td>
+			        <td colspan="3" width="80%">{{:awardsName}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">任职学校：</td>
+			        <td colspan="3">{{:workSchool}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">表彰单位：</td>
+			        <td colspan="3">{{:awardsCompany}}</td>
+			    </tr>
+				<tr>
+			        <td class="black" width="15%">获奖级别：</td>
+			        <td width="32.5%">{{:awardsLevelDesc}}</td>
+			        <td class="black" width="15%">表彰时间：</td>
+			        <td width="32.5%">{{timeCovert awardsTime/}}</td>
+			    </tr>
+				<tr>
+			   		<td class="black">获奖证书：</td>
+			   		<td colspan="3">
+                    	{{if schoolAttachVO.attachmentId !==null}}
+                     		<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:schoolAttachVO.attachmentId}}"> 点击查看</a>
+                    	{{/if}}
+               		</td>
+			 	</tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 
 <!--进修学习情况  -->
 <script id="studyTrainRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">进修学习情况</th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="2">{{:#index+1}}</a>
-			        	<td class="black">时间：</td>
-			        	<td colspan="2">{{timeContent start_date end_date/}}</td>
-			        	<td class="black" colspan="2">学习进修内容：</td>
-			        	<td>{{:content}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">学时：</td>
-			        	<td>{{:class_hour}}</td>
-			        	<td class="black">学习地点：</td>
-			        	<td>{{:study_place}}</td>
-			        	<td class="black">主办单位：</td>
-			        	<td>{{:organizers}}</td>
-			        </tr>
-{{/for}}
-			   </tbody>
-			</table>
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+        	<tr>
+				<th width="100%" colspan="5">进修学习情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="5" width="5%">{{:#index+1}}</a>
+			        <td class="black" width="15%">时间：</td>
+			        <td width="32.5%">{{timeContent start_date end_date/}}</td>
+			        <td class="black" width="15%">学习进修课题名称：</td>
+			        <td width="32.5%">{{:title}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">学习进修内容：</td>
+			        <td colspan="3">{{:content}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">学时：</td>
+			        <td>{{:class_hour}}</td>
+			        <td class="black">学习地点：</td>
+			        <td>{{:study_place}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">主办单位：</td>
+			        <td>{{:organizers}}</td>
+					<td class="black">&nbsp;</td>
+			        <td>&nbsp;</td>
+			    </tr>
+				<tr>
+			        <td class="black">证明材料：</td>
+			        <td colspan="3">
+						{{if proveAttachMentVO.attachmentId !==null}}
+                        	<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
+                      	{{/if}}
+					</td>
+		        </tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 
@@ -399,140 +419,157 @@
 </script>
 
 <!--学校特色及改革  -->
-<script id="schoolReformRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">学校特色及改革 </th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="3">{{:#index+1}}</a>
-			        	<td class="black">时间：</td>
-			        	<td colspan="2">{{timeCovert implement_time/}}</td>
-			        	<td class="black" colspan="2">学校特色创建及改革项目名称：</td>
-			        	<td>{{:project_name}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">项目级别：</td>
-			        	<td>{{:class_project_level}}</td>
-			        	<td class="black">项目主管部门：</td>
-			        	<td>{{:charge_department}}</td>
-			        	<td class="black">项目完成情况：</td>
-			        	<td>{{:performance}}</td>
-			        </tr>
-
-    <tr>
-			    <td colspan="4" class="black">获奖证书：</td>
-			    <td colspan="2">
-                    {{if proveAttachMentVO.attachmentId !==null}}
-                     <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
-                    {{/if}}
-                </td>
-			 </tr>
-{{/for}}
-			   </tbody>
-			</table>
+<script id="schoolReformRec" type="text/x-jsrender">
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+        	<tr>
+				<th width="100%" colspan="5">学校特色及改革 </th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="4">{{:#index+1}}</a>
+					<td class="black" width="15%">学校特色创建及改革项目名称：</td>
+			        <td width="32.5%">{{:project_name}}</td>
+					<td class="black" width="15%">项目级别：</td>
+			        <td width="32.5%">{{:project_level_desc}}</td>
+				</tr>
+				<tr>
+					<td class="black">项目主管部门：</td>
+			        <td>{{:charge_department}}</td>
+			        <td class="black">时间：</td>
+			        <td>{{timeCovert implement_time/}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">项目完成情况：</td>
+			        <td colspan="3">{{:performance}}</td>
+			    </tr>
+				<tr>
+			    	<td class="black">证明材料：</td>
+			    	<td colspan="3">
+                    	{{if proveAttachMentVO.attachmentId !==null}}
+                     		<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
+                    	{{/if}}
+                	</td>
+			 	</tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 
 <!--社会责任  -->
 <script id="socialDutyRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">社会责任  </th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="2">{{:#index+1}}</a>
-			        	<td class="black">时间：</td>
-			        	<td colspan="2">{{timeCovert implement_time/}}</td>
-			        	<td class="black" colspan="2">承担上级部门安排的社会责任工作：</td>
-			        	<td>{{:superior_task}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">工作安排部门：</td>
-			        	<td colspan="1">{{:arrange_department}}</td>
-			        	<td class="black">完成情况：</td>
-			        	<td colspan="1">{{:complete_state}}</td>
-                        <td  class="black">获奖证书：</td>
-			            <td >
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+			<tr>
+				<th width="100%" colspan="5">社会责任  </th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="4">{{:#index+1}}</a>
+					<td class="black" width="15%">承担上级部门安排的社会责任工作：</td>
+			        <td width="32.5%">{{:superior_task}}</td>
+					<td class="black" width="15%">时间：</td>
+			        <td width="32.5%">{{timeCovert implement_time/}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">工作安排部门：</td>
+			        <td>{{:arrange_department}}</td>
+					<td class="black">&nbsp;</td>
+			        <td>&nbsp;</td>
+				</tr>
+				<tr>
+			        <td class="black">完成情况：</td>
+			        <td colspan="3">{{:complete_state}}</td>
+				</tr>
+				<tr>
+                    <td class="black">获奖证书：</td>
+			        <td colspan="3">
                          {{if proveAttachMentVO.attachmentId !==null}}
                            <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
                          {{/if}}
-                       </td>
-			        </tr>
-{{/for}}
-			   </tbody>
-			</table>
+                    </td>
+			     </tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 <!--减分责任事故 -->
 <script id="accidentRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="7">责任事故 </th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="2">{{:#index+1}}</a>
-			        	<td class="black">时间：</td>
-			        	<td colspan="2">{{timeCovert implement_time/}}</td>
-			        	<td class="black" colspan="2">责任事故：</td>
-			        	<td>{{:accident_name}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">违纪描述：</td>
-			        	<td colspan="1">{{:description}}</td>
-			        	<td class="black">处理结果：</td>
-			        	<td colspan="1">{{:approve_result}}</td>
-                         <td  class="black">证明材料：</td>
-			            <td >
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+			<tr>
+				<th width="100%" colspan="5">责任事故情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="4">{{:#index+1}}</a>
+					<td class="black" width="15%">责任事故名称：</td>
+			        <td width="32.5%">{{:accident_name}}</td>
+					<td class="black" width="15%">违纪描述：</td>
+			        <td width="32.5%">{{:description}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">时间：</td>
+			        <td>{{timeCovert implement_time/}}</td>
+					<td class="black">&nbsp;</td>
+			        <td>&nbsp;</td>
+				</tr>
+				<tr>
+			        <td class="black">处理结果：</td>
+			        <td colspan="3">{{:process_result}}</td>
+				</tr>
+				<tr>
+                    <td class="black">证明材料：</td>
+			        <td colspan="3">
                          {{if proveAttachMentVO.attachmentId !==null}}
                            <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
                          {{/if}}
-                       </td>
-			        </tr>
-{{/for}}
-			   </tbody>
-			</table>
+                    </td>
+			     </tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 
 <!--减分处分 -->
 <script id="punishmentRec" type="text/x-jsrender">	
-			<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
-			    <tbody>
-                    <tr>
-			            <th width="100%" colspan="9">处分 </th>
-			        </tr>
-{{for Data}}
-			        <tr>
-			        	<td rowspan="2">{{:#index+1}}</a>
-			        	<td class="black">时间：</td>
-			        	<td colspan="2">{{timeCovert implement_time/}}</td>
-			        	<td class="black" colspan="2">处分事件描述：</td>
-			        	<td colspan="3">{{:description}}</td>
-			        </tr>
-                    <tr>
-			        	<td class="black">受处分人：</td>
-			        	<td>{{:people}}</td>
-	                    <td class="black">处分部门：</td>
-			        	<td>{{:department}}</td>
-			        	<td class="black">处分结果：</td>
-			        	<td>{{:process_result}}</td>
-                        <td  class="black">证明材料：</td>
-			            <td >
-                         {{if proveAttachMentVO.attachmentId !==null}}
-                           <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
-                         {{/if}}
-                       </td>
-			        </tr>
-{{/for}}
-			   </tbody>
-			</table>
+	<table cellpadding="0" cellspacing="1" border="0" class="table text-center">
+		<tbody>
+       		<tr>
+				<th width="100%" colspan="5">处分情况</th>
+			</tr>
+			{{for Data}}
+				<tr>
+			        <td rowspan="4" width="5%">{{:#index+1}}</a>
+			        <td class="black" width="15%">时间：</td>
+			        <td width="32.5%">{{timeCovert implement_time/}}</td>
+			        <td class="black" width="15%">处分事件描述：</td>
+			        <td width="32.5%">{{:description}}</td>
+			    </tr>
+				<tr>
+			        <td class="black">受处分人：</td>
+			        <td>{{:people}}</td>
+	                <td class="black">处分部门：</td>
+			        <td>{{:department}}</td>
+				</tr>
+				<tr>
+			        <td class="black">处分结果：</td>
+			        <td colspan="3">{{:process_result}}</td>
+				</tr>
+				<tr>
+                    <td class="black">证明材料：</td>
+			        <td colspan="3">
+                    	{{if proveAttachMentVO.attachmentId !==null}}
+                        	<a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>
+                        {{/if}}
+                    </td>
+			    </tr>
+			{{/for}}
+		</tbody>
+	</table>
 </script>
 
 <!--工作经历 -->
@@ -540,13 +577,14 @@
 <table cellpadding="0" cellspacing="1" border="0" class="table text-center">
 			    <tbody>
                     <tr>
-			            <th width="100%" colspan="4">工作经历</th>
+			            <th width="100%" colspan="5">工作经历</th>
 			        </tr>
 			        <tr>
 			        	<td class="black">序号</td>
 			        	<td class="black">起止年月</td>
 			        	<td class="black">工作单位</td>
 			        	<td class="black">证明人</td>
+						<td class="black">职务</td>
 			        </tr>
 {{for Data}}
     <tr>
@@ -554,6 +592,7 @@
       <td>{{timeContent start_date end_date/}}</td>
       <td>{{:work_company}}</td>
       <td>{{:prove_people}}</td>
+      <td>{{:prove_people_duty}}</td>
     </tr>
 {{/for}}
 </tbody>
@@ -564,7 +603,7 @@
 <script>
 $.views.tags({
 	timeContent:function(startTime,endTime){
-	   return Brightcom.workflow.getDateStrByLong(startTime)+'-'+Brightcom.workflow.getDateStrByLong(endTime);
+	   return Brightcom.workflow.getDateStrByLong(startTime)+'———'+Brightcom.workflow.getDateStrByLong(endTime);
 	},
 	timeCovert:function(time){
 		   return Brightcom.workflow.getDateStrByLong(time);

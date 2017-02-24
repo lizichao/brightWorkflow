@@ -260,8 +260,8 @@ a.add-more{display:block;background:#D7D7D7;color:#000;height:30px;line-height:3
 .w_28{width:336px;} /* 单行单列标题是5个字对应的文本宽度 */
 .w_28 input{width:326px;}
 
-
-
+.w_29{width:288px;} /* 单行单列标题是8个字对应的文本宽度 */
+.w_29 input{width:278px;}
 
 /**
 ===============================================================

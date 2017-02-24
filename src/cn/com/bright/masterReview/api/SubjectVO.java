@@ -24,6 +24,7 @@ public class SubjectVO {
     
     private String finishResult;
     
+    private Date projectTime;//立项时间
     private Date finishTime;
     
     private String isfinishSubject;
@@ -81,8 +82,16 @@ public class SubjectVO {
     public void setFinishResult(String finishResult) {
         this.finishResult = finishResult;
     }
+    
+    public Date getProjectTime() {
+		return projectTime;
+	}
 
-    public Date getFinishTime() {
+	public void setProjectTime(Date projectTime) {
+		this.projectTime = projectTime;
+	}
+
+	public Date getFinishTime() {
         return finishTime;
     }
 

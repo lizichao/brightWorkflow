@@ -370,7 +370,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="com-title">
 		<div class="txt fl">
 			<h2><i>2</i>学历情况</h2>
-			<p>填写个人获得学历学位情况(从高中填起)。</span>
+			<p>填写个人获得学历学位情况(从高中/中专填起)。</span>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>

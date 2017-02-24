@@ -99,6 +99,7 @@
       </div>
     </li>
 
+	{{!--
 	<li><span class='fl'>出版单位：</span>
       <div class="border_2 w_18 fl">
        <input type='text' id='publish_company{{:#index+1}}' value='{{:publish_company}}' placeholder=''>
@@ -106,7 +107,7 @@
     </li>
 	
 	<li></li>	
-
+	--}}
     <li style='height:45px;' class='position_relative'><span class='fl'>论文扫描件：</span>
       <div id='paperbutton{{:#index+1}}' class='position_upload_button_professional' style='left: 96px;'></div>
     </li>
@@ -244,15 +245,15 @@ function addPaperSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li>");
-	educationArray.push("<span class='fl'>出版单位：</span>");
-	educationArray.push("<div class='border_2 w_18 fl'>");
-	educationArray.push("<input type='text' id='publish_company"+paperTitleRowNumNext+"' value='' placeholder=''>");
-	educationArray.push("</div>");
-	educationArray.push("</li>");
+	//educationArray.push("<li>");
+	//educationArray.push("<span class='fl'>出版单位：</span>");
+	//educationArray.push("<div class='border_2 w_18 fl'>");
+	//educationArray.push("<input type='text' id='publish_company"+paperTitleRowNumNext+"' value='' placeholder=''>");
+	//educationArray.push("</div>");
+	//educationArray.push("</li>");
 	
-	educationArray.push("<li>");
-	educationArray.push("</li>");
+	//educationArray.push("<li>");
+	//educationArray.push("</li>");
 	
 	educationArray.push("<li style='height:45px;' class='position_relative'><span class='fl'>论文扫描件：</span>");
 	educationArray.push("<div  id='paperbutton"+paperTitleRowNumNext+"' class='position_upload_button_professional' style='left: 96px;'></div>");
@@ -297,7 +298,7 @@ function saveUpdateRefillData(){
 			    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(7);
+			changeOption(8);
 		});
 		bcReq.postData();
 	}else{
@@ -364,7 +365,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>6</i>论文发表</h2>
+			<h2><i>7</i>论文发表</h2>
 			<p>填写个人论文发表情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -381,7 +382,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(5)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(6)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

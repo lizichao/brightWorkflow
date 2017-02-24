@@ -132,6 +132,23 @@
 		bulidStudyTrains(masterReviewVO.studyTrainVOs,approveType);
 		bulidSchoolReforms(masterReviewVO.schoolReformVOs,approveType);
 		bulidSocialDutys(masterReviewVO.socialDutyVOs,approveType);
+		
+		debugger;
+		//过滤数据
+		var situationVOs = masterReviewVO.situationVOs;
+		if (situationVOs!=null&&situationVOs.length>0) {
+			for(var i =0;i<situationVOs.length;i++){
+				if (situationVOs[i].hasSituation == "1") { //表示 无处分情况或者责任事故情况
+					if (situationVOs[i].tableName == "headmaster_accident") {
+						masterReviewVO.accidentVOs = [];
+					} else if (situationVOs[i].tableName == "headmaster_punishment") {
+						masterReviewVO.punishmentVOs = [];
+					}
+				}
+				
+			}
+		}
+		
 		bulidAccidents(masterReviewVO.accidentVOs,approveType);
 		bulidPunishments(masterReviewVO.punishmentVOs,approveType);
 		
@@ -652,7 +669,7 @@
 		}else{
 			var noDataArray = [];
 			noDataArray.push("<table cellpadding='0' cellspacing='1' border='0' class='table text-center'>  <tbody>");
-			noDataArray.push("<tr><th width='80%' colspan='7'>责任事故</th><th width='20%'></th></tr>");
+			noDataArray.push("<tr><th width='80%' colspan='7'>责任事故情况</th><th width='20%'></th></tr>");
 			noDataArray.push("<tr><td class='red' colspan='8'>暂无数据</td></tr>");
 			noDataArray.push(" <tbody> </table>");
 			 $("#accidentDiv").append(noDataArray.join(""));
@@ -676,7 +693,7 @@
 		}else{
 			var noDataArray = [];
 			noDataArray.push("<table cellpadding='0' cellspacing='1' border='0' class='table text-center'>  <tbody>");
-			noDataArray.push("<tr><th width='80%' colspan='7'>处分</th><th width='20%'></th></tr>");
+			noDataArray.push("<tr><th width='80%' colspan='7'>处分情况</th><th width='20%'></th></tr>");
 			noDataArray.push("<tr><td class='red' colspan='8'>暂无数据</td></tr>");
 			noDataArray.push(" <tbody> </table>");
 			 $("#punishmentDiv").append(noDataArray.join(""));

@@ -37,6 +37,7 @@ import cn.com.bright.masterReview.api.ProfessorGradeVO;
 import cn.com.bright.masterReview.api.PunishmentVO;
 import cn.com.bright.masterReview.api.SchoolAwardVO;
 import cn.com.bright.masterReview.api.SchoolReformVO;
+import cn.com.bright.masterReview.api.SituationVO;
 import cn.com.bright.masterReview.api.SocialDutyVO;
 import cn.com.bright.masterReview.api.StudyTrainVO;
 import cn.com.bright.masterReview.api.SubjectVO;
@@ -615,6 +616,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         subjectVO.setSubjectAttachmentId(value);
                     } else if (key.equals("finish_time")) {
                         subjectVO.setFinishTime(DateUtil.stringToDate(value));
+                    } else if ("project_time".equals(key)) {
+                        subjectVO.setProjectTime(DateUtil.stringToDate(value));
                     }
                 }
                 subjectVOs.add(subjectVO);
@@ -695,6 +698,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         studyTrainVO.setStart_date(DateUtil.stringToDate(value));
                     } else if (key.equals("end_date")) {
                         studyTrainVO.setEnd_date(DateUtil.stringToDate(value));
+                    } else if (key.equals("title")) {
+                        studyTrainVO.setTitle(value);
                     } else if (key.equals("content")) {
                         studyTrainVO.setContent(value);
                     } else if (key.equals("class_hour")) {
@@ -703,6 +708,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         studyTrainVO.setStudy_place(value);
                     } else if (key.equals("organizers")) {
                         studyTrainVO.setOrganizers(value);
+                    } else if ("proveAttachMentId".equals(key)) {
+                        studyTrainVO.setProveAttachMentId(value);
                     }
                 }
                 studyTrainVOs.add(studyTrainVO);
@@ -763,6 +770,28 @@ public class MasterReviewAction extends BaseWorkflowAction {
             }
             masterReviewVO.setSocialDutyVOs(socialDutyVOs);
         } else if (option_tab_type.equals("accident")) {// 责任事故
+        	//获取第一个元素数据，表示的是有无责任事故情况信息
+            if (optionTabList!=null||optionTabList.size()>0) {
+            	List<SituationVO> situationVOs = new ArrayList<SituationVO>();
+            	Map<String, String> eachMap = optionTabList.get(0);
+            	optionTabList.remove(0);//移除第一个元素
+            	SituationVO situationVO = new SituationVO();
+            	for (Map.Entry<String, String> entry : eachMap.entrySet()) {
+            		String key = entry.getKey();
+                    String value = entry.getValue();
+                    if (key.equals("situation_id")) {
+                    	situationVO.setId(value);
+                    } else if (key.equals("situation_businessKey")) {
+                    	situationVO.setBusinessKey(value);
+                    } else if (key.equals("situation_hasSituation")) {
+                    	situationVO.setHasSituation(value);
+                    } 
+                    situationVO.setTableName("headmaster_accident");
+            	}
+            	situationVOs.add(situationVO);
+            	masterReviewVO.setSituationVOs(situationVOs);
+            }
+            
             List<AccidentVO> accidentVOs = new ArrayList<AccidentVO>();
             for (Map<String, String> eachMap : optionTabList) {
                 AccidentVO accidentVO = new AccidentVO();
@@ -789,6 +818,28 @@ public class MasterReviewAction extends BaseWorkflowAction {
             }
             masterReviewVO.setAccidentVOs(accidentVOs);
         } else if (option_tab_type.equals("punishment")) {// 处分
+        	//获取第一个元素数据，表示的是有无责任事故情况信息
+            if (optionTabList!=null||optionTabList.size()>0) {
+            	List<SituationVO> situationVOs = new ArrayList<SituationVO>();
+            	Map<String, String> eachMap = optionTabList.get(0);
+            	optionTabList.remove(0);//移除第一个元素
+            	SituationVO situationVO = new SituationVO();
+            	for (Map.Entry<String, String> entry : eachMap.entrySet()) {
+            		String key = entry.getKey();
+                    String value = entry.getValue();
+                    if (key.equals("situation_id")) {
+                    	situationVO.setId(value);
+                    } else if (key.equals("situation_businessKey")) {
+                    	situationVO.setBusinessKey(value);
+                    } else if (key.equals("situation_hasSituation")) {
+                    	situationVO.setHasSituation(value);
+                    } 
+                    situationVO.setTableName("headmaster_punishment");
+            	}
+            	situationVOs.add(situationVO);
+            	masterReviewVO.setSituationVOs(situationVOs);
+            }
+            
             List<PunishmentVO> punishmentVOs = new ArrayList<PunishmentVO>();
             for (Map<String, String> eachMap : optionTabList) {
                 PunishmentVO punishmentVO = new PunishmentVO();
@@ -835,6 +886,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         workHistoryVO.setProve_people(value);
                     } else if (key.equals("work_company")) {
                         workHistoryVO.setWork_company(value);
+                    } else if (key.equals("prove_people_duty")) {
+                        workHistoryVO.setProve_people_duty(value);
                     }
                 }
                 workHistoryVOs.add(workHistoryVO);
@@ -1699,6 +1752,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 masterReviewVO.setStudyTrainVOs(getStudyTrainVOs(bussinessKey));
                 masterReviewVO.setSchoolReformVOs(getSchoolReformVOs(bussinessKey));
                 masterReviewVO.setSocialDutyVOs(getSocialDutyVOs(bussinessKey));
+                masterReviewVO.setSituationVOs(getSituationVOs(bussinessKey));
                 masterReviewVO.setAccidentVOs(getAccidentVOs(bussinessKey));
                 masterReviewVO.setPunishmentVOs(getPunishmentVOs(bussinessKey));
                 masterReviewVO.setWorkHistoryVOs(getWorkHistoryVOs(bussinessKey));
@@ -1826,6 +1880,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             Date start_date = (Date)map.get("start_date");
             Date end_date = (Date)map.get("end_date");
             String prove_people = (String)map.get("prove_people");
+            String prove_people_duty = (String)map.get("prove_people_duty");
             String work_company = (String)map.get("work_company");
             String approve_result =(String) map.get("approve_result");
             
@@ -1835,6 +1890,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             workHistoryVO.setBusinessKey(businessKey);
             workHistoryVO.setStart_date(start_date);
             workHistoryVO.setProve_people(prove_people);
+            workHistoryVO.setProve_people_duty(prove_people_duty);
             workHistoryVO.setWork_company(work_company);
             workHistoryVO.setEnd_date(end_date);
             workHistoryVO.setApprove_result(approve_result);
@@ -1897,7 +1953,30 @@ public class MasterReviewAction extends BaseWorkflowAction {
         return punishmentVOs;      
     }
     
-    
+    public List<SituationVO> getSituationVOs (String bussinessKey) {
+    	StringBuffer sql = new StringBuffer();
+    	sql.append(" SELECT * ");
+    	sql.append(" FROM headmaster_situation ");
+    	sql.append(" WHERE businessKey = ?");
+    	List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
+    	
+    	List<SituationVO> situationVOs = new ArrayList<SituationVO>();
+    	SituationVO situationVO = null;
+        for (Map<String, Object> map : list) {
+            String id = (String)map.get("id");
+            String businessKey =(String) map.get("businessKey");
+            String hasSituation = (String)map.get("hasSituation");
+            String tableName = (String)map.get("tableName");
+            
+            situationVO = new SituationVO();
+            situationVO.setId(id);
+            situationVO.setBusinessKey(businessKey);
+            situationVO.setHasSituation(hasSituation);
+            situationVO.setTableName(tableName);
+            situationVOs.add(situationVO);
+        }
+        return situationVOs;      
+    }
     /**
      * 减分责任事故
      * @Title: getAccidentVOs 
@@ -2068,10 +2147,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
      */
     private List<StudyTrainVO> getStudyTrainVOs(String bussinessKey) {
         StringBuffer sql = new StringBuffer("");
-        sql.append(" SELECT t.*");
+        sql.append(" SELECT t.*,a.*");
         sql.append(" FROM headmaster_studytrain t");
-       // sql.append(" LEFT JOIN workflow_attachment a");
-        //sql.append(" ON t.awards_attachment_id = a.attachment_id");
+        sql.append(" LEFT JOIN workflow_attachment a");
+        sql.append(" ON t.prove_attachment_id = a.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -2082,22 +2161,35 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String businessKey = (String)map.get("businessKey");
             Date start_date = (Date)map.get("start_date");
             Date end_date = (Date)map.get("end_date");
+            String title = (String)map.get("title");
             String content = (String)map.get("content");
             String class_hour =(String) map.get("class_hour");
             String study_place = (String)map.get("study_place");
             String organizers =(String) map.get("organizers");
             String approve_result = (String)map.get("approve_result");
             
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("attachment_id")){
+                String attachment_id = (String)map.get("attachment_id");
+                String file_name = (String)map.get("file_name");
+                proveAttachMentVO.setAttachmentId(attachment_id);
+                proveAttachMentVO.setFileName(file_name);
+            }
+            
             StudyTrainVO studyTrainVO = new StudyTrainVO();
             studyTrainVO.setId(id);
             studyTrainVO.setBusinessKey(businessKey);
             studyTrainVO.setStart_date(start_date);
             studyTrainVO.setEnd_date(end_date);
+            studyTrainVO.setTitle(title);
             studyTrainVO.setContent(content);
             studyTrainVO.setClass_hour(class_hour);
             studyTrainVO.setStudy_place(study_place);
             studyTrainVO.setOrganizers(organizers);
             studyTrainVO.setApprove_result(approve_result);
+            
+            studyTrainVO.setProveAttachMentVO(proveAttachMentVO);
+            
             studyTrainVOs.add(studyTrainVO);
         }
         return studyTrainVOs;      
@@ -2241,6 +2333,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String is_finish_subject_desc =(String) map.get("is_finish_subject_desc");
             String finish_result = (String)map.get("finish_result");
             Date finish_time = (Date)map.get("finish_time");
+            Date project_time = (Date)map.get("project_time");
             String approve_result = (String)map.get("approve_result");
             
             AttachMentVO  attachMentVO= new AttachMentVO();
@@ -2263,6 +2356,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             subjectVO.setIsfinishSubjectDesc(is_finish_subject_desc);
             subjectVO.setFinishResult(finish_result);
             subjectVO.setFinishTime(finish_time);
+            subjectVO.setProjectTime(project_time);
             subjectVO.setSubjectAttachVO(attachMentVO);
             subjectVO.setApprove_result(approve_result);
             subjectVOs.add(subjectVO);
@@ -2277,12 +2371,16 @@ public class MasterReviewAction extends BaseWorkflowAction {
         sql.append(" a.attachment_id AS coverid,");
         sql.append(" a.file_name AS covername,");
         sql.append(" b.attachment_id AS contentid,");
+        sql.append(" c.file_name AS provename,");
+        sql.append(" c.attachment_id AS proveid,");
         sql.append("b.file_name AS contentname");
         sql.append(" FROM headmaster_work_publish t");
         sql.append(" LEFT JOIN workflow_attachment a ");
         sql.append(" ON t.cover_attachment_id = a.attachment_id ");
         sql.append(" LEFT JOIN workflow_attachment b ");
         sql.append("  ON t.contents_attachment_id = b.attachment_id ");
+        sql.append(" LEFT JOIN workflow_attachment c");
+        sql.append(" ON t.prove_attachment_id = c.attachment_id");
         sql.append(" WHERE businessKey = ?");
         sql.append(" and t.isvalid = '1'");
         List<Map<String, Object>> list = ApplicationContextHelper.getJdbcTemplate().queryForList(sql.toString(), bussinessKey);
@@ -2323,6 +2421,16 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 degreeAttachMentVO.setFileName(contentname);
                
             }
+            
+            AttachMentVO  proveAttachMentVO= new AttachMentVO();
+            if(null !=map.get("proveid")){
+                String proveid =(String) map.get("proveid");
+                String provename =(String) map.get("provename");
+            
+                proveAttachMentVO.setAttachmentId(proveid);
+                proveAttachMentVO.setFileName(provename);
+               
+            }
            
             
             bookPublishVO.setId(id);
@@ -2341,6 +2449,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             
             bookPublishVO.setCoverVO(educationAttachMentVO);
             bookPublishVO.setContentVO(degreeAttachMentVO);
+            bookPublishVO.setProveAttachMentVO(proveAttachMentVO);
         }
         return bookPublishVOs;   
     }

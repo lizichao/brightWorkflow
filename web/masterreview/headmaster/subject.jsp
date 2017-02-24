@@ -49,6 +49,13 @@
    </li>
 
 	<li>
+		<span class='fl'>立项时间：</span>
+		<div class='border_2 w_18 fl'>
+			<input type='text' id='project_time{{:#index+1}}' onfocus='selectDeleteTime()' value='{{timeCovert projectTime/}}' placeholder=''>
+		</div>
+	</li>
+
+	<li>
 		<span class="fl">是否结题：</span>
        	<div class="border_2 w_18 fl">
         <select  id='is_finish_subject{{:#index+1}}' class='select_left'>
@@ -65,7 +72,7 @@
 	<li>
        <span class="fl">结题时间：</span>
        <div class="border_2 w_18 fl">
-       <input type='text' id='finish_time{{:#index+1}}' value='{{timeCovert finishTime/}}' placeholder='' onclick='selectDeleteTime()'>
+       <input type='text' id='finish_time{{:#index+1}}' value='{{timeCovert finishTime/}}' placeholder='' onfocus='selectDeleteTime()'>
        </div>
     </li>
 	<li>
@@ -76,7 +83,7 @@
     </li>
 	
 	<li style='width:780px'>
-	  <span class='fl'>课题简介：</span>
+	  <span class='fl' style='position:relative;'>课题简介：<span style='position:absolute;left:-40px;top:30px;width:140px;'>（不得超过100字）</span></span></span>
 	  <textarea onkeydown='countChar(this)' onkeyup='countChar(this)' title='不得超过100字' name='subject_responsibility{{:#index+1}}' id='subject_responsibility{{:#index+1}}' class='fl deooration' style='width: 674px;'>{{:subjectRresponsibility}}</textarea>
 	  <p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>{{if subjectRresponsibility && subjectRresponsibility.length}}{{:subjectRresponsibility.length}}{{else}}0{{/if}}</span>/100&nbsp;</p>	
     </li>
@@ -175,6 +182,12 @@ function addSubjectSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
+	educationArray.push("<li>");
+	educationArray.push("<span class='fl'>立项时间：</span>");
+	educationArray.push("<div class='border_2 w_18 fl'>");
+	educationArray.push("<input type='text' id='project_time"+subjectRowNumNext+"' onfocus='selectDeleteTime()' value='' placeholder=''>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
 	
 	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>是否结题：</span>");
@@ -186,7 +199,7 @@ function addSubjectSingle(obj){
 	educationArray.push("<li>");
 	educationArray.push("<span class='fl'>结题时间：</span>");
 	educationArray.push("<div class='border_2 w_18 fl'>");
-	educationArray.push("<input type='text' id='finish_time"+subjectRowNumNext+"' onclick='selectDeleteTime()' value='' placeholder=''>");
+	educationArray.push("<input type='text' id='finish_time"+subjectRowNumNext+"' onfocus='selectDeleteTime()' value='' placeholder=''>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
@@ -200,7 +213,7 @@ function addSubjectSingle(obj){
 	
 	
 	educationArray.push("<li style='width:780px'>");
-	educationArray.push("<span class='fl'>课题简介：</span>");
+	educationArray.push("<span class='fl' style='position:relative;'>课题简介：<span style='position:absolute;left:-40px;top:30px;width:140px;'>（不得超过100字）</span></span>");
 	educationArray.push("<textarea  onkeydown='countChar(this)' onkeyup='countChar(this)' title='不得超过100字' name='subject_responsibility"+subjectRowNumNext+"' id='subject_responsibility"+subjectRowNumNext+"' class='fl deooration' style='width: 674px;'></textarea>");
 	//educationArray.push("<span name='text-prompt' class='text-prompt'><span name='number' style='padding:0px 0px;'>0</span>/100</span>");
 	educationArray.push("<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>0</span>/100&nbsp;</p>");
@@ -251,7 +264,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(8);
+			changeOption(9);
 		});
 		bcReq.postData();
 	}else{
@@ -271,6 +284,7 @@ function getSubmitStrings(){
 		var subject_responsibility = $("#subject_responsibility"+rowNum).val();
 		var is_finish_subject = $("#is_finish_subject"+rowNum).val();
 		var finish_result = $("#finish_result"+rowNum).val();
+		var project_time = $("#project_time"+rowNum).val();
 		var finish_time = $("#finish_time"+rowNum).val();
 		var subjectAttachmentId = $("#subjectAttachId"+rowNum).val();
 		var businessKey = $("#id").val();
@@ -285,6 +299,7 @@ function getSubmitStrings(){
 				"subject_level":subject_level,
 				"subject_responsibility":subject_responsibility,
 				"is_finish_subject":is_finish_subject,
+				"project_time":project_time,
 				"finish_result":finish_result,
 				'finish_time' :finish_time,
 				'subjectAttachmentId' :subjectAttachmentId,
@@ -334,7 +349,7 @@ function countChar(curObj) {//计算字数
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>7</i>教科研情况</h2>
+			<h2><i>8</i>教科研情况</h2>
 			<p>填写个人课题情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -352,7 +367,7 @@ function countChar(curObj) {//计算字数
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(6)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(7)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

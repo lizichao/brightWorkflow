@@ -27,6 +27,7 @@ import cn.com.bright.masterReview.api.ProfessorGradeVO;
 import cn.com.bright.masterReview.api.PunishmentVO;
 import cn.com.bright.masterReview.api.SchoolAwardVO;
 import cn.com.bright.masterReview.api.SchoolReformVO;
+import cn.com.bright.masterReview.api.SituationVO;
 import cn.com.bright.masterReview.api.SocialDutyVO;
 import cn.com.bright.masterReview.api.StudyTrainVO;
 import cn.com.bright.masterReview.api.SubjectVO;
@@ -173,8 +174,8 @@ public class MasterReviewService {
         sql.append(",create_by");
         sql.append(" ,create_date");
         sql.append(" ,awards_type");
-        sql.append(" ,awards_type1");
-        sql.append(" ,awards_attachment_id1");
+        //sql.append(" ,awards_type1");
+        //sql.append(" ,awards_attachment_id1");
         sql.append("  ) VALUES (");
         sql.append(" ?");
         sql.append(" ,? ");
@@ -188,14 +189,14 @@ public class MasterReviewService {
         sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
-        sql.append(" ,? ");
-        sql.append(" ,? ");
+        //sql.append(" ,? ");
+        //sql.append(" ,? ");
         sql.append(" )"); 
         
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (PersonalAwardVO personalAwardVO : personalAwardVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_personal_award"));
-            Object[] param = new Object[14];
+            Object[] param = new Object[12];
             param[0] = id;
             param[1] = businessKey;
             param[2] = personalAwardVO.getAwardsName();
@@ -208,8 +209,8 @@ public class MasterReviewService {
             param[9] = userid;
             param[10] = DatetimeUtil.getNow("");
             param[11] =personalAwardVO.getAwards_type();
-            param[11] = personalAwardVO.getAwards_type1();
-            param[12] =personalAwardVO.getAwardsAttachmentId1();
+            //param[11] = personalAwardVO.getAwards_type1();
+            //param[12] =personalAwardVO.getAwardsAttachmentId1();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -240,8 +241,10 @@ public class MasterReviewService {
         sql.append(",isvalid");
         sql.append(",create_by");
         sql.append(" ,create_date");
+        sql.append(" ,project_time");
         sql.append(" ) VALUES (");
         sql.append(" ?");
+        sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
@@ -260,7 +263,7 @@ public class MasterReviewService {
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (SubjectVO subjectVO : subjectVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_subject"));
-            Object[] param = new Object[14];
+            Object[] param = new Object[15];
             param[0] = id;
             param[1] = businessKey;
             param[2] = subjectVO.getSubjectName();
@@ -275,6 +278,7 @@ public class MasterReviewService {
             param[11] = "1";
             param[12] = userid;
             param[13] = DatetimeUtil.getNow("");
+            param[14] = subjectVO.getProjectTime();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -306,8 +310,10 @@ public class MasterReviewService {
         sql.append(",create_by");
         sql.append(" ,create_date");
         sql.append(" ,publish_company");
+        sql.append(" ,prove_attachment_id");
         sql.append(") VALUES (");
         sql.append(" ?");
+        sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
@@ -327,7 +333,7 @@ public class MasterReviewService {
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (BookPublishVO bookPublishVO : bookPublishVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_work_publish"));
-            Object[] param = new Object[15];
+            Object[] param = new Object[16];
             param[0] = id;
             param[1] = businessKey;
             param[2] = bookPublishVO.getBook_name();
@@ -343,6 +349,7 @@ public class MasterReviewService {
             param[12] = userid;
             param[13] = DatetimeUtil.getNow("");
             param[14] = bookPublishVO.getPublish_company();
+            param[15] = bookPublishVO.getProveAttachMentId();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -368,8 +375,12 @@ public class MasterReviewService {
 		sql.append(" ,create_date");
 		sql.append(" ,modify_by");
 		sql.append(" ,modify_date");
+		sql.append(" ,prove_attachment_id");
+		sql.append(" ,title");
 		sql.append(") VALUES (");
 		sql.append(" ?");
+		sql.append(" ,? ");
+		sql.append(" ,? ");
 		sql.append(" ,? ");
 		sql.append(" ,? ");
 		sql.append(" ,? ");
@@ -389,7 +400,7 @@ public class MasterReviewService {
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (StudyTrainVO studyTrainVO : addStudyTrainVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_studytrain"));
-            Object[] param = new Object[14];
+            Object[] param = new Object[16];
             param[0] = id;
             param[1] = businessKey;
             param[2] = studyTrainVO.getStart_date();
@@ -404,6 +415,8 @@ public class MasterReviewService {
             param[11] = DatetimeUtil.getNow("");
             param[12] = userid;
             param[13] = DatetimeUtil.getNow("");
+            param[14] = studyTrainVO.getProveAttachMentId();
+            param[15] = studyTrainVO.getTitle();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);		
@@ -803,8 +816,10 @@ public class MasterReviewService {
         sql.append(",create_by");
         sql.append(" ,create_date");
         sql.append(" ,work_company");
+        sql.append(" ,prove_people_duty");
         sql.append(" ) VALUES (");
         sql.append(" ?");
+        sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
@@ -819,7 +834,7 @@ public class MasterReviewService {
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (WorkHistoryVO workHistoryVO : workHistoryVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_work_history"));
-            Object[] param = new Object[10];
+            Object[] param = new Object[11];
             param[0] = id;
             param[1] = businessKey;
             param[2] = workHistoryVO.getStart_date();
@@ -830,6 +845,7 @@ public class MasterReviewService {
             param[7] = userid;
             param[8] = DatetimeUtil.getNow("");
             param[9] = workHistoryVO.getWork_company();
+            param[10] = workHistoryVO.getProve_people_duty();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);       
@@ -951,6 +967,40 @@ public class MasterReviewService {
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);          
      }
+     
+     private void addSituation(List<SituationVO> situationVOs,String businessKey) {
+         String userid = (String) ApplicationContext.getRequest().getSession().getAttribute("userid");
+         StringBuffer sql = new StringBuffer("");
+         sql.append(" INSERT INTO headmaster_situation(");
+         sql.append("  id");
+         sql.append(" ,businessKey");
+         sql.append(" ,hasSituation");
+         sql.append(" ,tableName");
+         sql.append(" ,create_by");
+         sql.append(" ,create_date");
+         sql.append(" ) VALUES (");
+         sql.append(" ?");
+         sql.append(" ,? ");
+         sql.append(" ,? ");
+         sql.append(" ,? ");
+         sql.append(" ,? ");
+         sql.append(" ,? ");
+         sql.append(" )");
+
+         List<Object[]> batchArgs = new ArrayList<Object[]>();
+         for (SituationVO situationVO : situationVOs) {
+             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_situation"));
+             Object[] param = new Object[6];
+             param[0] = id;
+             param[1] = businessKey;
+             param[2] = situationVO.getHasSituation();
+             param[3] = situationVO.getTableName();
+             param[4] = userid;
+             param[5] = DatetimeUtil.getNow("");
+             batchArgs.add(param);
+         }
+         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);          
+      }
 
       /**
        * 加分社会责任
@@ -1866,14 +1916,14 @@ public class MasterReviewService {
         sql.append(" ,modify_by = ?");
         sql.append(",modify_date = ?");
         sql.append(",awards_type = ?");
-        sql.append(",awards_type1 = ?");
-        sql.append(" ,awards_attachment_id1 = ?");
+        //sql.append(",awards_type1 = ?");
+        //sql.append(" ,awards_attachment_id1 = ?");
         sql.append("  WHERE id = ?");
         
         
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for(PersonalAwardVO personalAwardVO : personalAwardVOs){
-            Object[] param = new Object[13];
+            Object[] param = new Object[11];
             param[0] =personalAwardVO.getAwardsName();
             param[1] =personalAwardVO.getAwardsCompany();
             param[2] = personalAwardVO.getAwardsLevel();
@@ -1884,9 +1934,9 @@ public class MasterReviewService {
             param[7] = userId;
             param[8] = DatetimeUtil.getNow("");
             param[9] = personalAwardVO.getAwards_type();
-            param[10] = personalAwardVO.getAwards_type1();
-            param[11] = personalAwardVO.getAwardsAttachmentId1();
-            param[12] = personalAwardVO.getId();
+            //param[10] = personalAwardVO.getAwards_type1();
+            //param[11] = personalAwardVO.getAwardsAttachmentId1();
+            param[10] = personalAwardVO.getId();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -1921,11 +1971,12 @@ public class MasterReviewService {
         // sql.append(" ,create_time = ?");
         sql.append(" ,modify_by = ?");
         sql.append(",modify_date = ?");
+        sql.append(",project_time = ?");
         sql.append(" WHERE id = ?");
         
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for(SubjectVO subjectVO : subjectVOs){
-            Object[] param = new Object[13];
+            Object[] param = new Object[14];
             param[0] =subjectVO.getSubjectName();
             param[1] =subjectVO.getSubjectCompany();
             param[2] = subjectVO.getSubjectLevel();
@@ -1938,7 +1989,8 @@ public class MasterReviewService {
             param[9] = "1";
             param[10] = userId;
             param[11] = DatetimeUtil.getNow("");
-            param[12] = subjectVO.getId();
+            param[12] = subjectVO.getProjectTime();
+            param[13] = subjectVO.getId();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -1973,11 +2025,12 @@ public class MasterReviewService {
         sql.append(" ,modify_by = ?");
         sql.append(",modify_date = ?");
         sql.append(",publish_company = ?");
-        sql.append("WHERE id = ?");
+        sql.append(",prove_attachment_id = ?");
+        sql.append(" WHERE id = ?");
         
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for(BookPublishVO bookPublishVO : bookPublishVOs){
-            Object[] param = new Object[14];
+            Object[] param = new Object[15];
             param[0] =bookPublishVO.getBook_name();
             param[1] =bookPublishVO.getComplete_way();
             param[2] = bookPublishVO.getPublish_time();
@@ -1991,7 +2044,8 @@ public class MasterReviewService {
             param[10] = userId;
             param[11] = DatetimeUtil.getNow("");
             param[12] = bookPublishVO.getPublish_company();
-            param[13] = bookPublishVO.getId();
+            param[13] = bookPublishVO.getProveAttachMentId();
+            param[14] = bookPublishVO.getId();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -2248,6 +2302,31 @@ public class MasterReviewService {
     }
 
     /**
+     * 有无责任事故和处分情况数据更新
+     * @Title: updateAccident 
+     * @Description: TODO
+     * @param masterReviewVO
+     * @return: void
+     */
+    private void updateSituation(List<SituationVO> situationVOs) {
+        StringBuffer sql = new StringBuffer("");
+        sql.append(" UPDATE headmaster_situation");
+        sql.append(" SET");
+        sql.append(" hasSituation =  ?");
+        sql.append(" WHERE id = ?");
+
+        List<Object[]> batchArgs = new ArrayList<Object[]>();
+        for (SituationVO situationVO : situationVOs) {
+            Object[] param = new Object[2];
+            param[0] = situationVO.getHasSituation();
+            param[1] = situationVO.getId();
+            batchArgs.add(param);
+        }
+        ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
+    }
+
+    
+    /**
      * 更新学校等级评估
      * @Title: updateGradeEvaluate 
      * @Description: TODO
@@ -2308,11 +2387,12 @@ public class MasterReviewService {
         sql.append("          ,modify_by = ?");
         sql.append(",modify_date = ?");
         sql.append(",work_company = ?");
+        sql.append(",prove_people_duty = ?");
         sql.append("  WHERE id = ?");
 
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (WorkHistoryVO workHistoryVO : workHistoryVOs) {
-            Object[] param = new Object[9];
+            Object[] param = new Object[10];
             param[0] = workHistoryVO.getStart_date();
             param[1] = workHistoryVO.getEnd_date();
             param[2] = workHistoryVO.getProve_people();
@@ -2321,7 +2401,8 @@ public class MasterReviewService {
             param[5] = userid;
             param[6] = DatetimeUtil.getNow("");
             param[7] = workHistoryVO.getWork_company();
-            param[8] = workHistoryVO.getId();
+            param[8] = workHistoryVO.getProve_people_duty();
+            param[9] = workHistoryVO.getId();
             
             batchArgs.add(param);
         }
@@ -2471,11 +2552,13 @@ public class MasterReviewService {
 		//sql.append(" ,create_date = ?");
 		sql.append(" ,modify_by = ?");
 		sql.append(" ,modify_date = ?");
+		sql.append(" ,prove_attachment_id = ?");
+		sql.append(" ,title = ?");
 		sql.append(" WHERE id = ?");
 
          List<Object[]> batchArgs = new ArrayList<Object[]>();
          for (StudyTrainVO studyTrainVO : updateStudyTrainVOs) {
-             Object[] param = new Object[10];
+             Object[] param = new Object[12];
              param[0] =studyTrainVO.getStart_date();
              param[1] = studyTrainVO.getEnd_date();
              param[2] = studyTrainVO.getContent();
@@ -2485,7 +2568,9 @@ public class MasterReviewService {
              param[6] ="1";
              param[7] = userid;
              param[8] = DatetimeUtil.getNow("");
-             param[9] = studyTrainVO.getId();
+             param[9] = studyTrainVO.getProveAttachMentId();
+             param[10] = studyTrainVO.getTitle();
+             param[11] = studyTrainVO.getId();
              batchArgs.add(param);
          }
          ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);		
@@ -2636,6 +2721,18 @@ public class MasterReviewService {
             updateSocialDuty(updateSocialDutyVOs);
             addSocialDuty(addSocialDutyVOs,masterReviewVO.getId());
         } else if (option_tab_type.equals("accident")) {// 责任事故
+        	List<SituationVO> addSituationVOs = new ArrayList<SituationVO>();
+            List<SituationVO> updateSituationVOs = new ArrayList<SituationVO>();
+            for (SituationVO situationVO : masterReviewVO.getSituationVOs()) {
+                if(StringUtil.isEmpty(situationVO.getId())){
+                	addSituationVOs.add(situationVO);
+                }else{
+                	updateSituationVOs.add(situationVO);
+                }
+            }
+        	updateSituation(updateSituationVOs);
+        	addSituation(addSituationVOs,masterReviewVO.getId());
+        	
             List<AccidentVO> addAccidentVOs = new ArrayList<AccidentVO>();
             List<AccidentVO> updateAccidentVOs = new ArrayList<AccidentVO>();
             for (AccidentVO accidentVO : masterReviewVO.getAccidentVOs()) {
@@ -2648,6 +2745,18 @@ public class MasterReviewService {
             updateAccident(updateAccidentVOs);
             addAccident(addAccidentVOs,masterReviewVO.getId());
         } else if (option_tab_type.equals("punishment")) {// 处分
+        	List<SituationVO> addSituationVOs = new ArrayList<SituationVO>();
+            List<SituationVO> updateSituationVOs = new ArrayList<SituationVO>();
+            for (SituationVO situationVO : masterReviewVO.getSituationVOs()) {
+                if(StringUtil.isEmpty(situationVO.getId())){
+                	addSituationVOs.add(situationVO);
+                }else{
+                	updateSituationVOs.add(situationVO);
+                }
+            }
+        	updateSituation(updateSituationVOs);
+        	addSituation(addSituationVOs,masterReviewVO.getId());
+        	
             List<PunishmentVO> addPunishmentVOs = new ArrayList<PunishmentVO>();
             List<PunishmentVO> updatePunishmentVOs = new ArrayList<PunishmentVO>();
             for (PunishmentVO punishmentVO : masterReviewVO.getPunishmentVOs()) {

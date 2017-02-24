@@ -308,6 +308,8 @@ public class MasterReviewVO {
      */
     private List<WorkHistoryVO> workHistoryVOs= new ArrayList<WorkHistoryVO>();;
     
+    private List<SituationVO> situationVOs = new ArrayList<SituationVO>();
+    
     public String getHeaderMasterId() {
         return headerMasterId;
     }
@@ -1054,6 +1056,13 @@ public class MasterReviewVO {
 			String teacher_development_approve_result) {
 		this.teacher_development_approve_result = teacher_development_approve_result;
 	}
-    
+
+	public List<SituationVO> getSituationVOs() {
+		return situationVOs;
+	}
+
+	public void setSituationVOs(List<SituationVO> situationVOs) {
+		this.situationVOs = situationVOs;
+	}
     
 }

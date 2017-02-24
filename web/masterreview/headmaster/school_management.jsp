@@ -63,7 +63,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		});
 		bcReq.setSuccFn(function(data,status){
-			changeOption(13);
+			changeOption(14);
 		});
 		bcReq.postData();
 	}else{
@@ -127,7 +127,7 @@ function countChar(curObj) {//计算字数
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl" >
-			<h2><i>12</i>学校管理</h2>
+			<h2><i>13</i>学校管理</h2>
 			<p >
 				<span id="span1" >1、规划发展  </span>
 				<span id="span2" >2、机构设置  </span>
@@ -144,6 +144,7 @@ function countChar(curObj) {//计算字数
 	<div class="bxsx">
 		<ul class="clear-fix">
 			<li>
+				<p style="color:#999;margin-bottom: 5px;">请用不超过1000字描述。</p>
 				<textarea id="school_management" name="school_management" onkeydown='countChar(this);' onkeyup='countChar(this);'></textarea>
 				<p name="text-prompt" style="color:#999;text-align:right;"><span name="number" style="padding: 0px 0px;">0</span>/1000</p>
 			</li>
@@ -159,7 +160,7 @@ function countChar(curObj) {//计算字数
 	<!-- 办学思想 e -->
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(11)">上一步</a>
+	 <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(12)">上一步</a>
 	 <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 </body>

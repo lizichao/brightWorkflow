@@ -18,6 +18,8 @@ public class WorkHistoryVO {
     private Date end_date;
     //证明人
     private String prove_people;
+    //证明人职务
+    private String prove_people_duty;
     //工作单位
     private String work_company;
     
@@ -62,8 +64,16 @@ public class WorkHistoryVO {
     public void setProve_people(String prove_people) {
         this.prove_people = prove_people;
     }
+    
+    public String getProve_people_duty() {
+		return prove_people_duty;
+	}
 
-    public String getApprove_result() {
+	public void setProve_people_duty(String prove_people_duty) {
+		this.prove_people_duty = prove_people_duty;
+	}
+
+	public String getApprove_result() {
         return approve_result;
     }
 

@@ -218,7 +218,7 @@ function saveUpdateRefillData(){
 			}
 		);
 		bcReq.setSuccFn(function(data,status){
-			changeOption(6);
+			changeOption(7);
 		});
 		bcReq.postData();
 	}else{
@@ -273,7 +273,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>5</i>校长(副校长)任职年限</h2>
+			<h2><i>6</i>校长(副校长)任职年限</h2>
 			<p>1、填写任正、副校长年限情况。2、正、副校长任职年限按学年度计算。一学年内实际任职时间累积不足半年的（含寒暑假），当年不计为人追年限，超过半年的，当年任职年限按一年计算；校长任职年限计算截止至2016年*月*日；校长任职时间以任职文件为准。3、教育行政部门、教育系统其它事业单位与学校之间人员相互调任的，如调任前后行政管理岗位级别相同，其校领导任职年限可连续计算，其经历单独填写。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -339,7 +339,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(4)">上一步</a>
+	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(5)">上一步</a>
 	  <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 

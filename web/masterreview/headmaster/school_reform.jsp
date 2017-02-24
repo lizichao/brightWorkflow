@@ -56,7 +56,7 @@
     </li>
 
 	<li>
-      <span class="fl">项目完成情况：</span>
+      <span class="fl" style='position:relative;'>项目完成情况：<span style='position:absolute;left:-14px;top:30px;width:140px;'>（不得超过100字）</span></span>
         <textarea title='不得超过100字' name='performance{{:#index+1}}' id='performance{{:#index+1}}' class='fl deooration' placeholder='请输入项目完成情况' onkeydown='countChar(this);' onkeyup='countChar(this);'>{{:performance}}</textarea>
     	<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>{{if performance && performance.length}}{{:performance.length}}{{else}}0{{/if}}</span>/100&nbsp;</p>
 	</li>
@@ -145,7 +145,7 @@ function addSchoolReformSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li><span class='fl'>项目完成情况：</span>");
+	educationArray.push("<li><span class='fl' style='position:relative;'>项目完成情况：<span style='position:absolute;left:-14px;top:30px;width:140px;'>（不得超过100字）</span></span>");
 	educationArray.push("<textarea title='不得超过100字' name='performance"+schoolReformRowNumNext+"' id='performance"+schoolReformRowNumNext+"' class='fl deooration' placeholder='请输入项目完成情况' onkeydown='countChar(this);' onkeyup='countChar(this);'></textarea>");
 	educationArray.push("<p name='text-prompt' style='color:#999;text-align:right;'><span name='number' style='padding:0px 0px;'>0</span>/100&nbsp;</p>");
 	educationArray.push("</li>");

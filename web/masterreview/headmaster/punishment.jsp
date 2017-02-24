@@ -79,6 +79,26 @@ $(function(){
 });
 
 function initPunishmentData(masterReviewVO){
+	
+	var situationVOs = masterReviewVO.situationVOs;
+	var isContinue = false;debugger;
+	Brightcom.workflow.initSelectCombox('headmaster_yes_no','hasPunishment');
+	if (situationVOs!=null&&situationVOs.length>0) {
+		for(var i =0;i<situationVOs.length;i++){
+			if (situationVOs[i].tableName == "headmaster_punishment") {
+				isContinue = true;
+				$("#situation_id").val(situationVOs[i].id);
+				$("#hasPunishment").val(situationVOs[i].hasSituation);
+				break;
+			}
+		}
+	}
+	if (!isContinue) return;
+	if ($("#hasPunishment").val()=="2") {
+		$("#punishmentRefill").show();
+		$("#addDiv").show();
+	}
+	
 	bulidPunishment(masterReviewVO.punishmentVOs);
 }
 
@@ -198,6 +218,13 @@ function saveUpdateRefillData(){
 function getSubmitStrings(){
 	var submitArray = [];
 	var punishmentRowNum = $("#punishmentRowNum").val();
+	var situationObject = {
+		"situation_id":$("#situation_id").val(),
+		"situation_businessKey":$("#id").val(),
+		"situation_hasSituation":$("#hasPunishment").val()
+	}
+	submitArray.push(situationObject);
+	
 	for(var i=0;i<punishmentRowNum;i++){
 		var rowNum = (i+1);
 		var id = $("#punishmentId"+rowNum).val();
@@ -255,6 +282,18 @@ function countChar(curObj) {//计算字数
 		}
 	}
 }
+
+function showInfoFn(){
+	var hasPunishment = $("#hasPunishment").val();
+	if (hasPunishment=='1') {//不显示数据
+		$("#punishmentRefill").hide();
+		$("#addDiv").hide();
+	} else if (hasPunishment=='2') { //显示数据
+		$("#punishmentRefill").show();
+		$("#addDiv").show();
+	}
+}
+
 </script>
 </head>
 <body>
@@ -265,20 +304,37 @@ function countChar(curObj) {//计算字数
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>23</i>处分</h2>
+			<h2><i>23</i>处分情况</h2>
 			<p>填写校长本人受到党纪、行政处分或处理情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>
 	</div>
 	<!-- 标题 e -->
+	
+	<!--   -->
+	<div class="years">
+		<div class="container">
+			<ul class="clear-fix">
+				<li>
+					<div class="border_2" style="width: 180px;margin: 0 auto;">
+						<input type="hidden" id="situation_id"/>
+						<span class="fl">有无处分情况：</span>
+						<select id="hasPunishment" onchange="showInfoFn()"></select>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--  -->
+	
 	<!-- 任职年限 s -->
-	<div id="punishmentRefill" class="years">
+	<div id="punishmentRefill" class="years" style="display: none">
 		<input type="hidden" id="punishmentRowNum" name="punishmentRowNum" value="0">
 	</div>
 	<!-- 任职年限 e -->
 	
-	<div class="add"><a href="javascript:void(0);" onclick="addPunishmentSingle(this)" class="add-more">+</a></div>
+	<div id="addDiv" class="add" style="display: none"><a href="javascript:void(0);" onclick="addPunishmentSingle(this)" class="add-more">+</a></div>
 	
 	<div class="next-step clear-fix">
 	  <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(22)">上一步</a>

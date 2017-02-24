@@ -200,7 +200,7 @@ function saveUpdateRefillData(){
 		    "businessKey":processBusinessKey
 		    });
 		bcReq.setSuccFn(function(data,status){
-			changeOption(18);
+			changeOption(19);
 		});
 		bcReq.postData();
 	}else{
@@ -253,7 +253,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<!-- 标题 s -->
 	<div class="com-title">
 		<div class="txt fl">
-			<h2><i>17</i>学校发展（学校获奖情况）</h2>
+			<h2><i>18</i>学校发展（学校获奖情况）</h2>
 			<p>填写任校长期间，学校获得市级以上党委政府、教育行政部门授予的荣誉和表彰。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
@@ -270,7 +270,7 @@ function headmasterBeforeSubmit(formJsonData){
 	
 	<!-- 任职年限 e -->
 	<div class="next-step clear-fix">
-	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(16)">上一步</a>
+	   <a href="javascript:void(0);" target="_self" title="" class="fl" onclick="changeOption(17)">上一步</a>
 	   <a href="javascript:void(0);" target="_self" title="" class="fr" onclick="saveUpdateRefillData()">下一步</a>
 	</div>
 
