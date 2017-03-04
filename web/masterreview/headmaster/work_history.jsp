@@ -38,17 +38,17 @@
         </div>
     </li>
 	<li>
+		<span class='fl'>职务：</span>
+		<div class='border_2 w_20 fl'>
+			<input type='text' id='prove_people_duty{{:#index+1}}' value='{{:prove_people_duty}}' placeholder=''/>
+		</div>
+	</li>
+	<li>
          <span class="fl">证明人：</span>
          <div class="border_2 w_26 fl">
            <input type="text" id='prove_people{{:#index+1}}' value='{{:prove_people}}' placeholder="请输入证明人" />
          </div>
     </li>
-	<li>
-		<span class='fl'>职务：</span>
-		<div class='border_2 w_20 fl'>
-			<input type='text' id='prove_people_duty{{:#index+1}}' value='{{:prove_people_duty}}' placeholder='请输入证明人职务'/>
-		</div>
-	</li>
    </ul>
 </div>
 {{/for}}
@@ -103,15 +103,15 @@ function addWorkHistorySingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li><span class='fl'>证明人：</span>");
-	educationArray.push("<div class='border_2 w_26 fl'>");
-	educationArray.push("<input type='text' id='prove_people"+workHistoryRowNumNext+"' value='' placeholder='请输入证明人'>");
+	educationArray.push("<li><span class='fl'>职务：</span>");
+	educationArray.push("<div class='border_2 w_20 fl'>");
+	educationArray.push("<input type='text' id='prove_people_duty"+workHistoryRowNumNext+"' value='' placeholder=''>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
-	educationArray.push("<li><span class='fl'>职务：</span>");
-	educationArray.push("<div class='border_2 w_20 fl'>");
-	educationArray.push("<input type='text' id='prove_people_duty"+workHistoryRowNumNext+"' value='' placeholder='请输入证明人职务'>");
+	educationArray.push("<li><span class='fl'>证明人：</span>");
+	educationArray.push("<div class='border_2 w_26 fl'>");
+	educationArray.push("<input type='text' id='prove_people"+workHistoryRowNumNext+"' value='' placeholder='请输入证明人'>");
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	

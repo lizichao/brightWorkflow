@@ -583,16 +583,16 @@
 			        	<td class="black">序号</td>
 			        	<td class="black">起止年月</td>
 			        	<td class="black">工作单位</td>
-			        	<td class="black">证明人</td>
 						<td class="black">职务</td>
+			        	<td class="black">证明人</td>
 			        </tr>
 {{for Data}}
     <tr>
       <td>{{:#index+1}}</td>
       <td>{{timeContent start_date end_date/}}</td>
       <td>{{:work_company}}</td>
+	  <td>{{:prove_people_duty}}</td>
       <td>{{:prove_people}}</td>
-      <td>{{:prove_people_duty}}</td>
     </tr>
 {{/for}}
 </tbody>

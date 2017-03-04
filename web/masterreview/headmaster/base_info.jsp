@@ -417,7 +417,13 @@ function countBirthDate(identitycardObj){
 					 <select name="phasestudy" id="phasestudy"><option value="">请选择</option></select>
 				</div>
 			</li>
-				<li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:85;">
+					<span>所在学校：</span>
+					<input type="text" id="school_name" name="school_name" value="" placeholder="请输入学校全称" />
+				</div>
+			</li>
+			<li>
 				<div class="border_1 w_3 fl" style="z-index:85;">
 					<span>所在学校：</span>
 					<input type="text" id="school_name" name="school_name" value="" placeholder="请输入学校全称" />
