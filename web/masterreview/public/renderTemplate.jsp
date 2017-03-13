@@ -392,13 +392,14 @@
 <table cellpadding="0" cellspacing="1" border="0" class="table text-center">
 			    <tbody>
                     <tr>
-			            <th width="100%" colspan="5">学校等级评估</th>
+			            <th width="100%" colspan="6">学校等级评估</th>
 			        </tr>
 			        <tr>
 			        	<td class="black">序号</td>
 			        	<td class="black">义务教育</td>
 			        	<td class="black">高中</td>
 			        	<td class="black">中职</td>
+			        	<td class="black">特殊教育</td>
                        <td class="black">证明材料</td>
 			        </tr>
 {{for Data}}
@@ -407,6 +408,7 @@
       <td>{{:compulsory_education}}</td>
       <td>{{:high_school}}</td>
       <td>{{:secondary_school}}</td>
+      <td>{{:special_education}}</td>
       <td>
          {{if proveAttachMentVO.attachmentId !==null}}
              <a class="cha" href="<%=basePath%>WorkflowAttachMentDownload?attachmentId={{:proveAttachMentVO.attachmentId}}"> 点击查看</a>

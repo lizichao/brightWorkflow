@@ -8,6 +8,8 @@
         <Field name="headerMasterName" title="校长名字" type="String" maxlen="30" notnull="true" />
         <Field name="mobile" title="手机" type="String" maxlen="30" notnull="false" />
         <Field name="identitycard" title="身份证号码" type="String" maxlen="32" />
+        <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
+        <Field name="districtid" title="学校所在区ID" type="String" maxlen="32" />
         <Field name="school_id" title="学校id" type="String" maxlen="32" />
         <Field name="school_name" title="学校名称" type="String" maxlen="32"/>
         <Field name="apply_level" title="申请级别" type="String" maxlen="1"/>
@@ -21,6 +23,7 @@
         <Field name="school_class" title="学校类型" type="String" maxlen="32" pk="false" notnull="false"/>
 	   <!--  <Field name="presentOccupation" title="现任职务" type="String" maxlen="32" pk="false" notnull="false"/>--> 
 	    <Field name="present_major_occupation" title="现任专业技术职务" type="String" maxlen="32" pk="false" notnull="false"/>
+	    <Field name="phasestudy" title="学段" type="String" maxlen="10" notnull="false" />
 	    <Field name="join_work_time" title="参加工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="join_educate_work_time" title="参加教育工作时间" type="Timestamp" maxlen="32" pk="false" notnull="false"/>
 	    <Field name="politics_status" title="政治面貌" type="String" maxlen="32" pk="false" notnull="false"/>
@@ -591,6 +594,7 @@
         <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
         <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
         <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="districtid" title="学校所在区" type="String" maxlen="40" notnull="true" />
         <Field name="deptid" title="学校" type="String" maxlen="40" notnull="true" />
         <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="false" />
         <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />
@@ -630,6 +634,7 @@
         <Field name="username" title="姓名" type="String" maxlen="40" notnull="true" />
         <Field name="usercode" title="帐号" type="String" maxlen="40" notnull="true" />
         <Field name="userpwd" title="密码" type="String" maxlen="40" notnull="false" />
+        <Field name="districtid" title="学校所在区" type="String" maxlen="40" notnull="false" />
         <Field name="deptid" title="学校" type="String" maxlen="40" notnull="false" />
         <Field name="idnumber" title="身份证号码" type="String" maxlen="40" notnull="true" />
         <Field name="email" title="邮箱" type="String" maxlen="100" notnull="false" />

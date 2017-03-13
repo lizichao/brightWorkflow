@@ -1,30 +1,38 @@
 Ext.namespace("jsp.masterreview.headmaster");jsp.masterreview.headmaster.headmaster=function(){var __caches__=[];this.__caches__=__caches__;
        var _editInfoWin; 
        function openEditInfoWin(_rec){ 
-         _editInfoWin=Ext.getCmp('editInfoWin'); 
-         if(!_editInfoWin){
-          _editInfoWin=new Ext.Window(
-            {title:'数据录入',
-             id:'editInfoWin',
-             layout:'fit',
-             width:700,
-             height:350,
-             closeAction:'hide',
-             plain:true,
-             modal: true,
-             items:EditInfoForm
-             });
-          } 
-          _editInfoWin.show();
-          EditInfoForm.getForm().reset();
-      
+        _editInfoWin=Ext.getCmp('_editInfoWin'); 
+        if(!_editInfoWin){
+        	_editInfoWin=new Ext.Window({
+        			title:'数据录入',
+             		id:'_editInfoWin',
+             		layout:'fit',
+             		width:700,
+             		height:350,
+             		closeAction:'hide',
+             		plain:true,
+             		modal: true,
+             		items:EditInfoForm
+            });
+        } 
+        _editInfoWin.show();
+        EditInfoForm.getForm().reset();
         
-         EditInfoForm.getForm().loadRecord(_rec);
-           if(_rec.data.id){
-            EditInfoForm.getForm().findField('deptid').setComboVal(_rec.get('deptid'),_rec.get('deptname'));
-          }
-          EditInfoForm.record=_rec;
+        EditInfoForm.getForm().loadRecord(_rec);
+        
+        if(_rec.data.id) {
+			//debugger;
+            //EditInfoForm.getForm().findField('deptid').setComboVal(_rec.get('deptid'),_rec.get('deptname'));
+            if (_rec.data.districtid) {
+            	var pdeptid = _rec.get('districtid');
+				SchoolStore.setBaseParam("pdeptid",pdeptid);
+				SchoolStore.load();
+				//EditInfoForm.getForm().findField("option_id").setComboVal(_rec.get('deptid'),_rec.get('deptname'));
+				JrafUTIL.findCmp(EditInfoForm,'schoolCombo').setRawValue(_rec.get('deptname'));
+            }
         }
+        EditInfoForm.record=_rec;
+	}
     var HeadMasterRec=Ext.data.Record.create([ {
     xtype : "Field",
     name : "id",
@@ -72,6 +80,20 @@ Ext.namespace("jsp.masterreview.headmaster");jsp.masterreview.headmaster.headmas
     name : "idnumber",
     width : 150,
     fieldLabel : "身份证号",
+    allowBlank : false,
+    type : "string"
+},{
+    xtype : "Field",
+    name : "districtid",
+    width : 150,
+    fieldLabel : "学校所在区id",
+    allowBlank : false,
+    type : "string"
+},{
+    xtype : "Field",
+    name : "districtname",
+    width : 150,
+    fieldLabel : "学校所在区",
     allowBlank : false,
     type : "string"
 },{
@@ -194,7 +216,20 @@ Ext.namespace("jsp.masterreview.headmaster");jsp.masterreview.headmaster.headmas
     type : "string",
     allowBlank : true
 }]);
-this.HeadMasterRec=HeadMasterRec;this.__caches__.push(HeadMasterRec);var HeadMasterStore=Ext.create({
+this.HeadMasterRec=HeadMasterRec;this.__caches__.push(HeadMasterRec);var DistrictRec=Ext.data.Record.create([  {
+    xtype : "Field",
+    name : "option_id",
+    fieldLabel : "option_id",
+    type : "string",
+    allowBlank : true
+}, {
+    xtype : "Field",
+    name : "option_name",
+    fieldLabel : "option_name",
+    type : "string",
+    allowBlank : true
+}]);
+this.DistrictRec=DistrictRec;this.__caches__.push(DistrictRec);var HeadMasterStore=Ext.create({
   xtype : "Store",
   classname : "HeadMasterStore",
   type : "JrafXmlStore",
@@ -230,7 +265,47 @@ this.HeadMasterRec=HeadMasterRec;this.__caches__.push(HeadMasterRec);var HeadMas
     write : function (store,action,result,res,rs){if (res.success){if (_editInfoWin){_editInfoWin.hide();}}}
 }
 },'Store');
-this.HeadMasterStore=HeadMasterStore;this.__caches__.push(HeadMasterStore);var EditInfoForm=Ext.create({
+this.HeadMasterStore=HeadMasterStore;this.__caches__.push(HeadMasterStore);var DistrictStore=Ext.create({
+  		xtype : "Store",
+  		classname : "DistrictStore",
+  		type : "JrafXmlStore",
+  		recordType : DistrictRec,
+  		idProperty : "id",
+  		api : {
+    		read :	{
+      			sysName : "yuexue",
+      			oprID : "Register",
+      			actions : "getChildrenDept"
+  			}
+		},
+  		autoLoad : true,
+  		autoSave : false,
+  		baseParams : {'pdeptid':'8a21b3ab4d23c0a7014d2c5f4910001a','PageSize':'0'},
+  		paramsAsHash : true,
+  		remoteSort : true
+	}
+	,'Store');
+this.DistrictStore=DistrictStore;this.__caches__.push(DistrictStore);var SchoolStore=Ext.create({
+  		xtype : "Store",
+  		classname : "SchoolStore",
+  		type : "JrafXmlStore",
+  		recordType : DistrictRec,
+  		idProperty : "id",
+  		api : {
+    		read :	{
+      			sysName : "yuexue",
+      			oprID : "Register",
+      			actions : "getChildrenDept"
+  			}
+		},
+  		autoLoad : false,
+  		autoSave : false,
+  		baseParams : {paramname:'pdeptid','PageSize':'0'},
+  		paramsAsHash : true,
+  		remoteSort : true
+	}
+	,'Store');
+this.SchoolStore=SchoolStore;this.__caches__.push(SchoolStore);var EditInfoForm=Ext.create({
   xtype : "form",
   classname : "EditInfoForm",
   frame : true,
@@ -507,7 +582,7 @@ this.HeadMasterStore=HeadMasterStore;this.__caches__.push(HeadMasterStore);var E
               allowBlank : true,
               xtype : "textfield"
           }]
-      },{
+      },/*{
                 layout : "form",
                 columnWidth :  1,
                 bodyBorder : false,
@@ -529,6 +604,63 @@ this.HeadMasterStore=HeadMasterStore;this.__caches__.push(HeadMasterStore);var E
 				      allowBlank : false,
 				      rootid : '8a21b3ab4d23c0a7014d2c5f4910001a',
 	                 roottx  : '深圳市',
+                }]
+            },*/{
+                layout : "form",
+                columnWidth :  0.5,
+                bodyBorder : false,
+                labelAlign : "right",
+                items : [                  {
+                	id : "districtCombo",
+                	itemId:"districtCombo",
+	                name : "districtid",
+				    hiddenName : "districtid",
+				    editable:false,
+				    fieldLabel : "学校所在区",
+				    width : 150,
+				    allowBlank : false,
+				    xtype : "combo",
+				    store:DistrictStore,
+				    emptyText : "请选择学校所在区",
+				    triggerAction : "all",
+				  	displayField : "option_name",
+				  	valueField : "option_id",
+				  	listeners: {
+						select: function(scope,node) {//给学校赋值
+							EditInfoForm.getForm().findField("deptid").setValue('');
+							var pdeptid = node.data["option_id"];
+							SchoolStore.setBaseParam("pdeptid",pdeptid);
+							SchoolStore.load();
+							var _rec = EditInfoForm.record;
+							if (_rec && _rec.data["districtid"] && node) {
+								if (node.data["option_id"]==_rec.get("districtid")) {
+									JrafUTIL.findCmp(EditInfoForm,'schoolCombo').setValue(_rec.get('deptid'));
+									JrafUTIL.findCmp(EditInfoForm,'schoolCombo').setRawValue(_rec.get('deptname'));
+								}
+							}
+						}
+					}
+                }]
+            },{
+                layout : "form",
+                columnWidth :  0.5,
+                bodyBorder : false,
+                labelAlign : "right",
+                items : [                  {
+                	id : "schoolCombo",
+                	itemId:"schoolCombo",
+	                name : "deptid",
+				    hiddenName : "deptid",
+				    editable:false,
+				    fieldLabel : "所在学校",
+				    width : 150,
+				    allowBlank : false,
+				    xtype : "combo",
+				    store:SchoolStore,
+				    emptyText : "请选择所在学校",
+				    triggerAction : "all",
+				  	displayField : "option_name",
+				  	valueField : "option_id"
                 }]
             }]
   }],
@@ -697,6 +829,8 @@ this.EditInfoForm=EditInfoForm;this.__caches__.push(EditInfoForm);var MainPanel=
         colModel : new Ext.grid.ColumnModel([new Ext.grid.CheckboxSelectionModel(),
         {width:100,sortable:true,header:'姓名',dataIndex:'username',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'账号',dataIndex:'usercode',renderer:Ext.util.Format.paramRenderer('undefined',''),hidden : true},
+        {width:100,sortable:true,header:'区id',dataIndex:'districtid',renderer:Ext.util.Format.paramRenderer('undefined',''),hidden : true},
+        {width:100,sortable:true,header:'所在区',dataIndex:'districtname',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:100,sortable:true,header:'部门id',dataIndex:'deptid',renderer:Ext.util.Format.paramRenderer('undefined',''),hidden : true},
         {width:100,sortable:true,header:'部门',dataIndex:'deptname',renderer:Ext.util.Format.paramRenderer('undefined','')},
         {width:80,sortable:true,header:'移动电话',dataIndex:'mobile'},

@@ -722,7 +722,7 @@ function closeUnWindow(){
 </script>
 <input type="hidden" id="workflowSubmitAction" name="workflowSubmitAction" value="headmaster@@masterReviewAction@@completeRefillTask">
 <input type="hidden" id="id" name="id" value="">
-<input type="hidden" id="school_id" name="school_id" value="">
+<!-- <input type="hidden" id="school_id" name="school_id" value="">-->
 <input type="hidden" id="isRefillTask" name="isRefillTask" value="1">
 <input type="hidden" id="currentOptionNum" name="currentOptionNum" value="">
 

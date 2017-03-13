@@ -24,7 +24,18 @@
 			var result = data.Data[0];
 			$("#mobile").val(result.mobile);
 			$("#identitycard").val(result.idnumber);
-			$("#school_id").val(result.deptid);
+			//$("#districtid").val(result.districtid);
+			setSelectOption("districtid","8a21b3ab4d23c0a7014d2c5f4910001a","请选择",result.districtid);
+			$("#district_name").val(result.districtname);
+			
+			$("#districtid_back").val(result.districtid);//用于回选时，回显学校
+			$("#school_id_back").val(result.deptid);
+			//debugger;
+			if (result.districtid) {
+				setSelectOption("school_id",result.districtid,"请选择",result.deptid);
+			}
+			//$("#school_id").val(result.deptid);
+			$("#school_name").val(result.deptname);
 			$("#school_name").val(result.deptname);
 			$("#headerMasterName").val(headerMasterName);
 			$("#present_occupation").val(result.present_occupation);
@@ -84,6 +95,7 @@
 		$("#headerMasterName").text(masterReviewVO.headerMasterName);
 		$("#identitycard").text(masterReviewVO.identitycard);
 		$("#mobile").text(masterReviewVO.mobile);
+		$("#district_name").text(masterReviewVO.districtName);
 		$("#school_name").text(masterReviewVO.schoolName);
 		$("#present_occupation").text(JspParamUtil.paramVal('headmaster_ispositive',masterReviewVO.present_occupation));
 		
@@ -91,6 +103,7 @@
 		$("#census_register").text(JspParamUtil.paramVal('headmaster_census_register',masterReviewVO.census_register));
 		$("#nation").text(masterReviewVO.nation);
 		$("#school_class").text(JspParamUtil.paramVal('headmaster_school_type',masterReviewVO.school_class));
+		$("#lodge_school").text(JspParamUtil.paramVal('global_yes_or_no',masterReviewVO.lodge_school));
 		$("#politics_status").text(JspParamUtil.paramVal('headmaster_politics_status',masterReviewVO.politics_status));
 		$("#teach_age").text(masterReviewVO.teach_age);
 		$("#phasestudy").text(JspParamUtil.paramVal('headmaster_phase_study',masterReviewVO.phasestudy));
@@ -133,7 +146,7 @@
 		bulidSchoolReforms(masterReviewVO.schoolReformVOs,approveType);
 		bulidSocialDutys(masterReviewVO.socialDutyVOs,approveType);
 		
-		debugger;
+		//debugger;
 		//过滤数据
 		var situationVOs = masterReviewVO.situationVOs;
 		if (situationVOs!=null&&situationVOs.length>0) {

@@ -763,9 +763,11 @@ public class MasterReviewService {
         sql.append("  ,approve_result");
         sql.append(" ,create_by");
         sql.append(" ,create_date");
-        sql.append(",prove_attachment_id");
+        sql.append(" ,prove_attachment_id");
+        sql.append(" ,special_education");
         sql.append(" ) VALUES (");
         sql.append(" ?");
+        sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
         sql.append(" ,? ");
@@ -780,7 +782,7 @@ public class MasterReviewService {
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (GradeEvaluateVO gradeEvaluateVO : gradeEvaluateVOs) {
             String id = String.valueOf(DBOprProxy.getNextSequenceNumber("headmaster_grade_evaluate"));
-            Object[] param = new Object[10];
+            Object[] param = new Object[11];
             param[0] = id;
             param[1] = businessKey;
             param[2] = gradeEvaluateVO.getCompulsory_education();
@@ -791,6 +793,7 @@ public class MasterReviewService {
             param[7] = userid;
             param[8] = DatetimeUtil.getNow("");
             param[9] =  gradeEvaluateVO.getProve_attachment_id();
+            param[10] =  gradeEvaluateVO.getSpecial_education();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);
@@ -1805,13 +1808,15 @@ public class MasterReviewService {
        // sql.append("create_by = ?,");
        // sql.append("create_date = ?,");
         sql.append(" modify_by = ?,");
-        sql.append("     modify_date = ?,");
-        sql.append("     native_place = ?,");
-        sql.append("     lodge_school = ?");
+        sql.append(" modify_date = ?,");
+        sql.append(" native_place = ?,");
+        sql.append(" lodge_school = ?");
+        sql.append(" ,districtid = ?");
+        sql.append(" ,deptid = ?");
         sql.append(" WHERE userid = ?");
         
       
-        Object[] param = new Object[23];
+        Object[] param = new Object[25];
         param[0] = masterReviewVO.getUsersex();
         param[1] = masterReviewVO.getSchoolName();
         param[2] = masterReviewVO.getIdentitycard();
@@ -1834,7 +1839,9 @@ public class MasterReviewService {
         param[19] = nowDate;
         param[20] = masterReviewVO.getNative_place();
         param[21] = masterReviewVO.getLodge_school();
-        param[22] = userId;
+        param[22] = masterReviewVO.getDistrictid();
+        param[23] = masterReviewVO.getDeptid();
+        param[24] = userId;
         ApplicationContextHelper.getJdbcTemplate().update(sql.toString(),param);
     }
     
@@ -2348,11 +2355,12 @@ public class MasterReviewService {
         sql.append(",modify_by =  ?");
         sql.append(" ,modify_date =  ?");
         sql.append(" ,prove_attachment_id =  ?");
+        sql.append(" ,special_education =  ?");
         sql.append("  WHERE id = ?");
 
         List<Object[]> batchArgs = new ArrayList<Object[]>();
         for (GradeEvaluateVO gradeEvaluateVO : gradeEvaluateVOs) {
-            Object[] param = new Object[9];
+            Object[] param = new Object[10];
             param[0] = gradeEvaluateVO.getCompulsory_education();
             param[1] = gradeEvaluateVO.getHigh_school();
             param[2] = gradeEvaluateVO.getSecondary_school();
@@ -2361,7 +2369,8 @@ public class MasterReviewService {
             param[5] = userid;
             param[6] = DatetimeUtil.getNow("");
             param[7] = gradeEvaluateVO.getProve_attachment_id();
-            param[8] = gradeEvaluateVO.getId();
+            param[8] = gradeEvaluateVO.getSpecial_education();
+            param[9] = gradeEvaluateVO.getId();
             batchArgs.add(param);
         }
         ApplicationContextHelper.getJdbcTemplate().batchUpdate(sql.toString(), batchArgs);

@@ -89,6 +89,15 @@ public class MasterReviewVO {
     //寄宿制学校
     private String lodge_school;
     
+    //学校所在的区的id号
+    private String districtid;
+    
+    //学校所在的区名称
+    private String districtName;
+    
+    //学校id号
+    private String deptid;
+    
     
     
     
@@ -1002,6 +1011,30 @@ public class MasterReviewVO {
 
 	public void setLodge_school(String lodge_school) {
 		this.lodge_school = lodge_school;
+	}
+
+	public String getDistrictid() {
+		return districtid;
+	}
+
+	public void setDistrictid(String districtid) {
+		this.districtid = districtid;
+	}
+	
+	public String getDistrictName() {
+		return districtName;
+	}
+
+	public void setDistrictName(String districtName) {
+		this.districtName = districtName;
+	}
+
+	public String getDeptid() {
+		return deptid;
+	}
+
+	public void setDeptid(String deptid) {
+		this.deptid = deptid;
 	}
 
 	public String getRun_school_approve_result() {

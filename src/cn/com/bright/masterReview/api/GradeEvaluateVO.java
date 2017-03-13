@@ -21,10 +21,12 @@ public class GradeEvaluateVO {
     private String high_school;
     //中职
     private String secondary_school;
+    //特殊教育
+    private String special_education;
     
     private String approve_result;
     
-  private String prove_attachment_id;
+    private String prove_attachment_id;
     
     
     private AttachMentVO proveAttachMentVO = new AttachMentVO();
@@ -68,8 +70,16 @@ public class GradeEvaluateVO {
     public void setSecondary_school(String secondary_school) {
         this.secondary_school = secondary_school;
     }
+    
+    public String getSpecial_education() {
+		return special_education;
+	}
 
-    public String getApprove_result() {
+	public void setSpecial_education(String special_education) {
+		this.special_education = special_education;
+	}
+
+	public String getApprove_result() {
         return approve_result;
     }
 

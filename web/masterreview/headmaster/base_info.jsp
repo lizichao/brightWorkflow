@@ -24,6 +24,10 @@ $(function(){
 		//$("#base_next_btn").text("保存");
 		$("#base_change_div").hide();
 	}
+	
+	//设置默认城市
+	//setSelectOption("districtid","8a21b3ab4d23c0a7014d2c5f4910001a","请选择");	//	深圳市
+	
 	Headmaster.findMasterBaseInfo('<%=userid%>');
 	Headmaster.initSelectCom();
 	/*
@@ -231,6 +235,9 @@ function getSubmitStrings(){
 			'headerMasterName' : headerMasterName,
 			'usersex': $("#usersex").val(),
 			'school_name':$("#school_name").val(),
+			'districtid':$("#districtid").val(),
+			'school_id':$("#school_id").val(),
+			'deptid':$("#school_id").val(),
 			'identitycard':$("#identitycard").val(),
 			'isPositive':$("#ispositive").val(),
 			'email':$("#email").val(),
@@ -285,10 +292,59 @@ function countBirthDate(identitycardObj){
 	var birthDateVal = Headmaster.discriCard(identitycardObj.value);
 	$("#birth_date").text(birthDateVal)
 }
+
+//下拉
+function setSelectOption(_cascadeid,_selidvalue,_emptyTxt,defaultValue) {
+	//不存在，或者节点不存在
+	if (!_cascadeid) {
+		alert("请添加二级菜单的对应的id");
+		return;
+	} else if (!($("#"+_cascadeid)[0])) {
+		alert("id="+ _cascadeid + "值对应的节点元素不存在");
+		return;
+	}
+	
+	if (_selidvalue) {
+		
+		var bcReq = new BcRequest('yuexue','Register','getChildrenDept');
+		bcReq.setExtraPs({"pdeptid":_selidvalue,"PageSize":"0"});
+		bcReq.setSuccFn(function(data,status){
+			$("#"+_cascadeid+" option").remove();//清空原信息
+			$("#"+_cascadeid).append("<option value=''>"+_emptyTxt+"</option>");
+			for(var i=0;i<data.Data.length;i++){
+			    var _rec = data.Data[i];
+				$("#"+_cascadeid).append("<option value='"+_rec.option_id+"'>"+_rec.option_name+"</option>");
+			}
+			if (defaultValue) {
+				$("#"+_cascadeid).val(defaultValue);
+			}
+	    });
+		bcReq.postData();
+	} else {
+		$("#"+_cascadeid+" option").remove();//清空原信息
+		$("#"+_cascadeid).append("<option value=''>"+_emptyTxt+"</option>");
+	}
+    
+}
+
+function setSchoolOfDistrict(obj){
+	var $obj = $(obj);
+	var cascadeObjID = $obj.attr("cascade");
+	var districtId = $obj.val();
+	var districtId_back = $("#districtid_back").val();
+	var defalutValue = "";
+	if (districtId == districtId_back) {
+		defalutValue = $("#school_id_back").val();
+	}
+	setSelectOption(cascadeObjID,districtId,"请选择",defalutValue);
+}
+
 </script>
 
 </head>
 <body>
+<input type="hidden" id="districtid_back"/>
+<input type="hidden" id="school_id_back"/>
 <input type="hidden" id="person_img_attachId" name="person_img_attachId" value="">
 <!-- 进度 s -->
 	<div class="grogress"><div  class="line" style="width:46px;"><!-- 970/21 --></div></div>
@@ -419,16 +475,26 @@ function countBirthDate(identitycardObj){
 			</li>
 			<li>
 				<div class="border_1 w_3 fl" style="z-index:85;">
-					<span>所在学校：</span>
-					<input type="text" id="school_name" name="school_name" value="" placeholder="请输入学校全称" />
+					<span>学校所在区:</span>
+					<select name="districtid" id="districtid" cascade="school_id" onchange="setSchoolOfDistrict(this)" ><option value="">请选择</option></select>
 				</div>
 			</li>
+			<li>
+				<div class="border_1 w_3 fl" style="z-index:85;">
+					<span>所在学校：</span>
+					<select name="school_id" id="school_id" emptytxt="学校" cascade="gradecode">
+				      <option value="" selected>请选择</option>
+	  				</select>
+				</div>
+			</li>
+			<!-- 
 			<li>
 				<div class="border_1 w_3 fl" style="z-index:85;">
 					<span>所在学校：</span>
 					<input type="text" id="school_name" name="school_name" value="" placeholder="请输入学校全称" />
 				</div>
 			</li>
+			 -->
 		</ul>
 	</div>
 	<!-- 基础信息填写 e -->

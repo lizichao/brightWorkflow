@@ -43,6 +43,13 @@
       </div>
     </li>
 
+	<li>
+     <span class='fl'>特殊教育：</span>
+     <div class="border_2 w_13 fl">
+      <input type='text' id='special_education{{:#index+1}}' value='{{:special_education}}' placeholder=''>
+     </div>
+    </li>
+
     <li style='height:45px;' class='position_relative'>
       <span class="fl">证明材料：</span>
       <div id='grade_evaluate_upload_div{{:#index+1}}' class='position_upload_button_professional'></div>
@@ -121,6 +128,14 @@ function addGradeEvaluateSingle(obj){
 	educationArray.push("</div>");
 	educationArray.push("</li>");
 	
+	educationArray.push("<li>");
+	educationArray.push("<span class='fl'>特殊教育：</span>");
+	educationArray.push("<div class='border_2 w_13 fl'>");
+	educationArray.push("<input type='text' id='special_education"+gradeEvaluateRowNumNext+"' value='' placeholder=''>");
+	//educationArray.push("<select name='' id='secondary_school"+gradeEvaluateRowNumNext+"' class='select_left'><option value='2016' >2016</option></select>");
+	educationArray.push("</div>");
+	educationArray.push("</li>");
+	
 	educationArray.push("<li style='height:45px;' class='position_relative'>");
 	educationArray.push(" <span class='fl'>证明材料：</span>");
 	educationArray.push(" <div id='grade_evaluate_upload_div"+gradeEvaluateRowNumNext+"' class='position_upload_button_professional'></div>");
@@ -180,6 +195,7 @@ function getSubmitStrings(){
 		var compulsory_education = $("#compulsory_education"+rowNum).val();
 		var high_school = $("#high_school"+rowNum).val();
 		var secondary_school = $("#secondary_school"+rowNum).val();
+		var special_education = $("#special_education"+rowNum).val();
 		var businessKey = $("#id").val();
 		var proveAttachId = $("#proveAttachId"+rowNum).val();
 		if(!compulsory_education){
@@ -191,6 +207,7 @@ function getSubmitStrings(){
 				"businessKey":$("#id").val(),
 				"high_school":high_school,
 				"secondary_school":secondary_school,
+				"special_education":special_education,
 				"proveAttachId":proveAttachId
 		}
 		submitArray.push(workExperienceObject);
@@ -213,7 +230,7 @@ function headmasterBeforeSubmit(formJsonData){
 	<div class="com-title">
 		<div class="txt fl">
 			<h2><i>19</i>学校发展（学校等级评估）</h2>
-			<p>填写义务教育标准化学校评估情况。</p>
+			<p>填写学校等级评估情况。</p>
 		</div>
 		<div class="select-step fr"><a href="javascript:void(0);" target="_self" title="" id="change">+&nbsp;切换步骤</a></div>
 		<div class="clear-both"></div>

@@ -165,8 +165,12 @@ public class HeadMaster extends UserManage{
             ArrayList<String> bvals = new ArrayList<String>();
             StringBuffer sqlBuf = new StringBuffer("");
 
-            sqlBuf.append("SELECT t.*, a.deptname");
-            sqlBuf.append(" FROM headmaster_base_info t INNER JOIN pcmc_dept a ON t.deptid = a.deptid INNER JOIN pcmc_user_dept b ON t.userid = b.userid where 1=1 and valid = '1' order by t.create_date desc");
+            sqlBuf.append("SELECT t.*, a.deptname,c.deptname as districtname");
+            sqlBuf.append(" FROM headmaster_base_info t ");
+            sqlBuf.append(" LEFT JOIN pcmc_dept c ON t.districtid = c.deptid ");
+            sqlBuf.append(" INNER JOIN pcmc_dept a ON t.deptid = a.deptid ");
+            sqlBuf.append(" INNER JOIN pcmc_user_dept b ON t.userid = b.userid ");
+            sqlBuf.append(" where valid = '1' ");
             
             if (StringUtil.isNotEmpty(username)) {
                 sqlBuf.append(" and username like ?");
@@ -182,7 +186,8 @@ public class HeadMaster extends UserManage{
                 sqlBuf.append(" and idnumber = ?");
                 bvals.add(idnumber);
             }
-
+            sqlBuf.append(" order by t.create_date desc ");
+            
             dao.setSql(sqlBuf.toString());
             dao.setBindValues(bvals);
             Element resultElement = dao.executeQuerySql(xmlDocUtil.getPageSize(), xmlDocUtil.getPageNo());
@@ -568,10 +573,12 @@ public class HeadMaster extends UserManage{
             StringBuffer sqlBuf = new StringBuffer("");
 
             sqlBuf.append(" SELECT t.*, a.deptname,");
+            sqlBuf.append(" c.deptname as districtname,");
             sqlBuf.append("b.attachment_id AS headImgId,");
             sqlBuf.append("b.file_path AS headImgPath");
             sqlBuf.append(" FROM headmaster_base_info t");
             sqlBuf.append("  LEFT JOIN pcmc_dept a ON t.deptid = a.deptid");
+            sqlBuf.append("  LEFT JOIN pcmc_dept c ON t.districtid = c.deptid");
             sqlBuf.append(" LEFT JOIN workflow_attachment b");
             sqlBuf.append(" ON t.person_img_attachId = b.attachment_id");
             sqlBuf.append(" WHERE userid = ? AND valid = '1'");

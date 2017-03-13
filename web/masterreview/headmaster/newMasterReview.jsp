@@ -429,7 +429,7 @@ function submitNextStep(currentStep){
 <!-- 
 <input type="hidden" id="mobile" name="mobile" value="">
 <input type="hidden" id="identitycard" name="identitycard" value=""> -->
-<input type="hidden" id="school_id" name="school_id" value="">
+<!--<input type="hidden" id="school_id" name="school_id" value=""> -->
 
 
 <!-- Main Start -->

@@ -155,7 +155,7 @@
 			</div>
 			<div class="loadbd">
 				<div class="bd1" style="margin-bottom: 0px;">
-				 	<select id="district" name="district" class="selectObj" emptytxt="区" cascade="deptid" >
+				 	<select id="districtid" name="districtid" class="selectObj" emptytxt="区" cascade="deptid" >
 				 	<option value="" selected>区</option>
 				 	</select>
 				 	<select id="deptid" name="deptid" class="selectObj" emptytxt="学校" cascade="gradecode" margin="80px;" addwidth="122px;" >
@@ -241,9 +241,9 @@ $(document).ready(function(){
 		   }
 		}
 	  });
-	$("#selectpick_district").addClass("top1");
+	$("#selectpick_districtid").addClass("top1");
 	//设置默认城市
-	setSelectOption("district","8a21b3ab4d23c0a7014d2c5f4910001a","区");	//	深圳市
+	setSelectOption("districtid","8a21b3ab4d23c0a7014d2c5f4910001a","区");	//	深圳市
 });
 
 //下拉

@@ -232,8 +232,11 @@ public class MasterReviewAction extends BaseWorkflowAction {
         String headerMasterId = dataElement.getChildText("headerMasterId");   
         String headerMasterName = dataElement.getChildText("headerMasterName");   
         String mobile = dataElement.getChildText("mobile");   
-        String identitycard = dataElement.getChildText("identitycard");   
+        String identitycard = dataElement.getChildText("identitycard");
+        String email = dataElement.getChildText("email");
+        String districtid = dataElement.getChildText("districtid");
         String schoolId = dataElement.getChildText("school_id");   
+        String deptid = schoolId; 
         String schoolName = dataElement.getChildText("school_name");   
         
         
@@ -268,6 +271,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         String school_class = dataElement.getChildText("school_class");
         String usersex = dataElement.getChildText("usersex");
         String present_major_occupation = dataElement.getChildText("present_major_occupation");
+        String phasestudy = dataElement.getChildText("phasestudy");   
         String join_work_time = dataElement.getChildText("join_work_time");
         String join_educate_work_time = dataElement.getChildText("join_educate_work_time");
         String politics_status = dataElement.getChildText("politics_status");
@@ -289,6 +293,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
         masterReviewVO.setHeaderMasterName(headerMasterName);
         masterReviewVO.setMobile(mobile);
         masterReviewVO.setIdentitycard(identitycard);
+        masterReviewVO.setEmail(email);
+        masterReviewVO.setDistrictid(districtid);
+        masterReviewVO.setDeptid(deptid);
         masterReviewVO.setSchoolId(schoolId);
         masterReviewVO.setSchoolName(schoolName);
         masterReviewVO.setPresent_occupation(present_occupation);
@@ -315,6 +322,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
         masterReviewVO.setUsersex(usersex);
         masterReviewVO.setSchool_class(school_class);
         masterReviewVO.setPresent_major_occupation(present_major_occupation);
+        masterReviewVO.setPhasestudy(phasestudy);
         masterReviewVO.setJoin_work_time(DateUtil.stringToDate(join_work_time));
         masterReviewVO.setJoin_educate_work_time(DateUtil.stringToDate(join_educate_work_time));
         masterReviewVO.setPolitics_status(politics_status);
@@ -910,7 +918,9 @@ public class MasterReviewAction extends BaseWorkflowAction {
                         gradeEvaluateVO.setHigh_school(value);
                     } else if (key.equals("secondary_school")) {
                         gradeEvaluateVO.setSecondary_school(value);
-                    }else if (key.equals("proveAttachId")) {
+                    } else if (key.equals("special_education")) {
+                        gradeEvaluateVO.setSpecial_education(value);
+                    } else if (key.equals("proveAttachId")) {
                     	gradeEvaluateVO.setProve_attachment_id(value);
                     } 
                 }
@@ -1418,8 +1428,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
            // sql.append("t.ispositive,");
             //sql.append(" t.mobile,");
            // sql.append(" t.identitycard,");
-            sql.append(" t.school_id,");
-            sql.append(" t.school_name,");
+            sql.append(" c.districtid,");
+            sql.append(" k.deptname as districtname,");
+            sql.append(" c.deptid as school_id,");
+            sql.append(" l.deptname as school_name,");
             //sql.append(" t.present_occupation,");
             sql.append(" t.apply_level,");
             sql.append(" t.school_name_space,");
@@ -1501,6 +1513,10 @@ public class MasterReviewAction extends BaseWorkflowAction {
             
             sql.append("  FROM headmaster t");
             sql.append(" LEFT JOIN headmaster_base_info c ON t.headerMasterId = c.userid");
+            
+            sql.append(" LEFT JOIN pcmc_dept k ON c.districtid = k.deptid");
+            sql.append(" LEFT JOIN pcmc_dept l ON c.deptid = l.deptid");
+            
             sql.append(" LEFT JOIN workflow_attachment a");
             sql.append("  ON t.manage_difficulty_attachment_id = a.attachment_id");
             sql.append(" LEFT JOIN workflow_attachment b");
@@ -1543,6 +1559,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 String headerMasterName = rec.getChildText("headermastername");
                 String mobile = rec.getChildText("mobile");
                 String identitycard = rec.getChildText("idnumber");
+                String districtId = rec.getChildText("districtid");
+                String districtName = rec.getChildText("districtname");
                 String schoolId = rec.getChildText("school_id");
                 String schoolName = rec.getChildText("school_name");
                 String present_occupation = rec.getChildText("present_occupation");
@@ -1681,6 +1699,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
                 masterReviewVO.setHeaderMasterName(headerMasterName);
                 masterReviewVO.setMobile(mobile);
                 masterReviewVO.setIdentitycard(identitycard);
+                masterReviewVO.setDistrictid(districtId);
+                masterReviewVO.setDistrictName(districtName);
                 masterReviewVO.setSchoolId(schoolId);
                 masterReviewVO.setSchoolName(schoolName);
                 masterReviewVO.setPresent_occupation(present_occupation);
@@ -1831,6 +1851,7 @@ public class MasterReviewAction extends BaseWorkflowAction {
             String compulsory_education = (String)map.get("compulsory_education");
             String high_school = (String)map.get("high_school");
             String secondary_school = (String)map.get("secondary_school");
+            String special_education = (String)map.get("special_education");
             String approve_result = (String)map.get("approve_result");
             
 
@@ -1847,7 +1868,8 @@ public class MasterReviewAction extends BaseWorkflowAction {
             gradeEvaluateVO.setBusinessKey(businessKey);
             gradeEvaluateVO.setCompulsory_education(compulsory_education);
             gradeEvaluateVO.setHigh_school(high_school);
-            gradeEvaluateVO.setSecondary_school(secondary_school);;
+            gradeEvaluateVO.setSecondary_school(secondary_school);
+            gradeEvaluateVO.setSpecial_education(special_education);
             gradeEvaluateVO.setApprove_result(approve_result);
             gradeEvaluateVO.setProveAttachMentVO(proveAttachMentVO);
           

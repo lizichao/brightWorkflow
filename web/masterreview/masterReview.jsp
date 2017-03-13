@@ -158,6 +158,79 @@ function exportToWord(){
 			</ul>
 			<div class="tabletit">申请详情信息</div>
 			<table cellpadding="0" cellspacing="1" border="0" class="table">
+				<tbody>
+					<tr>
+			            <th width="100%" colspan="7">基础信息</th>
+			        </tr>
+			        <tr>
+			        	<td rowspan="3" width="10%">
+			        	   <img id="person_img_object" style="width:98px;height: 114px"  >
+			        	</td>
+			        	<td class="black text-right" width="10%">姓名：</td>
+			        	<td width="20%"><label id="headerMasterName" name="headerMasterName"></label> </td>
+			        	<td class="black text-right" width="10%">性别：</td>
+			        	<td width="20%"><label id="usersex" name="usersex"></label> </td>
+			        	<td class="black text-right" width="10%">出生年月：</td>
+			        	<td width="20%"><label id="birth_date" name="birth_date"></label> </td>
+			        </tr>
+			        <tr>
+			        	<td class="black text-right">民族：</td>
+			        	<td><label id="nation" name="nation"></label> </td>
+			        	<td class="black text-right">籍贯：</td>
+			        	<td><label id="native_place" name="native_place"></label></td>
+			        	<td class="black text-right">户籍：</td>
+			        	<td><label id="census_register" name="census_register"></label></td>
+		        	</tr>
+			        <tr>
+			        	<td class="black text-right">政治面貌：</td>
+			        	<td><label id="politics_status" name="politics_status"></label></td>
+			        	<td class="black text-right">手机号：</td>
+			        	<td><label id="mobile" name="mobile"></label></td>
+			        	<td class="black text-right">邮箱：</td>
+			        	<td><label id="email" name="email"></label></td>
+		        	</tr>
+		        	<tr>
+		        		<td colspan="7" style="padding: 0 0;">
+		        			<table cellpadding="0" cellspacing="1" border="0" class="table" style="margin-top: 0px;">
+		        				<tbody>
+		        					<tr>
+							        	<td class="black text-right" width="15%">教龄：</td>
+			        					<td width="15%"><label id="teach_age" name="teach_age"></label> </td>
+			        					<td width="15%" class="black text-right">寄宿制学校：</td>
+			        					<td width="15%"><label id="lodge_school" name="lodge_school"></label></td>
+			        					<td width="15%" class="black text-right">学校类型：</td>
+			        					<td width="25%"><label id="school_class" name="school_class"></label></td>
+							        </tr>
+							        <tr>
+							        	<td class="black text-right">参加工作时间：</td>
+			        					<td><label id="join_work_time" name="join_work_time"></label> </td>
+			        	 				<td class="black text-right">参加教育工作时间：</td>
+			        					<td><label id="join_educate_work_time" name="join_educate_work_time"></label></td>
+			        					<td class="black text-right">学段：</td>
+			        					<td><label id="phasestudy" name="phasestudy"></label></td>
+							        </tr>
+							        <tr>
+							        	<td class="black text-right">现任职务：</td>
+			        					<td><label id="present_occupation" name="present_occupation"></label> </td>
+			        					<td class="black text-right">现任专业技术职务：</td>
+			        					<td><label id="present_major_occupation" name="present_major_occupation"></label> </td>
+			        					<td class="black text-right">学校所在区：</td>
+			        					<td><label id="district_name" name="district_name"></label></td>
+							        </tr>
+							        <tr>
+							        	<td class="black text-right">所在学校：</td>
+			        					<td><label id="school_name" name="school_name"></label></td>
+			        					<td class="black text-right">&nbsp;</td>
+			        					<td>&nbsp;</td>
+			        					<td class="black text-right">&nbsp;</td>
+			        					<td>&nbsp;</td>
+							        </tr>
+		        				</tbody>
+		        			</table>
+		        		</td>
+		        	</tr>
+				</tbody>
+				<!-- 
 			    <tbody>
                     <tr>
 			            <th width="100%" colspan="6">基础信息</th>
@@ -216,7 +289,9 @@ function exportToWord(){
 			        	<td><label id="join_educate_work_time" name="join_educate_work_time"></label> </td>
 		        	</tr> 	
 			   </tbody>
+			   -->
 			</table>
+			
 			
 			<div class="tabletit">非指标选项</div>
 			  <div id="workHistoryDiv" ></div>

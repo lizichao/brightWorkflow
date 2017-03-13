@@ -6,6 +6,7 @@
     <Field name="username" title="姓名" type="String" maxlen="32" pk="false" />
     <Field name="usercode" type="String" maxlen="32" pk="false" />
     <Field name="userpwd" type="String" maxlen="32" pk="false" />
+    <Field name="districtid" title="学校所在区" type="String" maxlen="40" pk="false" />
     <Field name="deptid" title="所在学校" type="String" maxlen="40" pk="false" />
     <Field name="idnumber" type="String" maxlen="40" pk="false" />
     <Field name="email" type="String" maxlen="100" pk="false" />
